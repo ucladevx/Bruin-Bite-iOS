@@ -10,15 +10,15 @@ import Foundation
 import Moya
 
 enum API_methods {
-    case getAllMenus(date: String)
+    case getAllMenus
 }
 
 extension API_methods: TargetType {
-    var baseURL: URL { return URL(string: "http://bruindining.herokuapp.com/")! }
+    var baseURL: URL { return URL(string: "http://bruindining.herokuapp.com")! }
     var path: String {
         switch self {
-        case .getAllMenus(let date):
-            return "/overview?date=\(date)"
+        case .getAllMenus:
+            return "/overview"
 //        case .showUser(let id), .updateUser(let id, _, _):
 //            return "/users/\(id)"
 //        case .createUser(_, _):
@@ -41,8 +41,8 @@ extension API_methods: TargetType {
     }
     var sampleData: Data {
         switch self {
-        case .getAllMenus(let date):
-            return "{\"date\": \(date), \"first_name\": \"Harry\", \"last_name\": \"Potter\"}".utf8Encoded
+        case .getAllMenus:
+            return "{\"date\":, \"first_name\": \"Harry\", \"last_name\": \"Potter\"}".utf8Encoded
     
         }
     }
