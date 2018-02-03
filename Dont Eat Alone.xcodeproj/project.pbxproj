@@ -17,6 +17,9 @@
 		770251CB201D4079002E4515 /* Dont_Eat_AloneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770251CA201D4079002E4515 /* Dont_Eat_AloneTests.swift */; };
 		770251D6201D4079002E4515 /* Dont_Eat_AloneUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770251D5201D4079002E4515 /* Dont_Eat_AloneUITests.swift */; };
 		770251E4201D4182002E4515 /* Moya_Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770251E3201D4182002E4515 /* Moya_Service.swift */; };
+		770CDEAE20266B0800658925 /* ColoredCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770CDEAD20266B0800658925 /* ColoredCircle.swift */; };
+		770CDEB020266B6000658925 /* ActivityLevelBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770CDEAF20266B6000658925 /* ActivityLevelBar.swift */; };
+		770CDEB220266B7000658925 /* ActivityLevelBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 770CDEB120266B7000658925 /* ActivityLevelBar.xib */; };
 		7F2CE2B970B78A3D4EAA92F3 /* Pods_Dont_Eat_AloneUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 486D54EAA20C6801495DCB82 /* Pods_Dont_Eat_AloneUITests.framework */; };
 		EF02E5CA957D94AAB438FE60 /* Pods_Dont_Eat_AloneTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 613DC376493206C810E3C951 /* Pods_Dont_Eat_AloneTests.framework */; };
 /* End PBXBuildFile section */
@@ -58,6 +61,9 @@
 		770251D5201D4079002E4515 /* Dont_Eat_AloneUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dont_Eat_AloneUITests.swift; sourceTree = "<group>"; };
 		770251D7201D4079002E4515 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		770251E3201D4182002E4515 /* Moya_Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Moya_Service.swift; sourceTree = "<group>"; };
+		770CDEAD20266B0800658925 /* ColoredCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColoredCircle.swift; sourceTree = "<group>"; };
+		770CDEAF20266B6000658925 /* ActivityLevelBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityLevelBar.swift; sourceTree = "<group>"; };
+		770CDEB120266B7000658925 /* ActivityLevelBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityLevelBar.xib; sourceTree = "<group>"; };
 		95F72EF072C1BCB2A65BF28C /* Pods-Dont Eat AloneTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dont Eat AloneTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Dont Eat AloneTests/Pods-Dont Eat AloneTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9F5BCEA43F1BA73C8236EDF3 /* Pods-Dont Eat AloneUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dont Eat AloneUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Dont Eat AloneUITests/Pods-Dont Eat AloneUITests.release.xcconfig"; sourceTree = "<group>"; };
 		AB594487D41E5DD55611BCEC /* Pods_Dont_Eat_Alone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Dont_Eat_Alone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -131,6 +137,9 @@
 		770251B2201D4079002E4515 /* Dont Eat Alone */ = {
 			isa = PBXGroup;
 			children = (
+				770CDEAF20266B6000658925 /* ActivityLevelBar.swift */,
+				770CDEB120266B7000658925 /* ActivityLevelBar.xib */,
+				770CDEAD20266B0800658925 /* ColoredCircle.swift */,
 				770251B3201D4079002E4515 /* AppDelegate.swift */,
 				770251B5201D4079002E4515 /* FirstViewController.swift */,
 				770251B7201D4079002E4515 /* SecondViewController.swift */,
@@ -290,6 +299,7 @@
 				770251C0201D4079002E4515 /* LaunchScreen.storyboard in Resources */,
 				770251BD201D4079002E4515 /* Assets.xcassets in Resources */,
 				770251BB201D4079002E4515 /* Main.storyboard in Resources */,
+				770CDEB220266B7000658925 /* ActivityLevelBar.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -470,6 +480,8 @@
 			files = (
 				770251B8201D4079002E4515 /* SecondViewController.swift in Sources */,
 				770251B4201D4079002E4515 /* AppDelegate.swift in Sources */,
+				770CDEAE20266B0800658925 /* ColoredCircle.swift in Sources */,
+				770CDEB020266B6000658925 /* ActivityLevelBar.swift in Sources */,
 				770251B6201D4079002E4515 /* FirstViewController.swift in Sources */,
 				770251E4201D4182002E4515 /* Moya_Service.swift in Sources */,
 			);
