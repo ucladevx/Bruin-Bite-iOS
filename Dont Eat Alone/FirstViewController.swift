@@ -1,4 +1,4 @@
-//
+    //
 //  FirstViewController.swift
 //  Dont Eat Alone
 //
@@ -36,8 +36,7 @@ class FirstViewController: UIViewController {
                 
             // do something with the response data or statusCode
             case let .failure(error):
-                print("Error")
-                // this means there was a network failure - either the request
+                print("Error")                  // this means there was a network failure - either the request
                 // wasn't sent (connectivity), or no response was received (server
                 // timed out).  If the server responds with a 4xx or 5xx error, that
                 // will be sent as a ".success"-ful response.
