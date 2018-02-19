@@ -40,13 +40,21 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Sb-m5-x4d" customClass="ActivityLevelBar" customModule="Dont_Eat_Alone" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="367" height="123"/>
+                                <rect key="frame" x="-8" y="46" width="367" height="123"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="percentage">
                                         <real key="value" value="0.80000000000000004"/>
                                     </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IS5-ao-Suc" customClass="AllergyFilterButton" customModule="Dont_Eat_Alone" customModuleProvider="target">
+                                <rect key="frame" x="67" y="440" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="allergy_name" value="Vegetarian"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>

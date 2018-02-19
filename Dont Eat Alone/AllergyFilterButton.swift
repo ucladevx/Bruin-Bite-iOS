@@ -8,7 +8,7 @@
 
 import UIKit
 
-@IBDesignable
+//@IBDesignable
 class AllergyFilterButton: UIButton {
 
     /*
@@ -24,16 +24,25 @@ class AllergyFilterButton: UIButton {
     @IBInspectable
     var allergy_name: String = ""
     
+    func fit_to_word_length() {
+        self.sizeToFit()
+        let w = self.frame.size.width
+        let h = self.frame.size.height
+        self.frame.size = CGSize(width: 1.3*w, height: h)
+    }
+    
     @objc func onPress() {
         if(self.backgroundColor == UIColor.clear) {
-            self.backgroundColor = UIColor.darkGray
-            self.setTitleColor(UIColor.white, for: .normal)
-            self.setTitle("Vegan", for: .normal)
+            self.backgroundColor = UIColor.deaGrey
+            self.setTitleColor(UIColor.deaWhite, for: .normal)
+            self.setTitle(allergy_name, for: .normal)
+            fit_to_word_length()
         }
         else {
             self.backgroundColor = UIColor.clear
-            self.setTitleColor(UIColor.darkGray, for: .normal)
-            self.setTitle("Vegan", for: .normal)
+            self.setTitleColor(UIColor.deaGrey, for: .normal)
+            self.setTitle(allergy_name, for: .normal)
+            fit_to_word_length()
         }
     }
     
@@ -44,10 +53,12 @@ class AllergyFilterButton: UIButton {
         
         self.layer.borderWidth = 1
         self.backgroundColor = UIColor.clear
-        self.layer.borderColor = UIColor.darkGray.cgColor
+        self.layer.borderColor = UIColor.deaGrey.cgColor
         self.layer.cornerRadius = 10
-        self.setTitle("Vegan", for: .normal)
-        self.setTitleColor(UIColor.darkGray, for: .normal)
+        self.setTitleColor(UIColor.deaGrey, for: .normal)
+        self.setTitle(allergy_name, for: .normal)
+        fit_to_word_length()
+
     }
     
     override func awakeFromNib() {
