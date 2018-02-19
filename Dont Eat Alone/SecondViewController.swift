@@ -15,15 +15,15 @@ class SecondViewController: UIViewController, WeekViewTappedDelegate  {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        for i in 0 ..< dayBtns.count {
-            let date = Date().addingTimeInterval(TimeInterval(86400 * i))
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "dd"
-            
-            dayBtns[i].dateLbl.text = dateFormatter.string(from: date)
-            dayBtns[i].dateLbl.textAlignment = .center
-            dayBtns[i].setDelegateAndTap(self)
-        }
+//        for i in 0 ..< dayBtns.count {
+//            let date = Date().addingTimeInterval(TimeInterval(86400 * i))
+//            let dateFormatter = DateFormatter()
+//            dateFormatter.dateFormat = "dd"
+//            
+//            dayBtns[i].dateLbl.text = dateFormatter.string(from: date)
+//            dayBtns[i].dateLbl.textAlignment = .center
+//            dayBtns[i].setDelegateAndTap(self)
+//        }
     }
     
     func daySelected(_ selectedLabelText: String) {

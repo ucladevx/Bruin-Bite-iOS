@@ -7,7 +7,6 @@
 //
 
 import UIKit
-@IBDesignable
 
 protocol WeekViewTappedDelegate {
     func daySelected(_ selectedLabelText: String)
