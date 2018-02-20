@@ -10,20 +10,23 @@ import UIKit
 
 class SecondViewController: UIViewController, WeekViewTappedDelegate  {
     
-    @IBOutlet var dayBtns: UICollectionView!
+    @IBOutlet var dayBtns: [WeekView]!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-//        for i in 0 ..< dayBtns.count {
-//            let date = Date().addingTimeInterval(TimeInterval(86400 * i))
-//            let dateFormatter = DateFormatter()
-//            dateFormatter.dateFormat = "dd"
-//            
-//            dayBtns[i].dateLbl.text = dateFormatter.string(from: date)
-//            dayBtns[i].dateLbl.textAlignment = .center
-//            dayBtns[i].setDelegateAndTap(self)
-//        }
+        for i in 0 ..< dayBtns.count {
+            let date = Date().addingTimeInterval(TimeInterval(86400 * (i-1)))
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd"
+            print(dateFormatter.string(from: date))
+            dayBtns[i].dateLbl.text = dateFormatter.string(from: date)
+            dayBtns[i].dateLbl.textAlignment = .center
+            dateFormatter.dateFormat = "EEE"
+            dayBtns[i].weekLbl.text = dateFormatter.string(from: date)
+            dayBtns[i].weekLbl.textAlignment = .center
+            dayBtns[i].setDelegateAndTap(self)
+        }
     }
     
     func daySelected(_ selectedLabelText: String) {

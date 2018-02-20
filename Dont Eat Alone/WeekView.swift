@@ -12,11 +12,31 @@ protocol WeekViewTappedDelegate {
     func daySelected(_ selectedLabelText: String)
 }
 
-class WeekView: UIView {
-    @IBOutlet var dateLbl: UILabel!
+@IBDesignable class WeekView: UIView {
+    var dateLbl = UILabel()
+    var weekLbl = UILabel()
     
     var tapGesture: UITapGestureRecognizer?
     var delegate: WeekViewTappedDelegate?
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupLabel()
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        setupLabel()
+    }
+    
+    private func setupLabel() {
+        weekLbl.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        weekLbl.textAlignment = .center
+        self.addSubview(weekLbl)
+        dateLbl.frame = CGRect(x: 0, y: 40, width: 30, height: 30)
+        dateLbl.textAlignment = .center
+        self.addSubview(dateLbl)
+    }
     
     func setDelegateAndTap(_ delegate: WeekViewTappedDelegate) {
         self.delegate = delegate
