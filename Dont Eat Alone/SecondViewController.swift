@@ -20,11 +20,11 @@ class SecondViewController: UIViewController, WeekViewTappedDelegate  {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "dd"
             print(dateFormatter.string(from: date))
-            dayBtns[i].dateLbl.frame = CGRect(x: 0, y: 70, width: 50, height: 30)
+            dayBtns[i].dateLbl.frame = CGRect(x: 0, y: 40, width: 50, height: 20)
             dayBtns[i].dateLbl.text = dateFormatter.string(from: date)
             dayBtns[i].dateLbl.textAlignment = .center
             dateFormatter.dateFormat = "EEE"
-            dayBtns[i].weekLbl.frame = CGRect(x: 0, y: 30, width: 50, height: 30)
+            dayBtns[i].weekLbl.frame = CGRect(x: 0, y: 20, width: 50, height: 20)
             dayBtns[i].weekLbl.text = dateFormatter.string(from: date)
             dayBtns[i].weekLbl.textAlignment = .center
             dayBtns[i].setDelegateAndTap(self)
