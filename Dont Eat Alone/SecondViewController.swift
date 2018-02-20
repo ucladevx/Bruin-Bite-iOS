@@ -22,7 +22,7 @@ class SecondViewController: UIViewController, WeekViewTappedDelegate  {
             print(dateFormatter.string(from: date))
             dayBtns[i].dateLbl.text = dateFormatter.string(from: date)
             dayBtns[i].dateLbl.textAlignment = .center
-            dateFormatter.dateFormat = "EEE"
+            dateFormatter.dateFormat = "EEE" 
             dayBtns[i].weekLbl.text = dateFormatter.string(from: date)
             dayBtns[i].weekLbl.textAlignment = .center
             dayBtns[i].setDelegateAndTap(self)
