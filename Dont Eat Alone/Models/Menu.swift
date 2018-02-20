@@ -71,7 +71,11 @@ class MenuController{
     
     var menu: Menu?
     
-    
+    //func getActivityLevel() ->
+    //func getOverviewMenu() ->
+    //func getFullMenu() ->
+    //func getItemDetails() ->
+    //func getTime() ->
     
     //test data
     var itemA1 = Item(itemCategory: "Overview", name: "Cheese Blintz w/ Berry Compote", allergies: [Allergen.Vegan, Allergen.ContainsEggs, Allergen.ContainsWheat, Allergen.ContainsSoy], recipeLink: nil)
