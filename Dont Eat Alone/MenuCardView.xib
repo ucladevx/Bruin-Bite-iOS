@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MenuCardView" customModule="Dont_Eat_Alone" customModuleProvider="target">
             <connections>
+                <outlet property="activityLevelBar" destination="7Eq-i4-wgN" id="l7z-t8-4yO"/>
                 <outlet property="label" destination="6fh-xL-jHN" id="7Jw-h4-FLf"/>
                 <outlet property="menuCardView" destination="iN0-l3-epB" id="6Ub-R4-c3o"/>
             </connections>
@@ -28,10 +29,20 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Eq-i4-wgN" customClass="ActivityLevelBar" customModule="Dont_Eat_Alone" customModuleProvider="target">
+                    <rect key="frame" x="16" y="124" width="328" height="35"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="percentage">
+                            <real key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <point key="canvasLocation" x="84" y="-20"/>
+            <point key="canvasLocation" x="180.5" y="-90.5"/>
         </view>
     </objects>
 </document>

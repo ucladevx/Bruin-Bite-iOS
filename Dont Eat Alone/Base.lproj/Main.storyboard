@@ -26,16 +26,6 @@
                                     <action selector="callAPI:" destination="9pv-A4-QxB" eventType="touchUpInside" id="hRQ-BB-Ldi"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Sb-m5-x4d" customClass="ActivityLevelBar" customModule="Dont_Eat_Alone" customModuleProvider="target">
-                                <rect key="frame" x="-8" y="46" width="367" height="57"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="percentage">
-                                        <real key="value" value="0.80000000000000004"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nBQ-IF-1pm" customClass="MenuCardView" customModule="Dont_Eat_Alone" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="318" width="375" height="300"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

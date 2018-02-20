@@ -30,6 +30,18 @@ extension UIColor {
     @nonobjc class var deaWhite: UIColor {
         return UIColor(white: 244.0 / 255.0, alpha: 1.0)
     }
+    
+    @nonobjc class var deaAppleGreen: UIColor {
+        return UIColor(red: 126.0 / 255.0, green: 211.0 / 255.0, blue: 33.0 / 255.0, alpha: 1.0)
+    }
+    
+    @nonobjc class var deaSunYellow: UIColor {
+        return UIColor(red: 248.0 / 255.0, green: 231.0 / 255.0, blue: 28.0 / 255.0, alpha: 1.0)
+    }
+    
+    @nonobjc class var deaScarlet: UIColor {
+        return UIColor(red: 208.0 / 255.0, green: 2.0 / 255.0, blue: 27.0 / 255.0, alpha: 1.0)
+    }
 }
 
 // Sample text styles

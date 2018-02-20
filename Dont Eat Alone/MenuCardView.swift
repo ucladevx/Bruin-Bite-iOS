@@ -8,10 +8,12 @@
 
 import UIKit
 
+@IBDesignable
 class MenuCardView: UIView {
     
     @IBOutlet var menuCardView: UIView!
     @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var activityLevelBar: ActivityLevelBar!
     
     //for using custom view in code
     override init(frame: CGRect){
@@ -28,10 +30,22 @@ class MenuCardView: UIView {
     private func commonInit(){
         Bundle.main.loadNibNamed("MenuCardView", owner: self, options: nil)
         addSubview(menuCardView)
-        menuCardView.frame = self.bounds
+        let screenWidth = self.bounds.size.width
+        print(0.8*screenWidth)
+        menuCardView.frame = CGRect(x: (screenWidth/2) - (0.8*screenWidth/2), y: 0, width: 0.8*screenWidth, height: 0.8*screenWidth)
         menuCardView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        menuCardView.backgroundColor = .green
-        label.text = "This works"
+        menuCardView.backgroundColor = .gray
+        menuCardView.layer.cornerRadius = 8
+        
+        let convert_bar_bounds = menuCardView.convert(activityLevelBar.frame, from: menuCardView)
+        
+        let bar_height = activityLevelBar.frame.height
+       
+        activityLevelBar.frame = CGRect(x: activityLevelBar.bounds.origin.x-10, y: activityLevelBar.bounds.origin.y-15, width: menuCardView.bounds.width, height: bar_height)
+        print(activityLevelBar.frame.width)
+        print(menuCardView.bounds.width)
+        menuCardView.clipsToBounds = true
+        
     }
 }
 
