@@ -30,11 +30,7 @@ protocol WeekViewTappedDelegate {
     }
     
     private func setupLabel() {
-        //print(self.frame.origin.x)
-        //weekLbl.frame = CGRect(x: self.frame.origin.x, y: 0, width: 40, height: 30)
-        weekLbl.textAlignment = .center
         self.addSubview(weekLbl)
-        //dateLbl.frame = CGRect(x: self.frame.origin.x, y: 40, width: 40, height: 30)
         dateLbl.textAlignment = .center
         self.addSubview(dateLbl)
     }
