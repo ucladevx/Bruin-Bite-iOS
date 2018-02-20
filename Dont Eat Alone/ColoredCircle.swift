@@ -13,7 +13,7 @@ class ColoredCircle: UIView {
     
     var scale: CGFloat = 0.9
     @IBInspectable
-    var color: UIColor = .blue{
+    var color: UIColor = .white{
         didSet{
             setNeedsDisplay()
         }

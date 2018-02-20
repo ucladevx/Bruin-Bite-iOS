@@ -30,6 +30,11 @@ protocol WeekViewTappedDelegate {
     }
     
     private func setupLabel() {
+        self.backgroundColor = UIColor.red
+        dateLbl.font = dateLbl.font.withSize(15)
+        weekLbl.font = weekLbl.font.withSize(15)
+        dateLbl.textColor = UIColor.white
+        weekLbl.textColor = UIColor.white
         self.addSubview(weekLbl)
         dateLbl.textAlignment = .center
         self.addSubview(dateLbl)
