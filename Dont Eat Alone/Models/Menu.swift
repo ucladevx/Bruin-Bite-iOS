@@ -8,6 +8,21 @@
 
 import Foundation
 
+    /* Data Structure Tree
+ 
+                    Date
+                      |
+                  MealPeriod
+                      |
+                  Location
+                      |
+                   [Items]
+                      |
+    Name    Allergens   RecipeLink  Category
+ 
+    */
+
+//---Enums---
 enum Allergens{
     case None
     case Vegetarian
@@ -37,13 +52,16 @@ enum Location: String{
     case feast = "Feast"
 }
 
-
+//---Structures---
 struct Item{
+    var itemCategory: String
     var name: String
     var allergies: [Allergens]
     var recipeLink: String?
     //add nutrition here later
 }
+
+var data = [Location: [Item]]()
 
 struct Menu{
     var mealPeriod: MealPeriod
