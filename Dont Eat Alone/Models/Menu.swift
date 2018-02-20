@@ -23,7 +23,7 @@ import Foundation
     */
 
 //---Enums---
-enum Allergens{
+enum Allergen{
     case None
     case Vegetarian
     case Vegan
@@ -54,30 +54,40 @@ enum Location: String{
 
 //---Structures---
 struct Item{
-    var itemCategory: String
+    var itemCategory: String //also includes overview menu
     var name: String
-    var allergies: [Allergens]
+    var allergies: [Allergen]
     var recipeLink: String?
     //add nutrition here later
 }
 
-var data = [Location: [Item]]()
-
+//menus at all the locations for a meal period
 struct Menu{
     var mealPeriod: MealPeriod
-    var location: Location
-    var item: Item
+    var data: [Location: [Item]]
 }
 
 class MenuController{
-    var abc: String
-    init(abc: String){
-        self.abc = abc
+    
+    var menu: Menu?
+    
+    
+    
+    //test data
+    var itemA1 = Item(itemCategory: "Overview", name: "Cheese Blintz w/ Berry Compote", allergies: [Allergen.Vegan, Allergen.ContainsEggs, Allergen.ContainsWheat, Allergen.ContainsSoy], recipeLink: nil)
+    var itemA2 = Item(itemCategory: "Overview", name: "Cheese Blintz w/ Berry Compote", allergies: [Allergen.Vegan, Allergen.ContainsEggs, Allergen.ContainsWheat, Allergen.ContainsSoy], recipeLink: nil)
+    var itemA3 = Item(itemCategory: "Overview", name: "Cheese Blintz w/ Berry Compote", allergies: [Allergen.Vegan, Allergen.ContainsEggs, Allergen.ContainsWheat, Allergen.ContainsSoy], recipeLink: nil)
+    var itemA4 = Item(itemCategory: "Overview", name: "Cheese Blintz w/ Berry Compote", allergies: [Allergen.Vegan, Allergen.ContainsEggs, Allergen.ContainsWheat, Allergen.ContainsSoy], recipeLink: nil)
+    
+    init() {
+        self.menu = Menu(mealPeriod: MealPeriod.breakfast, data: [Location.bPlate: [self.itemA1, self.itemA2, self.itemA3, self.itemA4]])
     }
+}
+    
+    
     
     //Menu
     //  -minimized menu items
     //  -get activity levels
     //  -get times
     //  -
-}
