@@ -12,6 +12,7 @@ protocol WeekViewTappedDelegate {
     func daySelected(_ selectedLabelText: String)
 }
 
+@IBDesignable
 class WeekView: UIView {
     @IBOutlet var dateLbl: UILabel!
     
