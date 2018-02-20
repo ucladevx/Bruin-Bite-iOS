@@ -14,15 +14,18 @@ class SecondViewController: UIViewController, WeekViewTappedDelegate  {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        print(dayBtns.count)
         
-        for i in 0 ..< dayBtns.count {
+        for i in 0 ..< dayBtns.count{
             let date = Date().addingTimeInterval(TimeInterval(86400 * (i-1)))
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "dd"
             print(dateFormatter.string(from: date))
+            dayBtns[i].dateLbl.frame = CGRect(x: dayBtns[i].frame.origin.x, y: 0, width: 40, height: 30)
             dayBtns[i].dateLbl.text = dateFormatter.string(from: date)
             dayBtns[i].dateLbl.textAlignment = .center
-            dateFormatter.dateFormat = "EEE" 
+            dateFormatter.dateFormat = "EEE"
+            dayBtns[i].weekLbl.frame = CGRect(x: dayBtns[i].frame.origin.x, y: 40, width: 40, height: 30)
             dayBtns[i].weekLbl.text = dateFormatter.string(from: date)
             dayBtns[i].weekLbl.textAlignment = .center
             dayBtns[i].setDelegateAndTap(self)
