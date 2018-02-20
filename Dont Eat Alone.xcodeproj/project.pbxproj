@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A744895203BBDBC00793AD3 /* MenuCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A744894203BBDBC00793AD3 /* MenuCardView.swift */; };
+		2A744897203BBEDA00793AD3 /* MenuCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A744896203BBEDA00793AD3 /* MenuCardView.xib */; };
 		2B952C67202BDBB200F27727 /* WeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B952C66202BDBB200F27727 /* WeekView.swift */; };
 		5490767E2486E7D65003E4E7 /* Pods_Dont_Eat_Alone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB594487D41E5DD55611BCEC /* Pods_Dont_Eat_Alone.framework */; };
 		770251B4201D4079002E4515 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770251B3201D4079002E4515 /* AppDelegate.swift */; };
@@ -45,6 +47,8 @@
 /* Begin PBXFileReference section */
 		1CE69B303700A4BB00F6EBEA /* Pods-Dont Eat AloneUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dont Eat AloneUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Dont Eat AloneUITests/Pods-Dont Eat AloneUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		266C33EA78F943413B244B8D /* Pods-Dont Eat Alone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dont Eat Alone.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Dont Eat Alone/Pods-Dont Eat Alone.debug.xcconfig"; sourceTree = "<group>"; };
+		2A744894203BBDBC00793AD3 /* MenuCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCardView.swift; sourceTree = "<group>"; };
+		2A744896203BBEDA00793AD3 /* MenuCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuCardView.xib; sourceTree = "<group>"; };
 		2B952C66202BDBB200F27727 /* WeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekView.swift; sourceTree = "<group>"; };
 		486D54EAA20C6801495DCB82 /* Pods_Dont_Eat_AloneUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Dont_Eat_AloneUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		613DC376493206C810E3C951 /* Pods_Dont_Eat_AloneTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Dont_Eat_AloneTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -140,6 +144,8 @@
 			isa = PBXGroup;
 			children = (
 				770CDEAF20266B6000658925 /* ActivityLevelBar.swift */,
+				2A744894203BBDBC00793AD3 /* MenuCardView.swift */,
+				2A744896203BBEDA00793AD3 /* MenuCardView.xib */,
 				2B952C66202BDBB200F27727 /* WeekView.swift */,
 				770CDEB120266B7000658925 /* ActivityLevelBar.xib */,
 				770CDEAD20266B0800658925 /* ColoredCircle.swift */,
@@ -299,6 +305,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A744897203BBEDA00793AD3 /* MenuCardView.xib in Resources */,
 				770251C0201D4079002E4515 /* LaunchScreen.storyboard in Resources */,
 				770251BD201D4079002E4515 /* Assets.xcassets in Resources */,
 				770251BB201D4079002E4515 /* Main.storyboard in Resources */,
@@ -488,6 +495,7 @@
 				770CDEB020266B6000658925 /* ActivityLevelBar.swift in Sources */,
 				770251B6201D4079002E4515 /* FirstViewController.swift in Sources */,
 				770251E4201D4182002E4515 /* Moya_Service.swift in Sources */,
+				2A744895203BBDBC00793AD3 /* MenuCardView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

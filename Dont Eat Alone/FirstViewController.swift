@@ -11,7 +11,7 @@ import Moya
 
 
 class FirstViewController: UIViewController {
-
+    
     let provider = MoyaProvider<API_methods>()
     
     override func viewDidLoad() {
