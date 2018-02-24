@@ -12,9 +12,7 @@ import Foundation
  
                     Date
                       |
-                  MealPeriod
-                      |
-                  Location
+    MealPeriod     Location
                       |
                    [Items]
                       |
@@ -64,18 +62,42 @@ struct Item{
 //menus at all the locations for a meal period
 struct Menu{
     var mealPeriod: MealPeriod
-    var data: [Location: [Item]]
+    var overviewData: [Location: [Item]]
+    var fullData: [Location: [Item]]
 }
 
 class MenuController{
     
-    var menu: Menu?
+    var menus: [Menu]?
+    
     
     //func getActivityLevel() ->
     //func getOverviewMenu() ->
     //func getFullMenu() ->
     //func getItemDetails() ->
     //func getTime() ->
+    
+    func getOverviewMenu(mealPeriod: MealPeriod, location: Location) -> [Item]?{
+        if let menus = menus{
+            for menu in menus{
+                if menu.mealPeriod == mealPeriod{
+                    return menu.overviewData[location]
+                }
+            }
+        }
+        return nil
+    }
+    
+    func getFullMenu(mealPeriod: MealPeriod, location: Location) -> [Item]?{
+        if let menus = menus{
+            for menu in menus{
+                if menu.mealPeriod == mealPeriod{
+                    return menu.fullData[location]
+                }
+            }
+        }
+        return nil
+    }
     
     //test data
     var itemA1 = Item(itemCategory: "Overview", name: "Cheese Blintz w/ Berry Compote", allergies: [Allergen.Vegan, Allergen.ContainsEggs, Allergen.ContainsWheat, Allergen.ContainsSoy], recipeLink: nil)
@@ -84,7 +106,7 @@ class MenuController{
     var itemA4 = Item(itemCategory: "Overview", name: "Cheese Blintz w/ Berry Compote", allergies: [Allergen.Vegan, Allergen.ContainsEggs, Allergen.ContainsWheat, Allergen.ContainsSoy], recipeLink: nil)
     
     init() {
-        self.menu = Menu(mealPeriod: MealPeriod.breakfast, data: [Location.bPlate: [self.itemA1, self.itemA2, self.itemA3, self.itemA4]])
+        self.menus?.append(Menu(mealPeriod: MealPeriod.breakfast, overviewData: [Location.bPlate: [self.itemA1, self.itemA2, self.itemA3, self.itemA4]], fullData: [:]))
     }
 }
     
