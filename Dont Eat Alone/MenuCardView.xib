@@ -15,6 +15,7 @@
                 <outlet property="activityLevelBar" destination="7Eq-i4-wgN" id="l7z-t8-4yO"/>
                 <outlet property="label" destination="6fh-xL-jHN" id="7Jw-h4-FLf"/>
                 <outlet property="menuCardView" destination="iN0-l3-epB" id="6Ub-R4-c3o"/>
+                <outlet property="tableView" destination="2j7-BS-qia" id="CDR-PL-z33"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -29,8 +30,17 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2j7-BS-qia">
+                    <rect key="frame" x="0.0" y="129" width="375" height="439"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="iN0-l3-epB" id="EjU-XH-A08"/>
+                        <outlet property="delegate" destination="iN0-l3-epB" id="Zg4-OI-Mhb"/>
+                    </connections>
+                </tableView>
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Eq-i4-wgN" customClass="ActivityLevelBar" customModule="Dont_Eat_Alone" customModuleProvider="target">
-                    <rect key="frame" x="16" y="124" width="328" height="35"/>
+                    <rect key="frame" x="23" y="168" width="328" height="35"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <userDefinedRuntimeAttributes>
@@ -42,7 +52,7 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <point key="canvasLocation" x="180.5" y="-90.5"/>
+            <point key="canvasLocation" x="172.5" y="-100.5"/>
         </view>
     </objects>
 </document>

@@ -10,14 +10,18 @@ import UIKit
 import Moya
 
 
-class FirstViewController: UIViewController {
+class FirstViewController: UIViewController{
     
+    @IBOutlet weak var m1: MenuCardView!
     let provider = MoyaProvider<API_methods>()
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        m1.tableView.delegate = m1
+        m1.tableView.dataSource = m1
+        
     }
     
     @IBAction func callAPI(_ sender: Any) {
