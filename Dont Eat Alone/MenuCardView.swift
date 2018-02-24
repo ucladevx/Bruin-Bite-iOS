@@ -12,30 +12,40 @@ import UIKit
 class MenuCardView: UIView, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet var menuCardView: UIView!
-    @IBOutlet weak var label: UILabel!
     @IBOutlet weak var activityLevelBar: ActivityLevelBar!
     @IBOutlet weak var tableView: UITableView!
     
+    var data: [Item]
+    
     //for using custom view in code
     override init(frame: CGRect){
+        self.data = []
         super.init(frame: frame)
         commonInit()
     }
 
     //for using custom view in Interface Builder
     required init?(coder aDecoder: NSCoder) {
+        self.data = []
         super.init(coder: aDecoder)
 //        tableView.delegate = self
 //        tableView.dataSource = self
         commonInit()
     }
     
+    func populateData(items: [Item]) {
+        for item in items {
+            data.append(item)
+        }
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return data.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "Cell")
+        cell.textLabel?.text = data[indexPath.row].name
         return cell
     }
     
@@ -66,7 +76,8 @@ class MenuCardView: UIView, UITableViewDelegate, UITableViewDataSource {
         
         let bar_height = activityLevelBar.frame.height
        
-        activityLevelBar.frame = CGRect(x: activityLevelBar.bounds.origin.x-10, y: activityLevelBar.bounds.origin.y-15, width: menuCardView.bounds.width, height: bar_height)
+        activityLevelBar.frame = CGRect(x: activityLevelBar.bounds.origin.x-10, y: activityLevelBar.bounds.origin.y-15, width: menuCardView.bounds.width*1.2, height: bar_height)
+        tableView.frame = CGRect(x: tableView.bounds.origin.x, y: tableView.bounds.origin.y-3, width: menuCardView.bounds.width*1.2, height: menuCardView.bounds.height)
         
         menuCardView.clipsToBounds = true
         

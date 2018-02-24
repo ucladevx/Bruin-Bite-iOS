@@ -13,7 +13,6 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MenuCardView" customModule="Dont_Eat_Alone" customModuleProvider="target">
             <connections>
                 <outlet property="activityLevelBar" destination="7Eq-i4-wgN" id="l7z-t8-4yO"/>
-                <outlet property="label" destination="6fh-xL-jHN" id="7Jw-h4-FLf"/>
                 <outlet property="menuCardView" destination="iN0-l3-epB" id="6Ub-R4-c3o"/>
                 <outlet property="tableView" destination="2j7-BS-qia" id="CDR-PL-z33"/>
             </connections>
@@ -23,13 +22,6 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6fh-xL-jHN">
-                    <rect key="frame" x="175" y="35" width="42" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2j7-BS-qia">
                     <rect key="frame" x="0.0" y="129" width="375" height="439"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>

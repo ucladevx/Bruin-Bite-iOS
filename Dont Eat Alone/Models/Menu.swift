@@ -68,7 +68,7 @@ struct Menu{
 
 class MenuController{
     
-    var menus: [Menu]?
+    var menus: [Menu] = []
     
     
     //func getActivityLevel() ->
@@ -78,25 +78,21 @@ class MenuController{
     //func getTime() ->
     
     func getOverviewMenu(mealPeriod: MealPeriod, location: Location) -> [Item]?{
-        if let menus = menus{
-            for menu in menus{
+        for menu in menus{
                 if menu.mealPeriod == mealPeriod{
                     return menu.overviewData[location]
                 }
             }
-        }
         return nil
     }
     
     func getFullMenu(mealPeriod: MealPeriod, location: Location) -> [Item]?{
-        if let menus = menus{
             for menu in menus{
                 if menu.mealPeriod == mealPeriod{
                     return menu.fullData[location]
                 }
             }
-        }
-        return nil
+            return nil
     }
     
     //test data
@@ -106,7 +102,7 @@ class MenuController{
     var itemA4 = Item(itemCategory: "Overview", name: "Cheese Blintz w/ Berry Compote", allergies: [Allergen.Vegan, Allergen.ContainsEggs, Allergen.ContainsWheat, Allergen.ContainsSoy], recipeLink: nil)
     
     init() {
-        self.menus?.append(Menu(mealPeriod: MealPeriod.breakfast, overviewData: [Location.bPlate: [self.itemA1, self.itemA2, self.itemA3, self.itemA4]], fullData: [:]))
+        self.menus.append(Menu(mealPeriod: MealPeriod.breakfast, overviewData: [Location.bPlate: [self.itemA1, self.itemA2, self.itemA3, self.itemA4]], fullData: [:]))
     }
 }
     

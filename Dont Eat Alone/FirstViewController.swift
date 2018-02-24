@@ -15,12 +15,23 @@ class FirstViewController: UIViewController{
     @IBOutlet weak var m1: MenuCardView!
     let provider = MoyaProvider<API_methods>()
     
+    var menuData = MenuController()
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         m1.tableView.delegate = m1
         m1.tableView.dataSource = m1
+        
+        var items = menuData.getOverviewMenu(mealPeriod: .breakfast, location: .bPlate)
+        if let items = items{
+            for item in items{
+                print(item.name)
+            }
+            
+        }
+        m1.populateData(items: items!)
         
     }
     
