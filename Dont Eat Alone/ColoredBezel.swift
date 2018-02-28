@@ -19,7 +19,7 @@ class ColoredBezel: UIView {
     }
     
     private func pathForCircle() -> UIBezierPath {
-        let path = UIBezierPath(roundedRect: CGRect(x: 5, y: 5, width: 77.5, height: 30), byRoundingCorners: [.allCorners], cornerRadii: CGSize(width: 5, height: 5))
+        let path = UIBezierPath(roundedRect: CGRect(x: 5, y: 5, width: 77.5, height: 30), byRoundingCorners: [.allCorners], cornerRadii: CGSize(width: 10, height: 10))
         return path
     }
     
