@@ -97,37 +97,37 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WKI-pG-JrZ" customClass="WeekView" customModule="Dont_Eat_Alone" customModuleProvider="target">
-                                <rect key="frame" x="12.5" y="40" width="50" height="40"/>
+                                <rect key="frame" x="12.5" y="25" width="50" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aIV-ll-gKB" customClass="WeekView" customModule="Dont_Eat_Alone" customModuleProvider="target">
-                                <rect key="frame" x="62.5" y="40" width="50" height="40"/>
+                                <rect key="frame" x="62.5" y="25" width="50" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ch1-gZ-iwl" customClass="WeekView" customModule="Dont_Eat_Alone" customModuleProvider="target">
-                                <rect key="frame" x="112.5" y="40" width="50" height="40"/>
+                                <rect key="frame" x="112.5" y="25" width="50" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vIe-Tb-5eu" customClass="WeekView" customModule="Dont_Eat_Alone" customModuleProvider="target">
-                                <rect key="frame" x="162.5" y="40" width="50" height="40"/>
+                                <rect key="frame" x="162.5" y="25" width="50" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XVn-YZ-44P" customClass="WeekView" customModule="Dont_Eat_Alone" customModuleProvider="target">
-                                <rect key="frame" x="212.5" y="40" width="50" height="40"/>
+                                <rect key="frame" x="212.5" y="25" width="50" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZUU-wG-rRA" customClass="WeekView" customModule="Dont_Eat_Alone" customModuleProvider="target">
-                                <rect key="frame" x="262.5" y="40" width="50" height="40"/>
+                                <rect key="frame" x="262.5" y="25" width="50" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uFe-kW-UIE" customClass="WeekView" customModule="Dont_Eat_Alone" customModuleProvider="target">
-                                <rect key="frame" x="312.5" y="40" width="50" height="40"/>
+                                <rect key="frame" x="312.5" y="25" width="50" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
@@ -143,12 +143,46 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xlt-8T-jYa" customClass="TimeView" customModule="Dont_Eat_Alone" customModuleProvider="target">
+                                <rect key="frame" x="12.5" y="65" width="87.5" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="63m-pk-EKg" customClass="TimeView" customModule="Dont_Eat_Alone" customModuleProvider="target">
+                                <rect key="frame" x="100" y="65" width="87.5" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cEF-L9-LG1" customClass="TimeView" customModule="Dont_Eat_Alone" customModuleProvider="target">
+                                <rect key="frame" x="187.5" y="65" width="87.5" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GOv-Ss-5vD" customClass="TimeView" customModule="Dont_Eat_Alone" customModuleProvider="target">
+                                <rect key="frame" x="275" y="65" width="87.5" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0c9-vB-jV1" customClass="ColoredBezel" customModule="Dont_Eat_Alone" customModuleProvider="target">
+                                <rect key="frame" x="112.5" y="165" width="7.5" height="4"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Breakfast" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Jj-wy-Vsr">
+                                <rect key="frame" x="20" y="75" width="80" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Second" image="second" id="cPa-gy-q4n"/>
                     <connections>
+                        <outlet property="bezelLabel" destination="4Jj-wy-Vsr" id="B35-BN-1Nt"/>
+                        <outlet property="bezelView" destination="0c9-vB-jV1" id="NVD-od-qKu"/>
                         <outlet property="circleLabel" destination="4iO-PU-nBg" id="MMA-5a-YLr"/>
                         <outlet property="circleSelect" destination="LvQ-ff-A8d" id="Hmf-Cx-6Q2"/>
                         <outletCollection property="dayBtns" destination="WKI-pG-JrZ" collectionClass="NSMutableArray" id="ibY-vn-s85"/>
@@ -158,6 +192,10 @@
                         <outletCollection property="dayBtns" destination="XVn-YZ-44P" collectionClass="NSMutableArray" id="5IJ-Io-gAD"/>
                         <outletCollection property="dayBtns" destination="ZUU-wG-rRA" collectionClass="NSMutableArray" id="nMh-LU-rL5"/>
                         <outletCollection property="dayBtns" destination="uFe-kW-UIE" collectionClass="NSMutableArray" id="D54-CN-WJ2"/>
+                        <outletCollection property="timeBtns" destination="Xlt-8T-jYa" collectionClass="NSMutableArray" id="gmJ-4m-VeA"/>
+                        <outletCollection property="timeBtns" destination="63m-pk-EKg" collectionClass="NSMutableArray" id="MWZ-d6-twq"/>
+                        <outletCollection property="timeBtns" destination="cEF-L9-LG1" collectionClass="NSMutableArray" id="fOR-kB-NlW"/>
+                        <outletCollection property="timeBtns" destination="GOv-Ss-5vD" collectionClass="NSMutableArray" id="Agb-g5-ZoQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
