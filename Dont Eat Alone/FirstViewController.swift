@@ -39,7 +39,8 @@ import Moya
         menuCardsCollection.delegate = self;
         menuCardsCollection.dataSource = self;
 
-        self.menuCardsCollection.frame = UIScreen.main.bounds
+        self.menuCardsCollection.frame = CGRect(x: UIScreen.main.bounds.origin.x, y: UIScreen.main.bounds.origin.y+125, width: UIScreen.main.bounds.width, height: 487)
+//        self.menuCardsCollection.frame = UIScreen.main.bounds
     }
     
     @IBAction func callAPI(_ sender: Any) {
