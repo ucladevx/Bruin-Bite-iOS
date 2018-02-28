@@ -15,9 +15,11 @@ class SecondViewController: UIViewController, TimeViewTappedDelegate, WeekViewTa
     @IBOutlet var timeBtns: [TimeView]!
     @IBOutlet var bezelView: UIView!
     @IBOutlet var bezelLabel: UILabel!
+    @IBOutlet var backgroundView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        backgroundView.backgroundColor = UIColor(red: 208/255, green: 2/255, blue: 27/255, alpha: 1)
         circleSelect.backgroundColor = UIColor(red: 208/255, green: 2/255, blue: 27/255, alpha: 1)
         circleLabel.textColor = UIColor.black
         bezelView.backgroundColor = UIColor(red: 208/255, green: 2/255, blue: 27/255, alpha: 1)

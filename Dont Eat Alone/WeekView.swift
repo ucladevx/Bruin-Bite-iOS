@@ -31,8 +31,8 @@ protocol WeekViewTappedDelegate {
     
     private func setupLabel() {
         self.backgroundColor = UIColor(red: 208/255, green: 2/255, blue: 27/255, alpha: 1)
+        weekLbl.font = UIFont.boldSystemFont(ofSize: 15)
         dateLbl.font = dateLbl.font.withSize(15)
-        weekLbl.font = weekLbl.font.withSize(15)
         dateLbl.textColor = UIColor.white
         weekLbl.textColor = UIColor.white
         self.addSubview(weekLbl)

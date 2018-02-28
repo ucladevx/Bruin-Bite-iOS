@@ -96,6 +96,11 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kfu-vF-Bjb">
+                                <rect key="frame" x="0.0" y="25" width="400" height="82"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WKI-pG-JrZ" customClass="WeekView" customModule="Dont_Eat_Alone" customModuleProvider="target">
                                 <rect key="frame" x="12.5" y="25" width="50" height="42"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -181,6 +186,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Second" image="second" id="cPa-gy-q4n"/>
                     <connections>
+                        <outlet property="backgroundView" destination="kfu-vF-Bjb" id="ymx-YW-zfR"/>
                         <outlet property="bezelLabel" destination="4Jj-wy-Vsr" id="B35-BN-1Nt"/>
                         <outlet property="bezelView" destination="0c9-vB-jV1" id="NVD-od-qKu"/>
                         <outlet property="circleLabel" destination="4iO-PU-nBg" id="MMA-5a-YLr"/>
