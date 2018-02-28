@@ -44,9 +44,18 @@ class MenuCardView: UIView, UITableViewDelegate, UITableViewDataSource {
         return 3
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 42
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "Cell")
         cell.textLabel?.text = data[indexPath.row].name
+        cell.indentationWidth = 13
+        cell.indentationLevel = 1
+        cell.preservesSuperviewLayoutMargins = false
+        cell.separatorInset = UIEdgeInsets.zero
+        cell.layoutMargins = UIEdgeInsets.zero
         return cell
     }
     
@@ -68,6 +77,7 @@ class MenuCardView: UIView, UITableViewDelegate, UITableViewDataSource {
         menuCardView.addSubview(diningHallName)
         menuCardView.addSubview(viewMoreButton)
         
+        
         let screenWidth = UIScreen.main.bounds.size.width
         
         menuCardView.center.x = self.center.x
@@ -75,31 +85,33 @@ class MenuCardView: UIView, UITableViewDelegate, UITableViewDataSource {
         menuCardView.backgroundColor = .white
         menuCardView.layer.cornerRadius = 8
         
-//        menuCardView.layer.shadowColor = UIColor.black.cgColor
-//        menuCardView.layer.shadowOpacity = 1
-//        menuCardView.layer.shadowOffset = CGSize.zero
-//        menuCardView.layer.shadowRadius = 10
+//        let border = CALayer()
+//        let width = CGFloat(2.0)
+//        border.borderColor = UIColor.black.cgColor
+//        border.frame = CGRect(x: 0, y: tableView.frame.size.height - width, width:  tableView.frame.size.width, height: tableView.frame.size.height)
+//        
+//        border.borderWidth = width
+//        tableView.layer.addSublayer(border)
+//        tableView.layer.masksToBounds = true
         
-        menuCardView.layer.shadowColor = UIColor.black.cgColor;
-        menuCardView.layer.shadowOffset = CGSize(width: 5, height: 5)
-        menuCardView.layer.shadowOpacity = 1;
-        menuCardView.layer.shadowRadius = 1.0;
-        menuCardView.layer.masksToBounds = false;
+//        menuCardView.layer.shadowColor = UIColor.black.cgColor;
+//        menuCardView.layer.shadowOffset = CGSize(width: 5, height: 5)
+//        menuCardView.layer.shadowOpacity = 1;
+//        menuCardView.layer.shadowRadius = 1.0;
+//        menuCardView.layer.masksToBounds = false;
         
-        let convert_bar_bounds = menuCardView.convert(activityLevelBar.frame, from: menuCardView)
+        tableView.addBorderTop(size: 1.2, color: .gray)
         
-        let bar_height = activityLevelBar.frame.height
-       
+        _ = menuCardView.convert(activityLevelBar.frame, from: menuCardView)
         _ = tableView.convert(tableView.frame, from: menuCardView)
         _ = diningHallName.convert(diningHallName.frame, from: menuCardView)
         _ = viewMoreButton.convert(viewMoreButton.frame, from: menuCardView)
         
-        //activityLevelBar.frame.origin = CGPoint(x: a.frame.origin.x, y: activityLevelBar.bounds.origin.y)
+        
         activityLevelBar.frame = CGRect(x: activityLevelBar.bounds.origin.x+58, y: activityLevelBar.bounds.origin.y, width: UIScreen.main.bounds.size.width, height: 7.9)
-//        activityLevelBar.frame = CGRect(x: activityLevelBar.bounds.origin.x+90, y: activityLevelBar.bounds.origin.y, width: UIScreen.main.bounds.size.width, height: bar_height)
-        tableView.frame = CGRect(x: tableView.bounds.origin.x+58, y: tableView.bounds.origin.y+45, width: menuCardView.bounds.width, height: 126)
-        diningHallName.frame = CGRect(x: diningHallName.bounds.origin.x+70, y: diningHallName.bounds.origin.y+19, width: diningHallName.bounds.width, height: diningHallName.bounds.height)
-        viewMoreButton.frame = CGRect(x: viewMoreButton.bounds.origin.x+180, y: viewMoreButton.bounds.origin.y+180, width: viewMoreButton.bounds.width, height: viewMoreButton.bounds.height)
+        tableView.frame = CGRect(x: tableView.bounds.origin.x+58, y: tableView.bounds.origin.y+57, width: menuCardView.bounds.width, height: 126)
+        diningHallName.frame = CGRect(x: diningHallName.bounds.origin.x+71, y: diningHallName.bounds.origin.y+23, width: diningHallName.bounds.width, height: diningHallName.bounds.height)
+        viewMoreButton.frame = CGRect(x: viewMoreButton.bounds.origin.x+180, y: viewMoreButton.bounds.origin.y+187, width: viewMoreButton.bounds.width, height: viewMoreButton.bounds.height)
         
         menuCardView.clipsToBounds = true
         
