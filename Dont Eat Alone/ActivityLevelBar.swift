@@ -43,14 +43,14 @@ class ActivityLevelBar: UIView {
         let ctx: CGContext = UIGraphicsGetCurrentContext()!
         ctx.saveGState()
         
-        let width = self.bounds.size.width
+        let width = UIScreen.main.bounds.size.width
         
         if(self.percentage > 0.8) {
             let start_width = 0.8*width
             let percent_filled = (self.percentage - 0.8)*width
             
             ctx.setFillColor(UIColor.deaScarlet.cgColor)
-            ctx.addPath(UIBezierPath(roundedRect: CGRect(x: 10, y: 10, width: CGFloat(start_width+percent_filled), height: 10), byRoundingCorners: [.topLeft, .topRight], cornerRadii: CGSize(width: 6, height: 6)).cgPath)
+            ctx.addPath(UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: CGFloat(start_width+percent_filled), height: 10), byRoundingCorners: [], cornerRadii: CGSize(width: 6, height: 6)).cgPath)
             
             
             ctx.fillPath()
@@ -67,7 +67,7 @@ class ActivityLevelBar: UIView {
             else {
                 percent_filled = (self.percentage - 0.6)*width
             }
-            ctx.addPath(UIBezierPath(roundedRect: CGRect(x: 10, y: 10, width: start_width + percent_filled, height: 10), byRoundingCorners: [.bottomLeft ,.topLeft], cornerRadii: CGSize(width: 6, height: 6)).cgPath)
+            ctx.addPath(UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: start_width + percent_filled, height: 10), byRoundingCorners: [], cornerRadii: CGSize(width: 6, height: 6)).cgPath)
             ctx.fillPath()
         }
         
@@ -79,7 +79,7 @@ class ActivityLevelBar: UIView {
             percent_filled = self.percentage/0.6
         }
         ctx.setFillColor(UIColor.deaAppleGreen.cgColor)
-        ctx.addPath(UIBezierPath(roundedRect: CGRect(x: 10, y: 10, width: 0.6*width*percent_filled, height: 10), byRoundingCorners: [.topLeft], cornerRadii: CGSize(width: 6, height: 6)).cgPath)
+        ctx.addPath(UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: 0.6*width*percent_filled, height: 10), byRoundingCorners: [], cornerRadii: CGSize(width: 6, height: 6)).cgPath)
         //
         
         ctx.closePath()

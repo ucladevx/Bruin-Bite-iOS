@@ -10,29 +10,36 @@ import UIKit
 import Moya
 
 
-class FirstViewController: UIViewController{
+    class FirstViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
-    @IBOutlet weak var m1: MenuCardView!
     let provider = MoyaProvider<API_methods>()
     
+    
+        @IBOutlet weak var menuCardsCollection: UICollectionView!
+        
+
     var menuData = MenuController()
     
+    var data: [Item] = []
+        
+    let diningHalls = ["De Neve", "BPlate", "Covel", "Feast"]
+        
     override func viewDidLoad() {
         
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        m1.tableView.delegate = m1
-        m1.tableView.dataSource = m1
         
         var items = menuData.getOverviewMenu(mealPeriod: .breakfast, location: .bPlate)
         if let items = items{
             for item in items{
-                print(item.name)
+                data.append(item)
             }
             
         }
-        m1.populateData(items: items!)
-        
+        menuCardsCollection.delegate = self;
+        menuCardsCollection.dataSource = self;
+
+        self.menuCardsCollection.frame = UIScreen.main.bounds
     }
     
     @IBAction func callAPI(_ sender: Any) {
@@ -57,6 +64,33 @@ class FirstViewController: UIViewController{
                 // will be sent as a ".success"-ful response.
             }
         }
+    }
+        
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+            return CGSize(width: collectionView.bounds.size.width, height: 222)
+    }
+        
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 4
+    }
+    
+        
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = menuCardsCollection.dequeueReusableCell(withReuseIdentifier: "menuCardCell", for: indexPath) as! MenuCardCollectionViewCell
+        cell.isUserInteractionEnabled = false
+        cell.menuCard.tableView.delegate = cell.menuCard
+        cell.menuCard.tableView.dataSource = cell.menuCard
+        cell.menuCard.diningHallName.text? = diningHalls[indexPath.row]
+        cell.initializeData(items: data)
+        return cell
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+            return 20
+    }
+        
+    func numberOfSections(in tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return 1
     }
     
 

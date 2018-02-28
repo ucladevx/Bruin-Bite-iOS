@@ -14,6 +14,8 @@ class MenuCardView: UIView, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet var menuCardView: UIView!
     @IBOutlet weak var activityLevelBar: ActivityLevelBar!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var diningHallName: UILabel!
+    @IBOutlet weak var viewMoreButton: UIButton!
     
     var data: [Item]
     
@@ -28,8 +30,6 @@ class MenuCardView: UIView, UITableViewDelegate, UITableViewDataSource {
     required init?(coder aDecoder: NSCoder) {
         self.data = []
         super.init(coder: aDecoder)
-//        tableView.delegate = self
-//        tableView.dataSource = self
         commonInit()
     }
     
@@ -40,7 +40,8 @@ class MenuCardView: UIView, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data.count
+        //return data.count when view more is pressed
+        return 3
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -50,7 +51,7 @@ class MenuCardView: UIView, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("TAP...")
+        print(indexPath.row)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -64,20 +65,41 @@ class MenuCardView: UIView, UITableViewDelegate, UITableViewDataSource {
         addSubview(menuCardView)
         menuCardView.addSubview(tableView)
         menuCardView.addSubview(activityLevelBar)
+        menuCardView.addSubview(diningHallName)
+        menuCardView.addSubview(viewMoreButton)
         
         let screenWidth = UIScreen.main.bounds.size.width
-        menuCardView.frame = CGRect(x: (screenWidth/2) - (0.85*screenWidth/2), y: 0, width: 0.85*screenWidth, height: 0.56*screenWidth)
+        
         menuCardView.center.x = self.center.x
         menuCardView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        menuCardView.backgroundColor = .gray
+        menuCardView.backgroundColor = .white
         menuCardView.layer.cornerRadius = 8
+        
+//        menuCardView.layer.shadowColor = UIColor.black.cgColor
+//        menuCardView.layer.shadowOpacity = 1
+//        menuCardView.layer.shadowOffset = CGSize.zero
+//        menuCardView.layer.shadowRadius = 10
+        
+        menuCardView.layer.shadowColor = UIColor.black.cgColor;
+        menuCardView.layer.shadowOffset = CGSize(width: 5, height: 5)
+        menuCardView.layer.shadowOpacity = 1;
+        menuCardView.layer.shadowRadius = 1.0;
+        menuCardView.layer.masksToBounds = false;
         
         let convert_bar_bounds = menuCardView.convert(activityLevelBar.frame, from: menuCardView)
         
         let bar_height = activityLevelBar.frame.height
        
-        activityLevelBar.frame = CGRect(x: activityLevelBar.bounds.origin.x-10, y: activityLevelBar.bounds.origin.y-15, width: menuCardView.bounds.width*1.2, height: bar_height)
-        tableView.frame = CGRect(x: tableView.bounds.origin.x, y: tableView.bounds.origin.y-3, width: menuCardView.bounds.width*1.2, height: menuCardView.bounds.height)
+        _ = tableView.convert(tableView.frame, from: menuCardView)
+        _ = diningHallName.convert(diningHallName.frame, from: menuCardView)
+        _ = viewMoreButton.convert(viewMoreButton.frame, from: menuCardView)
+        
+        //activityLevelBar.frame.origin = CGPoint(x: a.frame.origin.x, y: activityLevelBar.bounds.origin.y)
+        activityLevelBar.frame = CGRect(x: activityLevelBar.bounds.origin.x+58, y: activityLevelBar.bounds.origin.y, width: UIScreen.main.bounds.size.width, height: 7.9)
+//        activityLevelBar.frame = CGRect(x: activityLevelBar.bounds.origin.x+90, y: activityLevelBar.bounds.origin.y, width: UIScreen.main.bounds.size.width, height: bar_height)
+        tableView.frame = CGRect(x: tableView.bounds.origin.x+58, y: tableView.bounds.origin.y+45, width: menuCardView.bounds.width, height: 126)
+        diningHallName.frame = CGRect(x: diningHallName.bounds.origin.x+70, y: diningHallName.bounds.origin.y+19, width: diningHallName.bounds.width, height: diningHallName.bounds.height)
+        viewMoreButton.frame = CGRect(x: viewMoreButton.bounds.origin.x+180, y: viewMoreButton.bounds.origin.y+180, width: viewMoreButton.bounds.width, height: viewMoreButton.bounds.height)
         
         menuCardView.clipsToBounds = true
         
