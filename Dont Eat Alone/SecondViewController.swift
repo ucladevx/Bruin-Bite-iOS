@@ -24,21 +24,21 @@ class SecondViewController: UIViewController, TimeViewTappedDelegate, WeekViewTa
         circleLabel.textColor = UIColor.black
         bezelView.backgroundColor = UIColor(red: 208/255, green: 2/255, blue: 27/255, alpha: 1)
         bezelLabel.textColor = UIColor.black
-        bezelView.frame = CGRect(x: 12.5, y: 67, width: 87.5, height: 40)
-        bezelLabel.frame = CGRect(x: 24, y: 77, width: 80, height: 20)
+        bezelView.frame = CGRect(x: 12.5, y: 62, width: 87.5, height: 40)
+        bezelLabel.frame = CGRect(x: 24, y: 72, width: 80, height: 20)
         
         for i in 0 ..< dayBtns.count{
             let date = Date().addingTimeInterval(TimeInterval(86400 * (i-1)))
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "d"
             if(i==1){
-                circleSelect.frame = CGRect(x:25+50*i, y:43, width: 24, height:24)
+                circleSelect.frame = CGRect(x:25+50*i, y:38, width: 24, height:24)
                 circleLabel.text = dateFormatter.string(from: date)
                 if(Int(circleLabel.text!)! < 10){
-                    circleLabel.frame=CGRect(x:33+50*i, y:45, width: 20, height:20)
+                    circleLabel.frame=CGRect(x:33+50*i, y:40, width: 20, height:20)
                 }
                 else{
-                    circleLabel.frame=CGRect(x:28+50*i, y:45, width: 20, height:20)
+                    circleLabel.frame=CGRect(x:28+50*i, y:40, width: 20, height:20)
                 }
             }
             dayBtns[i].dateLbl.frame = CGRect(x: 0, y: 20, width: 50, height: 20)
@@ -66,12 +66,12 @@ class SecondViewController: UIViewController, TimeViewTappedDelegate, WeekViewTa
         for i in 0 ..< dayBtns.count{
             if(selectedLabelText == dayBtns[i].dateLbl.text){
                 circleLabel.text = selectedLabelText
-                circleSelect.frame = CGRect(x:25+50*i, y:43, width: 24, height:24)
+                circleSelect.frame = CGRect(x:25+50*i, y:38, width: 24, height:24)
                 if(Int(selectedLabelText)! < 10){
-                    circleLabel.frame=CGRect(x:33+50*i, y:45, width: 20, height:20)
+                    circleLabel.frame=CGRect(x:33+50*i, y:40, width: 20, height:20)
                 }
                 else{
-                    circleLabel.frame=CGRect(x:28+50*i, y:45, width: 20, height:20)
+                    circleLabel.frame=CGRect(x:28+50*i, y:40, width: 20, height:20)
                 }
             }
         }
@@ -80,20 +80,20 @@ class SecondViewController: UIViewController, TimeViewTappedDelegate, WeekViewTa
     func timeSelected(_ selectedLabelText: String){
         bezelLabel.text = selectedLabelText
         if(selectedLabelText == "Breakfast"){
-            bezelView.frame = CGRect(x: 12.5, y: 67, width: 87.5, height: 40)
-            bezelLabel.frame = CGRect(x: 24, y: 77, width: 80, height: 20)
+            bezelView.frame = CGRect(x: 12.5, y: 62, width: 87.5, height: 40)
+            bezelLabel.frame = CGRect(x: 24, y: 72, width: 80, height: 20)
         }
         if(selectedLabelText == "Lunch"){
-            bezelView.frame = CGRect(x: 100, y: 67, width: 87.5, height: 40)
-            bezelLabel.frame = CGRect(x: 122.5, y: 77, width: 70, height: 20)
+            bezelView.frame = CGRect(x: 100, y: 62, width: 87.5, height: 40)
+            bezelLabel.frame = CGRect(x: 122.5, y: 72, width: 70, height: 20)
         }
         if(selectedLabelText == "Dinner"){
-            bezelView.frame = CGRect(x: 187.5, y: 67, width: 87.5, height: 40)
-            bezelLabel.frame = CGRect(x: 210, y: 77, width: 70, height: 20)
+            bezelView.frame = CGRect(x: 187.5, y: 62, width: 87.5, height: 40)
+            bezelLabel.frame = CGRect(x: 210, y: 72, width: 70, height: 20)
         }
         if(selectedLabelText == "Night"){
-            bezelView.frame = CGRect(x: 275, y: 67, width: 87.5, height: 40)
-            bezelLabel.frame = CGRect(x: 301.5, y: 77, width: 65, height: 20)
+            bezelView.frame = CGRect(x: 275, y: 62, width: 87.5, height: 40)
+            bezelLabel.frame = CGRect(x: 301.5, y: 72, width: 65, height: 20)
         }
         
         
