@@ -9,7 +9,7 @@
 import UIKit
 
 protocol WeekViewTappedDelegate {
-    func daySelected(_ selectedLabelText: String)
+    func daySelected(_ selectedLabelText: String, dayLabel: String)
 }
 
 @IBDesignable class WeekView: UIView {
@@ -50,7 +50,7 @@ protocol WeekViewTappedDelegate {
     
     @objc
     func weekViewTapped() {
-        delegate!.daySelected(self.dateLbl.text!)
+        delegate!.daySelected(self.dateLbl.text!, dayLabel: self.weekLbl.text!)
     }
 
 }
