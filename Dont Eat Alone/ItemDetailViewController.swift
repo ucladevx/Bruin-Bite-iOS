@@ -13,6 +13,7 @@ class ItemDetailViewController: UIViewController {
 
     @IBOutlet weak var webView: WKWebView!
     
+    @IBOutlet weak var ingredientsBar: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
         webView.scrollView.isScrollEnabled = false
@@ -26,6 +27,12 @@ class ItemDetailViewController: UIViewController {
             let urlRequest: URLRequest = URLRequest(url: url)
             webView.load(urlRequest)
         }
+        
+        webView.frame = CGRect(x: webView.frame.origin.x, y: 0.15*UIScreen.main.bounds.height, width: 0.63*UIScreen.main.bounds.width, height: 0.515*UIScreen.main.bounds.height)
+        
+        webView.center.x = self.view.center.x
+        
+        ingredientsBar.frame = CGRect(x: 0, y: 0.75*UIScreen.main.bounds.height, width: UIScreen.main.bounds.width, height: 0.25*UIScreen.main.bounds.height)
     }
     
 

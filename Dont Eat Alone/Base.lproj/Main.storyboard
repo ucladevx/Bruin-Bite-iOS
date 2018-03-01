@@ -66,8 +66,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pwm-cg-sxf">
-                                <rect key="frame" x="72" y="153.5" width="230" height="360"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nJW-37-XZM">
+                                <rect key="frame" x="0.0" y="522" width="375" height="145"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.95688390731811523" green="0.95684528350830078" blue="0.95686173439025879" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </view>
+                            <wkWebView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pwm-cg-sxf">
+                                <rect key="frame" x="72" y="94" width="230" height="360"/>
                                 <color key="backgroundColor" red="0.65110021829999998" green="0.65865963699999996" blue="0.66666835550000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="360" id="CmP-dX-RUL"/>
@@ -87,6 +92,7 @@
                         <viewLayoutGuide key="safeArea" id="EtT-jG-4fG"/>
                     </view>
                     <connections>
+                        <outlet property="ingredientsBar" destination="nJW-37-XZM" id="C0m-iq-rEZ"/>
                         <outlet property="webView" destination="Pwm-cg-sxf" id="625-lP-qPa"/>
                     </connections>
                 </viewController>
