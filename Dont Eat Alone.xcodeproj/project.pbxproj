@@ -120,6 +120,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		2A744891203B8E9F00793AD3 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2A744892203B8EFE00793AD3 /* Menu.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		770251A7201D4079002E4515 = {
 			isa = PBXGroup;
 			children = (
@@ -145,6 +153,7 @@
 		770251B2201D4079002E4515 /* Dont Eat Alone */ = {
 			isa = PBXGroup;
 			children = (
+				2A744891203B8E9F00793AD3 /* Models */,
 				770CDEAF20266B6000658925 /* ActivityLevelBar.swift */,
 				2A744894203BBDBC00793AD3 /* MenuCardView.swift */,
 				2A744896203BBEDA00793AD3 /* MenuCardView.xib */,
