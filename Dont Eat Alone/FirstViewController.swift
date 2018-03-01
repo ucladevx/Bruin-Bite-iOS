@@ -23,6 +23,7 @@ class FirstViewController: UIViewController, UICollectionViewDelegate, UICollect
     var data: [Item] = []
         
     let diningHalls = ["De Neve", "BPlate", "Covel", "Feast"]
+
         
     override func viewDidLoad() {
         
@@ -79,6 +80,10 @@ class FirstViewController: UIViewController, UICollectionViewDelegate, UICollect
         cell.menuCard.tableView.dataSource = cell.menuCard
         cell.menuCard.diningHallName.text? = diningHalls[indexPath.row]
         cell.initializeData(data: data)
+        cell.menuCard.activityLevelBar.resizeToZero()
+        UIView.animate(withDuration: 3, delay: 0, options: .curveEaseInOut, animations: {
+            cell.menuCard.activityLevelBar.animateBar()
+        }) { (_) in }
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {

@@ -17,6 +17,7 @@ class ActivityLevelBar: UIView {
      */
     
     //for using custom view in code
+    
     override init(frame: CGRect){
         super.init(frame: frame)
         commonInit()
@@ -40,12 +41,13 @@ class ActivityLevelBar: UIView {
         //        color.set()
         //        pathForCircle().fill(
         
+        
+        
         let ctx: CGContext = UIGraphicsGetCurrentContext()!
         ctx.saveGState()
         
         let width = UIScreen.main.bounds.size.width
         
-        UIView.animate(withDuration: 5) {
             if(self.percentage > 0.8) {
                 let start_width = 0.8*width
                 let percent_filled = (self.percentage - 0.8)*width
@@ -86,6 +88,13 @@ class ActivityLevelBar: UIView {
             ctx.closePath()
             ctx.fillPath()
             ctx.restoreGState()
-        }
+    }
+    
+    func resizeToZero(){
+        self.frame.size.width = 0
+    }
+    
+    func animateBar(){
+        self.frame.size.width = UIScreen.main.bounds.size.width
     }
 }
