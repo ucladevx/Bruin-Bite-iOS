@@ -10,12 +10,12 @@ import UIKit
 import Moya
 
 
-    class FirstViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
+class FirstViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
     let provider = MoyaProvider<API_methods>()
     
     
-        @IBOutlet weak var menuCardsCollection: UICollectionView!
+    @IBOutlet weak var menuCardsCollection: UICollectionView!
         
 
     var menuData = MenuController()
@@ -30,16 +30,13 @@ import Moya
         // Do any additional setup after loading the view, typically from a nib.
         
         var items = menuData.getOverviewMenu(mealPeriod: .breakfast, location: .bPlate)
-        if let items = items{
-            for item in items{
-                data.append(item)
-            }
-            
-        }
+        
+        data = items!
+        
         menuCardsCollection.delegate = self;
         menuCardsCollection.dataSource = self;
 
-        self.menuCardsCollection.frame = CGRect(x: UIScreen.main.bounds.origin.x, y: UIScreen.main.bounds.origin.y+125, width: UIScreen.main.bounds.width, height: 487)
+        self.menuCardsCollection.frame = CGRect(x: UIScreen.main.bounds.origin.x, y: UIScreen.main.bounds.origin.y+125, width: UIScreen.main.bounds.width, height: 600)
 //        self.menuCardsCollection.frame = UIScreen.main.bounds
     }
     
@@ -78,11 +75,10 @@ import Moya
         
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = menuCardsCollection.dequeueReusableCell(withReuseIdentifier: "menuCardCell", for: indexPath) as! MenuCardCollectionViewCell
-        cell.isUserInteractionEnabled = false
         cell.menuCard.tableView.delegate = cell.menuCard
         cell.menuCard.tableView.dataSource = cell.menuCard
         cell.menuCard.diningHallName.text? = diningHalls[indexPath.row]
-        cell.initializeData(items: data)
+        cell.initializeData(data: data)
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
