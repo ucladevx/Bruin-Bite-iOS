@@ -1,0 +1,45 @@
+//
+//  SecondViewController.swift
+//  Dont Eat Alone
+//
+//  Created by Ashwin Vivek on 1/27/18.
+//  Copyright © 2018 Dont Eat Alone. All rights reserved.
+//
+
+import UIKit
+
+<<<<<<< Updated upstream:Dont Eat Alone/SecondViewController.swift
+class SecondViewController: UIViewController, WeekViewTappedDelegate  {
+    
+    @IBOutlet var dayBtns: UICollectionView!
+=======
+class ExploreVC: UIViewController {
+
+>>>>>>> Stashed changes:Dont Eat Alone/ExploreVC.swift
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view, typically from a nib.
+        
+        for i in 0 ..< dayBtns.count {
+            let date = Date().addingTimeInterval(TimeInterval(86400 * i))
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd"
+            
+            dayBtns[i].dateLbl.text = dateFormatter.string(from: date)
+            dayBtns[i].dateLbl.textAlignment = .center
+            dayBtns[i].setDelegateAndTap(self)
+        }
+    }
+    
+    func daySelected(_ selectedLabelText: String) {
+        print(selectedLabelText)
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
+
+}
+

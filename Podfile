@@ -7,6 +7,7 @@ target 'Dont Eat Alone' do
 
   # Pods for Dont Eat Alone
   pod 'Moya', '~> 10.0'
+  pod 'SwiftyJSON'
 
   target 'Dont Eat AloneTests' do
     inherit! :search_paths

@@ -46,8 +46,8 @@ enum MealPeriod: String{
 enum Location: String{
     case deNeve = "De Neve"
     case covel = "Covel"
-    case bPlate = "BPlate"
-    case feast = "Feast"
+    case bPlate = "Bruin Plate"
+    case feast = "Feast at Reiber"
 }
 
 //---Structures---
