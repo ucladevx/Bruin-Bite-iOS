@@ -28,7 +28,6 @@
 		770251E4201D4182002E4515 /* Moya_Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770251E3201D4182002E4515 /* Moya_Service.swift */; };
 		770CDEAE20266B0800658925 /* ColoredCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770CDEAD20266B0800658925 /* ColoredCircle.swift */; };
 		770CDEB020266B6000658925 /* ActivityLevelBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770CDEAF20266B6000658925 /* ActivityLevelBar.swift */; };
-		770CDEB220266B7000658925 /* ActivityLevelBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 770CDEB120266B7000658925 /* ActivityLevelBar.xib */; };
 		77949970203BD10500F3B0ED /* AllergyFilterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7794996F203BD10400F3B0ED /* AllergyFilterButton.swift */; };
 		77949972203BD12B00F3B0ED /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77949971203BD12B00F3B0ED /* Extensions.swift */; };
 		7F2CE2B970B78A3D4EAA92F3 /* Pods_Dont_Eat_AloneUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 486D54EAA20C6801495DCB82 /* Pods_Dont_Eat_AloneUITests.framework */; };
@@ -83,7 +82,6 @@
 		770251E3201D4182002E4515 /* Moya_Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Moya_Service.swift; sourceTree = "<group>"; };
 		770CDEAD20266B0800658925 /* ColoredCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColoredCircle.swift; sourceTree = "<group>"; };
 		770CDEAF20266B6000658925 /* ActivityLevelBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityLevelBar.swift; sourceTree = "<group>"; };
-		770CDEB120266B7000658925 /* ActivityLevelBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityLevelBar.xib; sourceTree = "<group>"; };
 		7794996F203BD10400F3B0ED /* AllergyFilterButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllergyFilterButton.swift; sourceTree = "<group>"; };
 		77949971203BD12B00F3B0ED /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		95F72EF072C1BCB2A65BF28C /* Pods-Dont Eat AloneTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dont Eat AloneTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Dont Eat AloneTests/Pods-Dont Eat AloneTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -178,9 +176,9 @@
 			isa = PBXGroup;
 			children = (
 				2AB62E6A204888760013CB59 /* Network */,
-				2AFB41362047F0F2004025F9 /* MenuCardCollectionViewCell.swift */,
 				2A744891203B8E9F00793AD3 /* Models */,
 				770CDEAF20266B6000658925 /* ActivityLevelBar.swift */,
+				2AFB41362047F0F2004025F9 /* MenuCardCollectionViewCell.swift */,
 				2A744894203BBDBC00793AD3 /* MenuCardView.swift */,
 				2A744896203BBEDA00793AD3 /* MenuCardView.xib */,
 				2B952C66202BDBB200F27727 /* WeekView.swift */,
@@ -538,7 +536,6 @@
 				2AB62E69204887820013CB59 /* Menu.swift in Sources */,
 				2B952C67202BDBB200F27727 /* WeekView.swift in Sources */,
 				77949970203BD10500F3B0ED /* AllergyFilterButton.swift in Sources */,
-				2AFB41352047F0E8004025F9 /* Menu.swift in Sources */,
 				77949972203BD12B00F3B0ED /* Extensions.swift in Sources */,
 				770CDEB020266B6000658925 /* ActivityLevelBar.swift in Sources */,
 				770251B6201D4079002E4515 /* FirstViewController.swift in Sources */,

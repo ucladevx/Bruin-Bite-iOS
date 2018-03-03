@@ -38,6 +38,7 @@ class FirstViewController: UIViewController, UICollectionViewDelegate, UICollect
         menuCardsCollection.dataSource = self;
 
         self.menuCardsCollection.frame = CGRect(x: UIScreen.main.bounds.origin.x, y: UIScreen.main.bounds.origin.y+125, width: UIScreen.main.bounds.width, height: 600)
+        
 //        self.menuCardsCollection.frame = UIScreen.main.bounds
     }
     
@@ -81,6 +82,10 @@ class FirstViewController: UIViewController, UICollectionViewDelegate, UICollect
         cell.menuCard.diningHallName.text? = diningHalls[indexPath.row]
         cell.initializeData(data: data)
         cell.menuCard.activityLevelBar.resizeToZero()
+        
+        cell.parentView = self.menuCardsCollection
+        cell.index = indexPath.row
+
         UIView.animate(withDuration: 1.5, delay: 0, options: .curveEaseInOut, animations: {
             cell.menuCard.activityLevelBar.animateBar()
         }) { (_) in }

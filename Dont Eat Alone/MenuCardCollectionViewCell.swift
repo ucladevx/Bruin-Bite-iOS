@@ -13,8 +13,8 @@ class MenuCardCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var menuCard: MenuCardView!
     var items: [Item] = []
     @IBOutlet weak var viewMoreButton: UIButton!
-    
     var parentView: UICollectionView!
+    var index: Int = -1
     
     @IBAction func viewMorePressed(_ sender: UIButton) {
         menuCard.tableExpanded = true
@@ -29,6 +29,18 @@ class MenuCardCollectionViewCell: UICollectionViewCell {
         
         viewMoreButton.frame = CGRect(x: viewMoreButton.frame.origin.x, y: viewMoreButton.frame.origin.y + CGFloat(42*diff), width: viewMoreButton.frame.width, height: viewMoreButton.frame.height)
         
+        viewMoreButton.isHidden = true
+        
+         parentView.frame = CGRect(x: parentView.frame.origin.x, y: parentView.frame.origin.y, width: parentView.frame.width, height: parentView.frame.height+CGFloat(42*diff))
+        
+        var count = 0;
+        for indexPath in parentView.indexPathsForVisibleItems.sorted() {
+            if(count > self.index) {
+                var cell = parentView.cellForItem(at: indexPath)
+                cell?.frame = CGRect(x: (cell?.frame.origin.x)!, y: (cell?.frame.origin.y)!+CGFloat(42*diff), width: (cell?.frame.width)!, height: (cell?.frame.height)!)
+            }
+            count += 1
+        }
         
         menuCard.tableView.reloadData()
     }
