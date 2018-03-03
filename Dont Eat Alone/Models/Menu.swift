@@ -10,13 +10,13 @@ import Foundation
 
 /* Data Structure Tree
  
-                     Date
-                     |
-                     MealPeriod     Location
-                     |
-                     [Items]
-                     |
-     Name    Allergens   RecipeLink  Category
+ Date
+ |
+ MealPeriod     Location
+ |
+ [Items]
+ |
+ Name    Allergens   RecipeLink  Category
  
  */
 
@@ -82,6 +82,7 @@ class MenuController{
             if menu.mealPeriod == mealPeriod{
                 return menu.overviewData[location]
             }
+        }
         return nil
     }
     
@@ -90,7 +91,8 @@ class MenuController{
             if menu.mealPeriod == mealPeriod{
                 return menu.fullData[location]
             }
-            return nil
+        }
+        return nil
     }
     
     //test data
