@@ -28,12 +28,6 @@ class ItemDetailViewController: UIViewController {
             webView.load(urlRequest)
         }
         
-//        webView.frame = CGRect(x: webView.frame.origin.x, y: 0.15*UIScreen.main.bounds.height, width: 0.63*UIScreen.main.bounds.width, height: 0.515*UIScreen.main.bounds.height)
-//
-//        webView.center.x = self.view.center.x
-        
-        ingredientsBar.frame = CGRect(x: 0, y: 0.75*UIScreen.main.bounds.height, width: UIScreen.main.bounds.width, height: 0.25*UIScreen.main.bounds.height)
-        
         API.getCurrentActivityLevels { activityLevels in
             print(activityLevels)
         }
@@ -44,16 +38,6 @@ class ItemDetailViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
