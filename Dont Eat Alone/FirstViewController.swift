@@ -81,7 +81,7 @@ class FirstViewController: UIViewController, UICollectionViewDelegate, UICollect
         cell.menuCard.diningHallName.text? = diningHalls[indexPath.row]
         cell.initializeData(data: data)
         cell.menuCard.activityLevelBar.resizeToZero()
-        UIView.animate(withDuration: 3, delay: 0, options: .curveEaseInOut, animations: {
+        UIView.animate(withDuration: 1.5, delay: 0, options: .curveEaseInOut, animations: {
             cell.menuCard.activityLevelBar.animateBar()
         }) { (_) in }
         return cell
