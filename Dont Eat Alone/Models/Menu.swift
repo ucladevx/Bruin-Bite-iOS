@@ -52,7 +52,7 @@ enum Location: String{
 
 //---Structures---
 struct Item{
-    var itemCategory: String //also includes overview menu
+    var itemCategory: String
     var name: String
     var allergies: [Allergen]
     var recipeLink: String?
@@ -105,11 +105,3 @@ class MenuController{
         self.menus.append(Menu(mealPeriod: MealPeriod.breakfast, overviewData: [Location.bPlate: [self.itemA1, self.itemA2, self.itemA3, self.itemA4]], fullData: [:]))
     }
 }
-
-
-
-//Menu
-//  -minimized menu items
-//  -get activity levels
-//  -get times
-//  -
