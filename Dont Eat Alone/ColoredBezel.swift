@@ -24,6 +24,7 @@ class ColoredBezel: UIView {
     }
     
     override func draw(_ rect: CGRect) {
+        layer.borderColor = UIColor.clear.cgColor
         color.set()
         pathForCircle().fill()
     }
