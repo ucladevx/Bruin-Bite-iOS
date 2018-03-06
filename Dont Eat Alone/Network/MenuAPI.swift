@@ -11,6 +11,8 @@ import Moya
 
 enum MenuAPI{
     case getCurrentActivityLevels
+    case overviewMenu
+    case detailedMenu
 }
 
 extension MenuAPI: TargetType {
@@ -19,7 +21,12 @@ extension MenuAPI: TargetType {
         switch self{
         case .getCurrentActivityLevels:
             return "/menu/ActivityLevels"
+        case .overviewMenu:
+            return "/menu/OverviewMenu"
+        case .detailedMenu:
+            return "/menu/DetailedMenu"
         }
+        
     }
     var method: Moya.Method {
         switch self {
