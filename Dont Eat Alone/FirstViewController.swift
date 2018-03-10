@@ -28,8 +28,7 @@ class FirstViewController: UIViewController, UICollectionViewDelegate, UICollect
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
+        // Do any additional setup after loading the view, typically from a nib.        
         var items = menuData.getOverviewMenu(mealPeriod: .breakfast, location: .bPlate)
         
         data = items!
