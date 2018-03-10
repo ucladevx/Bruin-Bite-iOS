@@ -51,19 +51,32 @@ enum Location: String{
 }
 
 //---Structures---
+struct Nutrition{
+    var label: String
+    var amount: String
+    var percent: String
+}
+
 struct Item{
     var itemCategory: String
     var name: String
+    var serving: String
+    var calories: String
+    var fatcal: String
+    var ingredients: String
+    var vita: String
+    var vitc: String
+    var calc: String
+    var iron: String
     var allergies: [Allergen]
+    var nutrition: [Nutrition]
     var recipeLink: String?
-    //add nutrition here later
 }
 
 //menus at all the locations for a meal period
 struct Menu{
-    var mealPeriod: MealPeriod
-    var overviewData: [Location: [Item]]
-    var fullData: [Location: [Item]]
+    var overviewData: [MealPeriod: [Location: [Item]]]
+    var fullData: [MealPeriod: [Location: [Item]]]
 }
 
 class MenuController{
@@ -79,18 +92,14 @@ class MenuController{
     
     func getOverviewMenu(mealPeriod: MealPeriod, location: Location) -> [Item]?{
         for menu in menus{
-            if menu.mealPeriod == mealPeriod{
-                return menu.overviewData[location]
-            }
+            menu.overviewData[mealPeriod[location]]
         }
         return nil
     }
     
     func getFullMenu(mealPeriod: MealPeriod, location: Location) -> [Item]?{
         for menu in menus{
-            if menu.mealPeriod == mealPeriod{
-                return menu.fullData[location]
-            }
+            menu.fullData[mealPeriod[location]]
         }
         return nil
     }
