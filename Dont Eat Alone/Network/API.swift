@@ -21,89 +21,117 @@ class API{
                     let json = try JSON(data: response.data)
                     let data = json["menus"]
                     var menus = [Menu]()
-                    for(id) in data{
-                        var currMenu = Menu
-                        let overview = id["overviewMenu"]
-                        var parsedMeal: [MealPeriod: [Location: [Item]]]
+                    for(_, menu) in data{
+                        var currMenu = Menu(overviewData: [:], fullData: [:])
+                        let overview = menu["overviewMenu"]
+                        var parsedMeal: [MealPeriod: [Location: [Item]]] = [:]
+                        var brunch = false
                         for (time, meal) in overview{
-                            var parsedLocation: [Location: [Item]]
+                            var parsedLocation: [Location: [Item]] = [:]
+                            var mealPeriod: MealPeriod = MealPeriod.breakfast
+                            switch(time){ // sets mealPeriod based on input, accounts for brunch
+                            case "breakfast":
+                                mealPeriod = MealPeriod.breakfast
+                                if (meal.isEmpty){
+                                    brunch = true
+                                    continue
+                                }
+                                break
+                            case "lunch":
+                                mealPeriod = MealPeriod.lunch
+                                if(brunch){
+                                    mealPeriod = MealPeriod.brunch
+                                }
+                                break
+                            case "dinner":
+                                mealPeriod = MealPeriod.dinner
+                                break
+                            default:
+                                break
+                            }
                             for (location, items) in meal{
                                 var parsedItems = [Item]()
                                 for(sublocation, itemsList) in items{
-                                    for item in itemsList{
-                                        var currItem = Item()
+                                    for (_,item) in itemsList{
+                                        var currItem = Item(itemCategory: "", name: "", serving: "", calories: "", fatcal: "", ingredients: "", vita: "", vitc: "", calc: "", iron: "", allergies: [], nutrition: [], recipeLink: "")
                                         currItem.itemCategory = sublocation
-                                        currItem.name = item["name"]
-                                        currItem.recipeLink = item["recipelink"]
+                                        currItem.name = item["name"].string!
+                                        currItem.recipeLink = item["recipelink"].string
                                         var allergens = [Allergen]()
-                                        if (item["itemcodes"].isEmpty){
+                                        if (item["itemcodes"].isEmpty){ // checks for Allergens
                                             allergens.append(Allergen.None)
                                         }
                                         else{
-                                            for a in item["itemcodes"]{
+                                            for (a,_) in item["itemcodes"]{
                                                 switch a{
                                                 case "V":
                                                     allergens.append(Allergen.Vegetarian)
-                                                    break;
+                                                    break
                                                 case "VG":
                                                     allergens.append(Allergen.Vegan)
-                                                    break;
+                                                    break
                                                 case "APNT":
                                                     allergens.append(Allergen.ContainsPeanuts)
-                                                    break;
+                                                    break
                                                 case "ATNT":
                                                     allergens.append(Allergen.ContainsTreeNuts)
-                                                    break;
+                                                    break
                                                 case "AWHT":
                                                     allergens.append(Allergen.ContainsWheat)
-                                                    break;
+                                                    break
                                                 case "ASOY":
                                                     allergens.append(Allergen.ContainsSoy)
-                                                    break;
+                                                    break
                                                 case "AMLK":
                                                     allergens.append(Allergen.ContainsDairy)
-                                                    break;
+                                                    break
                                                 case "AEGG":
                                                     allergens.append(Allergen.ContainsEggs)
-                                                    break;
+                                                    break
                                                 case "ACSF":
                                                     allergens.append(Allergen.ContainsShellfish)
-                                                    break;
+                                                    break
                                                 case "AFSH":
                                                     allergens.append(Allergen.ContainsFish)
+                                                    break
+                                                default:
                                                     break;
                                                 }
                                             }
                                         }
                                         currItem.allergies = allergens
-                                        currItem.serving = item["nutrition"]["serving_size"]
-                                        currItem.calories = item["nutrition"]["Calories"]
-                                        currItem.fatcal = item["nutrition"]["Fat_Cal."]
-                                        currItem.ingredients = item["nutrition"]["ingredients"]
-                                        currItem.vita = item["nutrition"]["Vitamin A"]
-                                        currItem.vitc = item["nutrition"]["Vitamin C"]
-                                        currItem.calc = item["nutrition"]["Calcium"]
-                                        currItem.iron = item["nutrition"]["Iron"]
+                                        currItem.serving = item["nutrition"]["serving_size"].string!
+                                        currItem.calories = item["nutrition"]["Calories"].string!
+                                        currItem.fatcal = item["nutrition"]["Fat_Cal."].string!
+                                        currItem.ingredients = item["nutrition"]["ingredients"].string!
+                                        currItem.vita = item["nutrition"]["Vitamin A"].string!
+                                        currItem.vitc = item["nutrition"]["Vitamin C"].string!
+                                        currItem.calc = item["nutrition"]["Calcium"].string!
+                                        currItem.iron = item["nutrition"]["Iron"].string!
                                         var nutrition = [Nutrition]()
-                                        for i in 3..<12{
-                                            var nut = Nutrition()
-                                            nut.label = item["nutrition"][i]
-                                            nut.amount = item["nutrition"][i][0]
-                                            nut.percent = item["nutrition"][i][1]
-                                            nutrition.append(nut)
+                                        var i = 0
+                                        for (label,info) in item["nutrition"]{ // adds nutrients with daily values
+                                            i = i+1
+                                            if (i >= 3 && i<12){
+                                                var nut = Nutrition(label: "", amount: "", percent: "")
+                                                nut.label = label
+                                                nut.amount = info[0].string!
+                                                nut.percent = info[1].string!
+                                                nutrition.append(nut)
+                                            }
                                         }
                                         currItem.nutrition = nutrition
                                         parsedItems.append(currItem)
                                     }
                                 }
-                                parsedLocation.append(location:parsedItems)
+                                parsedLocation[Location(rawValue: location)!] = parsedItems
                             }
-                            parsedMeal.append(time:parsedLocation)
+                            parsedMeal[mealPeriod] = parsedLocation
                         }
                         currMenu.overviewData = parsedMeal
                         menus.append(currMenu)
                     }
-                    completion(Menu)
+                    completion(menus)
                 }
                 catch{
                     print("error parsing")
