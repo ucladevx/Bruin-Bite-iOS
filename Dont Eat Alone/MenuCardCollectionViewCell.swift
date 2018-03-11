@@ -11,49 +11,34 @@ import UIKit
 class MenuCardCollectionViewCell: UICollectionViewCell {
     
     weak var parentVC: FirstViewController?
+    @IBOutlet weak var menuCard: MenuCardView!
+    @IBOutlet weak var viewMoreButton: UIButton!
     
     var diningHallName: String = ""
-    @IBOutlet weak var menuCard: MenuCardView!
     var items: [Item] = []
-    @IBOutlet weak var viewMoreButton: UIButton!
+    
     var parentView: UICollectionView!
     var index: IndexPath = []
-    var computedHeight: CGFloat = 222
+    var computedHeight: CGFloat = 215
     
     @IBAction func viewMorePressed(_ sender: UIButton) {
-        menuCard.tableExpanded = true
-        menuCard.populateData(items: items, isFull: true)
-        menuCard.tableView.reloadData()
-        print(self.frame.height)
-        var diff = menuCard.data.count - 3
-//        self.frame = CGRect(x: self.frame.origin.x, y: self.frame.origin.y, width: self.frame.width, height: self.frame.height+CGFloat(42*diff))
+        let diff = menuCard.data.count - 3
+        let indexRow = index.row
         
-//        menuCard.frame = CGRect(x: menuCard.frame.origin.x, y: menuCard.frame.origin.y, width: menuCard.frame.width, height: menuCard.frame.height+CGFloat(42*diff))
-
-//        menuCard.tableView.frame = CGRect(x: menuCard.tableView.frame.origin.x, y: menuCard.tableView.frame.origin.y, width: menuCard.tableView.frame.width, height: menuCard.tableView.frame.height+CGFloat(42*diff))
-//
-//        viewMoreButton.frame = CGRect(x: viewMoreButton.frame.origin.x, y: viewMoreButton.frame.origin.y + CGFloat(42*diff), width: viewMoreButton.frame.width, height: viewMoreButton.frame.height)
-        
-        viewMoreButton.isHidden = true
-        computedHeight = self.frame.height+CGFloat(42*diff)
-        
-//         parentView.frame = CGRect(x: parentView.frame.origin.x, y: parentView.frame.origin.y, width: parentView.frame.width, height: parentView.frame.height+CGFloat(42*diff))
-        
-//        var count = 0;
-//        for indexPath in parentView.indexPathsForVisibleItems.sorted() {
-//            if(count > self.index) {
-//                var cell = parentView.cellForItem(at: indexPath)
-//                cell?.frame = CGRect(x: (cell?.frame.origin.x)!, y: (cell?.frame.origin.y)!+CGFloat(42*diff), width: (cell?.frame.width)!, height: (cell?.frame.height)!)
-//            }
-//            count += 1
-//        }
+        if let parentVC = parentVC{
+            if (parentVC.computedHeight[indexRow] > parentVC.defaultHeight){
+                computedHeight = self.frame.height-CGFloat(42*diff)
+            }
+            else{
+                computedHeight = self.frame.height+CGFloat(42*diff)
+            }
+        }
+        parentVC?.computedHeight[index.row] = computedHeight
         parentView.reloadItems(at: [index])
     }
     
     func initializeData(data: [Item]) {
-        items = data
-        menuCard.populateData(items: items, isFull: false)
-        menuCard.frame = self.bounds
+        menuCard.populateData(items: data)
     }
     
     

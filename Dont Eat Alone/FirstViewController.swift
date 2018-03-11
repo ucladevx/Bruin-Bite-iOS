@@ -27,19 +27,20 @@ class FirstViewController: UIViewController, UICollectionViewDelegate, UICollect
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        var items = menuData.getOverviewMenu(mealPeriod: .breakfast, location: .bPlate)
+        computedHeight = Array(repeating: defaultHeight, count: self.diningHalls.count)
         
+        var items = menuData.getOverviewMenu(mealPeriod: .breakfast, location: .bPlate)
         data = items!
         
-        menuCardsCollection.delegate = self;
-        menuCardsCollection.dataSource = self;
+        menuCardsCollection.delegate = self
+        menuCardsCollection.dataSource = self
     }
     
-    var height: CGFloat = 222;
+    let defaultHeight: CGFloat = 215;
+    var computedHeight: [CGFloat] = [];
         
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let cell = collectionView.cellForItem(at: indexPath) as? MenuCardCollectionViewCell
-        return CGSize(width: collectionView.bounds.size.width, height: cell?.computedHeight ?? 222)
+        return CGSize(width: collectionView.bounds.size.width, height: computedHeight[indexPath.row])
     }
         
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -50,13 +51,23 @@ class FirstViewController: UIViewController, UICollectionViewDelegate, UICollect
         let cell = menuCardsCollection.dequeueReusableCell(withReuseIdentifier: "menuCardCell", for: indexPath) as! MenuCardCollectionViewCell
         cell.menuCard.tableView.delegate = cell.menuCard
         cell.menuCard.tableView.dataSource = cell.menuCard
+        
         cell.menuCard.diningHallName.text? = diningHalls[indexPath.row]
         cell.initializeData(data: data)
-        cell.menuCard.activityLevelBar.resizeToZero()
         
+        cell.parentVC = self
         cell.parentView = self.menuCardsCollection
         cell.index = indexPath
+        
+        //make sure the button is hidden
+        if (computedHeight[indexPath.row] > defaultHeight){
+            cell.viewMoreButton.setTitle("View Less", for: .normal)
+        }
+        else{
+            cell.viewMoreButton.setTitle("View More", for: .normal)
+        }
 
+        cell.menuCard.activityLevelBar.resizeToZero()
         UIView.animate(withDuration: 1.5, delay: 0, options: .curveEaseInOut, animations: {
             cell.menuCard.activityLevelBar.animateBar()
         }) { (_) in }

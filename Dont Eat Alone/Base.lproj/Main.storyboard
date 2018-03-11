@@ -11,11 +11,6 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="HelveticaNeue.ttc">
-            <string>HelveticaNeue</string>
-        </array>
-    </customFonts>
     <scenes>
         <!--First-->
         <scene sceneID="hNz-n2-bh7">
@@ -43,7 +38,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" fixedFrame="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W3F-Bz-ncT" customClass="MenuCardView" customModule="Dont_Eat_Alone" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="40" width="365" height="154"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="365" height="194"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
@@ -61,8 +56,12 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gf5-xc-tYP">
-                                                    <rect key="frame" x="151" y="187" width="82" height="30"/>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                                    <rect key="frame" x="0.0" y="187" width="365" height="30"/>
+                                                    <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="42" id="IsT-NG-zPc"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <state key="normal" title="View More">
                                                         <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
@@ -74,9 +73,11 @@
                                         </view>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="Gf5-xc-tYP" secondAttribute="bottom" id="1g2-EP-Ffn"/>
-                                            <constraint firstItem="W3F-Bz-ncT" firstAttribute="top" secondItem="3Wq-Cu-Ohf" secondAttribute="top" constant="57" id="7Ce-eL-GjU"/>
+                                            <constraint firstItem="W3F-Bz-ncT" firstAttribute="top" secondItem="3Wq-Cu-Ohf" secondAttribute="top" constant="-30" id="7Ce-eL-GjU"/>
                                             <constraint firstAttribute="trailing" secondItem="W3F-Bz-ncT" secondAttribute="trailing" id="BJz-zX-ot2"/>
-                                            <constraint firstAttribute="bottom" secondItem="W3F-Bz-ncT" secondAttribute="bottom" constant="30" id="Ucy-m7-wyt"/>
+                                            <constraint firstItem="Gf5-xc-tYP" firstAttribute="leading" secondItem="3Wq-Cu-Ohf" secondAttribute="leading" id="DhL-De-dSN"/>
+                                            <constraint firstAttribute="trailing" secondItem="Gf5-xc-tYP" secondAttribute="trailing" id="M3T-Po-eRv"/>
+                                            <constraint firstAttribute="bottom" secondItem="W3F-Bz-ncT" secondAttribute="bottom" id="Ucy-m7-wyt"/>
                                             <constraint firstItem="Gf5-xc-tYP" firstAttribute="centerX" secondItem="3Wq-Cu-Ohf" secondAttribute="centerX" id="fE7-nB-4oy"/>
                                             <constraint firstItem="W3F-Bz-ncT" firstAttribute="leading" secondItem="3Wq-Cu-Ohf" secondAttribute="leading" id="iIA-am-jh9"/>
                                         </constraints>

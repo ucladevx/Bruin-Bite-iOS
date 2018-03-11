@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SnapKit
 
 @IBDesignable
 class MenuCardView: UIView, UITableViewDelegate, UITableViewDataSource {
@@ -35,26 +36,13 @@ class MenuCardView: UIView, UITableViewDelegate, UITableViewDataSource {
         commonInit()
     }
     
-    func populateData(items: [Item], isFull: Bool) {
-        if(isFull) {
-            data = items
-        }
-        else {
-            data.removeAll()
-            for i in 1...3 {
-                data.append(items[i])
-            }
-        }
+    func populateData(items: [Item]) {
+        data = items
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //return data.count when view more is pressed
-        if(tableExpanded) {
-            return data.count
-        }
-        else {
-            return 3
-        }
+        return data.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -67,7 +55,7 @@ class MenuCardView: UIView, UITableViewDelegate, UITableViewDataSource {
         cell.indentationWidth = 13
         cell.indentationLevel = 1
         cell.isUserInteractionEnabled = false
-        cell.preservesSuperviewLayoutMargins = false
+        cell.preservesSuperviewLayoutMargins = true
         cell.separatorInset = UIEdgeInsets.zero
         cell.layoutMargins = UIEdgeInsets.zero
         print("cellforrowat")
@@ -79,7 +67,6 @@ class MenuCardView: UIView, UITableViewDelegate, UITableViewDataSource {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
     
@@ -88,43 +75,27 @@ class MenuCardView: UIView, UITableViewDelegate, UITableViewDataSource {
         Bundle.main.loadNibNamed("MenuCardView", owner: self, options: nil)
         addSubview(menuCardView)
         menuCardView.addSubview(tableView)
-        
         self.menuCardView.addSubview(self.activityLevelBar)
         
         menuCardView.addSubview(diningHallName)
-        //menuCardView.addSubview(viewMoreButton)
-        
-        
-        let screenWidth = UIScreen.main.bounds.width
-        
-        menuCardView.center.x = self.center.x
-        menuCardView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         menuCardView.backgroundColor = .white
-        menuCardView.layer.cornerRadius = 8
-        
         tableView.addBorderTop(size: 1.2, color: .gray)
         
-        _ = menuCardView.convert(activityLevelBar.frame, from: menuCardView)
-        _ = tableView.convert(tableView.frame, from: menuCardView)
-        _ = diningHallName.convert(diningHallName.frame, from: menuCardView)
-        //_ = viewMoreButton.convert(viewMoreButton.frame, from: menuCardView)
+        //Auto-Layout using code. Please do it this way in your future code - Ayush
+        activityLevelBar.snp.makeConstraints{(make) -> Void in
+            make.height.equalTo(7)
+            make.top.equalToSuperview().offset(30)
+            make.left.equalToSuperview()
+            make.right.equalToSuperview()
+        }
         
-        
-        activityLevelBar.frame = CGRect(x: activityLevelBar.bounds.origin.x+57, y: activityLevelBar.bounds.origin.y, width: UIScreen.main.bounds.size.width, height: 7.9)
-//        tableView.frame = CGRect(x: tableView.bounds.origin.x+58, y: tableView.bounds.origin.y+57, width: tableView.bounds.width, height: 126)
-        diningHallName.frame = CGRect(x: diningHallName.bounds.origin.x+71, y: diningHallName.bounds.origin.y+23, width: diningHallName.bounds.width, height: diningHallName.bounds.height)
-        //viewMoreButton.frame = CGRect(x: viewMoreButton.bounds.origin.x+180, y: viewMoreButton.bounds.origin.y+187, width: viewMoreButton.bounds.width, height: viewMoreButton.bounds.height)
+        diningHallName.snp.makeConstraints{ (make) -> Void in
+            make.top.equalToSuperview().offset(44)
+            make.left.equalToSuperview().offset(12)
+            make.right.equalToSuperview()
+        }
         
         menuCardView.clipsToBounds = true
         
     }
 }
-
-
-/*
- // Only override draw() if you perform custom drawing.
- // An empty implementation adversely affects performance during animation.
- override func draw(_ rect: CGRect) {
- // Drawing code
- }
- */
