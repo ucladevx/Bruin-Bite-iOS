@@ -1,5 +1,5 @@
     //
-//  FirstViewController.swift
+//  MenuVC.swift
 //  Dont Eat Alone
 //
 //  Created by Ashwin Vivek on 1/27/18.
@@ -9,7 +9,7 @@
 import UIKit
 import Moya
 
-class FirstViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
+class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
     let provider = MoyaProvider<API_methods>()
     

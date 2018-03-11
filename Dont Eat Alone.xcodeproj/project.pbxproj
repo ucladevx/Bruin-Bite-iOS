@@ -18,7 +18,7 @@
 		2B952C67202BDBB200F27727 /* WeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B952C66202BDBB200F27727 /* WeekView.swift */; };
 		5490767E2486E7D65003E4E7 /* Pods_Dont_Eat_Alone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB594487D41E5DD55611BCEC /* Pods_Dont_Eat_Alone.framework */; };
 		770251B4201D4079002E4515 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770251B3201D4079002E4515 /* AppDelegate.swift */; };
-		770251B6201D4079002E4515 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770251B5201D4079002E4515 /* FirstViewController.swift */; };
+		770251B6201D4079002E4515 /* MenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770251B5201D4079002E4515 /* MenuVC.swift */; };
 		770251B8201D4079002E4515 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770251B7201D4079002E4515 /* SecondViewController.swift */; };
 		770251BB201D4079002E4515 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 770251B9201D4079002E4515 /* Main.storyboard */; };
 		770251BD201D4079002E4515 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 770251BC201D4079002E4515 /* Assets.xcassets */; };
@@ -70,7 +70,7 @@
 		613DC376493206C810E3C951 /* Pods_Dont_Eat_AloneTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Dont_Eat_AloneTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		770251B0201D4079002E4515 /* Dont Eat Alone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Dont Eat Alone.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		770251B3201D4079002E4515 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		770251B5201D4079002E4515 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		770251B5201D4079002E4515 /* MenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuVC.swift; sourceTree = "<group>"; };
 		770251B7201D4079002E4515 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		770251BA201D4079002E4515 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		770251BC201D4079002E4515 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -147,6 +147,60 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		2A94477A2055F50B0033B6C6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				2A94477E2055F6290033B6C6 /* Menu */,
+				2A94477D2055F60F0033B6C6 /* Top Bar */,
+				7794996F203BD10400F3B0ED /* AllergyFilterButton.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		2A94477B2055F5570033B6C6 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				770251B5201D4079002E4515 /* MenuVC.swift */,
+				770251B7201D4079002E4515 /* SecondViewController.swift */,
+				2AFB41322047DD86004025F9 /* ItemDetailViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		2A94477C2055F5860033B6C6 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				77949971203BD12B00F3B0ED /* Extensions.swift */,
+				770251B3201D4079002E4515 /* AppDelegate.swift */,
+				770251BC201D4079002E4515 /* Assets.xcassets */,
+				770251BE201D4079002E4515 /* LaunchScreen.storyboard */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2A94477D2055F60F0033B6C6 /* Top Bar */ = {
+			isa = PBXGroup;
+			children = (
+				C0AD0D33204B4EA9008E1206 /* TopBar.swift */,
+				770CDEAD20266B0800658925 /* ColoredCircle.swift */,
+				C0CD676B203C1B19006B265D /* ColoredBezel.swift */,
+				2B952C66202BDBB200F27727 /* WeekView.swift */,
+				C0CD6769203C15CC006B265D /* TimeView.swift */,
+			);
+			path = "Top Bar";
+			sourceTree = "<group>";
+		};
+		2A94477E2055F6290033B6C6 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				2AFB41362047F0F2004025F9 /* MenuCardCollectionViewCell.swift */,
+				2A744896203BBEDA00793AD3 /* MenuCardView.xib */,
+				2A744894203BBDBC00793AD3 /* MenuCardView.swift */,
+				770CDEAF20266B6000658925 /* ActivityLevelBar.swift */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
 		2AB62E6A204888760013CB59 /* Network */ = {
 			isa = PBXGroup;
 			children = (
@@ -181,28 +235,14 @@
 		770251B2201D4079002E4515 /* Dont Eat Alone */ = {
 			isa = PBXGroup;
 			children = (
-				2AB62E6A204888760013CB59 /* Network */,
+				2A94477B2055F5570033B6C6 /* View Controllers */,
+				2A94477A2055F50B0033B6C6 /* Views */,
 				2A744891203B8E9F00793AD3 /* Models */,
-				770CDEAF20266B6000658925 /* ActivityLevelBar.swift */,
-				2AFB41362047F0F2004025F9 /* MenuCardCollectionViewCell.swift */,
-				2A744894203BBDBC00793AD3 /* MenuCardView.swift */,
-				2A744896203BBEDA00793AD3 /* MenuCardView.xib */,
-				2B952C66202BDBB200F27727 /* WeekView.swift */,
-				C0CD6769203C15CC006B265D /* TimeView.swift */,
-				C0AD0D33204B4EA9008E1206 /* TopBar.swift */,
-				770CDEAD20266B0800658925 /* ColoredCircle.swift */,
-				C0CD676B203C1B19006B265D /* ColoredBezel.swift */,
-				770251B3201D4079002E4515 /* AppDelegate.swift */,
-				770251B5201D4079002E4515 /* FirstViewController.swift */,
-				7794996F203BD10400F3B0ED /* AllergyFilterButton.swift */,
-				770251B7201D4079002E4515 /* SecondViewController.swift */,
-				77949971203BD12B00F3B0ED /* Extensions.swift */,
+				2AB62E6A204888760013CB59 /* Network */,
 				770251B9201D4079002E4515 /* Main.storyboard */,
-				2AFB41322047DD86004025F9 /* ItemDetailViewController.swift */,
-				770251BC201D4079002E4515 /* Assets.xcassets */,
-				770251BE201D4079002E4515 /* LaunchScreen.storyboard */,
-				770251C1201D4079002E4515 /* Info.plist */,
 				770251E3201D4182002E4515 /* Moya_Service.swift */,
+				770251C1201D4079002E4515 /* Info.plist */,
+				2A94477C2055F5860033B6C6 /* Supporting Files */,
 			);
 			path = "Dont Eat Alone";
 			sourceTree = "<group>";
@@ -552,7 +592,7 @@
 				77949972203BD12B00F3B0ED /* Extensions.swift in Sources */,
 				770CDEB020266B6000658925 /* ActivityLevelBar.swift in Sources */,
 				C0AD0D34204B4EA9008E1206 /* TopBar.swift in Sources */,
-				770251B6201D4079002E4515 /* FirstViewController.swift in Sources */,
+				770251B6201D4079002E4515 /* MenuVC.swift in Sources */,
 				770251E4201D4182002E4515 /* Moya_Service.swift in Sources */,
 				2AB62E6E2048D16B0013CB59 /* API.swift in Sources */,
 				2A744895203BBDBC00793AD3 /* MenuCardView.swift in Sources */,

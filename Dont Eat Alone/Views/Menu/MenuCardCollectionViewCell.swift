@@ -10,7 +10,7 @@ import UIKit
 
 class MenuCardCollectionViewCell: UICollectionViewCell {
     
-    weak var parentVC: FirstViewController?
+    weak var parentVC: MenuVC?
     @IBOutlet weak var menuCard: MenuCardView!
     @IBOutlet weak var viewMoreButton: UIButton!
     
