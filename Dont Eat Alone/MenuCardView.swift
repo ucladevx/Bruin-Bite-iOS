@@ -111,7 +111,7 @@ class MenuCardView: UIView, UITableViewDelegate, UITableViewDataSource {
         
         
         activityLevelBar.frame = CGRect(x: activityLevelBar.bounds.origin.x+57, y: activityLevelBar.bounds.origin.y, width: UIScreen.main.bounds.size.width, height: 7.9)
-        tableView.frame = CGRect(x: tableView.bounds.origin.x+58, y: tableView.bounds.origin.y+57, width: tableView.bounds.width, height: 126)
+//        tableView.frame = CGRect(x: tableView.bounds.origin.x+58, y: tableView.bounds.origin.y+57, width: tableView.bounds.width, height: 126)
         diningHallName.frame = CGRect(x: diningHallName.bounds.origin.x+71, y: diningHallName.bounds.origin.y+23, width: diningHallName.bounds.width, height: diningHallName.bounds.height)
         //viewMoreButton.frame = CGRect(x: viewMoreButton.bounds.origin.x+180, y: viewMoreButton.bounds.origin.y+187, width: viewMoreButton.bounds.width, height: viewMoreButton.bounds.height)
         

@@ -96,7 +96,7 @@ class MenuController{
     }
     
     //test data
-    var itemA1 = Item(itemCategory: "Overview", name: "Cheese Blintz w/ Berry Compote", allergies: [Allergen.Vegan, Allergen.ContainsEggs, Allergen.ContainsWheat, Allergen.ContainsSoy], recipeLink: nil)
+    var itemA1 = Item(itemCategory: "Overview", name: "Cheese Blintz w/ Berry 1", allergies: [Allergen.Vegan, Allergen.ContainsEggs, Allergen.ContainsWheat, Allergen.ContainsSoy], recipeLink: nil)
     var itemA2 = Item(itemCategory: "Overview", name: "Cheese Blintz w/ Berry 2", allergies: [Allergen.Vegan, Allergen.ContainsEggs, Allergen.ContainsWheat, Allergen.ContainsSoy], recipeLink: nil)
     var itemA3 = Item(itemCategory: "Overview", name: "Cheese Blintz w/ Berry 3", allergies: [Allergen.Vegan, Allergen.ContainsEggs, Allergen.ContainsWheat, Allergen.ContainsSoy], recipeLink: nil)
     var itemA4 = Item(itemCategory: "Overview", name: "Cheese Blintz w/ Berry 4", allergies: [Allergen.Vegan, Allergen.ContainsEggs, Allergen.ContainsWheat, Allergen.ContainsSoy], recipeLink: nil)
