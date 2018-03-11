@@ -9,7 +9,7 @@
 import UIKit
 
 class SecondViewController: UIViewController  {
-    @IBOutlet weak var topBar: TopBar!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }

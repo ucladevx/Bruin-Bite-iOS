@@ -13,6 +13,8 @@ class FirstViewController: UIViewController, UICollectionViewDelegate, UICollect
     
     let provider = MoyaProvider<API_methods>()
     
+    @IBOutlet weak var topBar: TopBar!
+    @IBOutlet weak var backgroundTopBar: UILabel!
     @IBOutlet weak var menuCardsCollection: UICollectionView!
     
     var menuData = MenuController()
@@ -26,6 +28,7 @@ class FirstViewController: UIViewController, UICollectionViewDelegate, UICollect
         
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        backgroundTopBar.backgroundColor = UIColor.deaScarlet
         
         computedHeight = Array(repeating: defaultHeight, count: self.diningHalls.count)
         
