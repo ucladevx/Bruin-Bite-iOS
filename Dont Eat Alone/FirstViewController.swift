@@ -37,6 +37,7 @@ class FirstViewController: UIViewController, UICollectionViewDelegate, UICollect
         
         menuCardsCollection.delegate = self
         menuCardsCollection.dataSource = self
+        menuCardsCollection.alwaysBounceVertical = true
     }
     
     let defaultHeight: CGFloat = 215;
@@ -62,7 +63,7 @@ class FirstViewController: UIViewController, UICollectionViewDelegate, UICollect
         cell.parentView = self.menuCardsCollection
         cell.index = indexPath
         
-        //make sure the button is hidden
+        //make sure the button has multiple purposes
         if (computedHeight[indexPath.row] > defaultHeight){
             cell.viewMoreButton.setTitle("View Less", for: .normal)
         }

@@ -33,7 +33,7 @@ class MenuCardCollectionViewCell: UICollectionViewCell {
                 computedHeight = self.frame.height+CGFloat(42*diff)
             }
         }
-        parentVC?.computedHeight[index.row] = computedHeight
+        parentVC?.computedHeight[indexRow] = computedHeight
         parentView.reloadItems(at: [index])
     }
     
