@@ -105,15 +105,7 @@ class MenuController{
     }
     
     //test data
-    var itemA1 = Item(itemCategory: "Overview", name: "Cheese Blintz w/ Berry 1", allergies: [Allergen.Vegan, Allergen.ContainsEggs, Allergen.ContainsWheat, Allergen.ContainsSoy], recipeLink: nil)
-    var itemA2 = Item(itemCategory: "Overview", name: "Cheese Blintz w/ Berry 2", allergies: [Allergen.Vegan, Allergen.ContainsEggs, Allergen.ContainsWheat, Allergen.ContainsSoy], recipeLink: nil)
-    var itemA3 = Item(itemCategory: "Overview", name: "Cheese Blintz w/ Berry 3", allergies: [Allergen.Vegan, Allergen.ContainsEggs, Allergen.ContainsWheat, Allergen.ContainsSoy], recipeLink: nil)
-    var itemA4 = Item(itemCategory: "Overview", name: "Cheese Blintz w/ Berry 4", allergies: [Allergen.Vegan, Allergen.ContainsEggs, Allergen.ContainsWheat, Allergen.ContainsSoy], recipeLink: nil)
-    var itemA5 = Item(itemCategory: "Overview", name: "Cheese Blintz w/ Berry 5", allergies: [Allergen.Vegan, Allergen.ContainsEggs, Allergen.ContainsWheat, Allergen.ContainsSoy], recipeLink: nil)
-    
-    init() {
-        self.menus.append(Menu(mealPeriod: MealPeriod.breakfast, overviewData: [Location.bPlate: [self.itemA1, self.itemA2, self.itemA3, self.itemA4, self.itemA5]], fullData: [:]))
-    /*var itemA1 = Item(itemCategory: "Overview", name: "Cheese Blintz w/ Berry Compote", serving: "1 serving", calories: "400", fatcal: "100", ingredients: "Yogurt and berries", vita: "10%", vitc: "20%", calc: "30%", iron: "40%", allergies: [Allergen.Vegan, Allergen.ContainsEggs, Allergen.ContainsWheat, Allergen.ContainsSoy], nutrition: [Nutrition(label: "Protein", amount: "10", percent: "10%")], recipeLink: nil)
+    var itemA1 = Item(itemCategory: "Overview", name: "Cheese Blintz w/ Berry Compote", serving: "1 serving", calories: "400", fatcal: "100", ingredients: "Yogurt and berries", vita: "10%", vitc: "20%", calc: "30%", iron: "40%", allergies: [Allergen.Vegan, Allergen.ContainsEggs, Allergen.ContainsWheat, Allergen.ContainsSoy], nutrition: [Nutrition(label: "Protein", amount: "10", percent: "10%")], recipeLink: nil)
     var itemA2 = Item(itemCategory: "Overview", name: "Cheese Blintz w/ Berry Compote 3", serving: "1 serving", calories: "400", fatcal: "100", ingredients: "Yogurt and berries", vita: "10%", vitc: "20%", calc: "30%", iron: "40%", allergies: [Allergen.Vegan, Allergen.ContainsEggs, Allergen.ContainsWheat, Allergen.ContainsSoy], nutrition: [Nutrition(label: "Protein", amount: "10", percent: "10%")], recipeLink: nil)
     var itemA3 = Item(itemCategory: "Overview", name: "Cheese Blintz w/ Berry Compote 3", serving: "1 serving", calories: "400", fatcal: "100", ingredients: "Yogurt and berries", vita: "10%", vitc: "20%", calc: "30%", iron: "40%", allergies: [Allergen.Vegan, Allergen.ContainsEggs, Allergen.ContainsWheat, Allergen.ContainsSoy], nutrition: [Nutrition(label: "Protein", amount: "10", percent: "10%")], recipeLink: nil)
     var itemA4 = Item(itemCategory: "Overview", name: "Cheese Blintz w/ Berry Compote 4", serving: "1 serving", calories: "400", fatcal: "100", ingredients: "Yogurt and berries", vita: "10%", vitc: "20%", calc: "30%", iron: "40%", allergies: [Allergen.Vegan, Allergen.ContainsEggs, Allergen.ContainsWheat, Allergen.ContainsSoy], nutrition: [Nutrition(label: "Protein", amount: "10", percent: "10%")], recipeLink: nil)
@@ -121,6 +113,6 @@ class MenuController{
     init() {
         
         self.menus.append(Menu(overviewData: [MealPeriod.breakfast: [Location.bPlate: [self.itemA1, self.itemA2, self.itemA3, self.itemA4]]], fullData: [:]))
-*/    
+   
 	}
 }
