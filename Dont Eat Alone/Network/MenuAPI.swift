@@ -16,7 +16,7 @@ enum MenuAPI{
 }
 
 extension MenuAPI: TargetType {
-    var baseURL: URL { return URL(string: "http://13.57.209.253:5000/api/v1")!}
+    var baseURL: URL { return URL(string: "https://api.ucla-eats.com/api/v1")!}
     var path: String{
         switch self{
         case .getCurrentActivityLevels:
