@@ -31,6 +31,7 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         backgroundTopBar.backgroundColor = UIColor.deaScarlet
         
         computedHeight = Array(repeating: defaultHeight, count: self.diningHalls.count)
+        // Do any additional setup after loading the view, typically from a nib.        
         
         var items = menuData.getOverviewMenu(mealPeriod: .breakfast, location: .bPlate)
         data = items!

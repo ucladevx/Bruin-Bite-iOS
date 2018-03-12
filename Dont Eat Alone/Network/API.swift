@@ -13,6 +13,151 @@ import SwiftyJSON
 class API{
     static let provider = MoyaProvider<MenuAPI>()
     
+    static func getOverviewMenu(completion: @escaping ([Menu])->()){
+        provider.request(.getOverviewMenu) { result in
+            switch result{
+            case let .success(response):
+                do{
+                    let json = try JSON(data: response.data)
+                    let data = json["menus"]
+                    var menus = [Menu]()
+                    for(_, menu) in data{
+                        var currMenu = Menu(overviewData: [:], fullData: [:])
+                        let overview = menu["overviewMenu"]
+                        var parsedMeal: [MealPeriod: [Location: [Item]]] = [:]
+                        var brunch = false
+                        for (time, meal) in overview{
+                            var parsedLocation: [Location: [Item]] = [:]
+                            var mealPeriod: MealPeriod = MealPeriod.breakfast
+                            switch(time){ // sets mealPeriod based on input, accounts for brunch
+                            case "breakfast":
+                                mealPeriod = MealPeriod.breakfast
+                                if (meal.isEmpty){
+                                    brunch = true
+                                    continue
+                                }
+                                break
+                            case "lunch":
+                                mealPeriod = MealPeriod.lunch
+                                if(brunch){
+                                    mealPeriod = MealPeriod.brunch
+                                }
+                                break
+                            case "dinner":
+                                mealPeriod = MealPeriod.dinner
+                                break
+                            default:
+                                break
+                            }
+                            for (location, items) in meal{
+                                var parsedItems = [Item]()
+                                for(sublocation, itemsList) in items{
+                                    for (_,item) in itemsList{
+                                        var currItem = Item(itemCategory: "", name: "", serving: "", calories: "", fatcal: "", ingredients: "", vita: "", vitc: "", calc: "", iron: "", allergies: [], nutrition: [], recipeLink: "")
+                                        currItem.itemCategory = sublocation
+                                        currItem.name = item["name"].string!
+                                        currItem.recipeLink = item["recipelink"].string
+                                        var allergens = [Allergen]()
+                                        if (item["itemcodes"].isEmpty){ // checks for Allergens
+                                            allergens.append(Allergen.None)
+                                        }
+                                        else{
+                                            for (a,_) in item["itemcodes"]{
+                                                switch a{
+                                                case "V":
+                                                    allergens.append(Allergen.Vegetarian)
+                                                    break
+                                                case "VG":
+                                                    allergens.append(Allergen.Vegan)
+                                                    break
+                                                case "APNT":
+                                                    allergens.append(Allergen.ContainsPeanuts)
+                                                    break
+                                                case "ATNT":
+                                                    allergens.append(Allergen.ContainsTreeNuts)
+                                                    break
+                                                case "AWHT":
+                                                    allergens.append(Allergen.ContainsWheat)
+                                                    break
+                                                case "ASOY":
+                                                    allergens.append(Allergen.ContainsSoy)
+                                                    break
+                                                case "AMLK":
+                                                    allergens.append(Allergen.ContainsDairy)
+                                                    break
+                                                case "AEGG":
+                                                    allergens.append(Allergen.ContainsEggs)
+                                                    break
+                                                case "ACSF":
+                                                    allergens.append(Allergen.ContainsShellfish)
+                                                    break
+                                                case "AFSH":
+                                                    allergens.append(Allergen.ContainsFish)
+                                                    break
+                                                default:
+                                                    break;
+                                                }
+                                            }
+                                        }
+                                        currItem.allergies = allergens
+                                        currItem.serving = item["nutrition"]["serving_size"].string!
+                                        currItem.calories = item["nutrition"]["Calories"].string!
+                                        currItem.fatcal = item["nutrition"]["Fat_Cal."].string!
+                                        currItem.ingredients = item["nutrition"]["ingredients"].string!
+                                        currItem.vita = item["nutrition"]["Vitamin A"].string!
+                                        currItem.vitc = item["nutrition"]["Vitamin C"].string!
+                                        currItem.calc = item["nutrition"]["Calcium"].string!
+                                        currItem.iron = item["nutrition"]["Iron"].string!
+                                        var nutrition = [Nutrition]()
+                                        var i = 0
+                                        for (label,info) in item["nutrition"]{ // adds nutrients with daily values
+                                            i = i+1
+                                            if (i >= 3 && i<12){
+                                                var nut = Nutrition(label: "", amount: "", percent: "")
+                                                nut.label = label
+                                                nut.amount = info[0].string!
+                                                nut.percent = info[1].string!
+                                                nutrition.append(nut)
+                                            }
+                                        }
+                                        currItem.nutrition = nutrition
+                                        parsedItems.append(currItem)
+                                    }
+                                }
+                                parsedLocation[Location(rawValue: location)!] = parsedItems
+                            }
+                            parsedMeal[mealPeriod] = parsedLocation
+                        }
+                        currMenu.overviewData = parsedMeal
+                        menus.append(currMenu)
+                    }
+                    completion(menus)
+                }
+                catch{
+                    print("error parsing")
+                }
+            case let .failure(error):
+                print(error)
+            }
+        }
+    }
+    
+    static func getDetailedMenu(completion: @escaping ([Menu])->()){
+        provider.request(.getDetailedMenu) { result in
+            switch result{
+            case let .success(response):
+                do{
+                    let json = try JSON(data: response.data)
+                }
+                catch{
+                    print("error parsing")
+                }
+            case let .failure(error):
+                print(error)
+            }
+        }
+    }
+    
     static func getCurrentActivityLevels(completion: @escaping ([ActivityLevel])->()){
         provider.request(.getCurrentActivityLevels) { result in
             switch result{
