@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2A744895203BBDBC00793AD3 /* MenuCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A744894203BBDBC00793AD3 /* MenuCardView.swift */; };
 		2A744897203BBEDA00793AD3 /* MenuCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A744896203BBEDA00793AD3 /* MenuCardView.xib */; };
+		2A9447802055FA3E0033B6C6 /* AllergensBarScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A94477F2055FA3E0033B6C6 /* AllergensBarScrollView.swift */; };
 		2AB62E69204887820013CB59 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB62E68204887820013CB59 /* Menu.swift */; };
 		2AB62E6C20488A050013CB59 /* MenuAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB62E6B20488A050013CB59 /* MenuAPI.swift */; };
 		2AB62E6E2048D16B0013CB59 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB62E6D2048D16B0013CB59 /* API.swift */; };
@@ -59,6 +60,7 @@
 		266C33EA78F943413B244B8D /* Pods-Dont Eat Alone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dont Eat Alone.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Dont Eat Alone/Pods-Dont Eat Alone.debug.xcconfig"; sourceTree = "<group>"; };
 		2A744894203BBDBC00793AD3 /* MenuCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCardView.swift; sourceTree = "<group>"; };
 		2A744896203BBEDA00793AD3 /* MenuCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuCardView.xib; sourceTree = "<group>"; };
+		2A94477F2055FA3E0033B6C6 /* AllergensBarScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllergensBarScrollView.swift; sourceTree = "<group>"; };
 		2AB62E68204887820013CB59 /* Menu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		2AB62E6B20488A050013CB59 /* MenuAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuAPI.swift; sourceTree = "<group>"; };
 		2AB62E6D2048D16B0013CB59 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 				2A94477E2055F6290033B6C6 /* Menu */,
 				2A94477D2055F60F0033B6C6 /* Top Bar */,
 				7794996F203BD10400F3B0ED /* AllergyFilterButton.swift */,
+				2A94477F2055FA3E0033B6C6 /* AllergensBarScrollView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -588,6 +591,7 @@
 				2AB62E69204887820013CB59 /* Menu.swift in Sources */,
 				C0CD676A203C15CC006B265D /* TimeView.swift in Sources */,
 				2B952C67202BDBB200F27727 /* WeekView.swift in Sources */,
+				2A9447802055FA3E0033B6C6 /* AllergensBarScrollView.swift in Sources */,
 				77949970203BD10500F3B0ED /* AllergyFilterButton.swift in Sources */,
 				77949972203BD12B00F3B0ED /* Extensions.swift in Sources */,
 				770CDEB020266B6000658925 /* ActivityLevelBar.swift in Sources */,

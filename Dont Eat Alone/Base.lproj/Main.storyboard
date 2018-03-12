@@ -19,7 +19,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="H9C-p3-hMb">
+                            <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="H9C-p3-hMb">
                                 <rect key="frame" x="0.0" y="125" width="375" height="430"/>
                                 <color key="backgroundColor" red="0.95688390729999995" green="0.95684528349999998" blue="0.9568617344" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="20" id="rXL-ol-5Oo">
@@ -104,23 +104,41 @@
                                     <constraint firstAttribute="height" constant="82" id="ekl-JP-xbe"/>
                                 </constraints>
                             </view>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3QT-qq-DRo" userLabel="Allergen Bar">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fRI-GQ-wjj" userLabel="Allergens View">
                                 <rect key="frame" x="0.0" y="563" width="375" height="55"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="otl-Nd-kHQ" customClass="AllergyFilterButton" customModule="Dont_Eat_Alone" customModuleProvider="target">
+                                        <rect key="frame" x="135" y="12" width="141" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Button"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="allergy_name" value="Vegetarian"/>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="is_selected" value="NO"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="42" id="mHn-h5-kFh"/>
+                                </constraints>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" red="0.95688390729999995" green="0.95684528349999998" blue="0.9568617344" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
+                            <constraint firstItem="fRI-GQ-wjj" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" id="8cS-SA-jny"/>
                             <constraint firstItem="H9C-p3-hMb" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" constant="85" id="CGj-th-SsE"/>
                             <constraint firstItem="DoT-Hh-LNo" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" id="K4U-dj-W9x"/>
+                            <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="fRI-GQ-wjj" secondAttribute="trailing" id="LDr-dc-cQb"/>
                             <constraint firstItem="Dar-6y-AX1" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="PVA-N8-gaX"/>
                             <constraint firstItem="H9C-p3-hMb" firstAttribute="trailing" secondItem="PQr-Ze-W5v" secondAttribute="trailing" id="Vfp-VQ-pba"/>
                             <constraint firstItem="Dar-6y-AX1" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" id="ZAB-bT-Sbc"/>
                             <constraint firstItem="PQr-Ze-W5v" firstAttribute="bottom" secondItem="H9C-p3-hMb" secondAttribute="bottom" constant="48" id="awc-0G-P7j"/>
                             <constraint firstItem="H9C-p3-hMb" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" id="ezl-rr-OlX"/>
+                            <constraint firstItem="fRI-GQ-wjj" firstAttribute="bottom" secondItem="PQr-Ze-W5v" secondAttribute="bottom" id="gjf-bK-ZF7"/>
                             <constraint firstItem="PQr-Ze-W5v" firstAttribute="top" secondItem="Dar-6y-AX1" secondAttribute="bottom" id="hbO-WR-EOm"/>
                             <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="DoT-Hh-LNo" secondAttribute="trailing" id="i5u-Sz-fXK"/>
+                            <constraint firstItem="fRI-GQ-wjj" firstAttribute="top" secondItem="H9C-p3-hMb" secondAttribute="bottom" id="xKN-ml-oJK"/>
                             <constraint firstItem="DoT-Hh-LNo" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" id="yCD-JF-0EZ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
