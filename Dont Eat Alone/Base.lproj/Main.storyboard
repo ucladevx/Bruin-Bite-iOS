@@ -20,7 +20,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="H9C-p3-hMb">
-                                <rect key="frame" x="0.0" y="125" width="375" height="430"/>
+                                <rect key="frame" x="0.0" y="105" width="375" height="465"/>
                                 <color key="backgroundColor" red="0.95688390729999995" green="0.95684528349999998" blue="0.9568617344" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="20" id="rXL-ol-5Oo">
                                     <size key="itemSize" width="365" height="214"/>
@@ -104,19 +104,8 @@
                                     <constraint firstAttribute="height" constant="82" id="ekl-JP-xbe"/>
                                 </constraints>
                             </view>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fRI-GQ-wjj" userLabel="Allergens View">
-                                <rect key="frame" x="0.0" y="563" width="375" height="55"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="otl-Nd-kHQ" customClass="AllergyFilterButton" customModule="Dont_Eat_Alone" customModuleProvider="target">
-                                        <rect key="frame" x="135" y="12" width="141" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Button"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="allergy_name" value="Vegetarian"/>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="is_selected" value="NO"/>
-                                        </userDefinedRuntimeAttributes>
-                                    </button>
-                                </subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fRI-GQ-wjj" userLabel="Allergens View" customClass="AllergensBarScrollView" customModule="Dont_Eat_Alone" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="570" width="375" height="48"/>
                                 <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="42" id="mHn-h5-kFh"/>

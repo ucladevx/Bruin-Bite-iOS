@@ -10,19 +10,29 @@ import UIKit
 
 //@IBDesignable
 class AllergyFilterButton: UIButton {
-
+    
     /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
+     // Only override draw() if you perform custom drawing.
+     // An empty implementation adversely affects performance during animation.
+     override func draw(_ rect: CGRect) {
+     // Drawing code
+     }
+     */
     
     @IBInspectable
     var is_selected: Bool = false
+    
+    var _allergy_name = ""
     @IBInspectable
-    var allergy_name: String = ""
+    var allergy_name: String{
+        set (newVal){
+            _allergy_name = newVal
+            fit_to_word_length()
+        }
+        get{
+            return _allergy_name
+        }
+    }
     
     func fit_to_word_length() {
         self.sizeToFit()
@@ -46,11 +56,19 @@ class AllergyFilterButton: UIButton {
         }
     }
     
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setup()
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        setup()
+    }
 
-    required public init?(coder aDecoder: NSCoder) {
-        
-        super.init(coder: aDecoder)
-        
+    
+    
+    func setup(){
         self.layer.borderWidth = 1
         self.backgroundColor = UIColor.clear
         self.layer.borderColor = UIColor.deaGrey.cgColor
@@ -58,14 +76,13 @@ class AllergyFilterButton: UIButton {
         self.setTitleColor(UIColor.deaGrey, for: .normal)
         self.setTitle(allergy_name, for: .normal)
         fit_to_word_length()
-
+        
+        self.addTarget(self, action: #selector(onPress), for: .touchUpInside)
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        //TODO: Code for our button
-        self.addTarget(self, action: #selector(onPress), for: .touchUpInside)
+        setup()
     }
-
+    
 }
