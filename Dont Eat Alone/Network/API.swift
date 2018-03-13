@@ -22,7 +22,7 @@ class API{
                     let data = json["menus"]
                     var menus = [Menu]()
                     for(_, menu) in data{
-                        var currMenu = Menu(date: "", overviewData: [:], fullData: [:])
+                        var currMenu = Menu(date: "", overviewData: [:], detailedData: [:])
                         currMenu.date = menu["menuDate"].stringValue
                         let overview = menu["overviewMenu"]
                         var parsedMeal: [MealPeriod: [Location: [Item]]] = [:]
@@ -54,8 +54,8 @@ class API{
                                 var parsedItems = [Item]()
                                 for(sublocation, itemsList) in items{
                                     for (_,item) in itemsList{
-                                        var currItem = Item(itemCategory: "", name: "", serving: nil, calories: nil, fatcal: nil, ingredients: nil, vita: nil, vitc: nil, calc: nil, iron: nil, allergies: nil, nutrition: nil, recipeLink: nil)
-                                        currItem.itemCategory = sublocation
+                                        var currItem = Item(itemCategory: "Overview", subLocation: "", name: "", serving: nil, calories: nil, fatcal: nil, ingredients: nil, vita: nil, vitc: nil, calc: nil, iron: nil, allergies: nil, nutrition: nil, recipeLink: nil)
+                                        currItem.subLocation = sublocation
                                         currItem.name = item["name"].string!
                                         currItem.recipeLink = item["recipelink"].string
                                         var allergens = [Allergen]()
@@ -157,7 +157,7 @@ class API{
                     let data = json["menus"]
                     var menus = [Menu]()
                     for(_, menu) in data{
-                        var currMenu = Menu(date: "", overviewData: [:], fullData: [:])
+                        var currMenu = Menu(date: "", overviewData: [:], detailedData: [:])
                         currMenu.date = menu["menuDate"].stringValue
                         let overview = menu["detailedMenu"]
                         var parsedMeal: [MealPeriod: [Location: [Item]]] = [:]
@@ -189,8 +189,8 @@ class API{
                                 var parsedItems = [Item]()
                                 for(sublocation, itemsList) in items{
                                     for (_,item) in itemsList{
-                                        var currItem = Item(itemCategory: "", name: "", serving: nil, calories: nil, fatcal: nil, ingredients: nil, vita: nil, vitc: nil, calc: nil, iron: nil, allergies: nil, nutrition: nil, recipeLink: nil)
-                                        currItem.itemCategory = sublocation
+                                        var currItem = Item(itemCategory: "Detailed", subLocation: "", name: "", serving: nil, calories: nil, fatcal: nil, ingredients: nil, vita: nil, vitc: nil, calc: nil, iron: nil, allergies: nil, nutrition: nil, recipeLink: nil)
+                                        currItem.subLocation = sublocation
                                         currItem.name = item["name"].string!
                                         currItem.recipeLink = item["recipelink"].string
                                         var allergens = [Allergen]()
@@ -269,7 +269,7 @@ class API{
                             }
                             parsedMeal[mealPeriod] = parsedLocation
                         }
-                        currMenu.overviewData = parsedMeal
+                        currMenu.detailedData = parsedMeal
                         menus.append(currMenu)
                     }
                     completion(menus)

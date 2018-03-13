@@ -59,6 +59,7 @@ struct Nutrition{
 
 struct Item{
     var itemCategory: String
+    var subLocation: String?
     var name: String
     var serving: String?
     var calories: String?
@@ -77,43 +78,51 @@ struct Item{
 struct Menu{
     var date: String
     var overviewData: [MealPeriod: [Location: [Item]]]
-    var fullData: [MealPeriod: [Location: [Item]]]
+    var detailedData: [MealPeriod: [Location: [Item]]]
 }
 
 class MenuController{
     
     var menus: [Menu] = []
     
-    
-    //func getActivityLevel() ->
-    //func getOverviewMenu() ->
-    //func getFullMenu() ->
-    //func getItemDetails() ->
-    //func getTime() ->
-    
     func getOverviewMenu(mealPeriod: MealPeriod, location: Location) -> [Item]?{
         for menu in menus{
+            print(menu.overviewData[mealPeriod]?[location])
             return menu.overviewData[mealPeriod]?[location]
         }
         return nil
     }
     
-    func getFullMenu(mealPeriod: MealPeriod, location: Location) -> [Item]?{
+    func getDetailedMenu(mealPeriod: MealPeriod, location: Location) -> [Item]?{
         for menu in menus{
-            return menu.fullData[mealPeriod]?[location]
+            return menu.detailedData[mealPeriod]?[location]
         }
         return nil
     }
     
     //test data
-    var itemA1 = Item(itemCategory: "Overview", name: "Cheese Blintz w/ Berry Compote", serving: "1 serving", calories: "400", fatcal: "100", ingredients: "Yogurt and berries", vita: "10%", vitc: "20%", calc: "30%", iron: "40%", allergies: [Allergen.Vegan, Allergen.ContainsEggs, Allergen.ContainsWheat, Allergen.ContainsSoy], nutrition: [Nutrition(label: "Protein", amount: "10", percent: "10%")], recipeLink: nil)
-    var itemA2 = Item(itemCategory: "Overview", name: "Cheese Blintz w/ Berry Compote 3", serving: "1 serving", calories: "400", fatcal: "100", ingredients: "Yogurt and berries", vita: "10%", vitc: "20%", calc: "30%", iron: "40%", allergies: [Allergen.Vegan, Allergen.ContainsEggs, Allergen.ContainsWheat, Allergen.ContainsSoy], nutrition: [Nutrition(label: "Protein", amount: "10", percent: "10%")], recipeLink: nil)
-    var itemA3 = Item(itemCategory: "Overview", name: "Cheese Blintz w/ Berry Compote 3", serving: "1 serving", calories: "400", fatcal: "100", ingredients: "Yogurt and berries", vita: "10%", vitc: "20%", calc: "30%", iron: "40%", allergies: [Allergen.Vegan, Allergen.ContainsEggs, Allergen.ContainsWheat, Allergen.ContainsSoy], nutrition: [Nutrition(label: "Protein", amount: "10", percent: "10%")], recipeLink: nil)
-    var itemA4 = Item(itemCategory: "Overview", name: "Cheese Blintz w/ Berry Compote 4", serving: "1 serving", calories: "400", fatcal: "100", ingredients: "Yogurt and berries", vita: "10%", vitc: "20%", calc: "30%", iron: "40%", allergies: [Allergen.Vegan, Allergen.ContainsEggs, Allergen.ContainsWheat, Allergen.ContainsSoy], nutrition: [Nutrition(label: "Protein", amount: "10", percent: "10%")], recipeLink: nil)
+    var itemA1 = Item(itemCategory: "Overview", subLocation: "Bakery", name: "Cheese Blintz w/ Berry Compote", serving: "1 serving", calories: "400", fatcal: "100", ingredients: "Yogurt and berries", vita: "10%", vitc: "20%", calc: "30%", iron: "40%", allergies: [Allergen.Vegan, Allergen.ContainsEggs, Allergen.ContainsWheat, Allergen.ContainsSoy], nutrition: [Nutrition(label: "Protein", amount: "10", percent: "10%")], recipeLink: nil)
+    var itemA2 = Item(itemCategory: "Overview", subLocation: "Bakery", name: "Cheese Blintz w/ Berry Compote 3", serving: "1 serving", calories: "400", fatcal: "100", ingredients: "Yogurt and berries", vita: "10%", vitc: "20%", calc: "30%", iron: "40%", allergies: [Allergen.Vegan, Allergen.ContainsEggs, Allergen.ContainsWheat, Allergen.ContainsSoy], nutrition: [Nutrition(label: "Protein", amount: "10", percent: "10%")], recipeLink: nil)
+    var itemA3 = Item(itemCategory: "Overview", subLocation: "Bakery", name: "Cheese Blintz w/ Berry Compote 3", serving: "1 serving", calories: "400", fatcal: "100", ingredients: "Yogurt and berries", vita: "10%", vitc: "20%", calc: "30%", iron: "40%", allergies: [Allergen.Vegan, Allergen.ContainsEggs, Allergen.ContainsWheat, Allergen.ContainsSoy], nutrition: [Nutrition(label: "Protein", amount: "10", percent: "10%")], recipeLink: nil)
+    var itemA4 = Item(itemCategory: "Overview", subLocation: "Bakery", name: "Cheese Blintz w/ Berry Compote 4", serving: "1 serving", calories: "400", fatcal: "100", ingredients: "Yogurt and berries", vita: "10%", vitc: "20%", calc: "30%", iron: "40%", allergies: [Allergen.Vegan, Allergen.ContainsEggs, Allergen.ContainsWheat, Allergen.ContainsSoy], nutrition: [Nutrition(label: "Protein", amount: "10", percent: "10%")], recipeLink: nil)
     
     init() {
-        
-        self.menus.append(Menu(date: "", overviewData: [MealPeriod.breakfast: [Location.bPlate: [self.itemA1, self.itemA2, self.itemA3, self.itemA4]]], fullData: [:]))
-   
+        API.getOverviewMenu { parsedMenus in
+            for m in parsedMenus{
+                self.menus.append(m)
+            }
+            //print(self.menus) // prints all valid data
+        }
+        print(self.menus) // prints a blank
+        API.getDetailedMenu { parsedMenus in
+            for m in parsedMenus{
+                for i in 0..<(self.menus.count){
+                    if(self.menus[i].date == m.date){
+                        self.menus[i].detailedData = m.detailedData
+                    }
+                }
+            }
+        }
+        print(self.menus) // prints a blank
 	}
 }
