@@ -28,15 +28,28 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        API.getOverviewMenu { parsedMenus in
+            for m in parsedMenus{
+                self.menuData.menus.append(m)
+            }
+        }
+        API.getDetailedMenu { parsedMenus in
+            for m in parsedMenus{
+                for i in 0..<(self.menuData.menus.count){
+                    if(self.menuData.menus[i].date == m.date){
+                        self.menuData.menus[i].detailedData = m.detailedData
+                    }
+                }
+            }
+        }
+        print(self.menuData.menus)
         backgroundTopBar.backgroundColor = UIColor.deaScarlet
-        API.getOverviewMenu { activityLevels in
-            //print(activityLevels)
-        }        
         computedHeight = Array(repeating: defaultHeight, count: self.diningHalls.count)
-        // Do any additional setup after loading the view, typically from a nib.        
+        // Do any additional setup after loading the view, typically from a nib.
+        
         
         var items = menuData.getOverviewMenu(mealPeriod: .breakfast, location: .bPlate)
-        //data = items! // temporarily commented out until the data is saved
+        data = items! // temporarily commented out until the data is saved
         
         menuCardsCollection.delegate = self
         menuCardsCollection.dataSource = self

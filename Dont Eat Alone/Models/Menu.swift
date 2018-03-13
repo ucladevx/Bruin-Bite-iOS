@@ -87,7 +87,6 @@ class MenuController{
     
     func getOverviewMenu(mealPeriod: MealPeriod, location: Location) -> [Item]?{
         for menu in menus{
-            print(menu.overviewData[mealPeriod]?[location])
             return menu.overviewData[mealPeriod]?[location]
         }
         return nil
@@ -107,22 +106,5 @@ class MenuController{
     var itemA4 = Item(itemCategory: "Overview", subLocation: "Bakery", name: "Cheese Blintz w/ Berry Compote 4", serving: "1 serving", calories: "400", fatcal: "100", ingredients: "Yogurt and berries", vita: "10%", vitc: "20%", calc: "30%", iron: "40%", allergies: [Allergen.Vegan, Allergen.ContainsEggs, Allergen.ContainsWheat, Allergen.ContainsSoy], nutrition: [Nutrition(label: "Protein", amount: "10", percent: "10%")], recipeLink: nil)
     
     init() {
-        API.getOverviewMenu { parsedMenus in
-            for m in parsedMenus{
-                self.menus.append(m)
-            }
-            //print(self.menus) // prints all valid data
-        }
-        print(self.menus) // prints a blank
-        API.getDetailedMenu { parsedMenus in
-            for m in parsedMenus{
-                for i in 0..<(self.menus.count){
-                    if(self.menus[i].date == m.date){
-                        self.menus[i].detailedData = m.detailedData
-                    }
-                }
-            }
-        }
-        print(self.menus) // prints a blank
 	}
 }
