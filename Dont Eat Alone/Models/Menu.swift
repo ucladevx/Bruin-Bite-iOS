@@ -47,7 +47,7 @@ enum Location: String{
     case deNeve = "De Neve"
     case covel = "Covel"
     case bPlate = "Bruin Plate"
-    case feast = "Feast at Rieber"
+    case feast = "FEAST at Rieber"
 }
 
 //---Structures---
@@ -60,21 +60,22 @@ struct Nutrition{
 struct Item{
     var itemCategory: String
     var name: String
-    var serving: String
-    var calories: String
-    var fatcal: String
-    var ingredients: String
-    var vita: String
-    var vitc: String
-    var calc: String
-    var iron: String
-    var allergies: [Allergen]
-    var nutrition: [Nutrition]
+    var serving: String?
+    var calories: String?
+    var fatcal: String?
+    var ingredients: String?
+    var vita: String?
+    var vitc: String?
+    var calc: String?
+    var iron: String?
+    var allergies: [Allergen]?
+    var nutrition: [Nutrition]?
     var recipeLink: String?
 }
 
 //menus at all the locations for a meal period
 struct Menu{
+    var date: String
     var overviewData: [MealPeriod: [Location: [Item]]]
     var fullData: [MealPeriod: [Location: [Item]]]
 }
@@ -112,7 +113,7 @@ class MenuController{
     
     init() {
         
-        self.menus.append(Menu(overviewData: [MealPeriod.breakfast: [Location.bPlate: [self.itemA1, self.itemA2, self.itemA3, self.itemA4]]], fullData: [:]))
+        self.menus.append(Menu(date: "", overviewData: [MealPeriod.breakfast: [Location.bPlate: [self.itemA1, self.itemA2, self.itemA3, self.itemA4]]], fullData: [:]))
    
 	}
 }

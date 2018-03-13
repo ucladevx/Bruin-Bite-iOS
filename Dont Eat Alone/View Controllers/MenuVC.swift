@@ -29,6 +29,9 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         backgroundTopBar.backgroundColor = UIColor.deaScarlet
+        API.getDetailedMenu { activityLevels in
+            print(activityLevels)
+        }
         
         computedHeight = Array(repeating: defaultHeight, count: self.diningHalls.count)
         // Do any additional setup after loading the view, typically from a nib.        
