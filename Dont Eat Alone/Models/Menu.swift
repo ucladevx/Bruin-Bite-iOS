@@ -85,16 +85,24 @@ class MenuController{
     
     var menus: [Menu] = []
     
-    func getOverviewMenu(mealPeriod: MealPeriod, location: Location) -> [Item]?{
+    func getOverviewMenu(date: String, mealPeriod: MealPeriod) -> [Location:[Item]]?{
         for menu in menus{
-            return menu.overviewData[mealPeriod]?[location]
+            let index = menu.date.index(menu.date.endIndex, offsetBy: -2)
+            let sub = menu.date[index...]
+            if(sub == date){
+                return menu.overviewData[mealPeriod]
+            }
         }
         return nil
     }
     
-    func getDetailedMenu(mealPeriod: MealPeriod, location: Location) -> [Item]?{
+    func getDetailedMenu(date: String, mealPeriod: MealPeriod) -> [Location:[Item]]?{
         for menu in menus{
-            return menu.detailedData[mealPeriod]?[location]
+            let index = menu.date.index(menu.date.endIndex, offsetBy: -2)
+            let sub = menu.date[index...]
+            if(sub == date){
+                return menu.overviewData[mealPeriod]
+            }
         }
         return nil
     }
