@@ -37,6 +37,7 @@ import UIKit
         bezelLabel.textColor = UIColor.black
         bezelView.frame = CGRect(x: 0, y: 42, width: 87.5, height: 40)
         bezelLabel.frame = CGRect(x: 12, y: 52, width: 80, height: 20)
+        bezelLabel.text = "Breakfast"
         
         for i in 0 ..< 4{
             timeBtns.append(TimeView())

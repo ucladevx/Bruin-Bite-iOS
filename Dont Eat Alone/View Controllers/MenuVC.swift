@@ -13,7 +13,8 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
     
     let provider = MoyaProvider<API_methods>()
     
-    @IBOutlet weak var topBar: TopBar!
+    //@IBOutlet weak var topBar: TopBar!
+    var topBar = TopBar()
     @IBOutlet weak var backgroundTopBar: UILabel!
     @IBOutlet weak var menuCardsCollection: UICollectionView!
     
@@ -27,6 +28,9 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        topBar.frame = CGRect(x:12.5, y:20, width: 350, height: 82)
+        topBar.center.x = self.view.center.x
+        self.view.addSubview(topBar)
         // Do any additional setup after loading the view, typically from a nib.
         backgroundTopBar.backgroundColor = UIColor.deaScarlet
         

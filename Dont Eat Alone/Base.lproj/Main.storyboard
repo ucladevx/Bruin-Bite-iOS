@@ -96,14 +96,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dar-6y-AX1" customClass="TopBar" customModule="Dont_Eat_Alone" customModuleProvider="target">
-                                <rect key="frame" x="12.5" y="20" width="350" height="0.0"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="350" id="ctz-St-Hbw"/>
-                                    <constraint firstAttribute="height" constant="82" id="ekl-JP-xbe"/>
-                                </constraints>
-                            </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fRI-GQ-wjj" userLabel="Allergens View" customClass="AllergensBarScrollView" customModule="Dont_Eat_Alone" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="570" width="375" height="48"/>
                                 <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -119,13 +111,10 @@
                             <constraint firstItem="H9C-p3-hMb" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" constant="85" id="CGj-th-SsE"/>
                             <constraint firstItem="DoT-Hh-LNo" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" id="K4U-dj-W9x"/>
                             <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="fRI-GQ-wjj" secondAttribute="trailing" id="LDr-dc-cQb"/>
-                            <constraint firstItem="Dar-6y-AX1" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="PVA-N8-gaX"/>
                             <constraint firstItem="H9C-p3-hMb" firstAttribute="trailing" secondItem="PQr-Ze-W5v" secondAttribute="trailing" id="Vfp-VQ-pba"/>
-                            <constraint firstItem="Dar-6y-AX1" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" id="ZAB-bT-Sbc"/>
                             <constraint firstItem="PQr-Ze-W5v" firstAttribute="bottom" secondItem="H9C-p3-hMb" secondAttribute="bottom" constant="48" id="awc-0G-P7j"/>
                             <constraint firstItem="H9C-p3-hMb" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" id="ezl-rr-OlX"/>
                             <constraint firstItem="fRI-GQ-wjj" firstAttribute="bottom" secondItem="PQr-Ze-W5v" secondAttribute="bottom" id="gjf-bK-ZF7"/>
-                            <constraint firstItem="PQr-Ze-W5v" firstAttribute="top" secondItem="Dar-6y-AX1" secondAttribute="bottom" id="hbO-WR-EOm"/>
                             <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="DoT-Hh-LNo" secondAttribute="trailing" id="i5u-Sz-fXK"/>
                             <constraint firstItem="fRI-GQ-wjj" firstAttribute="top" secondItem="H9C-p3-hMb" secondAttribute="bottom" id="xKN-ml-oJK"/>
                             <constraint firstItem="DoT-Hh-LNo" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" id="yCD-JF-0EZ"/>
@@ -136,7 +125,6 @@
                     <connections>
                         <outlet property="backgroundTopBar" destination="DoT-Hh-LNo" id="mh4-dU-Vvb"/>
                         <outlet property="menuCardsCollection" destination="H9C-p3-hMb" id="hir-Sr-zQM"/>
-                        <outlet property="topBar" destination="Dar-6y-AX1" id="A3Q-Uy-Uie"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
