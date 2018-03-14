@@ -32,6 +32,9 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
             for m in parsedMenus{
                 self.menuData.menus.append(m)
             }
+            self.data = self.menuData.getOverviewMenu(mealPeriod: .breakfast, location: .bPlate) ?? []
+            self.computedHeight = []
+            self.menuCardsCollection.reloadData()
         }
         API.getDetailedMenu { parsedMenus in
             for m in parsedMenus{
@@ -41,15 +44,15 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
                     }
                 }
             }
+            print("hi")
         }
-        print(self.menuData.menus)
         backgroundTopBar.backgroundColor = UIColor.deaScarlet
         computedHeight = Array(repeating: defaultHeight, count: self.diningHalls.count)
         // Do any additional setup after loading the view, typically from a nib.
         
         
         var items = menuData.getOverviewMenu(mealPeriod: .breakfast, location: .bPlate)
-        data = items! // temporarily commented out until the data is saved
+        data = items ?? []
         
         menuCardsCollection.delegate = self
         menuCardsCollection.dataSource = self
@@ -60,11 +63,16 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
     var computedHeight: [CGFloat] = [];
         
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if computedHeight != []{
         return CGSize(width: collectionView.bounds.size.width, height: computedHeight[indexPath.row])
+        }
+        else{
+            return CGSize(width: collectionView.bounds.size.width, height: 0)
+        }
     }
         
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return data.count
     }
         
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

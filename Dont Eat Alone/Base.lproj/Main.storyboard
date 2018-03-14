@@ -96,9 +96,12 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dar-6y-AX1" customClass="TopBar" customModule="Dont_Eat_Alone" customModuleProvider="target">
-                                <rect key="frame" x="12.5" y="20" width="350" height="0.0"/>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dar-6y-AX1" customClass="TopBar" customModule="Dont_Eat_Alone" customModuleProvider="target">
+                                <rect key="frame" x="12.5" y="20" width="350" height="82"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" updatesFrequently="YES" allowsDirectInteraction="YES"/>
+                                </accessibility>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="350" id="ctz-St-Hbw"/>
                                     <constraint firstAttribute="height" constant="82" id="ekl-JP-xbe"/>

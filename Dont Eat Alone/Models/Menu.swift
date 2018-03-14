@@ -106,5 +106,6 @@ class MenuController{
     var itemA4 = Item(itemCategory: "Overview", subLocation: "Bakery", name: "Cheese Blintz w/ Berry Compote 4", serving: "1 serving", calories: "400", fatcal: "100", ingredients: "Yogurt and berries", vita: "10%", vitc: "20%", calc: "30%", iron: "40%", allergies: [Allergen.Vegan, Allergen.ContainsEggs, Allergen.ContainsWheat, Allergen.ContainsSoy], nutrition: [Nutrition(label: "Protein", amount: "10", percent: "10%")], recipeLink: nil)
     
     init() {
+        self.menus.append(Menu(date: "03-03-1028", overviewData: [MealPeriod.breakfast:[Location.bPlate:[itemA1,itemA2,itemA3,itemA4]]], detailedData: [:]))
 	}
 }
