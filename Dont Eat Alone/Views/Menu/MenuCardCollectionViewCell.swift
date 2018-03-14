@@ -22,7 +22,11 @@ class MenuCardCollectionViewCell: UICollectionViewCell {
     var computedHeight: CGFloat = 215
     
     @IBAction func viewMorePressed(_ sender: UIButton) {
-        let diff = menuCard.data.count - 3
+        var diff = menuCard.data.count - 3
+        if (diff < 3){
+            diff = menuCard.data.count
+        }
+        
         let indexRow = index.row
         
         if let parentVC = parentVC{
