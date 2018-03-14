@@ -39,14 +39,14 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         self.view.addSubview(topBar)
         // Do any additional setup after loading the view, typically from a nib.
         API.getCurrentActivityLevels { (activityLevels) in
-            /*for a in activityLevels{
+            for a in activityLevels{
                 self.activityLevelData.append(a)
-            }*/
-            //test data
+            }
+            /*test data
             self.activityLevelData.append(ActivityLevel(isAvailable: true, location: Location.covel, percent: 30))
             self.activityLevelData.append(ActivityLevel(isAvailable: true, location: Location.deNeve, percent: 90))
             self.activityLevelData.append(ActivityLevel(isAvailable: true, location: Location.bPlate, percent: 10))
-            self.activityLevelData.append(ActivityLevel(isAvailable: true, location: Location.feast, percent: 50))
+            self.activityLevelData.append(ActivityLevel(isAvailable: true, location: Location.feast, percent: 50))*/
             print(self.activityLevelData)
         }
         API.getOverviewMenu { parsedMenus in
