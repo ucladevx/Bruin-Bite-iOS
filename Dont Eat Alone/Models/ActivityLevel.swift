@@ -10,6 +10,7 @@ import Foundation
 
 struct ActivityLevel{
     var isAvailable: Bool = false
-    var data: [Location: Int] = [:]
+    var location: Location?
+    var percent: Int
 }
 

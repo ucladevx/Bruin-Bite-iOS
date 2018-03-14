@@ -27,10 +27,6 @@ class ItemDetailViewController: UIViewController {
             let urlRequest: URLRequest = URLRequest(url: url)
             webView.load(urlRequest)
         }
-        
-        API.getOverviewMenu { activityLevels in
-            print(activityLevels)
-        }
     }
     
 

@@ -13,12 +13,12 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
     
     let provider = MoyaProvider<API_methods>()
     
-    //@IBOutlet weak var topBar: TopBar!
     var topBar = TopBar()
     @IBOutlet weak var backgroundTopBar: UILabel!
     @IBOutlet weak var menuCardsCollection: UICollectionView!
     
     var menuData = MenuController()
+    var activityLevelData = [ActivityLevel]()
     
     var data: [Location: [Item]] = [:]
         
@@ -38,6 +38,17 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         topBar.center.x = self.view.center.x
         self.view.addSubview(topBar)
         // Do any additional setup after loading the view, typically from a nib.
+        API.getCurrentActivityLevels { (activityLevels) in
+            /*for a in activityLevels{
+                self.activityLevelData.append(a)
+            }*/
+            //test data
+            self.activityLevelData.append(ActivityLevel(isAvailable: true, location: Location.covel, percent: 30))
+            self.activityLevelData.append(ActivityLevel(isAvailable: true, location: Location.deNeve, percent: 90))
+            self.activityLevelData.append(ActivityLevel(isAvailable: true, location: Location.bPlate, percent: 10))
+            self.activityLevelData.append(ActivityLevel(isAvailable: true, location: Location.feast, percent: 50))
+            print(self.activityLevelData)
+        }
         API.getOverviewMenu { parsedMenus in
             for m in parsedMenus{
                 self.menuData.menus.append(m)
@@ -108,6 +119,11 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         }
 
         cell.menuCard.activityLevelBar.resizeToZero()
+        for a in activityLevelData{
+            if (a.isAvailable && Array(data.keys)[indexPath.row] == a.location) {
+                cell.menuCard.activityLevelBar.percentage = CGFloat(a.percent)/100
+            }
+        }
         UIView.animate(withDuration: 1.5, delay: 0, options: .curveEaseInOut, animations: {
             cell.menuCard.activityLevelBar.animateBar()
         }) { (_) in }
