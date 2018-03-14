@@ -36,7 +36,7 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
             for m in parsedMenus{
                 self.menuData.menus.append(m)
             }
-            self.data = self.menuData.getOverviewMenu(mealPeriod: .lunch, location: .deNeve) ?? []
+            self.data = self.menuData.getOverviewMenu(date: "14", mealPeriod: .lunch) ?? [:]
             self.computedHeight = Array(repeating: self.defaultHeight, count: self.data.count)
             self.menuCardsCollection.reloadData()
         }
@@ -78,8 +78,8 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         cell.menuCard.tableView.delegate = cell.menuCard
         cell.menuCard.tableView.dataSource = cell.menuCard
         
-        cell.menuCard.diningHallName.text? = "De Neve"
-        cell.initializeData(data: data)
+        cell.menuCard.diningHallName.text? = Array(data.keys)[indexPath.row].rawValue
+        cell.initializeData(data: data[Array(data.keys)[indexPath.row]]!)
         
         cell.parentVC = self
         cell.parentView = self.menuCardsCollection
