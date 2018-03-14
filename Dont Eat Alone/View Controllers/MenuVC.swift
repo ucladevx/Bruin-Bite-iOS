@@ -19,12 +19,16 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
     
     var menuData = MenuController()
     
-    var data: [Item] = []
+    var data: [Location: [Item]] = [:]
         
     let diningHalls = ["De Neve", "BPlate", "Covel", "Feast"]
 
         
     override func viewDidLoad() {
+        
+        menuCardsCollection.delegate = self
+        menuCardsCollection.dataSource = self
+        menuCardsCollection.alwaysBounceVertical = true
         
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -32,42 +36,36 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
             for m in parsedMenus{
                 self.menuData.menus.append(m)
             }
-            self.data = self.menuData.getOverviewMenu(mealPeriod: .breakfast, location: .bPlate) ?? []
-            self.computedHeight = []
+            self.data = self.menuData.getOverviewMenu(mealPeriod: .lunch, location: .deNeve) ?? []
+            self.computedHeight = Array(repeating: self.defaultHeight, count: self.data.count)
             self.menuCardsCollection.reloadData()
         }
-        API.getDetailedMenu { parsedMenus in
-            for m in parsedMenus{
-                for i in 0..<(self.menuData.menus.count){
-                    if(self.menuData.menus[i].date == m.date){
-                        self.menuData.menus[i].detailedData = m.detailedData
-                    }
-                }
-            }
-            print("hi")
-        }
+//        API.getDetailedMenu { parsedMenus in
+//            for m in parsedMenus{
+//                for i in 0..<(self.menuData.menus.count){
+//                    if(self.menuData.menus[i].date == m.date){
+//                        self.menuData.menus[i].detailedData = m.detailedData
+//                    }
+//                }
+//            }
+//            print("hi")
+//        }
         backgroundTopBar.backgroundColor = UIColor.deaScarlet
         computedHeight = Array(repeating: defaultHeight, count: self.diningHalls.count)
         // Do any additional setup after loading the view, typically from a nib.
-        
-        
-        var items = menuData.getOverviewMenu(mealPeriod: .breakfast, location: .bPlate)
-        data = items ?? []
-        
-        menuCardsCollection.delegate = self
-        menuCardsCollection.dataSource = self
-        menuCardsCollection.alwaysBounceVertical = true
     }
     
     let defaultHeight: CGFloat = 215;
     var computedHeight: [CGFloat] = [];
         
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        //computed height is only stored after a user presses the view more button, so we need to check for initial phase
         if computedHeight != []{
-        return CGSize(width: collectionView.bounds.size.width, height: computedHeight[indexPath.row])
+            return CGSize(width: collectionView.bounds.size.width, height: computedHeight[indexPath.row])
         }
         else{
-            return CGSize(width: collectionView.bounds.size.width, height: 0)
+            return CGSize(width: collectionView.bounds.size.width, height: defaultHeight)
         }
     }
         
@@ -80,7 +78,7 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         cell.menuCard.tableView.delegate = cell.menuCard
         cell.menuCard.tableView.dataSource = cell.menuCard
         
-        cell.menuCard.diningHallName.text? = diningHalls[indexPath.row]
+        cell.menuCard.diningHallName.text? = "De Neve"
         cell.initializeData(data: data)
         
         cell.parentVC = self
@@ -88,6 +86,7 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         cell.index = indexPath
         
         //make sure the button has multiple purposes
+        //we need the count because in the beginning/refresh phase computedHeight = []
         if (computedHeight[indexPath.row] > defaultHeight){
             cell.viewMoreButton.setTitle("View Less", for: .normal)
         }

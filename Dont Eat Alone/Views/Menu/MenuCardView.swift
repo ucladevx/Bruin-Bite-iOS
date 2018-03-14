@@ -12,13 +12,10 @@ import SnapKit
 @IBDesignable
 class MenuCardView: UIView, UITableViewDelegate, UITableViewDataSource {
     
-    @IBOutlet var menuCardView: UIView!
+    @IBOutlet weak var menuCardView: UIView!
     @IBOutlet weak var activityLevelBar: ActivityLevelBar!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var diningHallName: UILabel!
-    
-    var tableExpanded: Bool! = false
-
     
     var data: [Item]
     
