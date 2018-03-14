@@ -9,6 +9,7 @@
 import UIKit
 
 @IBDesignable class TopBar: UIView, TimeViewTappedDelegate, WeekViewTappedDelegate {
+    weak var parentVC: MenuVC?
     var circleLabel = UILabel()
     var dayBtns = [WeekView]()
     var circleSelect = ColoredCircle()
@@ -18,6 +19,8 @@ import UIKit
     var brunch = false
     var morning = true
     var dinner = false
+    var currDay = ""
+    var currTime = MealPeriod.breakfast
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -61,6 +64,7 @@ import UIKit
             if(i==1){
                 circleSelect.frame = CGRect(x:9+50*i, y:18, width: 24, height:24)
                 circleLabel.text = dateFormatter.string(from: date)
+                currDay = dateFormatter.string(from: date)
                 if(Int(circleLabel.text!)! < 10){
                     circleLabel.frame=CGRect(x:17+50*i, y:20, width: 20, height:20)
                 }
@@ -77,6 +81,7 @@ import UIKit
             if (i==1 && (dayBtns[i].weekLbl.text == "Sun" || dayBtns[i].weekLbl.text == "Sat")){
                 brunch = true
                 timeBtns[0].timeLbl.text = "Brunch"
+                currTime = MealPeriod.brunch
                 timeBtns[1].timeLbl.text = ""
                 timeBtns[0].frame = CGRect(x: 0, y: 42, width: 87.5, height: 40)
                 timeBtns[1].frame = CGRect(x: 0, y: 0, width: 0, height: 0)
@@ -97,6 +102,7 @@ import UIKit
     }
     
     func daySelected(_ selectedLabelText: String, dayLabel: String) {
+        currDay = selectedLabelText
         for i in 0 ..< dayBtns.count{
             if(selectedLabelText == dayBtns[i].dateLbl.text){
                 if(dayLabel == "Sun" || dayLabel == "Sat"){
@@ -144,6 +150,7 @@ import UIKit
                 }
             }
         }
+        parentVC?.updateData(currDay, mP: currTime)
     }
     
     func timeSelected(_ selectedLabelText: String){
@@ -153,20 +160,24 @@ import UIKit
             morning = true
             bezelView.frame = CGRect(x: 0, y: 42, width: 87.5, height: 40)
             bezelLabel.frame = CGRect(x: 12, y: 52, width: 80, height: 20)
+            currTime = MealPeriod.breakfast
         }
         if(selectedLabelText == "Brunch"){
             morning = true
             bezelView.frame = CGRect(x: 0, y: 42, width: 87.5, height: 40)
             bezelLabel.frame = CGRect(x: 18.5, y: 52, width: 80, height: 20)
+            currTime = MealPeriod.brunch
         }
         if(selectedLabelText == "Lunch"){
             morning = true
             bezelView.frame = CGRect(x: 87.5, y: 42, width: 87.5, height: 40)
             bezelLabel.frame = CGRect(x: 110, y: 52, width: 70, height: 20)
+            currTime = MealPeriod.lunch
         }
         if(selectedLabelText == "Dinner"){
             morning = false
             dinner = true
+            currTime = MealPeriod.dinner
             if (brunch){
                 bezelView.frame = CGRect(x: 131, y: 42, width: 87.5, height: 40)
                 bezelLabel.frame = CGRect(x: 154, y: 52, width: 70, height: 20)
@@ -178,13 +189,10 @@ import UIKit
         }
         if(selectedLabelText == "Night"){
             morning = false
+            currTime = MealPeriod.lateNight
             bezelView.frame = CGRect(x: 262.5, y: 42, width: 87.5, height: 40)
             bezelLabel.frame = CGRect(x: 289, y: 52, width: 65, height: 20)
         }
-        
-        
+        parentVC?.updateData(currDay, mP: currTime)
     }
-    
-    
-    
 }

@@ -27,11 +27,13 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         
     override func viewDidLoad() {
         
+        super.viewDidLoad()
+        
+        topBar.parentVC = self
         menuCardsCollection.delegate = self
         menuCardsCollection.dataSource = self
         menuCardsCollection.alwaysBounceVertical = true
         
-        super.viewDidLoad()
         topBar.frame = CGRect(x:12.5, y:20, width: 350, height: 82)
         topBar.center.x = self.view.center.x
         self.view.addSubview(topBar)
@@ -40,9 +42,10 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
             for m in parsedMenus{
                 self.menuData.menus.append(m)
             }
-            self.data = self.menuData.getOverviewMenu(date: "14", mealPeriod: .lunch) ?? [:]
-            self.computedHeight = Array(repeating: self.defaultHeight, count: self.data.count)
-            self.menuCardsCollection.reloadData()
+            let date = Date()
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "d"
+            self.updateData(dateFormatter.string(from: date), mP: MealPeriod.breakfast)
         }
 //        API.getDetailedMenu { parsedMenus in
 //            for m in parsedMenus{
@@ -75,6 +78,12 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return data.count
+    }
+    
+    func updateData(_ d: String, mP: MealPeriod){
+        self.data = self.menuData.getOverviewMenu(date: d, mealPeriod: mP) ?? [:]
+        self.computedHeight = Array(repeating: self.defaultHeight, count: self.data.count)
+        self.menuCardsCollection.reloadData()
     }
         
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
