@@ -199,13 +199,27 @@
                     <view key="view" contentMode="scaleToFill" id="Tbp-Mi-2mv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lv9-cF-NZr">
+                                <rect key="frame" x="104" y="318" width="166" height="30"/>
+                                <state key="normal" title="Login with Facebook"/>
+                                <connections>
+                                    <action selector="loginButtonAction:" destination="6hN-nx-STz" eventType="touchUpInside" id="yq7-XI-PQ0"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Lv9-cF-NZr" firstAttribute="leading" secondItem="dbu-Hf-Ejx" secondAttribute="leading" constant="104" id="BZM-cd-6TM"/>
+                            <constraint firstItem="Lv9-cF-NZr" firstAttribute="centerY" secondItem="Tbp-Mi-2mv" secondAttribute="centerY" id="UwJ-AE-OZp"/>
+                            <constraint firstItem="Lv9-cF-NZr" firstAttribute="centerX" secondItem="Tbp-Mi-2mv" secondAttribute="centerX" id="i3L-pw-z3d"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="dbu-Hf-Ejx"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cka-1E-f09" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1887" y="0.0"/>
+            <point key="canvasLocation" x="-1887.2" y="-0.44977511244377816"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
