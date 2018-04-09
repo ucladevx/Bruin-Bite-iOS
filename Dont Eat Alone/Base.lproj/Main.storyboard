@@ -192,10 +192,10 @@
             </objects>
             <point key="canvasLocation" x="749.60000000000002" y="359.37031484257875"/>
         </scene>
-        <!--View Controller-->
+        <!--LoginViewController-->
         <scene sceneID="GBB-RK-ku9">
             <objects>
-                <viewController id="6hN-nx-STz" sceneMemberID="viewController">
+                <viewController title="LoginViewController" id="6hN-nx-STz" customClass="LoginViewController" customModule="Dont_Eat_Alone" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Tbp-Mi-2mv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -205,7 +205,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cka-1E-f09" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1031" y="1024"/>
+            <point key="canvasLocation" x="-1570" y="0.0"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">

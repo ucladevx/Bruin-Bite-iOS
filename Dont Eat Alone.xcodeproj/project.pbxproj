@@ -32,6 +32,7 @@
 		77949970203BD10500F3B0ED /* AllergyFilterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7794996F203BD10400F3B0ED /* AllergyFilterButton.swift */; };
 		77949972203BD12B00F3B0ED /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77949971203BD12B00F3B0ED /* Extensions.swift */; };
 		7F2CE2B970B78A3D4EAA92F3 /* Pods_Dont_Eat_AloneUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 486D54EAA20C6801495DCB82 /* Pods_Dont_Eat_AloneUITests.framework */; };
+		BDDE7C6E207AF6840008A677 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDE7C6D207AF6840008A677 /* LoginViewController.swift */; };
 		C0AD0D34204B4EA9008E1206 /* TopBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0AD0D33204B4EA9008E1206 /* TopBar.swift */; };
 		C0CD676A203C15CC006B265D /* TimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CD6769203C15CC006B265D /* TimeView.swift */; };
 		C0CD676C203C1B19006B265D /* ColoredBezel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CD676B203C1B19006B265D /* ColoredBezel.swift */; };
@@ -92,6 +93,7 @@
 		95F72EF072C1BCB2A65BF28C /* Pods-Dont Eat AloneTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dont Eat AloneTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Dont Eat AloneTests/Pods-Dont Eat AloneTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9F5BCEA43F1BA73C8236EDF3 /* Pods-Dont Eat AloneUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dont Eat AloneUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Dont Eat AloneUITests/Pods-Dont Eat AloneUITests.release.xcconfig"; sourceTree = "<group>"; };
 		AB594487D41E5DD55611BCEC /* Pods_Dont_Eat_Alone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Dont_Eat_Alone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BDDE7C6D207AF6840008A677 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C0AD0D33204B4EA9008E1206 /* TopBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBar.swift; sourceTree = "<group>"; };
 		C0CD6769203C15CC006B265D /* TimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeView.swift; sourceTree = "<group>"; };
 		C0CD676B203C1B19006B265D /* ColoredBezel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColoredBezel.swift; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 				770251B5201D4079002E4515 /* MenuVC.swift */,
 				770251B7201D4079002E4515 /* SecondViewController.swift */,
 				2AFB41322047DD86004025F9 /* ItemDetailViewController.swift */,
+				BDDE7C6D207AF6840008A677 /* LoginViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -580,6 +583,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BDDE7C6E207AF6840008A677 /* LoginViewController.swift in Sources */,
 				770251B8201D4079002E4515 /* SecondViewController.swift in Sources */,
 				C0CD676C203C1B19006B265D /* ColoredBezel.swift in Sources */,
 				770251B4201D4079002E4515 /* AppDelegate.swift in Sources */,
