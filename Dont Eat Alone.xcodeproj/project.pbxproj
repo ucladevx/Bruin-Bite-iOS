@@ -33,6 +33,8 @@
 		77949972203BD12B00F3B0ED /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77949971203BD12B00F3B0ED /* Extensions.swift */; };
 		7F2CE2B970B78A3D4EAA92F3 /* Pods_Dont_Eat_AloneUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 486D54EAA20C6801495DCB82 /* Pods_Dont_Eat_AloneUITests.framework */; };
 		BDDE7C6E207AF6840008A677 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDE7C6D207AF6840008A677 /* LoginViewController.swift */; };
+		BDDE7C70207B04590008A677 /* MatchingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDE7C6F207B04590008A677 /* MatchingListViewController.swift */; };
+		BDDE7C72207B04D00008A677 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDE7C71207B04D00008A677 /* UserTableViewCell.swift */; };
 		C0AD0D34204B4EA9008E1206 /* TopBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0AD0D33204B4EA9008E1206 /* TopBar.swift */; };
 		C0CD676A203C15CC006B265D /* TimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CD6769203C15CC006B265D /* TimeView.swift */; };
 		C0CD676C203C1B19006B265D /* ColoredBezel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CD676B203C1B19006B265D /* ColoredBezel.swift */; };
@@ -94,6 +96,8 @@
 		9F5BCEA43F1BA73C8236EDF3 /* Pods-Dont Eat AloneUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dont Eat AloneUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Dont Eat AloneUITests/Pods-Dont Eat AloneUITests.release.xcconfig"; sourceTree = "<group>"; };
 		AB594487D41E5DD55611BCEC /* Pods_Dont_Eat_Alone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Dont_Eat_Alone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDDE7C6D207AF6840008A677 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		BDDE7C6F207B04590008A677 /* MatchingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchingListViewController.swift; sourceTree = "<group>"; };
+		BDDE7C71207B04D00008A677 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		C0AD0D33204B4EA9008E1206 /* TopBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBar.swift; sourceTree = "<group>"; };
 		C0CD6769203C15CC006B265D /* TimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeView.swift; sourceTree = "<group>"; };
 		C0CD676B203C1B19006B265D /* ColoredBezel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColoredBezel.swift; sourceTree = "<group>"; };
@@ -169,6 +173,7 @@
 				770251B7201D4079002E4515 /* SecondViewController.swift */,
 				2AFB41322047DD86004025F9 /* ItemDetailViewController.swift */,
 				BDDE7C6D207AF6840008A677 /* LoginViewController.swift */,
+				BDDE7C6F207B04590008A677 /* MatchingListViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -246,6 +251,7 @@
 				2A744891203B8E9F00793AD3 /* Models */,
 				2AB62E6A204888760013CB59 /* Network */,
 				770251B9201D4079002E4515 /* Main.storyboard */,
+				BDDE7C73207B04F80008A677 /* UserList */,
 				770251E3201D4182002E4515 /* Moya_Service.swift */,
 				770251C1201D4079002E4515 /* Info.plist */,
 				2A94477C2055F5860033B6C6 /* Supporting Files */,
@@ -279,6 +285,14 @@
 				486D54EAA20C6801495DCB82 /* Pods_Dont_Eat_AloneUITests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BDDE7C73207B04F80008A677 /* UserList */ = {
+			isa = PBXGroup;
+			children = (
+				BDDE7C71207B04D00008A677 /* UserTableViewCell.swift */,
+			);
+			path = UserList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -514,6 +528,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BDDE7C6E207AF6840008A677 /* LoginViewController.swift in Sources */,
+				BDDE7C72207B04D00008A677 /* UserTableViewCell.swift in Sources */,
 				770251B8201D4079002E4515 /* SecondViewController.swift in Sources */,
 				C0CD676C203C1B19006B265D /* ColoredBezel.swift in Sources */,
 				770251B4201D4079002E4515 /* AppDelegate.swift in Sources */,
@@ -523,6 +538,7 @@
 				2AB62E702048D21D0013CB59 /* ActivityLevel.swift in Sources */,
 				2AB62E6C20488A050013CB59 /* MenuAPI.swift in Sources */,
 				2AB62E69204887820013CB59 /* Menu.swift in Sources */,
+				BDDE7C70207B04590008A677 /* MatchingListViewController.swift in Sources */,
 				C0CD676A203C15CC006B265D /* TimeView.swift in Sources */,
 				2B952C67202BDBB200F27727 /* WeekView.swift in Sources */,
 				2A9447802055FA3E0033B6C6 /* AllergensBarScrollView.swift in Sources */,
