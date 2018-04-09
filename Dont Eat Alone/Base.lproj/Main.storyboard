@@ -200,9 +200,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="rES-k0-FGK">
+                                <rect key="frame" x="109" y="108" width="156" height="151"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lv9-cF-NZr">
-                                <rect key="frame" x="104" y="318" width="166" height="30"/>
-                                <state key="normal" title="Login with Facebook"/>
+                                <rect key="frame" x="48" y="311" width="279" height="44"/>
+                                <color key="backgroundColor" red="0.093822307884693146" green="0.40207356214523315" blue="0.65864056348800659" alpha="0.7459332192" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Login with Facebook">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleShadowColor" red="0.093822307884693146" green="0.40207356214523315" blue="0.65864056348800659" alpha="0.7459332192" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="loginButtonAction:" destination="6hN-nx-STz" eventType="touchUpInside" id="yq7-XI-PQ0"/>
                                 </connections>
@@ -210,9 +217,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Lv9-cF-NZr" firstAttribute="leading" secondItem="dbu-Hf-Ejx" secondAttribute="leading" constant="104" id="BZM-cd-6TM"/>
-                            <constraint firstItem="Lv9-cF-NZr" firstAttribute="centerY" secondItem="Tbp-Mi-2mv" secondAttribute="centerY" id="UwJ-AE-OZp"/>
-                            <constraint firstItem="Lv9-cF-NZr" firstAttribute="centerX" secondItem="Tbp-Mi-2mv" secondAttribute="centerX" id="i3L-pw-z3d"/>
+                            <constraint firstItem="dbu-Hf-Ejx" firstAttribute="bottom" secondItem="Lv9-cF-NZr" secondAttribute="bottom" constant="312" id="CIm-DU-SbO"/>
+                            <constraint firstItem="rES-k0-FGK" firstAttribute="leading" secondItem="dbu-Hf-Ejx" secondAttribute="leading" constant="109" id="SY4-iQ-7mn"/>
+                            <constraint firstItem="rES-k0-FGK" firstAttribute="centerX" secondItem="Lv9-cF-NZr" secondAttribute="centerX" id="U4H-Wj-MVb"/>
+                            <constraint firstItem="rES-k0-FGK" firstAttribute="top" secondItem="dbu-Hf-Ejx" secondAttribute="top" constant="88" id="b8j-c8-qRZ"/>
+                            <constraint firstItem="rES-k0-FGK" firstAttribute="centerX" secondItem="Tbp-Mi-2mv" secondAttribute="centerX" id="hes-P4-uDa"/>
+                            <constraint firstItem="Lv9-cF-NZr" firstAttribute="top" secondItem="rES-k0-FGK" secondAttribute="bottom" constant="52" id="rTx-zf-wDl"/>
+                            <constraint firstItem="Lv9-cF-NZr" firstAttribute="leading" secondItem="dbu-Hf-Ejx" secondAttribute="leading" constant="48" id="vsT-Yt-6Lo"/>
+                            <constraint firstItem="Lv9-cF-NZr" firstAttribute="centerY" secondItem="Tbp-Mi-2mv" secondAttribute="centerY" id="wMt-5Q-56h"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="dbu-Hf-Ejx"/>
                     </view>
@@ -241,6 +253,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Logo" width="1761" height="1761"/>
         <image name="first" width="30" height="30"/>
         <image name="second" width="30" height="30"/>
     </resources>
