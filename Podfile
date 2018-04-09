@@ -9,6 +9,7 @@ target 'Dont Eat Alone' do
   pod 'Moya', '~> 10.0'
   pod 'SwiftyJSON'
   pod 'SnapKit'
+  pod 'FBSDKLoginKit'
 
   target 'Dont Eat AloneTests' do
     inherit! :search_paths
