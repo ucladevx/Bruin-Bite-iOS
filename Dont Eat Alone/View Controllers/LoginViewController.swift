@@ -32,8 +32,13 @@ class LoginViewController: UIViewController {
                 print("User cancelled login.")
             case .success(let grantedPermissions, let declinedPermissions, let accessToken):
                 
+                //Test if user already exists
+                //false - "RegistrationView"
+                //true - "MainView"
+                let nextViewID = "RegistrationView"
+                
                 let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-                let nextViewController = storyBoard.instantiateViewController(withIdentifier: "MainView")
+                let nextViewController = storyBoard.instantiateViewController(withIdentifier: nextViewID)
                 self.present(nextViewController, animated:false, completion:nil)
             }
         }
