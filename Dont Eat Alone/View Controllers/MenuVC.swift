@@ -39,15 +39,15 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         self.view.addSubview(topBar)
         // Do any additional setup after loading the view, typically from a nib.
         API.getCurrentActivityLevels { (activityLevels) in
-            /*for a in activityLevels{
+            for a in activityLevels{
                 self.activityLevelData.append(a)
-            }*/
+            }
             //test data
-            self.activityLevelData.append(ActivityLevel(isAvailable: true, location: Location.covel, percent: 30))
+            /*self.activityLevelData.append(ActivityLevel(isAvailable: true, location: Location.covel, percent: 30))
             self.activityLevelData.append(ActivityLevel(isAvailable: true, location: Location.deNeve, percent: 90))
             self.activityLevelData.append(ActivityLevel(isAvailable: true, location: Location.bPlate, percent: 10))
             self.activityLevelData.append(ActivityLevel(isAvailable: true, location: Location.feast, percent: 50))
-            print(self.activityLevelData)
+            print(self.activityLevelData)*/
         }
         API.getOverviewMenu { parsedMenus in
             for m in parsedMenus{
@@ -66,7 +66,6 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
 //                    }
 //                }
 //            }
-//            print("hi")
 //        }
         backgroundTopBar.backgroundColor = UIColor.deaScarlet
         computedHeight = Array(repeating: defaultHeight, count: self.diningHalls.count)
@@ -93,6 +92,7 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
     
     func updateData(_ d: String, mP: MealPeriod){
         self.data = self.menuData.getOverviewMenu(date: d, mealPeriod: mP) ?? [:]
+        print(d, mP)
         self.computedHeight = Array(repeating: self.defaultHeight, count: self.data.count)
         self.menuCardsCollection.reloadData()
     }

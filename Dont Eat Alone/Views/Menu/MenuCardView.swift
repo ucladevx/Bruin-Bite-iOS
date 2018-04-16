@@ -55,7 +55,6 @@ class MenuCardView: UIView, UITableViewDelegate, UITableViewDataSource {
         cell.preservesSuperviewLayoutMargins = true
         cell.separatorInset = UIEdgeInsets.zero
         cell.layoutMargins = UIEdgeInsets.zero
-        print("cellforrowat")
         return cell
     }
     

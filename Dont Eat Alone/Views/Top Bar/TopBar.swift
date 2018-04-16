@@ -112,11 +112,13 @@ import UIKit
                     timeBtns[1].frame = CGRect(x: 0, y: 0, width: 0, height: 0)
                     timeBtns[2].frame = CGRect(x: 131, y: 42, width: 87.5, height: 40)
                     if (!brunch && morning){
+                        currTime = MealPeriod.brunch
                         bezelLabel.text = "Brunch"
                         bezelView.frame = CGRect(x: 0, y: 42, width: 87.5, height: 40)
                         bezelLabel.frame = CGRect(x: 18.5, y: 52, width: 80, height: 20)
                     }
                     if (!brunch && dinner){
+                        currTime = MealPeriod.dinner
                         bezelView.frame = CGRect(x: 131, y: 42, width: 87.5, height: 40)
                         bezelLabel.frame = CGRect(x: 154, y: 52, width: 70, height: 20)
                     }
@@ -131,10 +133,12 @@ import UIKit
                     timeBtns[2].frame = CGRect(x: 175, y: 42, width: 87.5, height: 40)
                     if (brunch && morning){
                         bezelLabel.text = "Breakfast"
+                        currTime = MealPeriod.breakfast
                         bezelView.frame = CGRect(x: 0, y: 42, width: 87.5, height: 40)
                         bezelLabel.frame = CGRect(x: 12, y: 52, width: 80, height: 20)
                     }
                     if (brunch && dinner){
+                        currTime = MealPeriod.dinner
                         bezelView.frame = CGRect(x: 175, y: 42, width: 87.5, height: 40)
                         bezelLabel.frame = CGRect(x: 198, y: 52, width: 70, height: 20)
                     }
