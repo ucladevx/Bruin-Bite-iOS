@@ -92,7 +92,6 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
     
     func updateData(_ d: String, mP: MealPeriod){
         self.data = self.menuData.getOverviewMenu(date: d, mealPeriod: mP) ?? [:]
-        print(d, mP)
         self.computedHeight = Array(repeating: self.defaultHeight, count: self.data.count)
         self.menuCardsCollection.reloadData()
     }
@@ -103,6 +102,10 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         cell.menuCard.tableView.dataSource = cell.menuCard
         
         cell.menuCard.diningHallName.text? = Array(data.keys)[indexPath.row].rawValue
+        print((indexPath.row), Array(data.keys)[indexPath.row].rawValue)
+        print("------------------------------------------------------")
+        print(data[Array(data.keys)[indexPath.row]]!)
+        print("------------------------------------------------------")
         cell.initializeData(data: data[Array(data.keys)[indexPath.row]]!)
         
         cell.parentVC = self

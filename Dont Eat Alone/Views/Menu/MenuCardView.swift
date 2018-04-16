@@ -35,6 +35,7 @@ class MenuCardView: UIView, UITableViewDelegate, UITableViewDataSource {
     
     func populateData(items: [Item]) {
         data = items
+        tableView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
