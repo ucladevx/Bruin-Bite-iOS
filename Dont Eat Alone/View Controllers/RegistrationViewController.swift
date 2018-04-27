@@ -12,24 +12,40 @@ import FacebookCore
 
 class RegistrationViewController: UIViewController {
 
-    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet var signUpUIView: UIView!
+    @IBOutlet var registrationUIView: UIView!
+    
+    
+    @IBOutlet weak var registrationTitleLabel: UILabel!
+    @IBOutlet weak var signUpTitleLabel: UILabel!
+    @IBOutlet weak var toggleSignupButton: UIButton!
+    @IBOutlet weak var useFacebookButton: UIButton!
     
     @IBOutlet weak var yearTextField: UITextField!
     @IBOutlet weak var majorTextField: UITextField!
     
     var dietaryRestrictions = [String : Bool]()
+    var isSigningUp: Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        registrationUIView.isHidden = true
+        
+        registrationUIView.layer.shadowColor = UIColor.black.cgColor
+        registrationUIView.layer.shadowOpacity = 0.5
+        registrationUIView.layer.shadowOffset = CGSize.init(width: 0.5, height: 0.6)
+        registrationUIView.layer.shadowRadius = 10
+        
         UserProfile.loadCurrent({ (result) in
             switch(result)
             {
             case .failed(let error):
-                self.titleLabel.text = "Welcome!"
-                print("\n*****User Profile did not load.*****\n")
+                self.registrationTitleLabel.text = "Welcome!"
+                print("User Profile did not load.")
                 print(error)
             case .success(let profile):
-                self.titleLabel.text = "Welcome \(profile.firstName!)!"
+                self.registrationTitleLabel.text = "Welcome \(profile.firstName!)!"
                 //TODO
                 //Save User's Name here
             }
@@ -45,6 +61,67 @@ class RegistrationViewController: UIViewController {
     @IBAction func editField(_ sender: UITextField)
     {
         sender.backgroundColor = UIColor.white
+    }
+    
+    @IBAction func cont (_ sender: Any){
+        if(isSigningUp) {
+            registrationUIView.frame.origin.x = signUpUIView.frame.width
+            registrationUIView.isHidden = false
+            UIView.animate(withDuration: 0.5, animations: {
+                self.registrationUIView.frame.origin.x = 0
+            }) { (_) in
+                self.signUpUIView.isHidden = true;
+            }
+        }
+        else {
+            performSegue(withIdentifier: "FinishRegistration", sender: nil)
+        }
+    }
+    
+    @IBAction func back (_ sender: Any) {
+        signUpUIView.isHidden = false;
+        UIView.animate(withDuration: 0.5, animations: {
+            self.registrationUIView.frame.origin.x = self.signUpUIView.frame.width
+        }) { (_) in
+            self.registrationUIView.isHidden = true;
+        }
+    }
+    
+    @IBAction func useFacebookButtonAction(sender: UIButton) {
+        let loginManager = LoginManager()
+        loginManager.logIn(readPermissions: [.publicProfile, .email, .userFriends], viewController: self) { (loginResult) in
+            switch loginResult {
+            case .failed(let error):
+                print("Error:::::::\(error)")
+            case .cancelled:
+                print("User cancelled login.")
+            case .success(let grantedPermissions, let declinedPermissions, let accessToken):
+                
+                if(self.isSigningUp) {
+                    self.cont(sender)
+                }
+                else {
+                    let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+                    let nextViewController = storyBoard.instantiateViewController(withIdentifier: "MainView")
+                    self.present(nextViewController, animated:false, completion:nil)
+                }
+            }
+        }
+    }
+    
+    @IBAction func toggleSignupOrSignin (_ sender: Any) {
+        isSigningUp = !isSigningUp
+        var text: String?
+        if (isSigningUp) {
+            text = "Sign Up"
+            toggleSignupButton.setTitle("Already have an account? Sign In", for: UIControlState.normal)
+        }
+        else {
+            text = "Sign In"
+            toggleSignupButton.setTitle("Don't have an account yet? Sign Up", for: UIControlState.normal)
+        }
+        signUpTitleLabel.text = text!
+        useFacebookButton.titleLabel?.text = text! + " with Facebook"
     }
     
     @IBAction func saveButton(_ sender: Any) {
