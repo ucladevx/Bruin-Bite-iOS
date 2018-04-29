@@ -21,6 +21,10 @@ class RegistrationViewController: UIViewController {
     @IBOutlet weak var toggleSignupButton: UIButton!
     @IBOutlet weak var useFacebookButton: UIButton!
     
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    
+    
     @IBOutlet weak var yearTextField: UITextField!
     @IBOutlet weak var majorTextField: UITextField!
     
@@ -50,7 +54,6 @@ class RegistrationViewController: UIViewController {
                 //Save User's Name here
             }
         })
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -63,6 +66,21 @@ class RegistrationViewController: UIViewController {
         sender.backgroundColor = UIColor.white
     }
     
+    @IBAction func dismissKeyboard(_ sender: Any){
+        self.view.endEditing(true)
+    }
+    
+    @IBAction func focusNextField(_ sender: UITextField){
+        if (sender == emailTextField)
+        {
+            passwordTextField.becomeFirstResponder()
+        }
+        else if (sender == yearTextField)
+        {
+            majorTextField.becomeFirstResponder()
+        }
+    }
+    
     @IBAction func cont (_ sender: Any){
         if(isSigningUp) {
             registrationUIView.frame.origin.x = signUpUIView.frame.width
@@ -72,6 +90,8 @@ class RegistrationViewController: UIViewController {
             }) { (_) in
                 self.signUpUIView.isHidden = true;
             }
+            
+            yearTextField.becomeFirstResponder()
         }
         else {
             performSegue(withIdentifier: "FinishRegistration", sender: nil)
@@ -85,6 +105,8 @@ class RegistrationViewController: UIViewController {
         }) { (_) in
             self.registrationUIView.isHidden = true;
         }
+        
+        self.view.endEditing(true)
     }
     
     @IBAction func useFacebookButtonAction(sender: UIButton) {
@@ -142,7 +164,7 @@ class RegistrationViewController: UIViewController {
         {
             //TODO
             //Save Info From Registration Form Here
-            performSegue(withIdentifier: "FinishRegistration", sender: nil)
+            performSegue(withIdentifier: "ContinueRegistration", sender: nil)
         }
     }
     
