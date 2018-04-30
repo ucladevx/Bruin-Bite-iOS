@@ -386,6 +386,7 @@
                     <connections>
                         <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
+                        <segue destination="nzh-LT-kup" kind="relationship" relationship="viewControllers" id="Fee-rG-eXp"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
@@ -394,7 +395,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Button" width="16" height="16"/>
+        <image name="Button" width="68" height="54"/>
         <image name="first" width="30" height="30"/>
         <image name="second" width="30" height="30"/>
     </resources>
