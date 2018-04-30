@@ -23,6 +23,7 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
     var data: [Location: [Item]] = [:]
         
     let diningHalls = ["De Neve", "BPlate", "Covel", "Feast"]
+    var recipeID: String?
 
         
     override func viewDidLoad() {
@@ -146,9 +147,16 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         super.didReceiveMemoryWarning()
     }
     
-    func showItemDetailViewControllerFor(recipeID: String) {
+    func showItemDetailViewControllerFor(recipeID: String?) {
+        self.recipeID = recipeID
         self.performSegue(withIdentifier: "segueToItemDetailVC", sender: nil)
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "segueToItemDetailVC") {
+            let vc = segue.destination as! ItemDetailViewController
+            vc.recipeID = self.recipeID
+        }
+    }
 }
 
