@@ -100,6 +100,7 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         let cell = menuCardsCollection.dequeueReusableCell(withReuseIdentifier: "menuCardCell", for: indexPath) as! MenuCardCollectionViewCell
         cell.menuCard.tableView.delegate = cell.menuCard
         cell.menuCard.tableView.dataSource = cell.menuCard
+        cell.menuCard.parentVC = self
         
         cell.menuCard.diningHallName.text? = Array(data.keys)[indexPath.row].rawValue
         print((indexPath.row), Array(data.keys)[indexPath.row].rawValue)

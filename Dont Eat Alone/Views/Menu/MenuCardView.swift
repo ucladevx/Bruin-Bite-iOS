@@ -18,6 +18,7 @@ class MenuCardView: UIView, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var diningHallName: UILabel!
     
     var data: [Item]
+    weak var parentVC: MenuVC?
     
     //for using custom view in code
     override init(frame: CGRect){
@@ -60,7 +61,7 @@ class MenuCardView: UIView, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.row)
+        print(data[indexPath.row].recipeLink)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
