@@ -61,6 +61,7 @@ class MenuCardView: UIView, UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(data[indexPath.row].recipeLink)
+        self.parentVC?.showItemDetailViewControllerFor(recipeID: "hello")
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

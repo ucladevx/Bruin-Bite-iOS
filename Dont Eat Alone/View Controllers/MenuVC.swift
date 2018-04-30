@@ -145,6 +145,10 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    func showItemDetailViewControllerFor(recipeID: String) {
+        self.performSegue(withIdentifier: "segueToItemDetailVC", sender: nil)
+    }
 
 }
 
