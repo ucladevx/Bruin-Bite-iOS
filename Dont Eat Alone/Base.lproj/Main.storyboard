@@ -268,6 +268,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c4f-2O-Qoh">
                                 <rect key="frame" x="100" y="337" width="34" height="30"/>
                                 <state key="normal" title="Back"/>
+                                <connections>
+                                    <segue destination="SL3-ZA-l82" kind="unwind" unwindAction="unwind:" id="RML-PR-Ts3"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -293,6 +296,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HtH-Qj-YqL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="SL3-ZA-l82" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-1" y="-725"/>
         </scene>
@@ -329,7 +333,7 @@
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
                                         <connections>
                                             <action selector="editField:" destination="mb2-NP-bC3" eventType="editingDidBegin" id="30R-Sd-xnj"/>
                                             <action selector="editField:" destination="mb2-NP-bC3" eventType="valueChanged" id="oUS-2L-drQ"/>
@@ -340,7 +344,7 @@
                                         <rect key="frame" x="9" y="226" width="351" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                         <connections>
                                             <action selector="editField:" destination="mb2-NP-bC3" eventType="editingDidBegin" id="xT2-f8-JbW"/>
                                             <action selector="editField:" destination="mb2-NP-bC3" eventType="valueChanged" id="zKV-FA-t1L"/>
@@ -487,7 +491,7 @@
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next" enablesReturnKeyAutomatically="YES" textContentType="email"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next" textContentType="email"/>
                                         <connections>
                                             <action selector="focusNextField:" destination="mb2-NP-bC3" eventType="primaryActionTriggered" id="eCW-mx-qLf"/>
                                         </connections>
@@ -509,7 +513,7 @@
                                                 </constraints>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES" secureTextEntry="YES" textContentType="password"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES" textContentType="password"/>
                                                 <connections>
                                                     <action selector="dismissKeyboard:" destination="mb2-NP-bC3" eventType="primaryActionTriggered" id="993-HH-pfD"/>
                                                 </connections>

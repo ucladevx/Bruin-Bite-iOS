@@ -201,5 +201,9 @@ class RegistrationViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    
+    @IBAction func unwind(_ sender: UIStoryboardSegue){
+        self.majorTextField.becomeFirstResponder()
+        self.yearTextField.becomeFirstResponder()
+    }
 }
