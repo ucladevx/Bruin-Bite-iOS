@@ -42,12 +42,12 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
             for a in activityLevels{
                 self.activityLevelData.append(a)
             }
-            /*test data
-            self.activityLevelData.append(ActivityLevel(isAvailable: true, location: Location.covel, percent: 30))
+            //test data
+            /*self.activityLevelData.append(ActivityLevel(isAvailable: true, location: Location.covel, percent: 30))
             self.activityLevelData.append(ActivityLevel(isAvailable: true, location: Location.deNeve, percent: 90))
             self.activityLevelData.append(ActivityLevel(isAvailable: true, location: Location.bPlate, percent: 10))
-            self.activityLevelData.append(ActivityLevel(isAvailable: true, location: Location.feast, percent: 50))*/
-            print(self.activityLevelData)
+            self.activityLevelData.append(ActivityLevel(isAvailable: true, location: Location.feast, percent: 50))
+            print(self.activityLevelData)*/
         }
         API.getOverviewMenu { parsedMenus in
             for m in parsedMenus{
@@ -66,7 +66,6 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
 //                    }
 //                }
 //            }
-//            print("hi")
 //        }
         backgroundTopBar.backgroundColor = UIColor.deaScarlet
         computedHeight = Array(repeating: defaultHeight, count: self.diningHalls.count)
@@ -103,6 +102,10 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         cell.menuCard.tableView.dataSource = cell.menuCard
         
         cell.menuCard.diningHallName.text? = Array(data.keys)[indexPath.row].rawValue
+        print((indexPath.row), Array(data.keys)[indexPath.row].rawValue)
+        print("------------------------------------------------------")
+        print(data[Array(data.keys)[indexPath.row]]!)
+        print("------------------------------------------------------")
         cell.initializeData(data: data[Array(data.keys)[indexPath.row]]!)
         
         cell.parentVC = self

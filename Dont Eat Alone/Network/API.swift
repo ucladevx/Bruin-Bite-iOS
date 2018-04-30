@@ -28,15 +28,16 @@ class API{
                         var parsedMeal: [MealPeriod: [Location: [Item]]] = [:]
                         var brunch = false
                         for (time, meal) in overview{
+                            if(time == "breakfast" && meal.isEmpty){
+                                brunch = true;
+                            }
+                        }
+                        for (time, meal) in overview{
                             var parsedLocation: [Location: [Item]] = [:]
                             var mealPeriod: MealPeriod = MealPeriod.breakfast
                             switch(time){ // sets mealPeriod based on input, accounts for brunch
                             case "breakfast":
                                 mealPeriod = MealPeriod.breakfast
-                                if (meal.isEmpty){
-                                    brunch = true
-                                    continue
-                                }
                                 break
                             case "lunch":
                                 mealPeriod = MealPeriod.lunch
