@@ -60,8 +60,9 @@ class MenuCardView: UIView, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(data[indexPath.row].recipeLink)
-        self.parentVC?.showItemDetailViewControllerFor(recipeID: "hello")
+        let recipeID = self.extractRecipeIDFromRecipeURL(recipeURL: data[indexPath.row].recipeLink!) // TODO: Handle optional error
+        print (recipeID)
+        self.parentVC?.showItemDetailViewControllerFor(recipeID: recipeID)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -95,5 +96,11 @@ class MenuCardView: UIView, UITableViewDelegate, UITableViewDataSource {
         
         menuCardView.clipsToBounds = true
         
+    }
+    
+    func extractRecipeIDFromRecipeURL(recipeURL: String) -> String {
+        let constPrefixCount = "http://menu.dining.ucla.edu/Recipes/".count
+        let index = recipeURL.index(recipeURL.startIndex, offsetBy: constPrefixCount)
+        return String(recipeURL[index...]);
     }
 }
