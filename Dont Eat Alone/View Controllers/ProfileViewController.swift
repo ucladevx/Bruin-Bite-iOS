@@ -24,7 +24,7 @@ class ProfileViewController: UIViewController {
             self.pic = profpic
         }
     }
-    let John = userTest.init(inName: "John Doe", inYear: "Sophomore", inMajor: "Psychology Major", profpic: #imageLiteral(resourceName: "Button") )
+    let John = userTest.init(inName: "John Doe", inYear: "Sophomore", inMajor: "Psychology Major", profpic: #imageLiteral(resourceName: "JohnDoe") )
     ///////THIS IS TEMPORARY TEST CODE///////////
     
     
