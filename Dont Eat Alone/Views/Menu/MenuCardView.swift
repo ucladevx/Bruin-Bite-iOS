@@ -53,7 +53,6 @@ class MenuCardView: UIView, UITableViewDelegate, UITableViewDataSource {
         cell.textLabel?.text = data[indexPath.row].name
         cell.indentationWidth = 13
         cell.indentationLevel = 1
-        cell.isUserInteractionEnabled = false
         cell.preservesSuperviewLayoutMargins = true
         cell.separatorInset = UIEdgeInsets.zero
         cell.layoutMargins = UIEdgeInsets.zero
