@@ -83,6 +83,73 @@ class RegistrationViewController: UIViewController {
     
     @IBAction func cont (_ sender: Any){
         if(isSigningUp) {
+            
+            if( sender as? UIButton == useFacebookButton){
+                UserProfile.loadCurrent({ (result) in
+                    switch(result)
+                    {
+                    case .failed(let error):
+                        self.registrationTitleLabel.text = "Welcome!"
+                        print("User Profile did not load.")
+                        print(error)
+                    case .success(let profile):
+                        self.registrationTitleLabel.text = "Welcome \(profile.firstName!)!"
+                        print("NAME: " + profile.fullName!)
+                        
+                        //Pull in profile picture
+                        let session = URLSession(configuration: .default)
+                        
+                        let URL_IMAGE = URL(string: "https://graph.facebook.com/\(profile.userId)/picture?width=640&height=640")
+                        
+                        //creating a dataTask
+                        let getImageFromUrl = session.dataTask(with: URL_IMAGE!) { (data, response, error) in
+                            
+                            //if there is any error
+                            if let e = error {
+                                //displaying the message
+                                print("Error Occurred: \(e)")
+                                
+                            } else {
+                                //in case of now error, checking wheather the response is nil or not
+                                if (response as? HTTPURLResponse) != nil {
+                                    
+                                    //checking if the response contains an image
+                                    if let imageData = data {
+                                        
+                                        //getting the image
+                                        let image = UIImage(data: imageData)
+                                        
+                                        print("PROFILE PICTURE: \(image!)")
+                                        
+                                    } else {
+                                        print("Image file is currupted")
+                                    }
+                                } else {
+                                    print("No response from server")
+                                }
+                            }
+                        }
+                        //starting the download task
+                        getImageFromUrl.resume()
+                        
+                        
+                        let request = GraphRequest(graphPath: "me", parameters: ["fields":"email"], accessToken: AccessToken.current, httpMethod: .GET, apiVersion: FacebookCore.GraphAPIVersion.defaultVersion)
+                        request.start { (response, result) in
+                            switch result {
+                            case .success(let value):
+                                print("EMAIL: \((value.dictionaryValue?["email"])!)")
+                            case .failed(let error):
+                                print(error)
+                            }
+                        }
+                        //TODO
+                        //Save User's Name here
+                    }
+                })
+                
+            }
+            
+            
             registrationUIView.frame.origin.x = signUpUIView.frame.width
             registrationUIView.isHidden = false
             UIView.animate(withDuration: 0.5, animations: {
