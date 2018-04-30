@@ -10,11 +10,13 @@ import UIKit
 import FacebookLogin
 import FacebookCore
 
-class RegistrationViewController: UIViewController {
+class RegistrationViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
     @IBOutlet var signUpUIView: UIView!
     @IBOutlet var registrationUIView: UIView!
     
+    var yearPicker: UIPickerView! = UIPickerView()
+    var pickerData = ["", "First Year", "Second Year", "Third Year", "Fourth Year", "Other"]
     
     @IBOutlet weak var registrationTitleLabel: UILabel!
     @IBOutlet weak var signUpTitleLabel: UILabel!
@@ -33,6 +35,11 @@ class RegistrationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        yearPicker.delegate = self
+        yearPicker.dataSource = self
+        
+        yearTextField.inputView = yearPicker
         
         registrationUIView.isHidden = true
         
@@ -60,6 +67,28 @@ class RegistrationViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return 5
+    }
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        if (row == 0) {
+            return "Select One"
+        }
+        else {
+            return pickerData[row]
+        }
+    }
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        yearTextField.text = pickerData[row]
+    }
+    
     
     @IBAction func editField(_ sender: UITextField)
     {
