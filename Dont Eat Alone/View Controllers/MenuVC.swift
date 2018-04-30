@@ -13,12 +13,16 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
     
     let provider = MoyaProvider<API_methods>()
     
+    @IBOutlet weak var allergensBar: AllergensBarScrollView!
     var topBar = TopBar()
     @IBOutlet weak var backgroundTopBar: UILabel!
     @IBOutlet weak var menuCardsCollection: UICollectionView!
     
     var menuData = MenuController()
     var activityLevelData = [ActivityLevel]()
+    var currDate = "1"
+    var currMP = MealPeriod.breakfast
+    var currAllergens: [Allergen] = []
     
     var data: [Location: [Item]] = [:]
         
@@ -26,9 +30,8 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
 
         
     override func viewDidLoad() {
-        
         super.viewDidLoad()
-        
+        allergensBar.parentVC = self
         topBar.parentVC = self
         menuCardsCollection.delegate = self
         menuCardsCollection.dataSource = self
@@ -42,12 +45,6 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
             for a in activityLevels{
                 self.activityLevelData.append(a)
             }
-            //test data
-            /*self.activityLevelData.append(ActivityLevel(isAvailable: true, location: Location.covel, percent: 30))
-            self.activityLevelData.append(ActivityLevel(isAvailable: true, location: Location.deNeve, percent: 90))
-            self.activityLevelData.append(ActivityLevel(isAvailable: true, location: Location.bPlate, percent: 10))
-            self.activityLevelData.append(ActivityLevel(isAvailable: true, location: Location.feast, percent: 50))
-            print(self.activityLevelData)*/
         }
         API.getOverviewMenu { parsedMenus in
             for m in parsedMenus{
@@ -90,10 +87,63 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         return data.count
     }
     
+    func allergenUpdateData(_ a: Allergen, s: String){
+        //print(a,s)
+        if (s == "On") {
+            currAllergens.append(a)
+            for(loc, var items) in self.data{
+                var i = 0
+                while i < items.count{
+                    if(a == Allergen.Vegan || a == Allergen.Vegetarian) {
+                        if(items[i].allergies?.contains(a))!{
+                            i+=1
+                        }
+                        else{
+                            items.remove(at: i)
+                        }
+                    }
+                    else{
+                        if(items[i].allergies?.contains(a))!{
+                            items.remove(at: i)
+                        }
+                        else{
+                            i+=1
+                        }
+                    }
+                }
+                self.data.updateValue(items, forKey: loc)
+            }
+            self.computedHeight = Array(repeating: self.defaultHeight, count: self.data.count)
+            self.menuCardsCollection.reloadData()
+        }
+        else{
+            currAllergens.remove(at: currAllergens.index(of: a)!)
+            self.data = self.menuData.getOverviewMenu(date: currDate, mealPeriod: currMP) ?? [:]
+            self.computedHeight = Array(repeating: self.defaultHeight, count: self.data.count)
+            self.menuCardsCollection.reloadData()
+        }
+    }
+    
     func updateData(_ d: String, mP: MealPeriod){
+        currDate = d
+        currMP = mP
         self.data = self.menuData.getOverviewMenu(date: d, mealPeriod: mP) ?? [:]
-        self.computedHeight = Array(repeating: self.defaultHeight, count: self.data.count)
-        self.menuCardsCollection.reloadData()
+        if (currAllergens.isEmpty){
+            self.computedHeight = Array(repeating: self.defaultHeight, count: self.data.count)
+            self.menuCardsCollection.reloadData()
+        }
+        else{
+            var tempAllergens = currAllergens
+            currAllergens = []
+            var i = tempAllergens.count-1
+            var a: Allergen
+            while i >= 0 {
+                a = tempAllergens[i]
+                tempAllergens.remove(at: i)
+                allergenUpdateData(a, s: "On")
+                i-=1
+            }
+        }
     }
         
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -102,10 +152,6 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         cell.menuCard.tableView.dataSource = cell.menuCard
         
         cell.menuCard.diningHallName.text? = Array(data.keys)[indexPath.row].rawValue
-        print((indexPath.row), Array(data.keys)[indexPath.row].rawValue)
-        print("------------------------------------------------------")
-        print(data[Array(data.keys)[indexPath.row]]!)
-        print("------------------------------------------------------")
         cell.initializeData(data: data[Array(data.keys)[indexPath.row]]!)
         
         cell.parentVC = self
