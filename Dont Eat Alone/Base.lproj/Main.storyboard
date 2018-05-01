@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -176,6 +176,85 @@
             </objects>
             <point key="canvasLocation" x="1694" y="-191"/>
         </scene>
+        <!--Preference View Controller-->
+        <scene sceneID="xvJ-WR-2UU">
+            <objects>
+                <viewController id="TG0-hq-ipf" customClass="PreferenceViewController" customModule="Dont_Eat_Alone" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="csY-M3-pbx">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="List your preferences" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VnD-1f-gAW">
+                                <rect key="frame" x="41" y="97" width="292" height="66"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="66" id="eTE-AJ-QxK"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Day" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MzG-j6-DTq">
+                                <rect key="frame" x="86" y="193" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dining Hall" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PfH-Q0-Teu">
+                                <rect key="frame" x="86" y="275" width="87" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UdP-jv-K5d">
+                                <rect key="frame" x="66" y="438" width="242" height="72"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="72" id="SoQ-kH-Rot"/>
+                                </constraints>
+                                <state key="normal" image="matchbutton"/>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="N7x-2e-f60">
+                                <rect key="frame" x="86" y="222" width="203" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oZf-4U-ogo">
+                                <rect key="frame" x="86" y="304" width="203" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="N7x-2e-f60" firstAttribute="leading" secondItem="MzG-j6-DTq" secondAttribute="leading" id="0T7-RA-tkl"/>
+                            <constraint firstItem="oZf-4U-ogo" firstAttribute="trailing" secondItem="N7x-2e-f60" secondAttribute="trailing" id="4T4-ZW-zD7"/>
+                            <constraint firstItem="VnD-1f-gAW" firstAttribute="leading" secondItem="OTR-Em-dPB" secondAttribute="leading" constant="41" id="AL6-Mq-P3X"/>
+                            <constraint firstItem="oZf-4U-ogo" firstAttribute="leading" secondItem="PfH-Q0-Teu" secondAttribute="leading" id="AYj-mU-oXL"/>
+                            <constraint firstItem="VnD-1f-gAW" firstAttribute="top" secondItem="OTR-Em-dPB" secondAttribute="top" constant="77" id="FUs-UY-fxV"/>
+                            <constraint firstItem="N7x-2e-f60" firstAttribute="top" secondItem="MzG-j6-DTq" secondAttribute="bottom" constant="8" symbolic="YES" id="IVi-wn-ZFS"/>
+                            <constraint firstItem="MzG-j6-DTq" firstAttribute="top" secondItem="VnD-1f-gAW" secondAttribute="bottom" constant="30" id="MaN-fv-JrY"/>
+                            <constraint firstItem="N7x-2e-f60" firstAttribute="centerX" secondItem="VnD-1f-gAW" secondAttribute="centerX" id="NF6-5G-xsh"/>
+                            <constraint firstItem="PfH-Q0-Teu" firstAttribute="leading" secondItem="N7x-2e-f60" secondAttribute="leading" id="Sqt-id-ezX"/>
+                            <constraint firstItem="UdP-jv-K5d" firstAttribute="leading" secondItem="OTR-Em-dPB" secondAttribute="leading" constant="66" id="a5u-D5-qEX"/>
+                            <constraint firstItem="MzG-j6-DTq" firstAttribute="leading" secondItem="OTR-Em-dPB" secondAttribute="leading" constant="86" id="ayI-ER-LJS"/>
+                            <constraint firstItem="oZf-4U-ogo" firstAttribute="top" secondItem="PfH-Q0-Teu" secondAttribute="bottom" constant="8" symbolic="YES" id="cU1-Gb-IHO"/>
+                            <constraint firstItem="OTR-Em-dPB" firstAttribute="trailing" secondItem="MzG-j6-DTq" secondAttribute="trailing" constant="247" id="cd2-zw-0rs"/>
+                            <constraint firstItem="VnD-1f-gAW" firstAttribute="centerX" secondItem="csY-M3-pbx" secondAttribute="centerX" id="jn5-KZ-sWt"/>
+                            <constraint firstItem="UdP-jv-K5d" firstAttribute="centerX" secondItem="VnD-1f-gAW" secondAttribute="centerX" id="nht-Lv-9BY"/>
+                            <constraint firstItem="OTR-Em-dPB" firstAttribute="bottom" secondItem="UdP-jv-K5d" secondAttribute="bottom" constant="157" id="rNM-OB-BkJ"/>
+                            <constraint firstItem="PfH-Q0-Teu" firstAttribute="top" secondItem="N7x-2e-f60" secondAttribute="bottom" constant="23" id="xJm-47-mDZ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="OTR-Em-dPB"/>
+                    </view>
+                    <connections>
+                        <outlet property="dateField" destination="N7x-2e-f60" id="oUI-7x-N3u"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yR4-ME-9Ke" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-907" y="1056"/>
+        </scene>
         <!--Second-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
@@ -213,6 +292,7 @@
     </scenes>
     <resources>
         <image name="first" width="30" height="30"/>
+        <image name="matchbutton" width="568" height="194"/>
         <image name="second" width="30" height="30"/>
     </resources>
 </document>
