@@ -7,45 +7,23 @@
 //
 
 import UIKit
+import CZPicker
 
 class PreferenceViewController: UIViewController {
 
     @IBOutlet weak var dateField: UITextField!
-    let picker = UIDatePicker()
+    @IBOutlet weak var diningField: UITextField!
+    let diningpicker = CZPickerView(headerTitle: "Dining Hall", cancelButtonTitle: "Cancel", confirmButtonTitle: "Confirm")
+    
+    let dininghalls = ["Covel", "De Neve", "Feast", "Bruin Plate"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        diningField.font = UIFont(name: "Avenir", size: 18)
+        diningField.textColor = UIColor.darkGray
+        dateField.font = UIFont(name: "Avenir", size: 18)
+        dateField.textColor = UIColor.darkGray
         
-        createDataPicker()
-        // Do any additional setup after loading the view.
-    }
-    
-    func createDataPicker() {
-        //toolbar
-        let toolbar = UIToolbar()
-        toolbar.sizeToFit()
-        //done button for toolbar
-        let done = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(donePressed))
-        toolbar.setItems([done], animated: false)
-        
-        dateField.inputAccessoryView = toolbar
-        dateField.inputView = picker
-        //format picker for date
-        picker.datePickerMode = .date
-        var components = DateComponents()
-        picker.minimumDate = Calendar.current.date(byAdding: components, to: Date())
-        
-    }
-    
-    @objc func donePressed() {
-        //format date
-        let formatter = DateFormatter()
-        formatter.dateStyle = .medium
-        formatter.timeStyle = .none
-        let dateString = formatter.string(from: picker.date)
-        
-        dateField.text = "\(dateString)"
-        self.view.endEditing(true)
     }
     
     override func didReceiveMemoryWarning() {
@@ -53,6 +31,48 @@ class PreferenceViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func showWithMultipleSelections(sender: AnyObject) {
+        diningpicker?.delegate = self as CZPickerViewDelegate
+        diningpicker?.dataSource = self as CZPickerViewDataSource
+        diningpicker?.needFooterView = false
+        diningpicker?.allowMultipleSelection = true
+        diningpicker?.show()
+    }
+}
+
+
+extension PreferenceViewController: CZPickerViewDelegate, CZPickerViewDataSource {
+        func numberOfRows(in pickerView: CZPickerView!) -> Int {
+            return dininghalls.count
+        }
+    
+    
+    func czpickerView(_ pickerView: CZPickerView!, titleForRow row: Int) -> String! {
+            return dininghalls[row]
+        }
+        
+    func czpickerView(_ pickerView: CZPickerView!, didConfirmWithItemAtRow row: Int){
+        print(dininghalls[row])
+            self.navigationController?.setNavigationBarHidden(true, animated: true)
+            
+        }
+        
+    func czpickerViewDidClickCancelButton(_ pickerView: CZPickerView!) {
+            self.navigationController?.setNavigationBarHidden(true, animated: true)
+        }
+    
+    func czpickerView(_ pickerView: CZPickerView!, didConfirmWithItemsAtRows rows: [Any]!) {
+        var chosen = String()
+        var i = 1
+        for row in rows {
+            chosen += dininghalls[row as! Int]
+            if i != rows.count {
+                chosen += ", "
+            }
+            i += 1
+        }
+        diningField.text = chosen
+    }
     
     /*
      // MARK: - Navigation
@@ -65,3 +85,4 @@ class PreferenceViewController: UIViewController {
      */
     
 }
+

@@ -212,27 +212,38 @@
                                 </constraints>
                                 <state key="normal" image="matchbutton"/>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="N7x-2e-f60">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" borderStyle="roundedRect" placeholder="Choose Date" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="N7x-2e-f60">
                                 <rect key="frame" x="86" y="222" width="203" height="30"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <attributedString key="attributedText"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oZf-4U-ogo">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" borderStyle="roundedRect" placeholder="Pick Dining Hall" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oZf-4U-ogo">
                                 <rect key="frame" x="86" y="304" width="203" height="30"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <attributedString key="attributedText"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="showWithMultipleSelectionsWithSender:" destination="TG0-hq-ipf" eventType="editingDidEnd" id="vuI-MH-YZ6"/>
+                                </connections>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n98-P2-fx5">
+                                <rect key="frame" x="86" y="304" width="203" height="30"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="showWithMultipleSelectionsWithSender:" destination="TG0-hq-ipf" eventType="touchUpInside" id="8Gq-hR-9Dp"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="N7x-2e-f60" firstAttribute="leading" secondItem="MzG-j6-DTq" secondAttribute="leading" id="0T7-RA-tkl"/>
+                            <constraint firstItem="n98-P2-fx5" firstAttribute="trailing" secondItem="oZf-4U-ogo" secondAttribute="trailing" id="2oH-EG-CDB"/>
                             <constraint firstItem="oZf-4U-ogo" firstAttribute="trailing" secondItem="N7x-2e-f60" secondAttribute="trailing" id="4T4-ZW-zD7"/>
                             <constraint firstItem="VnD-1f-gAW" firstAttribute="leading" secondItem="OTR-Em-dPB" secondAttribute="leading" constant="41" id="AL6-Mq-P3X"/>
                             <constraint firstItem="oZf-4U-ogo" firstAttribute="leading" secondItem="PfH-Q0-Teu" secondAttribute="leading" id="AYj-mU-oXL"/>
+                            <constraint firstItem="n98-P2-fx5" firstAttribute="leading" secondItem="oZf-4U-ogo" secondAttribute="leading" id="DK6-To-Zaj"/>
                             <constraint firstItem="VnD-1f-gAW" firstAttribute="top" secondItem="OTR-Em-dPB" secondAttribute="top" constant="77" id="FUs-UY-fxV"/>
                             <constraint firstItem="N7x-2e-f60" firstAttribute="top" secondItem="MzG-j6-DTq" secondAttribute="bottom" constant="8" symbolic="YES" id="IVi-wn-ZFS"/>
+                            <constraint firstItem="n98-P2-fx5" firstAttribute="top" secondItem="oZf-4U-ogo" secondAttribute="top" id="IbG-RI-cUv"/>
                             <constraint firstItem="MzG-j6-DTq" firstAttribute="top" secondItem="VnD-1f-gAW" secondAttribute="bottom" constant="30" id="MaN-fv-JrY"/>
                             <constraint firstItem="N7x-2e-f60" firstAttribute="centerX" secondItem="VnD-1f-gAW" secondAttribute="centerX" id="NF6-5G-xsh"/>
                             <constraint firstItem="PfH-Q0-Teu" firstAttribute="leading" secondItem="N7x-2e-f60" secondAttribute="leading" id="Sqt-id-ezX"/>
@@ -249,11 +260,12 @@
                     </view>
                     <connections>
                         <outlet property="dateField" destination="N7x-2e-f60" id="oUI-7x-N3u"/>
+                        <outlet property="diningField" destination="oZf-4U-ogo" id="v4z-c5-HCx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yR4-ME-9Ke" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-907" y="1056"/>
+            <point key="canvasLocation" x="-908" y="1055.6221889055473"/>
         </scene>
         <!--Second-->
         <scene sceneID="wg7-f3-ORb">
