@@ -12,6 +12,8 @@ import WebKit
 class ItemDetailViewController: UIViewController {
 
     @IBOutlet weak var webView: WKWebView!
+    var recipeID: String?
+    let nutritionBoxURL = "https://api.ucla-eats.com/api/v1/menu/nutritionbox?recipe_link="
     
     @IBOutlet weak var ingredientsBar: UIView!
     override func viewDidLoad() {
@@ -23,7 +25,7 @@ class ItemDetailViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        if let url = URL(string: "http://13.57.209.253:5000/api/v1/menu/nutritionfacts"){
+        if let url = URL(string: nutritionBoxURL + recipeID!) { // TODO: hopefully, handle empty RecipeID
             let urlRequest: URLRequest = URLRequest(url: url)
             webView.load(urlRequest)
         }
