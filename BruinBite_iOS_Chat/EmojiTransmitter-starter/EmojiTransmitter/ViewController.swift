@@ -29,7 +29,7 @@ final class ViewController: UIViewController {
 
   // MARK: - Properties
   var username = ""
-  var socket = WebSocket(url: URL(string: "ws://localhost:8000/chat/room1")!, protocols: ["chat"])
+  var socket = WebSocket(url: URL(string: "https://django-channels-example.herokuapp.com/chat/devxdemo")!, protocols: ["chat"])
 
   // MARK: - IBOutlets
   @IBOutlet var emojiLabel: UILabel!
@@ -76,6 +76,7 @@ fileprivate extension ViewController {
     
     //  Stringify the dict
     do {
+      print("Sending")
     let data = try JSONSerialization.data(withJSONObject: messageWrapper, options: .prettyPrinted)
       let stringedJSON = String(data: data, encoding: String.Encoding.utf8) ?? ""
       socket.write(string: stringedJSON)
