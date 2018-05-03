@@ -89,8 +89,13 @@ class MenuController{
         for menu in menus{
             let index = menu.date.index(menu.date.endIndex, offsetBy: -2)
             let sub = menu.date[index...]
-            if(sub == date){
-                return menu.overviewData[mealPeriod]
+            if let subInt = Int(sub), let dateInt = Int(date) {
+                if(subInt == dateInt){
+                    return menu.overviewData[mealPeriod]
+                }
+            } else {
+                // TODO: This should never happen, but handle this error gracefully if it does.
+                print ("Menu.swift L92: Could not cast day to int, an error has occured.")
             }
         }
         return nil
