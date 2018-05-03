@@ -39,6 +39,8 @@
 		BDDE7C72207B04D00008A677 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDE7C71207B04D00008A677 /* UserTableViewCell.swift */; };
 		BF0523E1209AA7DC0013EE11 /* PreferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0523E0209AA7DB0013EE11 /* PreferenceViewController.swift */; };
 		BF0523E3209AA7E00013EE11 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0523E2209AA7E00013EE11 /* ProfileViewController.swift */; };
+		BFE168A1209AB8BD00D021A2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE168A0209AB8BD00D021A2 /* ViewController.swift */; };
+		BFE168A3209AB8DD00D021A2 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE168A2209AB8DD00D021A2 /* CollectionViewController.swift */; };
 		C0AD0D34204B4EA9008E1206 /* TopBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0AD0D33204B4EA9008E1206 /* TopBar.swift */; };
 		C0CD676A203C15CC006B265D /* TimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CD6769203C15CC006B265D /* TimeView.swift */; };
 		C0CD676C203C1B19006B265D /* ColoredBezel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CD676B203C1B19006B265D /* ColoredBezel.swift */; };
@@ -106,6 +108,8 @@
 		BDDE7C71207B04D00008A677 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		BF0523E0209AA7DB0013EE11 /* PreferenceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferenceViewController.swift; sourceTree = "<group>"; };
 		BF0523E2209AA7E00013EE11 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		BFE168A0209AB8BD00D021A2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		BFE168A2209AB8DD00D021A2 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		C0AD0D33204B4EA9008E1206 /* TopBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBar.swift; sourceTree = "<group>"; };
 		C0CD6769203C15CC006B265D /* TimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeView.swift; sourceTree = "<group>"; };
 		C0CD676B203C1B19006B265D /* ColoredBezel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColoredBezel.swift; sourceTree = "<group>"; };
@@ -186,6 +190,8 @@
 				BDDE7C6F207B04590008A677 /* MatchingListViewController.swift */,
 				009DD511207B0C5600BC2147 /* RegistrationViewController.swift */,
 				009FDBC6209682BD00308641 /* BioViewController.swift */,
+				BFE168A0209AB8BD00D021A2 /* ViewController.swift */,
+				BFE168A2209AB8DD00D021A2 /* CollectionViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -513,6 +519,7 @@
 				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -527,6 +534,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -556,9 +564,11 @@
 				2AB62E6C20488A050013CB59 /* MenuAPI.swift in Sources */,
 				2AB62E69204887820013CB59 /* Menu.swift in Sources */,
 				BDDE7C70207B04590008A677 /* MatchingListViewController.swift in Sources */,
+				BFE168A3209AB8DD00D021A2 /* CollectionViewController.swift in Sources */,
 				C0CD676A203C15CC006B265D /* TimeView.swift in Sources */,
 				2B952C67202BDBB200F27727 /* WeekView.swift in Sources */,
 				2A9447802055FA3E0033B6C6 /* AllergensBarScrollView.swift in Sources */,
+				BFE168A1209AB8BD00D021A2 /* ViewController.swift in Sources */,
 				77949970203BD10500F3B0ED /* AllergyFilterButton.swift in Sources */,
 				77949972203BD12B00F3B0ED /* Extensions.swift in Sources */,
 				770CDEB020266B6000658925 /* ActivityLevelBar.swift in Sources */,
@@ -676,6 +686,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -725,6 +736,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
