@@ -21,16 +21,19 @@ class AllergyFilterButton: UIButton {
     
     @IBInspectable
     var is_selected: Bool = false
+    weak var parentVC: MenuVC?
     
-    var _allergy_name = ""
+    var _allergy_enum = Allergen.None
     @IBInspectable
-    var allergy_name: String{
+    var allergy_name = ""
+    var allergy_enum: Allergen{
         set (newVal){
-            _allergy_name = newVal
+            _allergy_enum = newVal
+            allergy_name = allergy_enum.rawValue
             fit_to_word_length()
         }
         get{
-            return _allergy_name
+            return _allergy_enum
         }
     }
     
@@ -46,12 +49,14 @@ class AllergyFilterButton: UIButton {
             self.backgroundColor = UIColor.deaGrey
             self.setTitleColor(UIColor.deaWhite, for: .normal)
             self.setTitle(allergy_name, for: .normal)
+            parentVC?.allergenUpdateData(allergy_enum, s:"On")
             fit_to_word_length()
         }
         else {
             self.backgroundColor = UIColor.clear
             self.setTitleColor(UIColor.deaGrey, for: .normal)
             self.setTitle(allergy_name, for: .normal)
+            parentVC?.allergenUpdateData(allergy_enum, s:"Off")
             fit_to_word_length()
         }
     }
