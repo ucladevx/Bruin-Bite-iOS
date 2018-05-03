@@ -103,9 +103,6 @@ import UIKit
     
     func daySelected(_ selectedLabelText: String, dayLabel: String) {
         currDay = selectedLabelText
-        if (Int(selectedLabelText)! >= 1 && Int(selectedLabelText)! <= 9){
-            currDay = "0" + currDay
-        }
         for i in 0 ..< dayBtns.count{
             if(selectedLabelText == dayBtns[i].dateLbl.text){
                 if(dayLabel == "Sun" || dayLabel == "Sat"){
