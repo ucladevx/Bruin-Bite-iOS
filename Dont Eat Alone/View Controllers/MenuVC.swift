@@ -23,6 +23,7 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
     var data: [Location: [Item]] = [:]
         
     let diningHalls = ["De Neve", "BPlate", "Covel", "Feast"]
+    var menuItem: Item?
 
         
     override func viewDidLoad() {
@@ -100,6 +101,7 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         let cell = menuCardsCollection.dequeueReusableCell(withReuseIdentifier: "menuCardCell", for: indexPath) as! MenuCardCollectionViewCell
         cell.menuCard.tableView.delegate = cell.menuCard
         cell.menuCard.tableView.dataSource = cell.menuCard
+        cell.menuCard.parentVC = self
         
         cell.menuCard.diningHallName.text? = Array(data.keys)[indexPath.row].rawValue
         print((indexPath.row), Array(data.keys)[indexPath.row].rawValue)
@@ -144,6 +146,17 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    func showItemDetailViewControllerFor(menuItem: Item?) {
+        self.menuItem = menuItem
+        self.performSegue(withIdentifier: "segueToItemDetailVC", sender: nil)
+    }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "segueToItemDetailVC") {
+            let vc = segue.destination as! ItemDetailViewController
+            vc.menuItem = self.menuItem
+        }
+    }
 }
 
