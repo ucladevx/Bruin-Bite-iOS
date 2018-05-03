@@ -10,6 +10,7 @@ target 'Dont Eat Alone' do
   pod 'SwiftyJSON'
   pod 'SnapKit'
   pod 'FacebookLogin'
+  pod 'CZPicker'
 
   target 'Dont Eat AloneTests' do
     inherit! :search_paths
