@@ -21,18 +21,18 @@ import Foundation
  */
 
 //---Enums---
-enum Allergen{
-    case None
-    case Vegetarian
-    case Vegan
-    case ContainsPeanuts
-    case ContainsTreeNuts
-    case ContainsWheat
-    case ContainsSoy
-    case ContainsDairy
-    case ContainsEggs
-    case ContainsShellfish
-    case ContainsFish
+enum Allergen: String{
+    case None = "None"
+    case Vegetarian = "Vegetarian"
+    case Vegan = "Vegan"
+    case ContainsPeanuts = "Peanuts"
+    case ContainsTreeNuts = "TreeNuts"
+    case ContainsWheat = "Wheat"
+    case ContainsSoy = "Soy"
+    case ContainsDairy = "Dairy"
+    case ContainsEggs = "Eggs"
+    case ContainsShellfish = "Shellfish"
+    case ContainsFish = "Fish"
 }
 
 enum MealPeriod: String{
