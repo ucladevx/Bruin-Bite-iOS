@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		009DD512207B0C5600BC2147 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009DD511207B0C5600BC2147 /* RegistrationViewController.swift */; };
+		009FDBC7209682BD00308641 /* BioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009FDBC6209682BD00308641 /* BioViewController.swift */; };
 		2A744895203BBDBC00793AD3 /* MenuCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A744894203BBDBC00793AD3 /* MenuCardView.swift */; };
 		2A744897203BBEDA00793AD3 /* MenuCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A744896203BBEDA00793AD3 /* MenuCardView.xib */; };
 		2A9447802055FA3E0033B6C6 /* AllergensBarScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A94477F2055FA3E0033B6C6 /* AllergensBarScrollView.swift */; };
@@ -32,6 +34,13 @@
 		77949970203BD10500F3B0ED /* AllergyFilterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7794996F203BD10400F3B0ED /* AllergyFilterButton.swift */; };
 		77949972203BD12B00F3B0ED /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77949971203BD12B00F3B0ED /* Extensions.swift */; };
 		7F2CE2B970B78A3D4EAA92F3 /* Pods_Dont_Eat_AloneUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 486D54EAA20C6801495DCB82 /* Pods_Dont_Eat_AloneUITests.framework */; };
+		BDDE7C6E207AF6840008A677 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDE7C6D207AF6840008A677 /* LoginViewController.swift */; };
+		BDDE7C70207B04590008A677 /* MatchingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDE7C6F207B04590008A677 /* MatchingListViewController.swift */; };
+		BDDE7C72207B04D00008A677 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDE7C71207B04D00008A677 /* UserTableViewCell.swift */; };
+		BF0523E1209AA7DC0013EE11 /* PreferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0523E0209AA7DB0013EE11 /* PreferenceViewController.swift */; };
+		BF0523E3209AA7E00013EE11 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0523E2209AA7E00013EE11 /* ProfileViewController.swift */; };
+		BFE168A1209AB8BD00D021A2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE168A0209AB8BD00D021A2 /* ViewController.swift */; };
+		BFE168A3209AB8DD00D021A2 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE168A2209AB8DD00D021A2 /* CollectionViewController.swift */; };
 		C0AD0D34204B4EA9008E1206 /* TopBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0AD0D33204B4EA9008E1206 /* TopBar.swift */; };
 		C0CD676A203C15CC006B265D /* TimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CD6769203C15CC006B265D /* TimeView.swift */; };
 		C0CD676C203C1B19006B265D /* ColoredBezel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CD676B203C1B19006B265D /* ColoredBezel.swift */; };
@@ -56,6 +65,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		009DD511207B0C5600BC2147 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
+		009FDBC6209682BD00308641 /* BioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BioViewController.swift; sourceTree = "<group>"; };
 		1CE69B303700A4BB00F6EBEA /* Pods-Dont Eat AloneUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dont Eat AloneUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Dont Eat AloneUITests/Pods-Dont Eat AloneUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		266C33EA78F943413B244B8D /* Pods-Dont Eat Alone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dont Eat Alone.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Dont Eat Alone/Pods-Dont Eat Alone.debug.xcconfig"; sourceTree = "<group>"; };
 		2A744894203BBDBC00793AD3 /* MenuCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCardView.swift; sourceTree = "<group>"; };
@@ -92,6 +103,13 @@
 		95F72EF072C1BCB2A65BF28C /* Pods-Dont Eat AloneTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dont Eat AloneTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Dont Eat AloneTests/Pods-Dont Eat AloneTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9F5BCEA43F1BA73C8236EDF3 /* Pods-Dont Eat AloneUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dont Eat AloneUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Dont Eat AloneUITests/Pods-Dont Eat AloneUITests.release.xcconfig"; sourceTree = "<group>"; };
 		AB594487D41E5DD55611BCEC /* Pods_Dont_Eat_Alone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Dont_Eat_Alone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BDDE7C6D207AF6840008A677 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		BDDE7C6F207B04590008A677 /* MatchingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchingListViewController.swift; sourceTree = "<group>"; };
+		BDDE7C71207B04D00008A677 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
+		BF0523E0209AA7DB0013EE11 /* PreferenceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferenceViewController.swift; sourceTree = "<group>"; };
+		BF0523E2209AA7E00013EE11 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		BFE168A0209AB8BD00D021A2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		BFE168A2209AB8DD00D021A2 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		C0AD0D33204B4EA9008E1206 /* TopBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBar.swift; sourceTree = "<group>"; };
 		C0CD6769203C15CC006B265D /* TimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeView.swift; sourceTree = "<group>"; };
 		C0CD676B203C1B19006B265D /* ColoredBezel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColoredBezel.swift; sourceTree = "<group>"; };
@@ -163,9 +181,17 @@
 		2A94477B2055F5570033B6C6 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				BF0523E2209AA7E00013EE11 /* ProfileViewController.swift */,
+				BF0523E0209AA7DB0013EE11 /* PreferenceViewController.swift */,
 				770251B5201D4079002E4515 /* MenuVC.swift */,
 				770251B7201D4079002E4515 /* SecondViewController.swift */,
 				2AFB41322047DD86004025F9 /* ItemDetailViewController.swift */,
+				BDDE7C6D207AF6840008A677 /* LoginViewController.swift */,
+				BDDE7C6F207B04590008A677 /* MatchingListViewController.swift */,
+				009DD511207B0C5600BC2147 /* RegistrationViewController.swift */,
+				009FDBC6209682BD00308641 /* BioViewController.swift */,
+				BFE168A0209AB8BD00D021A2 /* ViewController.swift */,
+				BFE168A2209AB8DD00D021A2 /* CollectionViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -243,6 +269,7 @@
 				2A744891203B8E9F00793AD3 /* Models */,
 				2AB62E6A204888760013CB59 /* Network */,
 				770251B9201D4079002E4515 /* Main.storyboard */,
+				BDDE7C73207B04F80008A677 /* UserList */,
 				770251E3201D4182002E4515 /* Moya_Service.swift */,
 				770251C1201D4079002E4515 /* Info.plist */,
 				2A94477C2055F5860033B6C6 /* Supporting Files */,
@@ -278,6 +305,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		BDDE7C73207B04F80008A677 /* UserList */ = {
+			isa = PBXGroup;
+			children = (
+				BDDE7C71207B04D00008A677 /* UserTableViewCell.swift */,
+			);
+			path = UserList;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -290,7 +325,6 @@
 				770251AD201D4079002E4515 /* Frameworks */,
 				770251AE201D4079002E4515 /* Resources */,
 				D601296F579F59F8E568D410 /* [CP] Embed Pods Frameworks */,
-				22AE740573E6AF60F2FCB967 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -309,8 +343,6 @@
 				770251C2201D4079002E4515 /* Sources */,
 				770251C3201D4079002E4515 /* Frameworks */,
 				770251C4201D4079002E4515 /* Resources */,
-				1AD6F4EB0201AA6CF86557D5 /* [CP] Embed Pods Frameworks */,
-				B607FE36529F520E773E69D9 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -330,8 +362,6 @@
 				770251CD201D4079002E4515 /* Sources */,
 				770251CE201D4079002E4515 /* Frameworks */,
 				770251CF201D4079002E4515 /* Resources */,
-				4006F13E8ECE2B8030D193D5 /* [CP] Embed Pods Frameworks */,
-				23C8FF933587D790B30A3C57 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -418,21 +448,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1AD6F4EB0201AA6CF86557D5 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Dont Eat AloneTests/Pods-Dont Eat AloneTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		1DE3B015D4DCEE39A622FF08 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -449,51 +464,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		22AE740573E6AF60F2FCB967 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Dont Eat Alone/Pods-Dont Eat Alone-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		23C8FF933587D790B30A3C57 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Dont Eat AloneUITests/Pods-Dont Eat AloneUITests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		4006F13E8ECE2B8030D193D5 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Dont Eat AloneUITests/Pods-Dont Eat AloneUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		9CD354889BDF636A445503C0 /* [CP] Check Pods Manifest.lock */ = {
@@ -532,21 +502,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B607FE36529F520E773E69D9 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Dont Eat AloneTests/Pods-Dont Eat AloneTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		D601296F579F59F8E568D410 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -555,17 +510,31 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Dont Eat Alone/Pods-Dont Eat Alone-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/CZPicker/CZPicker.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
 				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CZPicker.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookLogin.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -580,21 +549,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BDDE7C6E207AF6840008A677 /* LoginViewController.swift in Sources */,
+				BDDE7C72207B04D00008A677 /* UserTableViewCell.swift in Sources */,
 				770251B8201D4079002E4515 /* SecondViewController.swift in Sources */,
 				C0CD676C203C1B19006B265D /* ColoredBezel.swift in Sources */,
 				770251B4201D4079002E4515 /* AppDelegate.swift in Sources */,
 				2AFB41332047DD86004025F9 /* ItemDetailViewController.swift in Sources */,
+				BF0523E3209AA7E00013EE11 /* ProfileViewController.swift in Sources */,
 				2AFB41372047F0F2004025F9 /* MenuCardCollectionViewCell.swift in Sources */,
 				770CDEAE20266B0800658925 /* ColoredCircle.swift in Sources */,
 				2AB62E702048D21D0013CB59 /* ActivityLevel.swift in Sources */,
+				BF0523E1209AA7DC0013EE11 /* PreferenceViewController.swift in Sources */,
+				009FDBC7209682BD00308641 /* BioViewController.swift in Sources */,
 				2AB62E6C20488A050013CB59 /* MenuAPI.swift in Sources */,
 				2AB62E69204887820013CB59 /* Menu.swift in Sources */,
+				BDDE7C70207B04590008A677 /* MatchingListViewController.swift in Sources */,
+				BFE168A3209AB8DD00D021A2 /* CollectionViewController.swift in Sources */,
 				C0CD676A203C15CC006B265D /* TimeView.swift in Sources */,
 				2B952C67202BDBB200F27727 /* WeekView.swift in Sources */,
 				2A9447802055FA3E0033B6C6 /* AllergensBarScrollView.swift in Sources */,
+				BFE168A1209AB8BD00D021A2 /* ViewController.swift in Sources */,
 				77949970203BD10500F3B0ED /* AllergyFilterButton.swift in Sources */,
 				77949972203BD12B00F3B0ED /* Extensions.swift in Sources */,
 				770CDEB020266B6000658925 /* ActivityLevelBar.swift in Sources */,
+				009DD512207B0C5600BC2147 /* RegistrationViewController.swift in Sources */,
 				C0AD0D34204B4EA9008E1206 /* TopBar.swift in Sources */,
 				770251B6201D4079002E4515 /* MenuVC.swift in Sources */,
 				770251E4201D4182002E4515 /* Moya_Service.swift in Sources */,
@@ -708,6 +686,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -757,6 +736,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

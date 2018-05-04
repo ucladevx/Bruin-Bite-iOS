@@ -9,6 +9,9 @@ target 'Dont Eat Alone' do
   pod 'Moya', '~> 10.0'
   pod 'SwiftyJSON'
   pod 'SnapKit'
+  pod 'FacebookLogin'
+  pod 'CZPicker'
+  pod 'Starscream', :git => 'https://github.com/daltoniam/Starscream', :branch => 'swift3'
 
   target 'Dont Eat AloneTests' do
     inherit! :search_paths

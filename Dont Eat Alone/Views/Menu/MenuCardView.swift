@@ -18,6 +18,7 @@ class MenuCardView: UIView, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var diningHallName: UILabel!
     
     var data: [Item]
+    weak var parentVC: MenuVC?
     
     //for using custom view in code
     override init(frame: CGRect){
@@ -52,7 +53,6 @@ class MenuCardView: UIView, UITableViewDelegate, UITableViewDataSource {
         cell.textLabel?.text = data[indexPath.row].name
         cell.indentationWidth = 13
         cell.indentationLevel = 1
-        cell.isUserInteractionEnabled = false
         cell.preservesSuperviewLayoutMargins = true
         cell.separatorInset = UIEdgeInsets.zero
         cell.layoutMargins = UIEdgeInsets.zero
@@ -60,7 +60,7 @@ class MenuCardView: UIView, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.row)
+        self.parentVC?.showItemDetailViewControllerFor(menuItem: data[indexPath.row])
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
