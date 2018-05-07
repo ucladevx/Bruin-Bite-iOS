@@ -19,6 +19,7 @@ class ItemDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         webView.scrollView.isScrollEnabled = false
+        webView.isUserInteractionEnabled = false
         self.view.backgroundColor = UIColor.deaScarlet
         ingredientsBar.backgroundColor = UIColor.white
         // Do any additional setup after loading the view.
