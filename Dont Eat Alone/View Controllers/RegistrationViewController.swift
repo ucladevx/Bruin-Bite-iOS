@@ -264,30 +264,6 @@ class RegistrationViewController: UIViewController, UIPickerViewDelegate, UIPick
         }
     }
     
-    @IBAction func highlightRestriction(_ sender: UIButton){
-        guard let buttonText = sender.titleLabel?.text else
-        {
-            return;
-        }
-        
-        if dietaryRestrictions[buttonText] == nil {
-            dietaryRestrictions[buttonText] = false;
-        }
-        
-        let isRestricted = !(dietaryRestrictions[buttonText]!)
-        dietaryRestrictions[buttonText] = isRestricted
-        
-        if(isRestricted)
-        {
-            sender.backgroundColor = UIColor(red: 0, green: 0.5, blue: 1, alpha: 1)
-            sender.tintColor = UIColor.white
-        }
-        else{
-            sender.backgroundColor = UIColor.white
-            sender.tintColor = UIColor(red: 0, green: 0.5, blue: 1, alpha: 1)
-        }
-    }
-    
     /*
     // MARK: - Navigation
 

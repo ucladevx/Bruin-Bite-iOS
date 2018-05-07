@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -517,7 +516,7 @@
                                         </connections>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YK0-Rp-uw8">
-                                        <rect key="frame" x="9" y="226" width="351" height="30"/>
+                                        <rect key="frame" x="8" y="238" width="352" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
@@ -537,13 +536,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Major" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v68-oX-itp">
-                                        <rect key="frame" x="8" y="198.5" width="43" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dietary Restrictions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jTb-Xi-iih">
-                                        <rect key="frame" x="9" y="274" width="150" height="20.5"/>
+                                        <rect key="frame" x="8" y="210.5" width="43" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -551,7 +544,8 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c0Q-Sr-EA2">
                                         <rect key="frame" x="105" y="348" width="50" height="30"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="50" id="bNR-Zg-NOe"/>
+                                            <constraint firstAttribute="height" constant="30" id="28S-1Y-gVt"/>
+                                            <constraint firstAttribute="width" constant="50" id="Pri-sM-nM0"/>
                                         </constraints>
                                         <state key="normal" title="Back"/>
                                         <connections>
@@ -568,85 +562,28 @@
                                             <action selector="saveButton:" destination="mb2-NP-bC3" eventType="touchUpInside" id="NEi-kW-LIc"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GqV-vS-3Fu">
-                                        <rect key="frame" x="14" y="301.5" width="85" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="5k2-dO-KYL"/>
-                                            <constraint firstAttribute="width" constant="85" id="dnu-cu-dPB"/>
-                                        </constraints>
-                                        <state key="normal" title="Vegitarian"/>
-                                        <connections>
-                                            <action selector="highlightRestriction:" destination="mb2-NP-bC3" eventType="touchUpInside" id="OBZ-MH-tpw"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IhK-LY-BlM">
-                                        <rect key="frame" x="112" y="301.5" width="59" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="59" id="FHL-Vz-yXz"/>
-                                            <constraint firstAttribute="height" constant="30" id="Oe7-yC-dc2"/>
-                                        </constraints>
-                                        <state key="normal" title="Vegan"/>
-                                        <connections>
-                                            <action selector="highlightRestriction:" destination="mb2-NP-bC3" eventType="touchUpInside" id="kTZ-df-Txg"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uTG-4q-gDF">
-                                        <rect key="frame" x="290" y="301.5" width="70" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="Ber-rx-cMV"/>
-                                            <constraint firstAttribute="width" constant="70" id="gCe-Vk-Dcy"/>
-                                        </constraints>
-                                        <state key="normal" title="Allergies"/>
-                                        <connections>
-                                            <action selector="highlightRestriction:" destination="mb2-NP-bC3" eventType="touchUpInside" id="Jf8-ls-c9k"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bBO-9k-l1J">
-                                        <rect key="frame" x="186" y="301.5" width="92" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="92" id="PSE-1d-RpU"/>
-                                            <constraint firstAttribute="height" constant="30" id="Q3p-oh-7EV"/>
-                                        </constraints>
-                                        <state key="normal" title="Gluten Free"/>
-                                        <connections>
-                                            <action selector="highlightRestriction:" destination="mb2-NP-bC3" eventType="touchUpInside" id="goY-vU-g0b"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="YK0-Rp-uw8" firstAttribute="top" secondItem="v68-oX-itp" secondAttribute="bottom" constant="7" id="0bv-Eh-M9h"/>
                                     <constraint firstItem="HsI-ke-dTD" firstAttribute="top" secondItem="dTd-Tp-6V9" secondAttribute="bottom" constant="8" symbolic="YES" id="1dU-kC-C3D"/>
-                                    <constraint firstItem="uTG-4q-gDF" firstAttribute="leading" secondItem="bBO-9k-l1J" secondAttribute="trailing" constant="12" id="95G-CW-H74"/>
                                     <constraint firstItem="HsI-ke-dTD" firstAttribute="leading" secondItem="8oQ-3w-t9q" secondAttribute="leading" id="BXR-xu-z4k"/>
-                                    <constraint firstItem="IhK-LY-BlM" firstAttribute="leading" secondItem="GqV-vS-3Fu" secondAttribute="trailing" constant="13" id="DZN-Q8-F3h"/>
+                                    <constraint firstItem="c0Q-Sr-EA2" firstAttribute="top" secondItem="YK0-Rp-uw8" secondAttribute="bottom" constant="80" id="G4s-YY-MN3"/>
                                     <constraint firstItem="6Ve-8c-zmb" firstAttribute="top" secondItem="y9b-Oe-LS9" secondAttribute="top" constant="20" id="HRM-FB-iLo"/>
-                                    <constraint firstItem="IhK-LY-BlM" firstAttribute="centerY" secondItem="GqV-vS-3Fu" secondAttribute="centerY" id="HiN-GI-7dA"/>
                                     <constraint firstItem="6Ve-8c-zmb" firstAttribute="centerX" secondItem="5BB-zm-44M" secondAttribute="centerX" id="Hya-ep-CjV"/>
                                     <constraint firstItem="dTd-Tp-6V9" firstAttribute="leading" secondItem="5BB-zm-44M" secondAttribute="leadingMargin" id="J7b-7K-I0Z"/>
-                                    <constraint firstItem="jTb-Xi-iih" firstAttribute="top" secondItem="5BB-zm-44M" secondAttribute="top" constant="274" id="KVC-um-ctq"/>
                                     <constraint firstItem="y9b-Oe-LS9" firstAttribute="trailing" secondItem="UuO-Mo-VCY" secondAttribute="trailing" constant="105" id="Mzm-oY-GvY"/>
-                                    <constraint firstItem="GqV-vS-3Fu" firstAttribute="top" secondItem="jTb-Xi-iih" secondAttribute="bottom" constant="7.5" id="O3Q-8y-q4X"/>
-                                    <constraint firstItem="uTG-4q-gDF" firstAttribute="trailing" secondItem="YK0-Rp-uw8" secondAttribute="trailing" id="P38-Sw-B59"/>
-                                    <constraint firstItem="bBO-9k-l1J" firstAttribute="leading" secondItem="IhK-LY-BlM" secondAttribute="trailing" constant="15" id="QW4-iK-ZqA"/>
+                                    <constraint firstItem="c0Q-Sr-EA2" firstAttribute="leading" secondItem="y9b-Oe-LS9" secondAttribute="leading" constant="105" id="OOC-WY-TTR"/>
                                     <constraint firstItem="y9b-Oe-LS9" firstAttribute="trailing" secondItem="8oQ-3w-t9q" secondAttribute="trailing" constant="16" id="RuX-Is-yDx"/>
                                     <constraint firstItem="v68-oX-itp" firstAttribute="leading" secondItem="8oQ-3w-t9q" secondAttribute="leading" id="VhL-7b-atV"/>
-                                    <constraint firstItem="bBO-9k-l1J" firstAttribute="centerY" secondItem="GqV-vS-3Fu" secondAttribute="centerY" id="WZF-pM-63W"/>
                                     <constraint firstItem="y9b-Oe-LS9" firstAttribute="bottom" secondItem="UuO-Mo-VCY" secondAttribute="bottom" constant="289" id="Wx2-mp-KsS"/>
-                                    <constraint firstItem="jTb-Xi-iih" firstAttribute="top" secondItem="YK0-Rp-uw8" secondAttribute="bottom" constant="18" id="Xb6-ee-ppr"/>
-                                    <constraint firstItem="y9b-Oe-LS9" firstAttribute="bottom" secondItem="c0Q-Sr-EA2" secondAttribute="bottom" constant="289" id="Y4O-i5-eqK"/>
                                     <constraint firstItem="8oQ-3w-t9q" firstAttribute="top" secondItem="HsI-ke-dTD" secondAttribute="bottom" constant="7" id="aBp-2h-0sU"/>
-                                    <constraint firstItem="uTG-4q-gDF" firstAttribute="leading" secondItem="bBO-9k-l1J" secondAttribute="trailing" constant="12" id="fmD-xJ-mco"/>
-                                    <constraint firstItem="IhK-LY-BlM" firstAttribute="leading" secondItem="GqV-vS-3Fu" secondAttribute="trailing" constant="13" id="grS-fa-xug"/>
-                                    <constraint firstItem="c0Q-Sr-EA2" firstAttribute="leading" secondItem="y9b-Oe-LS9" secondAttribute="leading" constant="105" id="iHo-sY-uD1"/>
+                                    <constraint firstItem="UuO-Mo-VCY" firstAttribute="top" secondItem="YK0-Rp-uw8" secondAttribute="bottom" constant="80" id="bAn-vL-Sst"/>
                                     <constraint firstItem="8oQ-3w-t9q" firstAttribute="trailing" secondItem="dTd-Tp-6V9" secondAttribute="trailing" id="khZ-bY-VLF"/>
-                                    <constraint firstItem="YK0-Rp-uw8" firstAttribute="leading" secondItem="jTb-Xi-iih" secondAttribute="leading" id="mwr-fc-eUL"/>
+                                    <constraint firstItem="YK0-Rp-uw8" firstAttribute="leading" secondItem="v68-oX-itp" secondAttribute="leading" id="p7Y-1q-a5L"/>
                                     <constraint firstItem="HsI-ke-dTD" firstAttribute="leading" secondItem="dTd-Tp-6V9" secondAttribute="leading" id="pgL-rl-3Nx"/>
-                                    <constraint firstItem="uTG-4q-gDF" firstAttribute="centerY" secondItem="GqV-vS-3Fu" secondAttribute="centerY" id="qfC-AA-z5k"/>
-                                    <constraint firstItem="jTb-Xi-iih" firstAttribute="leading" secondItem="y9b-Oe-LS9" secondAttribute="leading" constant="9" id="vhv-ia-ED0"/>
                                     <constraint firstItem="8oQ-3w-t9q" firstAttribute="top" secondItem="5BB-zm-44M" secondAttribute="top" constant="150" id="vn8-Rp-O8Y"/>
                                     <constraint firstItem="y9b-Oe-LS9" firstAttribute="trailing" secondItem="YK0-Rp-uw8" secondAttribute="trailing" constant="15" id="wpr-3I-fE6"/>
-                                    <constraint firstItem="bBO-9k-l1J" firstAttribute="leading" secondItem="IhK-LY-BlM" secondAttribute="trailing" constant="15" id="xUH-O0-5GG"/>
                                 </constraints>
                                 <viewLayoutGuide key="safeArea" id="y9b-Oe-LS9"/>
                             </view>
@@ -1076,7 +1013,7 @@
         <image name="matchbutton" width="568" height="194"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="1ep-kA-o89"/>
+        <segue reference="GXr-Q7-bUb"/>
         <segue reference="u7Y-xg-7CH"/>
     </inferredMetricsTieBreakers>
 </document>
