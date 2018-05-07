@@ -39,11 +39,11 @@ class ItemDetailViewController: UIViewController {
         
         let boldAttrs: [NSAttributedStringKey: Any] = [.font: UIFont(name: "AvenirNext-Medium", size: 12)!]
         let normalAttrs: [NSAttributedStringKey: Any] = [.font: UIFont(name: "AvenirNext-Regular", size: 12)!]
-        var attributedString = NSMutableAttributedString(string: "Ingredients: ", attributes:boldAttrs)
+        let attributedString = NSMutableAttributedString(string: "Ingredients: ", attributes:boldAttrs)
         attributedString.append(NSAttributedString(string: (menuItem?.ingredients)!, attributes: normalAttrs))
         attributedString.append(NSMutableAttributedString(string: "\n\nAllergens: ", attributes:boldAttrs))
-        // TODO: Figure out a way to display allergens as a string and then display that instead of ingredients twice
-        attributedString.append(NSMutableAttributedString(string: (menuItem?.ingredients)!, attributes: normalAttrs))
+        let allergyString = buildAllergenString(allergies: (menuItem?.allergies)!)
+        attributedString.append(NSMutableAttributedString(string: allergyString, attributes: normalAttrs))
         textView.attributedText = attributedString
         ingredientsBar.addSubview(textView)
     }
@@ -58,6 +58,17 @@ class ItemDetailViewController: UIViewController {
         let constPrefixCount = "http://menu.dining.ucla.edu/Recipes/".count
         let index = recipeURL.index(recipeURL.startIndex, offsetBy: constPrefixCount)
         return String(recipeURL[index...]);
+    }
+    
+    func buildAllergenString(allergies: [Allergen]) -> String {
+        var allergyString: String = ""
+        for allergen in allergies {
+            if (allergen != Allergen.Vegan && allergen != Allergen.Vegetarian) {
+                allergyString += allergen.rawValue + ", "
+            }
+        }
+        let index = allergyString.index(allergyString.endIndex, offsetBy: -2)
+        return String(allergyString[...index])
     }
 
 
