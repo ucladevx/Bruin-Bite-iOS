@@ -44,6 +44,8 @@
 		C0AD0D34204B4EA9008E1206 /* TopBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0AD0D33204B4EA9008E1206 /* TopBar.swift */; };
 		C0CD676A203C15CC006B265D /* TimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CD6769203C15CC006B265D /* TimeView.swift */; };
 		C0CD676C203C1B19006B265D /* ColoredBezel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CD676B203C1B19006B265D /* ColoredBezel.swift */; };
+		DC7050A3209FDFBC0099EA31 /* UIColor+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7050A2209FDFBC0099EA31 /* UIColor+Additions.swift */; };
+		DC7050A5209FE95B0099EA31 /* UIFont+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7050A4209FE95B0099EA31 /* UIFont+Additions.swift */; };
 		EF02E5CA957D94AAB438FE60 /* Pods_Dont_Eat_AloneTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 613DC376493206C810E3C951 /* Pods_Dont_Eat_AloneTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -113,6 +115,8 @@
 		C0AD0D33204B4EA9008E1206 /* TopBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBar.swift; sourceTree = "<group>"; };
 		C0CD6769203C15CC006B265D /* TimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeView.swift; sourceTree = "<group>"; };
 		C0CD676B203C1B19006B265D /* ColoredBezel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColoredBezel.swift; sourceTree = "<group>"; };
+		DC7050A2209FDFBC0099EA31 /* UIColor+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Additions.swift"; sourceTree = "<group>"; };
+		DC7050A4209FE95B0099EA31 /* UIFont+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+Additions.swift"; sourceTree = "<group>"; };
 		DF44B8487E96FD9841E4D83A /* Pods-Dont Eat Alone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dont Eat Alone.release.xcconfig"; path = "Pods/Target Support Files/Pods-Dont Eat Alone/Pods-Dont Eat Alone.release.xcconfig"; sourceTree = "<group>"; };
 		EF0EBD86FFEBAFFA12C9C06E /* Pods-Dont Eat AloneTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dont Eat AloneTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Dont Eat AloneTests/Pods-Dont Eat AloneTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -245,6 +249,7 @@
 				770251B2201D4079002E4515 /* Dont Eat Alone */,
 				770251C9201D4079002E4515 /* Dont Eat AloneTests */,
 				770251D4201D4079002E4515 /* Dont Eat AloneUITests */,
+				DC7050A0209FDD490099EA31 /* Images */,
 				770251B1201D4079002E4515 /* Products */,
 				1C5B3B524C187B41721DC5CD /* Pods */,
 				898B4B92943EFC7BAF49F286 /* Frameworks */,
@@ -273,6 +278,7 @@
 				770251E3201D4182002E4515 /* Moya_Service.swift */,
 				770251C1201D4079002E4515 /* Info.plist */,
 				2A94477C2055F5860033B6C6 /* Supporting Files */,
+				DC7050A1209FDF130099EA31 /* Extensions */,
 			);
 			path = "Dont Eat Alone";
 			sourceTree = "<group>";
@@ -311,6 +317,22 @@
 				BDDE7C71207B04D00008A677 /* UserTableViewCell.swift */,
 			);
 			path = UserList;
+			sourceTree = "<group>";
+		};
+		DC7050A0209FDD490099EA31 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		DC7050A1209FDF130099EA31 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				DC7050A2209FDFBC0099EA31 /* UIColor+Additions.swift */,
+				DC7050A4209FE95B0099EA31 /* UIFont+Additions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -560,6 +582,7 @@
 				770CDEAE20266B0800658925 /* ColoredCircle.swift in Sources */,
 				2AB62E702048D21D0013CB59 /* ActivityLevel.swift in Sources */,
 				BF0523E1209AA7DC0013EE11 /* PreferenceViewController.swift in Sources */,
+				DC7050A3209FDFBC0099EA31 /* UIColor+Additions.swift in Sources */,
 				009FDBC7209682BD00308641 /* BioViewController.swift in Sources */,
 				2AB62E6C20488A050013CB59 /* MenuAPI.swift in Sources */,
 				2AB62E69204887820013CB59 /* Menu.swift in Sources */,
@@ -569,6 +592,7 @@
 				2B952C67202BDBB200F27727 /* WeekView.swift in Sources */,
 				2A9447802055FA3E0033B6C6 /* AllergensBarScrollView.swift in Sources */,
 				BFE168A1209AB8BD00D021A2 /* ViewController.swift in Sources */,
+				DC7050A5209FE95B0099EA31 /* UIFont+Additions.swift in Sources */,
 				77949970203BD10500F3B0ED /* AllergyFilterButton.swift in Sources */,
 				77949972203BD12B00F3B0ED /* Extensions.swift in Sources */,
 				770CDEB020266B6000658925 /* ActivityLevelBar.swift in Sources */,
