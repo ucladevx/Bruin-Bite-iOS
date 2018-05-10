@@ -67,6 +67,9 @@ class ItemDetailViewController: UIViewController {
                 allergyString += allergen.rawValue + ", "
             }
         }
+        if (allergyString.isEmpty) {
+            return "None.";
+        }
         let index = allergyString.index(allergyString.endIndex, offsetBy: -2)
         return String(allergyString[...index])
     }
