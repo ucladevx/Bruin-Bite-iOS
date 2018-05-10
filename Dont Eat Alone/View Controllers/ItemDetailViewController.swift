@@ -25,6 +25,12 @@ class ItemDetailViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
+        self.navigationItem.title = self.menuItem?.name
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         let recipeID = extractRecipeIDFromRecipeURL(recipeURL: (menuItem?.recipeLink!)!) // TODO: hopefully, handle empty RecipeID

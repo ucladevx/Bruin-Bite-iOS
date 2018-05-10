@@ -69,6 +69,11 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         computedHeight = Array(repeating: defaultHeight, count: self.diningHalls.count)
         // Do any additional setup after loading the view, typically from a nib.
     }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+    }
     
     let defaultHeight: CGFloat = 215;
     var computedHeight: [CGFloat] = [];
