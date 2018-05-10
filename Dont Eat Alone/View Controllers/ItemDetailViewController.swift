@@ -51,7 +51,16 @@ class ItemDetailViewController: UIViewController {
         let allergyString = buildAllergenString(allergies: (menuItem?.allergies)!)
         attributedString.append(NSMutableAttributedString(string: allergyString, attributes: normalAttrs))
         textView.attributedText = attributedString
+        
         ingredientsBar.addSubview(textView)
+        
+        // Add constraints to textView
+        textView.snp.makeConstraints { (make) -> Void in
+            make.top.equalTo(ingredientsBar).offset(20)
+            make.left.equalTo(ingredientsBar).offset(20);
+            make.bottom.equalTo(ingredientsBar).offset(-20)
+            make.right.equalTo(ingredientsBar).offset(-20);
+        }
     }
     
 
