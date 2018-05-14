@@ -52,7 +52,6 @@ class AllergyFilterButton: UIButton {
     override func sizeThatFits(_ size: CGSize) -> CGSize {
         let amendedSize:CGSize = super.sizeThatFits(size)
         let newSize:CGSize = CGSize.init(width: 1.3*amendedSize.width, height: amendedSize.height)
-        print(allergy_name,newSize)
         return newSize;
     }
     

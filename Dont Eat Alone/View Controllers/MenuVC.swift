@@ -31,7 +31,8 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         
     override func viewDidLoad() {
         super.viewDidLoad()
-        allergensBar.parentVC = self
+        allergensBar.content.parentVC = self
+        print(allergensBar.isScrollEnabled)
         topBar.parentVC = self
         menuCardsCollection.delegate = self
         menuCardsCollection.dataSource = self
