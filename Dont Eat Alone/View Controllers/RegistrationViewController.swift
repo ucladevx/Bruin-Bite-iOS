@@ -61,6 +61,7 @@ class RegistrationViewController: UIViewController, UIPickerViewDelegate, UIPick
                 //Save User's Name here
             }
         })
+      self.hideKeyboardWhenTappedAround()
     }
 
     override func didReceiveMemoryWarning() {

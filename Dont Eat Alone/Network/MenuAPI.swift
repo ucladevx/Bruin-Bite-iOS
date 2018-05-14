@@ -25,6 +25,7 @@ extension MenuAPI: TargetType {
             return "/menu/OverviewMenu"
         case .getDetailedMenu:
             return "/menu/DetailedMenu"
+
         }
         
     }

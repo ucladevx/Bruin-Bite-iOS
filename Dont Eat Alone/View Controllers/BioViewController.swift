@@ -17,6 +17,7 @@ class BioViewController: UIViewController {
         super.viewDidLoad()
 
        bioTextView.becomeFirstResponder()
+       self.hideKeyboardWhenTappedAround()
     }
 
     override func didReceiveMemoryWarning() {
