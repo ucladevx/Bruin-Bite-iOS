@@ -86,7 +86,7 @@ class ItemDetailViewController: UIViewController {
             return "None.";
         }
         let index = allergyString.index(allergyString.endIndex, offsetBy: -2)
-        return String(allergyString[...index])
+        return String(allergyString[..<index])
     }
 
 
