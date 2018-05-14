@@ -88,14 +88,14 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func allergenUpdateData(_ a: Allergen, s: String){
-        //print(a,s)
+        //print(a,s, currAllergens)
         if (s == "On") {
             currAllergens.append(a)
             for(loc, var items) in self.data{
                 var i = 0
                 while i < items.count{
                     if(a == Allergen.Vegan || a == Allergen.Vegetarian) {
-                        if(items[i].allergies?.contains(a))!{
+                        if((items[i].allergies?.contains(a))! || (items[i].allergies?.contains(Allergen.Vegan))!){
                             i+=1
                         }
                         else{
@@ -118,9 +118,7 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         }
         else{
             currAllergens.remove(at: currAllergens.index(of: a)!)
-            self.data = self.menuData.getOverviewMenu(date: currDate, mealPeriod: currMP) ?? [:]
-            self.computedHeight = Array(repeating: self.defaultHeight, count: self.data.count)
-            self.menuCardsCollection.reloadData()
+            updateData(currDate, mP: currMP)
         }
     }
     

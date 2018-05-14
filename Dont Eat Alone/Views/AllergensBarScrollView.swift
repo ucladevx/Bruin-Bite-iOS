@@ -24,6 +24,13 @@ class AllergensBarScrollView: UIScrollView {
     var vegetarian = AllergyFilterButton()
     var vegan = AllergyFilterButton()
     var peanuts = AllergyFilterButton()
+    var treenuts = AllergyFilterButton()
+    var wheat = AllergyFilterButton()
+    var soy = AllergyFilterButton()
+    var dairy = AllergyFilterButton()
+    var eggs = AllergyFilterButton()
+    var shellfish = AllergyFilterButton()
+    var fish = AllergyFilterButton()
     
     func setup(){
         vegetarian.parentVC = self.parentVC
@@ -31,36 +38,90 @@ class AllergensBarScrollView: UIScrollView {
         vegetarian.setup()
         self.addSubview(vegetarian)
         vegetarian.snp.makeConstraints{(make) -> Void in
-            make.edges.equalTo(self).inset(UIEdgeInsetsMake(10, 10, 0, 0))
+            make.top.equalTo(self).offset(10)
+            make.left.equalTo(self).offset(10)
+            make.size.equalTo(CGSize(width: 113.1, height: 34))
         }
+        
         vegan.parentVC = self.parentVC
         vegan.allergy_enum = Allergen.Vegan
         self.addSubview(vegan)
         vegan.setup()
         vegan.snp.makeConstraints{(make) -> Void in
-           make.top.bottom.equalTo(vegetarian)
-            make.left.equalTo(vegetarian).offset(115)
-            make.right.equalTo(vegetarian).offset(135)
+            make.top.bottom.equalTo(vegetarian)
+            make.left.equalTo(vegetarian).offset(115.1)
+            make.size.equalTo(CGSize(width: 66.3, height: 34))
         }
+        
         peanuts.parentVC = self.parentVC
         peanuts.allergy_enum = Allergen.ContainsPeanuts
         self.addSubview(peanuts)
         peanuts.setup()
         peanuts.snp.makeConstraints{(make) -> Void in
-            make.top.bottom.equalTo(vegan)
-            make.left.equalTo(vegan).offset(75)
-            make.right.equalTo(vegan).offset(95)
+            make.top.bottom.equalTo(vegetarian)
+            make.left.equalTo(vegan).offset(68.3)
+            make.size.equalTo(CGSize(width: 85.8, height: 34))
         }
-    }
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setup()
-    }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        setup()
+        
+        treenuts.parentVC = self.parentVC
+        treenuts.allergy_enum = Allergen.ContainsTreeNuts
+        self.addSubview(treenuts)
+        treenuts.setup()
+        treenuts.snp.makeConstraints{(make) -> Void in
+            make.top.bottom.equalTo(vegetarian)
+            make.left.equalTo(peanuts).offset(87.8)
+            make.size.equalTo(CGSize(width: 96.2, height: 34))
+        }
+        
+        wheat.parentVC = self.parentVC
+        wheat.allergy_enum = Allergen.ContainsWheat
+        self.addSubview(wheat)
+        wheat.setup()
+        wheat.snp.makeConstraints{(make) -> Void in
+            make.top.bottom.equalTo(vegetarian)
+            make.left.equalTo(treenuts).offset(98.2)
+            make.size.equalTo(CGSize(width: 68.9, height: 34))
+        }
+        
+        soy.parentVC = self.parentVC
+        soy.allergy_enum = Allergen.ContainsSoy
+        self.addSubview(soy)
+        soy.setup()
+        soy.snp.makeConstraints{(make) -> Void in
+            make.top.bottom.equalTo(vegetarian)
+            make.left.equalTo(wheat).offset(70.9)
+            make.size.equalTo(CGSize(width: 40.3, height: 34))
+        }
+        
+        dairy.parentVC = self.parentVC
+        dairy.allergy_enum = Allergen.ContainsDairy
+        self.addSubview(dairy)
+        dairy.setup()
+        dairy.snp.makeConstraints{(make) -> Void in
+            make.top.bottom.equalTo(vegetarian)
+            make.left.equalTo(soy).offset(42.3)
+            make.size.equalTo(CGSize(width: 54.6, height: 34))
+        }
+        
+        shellfish.parentVC = self.parentVC
+        shellfish.allergy_enum = Allergen.ContainsShellfish
+        self.addSubview(shellfish)
+        shellfish.setup()
+        shellfish.snp.makeConstraints{(make) -> Void in
+            make.top.bottom.equalTo(vegetarian)
+            make.left.equalTo(dairy).offset(56.6)
+            make.size.equalTo(CGSize(width: 89.7, height: 34))
+        }
+        
+        fish.parentVC = self.parentVC
+        fish.allergy_enum = Allergen.ContainsFish
+        self.addSubview(fish)
+        fish.setup()
+        fish.snp.makeConstraints{(make) -> Void in
+            make.top.bottom.equalTo(vegetarian)
+            make.left.equalTo(shellfish).offset(91.7)
+            make.size.equalTo(CGSize(width: 44.2, height: 34))
+        }
     }
 }
 
