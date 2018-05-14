@@ -19,9 +19,16 @@ class ItemDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         webView.scrollView.isScrollEnabled = false
+        webView.isUserInteractionEnabled = false
         self.view.backgroundColor = UIColor.deaScarlet
         ingredientsBar.backgroundColor = UIColor.white
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
+        self.navigationItem.title = self.menuItem?.name
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -38,13 +45,22 @@ class ItemDetailViewController: UIViewController {
         
         let boldAttrs: [NSAttributedStringKey: Any] = [.font: UIFont(name: "AvenirNext-Medium", size: 12)!]
         let normalAttrs: [NSAttributedStringKey: Any] = [.font: UIFont(name: "AvenirNext-Regular", size: 12)!]
-        var attributedString = NSMutableAttributedString(string: "Ingredients: ", attributes:boldAttrs)
+        let attributedString = NSMutableAttributedString(string: "Ingredients: ", attributes:boldAttrs)
         attributedString.append(NSAttributedString(string: (menuItem?.ingredients)!, attributes: normalAttrs))
         attributedString.append(NSMutableAttributedString(string: "\n\nAllergens: ", attributes:boldAttrs))
-        // TODO: Figure out a way to display allergens as a string and then display that instead of ingredients twice
-        attributedString.append(NSMutableAttributedString(string: (menuItem?.ingredients)!, attributes: normalAttrs))
+        let allergyString = buildAllergenString(allergies: (menuItem?.allergies)!)
+        attributedString.append(NSMutableAttributedString(string: allergyString, attributes: normalAttrs))
         textView.attributedText = attributedString
+        
         ingredientsBar.addSubview(textView)
+        
+        // Add constraints to textView
+        textView.snp.makeConstraints { (make) -> Void in
+            make.top.equalTo(ingredientsBar).offset(20)
+            make.left.equalTo(ingredientsBar).offset(20);
+            make.bottom.equalTo(ingredientsBar).offset(-20)
+            make.right.equalTo(ingredientsBar).offset(-20);
+        }
     }
     
 
@@ -57,6 +73,20 @@ class ItemDetailViewController: UIViewController {
         let constPrefixCount = "http://menu.dining.ucla.edu/Recipes/".count
         let index = recipeURL.index(recipeURL.startIndex, offsetBy: constPrefixCount)
         return String(recipeURL[index...]);
+    }
+    
+    func buildAllergenString(allergies: [Allergen]) -> String {
+        var allergyString: String = ""
+        for allergen in allergies {
+            if (allergen != Allergen.Vegan && allergen != Allergen.Vegetarian) {
+                allergyString += allergen.rawValue + ", "
+            }
+        }
+        if (allergyString.isEmpty) {
+            return "None.";
+        }
+        let index = allergyString.index(allergyString.endIndex, offsetBy: -2)
+        return String(allergyString[..<index])
     }
 
 

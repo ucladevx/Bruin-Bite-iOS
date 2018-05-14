@@ -61,6 +61,7 @@ class MenuCardView: UIView, UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.parentVC?.showItemDetailViewControllerFor(menuItem: data[indexPath.row])
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
