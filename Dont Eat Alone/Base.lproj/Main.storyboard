@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mb2-NP-bC3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mb2-NP-bC3">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--First-->
+        <!--Menu-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
                 <viewController id="9pv-A4-QxB" customClass="MenuVC" customModule="Dont_Eat_Alone" customModuleProvider="target" sceneMemberID="viewController">
@@ -122,7 +122,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="First" image="first" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="Menu" image="Menu" id="acW-dT-cKf"/>
                     <connections>
                         <outlet property="allergensBar" destination="fRI-GQ-wjj" id="VHL-kb-3Yb"/>
                         <outlet property="backgroundTopBar" destination="DoT-Hh-LNo" id="mh4-dU-Vvb"/>
@@ -187,7 +187,7 @@
             </objects>
             <point key="canvasLocation" x="1694" y="-191"/>
         </scene>
-        <!--Item-->
+        <!--Profile-->
         <scene sceneID="v0O-Ga-TGB">
             <objects>
                 <viewController id="nzh-LT-kup" customClass="ProfileViewController" customModule="Dont_Eat_Alone" customModuleProvider="target" sceneMemberID="viewController">
@@ -357,7 +357,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Sns-AX-pfm"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="Now-kx-a1R"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="Profile" id="Now-kx-a1R"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="profilePic" destination="iwq-dm-eBp" id="jSo-Z1-UKL"/>
@@ -800,16 +800,16 @@
                     </tabBar>
                     <connections>
                         <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
-                        <segue destination="nzh-LT-kup" kind="relationship" relationship="viewControllers" id="Fee-rG-eXp"/>
                         <segue destination="vm0-qx-c8l" kind="relationship" relationship="viewControllers" id="mAc-Fx-T4V"/>
                         <segue destination="aUf-9F-jVN" kind="relationship" relationship="viewControllers" id="mau-ZH-fAI"/>
+                        <segue destination="nzh-LT-kup" kind="relationship" relationship="viewControllers" id="Fee-rG-eXp"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="0.0" y="0.0"/>
         </scene>
-        <!--Item-->
+        <!--Chats-->
         <scene sceneID="XhH-AU-86v">
             <objects>
                 <viewController id="aUf-9F-jVN" customClass="ViewController" customModule="Dont_Eat_Alone" customModuleProvider="target" sceneMemberID="viewController">
@@ -857,7 +857,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="7Bj-NL-B0G"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="lIA-hu-R1X"/>
+                    <tabBarItem key="tabBarItem" title="Chats" image="Chats" id="lIA-hu-R1X"/>
                     <connections>
                         <outlet property="emojiLabel" destination="Aiw-gc-Fij" id="JD2-WC-78B"/>
                         <outlet property="usernameLabel" destination="5je-1O-Tg4" id="PXo-T9-xnO"/>
@@ -921,7 +921,7 @@
             </objects>
             <point key="canvasLocation" x="2138" y="491"/>
         </scene>
-        <!--Item-->
+        <!--Match-->
         <scene sceneID="GV3-wS-aFp">
             <objects>
                 <viewController id="vm0-qx-c8l" customClass="PreferenceViewController" customModule="Dont_Eat_Alone" customModuleProvider="target" sceneMemberID="viewController">
@@ -1057,7 +1057,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="El0-mS-374"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="aZC-qH-Q0x"/>
+                    <tabBarItem key="tabBarItem" title="Match" image="Match" id="aZC-qH-Q0x"/>
                     <connections>
                         <outlet property="dateField" destination="keB-vn-ASD" id="7YZ-E8-V4R"/>
                         <outlet property="diningField" destination="7b8-UV-IZr" id="oRo-km-gUs"/>
@@ -1071,8 +1071,11 @@
     </scenes>
     <resources>
         <image name="Button" width="68" height="54"/>
+        <image name="Chats" width="26" height="25"/>
         <image name="Logo" width="1761" height="1761"/>
-        <image name="first" width="30" height="30"/>
+        <image name="Match" width="22" height="20"/>
+        <image name="Menu" width="22" height="18"/>
+        <image name="Profile" width="24" height="23"/>
         <image name="matchbutton" width="568" height="194"/>
     </resources>
     <inferredMetricsTieBreakers>
