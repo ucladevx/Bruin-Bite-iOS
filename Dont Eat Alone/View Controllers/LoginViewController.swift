@@ -6,6 +6,18 @@
 //  Copyright © 2018 Dont Eat Alone. All rights reserved.
 //
 
+// TODO:
+/*
+ - connect FB login
+ - add in transitions b/w view controllers
+ - splah screen transition
+ - pressing down on button - change color
+ - pressing text field, clear box and change color of new text
+ - everything looks pushed up
+ - BioBox, change starting point of text, should there be a character limit
+ - forget password font not working
+*/
+
 import UIKit
 import FacebookLogin
 
@@ -16,11 +28,67 @@ class LoginViewController: UIViewController {
     @IBOutlet var CheckMenuButton: UIButton!
     @IBOutlet var SignInButton: UIButton!
     
+    @IBAction func SignUpTap(_ sender: Any) {
+        if SignUpButton.backgroundColor == .clear {
+            SignUpButton.backgroundColor = UIColor.white
+            SignUpButton.setTitleColor(UIColor.twilightBlue, for: .normal)
+        }
+        else {
+            SignUpButton.backgroundColor = .clear
+            SignUpButton.setTitleColor(UIColor.white, for: .normal)
+        }
+    }
+    @IBAction func ContinueFBTap(_ sender: Any) {
+        if ContinueFBButton.backgroundColor == .clear {
+            ContinueFBButton.backgroundColor = UIColor.white
+            ContinueFBButton.setTitleColor(UIColor.twilightBlue, for: .normal)
+        }
+        
+        else {
+            ContinueFBButton.backgroundColor = .clear
+            ContinueFBButton.setTitleColor(UIColor.white, for: .normal)
+        }
+        
+        
+        
+        
+        
+        
+        
+    }
+    
+    
+    @IBAction func CheckMenuTap(_ sender: Any) {
+        if CheckMenuButton.backgroundColor == .clear {
+            CheckMenuButton.backgroundColor = UIColor.white
+            CheckMenuButton.setTitleColor(UIColor.twilightBlue, for: .normal)
+        }
+        else {
+            CheckMenuButton.backgroundColor = .clear
+            CheckMenuButton.setTitleColor(UIColor.white, for: .normal)
+        }
+    }
+    
+    var attrs = [
+        NSAttributedStringKey.font: UIFont.signInFont.withSize(14.0),
+        NSAttributedStringKey.foregroundColor: UIColor.white,
+        NSAttributedStringKey.underlineStyle: 1
+        ] as [NSAttributedStringKey: Any]
+    
+    var attributedString = NSMutableAttributedString(string:"")
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = UIColor.twilightBlue
+        
+        let SignInText = NSMutableAttributedString(string:"Sign In", attributes:attrs)
+        attributedString.append(SignInText)
+        SignInButton.setAttributedTitle(attributedString, for: .normal)
+        SignInButton.backgroundColor = .clear
+        SignInButton.setTitleColor(UIColor.white, for: .normal)
+        SignInButton.titleLabel?.font = UIFont.signInFont
         
         SignUpButton.layer.borderWidth = 1
         SignUpButton.backgroundColor = .clear
@@ -36,7 +104,6 @@ class LoginViewController: UIViewController {
         ContinueFBButton.setTitleColor(UIColor.white, for: .normal)
         ContinueFBButton.titleLabel?.font = UIFont.continueFbFont
         
-        
         CheckMenuButton.layer.borderWidth = 1
         CheckMenuButton.backgroundColor = .clear
         CheckMenuButton.layer.borderColor = UIColor.white.cgColor
@@ -44,10 +111,7 @@ class LoginViewController: UIViewController {
         CheckMenuButton.setTitleColor(UIColor.white, for: .normal)
         CheckMenuButton.titleLabel?.font = UIFont.signUpFont
         
-        SignInButton.backgroundColor = .clear
-        SignInButton.setTitleColor(UIColor.white, for: .normal)
-        SignInButton.titleLabel?.font = UIFont.signInFont
-        // underline: https://medium.com/@minholee_21851/underline-text-in-uibutton-8e79d1018586
+        
         
         // Do any additional setup after loading the view.
     }
@@ -57,6 +121,7 @@ class LoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    /*
     @IBAction func loginButtonAction(_ sender: UIButton) {
         let loginManager = LoginManager()
         loginManager.logIn(readPermissions: [.publicProfile, .email, .userFriends], viewController: self) { (loginResult) in
@@ -78,6 +143,7 @@ class LoginViewController: UIViewController {
             }
         }
     }
+    */
     
     /*
     // MARK: - Navigation

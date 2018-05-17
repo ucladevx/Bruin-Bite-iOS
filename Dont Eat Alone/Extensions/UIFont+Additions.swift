@@ -25,5 +25,22 @@ extension UIFont {
   class var signInFont: UIFont {
     return UIFont.systemFont(ofSize: 14.0, weight: .regular)
   }
+
+  class var signUpTextFont: UIFont {
+    return UIFont(name: "AvenirNext-Bold", size: 20.0)!
+  }
+    
+  class var signUpInfoFieldFont: UIFont {
+    return UIFont(name: "AvenirNext-Regular", size: 20.0)!
+  }
+    
+  class var bioFont: UIFont {
+    return UIFont.systemFont(ofSize: 20.0, weight: .regular)
+  }
+
+  class var forgotPassFont: UIFont {
+    return UIFont(name: "SFProText-LightItalic", size: 12.0)!
+  }
+
     
 }

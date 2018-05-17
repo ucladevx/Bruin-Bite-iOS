@@ -24,8 +24,6 @@
 		770251B6201D4079002E4515 /* MenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770251B5201D4079002E4515 /* MenuVC.swift */; };
 		770251B8201D4079002E4515 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770251B7201D4079002E4515 /* SecondViewController.swift */; };
 		770251BB201D4079002E4515 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 770251B9201D4079002E4515 /* Main.storyboard */; };
-		770251BD201D4079002E4515 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 770251BC201D4079002E4515 /* Assets.xcassets */; };
-		770251C0201D4079002E4515 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 770251BE201D4079002E4515 /* LaunchScreen.storyboard */; };
 		770251CB201D4079002E4515 /* Dont_Eat_AloneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770251CA201D4079002E4515 /* Dont_Eat_AloneTests.swift */; };
 		770251D6201D4079002E4515 /* Dont_Eat_AloneUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770251D5201D4079002E4515 /* Dont_Eat_AloneUITests.swift */; };
 		770251E4201D4182002E4515 /* Moya_Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770251E3201D4182002E4515 /* Moya_Service.swift */; };
@@ -46,6 +44,11 @@
 		C0CD676C203C1B19006B265D /* ColoredBezel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CD676B203C1B19006B265D /* ColoredBezel.swift */; };
 		DC7050A3209FDFBC0099EA31 /* UIColor+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7050A2209FDFBC0099EA31 /* UIColor+Additions.swift */; };
 		DC7050A5209FE95B0099EA31 /* UIFont+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7050A4209FE95B0099EA31 /* UIFont+Additions.swift */; };
+		DC96D65020AD40870042F8D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC96D64F20AD40860042F8D1 /* Assets.xcassets */; };
+		DCB3BA2320ACE20B0027CD43 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DCB3BA2220ACE20B0027CD43 /* LaunchScreen.storyboard */; };
+		DCB3BA2520ACF8910027CD43 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB3BA2420ACF8910027CD43 /* SignInViewController.swift */; };
+		DCD1C6F220A9240A00383A4A /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD1C6F120A9240A00383A4A /* SignUpViewController.swift */; };
+		DCD1C6F420A931F300383A4A /* CreateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD1C6F320A931F300383A4A /* CreateProfileViewController.swift */; };
 		EF02E5CA957D94AAB438FE60 /* Pods_Dont_Eat_AloneTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 613DC376493206C810E3C951 /* Pods_Dont_Eat_AloneTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -88,8 +91,6 @@
 		770251B5201D4079002E4515 /* MenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuVC.swift; sourceTree = "<group>"; };
 		770251B7201D4079002E4515 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		770251BA201D4079002E4515 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		770251BC201D4079002E4515 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		770251BF201D4079002E4515 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		770251C1201D4079002E4515 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		770251C6201D4079002E4515 /* Dont Eat AloneTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Dont Eat AloneTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		770251CA201D4079002E4515 /* Dont_Eat_AloneTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dont_Eat_AloneTests.swift; sourceTree = "<group>"; };
@@ -117,6 +118,11 @@
 		C0CD676B203C1B19006B265D /* ColoredBezel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColoredBezel.swift; sourceTree = "<group>"; };
 		DC7050A2209FDFBC0099EA31 /* UIColor+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Additions.swift"; sourceTree = "<group>"; };
 		DC7050A4209FE95B0099EA31 /* UIFont+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+Additions.swift"; sourceTree = "<group>"; };
+		DC96D64F20AD40860042F8D1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DCB3BA2220ACE20B0027CD43 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		DCB3BA2420ACF8910027CD43 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		DCD1C6F120A9240A00383A4A /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		DCD1C6F320A931F300383A4A /* CreateProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProfileViewController.swift; sourceTree = "<group>"; };
 		DF44B8487E96FD9841E4D83A /* Pods-Dont Eat Alone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dont Eat Alone.release.xcconfig"; path = "Pods/Target Support Files/Pods-Dont Eat Alone/Pods-Dont Eat Alone.release.xcconfig"; sourceTree = "<group>"; };
 		EF0EBD86FFEBAFFA12C9C06E /* Pods-Dont Eat AloneTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dont Eat AloneTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Dont Eat AloneTests/Pods-Dont Eat AloneTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -190,12 +196,15 @@
 				770251B5201D4079002E4515 /* MenuVC.swift */,
 				770251B7201D4079002E4515 /* SecondViewController.swift */,
 				2AFB41322047DD86004025F9 /* ItemDetailViewController.swift */,
-				BDDE7C6D207AF6840008A677 /* LoginViewController.swift */,
 				BDDE7C6F207B04590008A677 /* MatchingListViewController.swift */,
-				009DD511207B0C5600BC2147 /* RegistrationViewController.swift */,
-				009FDBC6209682BD00308641 /* BioViewController.swift */,
 				BFE168A0209AB8BD00D021A2 /* ViewController.swift */,
 				BFE168A2209AB8DD00D021A2 /* CollectionViewController.swift */,
+				009FDBC6209682BD00308641 /* BioViewController.swift */,
+				009DD511207B0C5600BC2147 /* RegistrationViewController.swift */,
+				BDDE7C6D207AF6840008A677 /* LoginViewController.swift */,
+				DCD1C6F320A931F300383A4A /* CreateProfileViewController.swift */,
+				DCD1C6F120A9240A00383A4A /* SignUpViewController.swift */,
+				DCB3BA2420ACF8910027CD43 /* SignInViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -205,8 +214,8 @@
 			children = (
 				77949971203BD12B00F3B0ED /* Extensions.swift */,
 				770251B3201D4079002E4515 /* AppDelegate.swift */,
-				770251BC201D4079002E4515 /* Assets.xcassets */,
-				770251BE201D4079002E4515 /* LaunchScreen.storyboard */,
+				DC96D64F20AD40860042F8D1 /* Assets.xcassets */,
+				DCB3BA2220ACE20B0027CD43 /* LaunchScreen.storyboard */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -447,9 +456,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				2A744897203BBEDA00793AD3 /* MenuCardView.xib in Resources */,
-				770251C0201D4079002E4515 /* LaunchScreen.storyboard in Resources */,
-				770251BD201D4079002E4515 /* Assets.xcassets in Resources */,
+				DCB3BA2320ACE20B0027CD43 /* LaunchScreen.storyboard in Resources */,
 				770251BB201D4079002E4515 /* Main.storyboard in Resources */,
+				DC96D65020AD40870042F8D1 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -581,6 +590,7 @@
 				2AFB41372047F0F2004025F9 /* MenuCardCollectionViewCell.swift in Sources */,
 				770CDEAE20266B0800658925 /* ColoredCircle.swift in Sources */,
 				2AB62E702048D21D0013CB59 /* ActivityLevel.swift in Sources */,
+				DCD1C6F220A9240A00383A4A /* SignUpViewController.swift in Sources */,
 				BF0523E1209AA7DC0013EE11 /* PreferenceViewController.swift in Sources */,
 				DC7050A3209FDFBC0099EA31 /* UIColor+Additions.swift in Sources */,
 				009FDBC7209682BD00308641 /* BioViewController.swift in Sources */,
@@ -594,7 +604,9 @@
 				BFE168A1209AB8BD00D021A2 /* ViewController.swift in Sources */,
 				DC7050A5209FE95B0099EA31 /* UIFont+Additions.swift in Sources */,
 				77949970203BD10500F3B0ED /* AllergyFilterButton.swift in Sources */,
+				DCB3BA2520ACF8910027CD43 /* SignInViewController.swift in Sources */,
 				77949972203BD12B00F3B0ED /* Extensions.swift in Sources */,
+				DCD1C6F420A931F300383A4A /* CreateProfileViewController.swift in Sources */,
 				770CDEB020266B6000658925 /* ActivityLevelBar.swift in Sources */,
 				009DD512207B0C5600BC2147 /* RegistrationViewController.swift in Sources */,
 				C0AD0D34204B4EA9008E1206 /* TopBar.swift in Sources */,
@@ -643,14 +655,6 @@
 				770251BA201D4079002E4515 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		770251BE201D4079002E4515 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				770251BF201D4079002E4515 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
