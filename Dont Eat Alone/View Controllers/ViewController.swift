@@ -29,7 +29,8 @@ final class ViewController: UIViewController {
     
     // MARK: - Properties
     var username = "Ayush"
-    var socket = WebSocket(url: URL(string: "https://django-channels-example.herokuapp.com/chat/devxdemo")!, protocols: ["chat"])
+    //var socket = WebSocket(url: URL(string: "https://django-channels-example.herokuapp.com/chat/devxdemo")!, protocols: ["chat"])
+    var socket = WebSocket(url: URL(string: "http://localhost:8000/chat/devxdemo")!, protocols: ["chat"])
     
     // MARK: - IBOutlets
     @IBOutlet var emojiLabel: UILabel!
@@ -38,6 +39,16 @@ final class ViewController: UIViewController {
     // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //  Load the last 50 messages from the server when the view controller loads
+        Alamofire.request("http://localhost:8000/devxdemo").responseJSON { response in
+            if let result = response.result.value {
+                let json = JSON(result)
+                print(json["tester"])
+                print(json["messages"])
+            }
+        }
+        
         socket.delegate = self
         socket.connect()
         navigationItem.hidesBackButton = true
