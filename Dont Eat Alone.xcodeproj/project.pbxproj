@@ -37,6 +37,7 @@
 		BD07913520B326E000B236EE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD07913420B326E000B236EE /* User.swift */; };
 		BD07913720B3273900B236EE /* UserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD07913620B3273900B236EE /* UserAPI.swift */; };
 		BD07913920B3275000B236EE /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD07913820B3275000B236EE /* API.swift */; };
+		BDA45A8720B33EA100533144 /* UserClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA45A8620B33EA100533144 /* UserClass.swift */; };
 		BDDE7C6E207AF6840008A677 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDE7C6D207AF6840008A677 /* LoginViewController.swift */; };
 		BDDE7C70207B04590008A677 /* MatchingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDE7C6F207B04590008A677 /* MatchingListViewController.swift */; };
 		BDDE7C72207B04D00008A677 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDE7C71207B04D00008A677 /* UserTableViewCell.swift */; };
@@ -115,6 +116,7 @@
 		BD07913420B326E000B236EE /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		BD07913620B3273900B236EE /* UserAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAPI.swift; sourceTree = "<group>"; };
 		BD07913820B3275000B236EE /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		BDA45A8620B33EA100533144 /* UserClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserClass.swift; sourceTree = "<group>"; };
 		BDDE7C6D207AF6840008A677 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		BDDE7C6F207B04590008A677 /* MatchingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchingListViewController.swift; sourceTree = "<group>"; };
 		BDDE7C71207B04D00008A677 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
@@ -299,6 +301,7 @@
 				770251C1201D4079002E4515 /* Info.plist */,
 				DCF0E2DA20B260300036A32F /* Extensions */,
 				2A94477C2055F5860033B6C6 /* Supporting Files */,
+				BDA45A8620B33EA100533144 /* UserClass.swift */,
 			);
 			path = "Dont Eat Alone";
 			sourceTree = "<group>";
@@ -622,6 +625,7 @@
 				770251E4201D4182002E4515 /* Moya_Service.swift in Sources */,
 				2AB62E6E2048D16B0013CB59 /* MenuAPI.swift in Sources */,
 				2A744895203BBDBC00793AD3 /* MenuCardView.swift in Sources */,
+				BDA45A8720B33EA100533144 /* UserClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
