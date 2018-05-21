@@ -8,20 +8,18 @@
 
 // TODO:
 /*
- - connect FB login
  - add in transitions b/w view controllers
- - splah screen transition
- - pressing down on button - change color
- - pressing text field, clear box and change color of new text
- - everything looks pushed up
- - BioBox, change starting point of text, should there be a character limit
- - forget password font not working
+ - splash screen transition and length
+ - fb button color change when cancelling
+ - clicking on image to upload image for profile pic
 */
 
 import UIKit
 import FacebookLogin
+import FacebookCore
 
 class LoginViewController: UIViewController {
+    var isSigningUp: Bool = true
 
     @IBOutlet var SignUpButton: UIButton!
     @IBOutlet var ContinueFBButton: UIButton!
@@ -50,11 +48,20 @@ class LoginViewController: UIViewController {
         }
         
         
-        
-        
-        
-        
-        
+        let loginManager = LoginManager()
+        loginManager.logIn(readPermissions: [.publicProfile, .email, .userFriends], viewController: self) { (loginResult) in
+            switch loginResult {
+            case .failed(let error):
+                print("Error:::::::\(error)")
+            case .cancelled:
+                print("User cancelled login.")
+            case .success(let grantedPermissions, let declinedPermissions, let accessToken):
+             
+                let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+                let nextViewController = storyBoard.instantiateViewController(withIdentifier: "MainView")
+                self.present(nextViewController, animated:false, completion:nil)
+            }
+        }
     }
     
     
@@ -111,8 +118,6 @@ class LoginViewController: UIViewController {
         CheckMenuButton.setTitleColor(UIColor.white, for: .normal)
         CheckMenuButton.titleLabel?.font = UIFont.signUpFont
         
-        
-        
         // Do any additional setup after loading the view.
     }
 
@@ -120,39 +125,5 @@ class LoginViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    /*
-    @IBAction func loginButtonAction(_ sender: UIButton) {
-        let loginManager = LoginManager()
-        loginManager.logIn(readPermissions: [.publicProfile, .email, .userFriends], viewController: self) { (loginResult) in
-            switch loginResult {
-            case .failed(let error):
-                print("Error:::::::\(error)")
-            case .cancelled:
-                print("User cancelled login.")
-            case .success(let grantedPermissions, let declinedPermissions, let accessToken):
-                
-                //Test if user already exists
-                //false - "RegistrationView"
-                //true - "MainView"
-                let nextViewID = "RegistrationView"
-                
-                let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-                let nextViewController = storyBoard.instantiateViewController(withIdentifier: nextViewID)
-                self.present(nextViewController, animated:false, completion:nil)
-            }
-        }
-    }
-    */
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

@@ -18,30 +18,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BruinBiteLogo" translatesAutoresizingMaskIntoConstraints="NO" id="4bR-LE-Un0">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SplahLogo" translatesAutoresizingMaskIntoConstraints="NO" id="4bR-LE-Un0">
                                 <rect key="frame" x="114" y="207" width="146" height="195"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="146" id="SMr-QL-dT3"/>
-                                    <constraint firstAttribute="height" constant="195" id="VJ1-St-Rhu"/>
+                                    <constraint firstAttribute="height" constant="195" id="vjX-cJ-At0"/>
+                                    <constraint firstAttribute="width" constant="146" id="yC8-xq-akC"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.027450980392156862" green="0.29019607843137252" blue="0.46666666666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Bcu-3y-fUS" firstAttribute="bottom" secondItem="4bR-LE-Un0" secondAttribute="bottom" constant="265" id="924-eg-AE5"/>
-                            <constraint firstItem="4bR-LE-Un0" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" constant="114" id="I4Q-Yd-mCM"/>
-                            <constraint firstItem="Bcu-3y-fUS" firstAttribute="trailing" secondItem="4bR-LE-Un0" secondAttribute="trailing" constant="115" id="jTb-4t-bIv"/>
-                            <constraint firstItem="4bR-LE-Un0" firstAttribute="top" secondItem="Bcu-3y-fUS" secondAttribute="top" constant="187" id="tm0-t8-UUD"/>
+                            <constraint firstItem="4bR-LE-Un0" firstAttribute="top" secondItem="Bcu-3y-fUS" secondAttribute="top" constant="187" id="7AN-Y9-JzT"/>
+                            <constraint firstItem="Bcu-3y-fUS" firstAttribute="trailing" secondItem="4bR-LE-Un0" secondAttribute="trailing" constant="115" id="FPZ-cs-UgX"/>
+                            <constraint firstItem="4bR-LE-Un0" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" constant="114" id="tcS-w8-2v5"/>
+                            <constraint firstItem="Bcu-3y-fUS" firstAttribute="bottom" secondItem="4bR-LE-Un0" secondAttribute="bottom" constant="265" id="vN5-uB-lh9"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Bcu-3y-fUS"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="52" y="374.66266866566718"/>
         </scene>
     </scenes>
     <resources>
-        <image name="BruinBiteLogo" width="108" height="144"/>
+        <image name="SplahLogo" width="146" height="195"/>
     </resources>
 </document>

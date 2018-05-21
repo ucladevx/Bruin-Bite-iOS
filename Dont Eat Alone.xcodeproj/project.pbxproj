@@ -45,6 +45,7 @@
 		DC7050A3209FDFBC0099EA31 /* UIColor+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7050A2209FDFBC0099EA31 /* UIColor+Additions.swift */; };
 		DC7050A5209FE95B0099EA31 /* UIFont+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7050A4209FE95B0099EA31 /* UIFont+Additions.swift */; };
 		DC96D65020AD40870042F8D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC96D64F20AD40860042F8D1 /* Assets.xcassets */; };
+		DCA260F720B2362E00066F3B /* CreateProfilePt2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA260F620B2362E00066F3B /* CreateProfilePt2ViewController.swift */; };
 		DCB3BA2320ACE20B0027CD43 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DCB3BA2220ACE20B0027CD43 /* LaunchScreen.storyboard */; };
 		DCB3BA2520ACF8910027CD43 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB3BA2420ACF8910027CD43 /* SignInViewController.swift */; };
 		DCD1C6F220A9240A00383A4A /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD1C6F120A9240A00383A4A /* SignUpViewController.swift */; };
@@ -119,6 +120,7 @@
 		DC7050A2209FDFBC0099EA31 /* UIColor+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Additions.swift"; sourceTree = "<group>"; };
 		DC7050A4209FE95B0099EA31 /* UIFont+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+Additions.swift"; sourceTree = "<group>"; };
 		DC96D64F20AD40860042F8D1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DCA260F620B2362E00066F3B /* CreateProfilePt2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProfilePt2ViewController.swift; sourceTree = "<group>"; };
 		DCB3BA2220ACE20B0027CD43 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DCB3BA2420ACF8910027CD43 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		DCD1C6F120A9240A00383A4A /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -203,6 +205,7 @@
 				009DD511207B0C5600BC2147 /* RegistrationViewController.swift */,
 				BDDE7C6D207AF6840008A677 /* LoginViewController.swift */,
 				DCD1C6F320A931F300383A4A /* CreateProfileViewController.swift */,
+				DCA260F620B2362E00066F3B /* CreateProfilePt2ViewController.swift */,
 				DCD1C6F120A9240A00383A4A /* SignUpViewController.swift */,
 				DCB3BA2420ACF8910027CD43 /* SignInViewController.swift */,
 			);
@@ -247,7 +250,6 @@
 			isa = PBXGroup;
 			children = (
 				2AB62E6B20488A050013CB59 /* MenuAPI.swift */,
-				2AB62E6D2048D16B0013CB59 /* API.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -282,8 +284,8 @@
 				2A94477A2055F50B0033B6C6 /* Views */,
 				2A744891203B8E9F00793AD3 /* Models */,
 				2AB62E6A204888760013CB59 /* Network */,
-				770251B9201D4079002E4515 /* Main.storyboard */,
 				BDDE7C73207B04F80008A677 /* UserList */,
+				770251B9201D4079002E4515 /* Main.storyboard */,
 				770251E3201D4182002E4515 /* Moya_Service.swift */,
 				770251C1201D4079002E4515 /* Info.plist */,
 				2A94477C2055F5860033B6C6 /* Supporting Files */,
@@ -323,6 +325,7 @@
 		BDDE7C73207B04F80008A677 /* UserList */ = {
 			isa = PBXGroup;
 			children = (
+				2AB62E6D2048D16B0013CB59 /* API.swift */,
 				BDDE7C71207B04D00008A677 /* UserTableViewCell.swift */,
 			);
 			path = UserList;
@@ -594,6 +597,7 @@
 				BF0523E1209AA7DC0013EE11 /* PreferenceViewController.swift in Sources */,
 				DC7050A3209FDFBC0099EA31 /* UIColor+Additions.swift in Sources */,
 				009FDBC7209682BD00308641 /* BioViewController.swift in Sources */,
+				DCA260F720B2362E00066F3B /* CreateProfilePt2ViewController.swift in Sources */,
 				2AB62E6C20488A050013CB59 /* MenuAPI.swift in Sources */,
 				2AB62E69204887820013CB59 /* Menu.swift in Sources */,
 				BDDE7C70207B04590008A677 /* MatchingListViewController.swift in Sources */,

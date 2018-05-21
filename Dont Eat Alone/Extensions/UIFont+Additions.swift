@@ -37,10 +37,5 @@ extension UIFont {
   class var bioFont: UIFont {
     return UIFont.systemFont(ofSize: 20.0, weight: .regular)
   }
-
-  class var forgotPassFont: UIFont {
-    return UIFont(name: "SFProText-LightItalic", size: 12.0)!
-  }
-
     
 }

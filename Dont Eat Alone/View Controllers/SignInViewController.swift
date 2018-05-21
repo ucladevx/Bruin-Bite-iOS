@@ -25,13 +25,14 @@ class SignInViewController: UIViewController {
         PasswordText.font = UIFont.signUpInfoFieldFont
         EmailText.textColor = .white
         PasswordText.textColor = .white
-        // ForgotPassButton.titleLabel?.font = UIFont.forgotPassFont
         SignInButton.setTitleColor(UIColor.white, for: .normal)
         SignInButton.titleLabel?.font = UIFont.signUpInfoFieldFont
         
         SignInButton.layer.borderWidth = 1
         SignInButton.layer.borderColor = UIColor.white.cgColor
         SignInButton.layer.cornerRadius = 26
+        
+        EmailText.becomeFirstResponder()
         
         // Do any additional setup after loading the view.
     }
