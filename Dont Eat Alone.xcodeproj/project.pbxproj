@@ -44,6 +44,12 @@
 		C0AD0D34204B4EA9008E1206 /* TopBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0AD0D33204B4EA9008E1206 /* TopBar.swift */; };
 		C0CD676A203C15CC006B265D /* TimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CD6769203C15CC006B265D /* TimeView.swift */; };
 		C0CD676C203C1B19006B265D /* ColoredBezel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CD676B203C1B19006B265D /* ColoredBezel.swift */; };
+		DCF0E2DC20B260510036A32F /* UIColor+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF0E2DB20B260510036A32F /* UIColor+Additions.swift */; };
+		DCF0E2DE20B260680036A32F /* UIFont+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF0E2DD20B260680036A32F /* UIFont+Additions.swift */; };
+		DCF0E2E020B2608B0036A32F /* CreateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF0E2DF20B2608B0036A32F /* CreateProfileViewController.swift */; };
+		DCF0E2E220B260A90036A32F /* CreateProfilePt2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF0E2E120B260A90036A32F /* CreateProfilePt2ViewController.swift */; };
+		DCF0E2E420B260BA0036A32F /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF0E2E320B260BA0036A32F /* SignUpViewController.swift */; };
+		DCF0E2E620B260CC0036A32F /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF0E2E520B260CC0036A32F /* SignInViewController.swift */; };
 		EF02E5CA957D94AAB438FE60 /* Pods_Dont_Eat_AloneTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 613DC376493206C810E3C951 /* Pods_Dont_Eat_AloneTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -113,6 +119,12 @@
 		C0AD0D33204B4EA9008E1206 /* TopBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBar.swift; sourceTree = "<group>"; };
 		C0CD6769203C15CC006B265D /* TimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeView.swift; sourceTree = "<group>"; };
 		C0CD676B203C1B19006B265D /* ColoredBezel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColoredBezel.swift; sourceTree = "<group>"; };
+		DCF0E2DB20B260510036A32F /* UIColor+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Additions.swift"; sourceTree = "<group>"; };
+		DCF0E2DD20B260680036A32F /* UIFont+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Additions.swift"; sourceTree = "<group>"; };
+		DCF0E2DF20B2608B0036A32F /* CreateProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProfileViewController.swift; sourceTree = "<group>"; };
+		DCF0E2E120B260A90036A32F /* CreateProfilePt2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProfilePt2ViewController.swift; sourceTree = "<group>"; };
+		DCF0E2E320B260BA0036A32F /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		DCF0E2E520B260CC0036A32F /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		DF44B8487E96FD9841E4D83A /* Pods-Dont Eat Alone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dont Eat Alone.release.xcconfig"; path = "Pods/Target Support Files/Pods-Dont Eat Alone/Pods-Dont Eat Alone.release.xcconfig"; sourceTree = "<group>"; };
 		EF0EBD86FFEBAFFA12C9C06E /* Pods-Dont Eat AloneTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dont Eat AloneTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Dont Eat AloneTests/Pods-Dont Eat AloneTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -186,12 +198,16 @@
 				770251B5201D4079002E4515 /* MenuVC.swift */,
 				770251B7201D4079002E4515 /* SecondViewController.swift */,
 				2AFB41322047DD86004025F9 /* ItemDetailViewController.swift */,
-				BDDE7C6D207AF6840008A677 /* LoginViewController.swift */,
 				BDDE7C6F207B04590008A677 /* MatchingListViewController.swift */,
 				009DD511207B0C5600BC2147 /* RegistrationViewController.swift */,
 				009FDBC6209682BD00308641 /* BioViewController.swift */,
 				BFE168A0209AB8BD00D021A2 /* ViewController.swift */,
 				BFE168A2209AB8DD00D021A2 /* CollectionViewController.swift */,
+				BDDE7C6D207AF6840008A677 /* LoginViewController.swift */,
+				DCF0E2DF20B2608B0036A32F /* CreateProfileViewController.swift */,
+				DCF0E2E120B260A90036A32F /* CreateProfilePt2ViewController.swift */,
+				DCF0E2E320B260BA0036A32F /* SignUpViewController.swift */,
+				DCF0E2E520B260CC0036A32F /* SignInViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -272,6 +288,7 @@
 				BDDE7C73207B04F80008A677 /* UserList */,
 				770251E3201D4182002E4515 /* Moya_Service.swift */,
 				770251C1201D4079002E4515 /* Info.plist */,
+				DCF0E2DA20B260300036A32F /* Extensions */,
 				2A94477C2055F5860033B6C6 /* Supporting Files */,
 			);
 			path = "Dont Eat Alone";
@@ -311,6 +328,15 @@
 				BDDE7C71207B04D00008A677 /* UserTableViewCell.swift */,
 			);
 			path = UserList;
+			sourceTree = "<group>";
+		};
+		DCF0E2DA20B260300036A32F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				DCF0E2DB20B260510036A32F /* UIColor+Additions.swift */,
+				DCF0E2DD20B260680036A32F /* UIFont+Additions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -549,6 +575,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DCF0E2E020B2608B0036A32F /* CreateProfileViewController.swift in Sources */,
+				DCF0E2E220B260A90036A32F /* CreateProfilePt2ViewController.swift in Sources */,
 				BDDE7C6E207AF6840008A677 /* LoginViewController.swift in Sources */,
 				BDDE7C72207B04D00008A677 /* UserTableViewCell.swift in Sources */,
 				770251B8201D4079002E4515 /* SecondViewController.swift in Sources */,
@@ -560,6 +588,7 @@
 				770CDEAE20266B0800658925 /* ColoredCircle.swift in Sources */,
 				2AB62E702048D21D0013CB59 /* ActivityLevel.swift in Sources */,
 				BF0523E1209AA7DC0013EE11 /* PreferenceViewController.swift in Sources */,
+				DCF0E2DC20B260510036A32F /* UIColor+Additions.swift in Sources */,
 				009FDBC7209682BD00308641 /* BioViewController.swift in Sources */,
 				2AB62E6C20488A050013CB59 /* MenuAPI.swift in Sources */,
 				2AB62E69204887820013CB59 /* Menu.swift in Sources */,
@@ -568,10 +597,13 @@
 				C0CD676A203C15CC006B265D /* TimeView.swift in Sources */,
 				2B952C67202BDBB200F27727 /* WeekView.swift in Sources */,
 				2A9447802055FA3E0033B6C6 /* AllergensBarScrollView.swift in Sources */,
+				DCF0E2E420B260BA0036A32F /* SignUpViewController.swift in Sources */,
 				BFE168A1209AB8BD00D021A2 /* ViewController.swift in Sources */,
+				DCF0E2DE20B260680036A32F /* UIFont+Additions.swift in Sources */,
 				77949970203BD10500F3B0ED /* AllergyFilterButton.swift in Sources */,
 				77949972203BD12B00F3B0ED /* Extensions.swift in Sources */,
 				770CDEB020266B6000658925 /* ActivityLevelBar.swift in Sources */,
+				DCF0E2E620B260CC0036A32F /* SignInViewController.swift in Sources */,
 				009DD512207B0C5600BC2147 /* RegistrationViewController.swift in Sources */,
 				C0AD0D34204B4EA9008E1206 /* TopBar.swift in Sources */,
 				770251B6201D4079002E4515 /* MenuVC.swift in Sources */,
