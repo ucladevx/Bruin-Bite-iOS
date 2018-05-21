@@ -1,5 +1,5 @@
 //
-//  NoMatchViewController.swift
+//  CancelMatchViewController.swift
 //  Dont Eat Alone
 //
 //  Created by Kameron Carr on 5/16/18.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NoMatchViewController: UIViewController {
+class CancelMatchViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,13 +21,9 @@ class NoMatchViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    /*
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destination = segue.destination as? SearchingScreenViewController {
-            destination.puls.start() 
-        }
+    @IBAction func dismissCancel(_ sender: Any?) {
+        self.dismiss(animated: true, completion: nil)
     }
-    */
     
     /*
     // MARK: - Navigation
