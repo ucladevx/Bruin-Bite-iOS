@@ -1029,7 +1029,7 @@
         <image name="Button" width="68" height="54"/>
         <image name="Chats" width="26" height="25"/>
         <image name="Logo" width="1761" height="1761"/>
-        <image name="Match" width="22" height="20"/>
+        <image name="Match" width="37" height="24"/>
         <image name="Menu" width="22" height="18"/>
         <image name="Profile" width="24" height="23"/>
         <image name="matchbutton" width="568" height="194"/>
