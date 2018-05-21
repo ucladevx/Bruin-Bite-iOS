@@ -3,6 +3,7 @@
 //  Dont Eat Alone
 //
 //  Created by Samuel J. Lee on 4/8/18.
+//  Created by Cynthia Zhou on 5/13/18.
 //  Copyright © 2018 Dont Eat Alone. All rights reserved.
 //
 
@@ -12,6 +13,7 @@
  - splash screen transition and length
  - fb button color change when cancelling
  - clicking on image to upload image for profile pic
+ - fix aspect ratio? constraint for images and next button (create profile)
  */
 
 import UIKit
