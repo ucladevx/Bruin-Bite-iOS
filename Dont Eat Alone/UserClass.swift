@@ -17,8 +17,8 @@ public class User {
     private var user_minor: String
     private var user_year: Int
     private var user_bio: String
-    private var create_read_update: UserCreate
-    private var login_model: UserLog
+    private var create_read_update: UserCreate?
+    private var login_model: UserLog?
     
     init(email: String, password: String, firstname: String, lastname: String, major: String, minor: String, year: Int, bio: String) {
         user_email = email

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8gz-gb-DS3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8gz-gb-DS3">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -1015,9 +1015,7 @@
                                 <state key="normal" title="Sign Up"/>
                                 <connections>
                                     <action selector="SignUpTap:" destination="8gz-gb-DS3" eventType="touchDown" id="aKK-4c-bse"/>
-                                    <segue destination="jrE-gA-JCy" kind="show" id="jEo-FG-EqQ">
-                                        <nil key="action"/>
-                                    </segue>
+                                    <segue destination="jrE-gA-JCy" kind="show" id="jEo-FG-EqQ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4WQ-Z2-0vd">
@@ -1054,9 +1052,7 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="7xm-ve-xyf" kind="show" id="DAW-MD-fi4">
-                                        <nil key="action"/>
-                                    </segue>
+                                    <segue destination="7xm-ve-xyf" kind="show" id="DAW-MD-fi4"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1182,9 +1178,7 @@
                                 </constraints>
                                 <state key="normal" image="PrevArrow"/>
                                 <connections>
-                                    <segue destination="8gz-gb-DS3" kind="show" id="lHS-Ev-ORD">
-                                        <nil key="action"/>
-                                    </segue>
+                                    <segue destination="8gz-gb-DS3" kind="show" id="lHS-Ev-ORD"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1245,9 +1239,7 @@
                                 </constraints>
                                 <state key="normal" image="NextArrow"/>
                                 <connections>
-                                    <segue destination="Re2-AQ-gBu" kind="show" id="tHK-y9-SnF">
-                                        <nil key="action"/>
-                                    </segue>
+                                    <segue destination="Re2-AQ-gBu" kind="show" id="tHK-y9-SnF"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SIGN UP" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LP1-WN-g5l">
@@ -1267,9 +1259,7 @@
                                 </constraints>
                                 <state key="normal" image="PrevArrow"/>
                                 <connections>
-                                    <segue destination="8gz-gb-DS3" kind="show" id="PNa-Ke-Vgp">
-                                        <nil key="action"/>
-                                    </segue>
+                                    <segue destination="8gz-gb-DS3" kind="show" id="PNa-Ke-Vgp"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xdu-mE-ssA">
@@ -1431,9 +1421,7 @@
                                 </constraints>
                                 <state key="normal" image="PrevArrow"/>
                                 <connections>
-                                    <segue destination="jrE-gA-JCy" kind="show" id="OQb-Mg-l73">
-                                        <nil key="action"/>
-                                    </segue>
+                                    <segue destination="jrE-gA-JCy" kind="show" id="OQb-Mg-l73"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wTh-4U-oet" userLabel="XButton">
@@ -1444,9 +1432,7 @@
                                 </constraints>
                                 <state key="normal" image="x"/>
                                 <connections>
-                                    <segue destination="8gz-gb-DS3" kind="show" id="6mL-fa-w2t">
-                                        <nil key="action"/>
-                                    </segue>
+                                    <segue destination="8gz-gb-DS3" kind="show" id="6mL-fa-w2t"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ProfilePic" translatesAutoresizingMaskIntoConstraints="NO" id="T4X-SS-Dgf">
@@ -1463,9 +1449,7 @@
                                 </constraints>
                                 <state key="normal" image="NextArrow"/>
                                 <connections>
-                                    <segue destination="yIm-xr-gFV" kind="show" id="z7j-sY-PSV">
-                                        <nil key="action"/>
-                                    </segue>
+                                    <segue destination="yIm-xr-gFV" kind="show" id="z7j-sY-PSV"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BIO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WdL-rI-VFU">
@@ -1545,9 +1529,7 @@
                                 </constraints>
                                 <state key="normal" image="x"/>
                                 <connections>
-                                    <segue destination="8gz-gb-DS3" kind="show" id="WWJ-TC-Qti">
-                                        <nil key="action"/>
-                                    </segue>
+                                    <segue destination="8gz-gb-DS3" kind="show" id="WWJ-TC-Qti"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kID-wk-jUQ" userLabel="PrevButton">
@@ -1558,9 +1540,7 @@
                                 </constraints>
                                 <state key="normal" image="PrevArrow"/>
                                 <connections>
-                                    <segue destination="Re2-AQ-gBu" kind="show" id="kHV-7h-cOA">
-                                        <nil key="action"/>
-                                    </segue>
+                                    <segue destination="Re2-AQ-gBu" kind="show" id="kHV-7h-cOA"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Year" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="B7L-js-gqD">

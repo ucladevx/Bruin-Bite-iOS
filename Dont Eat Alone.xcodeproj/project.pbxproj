@@ -39,6 +39,7 @@
 		BD07913920B3275000B236EE /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD07913820B3275000B236EE /* API.swift */; };
 		BDA45A8720B33EA100533144 /* UserClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA45A8620B33EA100533144 /* UserClass.swift */; };
 		BDBC03D320B4A6E800566067 /* keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDBC03D220B4A6E800566067 /* keys.swift */; };
+		BDBC03D520B4A7B400566067 /* BackgroundUserFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDBC03D420B4A7B400566067 /* BackgroundUserFetch.swift */; };
 		BDDE7C6E207AF6840008A677 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDE7C6D207AF6840008A677 /* LoginViewController.swift */; };
 		BDDE7C70207B04590008A677 /* MatchingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDE7C6F207B04590008A677 /* MatchingListViewController.swift */; };
 		BDDE7C72207B04D00008A677 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDE7C71207B04D00008A677 /* UserTableViewCell.swift */; };
@@ -119,6 +120,7 @@
 		BD07913820B3275000B236EE /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		BDA45A8620B33EA100533144 /* UserClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserClass.swift; sourceTree = "<group>"; };
 		BDBC03D220B4A6E800566067 /* keys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = keys.swift; sourceTree = "<group>"; };
+		BDBC03D420B4A7B400566067 /* BackgroundUserFetch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundUserFetch.swift; sourceTree = "<group>"; };
 		BDDE7C6D207AF6840008A677 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		BDDE7C6F207B04590008A677 /* MatchingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchingListViewController.swift; sourceTree = "<group>"; };
 		BDDE7C71207B04D00008A677 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
@@ -305,6 +307,7 @@
 				2A94477C2055F5860033B6C6 /* Supporting Files */,
 				BDA45A8620B33EA100533144 /* UserClass.swift */,
 				BDBC03D220B4A6E800566067 /* keys.swift */,
+				BDBC03D420B4A7B400566067 /* BackgroundUserFetch.swift */,
 			);
 			path = "Dont Eat Alone";
 			sourceTree = "<group>";
@@ -590,6 +593,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BDBC03D520B4A7B400566067 /* BackgroundUserFetch.swift in Sources */,
 				DCF0E2E020B2608B0036A32F /* CreateProfileViewController.swift in Sources */,
 				DCF0E2E220B260A90036A32F /* CreateProfilePt2ViewController.swift in Sources */,
 				BDDE7C6E207AF6840008A677 /* LoginViewController.swift in Sources */,
