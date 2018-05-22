@@ -108,7 +108,7 @@ extension MainAPI: TargetType {
             return ["Content-Type": "application/x-www-form-urlencoded"]
         case .readUsers, .updateUser, .deleteUser:
             var temp = "Bearer "
-            temp += UserDefaults.standard.object(forKey: USEREMAIL) as! String
+            temp += UserDefaults.standard.object(forKey: MAIN_USER.accessUserInfo(type: "email")) as! String
             return ["Authorization": temp]
         }
     }

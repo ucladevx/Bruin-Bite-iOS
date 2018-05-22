@@ -30,7 +30,6 @@ extension API {
     }
     
     static func loginUser(username: String, password: String, grant_type: String, client_id: String, client_secret: String, completion: @escaping (UserLog) -> ()) {
-        USEREMAIL = username
         provider.request(.loginUser(username:username, password: password, grant_type: grant_type, client_id: client_id, client_secret: client_secret)) { result in
             switch result {
             case let .success(response):

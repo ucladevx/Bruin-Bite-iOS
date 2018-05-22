@@ -96,6 +96,7 @@ public class User {
             return user_bio
         default:
             print("ERROR TYPE INPUT INCORRECT")
+            return ""
         }
     }
 
