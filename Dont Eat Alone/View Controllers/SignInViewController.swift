@@ -47,7 +47,6 @@ class SignInViewController: UIViewController {
         MAIN_USER.changeUserInfo(type: "email", info: EmailText.text!)
         MAIN_USER.changeUserInfo(type: "password", info: PasswordText.text!)
         MAIN_USER.loginUser()
-        MAIN_USER.readUser()
         if(MAIN_USER.getToken() != nil) {
             self.performSegue(withIdentifier: "ShowMenuVC_2", sender: nil)
         }
