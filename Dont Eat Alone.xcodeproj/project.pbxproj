@@ -38,6 +38,7 @@
 		BD07913720B3273900B236EE /* UserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD07913620B3273900B236EE /* UserAPI.swift */; };
 		BD07913920B3275000B236EE /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD07913820B3275000B236EE /* API.swift */; };
 		BDA45A8720B33EA100533144 /* UserClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA45A8620B33EA100533144 /* UserClass.swift */; };
+		BDBC03D320B4A6E800566067 /* keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDBC03D220B4A6E800566067 /* keys.swift */; };
 		BDDE7C6E207AF6840008A677 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDE7C6D207AF6840008A677 /* LoginViewController.swift */; };
 		BDDE7C70207B04590008A677 /* MatchingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDE7C6F207B04590008A677 /* MatchingListViewController.swift */; };
 		BDDE7C72207B04D00008A677 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDE7C71207B04D00008A677 /* UserTableViewCell.swift */; };
@@ -117,6 +118,7 @@
 		BD07913620B3273900B236EE /* UserAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAPI.swift; sourceTree = "<group>"; };
 		BD07913820B3275000B236EE /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		BDA45A8620B33EA100533144 /* UserClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserClass.swift; sourceTree = "<group>"; };
+		BDBC03D220B4A6E800566067 /* keys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = keys.swift; sourceTree = "<group>"; };
 		BDDE7C6D207AF6840008A677 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		BDDE7C6F207B04590008A677 /* MatchingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchingListViewController.swift; sourceTree = "<group>"; };
 		BDDE7C71207B04D00008A677 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
@@ -302,6 +304,7 @@
 				DCF0E2DA20B260300036A32F /* Extensions */,
 				2A94477C2055F5860033B6C6 /* Supporting Files */,
 				BDA45A8620B33EA100533144 /* UserClass.swift */,
+				BDBC03D220B4A6E800566067 /* keys.swift */,
 			);
 			path = "Dont Eat Alone";
 			sourceTree = "<group>";
@@ -612,6 +615,7 @@
 				2B952C67202BDBB200F27727 /* WeekView.swift in Sources */,
 				2A9447802055FA3E0033B6C6 /* AllergensBarScrollView.swift in Sources */,
 				DCF0E2E420B260BA0036A32F /* SignUpViewController.swift in Sources */,
+				BDBC03D320B4A6E800566067 /* keys.swift in Sources */,
 				BFE168A1209AB8BD00D021A2 /* ViewController.swift in Sources */,
 				DCF0E2DE20B260680036A32F /* UIFont+Additions.swift in Sources */,
 				77949970203BD10500F3B0ED /* AllergyFilterButton.swift in Sources */,
