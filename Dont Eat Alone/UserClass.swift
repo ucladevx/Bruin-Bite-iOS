@@ -31,6 +31,17 @@ public class User {
         user_bio = bio
     }
     
+    init() {
+        user_email = ""
+        user_password = ""
+        first_name = ""
+        last_name = ""
+        user_major = ""
+        user_minor = ""
+        user_year = 0
+        user_bio = ""
+    }
+    
     public func changeUserInfo(type: String, info: String) {
         switch (type) {
         case "email":
