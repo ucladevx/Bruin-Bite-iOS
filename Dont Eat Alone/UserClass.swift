@@ -17,6 +17,8 @@ public class User {
     private var user_minor: String
     private var user_year: Int
     private var user_bio: String
+    private var create_read_update: UserCreate
+    private var login_model: UserLog
     
     init(email: String, password: String, firstname: String, lastname: String, major: String, minor: String, year: Int, bio: String) {
         user_email = email
@@ -61,6 +63,10 @@ public class User {
         user_year = year
     }
     
+    public func getToken() -> String {
+        return login_model.access_token
+    }
+    
     public func accessUserInfo(type: String) -> String {
         switch (type) {
         case "email":
@@ -84,6 +90,32 @@ public class User {
 
     public func accessUserYear() -> Int {
         return user_year
+    }
+    
+    public func createUser() {
+        API.createUser(email: user_email, password: user_password, first_name: first_name, last_name: last_name, major: user_major, minor: user_minor, year: user_year, self_bio: user_bio) { (created_user) in
+            create_read_update = created_user
+        }
+    }
+    public func loginUser() {
+        API.loginUser(username: user_email, password: user_password, grant_type: "password", client_id: CLIENTID, client_secret: CLIENTSECRET) { (logged_user) in
+            login_model = logged_user
+        }
+    }
+    public func readUser() {
+        API.readUsers(email: user_email, access_token: UserDefaults.standard.object(forKey: user_email)) { (sent_user) in
+            create_read_update = sent_user
+        }
+    }
+    public func updateUser() {
+        API.updateUser(email: user_email, password: user_password, first_name: first_name, last_name: last_name, major: user_major, minor: user_minor, year: user_year, self_bio: user_bio, access_token: UserDefaults.standard.object(forKey: user_email)) { (updatedUser) in
+            create_read_update = updatedUser
+        }
+    }
+    public func deleteUser() {
+        API.deleteUser(email: user_email, access_token: UserDefaults.standard.object(forKey: user_email)) {
+            print("Deleted User")
+        }
     }
     
 }
