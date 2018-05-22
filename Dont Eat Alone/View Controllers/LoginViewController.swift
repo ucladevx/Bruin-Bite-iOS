@@ -3,7 +3,6 @@
 //  Dont Eat Alone
 //
 //  Created by Samuel J. Lee on 4/8/18.
-//  Created by Cynthia Zhou on 5/13/18.
 //  Copyright © 2018 Dont Eat Alone. All rights reserved.
 //
 
@@ -13,7 +12,6 @@
  - splash screen transition and length
  - fb button color change when cancelling
  - clicking on image to upload image for profile pic
- - fix aspect ratio? constraint for images and next button (create profile)
  */
 
 import UIKit
@@ -58,10 +56,10 @@ class LoginViewController: UIViewController {
             case .cancelled:
                 print("User cancelled login.")
             case .success(let grantedPermissions, let declinedPermissions, let accessToken):
-                
-                let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-                let nextViewController = storyBoard.instantiateViewController(withIdentifier: "MainView")
-                self.present(nextViewController, animated:false, completion:nil)
+                //if user exists
+                    //self.performSegue(withIdentifier: "CheckMenusSegue", sender: sender)
+                //else
+                    self.performSegue(withIdentifier: "CreateProfileSegue", sender: sender)
             }
         }
     }

@@ -42,8 +42,15 @@ class SignInViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     @IBAction func didPressSignIn(_ sender: UIButton) {
-        // TODO: Verify sign in successful.
-        self.performSegue(withIdentifier: "ShowMenuVC_2", sender: nil)
+        // TODO: May cause bugs if access token is not nil by default
+        
+        MAIN_USER.changeUserInfo(type: "email", info: EmailText.text!)
+        MAIN_USER.changeUserInfo(type: "password", info: PasswordText.text!)
+        MAIN_USER.loginUser()
+        MAIN_USER.readUser()
+        if(MAIN_USER.getToken() != nil) {
+            self.performSegue(withIdentifier: "ShowMenuVC_2", sender: nil)
+        }
     }
     
     
