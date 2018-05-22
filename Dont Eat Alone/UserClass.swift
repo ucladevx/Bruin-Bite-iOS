@@ -20,17 +20,6 @@ public class User {
     private var create_read_update: UserCreate?
     private var login_model: UserLog?
     
-    init(email: String, password: String, firstname: String, lastname: String, major: String, minor: String, year: Int, bio: String) {
-        user_email = email
-        user_password = password
-        first_name = firstname
-        last_name = lastname
-        user_major = major
-        user_minor = minor
-        user_year = year
-        user_bio = bio
-    }
-    
     init() {
         user_email = ""
         user_password = ""
@@ -113,6 +102,15 @@ public class User {
         API.loginUser(username: user_email, password: user_password, grant_type: "password", client_id: CLIENTID, client_secret: CLIENTSECRET) { (logged_user) in
             self.login_model = logged_user
         }
+        readUser()
+        user_email = create_read_update?.email
+        first_name = create_read_update?.first_name
+        last_name = create_read_update?.last_name
+        user_major = create_read_update?.major
+        user_minor = create_read_update?.minor
+        user_bio = create_read_update?.self_bio
+        user_year = create_read_update?.year
+
     }
     public func readUser() {
         API.readUsers(email: user_email, access_token: UserDefaults.standard.object(forKey: user_email) as! String) { (sent_user) in
