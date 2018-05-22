@@ -110,21 +110,26 @@ public class User {
         user_minor = create_read_update?.minor
         user_bio = create_read_update?.self_bio
         user_year = create_read_update?.year
-
     }
     public func readUser() {
+        DispatchQueue.global(qos: .background).async {
         API.readUsers(email: user_email, access_token: UserDefaults.standard.object(forKey: user_email) as! String) { (sent_user) in
             self.create_read_update = sent_user
         }
+        }
     }
     public func updateUser() {
+        DispatchQueue.global(qos: .background).async {
         API.updateUser(email: user_email, password: user_password, first_name: first_name, last_name: last_name, major: user_major, minor: user_minor, year: user_year, self_bio: user_bio, access_token: UserDefaults.standard.object(forKey: user_email) as! String) { (updatedUser) in
             self.create_read_update = updatedUser
         }
+        }
     }
     public func deleteUser() {
+        DispatchQueue.global(qos: .background).async {
         API.deleteUser(email: user_email, access_token: UserDefaults.standard.object(forKey: user_email) as! String) {
             print("Deleted User")
+        }
         }
     }
     
