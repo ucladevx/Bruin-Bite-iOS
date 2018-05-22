@@ -10,12 +10,6 @@ import Foundation
 
 //USER MODEL
 
-struct User {
-    let login: UserLog
-    let create: UserCreate
-    let password: String
-}
-
 struct UserLog {
     let access_token: String
     let refresh_token: String
