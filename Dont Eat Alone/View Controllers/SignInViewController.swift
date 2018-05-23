@@ -42,7 +42,10 @@ class SignInViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     @IBAction func didPressSignIn(_ sender: UIButton) {
-        // TODO: May cause bugs if access token is not nil by default
+        //
+        if(UserDefaults.standard.object(forKey: MAIN_USER.accessUserInfo(type: "email")) == nil) {
+            return
+        }
         
         MAIN_USER.changeUserInfo(type: "email", info: EmailText.text!)
         MAIN_USER.changeUserInfo(type: "password", info: PasswordText.text!)

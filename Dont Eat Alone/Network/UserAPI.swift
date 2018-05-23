@@ -38,6 +38,7 @@ extension API {
                     UserDefaults.standard.set(results.access_token, forKey: username)
                     completion(results)
                 } catch let err {
+                    UserDefaults.standard.set(nil, forKey: username)
                     print(err)
                 }
             case let .failure(error):
