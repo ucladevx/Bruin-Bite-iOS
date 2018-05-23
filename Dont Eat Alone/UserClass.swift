@@ -103,31 +103,32 @@ public class User {
             self.login_model = logged_user
         }
         readUser()
-        user_email = create_read_update?.email
-        first_name = create_read_update?.first_name
-        last_name = create_read_update?.last_name
-        user_major = create_read_update?.major
-        user_minor = create_read_update?.minor
-        user_bio = create_read_update?.self_bio
-        user_year = create_read_update?.year
+      //LOOK HERE. Not sure if these are the defualt values that you want - Ayush
+      user_email = create_read_update?.email ?? ""
+      first_name = create_read_update?.first_name ?? ""
+      last_name = create_read_update?.last_name ?? ""
+      user_major = create_read_update?.major ?? ""
+      user_minor = create_read_update?.minor ?? ""
+      user_bio = create_read_update?.self_bio ?? ""
+      user_year = create_read_update?.year ?? 0
     }
     public func readUser() {
         DispatchQueue.global(qos: .background).async {
-        API.readUsers(email: user_email, access_token: UserDefaults.standard.object(forKey: user_email) as! String) { (sent_user) in
+          API.readUsers(email: self.user_email, access_token: UserDefaults.standard.object(forKey: self.user_email) as! String) { (sent_user) in
             self.create_read_update = sent_user
         }
         }
     }
     public func updateUser() {
         DispatchQueue.global(qos: .background).async {
-        API.updateUser(email: user_email, password: user_password, first_name: first_name, last_name: last_name, major: user_major, minor: user_minor, year: user_year, self_bio: user_bio, access_token: UserDefaults.standard.object(forKey: user_email) as! String) { (updatedUser) in
+          API.updateUser(email: self.user_email, password: self.user_password, first_name: self.first_name, last_name: self.last_name, major: self.user_major, minor: self.user_minor, year: self.user_year, self_bio: self.user_bio, access_token: UserDefaults.standard.object(forKey: self.user_email) as! String) { (updatedUser) in
             self.create_read_update = updatedUser
         }
         }
     }
     public func deleteUser() {
         DispatchQueue.global(qos: .background).async {
-        API.deleteUser(email: user_email, access_token: UserDefaults.standard.object(forKey: user_email) as! String) {
+          API.deleteUser(email: self.user_email, access_token: UserDefaults.standard.object(forKey: self.user_email) as! String) {
             print("Deleted User")
         }
         }

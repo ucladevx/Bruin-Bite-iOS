@@ -38,7 +38,7 @@ class ProfileViewController: UIViewController {
         yearMajor.text = combine
         
         //set profile picture
-        profilePic.image = John.pic
+        //profilePic.image = John.pic
         
         //Circular Profile Picture
         profilePic.layer.cornerRadius = profilePic.frame.size.width/2
