@@ -17,6 +17,7 @@ public class User {
     private var user_minor: String
     private var user_year: Int
     private var user_bio: String
+    private var net_error: String
     private var create_read_update: UserCreate?
     private var login_model: UserLog?
     
@@ -29,6 +30,7 @@ public class User {
         user_minor = ""
         user_year = 0
         user_bio = ""
+        net_error = ""
     }
     
     public func changeUserInfo(type: String, info: String) {
@@ -53,6 +55,9 @@ public class User {
             break
         case "bio":
             user_bio = info
+            break
+        case "error":
+            net_error = info
             break
         default:
             print("ERROR TYPE INPUT INCORRECT")
@@ -83,6 +88,8 @@ public class User {
             return user_minor
         case "bio":
             return user_bio
+        case "error":
+            return net_error
         default:
             print("ERROR TYPE INPUT INCORRECT")
             return ""
@@ -93,11 +100,17 @@ public class User {
         return user_year
     }
     
-    public func createUser() {
+    public func createUser() -> Bool {
         API.createUser(email: user_email, password: user_password, first_name: first_name, last_name: last_name, major: user_major, minor: user_minor, year: user_year, self_bio: user_bio) { (created_user) in
             self.create_read_update = created_user
         }
+        if(self.create_read_update == nil) {
+            return false
+        }
+        return true
     }
+    
+    
     public func loginUser() {
         API.loginUser(username: user_email, password: user_password, grant_type: "password", client_id: CLIENTID, client_secret: CLIENTSECRET) { (logged_user) in
             self.login_model = logged_user
