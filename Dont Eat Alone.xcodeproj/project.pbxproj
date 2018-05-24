@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		009DD512207B0C5600BC2147 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009DD511207B0C5600BC2147 /* RegistrationViewController.swift */; };
 		009FDBC7209682BD00308641 /* BioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009FDBC6209682BD00308641 /* BioViewController.swift */; };
+		00C2DF0720B677040023CF75 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C2DF0620B677040023CF75 /* User.swift */; };
+		00C2DF0920B678890023CF75 /* Moya.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C2DF0820B678890023CF75 /* Moya.swift */; };
+		00C2DF0B20B678A00023CF75 /* UserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C2DF0A20B678A00023CF75 /* UserAPI.swift */; };
+		00C2DF0D20B678BE0023CF75 /* UserClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C2DF0C20B678BE0023CF75 /* UserClass.swift */; };
+		00C2DF0F20B678E70023CF75 /* BackgroundUserFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C2DF0E20B678E70023CF75 /* BackgroundUserFetch.swift */; };
+		00C2DF1120B6790D0023CF75 /* keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C2DF1020B6790D0023CF75 /* keys.swift */; };
 		2A744895203BBDBC00793AD3 /* MenuCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A744894203BBDBC00793AD3 /* MenuCardView.swift */; };
 		2A744897203BBEDA00793AD3 /* MenuCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A744896203BBEDA00793AD3 /* MenuCardView.xib */; };
 		2A9447802055FA3E0033B6C6 /* AllergensBarScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A94477F2055FA3E0033B6C6 /* AllergensBarScrollView.swift */; };
@@ -73,6 +79,12 @@
 /* Begin PBXFileReference section */
 		009DD511207B0C5600BC2147 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		009FDBC6209682BD00308641 /* BioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BioViewController.swift; sourceTree = "<group>"; };
+		00C2DF0620B677040023CF75 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		00C2DF0820B678890023CF75 /* Moya.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Moya.swift; sourceTree = "<group>"; };
+		00C2DF0A20B678A00023CF75 /* UserAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAPI.swift; sourceTree = "<group>"; };
+		00C2DF0C20B678BE0023CF75 /* UserClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserClass.swift; sourceTree = "<group>"; };
+		00C2DF0E20B678E70023CF75 /* BackgroundUserFetch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundUserFetch.swift; sourceTree = "<group>"; };
+		00C2DF1020B6790D0023CF75 /* keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = keys.swift; sourceTree = "<group>"; };
 		1CE69B303700A4BB00F6EBEA /* Pods-Dont Eat AloneUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dont Eat AloneUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Dont Eat AloneUITests/Pods-Dont Eat AloneUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		266C33EA78F943413B244B8D /* Pods-Dont Eat Alone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dont Eat Alone.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Dont Eat Alone/Pods-Dont Eat Alone.debug.xcconfig"; sourceTree = "<group>"; };
 		2A744894203BBDBC00793AD3 /* MenuCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCardView.swift; sourceTree = "<group>"; };
@@ -175,6 +187,7 @@
 			children = (
 				2AB62E68204887820013CB59 /* Menu.swift */,
 				2AB62E6F2048D21D0013CB59 /* ActivityLevel.swift */,
+				00C2DF0620B677040023CF75 /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -251,6 +264,8 @@
 			children = (
 				2AB62E6B20488A050013CB59 /* MenuAPI.swift */,
 				2AB62E6D2048D16B0013CB59 /* API.swift */,
+				00C2DF0820B678890023CF75 /* Moya.swift */,
+				00C2DF0A20B678A00023CF75 /* UserAPI.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -290,6 +305,9 @@
 				770251C1201D4079002E4515 /* Info.plist */,
 				DCF0E2DA20B260300036A32F /* Extensions */,
 				2A94477C2055F5860033B6C6 /* Supporting Files */,
+				00C2DF0C20B678BE0023CF75 /* UserClass.swift */,
+				00C2DF0E20B678E70023CF75 /* BackgroundUserFetch.swift */,
+				00C2DF1020B6790D0023CF75 /* keys.swift */,
 			);
 			path = "Dont Eat Alone";
 			sourceTree = "<group>";
@@ -578,6 +596,7 @@
 				DCF0E2E020B2608B0036A32F /* CreateProfileViewController.swift in Sources */,
 				DCF0E2E220B260A90036A32F /* CreateProfilePt2ViewController.swift in Sources */,
 				BDDE7C6E207AF6840008A677 /* LoginViewController.swift in Sources */,
+				00C2DF0B20B678A00023CF75 /* UserAPI.swift in Sources */,
 				BDDE7C72207B04D00008A677 /* UserTableViewCell.swift in Sources */,
 				770251B8201D4079002E4515 /* SecondViewController.swift in Sources */,
 				C0CD676C203C1B19006B265D /* ColoredBezel.swift in Sources */,
@@ -595,9 +614,11 @@
 				BDDE7C70207B04590008A677 /* MatchingListViewController.swift in Sources */,
 				BFE168A3209AB8DD00D021A2 /* CollectionViewController.swift in Sources */,
 				C0CD676A203C15CC006B265D /* TimeView.swift in Sources */,
+				00C2DF0F20B678E70023CF75 /* BackgroundUserFetch.swift in Sources */,
 				2B952C67202BDBB200F27727 /* WeekView.swift in Sources */,
 				2A9447802055FA3E0033B6C6 /* AllergensBarScrollView.swift in Sources */,
 				DCF0E2E420B260BA0036A32F /* SignUpViewController.swift in Sources */,
+				00C2DF1120B6790D0023CF75 /* keys.swift in Sources */,
 				BFE168A1209AB8BD00D021A2 /* ViewController.swift in Sources */,
 				DCF0E2DE20B260680036A32F /* UIFont+Additions.swift in Sources */,
 				77949970203BD10500F3B0ED /* AllergyFilterButton.swift in Sources */,
@@ -607,9 +628,12 @@
 				009DD512207B0C5600BC2147 /* RegistrationViewController.swift in Sources */,
 				C0AD0D34204B4EA9008E1206 /* TopBar.swift in Sources */,
 				770251B6201D4079002E4515 /* MenuVC.swift in Sources */,
+				00C2DF0720B677040023CF75 /* User.swift in Sources */,
 				770251E4201D4182002E4515 /* Moya_Service.swift in Sources */,
 				2AB62E6E2048D16B0013CB59 /* API.swift in Sources */,
+				00C2DF0920B678890023CF75 /* Moya.swift in Sources */,
 				2A744895203BBDBC00793AD3 /* MenuCardView.swift in Sources */,
+				00C2DF0D20B678BE0023CF75 /* UserClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
