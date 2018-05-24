@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Moya
 
 class SignInViewController: UIViewController {
     
@@ -41,9 +42,24 @@ class SignInViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        
+    }
+    
     @IBAction func didPressSignIn(_ sender: UIButton) {
-        // TODO: Verify sign in successful.
-        self.performSegue(withIdentifier: "ShowMenuVC_2", sender: nil)
+        //
+        
+        MAIN_USER.changeUserInfo(type: "email", info: EmailText.text!)
+        MAIN_USER.changeUserInfo(type: "password", info: PasswordText.text!)
+        MAIN_USER.loginUser()
+        if(UserDefaults.standard.object(forKey: MAIN_USER.accessUserInfo(type: "email")) == nil) {
+            return
+        }
+        if(MAIN_USER.getToken() != nil) {
+            MAIN_USER.readUser()
+            self.performSegue(withIdentifier: "ShowMenuVC_2", sender: nil)
+        }
     }
     
     

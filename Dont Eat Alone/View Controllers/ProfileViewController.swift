@@ -10,23 +10,6 @@ import UIKit
 import Foundation
 
 class ProfileViewController: UIViewController {
-
-    ///////THIS IS TEMPORARY TEST CODE///////////
-    struct userTest {
-        var pic: UIImage
-        var name: String
-        var year: String
-        var major: String
-        init(inName: String, inYear: String, inMajor: String, profpic: UIImage) {
-            self.name = inName
-            self.year = inYear
-            self.major = inMajor
-            self.pic = profpic
-        }
-    }
-    let John = userTest.init(inName: "John Doe", inYear: "Sophomore", inMajor: "Psychology Major", profpic: #imageLiteral(resourceName: "JohnDoe") )
-    ///////THIS IS TEMPORARY TEST CODE///////////
-    
     
     
     @IBOutlet weak var profilePic: UIImageView!
@@ -38,6 +21,7 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        MAIN_USER.readUser()
         //Setting Label font, color, size
         userName.textColor = UIColor.red
         userName.font = UIFont(name:"Avenir", size: 28.0)
@@ -50,12 +34,12 @@ class ProfileViewController: UIViewController {
         yearMajor.textAlignment = NSTextAlignment.center
         
         //Set labels equal to name
-        userName.text = John.name
-        let combine = John.year + " | " + John.major
+        userName.text = MAIN_USER.accessUserInfo(type: "first")
+        let combine = String(MAIN_USER.accessUserYear()) + " | " + MAIN_USER.accessUserInfo(type: "major")
         yearMajor.text = combine
         
         //set profile picture
-        profilePic.image = John.pic
+        //profilePic.image = John.pic
         
         //Circular Profile Picture
         profilePic.layer.cornerRadius = profilePic.frame.size.width/2
@@ -79,5 +63,5 @@ class ProfileViewController: UIViewController {
      // Pass the selected object to the new view controller.
      }
      */
-
+    
 }

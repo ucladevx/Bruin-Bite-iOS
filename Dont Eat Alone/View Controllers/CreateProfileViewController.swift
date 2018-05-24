@@ -34,5 +34,10 @@ class CreateProfileViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    @IBAction func nextButtonPressed (_ sender: Any?) {
+        MAIN_USER.changeUserInfo(type: "bio", info: BioText.text!)
+        self.performSegue(withIdentifier: "EndPt1", sender: sender)
+    }
 }
 
