@@ -38,5 +38,9 @@ extension UIFont {
         return UIFont.systemFont(ofSize: 20.0, weight: .regular)
     }
     
+    class var profileNameFont: UIFont {
+        return UIFont(name: "AvenirNext-DemiBold", size: 28.0)!
+    }
+    
 }
 

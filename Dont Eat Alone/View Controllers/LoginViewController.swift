@@ -25,7 +25,8 @@ class LoginViewController: UIViewController {
     @IBOutlet var ContinueFBButton: UIButton!
     @IBOutlet var CheckMenuButton: UIButton!
     @IBOutlet var SignInButton: UIButton!
-    
+
+    // change button and text color when pressed
     @IBAction func SignUpTap(_ sender: Any) {
         if SignUpButton.backgroundColor == .clear {
             SignUpButton.backgroundColor = UIColor.white
@@ -36,6 +37,8 @@ class LoginViewController: UIViewController {
             SignUpButton.setTitleColor(UIColor.white, for: .normal)
         }
     }
+    
+    // change button and text color when pressed
     @IBAction func ContinueFBTap(_ sender: Any) {
         if ContinueFBButton.backgroundColor == .clear {
             ContinueFBButton.backgroundColor = UIColor.white
@@ -47,7 +50,7 @@ class LoginViewController: UIViewController {
             ContinueFBButton.setTitleColor(UIColor.white, for: .normal)
         }
         
-        
+        // FB authentification
         let loginManager = LoginManager()
         loginManager.logIn(readPermissions: [.publicProfile, .email, .userFriends], viewController: self) { (loginResult) in
             switch loginResult {
@@ -64,7 +67,7 @@ class LoginViewController: UIViewController {
         }
     }
     
-    
+    // change button and text color when pressed
     @IBAction func CheckMenuTap(_ sender: Any) {
         if CheckMenuButton.backgroundColor == .clear {
             CheckMenuButton.backgroundColor = UIColor.white
@@ -88,8 +91,10 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // set background color
         view.backgroundColor = UIColor.twilightBlue
         
+        // set SignInButton font, color, text
         let SignInText = NSMutableAttributedString(string:"Sign In", attributes:attrs)
         attributedString.append(SignInText)
         SignInButton.setAttributedTitle(attributedString, for: .normal)
@@ -97,6 +102,7 @@ class LoginViewController: UIViewController {
         SignInButton.setTitleColor(UIColor.white, for: .normal)
         SignInButton.titleLabel?.font = UIFont.signInFont
         
+        // set SignUpButton font, color, text, border
         SignUpButton.layer.borderWidth = 1
         SignUpButton.backgroundColor = .clear
         SignUpButton.layer.borderColor = UIColor.white.cgColor
@@ -104,6 +110,7 @@ class LoginViewController: UIViewController {
         SignUpButton.setTitleColor(UIColor.white, for: .normal)
         SignUpButton.titleLabel?.font = UIFont.signUpFont
         
+        // set ContinueFBButton font, color, text, border
         ContinueFBButton.layer.borderWidth = 1
         ContinueFBButton.backgroundColor = .clear
         ContinueFBButton.layer.borderColor = UIColor.white.cgColor
@@ -111,6 +118,7 @@ class LoginViewController: UIViewController {
         ContinueFBButton.setTitleColor(UIColor.white, for: .normal)
         ContinueFBButton.titleLabel?.font = UIFont.continueFbFont
         
+        // set CheckMenuButton font, color, text, border
         CheckMenuButton.layer.borderWidth = 1
         CheckMenuButton.backgroundColor = .clear
         CheckMenuButton.layer.borderColor = UIColor.white.cgColor
