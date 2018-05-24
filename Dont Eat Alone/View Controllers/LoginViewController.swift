@@ -56,10 +56,10 @@ class LoginViewController: UIViewController {
             case .cancelled:
                 print("User cancelled login.")
             case .success(let grantedPermissions, let declinedPermissions, let accessToken):
-                
-                let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-                let nextViewController = storyBoard.instantiateViewController(withIdentifier: "MainView")
-                self.present(nextViewController, animated:false, completion:nil)
+                //if user exists
+                    //self.performSegue(withIdentifier: "CheckMenusSegue", sender: sender)
+                //else
+                    self.performSegue(withIdentifier: "CreateProfileSegue", sender: sender)
             }
         }
     }

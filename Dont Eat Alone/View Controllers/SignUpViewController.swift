@@ -34,9 +34,21 @@ class SignUpViewController: UIViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    @IBAction func nextButtonPressed (_ sender: Any?) {
         
+        if( NameText.text == "" ||
+            EmailText.text == "" ||
+            PasswordText.text == "" ||
+            ConfirmPassText.text != PasswordText.text) {
+            return
+        }
         
-        
+        MAIN_USER.changeUserInfo(type: "first", info: NameText.text!)
+        MAIN_USER.changeUserInfo(type: "email", info: EmailText.text!)
+        MAIN_USER.changeUserInfo(type: "password", info: PasswordText.text!)
+        self.performSegue(withIdentifier: "DoneWithSignUp", sender: sender)
     }
     
 }

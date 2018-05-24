@@ -1,5 +1,5 @@
 //
-//  APIService.swift
+//  API.swift
 //  Dont Eat Alone
 //
 //  Created by Ayush Patel on 3/1/18.
@@ -7,63 +7,316 @@
 //
 
 import Foundation
-import Moya
+import SwiftyJSON
 
-enum MenuAPI{
-    case getCurrentActivityLevels
-    case getOverviewMenu
-    case getDetailedMenu
-}
-
-extension MenuAPI: TargetType {
-    var baseURL: URL { return URL(string: "https://api.ucla-eats.com/api/v1")!}
-    var path: String{
-        switch self{
-        case .getCurrentActivityLevels:
-            return "/menu/ActivityLevels"
-        case .getOverviewMenu:
-            return "/menu/OverviewMenu"
-        case .getDetailedMenu:
-            return "/menu/DetailedMenu"
+extension API{
+    
+    static func getOverviewMenu(completion: @escaping ([Menu])->()){
+        provider.request(.getOverviewMenu) { result in
+            switch result{
+            case let .success(response):
+                do{
+                    let json = try JSON(data: response.data)
+                    let data = json["menus"]
+                    var menus = [Menu]()
+                    for(_, menu) in data{
+                        var currMenu = Menu(date: "", overviewData: [:], detailedData: [:])
+                        currMenu.date = menu["menuDate"].stringValue
+                        let overview = menu["overviewMenu"]
+                        var parsedMeal: [MealPeriod: [Location: [Item]]] = [:]
+                        var brunch = false
+                        for (time, meal) in overview{
+                            if(time == "breakfast" && meal.isEmpty){
+                                brunch = true;
+                            }
+                        }
+                        for (time, meal) in overview{
+                            var parsedLocation: [Location: [Item]] = [:]
+                            var mealPeriod: MealPeriod = MealPeriod.breakfast
+                            switch(time){ // sets mealPeriod based on input, accounts for brunch
+                            case "breakfast":
+                                mealPeriod = MealPeriod.breakfast
+                                break
+                            case "lunch":
+                                mealPeriod = MealPeriod.lunch
+                                if(brunch){
+                                    mealPeriod = MealPeriod.brunch
+                                }
+                                break
+                            case "dinner":
+                                mealPeriod = MealPeriod.dinner
+                                break
+                            default:
+                                break
+                            }
+                            for (location, items) in meal{
+                                var parsedItems = [Item]()
+                                for(sublocation, itemsList) in items{
+                                    for (_,item) in itemsList{
+                                        var currItem = Item(itemCategory: "Overview", subLocation: "", name: "", serving: nil, calories: nil, fatcal: nil, ingredients: nil, vita: nil, vitc: nil, calc: nil, iron: nil, allergies: nil, nutrition: nil, recipeLink: nil)
+                                        currItem.subLocation = sublocation
+                                        currItem.name = item["name"].string!
+                                        currItem.recipeLink = item["recipelink"].string
+                                        var allergens = [Allergen]()
+                                        if (item["itemcodes"].isEmpty){ // checks for Allergens
+                                            allergens.append(Allergen.None)
+                                        }
+                                        else{
+                                            for (a,_) in item["itemcodes"]{
+                                                switch a{
+                                                case "V":
+                                                    allergens.append(Allergen.Vegetarian)
+                                                    break
+                                                case "VG":
+                                                    allergens.append(Allergen.Vegan)
+                                                    break
+                                                case "APNT":
+                                                    allergens.append(Allergen.ContainsPeanuts)
+                                                    break
+                                                case "ATNT":
+                                                    allergens.append(Allergen.ContainsTreeNuts)
+                                                    break
+                                                case "AWHT":
+                                                    allergens.append(Allergen.ContainsWheat)
+                                                    break
+                                                case "ASOY":
+                                                    allergens.append(Allergen.ContainsSoy)
+                                                    break
+                                                case "AMLK":
+                                                    allergens.append(Allergen.ContainsDairy)
+                                                    break
+                                                case "AEGG":
+                                                    allergens.append(Allergen.ContainsEggs)
+                                                    break
+                                                case "ACSF":
+                                                    allergens.append(Allergen.ContainsShellfish)
+                                                    break
+                                                case "AFSH":
+                                                    allergens.append(Allergen.ContainsFish)
+                                                    break
+                                                default:
+                                                    break;
+                                                }
+                                            }
+                                        }
+                                        currItem.allergies = allergens
+                                        if (!item["nutrition"].isEmpty){
+                                            currItem.serving = item["nutrition"]["serving_size"].string!
+                                            currItem.calories = item["nutrition"]["Calories"].string!
+                                            currItem.fatcal = item["nutrition"]["Fat_Cal."].string!
+                                            currItem.ingredients = item["nutrition"]["ingredients"].string!
+                                            currItem.vita = item["nutrition"]["Vitamin A"].string!
+                                            currItem.vitc = item["nutrition"]["Vitamin C"].string!
+                                            currItem.calc = item["nutrition"]["Calcium"].string!
+                                            currItem.iron = item["nutrition"]["Iron"].string!
+                                            var nutrition = [Nutrition]()
+                                            for (label,info) in item["nutrition"]{ // adds nutrients with daily values
+                                                switch label{
+                                                case "Total_Fat", "Saturated_Fat", "Trans_Fat", "Cholesterol", "Sodium", "Total_Carbohydrate", "Dietary_Fiber", "Sugars", "Protein":
+                                                    var nut = Nutrition(label: "", amount: "", percent: "")
+                                                    nut.label = label
+                                                    nut.amount = info[0].string!
+                                                    nut.percent = info[1].string!
+                                                    nutrition.append(nut)
+                                                    break
+                                                default:
+                                                    break
+                                                }
+                                            }
+                                            currItem.nutrition = nutrition
+                                        }
+                                        parsedItems.append(currItem)
+                                        
+                                    }
+                                }
+                                parsedLocation[Location(rawValue: location)!] = parsedItems
+                            }
+                            parsedMeal[mealPeriod] = parsedLocation
+                        }
+                        currMenu.overviewData = parsedMeal
+                        menus.append(currMenu)
+                    }
+                    completion(menus)
+                }
+                catch{
+                    print("error parsing")
+                }
+            case let .failure(error):
+                print(error)
+            }
         }
-        
-    }
-    var method: Moya.Method {
-        switch self {
-        case .getCurrentActivityLevels, .getOverviewMenu, .getDetailedMenu:
-            return .get
-        }
-    }
-    var task: Task{
-        switch self {
-        case .getCurrentActivityLevels, .getOverviewMenu, .getDetailedMenu:
-            return .requestPlain
-        }
-    }
-    //for testing
-    var sampleData: Data {
-        switch self {
-        case .getCurrentActivityLevels:
-            return "{\"level\":{\"Covel\":\"16%\",\"De Neve\":\"29%\",\"FEAST at Rieber\":\"30%\",\"Bruin Plate\":\"35%\"},\"deletedAt\":null,\"createdAt\":\"2018-03-01T19:32:02.658Z\",\"updatedAt\":\"2018-03-01T19:32:02.658Z\"}]}".utf8Encoded
-        
-        case .getOverviewMenu:
-            return "{\"menus\":[{\"id\":2,\"overviewMenu\":\"{\"breakfast\":{\"De Neve\":{\"Flex Bar\":[{\"name\":\"Chilaquiles Con Huevo\",\"recipelink\":\"http://menu.dining.ucla.edu/Recipes/140128/2\",\"itemcodes\":{\"V\":\"Vegetarian_Menu_Option\",\"AMLK\":\"Contains_Dairy\",\"AEGG\":\"Contains_Eggs\",\"AWHT\":\"Contains_Wheat\"},\"nutrition\":{\"serving_size\":\"Serving Size 2 oz\",\"Calories\":\"116\",\"Fat_Cal.\":\"60\",\"Total_Fat\":[\"6.7g\",\"10%\"],\"Saturated_Fat\":[\"1.8g\",\"9%\"],\"Trans_Fat\":[\"0.1g\",\"-1\"],\"Cholesterol\":[\"32.8mg\",\"11%\"],\"Sodium\":[\"150.2mg\",\"6%\"],\"Total_Carbohydrate\":[\"10.4g\",\"8%\"],\"Dietary_Fiber\":[\"2.1g\",\"8%\"],\"Sugars\":[\"0.3g\",\"-1\"],\"Protein\":[\"4.3g\",\"-1\"],\"Vitamin A\":\"9%\",\"Vitamin C\":\"1%\",\"Calcium\":\"6%\",\"Iron\":\"11%\",\"ingredients\":\"Enchilada Sauce (Water, Flour, Dry Guajillo Chili Pepper, Olive Oil Blend, Garlic, Sea Salt), Tortilla Chips (White Corn Tortilla, Oil), Refried Beans (Water, Pinto Beans, Olive Oil Blend, Onion, Garlic, Jalapeño Peppers, Sea Salt, Pepper), Eggs, Jack Cheese, Olive Oil Blend\"}}]},\"Bruin Plate\":{\"Freshly Bowled\":[{\"name\":\"Egg White\",\"recipelink\":\"http://menu.dining.ucla.edu/Recipes/061005/1\",\"itemcodes\":{\"V\":\"Vegetarian_Menu_Option\",\"AEGG\":\"Contains_Eggs\"},\"nutrition\":{\"serving_size\":\"Serving Size 1 each\",\"Calories\":\"40\",\"Fat_Cal.\":\"0\",\"Total_Fat\":[\"0g\",\"0%\"],\"Saturated_Fat\":[\"0g\",\"0%\"],\"Trans_Fat\":[\"0g\",\"-1\"],\"Cholesterol\":[\"0mg\",\"0%\"],\"Sodium\":[\"134.4mg\",\"6%\"],\"Total_Carbohydrate\":[\"0.9g\",\"1%\"],\"Dietary_Fiber\":[\"0g\",\"0%\"],\"Sugars\":[\"-1\",\"-1\"],\"Protein\":[\"8.3g\",\"-1\"],\"Vitamin A\":\"0%\",\"Vitamin C\":\"0%\",\"Calcium\":\"1%\",\"Iron\":\"0%\",\"ingredients\":\"Egg Whites\"}}]}},\"lunch\":{\"Covel\":{\"Exhibition Kitchen\":[{\"name\":\"Build-Your-Own Pasta Bar\",\"recipelink\":\"http://menu.dining.ucla.edu/Recipes/999070/1\",\"itemcodes\":{},\"nutrition\":{\"serving_size\":\"\",\"ingredients\":\"\"}}],\"Euro Kitchen\":[{\"name\":\"Beef & Lamb Gyro\",\"recipelink\":\"http://menu.dining.ucla.edu/Recipes/075000/1\",\"itemcodes\":{\"AMLK\":\"Contains_Dairy\",\"AWHT\":\"Contains_Wheat\",\"ASOY\":\"Contains_Soy\"},\"nutrition\":{\"serving_size\":\"Serving Size 1 each\",\"Calories\":\"473\",\"Fat_Cal.\":\"263\",\"Total_Fat\":[\"29.2g\",\"45%\"],\"Saturated_Fat\":[\"11.5g\",\"58%\"],\"Trans_Fat\":[\"0g\",\"-1\"],\"Cholesterol\":[\"57.3mg\",\"19%\"],\"Sodium\":[\"977.4mg\",\"41%\"],\"Total_Carbohydrate\":[\"32.9g\",\"25%\"],\"Dietary_Fiber\":[\"1g\",\"4%\"],\"Sugars\":[\"1.6g\",\"-1\"],\"Protein\":[\"17.6g\",\"-1\"],\"Vitamin A\":\"0%\",\"Vitamin C\":\"0%\",\"Calcium\":\"7%\",\"Iron\":\"16%\",\"ingredients\":\"Beef & Lamb Gyros, Pita Bread\"}}]},\"Bruin Plate\":{\"Freshly Bowled\":[{\"name\":\"Egg White\",\"recipelink\":\"http://menu.dining.ucla.edu/Recipes/061005/1\",\"itemcodes\":{\"V\":\"Vegetarian_Menu_Option\",\"AEGG\":\"Contains_Eggs\"},\"nutrition\":{\"serving_size\":\"Serving Size 1 each\",\"Calories\":\"40\",\"Fat_Cal.\":\"0\",\"Total_Fat\":[\"0g\",\"0%\"],\"Saturated_Fat\":[\"0g\",\"0%\"],\"Trans_Fat\":[\"0g\",\"-1\"],\"Cholesterol\":[\"0mg\",\"0%\"],\"Sodium\":[\"134.4mg\",\"6%\"],\"Total_Carbohydrate\":[\"0.9g\",\"1%\"],\"Dietary_Fiber\":[\"0g\",\"0%\"],\"Sugars\":[\"-1\",\"-1\"],\"Protein\":[\"8.3g\",\"-1\"],\"Vitamin A\":\"0%\",\"Vitamin C\":\"0%\",\"Calcium\":\"1%\",\"Iron\":\"0%\",\"ingredients\":\"Egg Whites\"}}]}}}\",\"deletedAt\":null,\"menuDate\":\"2018-03-05\",\"createdAt\":\"2018-03-04T08:02:22.066Z\",\"updatedAt\":\"2018-03-04T08:02:22.066Z\"},{\"id\":3,\"overviewMenu\":\"{\"breakfast\":{\"De Neve\":{\"Flex Bar\":[{\"name\":\"Chilaquiles Con Huevo\",\"recipelink\":\"http://menu.dining.ucla.edu/Recipes/140128/2\",\"itemcodes\":{\"V\":\"Vegetarian_Menu_Option\",\"AMLK\":\"Contains_Dairy\",\"AEGG\":\"Contains_Eggs\",\"AWHT\":\"Contains_Wheat\"},\"nutrition\":{\"serving_size\":\"Serving Size 2 oz\",\"Calories\":\"116\",\"Fat_Cal.\":\"60\",\"Total_Fat\":[\"6.7g\",\"10%\"],\"Saturated_Fat\":[\"1.8g\",\"9%\"],\"Trans_Fat\":[\"0.1g\",\"-1\"],\"Cholesterol\":[\"32.8mg\",\"11%\"],\"Sodium\":[\"150.2mg\",\"6%\"],\"Total_Carbohydrate\":[\"10.4g\",\"8%\"],\"Dietary_Fiber\":[\"2.1g\",\"8%\"],\"Sugars\":[\"0.3g\",\"-1\"],\"Protein\":[\"4.3g\",\"-1\"],\"Vitamin A\":\"9%\",\"Vitamin C\":\"1%\",\"Calcium\":\"6%\",\"Iron\":\"11%\",\"ingredients\":\"Enchilada Sauce (Water, Flour, Dry Guajillo Chili Pepper, Olive Oil Blend, Garlic, Sea Salt), Tortilla Chips (White Corn Tortilla, Oil), Refried Beans (Water, Pinto Beans, Olive Oil Blend, Onion, Garlic, Jalapeño Peppers, Sea Salt, Pepper), Eggs, Jack Cheese, Olive Oil Blend\"}}]},\"Bruin Plate\":{\"Freshly Bowled\":[{\"name\":\"Egg White\",\"recipelink\":\"http://menu.dining.ucla.edu/Recipes/061005/1\",\"itemcodes\":{\"V\":\"Vegetarian_Menu_Option\",\"AEGG\":\"Contains_Eggs\"},\"nutrition\":{\"serving_size\":\"Serving Size 1 each\",\"Calories\":\"40\",\"Fat_Cal.\":\"0\",\"Total_Fat\":[\"0g\",\"0%\"],\"Saturated_Fat\":[\"0g\",\"0%\"],\"Trans_Fat\":[\"0g\",\"-1\"],\"Cholesterol\":[\"0mg\",\"0%\"],\"Sodium\":[\"134.4mg\",\"6%\"],\"Total_Carbohydrate\":[\"0.9g\",\"1%\"],\"Dietary_Fiber\":[\"0g\",\"0%\"],\"Sugars\":[\"-1\",\"-1\"],\"Protein\":[\"8.3g\",\"-1\"],\"Vitamin A\":\"0%\",\"Vitamin C\":\"0%\",\"Calcium\":\"1%\",\"Iron\":\"0%\",\"ingredients\":\"Egg Whites\"}}]}},\"lunch\":{\"Covel\":{\"Exhibition Kitchen\":[{\"name\":\"Build-Your-Own Pasta Bar\",\"recipelink\":\"http://menu.dining.ucla.edu/Recipes/999070/1\",\"itemcodes\":{},\"nutrition\":{\"serving_size\":\"\",\"ingredients\":\"\"}}],\"Euro Kitchen\":[{\"name\":\"Beef & Lamb Gyro\",\"recipelink\":\"http://menu.dining.ucla.edu/Recipes/075000/1\",\"itemcodes\":{\"AMLK\":\"Contains_Dairy\",\"AWHT\":\"Contains_Wheat\",\"ASOY\":\"Contains_Soy\"},\"nutrition\":{\"serving_size\":\"Serving Size 1 each\",\"Calories\":\"473\",\"Fat_Cal.\":\"263\",\"Total_Fat\":[\"29.2g\",\"45%\"],\"Saturated_Fat\":[\"11.5g\",\"58%\"],\"Trans_Fat\":[\"0g\",\"-1\"],\"Cholesterol\":[\"57.3mg\",\"19%\"],\"Sodium\":[\"977.4mg\",\"41%\"],\"Total_Carbohydrate\":[\"32.9g\",\"25%\"],\"Dietary_Fiber\":[\"1g\",\"4%\"],\"Sugars\":[\"1.6g\",\"-1\"],\"Protein\":[\"17.6g\",\"-1\"],\"Vitamin A\":\"0%\",\"Vitamin C\":\"0%\",\"Calcium\":\"7%\",\"Iron\":\"16%\",\"ingredients\":\"Beef & Lamb Gyros, Pita Bread\"}}]},\"Bruin Plate\":{\"Freshly Bowled\":[{\"name\":\"Egg White\",\"recipelink\":\"http://menu.dining.ucla.edu/Recipes/061005/1\",\"itemcodes\":{\"V\":\"Vegetarian_Menu_Option\",\"AEGG\":\"Contains_Eggs\"},\"nutrition\":{\"serving_size\":\"Serving Size 1 each\",\"Calories\":\"40\",\"Fat_Cal.\":\"0\",\"Total_Fat\":[\"0g\",\"0%\"],\"Saturated_Fat\":[\"0g\",\"0%\"],\"Trans_Fat\":[\"0g\",\"-1\"],\"Cholesterol\":[\"0mg\",\"0%\"],\"Sodium\":[\"134.4mg\",\"6%\"],\"Total_Carbohydrate\":[\"0.9g\",\"1%\"],\"Dietary_Fiber\":[\"0g\",\"0%\"],\"Sugars\":[\"-1\",\"-1\"],\"Protein\":[\"8.3g\",\"-1\"],\"Vitamin A\":\"0%\",\"Vitamin C\":\"0%\",\"Calcium\":\"1%\",\"Iron\":\"0%\",\"ingredients\":\"Egg Whites\"}}]}}}\",\"deletedAt\":null,\"menuDate\":\"2018-03-06\",\"createdAt\":\"2018-03-04T08:02:22.066Z\",\"updatedAt\":\"2018-03-04T08:02:22.066Z\"}]}".utf8Encoded
-        
-        case .getDetailedMenu:
-            return "{\"menus\":[{\"id\":2,\"overviewMenu\":\"{\"breakfast\":{\"De Neve\":{\"Flex Bar\":[{\"name\":\"Chilaquiles Con Huevo\",\"recipelink\":\"http://menu.dining.ucla.edu/Recipes/140128/2\",\"itemcodes\":{\"V\":\"Vegetarian_Menu_Option\",\"AMLK\":\"Contains_Dairy\",\"AEGG\":\"Contains_Eggs\",\"AWHT\":\"Contains_Wheat\"},\"nutrition\":{\"serving_size\":\"Serving Size 2 oz\",\"Calories\":\"116\",\"Fat_Cal.\":\"60\",\"Total_Fat\":[\"6.7g\",\"10%\"],\"Saturated_Fat\":[\"1.8g\",\"9%\"],\"Trans_Fat\":[\"0.1g\",\"-1\"],\"Cholesterol\":[\"32.8mg\",\"11%\"],\"Sodium\":[\"150.2mg\",\"6%\"],\"Total_Carbohydrate\":[\"10.4g\",\"8%\"],\"Dietary_Fiber\":[\"2.1g\",\"8%\"],\"Sugars\":[\"0.3g\",\"-1\"],\"Protein\":[\"4.3g\",\"-1\"],\"Vitamin A\":\"9%\",\"Vitamin C\":\"1%\",\"Calcium\":\"6%\",\"Iron\":\"11%\",\"ingredients\":\"Enchilada Sauce (Water, Flour, Dry Guajillo Chili Pepper, Olive Oil Blend, Garlic, Sea Salt), Tortilla Chips (White Corn Tortilla, Oil), Refried Beans (Water, Pinto Beans, Olive Oil Blend, Onion, Garlic, Jalapeño Peppers, Sea Salt, Pepper), Eggs, Jack Cheese, Olive Oil Blend\"}}]},\"Bruin Plate\":{\"Freshly Bowled\":[{\"name\":\"Egg White\",\"recipelink\":\"http://menu.dining.ucla.edu/Recipes/061005/1\",\"itemcodes\":{\"V\":\"Vegetarian_Menu_Option\",\"AEGG\":\"Contains_Eggs\"},\"nutrition\":{\"serving_size\":\"Serving Size 1 each\",\"Calories\":\"40\",\"Fat_Cal.\":\"0\",\"Total_Fat\":[\"0g\",\"0%\"],\"Saturated_Fat\":[\"0g\",\"0%\"],\"Trans_Fat\":[\"0g\",\"-1\"],\"Cholesterol\":[\"0mg\",\"0%\"],\"Sodium\":[\"134.4mg\",\"6%\"],\"Total_Carbohydrate\":[\"0.9g\",\"1%\"],\"Dietary_Fiber\":[\"0g\",\"0%\"],\"Sugars\":[\"-1\",\"-1\"],\"Protein\":[\"8.3g\",\"-1\"],\"Vitamin A\":\"0%\",\"Vitamin C\":\"0%\",\"Calcium\":\"1%\",\"Iron\":\"0%\",\"ingredients\":\"Egg Whites\"}}]}},\"lunch\":{\"Covel\":{\"Exhibition Kitchen\":[{\"name\":\"Build-Your-Own Pasta Bar\",\"recipelink\":\"http://menu.dining.ucla.edu/Recipes/999070/1\",\"itemcodes\":{},\"nutrition\":{\"serving_size\":\"\",\"ingredients\":\"\"}}],\"Euro Kitchen\":[{\"name\":\"Beef & Lamb Gyro\",\"recipelink\":\"http://menu.dining.ucla.edu/Recipes/075000/1\",\"itemcodes\":{\"AMLK\":\"Contains_Dairy\",\"AWHT\":\"Contains_Wheat\",\"ASOY\":\"Contains_Soy\"},\"nutrition\":{\"serving_size\":\"Serving Size 1 each\",\"Calories\":\"473\",\"Fat_Cal.\":\"263\",\"Total_Fat\":[\"29.2g\",\"45%\"],\"Saturated_Fat\":[\"11.5g\",\"58%\"],\"Trans_Fat\":[\"0g\",\"-1\"],\"Cholesterol\":[\"57.3mg\",\"19%\"],\"Sodium\":[\"977.4mg\",\"41%\"],\"Total_Carbohydrate\":[\"32.9g\",\"25%\"],\"Dietary_Fiber\":[\"1g\",\"4%\"],\"Sugars\":[\"1.6g\",\"-1\"],\"Protein\":[\"17.6g\",\"-1\"],\"Vitamin A\":\"0%\",\"Vitamin C\":\"0%\",\"Calcium\":\"7%\",\"Iron\":\"16%\",\"ingredients\":\"Beef & Lamb Gyros, Pita Bread\"}}]},\"Bruin Plate\":{\"Freshly Bowled\":[{\"name\":\"Egg White\",\"recipelink\":\"http://menu.dining.ucla.edu/Recipes/061005/1\",\"itemcodes\":{\"V\":\"Vegetarian_Menu_Option\",\"AEGG\":\"Contains_Eggs\"},\"nutrition\":{\"serving_size\":\"Serving Size 1 each\",\"Calories\":\"40\",\"Fat_Cal.\":\"0\",\"Total_Fat\":[\"0g\",\"0%\"],\"Saturated_Fat\":[\"0g\",\"0%\"],\"Trans_Fat\":[\"0g\",\"-1\"],\"Cholesterol\":[\"0mg\",\"0%\"],\"Sodium\":[\"134.4mg\",\"6%\"],\"Total_Carbohydrate\":[\"0.9g\",\"1%\"],\"Dietary_Fiber\":[\"0g\",\"0%\"],\"Sugars\":[\"-1\",\"-1\"],\"Protein\":[\"8.3g\",\"-1\"],\"Vitamin A\":\"0%\",\"Vitamin C\":\"0%\",\"Calcium\":\"1%\",\"Iron\":\"0%\",\"ingredients\":\"Egg Whites\"}}]}}}\",\"deletedAt\":null,\"menuDate\":\"2018-03-05\",\"createdAt\":\"2018-03-04T08:02:22.066Z\",\"updatedAt\":\"2018-03-04T08:02:22.066Z\"},{\"id\":3,\"overviewMenu\":\"{\"breakfast\":{\"De Neve\":{\"Flex Bar\":[{\"name\":\"Chilaquiles Con Huevo\",\"recipelink\":\"http://menu.dining.ucla.edu/Recipes/140128/2\",\"itemcodes\":{\"V\":\"Vegetarian_Menu_Option\",\"AMLK\":\"Contains_Dairy\",\"AEGG\":\"Contains_Eggs\",\"AWHT\":\"Contains_Wheat\"},\"nutrition\":{\"serving_size\":\"Serving Size 2 oz\",\"Calories\":\"116\",\"Fat_Cal.\":\"60\",\"Total_Fat\":[\"6.7g\",\"10%\"],\"Saturated_Fat\":[\"1.8g\",\"9%\"],\"Trans_Fat\":[\"0.1g\",\"-1\"],\"Cholesterol\":[\"32.8mg\",\"11%\"],\"Sodium\":[\"150.2mg\",\"6%\"],\"Total_Carbohydrate\":[\"10.4g\",\"8%\"],\"Dietary_Fiber\":[\"2.1g\",\"8%\"],\"Sugars\":[\"0.3g\",\"-1\"],\"Protein\":[\"4.3g\",\"-1\"],\"Vitamin A\":\"9%\",\"Vitamin C\":\"1%\",\"Calcium\":\"6%\",\"Iron\":\"11%\",\"ingredients\":\"Enchilada Sauce (Water, Flour, Dry Guajillo Chili Pepper, Olive Oil Blend, Garlic, Sea Salt), Tortilla Chips (White Corn Tortilla, Oil), Refried Beans (Water, Pinto Beans, Olive Oil Blend, Onion, Garlic, Jalapeño Peppers, Sea Salt, Pepper), Eggs, Jack Cheese, Olive Oil Blend\"}}]},\"Bruin Plate\":{\"Freshly Bowled\":[{\"name\":\"Egg White\",\"recipelink\":\"http://menu.dining.ucla.edu/Recipes/061005/1\",\"itemcodes\":{\"V\":\"Vegetarian_Menu_Option\",\"AEGG\":\"Contains_Eggs\"},\"nutrition\":{\"serving_size\":\"Serving Size 1 each\",\"Calories\":\"40\",\"Fat_Cal.\":\"0\",\"Total_Fat\":[\"0g\",\"0%\"],\"Saturated_Fat\":[\"0g\",\"0%\"],\"Trans_Fat\":[\"0g\",\"-1\"],\"Cholesterol\":[\"0mg\",\"0%\"],\"Sodium\":[\"134.4mg\",\"6%\"],\"Total_Carbohydrate\":[\"0.9g\",\"1%\"],\"Dietary_Fiber\":[\"0g\",\"0%\"],\"Sugars\":[\"-1\",\"-1\"],\"Protein\":[\"8.3g\",\"-1\"],\"Vitamin A\":\"0%\",\"Vitamin C\":\"0%\",\"Calcium\":\"1%\",\"Iron\":\"0%\",\"ingredients\":\"Egg Whites\"}}]}},\"lunch\":{\"Covel\":{\"Exhibition Kitchen\":[{\"name\":\"Build-Your-Own Pasta Bar\",\"recipelink\":\"http://menu.dining.ucla.edu/Recipes/999070/1\",\"itemcodes\":{},\"nutrition\":{\"serving_size\":\"\",\"ingredients\":\"\"}}],\"Euro Kitchen\":[{\"name\":\"Beef & Lamb Gyro\",\"recipelink\":\"http://menu.dining.ucla.edu/Recipes/075000/1\",\"itemcodes\":{\"AMLK\":\"Contains_Dairy\",\"AWHT\":\"Contains_Wheat\",\"ASOY\":\"Contains_Soy\"},\"nutrition\":{\"serving_size\":\"Serving Size 1 each\",\"Calories\":\"473\",\"Fat_Cal.\":\"263\",\"Total_Fat\":[\"29.2g\",\"45%\"],\"Saturated_Fat\":[\"11.5g\",\"58%\"],\"Trans_Fat\":[\"0g\",\"-1\"],\"Cholesterol\":[\"57.3mg\",\"19%\"],\"Sodium\":[\"977.4mg\",\"41%\"],\"Total_Carbohydrate\":[\"32.9g\",\"25%\"],\"Dietary_Fiber\":[\"1g\",\"4%\"],\"Sugars\":[\"1.6g\",\"-1\"],\"Protein\":[\"17.6g\",\"-1\"],\"Vitamin A\":\"0%\",\"Vitamin C\":\"0%\",\"Calcium\":\"7%\",\"Iron\":\"16%\",\"ingredients\":\"Beef & Lamb Gyros, Pita Bread\"}}]},\"Bruin Plate\":{\"Freshly Bowled\":[{\"name\":\"Egg White\",\"recipelink\":\"http://menu.dining.ucla.edu/Recipes/061005/1\",\"itemcodes\":{\"V\":\"Vegetarian_Menu_Option\",\"AEGG\":\"Contains_Eggs\"},\"nutrition\":{\"serving_size\":\"Serving Size 1 each\",\"Calories\":\"40\",\"Fat_Cal.\":\"0\",\"Total_Fat\":[\"0g\",\"0%\"],\"Saturated_Fat\":[\"0g\",\"0%\"],\"Trans_Fat\":[\"0g\",\"-1\"],\"Cholesterol\":[\"0mg\",\"0%\"],\"Sodium\":[\"134.4mg\",\"6%\"],\"Total_Carbohydrate\":[\"0.9g\",\"1%\"],\"Dietary_Fiber\":[\"0g\",\"0%\"],\"Sugars\":[\"-1\",\"-1\"],\"Protein\":[\"8.3g\",\"-1\"],\"Vitamin A\":\"0%\",\"Vitamin C\":\"0%\",\"Calcium\":\"1%\",\"Iron\":\"0%\",\"ingredients\":\"Egg Whites\"}}]}}}\",\"deletedAt\":null,\"menuDate\":\"2018-03-06\",\"createdAt\":\"2018-03-04T08:02:22.066Z\",\"updatedAt\":\"2018-03-04T08:02:22.066Z\"}]}".utf8Encoded
-        }
-    }
-    var headers: [String: String]? {
-        return ["Content-type": "application/json"]
-    }
-}
-
-private extension String {
-    var urlEscaped: String {
-        return addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
     }
     
-    var utf8Encoded: Data {
-        return data(using: .utf8)!
+    static func getDetailedMenu(completion: @escaping ([Menu])->()){
+        provider.request(.getDetailedMenu) { result in
+            switch result{
+            case let .success(response):
+                do{
+                    let json = try JSON(data: response.data)
+                    let data = json["menus"]
+                    var menus = [Menu]()
+                    for(_, menu) in data{
+                        var currMenu = Menu(date: "", overviewData: [:], detailedData: [:])
+                        currMenu.date = menu["menuDate"].stringValue
+                        let overview = menu["detailedMenu"]
+                        var parsedMeal: [MealPeriod: [Location: [Item]]] = [:]
+                        var brunch = false
+                        for (time, meal) in overview{
+                            var parsedLocation: [Location: [Item]] = [:]
+                            var mealPeriod: MealPeriod = MealPeriod.breakfast
+                            switch(time){ // sets mealPeriod based on input, accounts for brunch
+                            case "breakfast":
+                                mealPeriod = MealPeriod.breakfast
+                                if (meal.isEmpty){
+                                    brunch = true
+                                    continue
+                                }
+                                break
+                            case "lunch":
+                                mealPeriod = MealPeriod.lunch
+                                if(brunch){
+                                    mealPeriod = MealPeriod.brunch
+                                }
+                                break
+                            case "dinner":
+                                mealPeriod = MealPeriod.dinner
+                                break
+                            default:
+                                break
+                            }
+                            for (location, items) in meal{
+                                var parsedItems = [Item]()
+                                for(sublocation, itemsList) in items{
+                                    for (_,item) in itemsList{
+                                        var currItem = Item(itemCategory: "Detailed", subLocation: "", name: "", serving: nil, calories: nil, fatcal: nil, ingredients: nil, vita: nil, vitc: nil, calc: nil, iron: nil, allergies: nil, nutrition: nil, recipeLink: nil)
+                                        currItem.subLocation = sublocation
+                                        currItem.name = item["name"].string!
+                                        currItem.recipeLink = item["recipelink"].string
+                                        var allergens = [Allergen]()
+                                        if (item["itemcodes"].isEmpty){ // checks for Allergens
+                                            allergens.append(Allergen.None)
+                                        }
+                                        else{
+                                            for (a,_) in item["itemcodes"]{
+                                                switch a{
+                                                case "V":
+                                                    allergens.append(Allergen.Vegetarian)
+                                                    break
+                                                case "VG":
+                                                    allergens.append(Allergen.Vegan)
+                                                    break
+                                                case "APNT":
+                                                    allergens.append(Allergen.ContainsPeanuts)
+                                                    break
+                                                case "ATNT":
+                                                    allergens.append(Allergen.ContainsTreeNuts)
+                                                    break
+                                                case "AWHT":
+                                                    allergens.append(Allergen.ContainsWheat)
+                                                    break
+                                                case "ASOY":
+                                                    allergens.append(Allergen.ContainsSoy)
+                                                    break
+                                                case "AMLK":
+                                                    allergens.append(Allergen.ContainsDairy)
+                                                    break
+                                                case "AEGG":
+                                                    allergens.append(Allergen.ContainsEggs)
+                                                    break
+                                                case "ACSF":
+                                                    allergens.append(Allergen.ContainsShellfish)
+                                                    break
+                                                case "AFSH":
+                                                    allergens.append(Allergen.ContainsFish)
+                                                    break
+                                                default:
+                                                    break;
+                                                }
+                                            }
+                                        }
+                                        currItem.allergies = allergens
+                                        if (!item["nutrition"].isEmpty){
+                                            currItem.serving = item["nutrition"]["serving_size"].string!
+                                            currItem.calories = item["nutrition"]["Calories"].string!
+                                            currItem.fatcal = item["nutrition"]["Fat_Cal."].string!
+                                            currItem.ingredients = item["nutrition"]["ingredients"].string!
+                                            currItem.vita = item["nutrition"]["Vitamin A"].string!
+                                            currItem.vitc = item["nutrition"]["Vitamin C"].string!
+                                            currItem.calc = item["nutrition"]["Calcium"].string!
+                                            currItem.iron = item["nutrition"]["Iron"].string!
+                                            var nutrition = [Nutrition]()
+                                            for (label,info) in item["nutrition"]{ // adds nutrients with daily values
+                                                switch label{
+                                                case "Total_Fat", "Saturated_Fat", "Trans_Fat", "Cholesterol", "Sodium", "Total_Carbohydrate", "Dietary_Fiber", "Sugars", "Protein":
+                                                    var nut = Nutrition(label: "", amount: "", percent: "")
+                                                    nut.label = label
+                                                    nut.amount = info[0].string!
+                                                    nut.percent = info[1].string!
+                                                    nutrition.append(nut)
+                                                    break
+                                                default:
+                                                    break
+                                                }
+                                            }
+                                            currItem.nutrition = nutrition
+                                        }
+                                        parsedItems.append(currItem)
+                                        
+                                    }
+                                }
+                                parsedLocation[Location(rawValue: location)!] = parsedItems
+                            }
+                            parsedMeal[mealPeriod] = parsedLocation
+                        }
+                        currMenu.detailedData = parsedMeal
+                        menus.append(currMenu)
+                    }
+                    completion(menus)
+                }
+                catch{
+                    print("error parsing")
+                }
+            case let .failure(error):
+                print(error)
+            }
+        }
+    }
+    
+    static func getCurrentActivityLevels(completion: @escaping ([ActivityLevel])->()){
+        provider.request(.getCurrentActivityLevels) { result in
+            switch result{
+            case let .success(response):
+                do{
+                    //use swifyJSON to simplify the JSON
+                    let json = try JSON(data: response.data)
+                    let data = json["level"]
+                    
+                    var activityLevels = [ActivityLevel]()
+                    
+                    for (name, value) in data{
+                        var activityLevel = ActivityLevel(isAvailable: false, location: nil, percent: 0)
+                        let value = String(describing: value)
+                        var percentage = 0
+                        activityLevel.location = Location(rawValue: name)!
+                        if value == "-1%"{
+                            activityLevel.isAvailable = false
+                        }
+                        else{
+                            let index = value.index(value.endIndex, offsetBy: -1)
+                            percentage = Int(value[..<index])!
+                            activityLevel.isAvailable = true
+                            activityLevel.percent = percentage
+                        }
+                        activityLevels.append(activityLevel)
+                    }
+                    completion(activityLevels)
+                }
+                catch{
+                    print("error parsing")
+                }
+            case let .failure(error):
+                print(error)
+            }
+        }
     }
 }
