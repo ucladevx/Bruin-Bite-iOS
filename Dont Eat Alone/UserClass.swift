@@ -104,18 +104,18 @@ public class User {
         }
     }
     public func readUser() {
-        DispatchQueue.global(qos: .background).async {
-            API.readUsers(email: self.user_email, access_token: MAIN_USER.getToken()!) { (sent_user) in
-                self.create_read_update = sent_user
-                self.user_email = self.create_read_update?.email ?? ""
-                self.first_name = self.create_read_update?.first_name ?? ""
-                self.last_name = self.create_read_update?.last_name ?? ""
-                self.user_major = self.create_read_update?.major ?? ""
-                self.user_minor = self.create_read_update?.minor ?? ""
-                self.user_bio = self.create_read_update?.self_bio ?? ""
-                self.user_year = self.create_read_update?.year ?? 0
-            }
-        }
+//        DispatchQueue.global(qos: .background).async {
+//            API.readUsers(email: self.user_email, access_token: MAIN_USER.getToken()!) { (sent_user) in
+//                self.create_read_update = sent_user
+//                self.user_email = self.create_read_update?.email ?? ""
+//                self.first_name = self.create_read_update?.first_name ?? ""
+//                self.last_name = self.create_read_update?.last_name ?? ""
+//                self.user_major = self.create_read_update?.major ?? ""
+//                self.user_minor = self.create_read_update?.minor ?? ""
+//                self.user_bio = self.create_read_update?.self_bio ?? ""
+//                self.user_year = self.create_read_update?.year ?? 0
+//            }
+//        }
     }
     public func updateUser() {
         DispatchQueue.global(qos: .background).async {
