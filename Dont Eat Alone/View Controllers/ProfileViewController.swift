@@ -16,12 +16,7 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var yearMajor: UILabel!
     @IBOutlet var ShortBio: UITextView!
-
-    @IBOutlet var SettingsText: UILabel!
-    @IBOutlet var FeedbackText: UILabel!
-    @IBOutlet var EditProfileText: UILabel!
-
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         MAIN_USER.readUser()
@@ -36,38 +31,26 @@ class ProfileViewController: UIViewController {
         yearMajor.textColor = UIColor(red: 221.0 / 255.0, green: 221.0 / 255.0, blue: 221.0 / 255.0, alpha: 1.0)
         yearMajor.font = UIFont(name:"Avenir", size: 12.0)
 
-        //Edit Profile Label font, color size
-        EditProfileText.textColor = UIColor.profileOptionGray
-        EditProfileText.font = UIFont(name:"Avenir", size: 16.0)
-
-        //Feedback Label font, color size
-        FeedbackText.textColor = UIColor.profileOptionGray
-        FeedbackText.font = UIFont(name:"Avenir", size: 16.0)
-
-        //Settings Label font, color size
-        SettingsText.textColor = UIColor.profileOptionGray
-        SettingsText.font = UIFont(name:"Avenir", size: 16.0)
-
         //Bio Text Box font, color size
         ShortBio.textColor = UIColor.white
         ShortBio.font = UIFont.profileNameFont.withSize(16)
 
         //Align text to center
-        userName.textAlignment = NSTextAlignment.center
-        yearMajor.textAlignment = NSTextAlignment.center
-        ShortBio.textAlignment = NSTextAlignment.center
+//        userName.textAlignment = NSTextAlignment.center
+//        yearMajor.textAlignment = NSTextAlignment.center
+//        ShortBio.textAlignment = NSTextAlignment.center
 
         //Set labels equal to name
-        userName.text = MAIN_USER.accessUserInfo(type: "first")
+//        userName.text = MAIN_USER.accessUserInfo(type: "first")
         let combine = String(MAIN_USER.accessUserYear()) + " | " + MAIN_USER.accessUserInfo(type: "major")
-        yearMajor.text = combine
+//        yearMajor.text = combine
 
         //set profile picture
         //profilePic.image = John.pic
 
         //Set Bio Text
         let text = "I love dancing, singing and meeting new people. Let’s grab a meal and get to know each other!"
-        ShortBio.text = text
+//        ShortBio.text = text
 
         //Circular Profile Picture
         profilePic.layer.cornerRadius = profilePic.frame.size.width/2
