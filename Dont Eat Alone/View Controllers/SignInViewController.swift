@@ -48,7 +48,14 @@ class SignInViewController: UIViewController {
     }
     
     @IBAction func didPressSignIn(_ sender: UIButton) {
-        //
+        if(!(EmailText.text?.isEmail() ?? false)) {
+            //Invalid Email
+            return
+        }
+        if((PasswordText.text?.count ?? 0) < 8) {
+            //Invalid Password
+            return
+        }
         
         MAIN_USER.changeUserInfo(type: "email", info: EmailText.text!)
         MAIN_USER.changeUserInfo(type: "password", info: PasswordText.text!)

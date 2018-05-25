@@ -56,7 +56,7 @@ class LoginViewController: UIViewController {
             case .cancelled:
                 print("User cancelled login.")
             case .success(let grantedPermissions, let declinedPermissions, let accessToken):
-                //if user exists
+                //if user exists and login suceeds
                 //self.performSegue(withIdentifier: "CheckMenusSegue", sender: sender)
                 //else
                 self.performSegue(withIdentifier: "CreateProfileSegue", sender: sender)
