@@ -77,7 +77,7 @@ class MenuCardView: UIView, UITableViewDelegate, UITableViewDataSource {
         
         menuCardView.addSubview(diningHallName)
         menuCardView.backgroundColor = .white
-        tableView.addBorderTop(size: 1.2, color: .gray)
+        tableView.addBorderTop(size: 1.2, color: .white)
         
         //Auto-Layout using code. Please do it this way in your future code - Ayush
         activityLevelBar.snp.makeConstraints{(make) -> Void in

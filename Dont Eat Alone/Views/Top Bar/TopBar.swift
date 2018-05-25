@@ -33,10 +33,10 @@ import UIKit
     }
     
     private func setupView(){
-        backgroundColor = UIColor(red: 208/255, green: 2/255, blue: 27/255, alpha: 1)
-        circleSelect.backgroundColor = UIColor(red: 208/255, green: 2/255, blue: 27/255, alpha: 1)
+        backgroundColor = UIColor.twilightBlue
+        circleSelect.backgroundColor = UIColor.twilightBlue
         circleLabel.textColor = UIColor.black
-        bezelView.backgroundColor = UIColor(red: 208/255, green: 2/255, blue: 27/255, alpha: 1)
+        bezelView.backgroundColor = UIColor.twilightBlue
         bezelLabel.textColor = UIColor.black
         bezelView.frame = CGRect(x: 0, y: 42, width: 87.5, height: 40)
         bezelLabel.frame = CGRect(x: 12, y: 52, width: 80, height: 20)

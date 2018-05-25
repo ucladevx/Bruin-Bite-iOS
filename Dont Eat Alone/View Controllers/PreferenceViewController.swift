@@ -55,10 +55,10 @@ class PreferenceViewController: UIViewController {
         picker?.dataSource = self as CZPickerViewDataSource
         picker?.needFooterView = false
         picker?.allowMultipleSelection = true
-        picker?.checkmarkColor = UIColor.deaScarlet
-        picker?.headerBackgroundColor = UIColor.deaScarlet
-        picker?.confirmButtonBackgroundColor = UIColor.deaScarlet
-        picker?.cancelButtonBackgroundColor = UIColor.deaScarlet
+        picker?.checkmarkColor = UIColor.twilightBlue
+        picker?.headerBackgroundColor = UIColor.twilightBlue
+        picker?.confirmButtonBackgroundColor = UIColor.twilightBlue
+        picker?.cancelButtonBackgroundColor = UIColor.twilightBlue
         picker?.cancelButtonNormalColor = UIColor.white
         picker?.show()
     }
@@ -86,10 +86,10 @@ class PreferenceViewController: UIViewController {
         picker?.dataSource = self as CZPickerViewDataSource
         picker?.needFooterView = false
         picker?.allowMultipleSelection = true
-        picker?.checkmarkColor = UIColor.deaScarlet
-        picker?.headerBackgroundColor = UIColor.deaScarlet
-        picker?.confirmButtonBackgroundColor = UIColor.deaScarlet
-        picker?.cancelButtonBackgroundColor = UIColor.deaScarlet
+        picker?.checkmarkColor = UIColor.twilightBlue
+        picker?.headerBackgroundColor = UIColor.twilightBlue
+        picker?.confirmButtonBackgroundColor = UIColor.twilightBlue
+        picker?.cancelButtonBackgroundColor = UIColor.twilightBlue
         picker?.cancelButtonNormalColor = UIColor.white
         picker?.show()
     }
@@ -117,10 +117,10 @@ class PreferenceViewController: UIViewController {
         picker?.dataSource = self as CZPickerViewDataSource
         picker?.needFooterView = false
         picker?.allowMultipleSelection = true
-        picker?.checkmarkColor = UIColor.deaScarlet
-        picker?.headerBackgroundColor = UIColor.deaScarlet
-        picker?.confirmButtonBackgroundColor = UIColor.deaScarlet
-        picker?.cancelButtonBackgroundColor = UIColor.deaScarlet
+        picker?.checkmarkColor = UIColor.twilightBlue
+        picker?.headerBackgroundColor = UIColor.twilightBlue
+        picker?.confirmButtonBackgroundColor = UIColor.twilightBlue
+        picker?.cancelButtonBackgroundColor = UIColor.twilightBlue
         picker?.cancelButtonNormalColor = UIColor.white
         picker?.show()
     }

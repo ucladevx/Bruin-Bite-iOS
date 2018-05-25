@@ -29,7 +29,7 @@ protocol TimeViewTappedDelegate {
     }
     
     private func setupLabel() {
-        self.backgroundColor = UIColor(red: 208/255, green: 2/255, blue: 27/255, alpha: 1)
+        self.backgroundColor = UIColor.twilightBlue
         timeLbl.font = timeLbl.font.withSize(15)
         timeLbl.textColor = UIColor.white
         timeLbl.textAlignment = .center

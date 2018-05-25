@@ -65,7 +65,7 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
 //                }
 //            }
 //        }
-        backgroundTopBar.backgroundColor = UIColor.deaScarlet
+        backgroundTopBar.backgroundColor = UIColor.twilightBlue
         computedHeight = Array(repeating: defaultHeight, count: self.diningHalls.count)
         // Do any additional setup after loading the view, typically from a nib.
     }
