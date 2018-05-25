@@ -17,6 +17,9 @@
 		00C2DF0F20B678E70023CF75 /* BackgroundUserFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C2DF0E20B678E70023CF75 /* BackgroundUserFetch.swift */; };
 		00C2DF1120B6790D0023CF75 /* keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C2DF1020B6790D0023CF75 /* keys.swift */; };
 		2A03D94820B7AFA7004EFC97 /* HomeProfileStaticTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A03D94720B7AFA7004EFC97 /* HomeProfileStaticTableViewController.swift */; };
+		2A03D93E20B76529004EFC97 /* TimePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A03D93D20B76529004EFC97 /* TimePickerViewController.swift */; };
+		2A03D94320B76C92004EFC97 /* PopupViewControllers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A03D94220B76C91004EFC97 /* PopupViewControllers.storyboard */; };
+		2A03D94620B77A1A004EFC97 /* TimePickerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A03D94520B77A1A004EFC97 /* TimePickerCollectionViewCell.swift */; };
 		2A744895203BBDBC00793AD3 /* MenuCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A744894203BBDBC00793AD3 /* MenuCardView.swift */; };
 		2A744897203BBEDA00793AD3 /* MenuCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A744896203BBEDA00793AD3 /* MenuCardView.xib */; };
 		2A9447802055FA3E0033B6C6 /* AllergensBarScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A94477F2055FA3E0033B6C6 /* AllergensBarScrollView.swift */; };
@@ -92,6 +95,9 @@
 		1CE69B303700A4BB00F6EBEA /* Pods-Dont Eat AloneUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dont Eat AloneUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Dont Eat AloneUITests/Pods-Dont Eat AloneUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		266C33EA78F943413B244B8D /* Pods-Dont Eat Alone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dont Eat Alone.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Dont Eat Alone/Pods-Dont Eat Alone.debug.xcconfig"; sourceTree = "<group>"; };
 		2A03D94720B7AFA7004EFC97 /* HomeProfileStaticTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeProfileStaticTableViewController.swift; sourceTree = "<group>"; };
+		2A03D93D20B76529004EFC97 /* TimePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerViewController.swift; sourceTree = "<group>"; };
+		2A03D94220B76C91004EFC97 /* PopupViewControllers.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PopupViewControllers.storyboard; sourceTree = "<group>"; };
+		2A03D94520B77A1A004EFC97 /* TimePickerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerCollectionViewCell.swift; sourceTree = "<group>"; };
 		2A744894203BBDBC00793AD3 /* MenuCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCardView.swift; sourceTree = "<group>"; };
 		2A744896203BBEDA00793AD3 /* MenuCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuCardView.xib; sourceTree = "<group>"; };
 		2A94477F2055FA3E0033B6C6 /* AllergensBarScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllergensBarScrollView.swift; sourceTree = "<group>"; };
@@ -188,6 +194,22 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		2A03D94020B76B88004EFC97 /* PopupViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				2A03D93D20B76529004EFC97 /* TimePickerViewController.swift */,
+			);
+			path = PopupViewControllers;
+			sourceTree = "<group>";
+		};
+		2A03D94420B779EB004EFC97 /* CollectionViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				2A03D94520B77A1A004EFC97 /* TimePickerCollectionViewCell.swift */,
+			);
+			path = CollectionViewCells;
+			sourceTree = "<group>";
+		};
 		2A744891203B8E9F00793AD3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -201,6 +223,7 @@
 		2A94477A2055F50B0033B6C6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				2A03D94420B779EB004EFC97 /* CollectionViewCells */,
 				2A94477E2055F6290033B6C6 /* Menu */,
 				2A94477D2055F60F0033B6C6 /* Top Bar */,
 				7794996F203BD10400F3B0ED /* AllergyFilterButton.swift */,
@@ -212,6 +235,7 @@
 		2A94477B2055F5570033B6C6 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				2A03D94020B76B88004EFC97 /* PopupViewControllers */,
 				BF0523E2209AA7E00013EE11 /* ProfileViewController.swift */,
 				BF0523E0209AA7DB0013EE11 /* PreferenceViewController.swift */,
 				770251B5201D4079002E4515 /* MenuVC.swift */,
@@ -308,6 +332,7 @@
 				2AB62E6A204888760013CB59 /* Network */,
 				770251B9201D4079002E4515 /* Main.storyboard */,
 				DC5FC98220B788C400DFCCC7 /* Profile.storyboard */,
+				2A03D94220B76C91004EFC97 /* PopupViewControllers.storyboard */,
 				BDDE7C73207B04F80008A677 /* UserList */,
 				770251E3201D4182002E4515 /* Moya_Service.swift */,
 				770251C1201D4079002E4515 /* Info.plist */,
@@ -483,6 +508,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2A744897203BBEDA00793AD3 /* MenuCardView.xib in Resources */,
+				2A03D94320B76C92004EFC97 /* PopupViewControllers.storyboard in Resources */,
 				770251C0201D4079002E4515 /* LaunchScreen.storyboard in Resources */,
 				DC5FC98420B788C400DFCCC7 /* Profile.storyboard in Resources */,
 				770251BD201D4079002E4515 /* Assets.xcassets in Resources */,
@@ -621,6 +647,21 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		BDEC6D45DCFAE6F2A2B8C9D4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Dont Eat AloneTests/Pods-Dont Eat AloneTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		D601296F579F59F8E568D410 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -684,6 +725,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DCF0E2E020B2608B0036A32F /* CreateProfileViewController.swift in Sources */,
+				2A03D93E20B76529004EFC97 /* TimePickerViewController.swift in Sources */,
 				DCF0E2E220B260A90036A32F /* CreateProfilePt2ViewController.swift in Sources */,
 				BDDE7C6E207AF6840008A677 /* LoginViewController.swift in Sources */,
 				00C2DF0B20B678A00023CF75 /* UserAPI.swift in Sources */,
@@ -706,6 +748,7 @@
 				C0CD676A203C15CC006B265D /* TimeView.swift in Sources */,
 				00C2DF0F20B678E70023CF75 /* BackgroundUserFetch.swift in Sources */,
 				2B952C67202BDBB200F27727 /* WeekView.swift in Sources */,
+				2A03D94620B77A1A004EFC97 /* TimePickerCollectionViewCell.swift in Sources */,
 				2A9447802055FA3E0033B6C6 /* AllergensBarScrollView.swift in Sources */,
 				DCF0E2E420B260BA0036A32F /* SignUpViewController.swift in Sources */,
 				00C2DF1120B6790D0023CF75 /* keys.swift in Sources */,

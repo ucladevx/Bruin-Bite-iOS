@@ -95,34 +95,39 @@ class PreferenceViewController: UIViewController {
     }
     
     @IBAction func selectTime(sender: AnyObject) {
-        let picker = CZPickerView(headerTitle: "Times", cancelButtonTitle: "Cancel", confirmButtonTitle: "Confirm")
-        let components = DateComponents()
-        var curdate = Calendar.current.date(byAdding: components, to: Date())
-        let formatter = DateFormatter()
-        formatter.dateStyle = .none
-        formatter.timeStyle = .short
-        var i = 0
-        var j = 1
-        var temppicks = [String]()
-        if(temppicks.count == 0) {
-            while(i < 4) {
-                let dateString = formatter.string(from: curdate!)
-                curdate?.addTimeInterval(TimeInterval(60*15))
-                temppicks.append(dateString)
-                i += 1
-                j += 1
-            } }
-        picks = temppicks
-        picker?.delegate = self as CZPickerViewDelegate
-        picker?.dataSource = self as CZPickerViewDataSource
-        picker?.needFooterView = false
-        picker?.allowMultipleSelection = true
-        picker?.checkmarkColor = UIColor.deaScarlet
-        picker?.headerBackgroundColor = UIColor.deaScarlet
-        picker?.confirmButtonBackgroundColor = UIColor.deaScarlet
-        picker?.cancelButtonBackgroundColor = UIColor.deaScarlet
-        picker?.cancelButtonNormalColor = UIColor.white
-        picker?.show()
+        //Refactored storyboard
+        let storyBoard = UIStoryboard(name: "PopupViewControllers", bundle: nil)
+        let timePicker = storyBoard.instantiateViewController(withIdentifier: "TimePickerViewController")
+        self.present(timePicker, animated: true)
+        
+//        let picker = CZPickerView(headerTitle: "Times", cancelButtonTitle: "Cancel", confirmButtonTitle: "Confirm")
+//        let components = DateComponents()
+//        var curdate = Calendar.current.date(byAdding: components, to: Date())
+//        let formatter = DateFormatter()
+//        formatter.dateStyle = .none
+//        formatter.timeStyle = .short
+//        var i = 0
+//        var j = 1
+//        var temppicks = [String]()
+//        if(temppicks.count == 0) {
+//            while(i < 4) {
+//                let dateString = formatter.string(from: curdate!)
+//                curdate?.addTimeInterval(TimeInterval(60*15))
+//                temppicks.append(dateString)
+//                i += 1
+//                j += 1
+//            } }
+//        picks = temppicks
+//        picker?.delegate = self as CZPickerViewDelegate
+//        picker?.dataSource = self as CZPickerViewDataSource
+//        picker?.needFooterView = false
+//        picker?.allowMultipleSelection = true
+//        picker?.checkmarkColor = UIColor.deaScarlet
+//        picker?.headerBackgroundColor = UIColor.deaScarlet
+//        picker?.confirmButtonBackgroundColor = UIColor.deaScarlet
+//        picker?.cancelButtonBackgroundColor = UIColor.deaScarlet
+//        picker?.cancelButtonNormalColor = UIColor.white
+//        picker?.show()
     }
     
 }
