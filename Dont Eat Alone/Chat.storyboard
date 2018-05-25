@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aUf-9F-jVN">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Chats-->
+        <scene sceneID="XhH-AU-86v">
+            <objects>
+                <viewController id="aUf-9F-jVN" customClass="ViewController" customModule="Dont_Eat_Alone" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ty7-mp-8iL">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="1md-Og-I2X">
+                                <rect key="frame" x="106" y="72" width="163" height="230"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🕑" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aiw-gc-Fij">
+                                        <rect key="frame" x="0.0" y="0.0" width="163" height="181"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="150"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Waiting..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5je-1O-Tg4">
+                                        <rect key="frame" x="46" y="181" width="71" height="20"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lZE-TF-vTT">
+                                        <rect key="frame" x="26" y="201" width="111" height="29"/>
+                                        <state key="normal" title="Send New Emoji"/>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="5je-1O-Tg4" secondAttribute="bottom" constant="29" id="4gH-Bv-Ds0"/>
+                                    <constraint firstItem="Aiw-gc-Fij" firstAttribute="top" secondItem="1md-Og-I2X" secondAttribute="top" id="TNg-hm-6Wz"/>
+                                    <constraint firstItem="lZE-TF-vTT" firstAttribute="top" secondItem="Aiw-gc-Fij" secondAttribute="bottom" constant="20" id="fnN-1n-avd"/>
+                                    <constraint firstItem="5je-1O-Tg4" firstAttribute="leading" secondItem="1md-Og-I2X" secondAttribute="leading" constant="46" id="jtt-8t-YS1"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="1md-Og-I2X" firstAttribute="centerX" secondItem="ty7-mp-8iL" secondAttribute="centerX" id="6an-Ed-FMQ"/>
+                            <constraint firstItem="1md-Og-I2X" firstAttribute="top" secondItem="7Bj-NL-B0G" secondAttribute="top" constant="52" id="WTN-66-tRk"/>
+                            <constraint firstItem="7Bj-NL-B0G" firstAttribute="bottom" secondItem="1md-Og-I2X" secondAttribute="bottom" constant="365" id="cPY-Xz-W4Q"/>
+                            <constraint firstItem="1md-Og-I2X" firstAttribute="leading" secondItem="7Bj-NL-B0G" secondAttribute="leading" constant="106" id="l4m-DY-Al7"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="7Bj-NL-B0G"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Chats" image="Chats" id="lIA-hu-R1X"/>
+                    <connections>
+                        <outlet property="emojiLabel" destination="Aiw-gc-Fij" id="JD2-WC-78B"/>
+                        <outlet property="usernameLabel" destination="5je-1O-Tg4" id="PXo-T9-xnO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YcV-BD-KOa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="922" y="465"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Chats" width="26" height="25"/>
+    </resources>
+</document>

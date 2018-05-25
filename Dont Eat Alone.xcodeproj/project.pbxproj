@@ -40,13 +40,13 @@
 		77949970203BD10500F3B0ED /* AllergyFilterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7794996F203BD10400F3B0ED /* AllergyFilterButton.swift */; };
 		77949972203BD12B00F3B0ED /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77949971203BD12B00F3B0ED /* Extensions.swift */; };
 		7F2CE2B970B78A3D4EAA92F3 /* Pods_Dont_Eat_AloneUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 486D54EAA20C6801495DCB82 /* Pods_Dont_Eat_AloneUITests.framework */; };
+		99A7E4DD20B7C2DF006461C4 /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99A7E4DC20B7C2DF006461C4 /* Chat.storyboard */; };
 		BDDE7C6E207AF6840008A677 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDE7C6D207AF6840008A677 /* LoginViewController.swift */; };
 		BDDE7C70207B04590008A677 /* MatchingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDE7C6F207B04590008A677 /* MatchingListViewController.swift */; };
 		BDDE7C72207B04D00008A677 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDE7C71207B04D00008A677 /* UserTableViewCell.swift */; };
 		BF0523E1209AA7DC0013EE11 /* PreferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0523E0209AA7DB0013EE11 /* PreferenceViewController.swift */; };
 		BF0523E3209AA7E00013EE11 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0523E2209AA7E00013EE11 /* ProfileViewController.swift */; };
 		BFE168A1209AB8BD00D021A2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE168A0209AB8BD00D021A2 /* ViewController.swift */; };
-		BFE168A3209AB8DD00D021A2 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE168A2209AB8DD00D021A2 /* CollectionViewController.swift */; };
 		C0AD0D34204B4EA9008E1206 /* TopBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0AD0D33204B4EA9008E1206 /* TopBar.swift */; };
 		C0CD676A203C15CC006B265D /* TimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CD6769203C15CC006B265D /* TimeView.swift */; };
 		C0CD676C203C1B19006B265D /* ColoredBezel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CD676B203C1B19006B265D /* ColoredBezel.swift */; };
@@ -119,6 +119,7 @@
 		7794996F203BD10400F3B0ED /* AllergyFilterButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllergyFilterButton.swift; sourceTree = "<group>"; };
 		77949971203BD12B00F3B0ED /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		95F72EF072C1BCB2A65BF28C /* Pods-Dont Eat AloneTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dont Eat AloneTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Dont Eat AloneTests/Pods-Dont Eat AloneTests.debug.xcconfig"; sourceTree = "<group>"; };
+		99A7E4DC20B7C2DF006461C4 /* Chat.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Chat.storyboard; sourceTree = "<group>"; };
 		9F5BCEA43F1BA73C8236EDF3 /* Pods-Dont Eat AloneUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dont Eat AloneUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Dont Eat AloneUITests/Pods-Dont Eat AloneUITests.release.xcconfig"; sourceTree = "<group>"; };
 		AB594487D41E5DD55611BCEC /* Pods_Dont_Eat_Alone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Dont_Eat_Alone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDDE7C6D207AF6840008A677 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -127,7 +128,6 @@
 		BF0523E0209AA7DB0013EE11 /* PreferenceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferenceViewController.swift; sourceTree = "<group>"; };
 		BF0523E2209AA7E00013EE11 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		BFE168A0209AB8BD00D021A2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		BFE168A2209AB8DD00D021A2 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		C0AD0D33204B4EA9008E1206 /* TopBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBar.swift; sourceTree = "<group>"; };
 		C0CD6769203C15CC006B265D /* TimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeView.swift; sourceTree = "<group>"; };
 		C0CD676B203C1B19006B265D /* ColoredBezel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColoredBezel.swift; sourceTree = "<group>"; };
@@ -215,7 +215,6 @@
 				009DD511207B0C5600BC2147 /* RegistrationViewController.swift */,
 				009FDBC6209682BD00308641 /* BioViewController.swift */,
 				BFE168A0209AB8BD00D021A2 /* ViewController.swift */,
-				BFE168A2209AB8DD00D021A2 /* CollectionViewController.swift */,
 				BDDE7C6D207AF6840008A677 /* LoginViewController.swift */,
 				DCF0E2DF20B2608B0036A32F /* CreateProfileViewController.swift */,
 				DCF0E2E120B260A90036A32F /* CreateProfilePt2ViewController.swift */,
@@ -295,6 +294,7 @@
 		770251B2201D4079002E4515 /* Dont Eat Alone */ = {
 			isa = PBXGroup;
 			children = (
+				99A7E4DC20B7C2DF006461C4 /* Chat.storyboard */,
 				2A94477B2055F5570033B6C6 /* View Controllers */,
 				2A94477A2055F50B0033B6C6 /* Views */,
 				2A744891203B8E9F00793AD3 /* Models */,
@@ -471,6 +471,7 @@
 				2A744897203BBEDA00793AD3 /* MenuCardView.xib in Resources */,
 				770251C0201D4079002E4515 /* LaunchScreen.storyboard in Resources */,
 				770251BD201D4079002E4515 /* Assets.xcassets in Resources */,
+				99A7E4DD20B7C2DF006461C4 /* Chat.storyboard in Resources */,
 				770251BB201D4079002E4515 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -612,7 +613,6 @@
 				2AB62E6C20488A050013CB59 /* MenuAPI.swift in Sources */,
 				2AB62E69204887820013CB59 /* Menu.swift in Sources */,
 				BDDE7C70207B04590008A677 /* MatchingListViewController.swift in Sources */,
-				BFE168A3209AB8DD00D021A2 /* CollectionViewController.swift in Sources */,
 				C0CD676A203C15CC006B265D /* TimeView.swift in Sources */,
 				00C2DF0F20B678E70023CF75 /* BackgroundUserFetch.swift in Sources */,
 				2B952C67202BDBB200F27727 /* WeekView.swift in Sources */,
