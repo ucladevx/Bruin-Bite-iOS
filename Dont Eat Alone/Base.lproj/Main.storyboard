@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<<<<<<< HEAD
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
-=======
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
->>>>>>> 9f2e02588a4dd0ef7facfe78f14ac8ca2b3ad9f8
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -184,8 +180,6 @@
             </objects>
             <point key="canvasLocation" x="2632.8000000000002" y="-191.1544227886057"/>
         </scene>
-<<<<<<< HEAD
-=======
         <!--Profile-->
         <scene sceneID="v0O-Ga-TGB">
             <objects>
@@ -293,7 +287,6 @@
             </objects>
             <point key="canvasLocation" x="-2.3999999999999999" y="1090.704647676162"/>
         </scene>
->>>>>>> 9f2e02588a4dd0ef7facfe78f14ac8ca2b3ad9f8
         <!--Bio View Controller-->
         <scene sceneID="ndW-o8-rCa">
             <objects>
@@ -1617,17 +1610,6 @@
             </objects>
             <point key="canvasLocation" x="-668" y="-1509"/>
         </scene>
-<<<<<<< HEAD
-        <!--HomeProfile-->
-        <scene sceneID="c6D-OQ-LHy">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Profile" referencedIdentifier="HomeProfile" id="sXm-zx-b7V" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="oJR-pZ-bDR"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="baA-MT-Rb5" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-2.3999999999999999" y="1090.704647676162"/>
-=======
         <!--Home Profile Static Table View Controller-->
         <scene sceneID="59z-In-R4x">
             <objects>
@@ -1753,7 +1735,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6JR-x5-ixo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="750" y="1272"/>
->>>>>>> 9f2e02588a4dd0ef7facfe78f14ac8ca2b3ad9f8
         </scene>
     </scenes>
     <resources>
@@ -1771,11 +1752,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="RdZ-oP-1QG"/>
         <segue reference="jEo-FG-EqQ"/>
-<<<<<<< HEAD
-        <segue reference="lHS-Ev-ORD"/>
-=======
         <segue reference="WWJ-TC-Qti"/>
->>>>>>> 9f2e02588a4dd0ef7facfe78f14ac8ca2b3ad9f8
         <segue reference="6ji-u5-cDs"/>
     </inferredMetricsTieBreakers>
 </document>
