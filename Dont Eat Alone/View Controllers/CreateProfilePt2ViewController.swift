@@ -46,6 +46,25 @@ class CreateProfilePt2ViewController: UIViewController {
             print(MAIN_USER.accessUserInfo(type: "error"))
             return
         }
+
+        /* Waiting for Sam
+        let result = MAIN_USER.updateUser()
+        switch result {
+        case "major":
+            //Invalid Major
+            return
+        case "year":
+            //Invalid Year
+            return
+        case: "bio":
+            //Invalid Bio
+            return
+        default:
+            //Unknown Invalid
+            return
+        }
+        */
+
         self.performSegue(withIdentifier: "ShowMenuVC_1", sender: nil)
     }
 

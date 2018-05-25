@@ -9,17 +9,6 @@
 import UIKit
 
 
-let __firstpart = "[A-Z0-9a-z]([A-Z0-9a-z._%+-]{0,30}[A-Z0-9a-z])?"
-let __serverpart = "([A-Z0-9a-z]([A-Z0-9a-z-]{0,30}[A-Z0-9a-z])?\\.){1,5}"
-let __emailRegex = __firstpart + "@" + __serverpart + "[A-Za-z]{2,6}"
-let __emailPredicate = NSPredicate(format: "SELF MATCHES %@", __emailRegex)
-
-extension String {
-    func isEmail() -> Bool {
-        return __emailPredicate.evaluate(with: self)
-    }
-}
-
 class SignUpViewController: UIViewController {
     
     @IBOutlet var SignUpText: UILabel!
@@ -69,6 +58,17 @@ class SignUpViewController: UIViewController {
         MAIN_USER.changeUserInfo(type: "first", info: NameText.text!)
         MAIN_USER.changeUserInfo(type: "email", info: EmailText.text!)
         MAIN_USER.changeUserInfo(type: "password", info: PasswordText.text!)
+        
+        /* Waiting for Sam
+        let result = MAIN_USER.createUser()
+        if(result == "username") {
+            return
+        }
+        else if(result == "password") {
+            return
+        }
+        */
+        
         self.performSegue(withIdentifier: "DoneWithSignUp", sender: sender)
     }
 }
