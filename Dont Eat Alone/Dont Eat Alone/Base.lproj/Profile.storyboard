@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Profile-->
+        <scene sceneID="v0O-Ga-TGB">
+            <objects>
+                <viewController storyboardIdentifier="HomeProfile" id="nzh-LT-kup" customClass="ProfileViewController" customModule="Dont_Eat_Alone" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="KoU-87-KGi">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FBD-yG-M90" userLabel="WhiteView">
+                                <rect key="frame" x="0.0" y="398" width="375" height="270"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xyt-UB-OeB" userLabel="Line1View">
+                                <rect key="frame" x="26" y="465" width="324" height="1"/>
+                                <color key="backgroundColor" red="0.87450980392156863" green="0.87450980392156863" blue="0.87450980392156863" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VaY-Tc-b0c" userLabel="Line2View">
+                                <rect key="frame" x="26" y="535" width="324" height="1"/>
+                                <color key="backgroundColor" red="0.87450980392156863" green="0.87450980392156863" blue="0.87450980392156863" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dPm-G2-mxs">
+                                <rect key="frame" x="29" y="405" width="88" height="51"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Edit Profile">
+                                        <attributes>
+                                            <color key="NSColor" red="0.66422420739999999" green="0.66424006219999998" blue="0.66423153879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="18" name="Avenir-Book"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ubV-hw-Spo">
+                                <rect key="frame" x="29" y="475" width="146" height="51"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Give Us Feedback">
+                                        <attributes>
+                                            <color key="NSColor" red="0.66422420739999999" green="0.66424006219999998" blue="0.66423153879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="18" name="Avenir-Book"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FHJ-d9-WqF">
+                                <rect key="frame" x="29" y="545" width="65" height="51"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Settings">
+                                        <attributes>
+                                            <color key="NSColor" red="0.66422420739999999" green="0.66424006219999998" blue="0.66423153879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="18" name="Avenir-Book"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bb5-6L-7Ip" userLabel="EditButton">
+                                <rect key="frame" x="318" y="418" width="27" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="Edit"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AdA-UJ-t7u" userLabel="FeedbackButton">
+                                <rect key="frame" x="313" y="491" width="28" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="Feedback"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Qh-py-ZBZ" userLabel="SettingsButton">
+                                <rect key="frame" x="312" y="557" width="25" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="Settings"/>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="oJc-qf-HbW">
+                                <rect key="frame" x="58" y="79" width="259" height="274"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iwq-dm-eBp">
+                                        <rect key="frame" x="55.5" y="0.0" width="148" height="148"/>
+                                        <color key="backgroundColor" white="0.66666666669999997" alpha="0.44303831339999999" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="148" id="mzh-Bt-Qp0"/>
+                                            <constraint firstAttribute="width" constant="148" id="qt1-iq-2Xc"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KzX-lP-brj" userLabel="Name">
+                                        <rect key="frame" x="110" y="156" width="39" height="14"/>
+                                        <attributedString key="attributedText">
+                                            <fragment content="sdfasdf">
+                                                <attributes>
+                                                    <font key="NSFont" size="12" name="Helvetica"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yqA-YX-0v1">
+                                        <rect key="frame" x="108.5" y="178" width="42.5" height="14"/>
+                                        <attributedString key="attributedText">
+                                            <fragment content="asdfasd">
+                                                <attributes>
+                                                    <font key="NSFont" size="12" name="Helvetica"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="asdfadsf" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sNl-Xv-S4T">
+                                        <rect key="frame" x="0.0" y="200" width="259" height="74"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="sNl-Xv-S4T" firstAttribute="leading" secondItem="oJc-qf-HbW" secondAttribute="leading" id="MhU-cD-drI"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.027450980392156862" green="0.29019607843137252" blue="0.46666666666666667" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="oJc-qf-HbW" firstAttribute="leading" secondItem="Sns-AX-pfm" secondAttribute="leading" constant="58" id="1lu-ey-xpu"/>
+                            <constraint firstItem="oJc-qf-HbW" firstAttribute="centerX" secondItem="FBD-yG-M90" secondAttribute="centerX" id="JRl-Sz-T7C"/>
+                            <constraint firstItem="oJc-qf-HbW" firstAttribute="centerX" secondItem="KoU-87-KGi" secondAttribute="centerX" id="L0s-ed-JhY"/>
+                            <constraint firstItem="oJc-qf-HbW" firstAttribute="top" secondItem="Sns-AX-pfm" secondAttribute="top" constant="59" id="R2x-xj-jWd"/>
+                            <constraint firstItem="FBD-yG-M90" firstAttribute="top" secondItem="oJc-qf-HbW" secondAttribute="bottom" constant="45" id="Rzn-YV-9XQ"/>
+                            <constraint firstItem="oJc-qf-HbW" firstAttribute="centerX" secondItem="VaY-Tc-b0c" secondAttribute="centerX" id="WuP-I6-ndb"/>
+                            <constraint firstItem="oJc-qf-HbW" firstAttribute="centerX" secondItem="Xyt-UB-OeB" secondAttribute="centerX" id="qND-KO-XgZ"/>
+                            <constraint firstAttribute="bottom" secondItem="oJc-qf-HbW" secondAttribute="bottom" constant="314" id="vSx-mM-0xx"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Sns-AX-pfm"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Profile" image="Profile" id="Now-kx-a1R"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="EditProfileText" destination="dPm-G2-mxs" id="NjU-j6-f6J"/>
+                        <outlet property="FeedbackText" destination="ubV-hw-Spo" id="Nbd-5m-PAS"/>
+                        <outlet property="SettingsText" destination="FHJ-d9-WqF" id="9hf-rI-64z"/>
+                        <outlet property="ShortBio" destination="sNl-Xv-S4T" id="ca1-vA-J4D"/>
+                        <outlet property="profilePic" destination="iwq-dm-eBp" id="jSo-Z1-UKL"/>
+                        <outlet property="userName" destination="KzX-lP-brj" id="edV-P4-Xz6"/>
+                        <outlet property="yearMajor" destination="yqA-YX-0v1" id="vCP-I0-5AL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hqO-b6-4Ri" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2.3999999999999999" y="1090.704647676162"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Edit" width="27" height="26"/>
+        <image name="Feedback" width="28" height="25"/>
+        <image name="Profile" width="24" height="23"/>
+        <image name="Settings" width="26" height="25"/>
+    </resources>
+</document>

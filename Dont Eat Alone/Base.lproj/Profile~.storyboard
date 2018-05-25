@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8gz-gb-DS3">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -179,6 +179,126 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZmK-mX-m7T" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2632.8000000000002" y="-191.1544227886057"/>
+        </scene>
+        <!--Profile-->
+        <scene sceneID="v0O-Ga-TGB">
+            <objects>
+                <viewController id="nzh-LT-kup" customClass="ProfileViewController" customModule="Dont_Eat_Alone" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="KoU-87-KGi">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iwq-dm-eBp">
+                                <rect key="frame" x="114" y="59" width="148" height="148"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="0.44303831339999999" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KzX-lP-brj" userLabel="Name">
+                                <rect key="frame" x="74" y="215" width="235" height="46"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <attributedString key="attributedText"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yqA-YX-0v1">
+                                <rect key="frame" x="0.0" y="256" width="375" height="19"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <attributedString key="attributedText"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FBD-yG-M90" userLabel="WhiteView">
+                                <rect key="frame" x="0.0" y="398" width="375" height="270"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xyt-UB-OeB" userLabel="Line1View">
+                                <rect key="frame" x="26" y="465" width="324" height="1"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.87450980392156863" green="0.87450980392156863" blue="0.87450980392156863" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VaY-Tc-b0c" userLabel="Line2View">
+                                <rect key="frame" x="26" y="535" width="324" height="1"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.87450980392156863" green="0.87450980392156863" blue="0.87450980392156863" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dPm-G2-mxs">
+                                <rect key="frame" x="29" y="405" width="88" height="51"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Edit Profile">
+                                        <attributes>
+                                            <color key="NSColor" red="0.66422420739999999" green="0.66424006219999998" blue="0.66423153879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="18" name="Avenir-Book"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ubV-hw-Spo">
+                                <rect key="frame" x="29" y="475" width="146" height="51"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Give Us Feedback">
+                                        <attributes>
+                                            <color key="NSColor" red="0.66422420739999999" green="0.66424006219999998" blue="0.66423153879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="18" name="Avenir-Book"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FHJ-d9-WqF">
+                                <rect key="frame" x="29" y="545" width="65" height="51"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Settings">
+                                        <attributes>
+                                            <color key="NSColor" red="0.66422420739999999" green="0.66424006219999998" blue="0.66423153879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="18" name="Avenir-Book"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bb5-6L-7Ip" userLabel="EditButton">
+                                <rect key="frame" x="318" y="418" width="26.5" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="Edit"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AdA-UJ-t7u" userLabel="FeedbackButton">
+                                <rect key="frame" x="313" y="491" width="28" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="Feedback"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Qh-py-ZBZ" userLabel="SettingsButton">
+                                <rect key="frame" x="312" y="557" width="25" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="Settings"/>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sNl-Xv-S4T">
+                                <rect key="frame" x="59" y="283" width="261" height="74"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.027450980392156862" green="0.29019607843137252" blue="0.46666666666666667" alpha="1" colorSpace="calibratedRGB"/>
+                        <viewLayoutGuide key="safeArea" id="Sns-AX-pfm"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Profile" image="Profile" id="Now-kx-a1R"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="EditProfileText" destination="dPm-G2-mxs" id="NjU-j6-f6J"/>
+                        <outlet property="FeedbackText" destination="ubV-hw-Spo" id="Nbd-5m-PAS"/>
+                        <outlet property="SettingsText" destination="FHJ-d9-WqF" id="9hf-rI-64z"/>
+                        <outlet property="ShortBio" destination="sNl-Xv-S4T" id="ca1-vA-J4D"/>
+                        <outlet property="profilePic" destination="iwq-dm-eBp" id="jSo-Z1-UKL"/>
+                        <outlet property="userName" destination="KzX-lP-brj" id="edV-P4-Xz6"/>
+                        <outlet property="yearMajor" destination="yqA-YX-0v1" id="vCP-I0-5AL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hqO-b6-4Ri" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2.3999999999999999" y="1090.704647676162"/>
         </scene>
         <!--Bio View Controller-->
         <scene sceneID="ndW-o8-rCa">
@@ -506,7 +626,7 @@
                         <segue destination="RAT-qB-Fj9" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="vm0-qx-c8l" kind="relationship" relationship="viewControllers" id="mAc-Fx-T4V"/>
                         <segue destination="aUf-9F-jVN" kind="relationship" relationship="viewControllers" id="mau-ZH-fAI"/>
-                        <segue destination="sXm-zx-b7V" kind="relationship" relationship="viewControllers" id="Fee-rG-eXp"/>
+                        <segue destination="nzh-LT-kup" kind="relationship" relationship="viewControllers" id="Fee-rG-eXp"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
@@ -1503,33 +1623,27 @@
             </objects>
             <point key="canvasLocation" x="-668" y="-1509"/>
         </scene>
-        <!--HomeProfile-->
-        <scene sceneID="c6D-OQ-LHy">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Profile" referencedIdentifier="HomeProfile" id="sXm-zx-b7V" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="oJR-pZ-bDR"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="baA-MT-Rb5" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-2.3999999999999999" y="1090.704647676162"/>
-        </scene>
     </scenes>
     <resources>
         <image name="Chats" width="26" height="25"/>
+        <image name="Edit" width="27" height="26"/>
+        <image name="Feedback" width="28" height="25"/>
         <image name="Line" width="242" height="2"/>
         <image name="LoginLogo" width="108" height="144"/>
         <image name="Match" width="37" height="24"/>
         <image name="Menu" width="22" height="18"/>
         <image name="NextArrow" width="46" height="46"/>
         <image name="PrevArrow" width="12" height="17"/>
+        <image name="Profile" width="24" height="23"/>
         <image name="ProfilePic" width="139" height="139"/>
+        <image name="Settings" width="26" height="25"/>
         <image name="matchbutton" width="568" height="194"/>
         <image name="x" width="15" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="RdZ-oP-1QG"/>
         <segue reference="jEo-FG-EqQ"/>
-        <segue reference="lHS-Ev-ORD"/>
+        <segue reference="6mL-fa-w2t"/>
         <segue reference="6ji-u5-cDs"/>
     </inferredMetricsTieBreakers>
 </document>

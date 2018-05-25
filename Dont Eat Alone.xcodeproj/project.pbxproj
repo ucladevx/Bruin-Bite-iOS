@@ -50,6 +50,7 @@
 		C0AD0D34204B4EA9008E1206 /* TopBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0AD0D33204B4EA9008E1206 /* TopBar.swift */; };
 		C0CD676A203C15CC006B265D /* TimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CD6769203C15CC006B265D /* TimeView.swift */; };
 		C0CD676C203C1B19006B265D /* ColoredBezel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CD676B203C1B19006B265D /* ColoredBezel.swift */; };
+		DC5FC98420B788C400DFCCC7 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC5FC98220B788C400DFCCC7 /* Profile.storyboard */; };
 		DCF0E2DC20B260510036A32F /* UIColor+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF0E2DB20B260510036A32F /* UIColor+Additions.swift */; };
 		DCF0E2DE20B260680036A32F /* UIFont+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF0E2DD20B260680036A32F /* UIFont+Additions.swift */; };
 		DCF0E2E020B2608B0036A32F /* CreateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF0E2DF20B2608B0036A32F /* CreateProfileViewController.swift */; };
@@ -131,6 +132,7 @@
 		C0AD0D33204B4EA9008E1206 /* TopBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBar.swift; sourceTree = "<group>"; };
 		C0CD6769203C15CC006B265D /* TimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeView.swift; sourceTree = "<group>"; };
 		C0CD676B203C1B19006B265D /* ColoredBezel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColoredBezel.swift; sourceTree = "<group>"; };
+		DC5FC98320B788C400DFCCC7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Dont Eat Alone/Base.lproj/Profile.storyboard"; sourceTree = "<group>"; };
 		DCF0E2DB20B260510036A32F /* UIColor+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Additions.swift"; sourceTree = "<group>"; };
 		DCF0E2DD20B260680036A32F /* UIFont+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Additions.swift"; sourceTree = "<group>"; };
 		DCF0E2DF20B2608B0036A32F /* CreateProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProfileViewController.swift; sourceTree = "<group>"; };
@@ -300,6 +302,7 @@
 				2A744891203B8E9F00793AD3 /* Models */,
 				2AB62E6A204888760013CB59 /* Network */,
 				770251B9201D4079002E4515 /* Main.storyboard */,
+				DC5FC98220B788C400DFCCC7 /* Profile.storyboard */,
 				BDDE7C73207B04F80008A677 /* UserList */,
 				770251E3201D4182002E4515 /* Moya_Service.swift */,
 				770251C1201D4079002E4515 /* Info.plist */,
@@ -470,6 +473,7 @@
 			files = (
 				2A744897203BBEDA00793AD3 /* MenuCardView.xib in Resources */,
 				770251C0201D4079002E4515 /* LaunchScreen.storyboard in Resources */,
+				DC5FC98420B788C400DFCCC7 /* Profile.storyboard in Resources */,
 				770251BD201D4079002E4515 /* Assets.xcassets in Resources */,
 				770251BB201D4079002E4515 /* Main.storyboard in Resources */,
 			);
@@ -683,6 +687,14 @@
 				770251BF201D4079002E4515 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		DC5FC98220B788C400DFCCC7 /* Profile.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DC5FC98320B788C400DFCCC7 /* Base */,
+			);
+			name = Profile.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
