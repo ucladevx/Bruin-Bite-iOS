@@ -35,7 +35,6 @@ class CreateProfilePt2ViewController: UIViewController {
         
         // Attempts to create a user, returns false if 
         if(!MAIN_USER.createUser()) {
-            //YOU CAN USE AN ALERT WITH THE RESPONSE FROM
             print(MAIN_USER.accessUserInfo(type: "error"))
             return
         }
