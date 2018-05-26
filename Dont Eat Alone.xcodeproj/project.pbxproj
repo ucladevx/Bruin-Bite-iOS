@@ -59,7 +59,9 @@
 		BDDE7C72207B04D00008A677 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDE7C71207B04D00008A677 /* UserTableViewCell.swift */; };
 		BF0523E1209AA7DC0013EE11 /* PreferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0523E0209AA7DB0013EE11 /* PreferenceViewController.swift */; };
 		BF0523E3209AA7E00013EE11 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0523E2209AA7E00013EE11 /* ProfileViewController.swift */; };
-		BFE168A1209AB8BD00D021A2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE168A0209AB8BD00D021A2 /* ViewController.swift */; };
+		BF5D97E220B973570086D451 /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF5D97E120B973570086D451 /* Chat.storyboard */; };
+		BF5D97E420B974F60086D451 /* ChatListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5D97E320B974F60086D451 /* ChatListViewController.swift */; };
+		BF5D97E620B97F490086D451 /* ChatPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5D97E520B97F490086D451 /* ChatPreview.swift */; };
 		BFE168A3209AB8DD00D021A2 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE168A2209AB8DD00D021A2 /* CollectionViewController.swift */; };
 		C0AD0D34204B4EA9008E1206 /* TopBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0AD0D33204B4EA9008E1206 /* TopBar.swift */; };
 		C0CD676A203C15CC006B265D /* TimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CD6769203C15CC006B265D /* TimeView.swift */; };
@@ -178,7 +180,9 @@
 		BDDE7C71207B04D00008A677 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		BF0523E0209AA7DB0013EE11 /* PreferenceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferenceViewController.swift; sourceTree = "<group>"; };
 		BF0523E2209AA7E00013EE11 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		BFE168A0209AB8BD00D021A2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		BF5D97E120B973570086D451 /* Chat.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Chat.storyboard; sourceTree = "<group>"; };
+		BF5D97E320B974F60086D451 /* ChatListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListViewController.swift; sourceTree = "<group>"; };
+		BF5D97E520B97F490086D451 /* ChatPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatPreview.swift; sourceTree = "<group>"; };
 		BFE168A2209AB8DD00D021A2 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		C0AD0D33204B4EA9008E1206 /* TopBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBar.swift; sourceTree = "<group>"; };
 		C0CD6769203C15CC006B265D /* TimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeView.swift; sourceTree = "<group>"; };
@@ -265,6 +269,7 @@
 				2AB62E6F2048D21D0013CB59 /* ActivityLevel.swift */,
 				0058244E20BA106E0044CB88 /* Hours.swift */,
 				00C2DF0620B677040023CF75 /* User.swift */,
+				BF5D97E520B97F490086D451 /* ChatPreview.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -294,7 +299,6 @@
 				BDDE7C6F207B04590008A677 /* MatchingListViewController.swift */,
 				009DD511207B0C5600BC2147 /* RegistrationViewController.swift */,
 				009FDBC6209682BD00308641 /* BioViewController.swift */,
-				BFE168A0209AB8BD00D021A2 /* ViewController.swift */,
 				BFE168A2209AB8DD00D021A2 /* CollectionViewController.swift */,
 				BDDE7C6D207AF6840008A677 /* LoginViewController.swift */,
 				DCF0E2DF20B2608B0036A32F /* CreateProfileViewController.swift */,
@@ -302,6 +306,7 @@
 				DCF0E2E320B260BA0036A32F /* SignUpViewController.swift */,
 				DCF0E2E520B260CC0036A32F /* SignInViewController.swift */,
 				2A03D94720B7AFA7004EFC97 /* HomeProfileStaticTableViewController.swift */,
+				BF5D97E320B974F60086D451 /* ChatListViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -407,6 +412,7 @@
 				2AFA40B420BC08200007FB85 /* Matching.storyboard */,
 				770251B9201D4079002E4515 /* Main.storyboard */,
 				DC5FC98220B788C400DFCCC7 /* Profile.storyboard */,
+				BF5D97E120B973570086D451 /* Chat.storyboard */,
 				2A03D94220B76C91004EFC97 /* PopupViewControllers.storyboard */,
 				BDDE7C73207B04F80008A677 /* UserList */,
 				770251E3201D4182002E4515 /* Moya_Service.swift */,
@@ -619,6 +625,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF5D97E220B973570086D451 /* Chat.storyboard in Resources */,
 				2A744897203BBEDA00793AD3 /* MenuCardView.xib in Resources */,
 				2A03D94320B76C92004EFC97 /* PopupViewControllers.storyboard in Resources */,
 				770251C0201D4079002E4515 /* LaunchScreen.storyboard in Resources */,
@@ -865,11 +872,13 @@
 				00C2DF1120B6790D0023CF75 /* keys.swift in Sources */,
 				2AFA40B020BC07AD0007FB85 /* CancelMatchViewController.swift in Sources */,
 				BFE168A1209AB8BD00D021A2 /* ViewController.swift in Sources */,
+				BF5D97E420B974F60086D451 /* ChatListViewController.swift in Sources */,
 				DCF0E2DE20B260680036A32F /* UIFont+Additions.swift in Sources */,
 				77949970203BD10500F3B0ED /* AllergyFilterButton.swift in Sources */,
 				77949972203BD12B00F3B0ED /* Extensions.swift in Sources */,
 				2A03D94820B7AFA7004EFC97 /* HomeProfileStaticTableViewController.swift in Sources */,
 				770CDEB020266B6000658925 /* ActivityLevelBar.swift in Sources */,
+				BF5D97E620B97F490086D451 /* ChatPreview.swift in Sources */,
 				DCF0E2E620B260CC0036A32F /* SignInViewController.swift in Sources */,
 				009DD512207B0C5600BC2147 /* RegistrationViewController.swift in Sources */,
 				C0AD0D34204B4EA9008E1206 /* TopBar.swift in Sources */,
