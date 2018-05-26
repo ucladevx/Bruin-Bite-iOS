@@ -378,7 +378,6 @@
 				770251AD201D4079002E4515 /* Frameworks */,
 				770251AE201D4079002E4515 /* Resources */,
 				D601296F579F59F8E568D410 /* [CP] Embed Pods Frameworks */,
-				83F6858BF12EE0D0660F27F1 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -397,8 +396,6 @@
 				770251C2201D4079002E4515 /* Sources */,
 				770251C3201D4079002E4515 /* Frameworks */,
 				770251C4201D4079002E4515 /* Resources */,
-				3E7CC4834C9483D979EE1DBF /* [CP] Embed Pods Frameworks */,
-				E5E36418F8921C8F487D60AA /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -418,8 +415,6 @@
 				770251CD201D4079002E4515 /* Sources */,
 				770251CE201D4079002E4515 /* Frameworks */,
 				770251CF201D4079002E4515 /* Resources */,
-				26B2E5E02AA3F33BFE504689 /* [CP] Embed Pods Frameworks */,
-				07E2854345686C8BE62E4577 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -507,21 +502,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		07E2854345686C8BE62E4577 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Dont Eat AloneUITests/Pods-Dont Eat AloneUITests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		1DE3B015D4DCEE39A622FF08 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -538,51 +518,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		26B2E5E02AA3F33BFE504689 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Dont Eat AloneUITests/Pods-Dont Eat AloneUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		3E7CC4834C9483D979EE1DBF /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Dont Eat AloneTests/Pods-Dont Eat AloneTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		83F6858BF12EE0D0660F27F1 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Dont Eat Alone/Pods-Dont Eat Alone-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		9CD354889BDF636A445503C0 /* [CP] Check Pods Manifest.lock */ = {
@@ -659,21 +594,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Dont Eat Alone/Pods-Dont Eat Alone-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E5E36418F8921C8F487D60AA /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Dont Eat AloneTests/Pods-Dont Eat AloneTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

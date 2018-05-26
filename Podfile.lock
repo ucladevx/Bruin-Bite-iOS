@@ -37,6 +37,20 @@ DEPENDENCIES:
   - Starscream (from `https://github.com/daltoniam/Starscream`, branch `swift3`)
   - SwiftyJSON
 
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - Alamofire
+    - Bolts
+    - CZPicker
+    - FacebookCore
+    - FacebookLogin
+    - FBSDKCoreKit
+    - FBSDKLoginKit
+    - Moya
+    - Result
+    - SnapKit
+    - SwiftyJSON
+
 EXTERNAL SOURCES:
   Starscream:
     :branch: swift3
@@ -63,4 +77,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 85dc007add78418ca625fac9ec13f1a4a7918bd7
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.5.0

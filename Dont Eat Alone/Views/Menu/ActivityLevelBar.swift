@@ -48,46 +48,45 @@ class ActivityLevelBar: UIView {
         
         let width = UIScreen.main.bounds.size.width
         
-            if(self.percentage > 0.8) {
-                let start_width = 0.8*width
-                let percent_filled = (self.percentage - 0.8)*width
-                
-                ctx.setFillColor(UIColor.deaScarlet.cgColor)
-                ctx.addPath(UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: CGFloat(start_width+percent_filled), height: 10), byRoundingCorners: [], cornerRadii: CGSize(width: 6, height: 6)).cgPath)
-                
-                
-                ctx.fillPath()
-                
-            }
-            if(self.percentage > 0.6) {
-                ctx.setFillColor(UIColor.deaYellow.cgColor)
-                
-                let start_width = 0.6*width
-                var percent_filled: CGFloat
-                if(self.percentage > 0.8) {
-                    percent_filled = 0.2*width
-                }
-                else {
-                    percent_filled = (self.percentage - 0.6)*width
-                }
-                ctx.addPath(UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: start_width + percent_filled, height: 10), byRoundingCorners: [], cornerRadii: CGSize(width: 6, height: 6)).cgPath)
-                ctx.fillPath()
-            }
+        if(self.percentage > 0.8) {
+            let percent_filled = (self.percentage)*width
             
-            var percent_filled: CGFloat = 0
-            if(self.percentage > 0.6) {
-                percent_filled = 1
+            ctx.setFillColor(UIColor.deaScarlet.cgColor)
+            // before was start_width + percent_filled
+            ctx.addPath(UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: CGFloat(percent_filled), height: 10), byRoundingCorners: [], cornerRadii: CGSize(width: 6, height: 6)).cgPath)
+            
+            ctx.fillPath()
+            
+        }
+            
+        else if(self.percentage > 0.6) {
+            ctx.setFillColor(UIColor.deaYellow.cgColor)
+            var percent_filled: CGFloat
+            if(self.percentage > 0.8) {
+                percent_filled = 0.2*width
             }
             else {
-                percent_filled = self.percentage/0.6
+                percent_filled = (self.percentage)*width
             }
+            ctx.addPath(UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: percent_filled, height: 10), byRoundingCorners: [], cornerRadii: CGSize(width: 6, height: 6)).cgPath)
+            ctx.fillPath()
+        }
+        
+        var percent_filled: CGFloat = 0
+        
+        if(self.percentage > 0.6) {
+            percent_filled = 1
+        }
+            
+        else {
+            percent_filled = self.percentage/0.6
             ctx.setFillColor(UIColor.deaAppleGreen.cgColor)
             ctx.addPath(UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: 0.6*width*percent_filled, height: 10), byRoundingCorners: [], cornerRadii: CGSize(width: 6, height: 6)).cgPath)
-            //
-            
-            ctx.closePath()
             ctx.fillPath()
-            ctx.restoreGState()
+        }
+        
+        ctx.closePath()
+        ctx.restoreGState()
     }
     
     func resizeToZero(){
@@ -98,3 +97,4 @@ class ActivityLevelBar: UIView {
         self.frame.size.width = UIScreen.main.bounds.size.width
     }
 }
+
