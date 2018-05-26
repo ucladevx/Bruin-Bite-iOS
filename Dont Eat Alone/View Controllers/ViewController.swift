@@ -24,43 +24,76 @@ import UIKit
 import Starscream
 import Foundation
 import SwiftyJSON
+import Alamofire
 
 final class ViewController: UIViewController {
     
     // MARK: - Properties
-    var username = "Ayush"
-    var socket = WebSocket(url: URL(string: "https://django-channels-example.herokuapp.com/chat/devxdemo")!, protocols: ["chat"])
+    var username = ""
+    var CHAT_ROOM_LABEL = ""
+    //var socket = WebSocket(url: URL(string: "https://django-channels-example.herokuapp.com/chat/devxdemo")!, protocols: ["chat"])
+    var socket: WebSocket?
+    //= WebSocket(url: URL(string: "http://localhost:8000/chat/devxdemo")!, protocols: ["chat"])
     
     // MARK: - IBOutlets
     @IBOutlet var emojiLabel: UILabel!
     @IBOutlet var usernameLabel: UILabel!
     
+    @IBAction func SendText(_ sender: UIButton) {
+        sendMessage("Hello World")
+    }
     // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        socket.delegate = self
-        socket.connect()
+        requestLabel()
         navigationItem.hidesBackButton = true
     }
     
+    func requestLabel() {
+        let param = ["user1": 128, "user2": 456]
+        
+        Alamofire.request("http://localhost:8000/new/", method: HTTPMethod.get, parameters: param, headers: nil).responseJSON { response in
+            if let result = response.result.value {
+                let json = JSON(result)
+                self.CHAT_ROOM_LABEL = json["label"].stringValue
+                
+                
+                self.socket = WebSocket(url: URL(string: "http://localhost:8000/chat/" + self.CHAT_ROOM_LABEL)!, protocols: ["chat"])
+                self.socket?.delegate = self
+                self.socket?.connect()
+                
+                //  Load the last 50 messages from the server when the view controller loads
+                Alamofire.request("http://localhost:8000/" + self.CHAT_ROOM_LABEL + "/").responseJSON { response in
+                    if let result = response.result.value {
+                        let json = JSON(result)
+                        print(json["tester"])
+                        print(json["messages"])
+                    }
+                }
+            }
+        }
+    }
+    
     deinit {
-        socket.disconnect(forceTimeout: 0)
-        socket.delegate = nil
+        socket?.disconnect(forceTimeout: 0)
+        socket?.delegate = nil
     }
 }
 
 // MARK: - IBActions
 extension ViewController {
     
+    /*
     @IBAction func selectedEmojiUnwind(unwindSegue: UIStoryboardSegue) {
         guard let viewController = unwindSegue.source as? CollectionViewController,
             let emoji = viewController.selectedEmoji() else{
                 return
         }
-        
+ 
         sendMessage(emoji)
         
     }
+ */
 }
 
 // MARK: - FilePrivate
@@ -79,7 +112,7 @@ fileprivate extension ViewController {
             print("Sending")
             let data = try JSONSerialization.data(withJSONObject: messageWrapper, options: .prettyPrinted)
             let stringedJSON = String(data: data, encoding: String.Encoding.utf8) ?? ""
-            socket.write(string: stringedJSON)
+            socket?.write(string: stringedJSON)
         }
         catch {
             print("Error sending message.")

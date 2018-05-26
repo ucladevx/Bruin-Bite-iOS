@@ -21,8 +21,8 @@
                                 <rect key="frame" x="106" y="72" width="163" height="230"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🕑" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aiw-gc-Fij">
-                                        <rect key="frame" x="0.0" y="0.0" width="163" height="181"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="150"/>
+                                        <rect key="frame" x="73" y="0.0" width="17" height="181"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -35,6 +35,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lZE-TF-vTT">
                                         <rect key="frame" x="26" y="201" width="111" height="29"/>
                                         <state key="normal" title="Send New Emoji"/>
+                                        <connections>
+                                            <action selector="SendText:" destination="aUf-9F-jVN" eventType="touchUpInside" id="kxj-So-Jb0"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
