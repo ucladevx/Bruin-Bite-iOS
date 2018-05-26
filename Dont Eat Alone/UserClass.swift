@@ -109,7 +109,7 @@ public class User {
     }
     
     public func getToken() -> String? {
-        return login_model?.access_token
+        return ((UserDefaults.standard.object(forKey: self.user_email) as? String) ?? nil)
     }
     
     public func accessUserInfo(type: String) -> String {
@@ -137,7 +137,7 @@ public class User {
     }
     
     public func accessUserYear() -> Int {
-        return user_year
+        return self.user_year
     }
     
     public func createUser() -> Bool {
