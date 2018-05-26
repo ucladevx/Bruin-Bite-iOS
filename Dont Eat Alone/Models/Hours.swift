@@ -9,7 +9,6 @@
 import Foundation
 
 struct HallHours: Codable {
-    let hall_name: String
     let breakfast: String
     let lunch: String
     let dinner: String

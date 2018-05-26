@@ -165,6 +165,27 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         cell.menuCard.parentVC = self
         
         cell.menuCard.diningHallName.text? = Array(data.keys)[indexPath.row].rawValue
+        
+        
+        if let hall = Location(rawValue: Array(data.keys)[indexPath.row].rawValue) {
+            var hoursText = ""
+            switch currMP {
+            case .breakfast:
+                hoursText = hoursData[currDate]?[hall]?.breakfast ?? ""
+            case .lunch, .brunch:
+                hoursText = hoursData[currDate]?[hall]?.lunch ?? ""
+            case .dinner:
+                hoursText = hoursData[currDate]?[hall]?.dinner ?? ""
+            case .lateNight:
+                hoursText = hoursData[currDate]?[hall]?.late_night ?? ""
+            }
+            cell.menuCard.diningHallHours.text? = hoursText
+        }
+        else {
+            cell.menuCard.diningHallHours.text? = ""
+        }
+        
+        
         cell.initializeData(data: data[Array(data.keys)[indexPath.row]]!)
         
         cell.parentVC = self
