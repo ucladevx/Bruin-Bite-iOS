@@ -27,12 +27,17 @@ class CreateProfilePt2ViewController: UIViewController {
     }
     
     @IBAction func didPressCreate(_ sender: UIButton) {
-        // TODO: Add code to verify sign up.
+        // Updates user information
         MAIN_USER.changeUserInfo(type: "major", info: MajorText.text!)
         if let year = Int(YearText.text!) {
             MAIN_USER.changeYear(year: year)
         }
-        MAIN_USER.createUser()
+        
+        // Attempts to create a user, returns false if 
+        if(!MAIN_USER.createUser()) {
+            print(MAIN_USER.accessUserInfo(type: "error"))
+            return
+        }
         self.performSegue(withIdentifier: "ShowMenuVC_1", sender: nil)
     }
     

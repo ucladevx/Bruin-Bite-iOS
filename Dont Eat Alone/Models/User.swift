@@ -8,8 +8,8 @@
 
 import Foundation
 
-//USER MODEL
-
+//USER MODEL FOR LOGIN
+//It stores an access tokena nd refresh token
 struct UserLog {
     let access_token: String
     let refresh_token: String
@@ -20,7 +20,7 @@ extension UserLog: Decodable {
         case access_token
         case refresh_token
     }
-    
+    //this initializes by decoding the json into the member variables
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: UserCodingKeys.self)
         
@@ -28,7 +28,7 @@ extension UserLog: Decodable {
         refresh_token = try container.decode(String.self, forKey: .refresh_token)
     }
 }
-
+//USER MODEL FOR CREATION
 struct UserCreate {
     let id: Int
     let email: String
@@ -39,6 +39,7 @@ struct UserCreate {
     let year: Int
     let self_bio: String
 }
+
 
 extension UserCreate: Decodable {
     enum UserCodingKeys: String, CodingKey {
@@ -66,3 +67,58 @@ extension UserCreate: Decodable {
         self_bio = try container.decode(String.self, forKey: .self_bio)
     }
 }
+
+//I made a User Struct that holds errors that Terrence returns.
+struct UserError {
+    let email: [String]?
+    let password: [String]?
+    let error: String?
+    let error_description: String?
+}
+
+extension UserError: Decodable {
+    enum ErrorCodingKeys: String, CodingKey {
+        case email
+        case password
+        case error
+        case error_description
+    }
+    
+    init(from decoder: Decoder) throws {
+        
+        let container = try decoder.container(keyedBy: ErrorCodingKeys.self)
+        if(container.contains(.email)) {
+            self.email = try container.decode([String].self, forKey: .email)
+        } else {
+            self.email = nil
+        }
+        if(container.contains(.password)) {
+            self.password = try container.decode([String].self, forKey: .password)
+        } else {
+            self.password = nil
+        }
+        if(container.contains(.error)) {
+            self.error = try container.decode(String.self, forKey: .error)
+        } else {
+            self.error = nil
+        }
+        if(container.contains(.error_description)) {
+            self.error_description = try container.decode(String.self, forKey: .error_description)
+        } else {
+            self.error_description = nil
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

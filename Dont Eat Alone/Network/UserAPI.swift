@@ -18,11 +18,16 @@ extension API {
             switch result {
             case let .success(response):
                 do {
-                    print("created user")
                     let results = try JSONDecoder().decode(UserCreate.self, from: response.data)
                     completion(results)
                 } catch let err {
-                    print(err)
+                    do {
+                        let errresults = try JSONDecoder().decode(UserError.self, from: response.data)
+                        MAIN_USER.initUserError(error: errresults)
+                        print(err)
+                    } catch let reserr {
+                        print(reserr)
+                    }
                 }
             case let .failure(error):
                 print(error)
@@ -36,13 +41,17 @@ extension API {
             case let .success(response):
                 do {
                     let results = try JSONDecoder().decode(UserLog.self, from: response.data)
-                    UserDefaults.standard.set(results.access_token, forKey: username)
+                    UserDefaults.standard.set(results.access_token, forKey: MAIN_USER.accessUserInfo(type: "email"))
                     completion(results)
                 } catch let err {
-                    UserDefaults.standard.set(nil, forKey: username)
-                    print(err)
-                }
-            case let .failure(error):
+                    do {
+                        let errresults = try JSONDecoder().decode(UserError.self, from: response.data)
+                        MAIN_USER.initUserError(error: errresults)
+                        print(err)
+                    } catch let reserr {
+                        print(reserr)
+                    }
+                }            case let .failure(error):
                 print(error)
             }
             
@@ -57,7 +66,13 @@ extension API {
                     let results = try JSONDecoder().decode(UserCreate.self, from: response.data)
                     completion(results)
                 } catch let err {
-                    print(err)
+                    do {
+                        let errresults = try JSONDecoder().decode(UserError.self, from: response.data)
+                        MAIN_USER.initUserError(error: errresults)
+                        print(err)
+                    } catch let reserr {
+                        print(reserr)
+                    }
                 }
             case let .failure(error):
                 print(error)
@@ -73,7 +88,13 @@ extension API {
                     let results = try JSONDecoder().decode(UserCreate.self, from: response.data)
                     completion(results)
                 } catch let err {
+                    do {
+                    let errresults = try JSONDecoder().decode(UserError.self, from: response.data)
+                    MAIN_USER.initUserError(error: errresults)
                     print(err)
+                    } catch let reserr {
+                        print(reserr)
+                    }
                 }
             case let .failure(error):
                 print(error)

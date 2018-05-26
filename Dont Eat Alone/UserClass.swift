@@ -9,6 +9,25 @@
 import Foundation
 
 public class User {
+    
+    /* How this works
+     I made private member variables for the user that stores email, etc.
+     I have functions - initUserError, updateError, changeUserInfo, changeYear, getToken, accessUserInfo, accessUserYear, createUser, loginUser, readUser, updateUser, deleteUser
+     
+     initUserError - this function is called when in UserAPI, my User struct I'm decoding from cannot find the key so it decodes it into a UserError Decodeable and passes it to initUserError. It calls updateError.
+     updateError - based on which error it is, it sets net_error, a String variable that holds the current error, to the error that Terrence sends me
+     changeUserInfo - Pass in the type of info you want to change and it will change it
+     changeYear - Same as above except with Int
+     getToken - accesses the current Token the User is logged in with
+     accessUserInfo - takes in a type of user Info wanted and returns it
+     accessUserYear - same as above with year
+     createUser - Returns a boolean. It attempts to create a user and within createUser of userAPI, I will set user_error_model to the error Terrence sends back if it doesn't work. It will return false if not created, and the error will be stored in net_error, where on the frontend we can display it by accessing through MAIN_USER.accessUserInfo(type: "error")
+     loginUser - Attempts to login user and if not logged in, then I will store the error in net_error as well, which I do in UserAPI. In Log in Auth, I check for the auth token and will return if not found. If not found, you can also access the error Terrence sends through net_error
+     readUser - same as login User except reads the User and updates creat_read_update
+     updateUser - updates the User on the backend by using the current values
+                - so If I want to update the profile, I would store the new profile bio into user_bio, then I would just call MAIN_USER.updateUser()
+     deleteUser - deletes the user
+     */
     private var user_email: String
     private var user_password: String
     private var first_name: String
@@ -17,8 +36,10 @@ public class User {
     private var user_minor: String
     private var user_year: Int
     private var user_bio: String
+    private var net_error: String
     private var create_read_update: UserCreate?
     private var login_model: UserLog?
+    private var user_error_model: UserError?
     
     init() {
         user_email = ""
@@ -29,6 +50,25 @@ public class User {
         user_minor = ""
         user_year = 0
         user_bio = ""
+        net_error = ""
+    }
+    
+    func initUserError (error: UserError) {
+        user_error_model = error
+        updateError()
+    }
+    
+    func updateError () {
+        if((user_error_model?.email ?? nil) != nil) {
+            net_error = (user_error_model?.email![0])!
+        }
+        else if ((user_error_model?.password ?? nil) != nil) {
+            net_error = (user_error_model?.password![0])!
+        }
+        else if ((user_error_model?.error_description ?? nil) != nil) {
+            net_error = (user_error_model?.error_description)!
+        }
+        print(net_error)
     }
     
     public func changeUserInfo(type: String, info: String) {
@@ -53,6 +93,9 @@ public class User {
             break
         case "bio":
             user_bio = info
+            break
+        case "error":
+            net_error = info
             break
         default:
             print("ERROR TYPE INPUT INCORRECT")
@@ -83,6 +126,8 @@ public class User {
             return user_minor
         case "bio":
             return user_bio
+        case "error":
+            return net_error
         default:
             print("ERROR TYPE INPUT INCORRECT")
             return ""
@@ -93,11 +138,17 @@ public class User {
         return user_year
     }
     
-    public func createUser() {
+    public func createUser() -> Bool {
         API.createUser(email: user_email, password: user_password, first_name: first_name, last_name: last_name, major: user_major, minor: user_minor, year: user_year, self_bio: user_bio) { (created_user) in
             self.create_read_update = created_user
         }
+        if(self.create_read_update == nil) {
+            return false
+        }
+        return true
     }
+    
+    
     public func loginUser() {
         API.loginUser(username: user_email, password: user_password, grant_type: "password", client_id: CLIENTID, client_secret: CLIENTSECRET) { (logged_user) in
             self.login_model = logged_user
