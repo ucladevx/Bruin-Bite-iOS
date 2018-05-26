@@ -300,6 +300,8 @@ extension API{
                         activityLevel.location = Location(rawValue: name)!
                         if value == "-1%"{
                             activityLevel.isAvailable = false
+                            activityLevel.percent = -1
+                            print("neg percent")
                         }
                         else{
                             let index = value.index(value.endIndex, offsetBy: -1)

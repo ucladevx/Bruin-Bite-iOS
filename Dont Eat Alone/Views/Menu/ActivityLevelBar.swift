@@ -38,17 +38,52 @@ class ActivityLevelBar: UIView {
     var percentage: CGFloat = 0.5
     
     override func draw(_ rect: CGRect) {
+        
+        let ctx: CGContext = UIGraphicsGetCurrentContext()!
+        ctx.saveGState()
+        let width = UIScreen.main.bounds.size.width
+        
+        if(self.percentage == -1) {
+            ctx.setFillColor(UIColor.clear.cgColor)
+            return
+        }
+        
+        if(self.percentage > 0.8) {
+            ctx.setFillColor(UIColor.deaScarlet.cgColor)
+        }
+        else if(self.percentage > 0.6) {
+            ctx.setFillColor(UIColor.deaYellow.cgColor)
+        }
+        else{
+            ctx.setFillColor(UIColor.deaAppleGreen.cgColor)
+        }
+        ctx.addPath(UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: width*percentage, height: 10), byRoundingCorners: [], cornerRadii: CGSize(width: 6, height: 6)).cgPath)
+        
+        ctx.closePath()
+        ctx.fillPath()
+        ctx.restoreGState()
+    }
+    
+    /*
+    override func draw(_ rect: CGRect) {
         //        color.set()
         //        pathForCircle().fill(
-        
-        
         
         let ctx: CGContext = UIGraphicsGetCurrentContext()!
         ctx.saveGState()
         
         let width = UIScreen.main.bounds.size.width
         
-        if(self.percentage > 0.8) {
+        // if percentage is not available, display no bar
+        if(self.percentage == -1) {
+
+            ctx.setFillColor(UIColor.clear.cgColor)
+            ctx.addPath(UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: width, height: 10), byRoundingCorners: [], cornerRadii: CGSize(width: 6, height: 6)).cgPath)
+            
+            ctx.fillPath()
+        }
+        
+        else if(self.percentage > 0.8) {
             let percent_filled = (self.percentage)*width
             
             ctx.setFillColor(UIColor.deaScarlet.cgColor)
@@ -88,6 +123,7 @@ class ActivityLevelBar: UIView {
         ctx.closePath()
         ctx.restoreGState()
     }
+    */
     
     func resizeToZero(){
         self.frame.size.width = 0
