@@ -28,6 +28,7 @@ public class User {
                 - so If I want to update the profile, I would store the new profile bio into user_bio, then I would just call MAIN_USER.updateUser()
      deleteUser - deletes the user
      */
+    private var user_ID: Int
     private var user_email: String
     private var user_password: String
     private var first_name: String
@@ -51,6 +52,7 @@ public class User {
         user_year = 0
         user_bio = ""
         net_error = ""
+        user_ID = 0
     }
     
     func initUserError (error: UserError) {
@@ -142,10 +144,12 @@ public class User {
         API.createUser(email: user_email, password: user_password, first_name: first_name, last_name: last_name, major: user_major, minor: user_minor, year: user_year, self_bio: user_bio) { (created_user) in
             self.create_read_update = created_user
         }
-        if(self.create_read_update == nil) {
+        if(self.create_read_update != nil) {
+            self.user_ID = (self.create_read_update?.id)!
+            return true
+        } else {
             return false
         }
-        return true
     }
     
     
@@ -181,6 +185,14 @@ public class User {
             API.deleteUser(email: self.user_email, access_token: UserDefaults.standard.object(forKey: self.user_email) as! String) {
                 print("Deleted User")
             }
+        }
+    }
+    
+    public func userMatch(mealTimes: [String], mealDay: String, mealPeriod: String, dineHalls: [String]) {
+        DispatchQueue.global(qos: .background).async {
+            API.matchUser(user: self.user_ID, meal_times: mealTimes, meal_day: mealDay, meal_period: mealPeriod, dining_halls: dineHalls, completion: {
+                print("Sent User match")
+            })
         }
     }
     

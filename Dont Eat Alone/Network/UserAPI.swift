@@ -115,5 +115,17 @@ extension API {
         }
     }
     
+    static func matchUser(user: Int, meal_times: [String], meal_day: String, meal_period: String, dining_halls: [String], completion: @escaping() -> Void) {
+        provider.request(.matchUser(user: user, meal_times: meal_times, meal_day: meal_day, meal_period: meal_period, dining_halls: dining_halls)) { result in
+            switch result {
+            case let .success(response):
+                print("Successfully Sent match")
+            case let .failure(error):
+                print(error)
+            }
+            
+        }
+    }
+    
 }
 
