@@ -20,6 +20,7 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
     
     var menuData = MenuController()
     var activityLevelData = [ActivityLevel]()
+    var hoursData = [String:[Location:HallHours]]()
     var currDate = "1"
     var currMP = MealPeriod.breakfast
     var currAllergens: [Allergen] = []
@@ -45,6 +46,11 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         API.getCurrentActivityLevels { (activityLevels) in
             for a in activityLevels{
                 self.activityLevelData.append(a)
+            }
+        }
+        API.getHours { (hours) in
+            for d in hours {
+                self.hoursData[d.key] = d.value
             }
         }
         API.getOverviewMenu { parsedMenus in
