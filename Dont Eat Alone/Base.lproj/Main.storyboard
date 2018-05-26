@@ -613,7 +613,7 @@
                         <segue destination="RAT-qB-Fj9" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="vm0-qx-c8l" kind="relationship" relationship="viewControllers" id="mAc-Fx-T4V"/>
                         <segue destination="aUf-9F-jVN" kind="relationship" relationship="viewControllers" id="mau-ZH-fAI"/>
-                        <segue destination="sXm-zx-b7V" kind="relationship" relationship="viewControllers" id="Fee-rG-eXp"/>
+                        <segue destination="nzh-LT-kup" kind="relationship" relationship="viewControllers" id="lHf-pA-V30"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
@@ -1739,13 +1739,17 @@
     </scenes>
     <resources>
         <image name="Chats" width="26" height="25"/>
+        <image name="Edit" width="27" height="26"/>
+        <image name="Feedback" width="28" height="25"/>
         <image name="Line" width="242" height="2"/>
         <image name="LoginLogo" width="108" height="144"/>
         <image name="Match" width="37" height="24"/>
         <image name="Menu" width="22" height="18"/>
         <image name="NextArrow" width="46" height="46"/>
         <image name="PrevArrow" width="12" height="17"/>
+        <image name="Profile" width="24" height="23"/>
         <image name="ProfilePic" width="139" height="139"/>
+        <image name="Settings" width="26" height="25"/>
         <image name="matchbutton" width="568" height="194"/>
         <image name="x" width="15" height="16"/>
     </resources>

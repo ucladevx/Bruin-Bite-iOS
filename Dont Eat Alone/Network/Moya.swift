@@ -24,9 +24,9 @@ extension MainAPI: TargetType {
     var baseURL: URL {
         switch self {
         case .getCurrentActivityLevels, .getOverviewMenu, .getDetailedMenu:
-            return URL(string: "https://api.ucla-eats.com/api/v1")!
+            return URL(string: "https://api.bruin-bite.com/api/v1")!
         case .createUser, .readUsers, .loginUser, .updateUser, .deleteUser:
-            return URL(string: "https://api.ucla-eats.com/api/v1")!
+            return URL(string: "https://api.bruin-bite.com/api/v1")!
         }
         
     }

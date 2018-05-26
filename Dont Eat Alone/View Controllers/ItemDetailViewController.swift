@@ -13,7 +13,7 @@ class ItemDetailViewController: UIViewController {
 
     @IBOutlet weak var webView: WKWebView!
     var menuItem: Item?
-    let nutritionBoxURL = "https://api.ucla-eats.com/api/v1/menu/nutritionbox?recipe_link="
+    let nutritionBoxURL = "https://api.bruin-bite.com/api/v1/menu/nutritionbox?recipe_link="
     
     @IBOutlet weak var ingredientsBar: UIView!
     override func viewDidLoad() {
