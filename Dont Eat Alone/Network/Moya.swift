@@ -19,6 +19,7 @@ enum MainAPI {
     case loginUser(username:String, password: String, grant_type: String, client_id: String, client_secret: String)
     case updateUser(email: String, password: String, first_name: String, last_name: String, major: String, minor: String, year: Int, self_bio: String, access_token: String) //send it as it is if it hasn't changed
     case deleteUser(email: String, access_token: String)
+    case matchUser(user: Int, meal_times: [String], meal_day: String, meal_period: String, dining_halls: [String])
 }
 
 extension MainAPI: TargetType {
@@ -26,7 +27,7 @@ extension MainAPI: TargetType {
         switch self {
         case .getCurrentActivityLevels, .getOverviewMenu, .getDetailedMenu, .getHours:
             return URL(string: "https://api.bruin-bite.com/api/v1")!
-        case .createUser, .readUsers, .loginUser, .updateUser, .deleteUser:
+        case .createUser, .readUsers, .loginUser, .updateUser, .deleteUser, .matchUser:
             return URL(string: "https://api.bruin-bite.com/api/v1")!
         }
         
@@ -47,6 +48,8 @@ extension MainAPI: TargetType {
             return "/users/o/token/"
         case .readUsers, .updateUser, .deleteUser:
             return "/users/data/"
+        case .matchUser:
+            return "/users/matching/new/"
         }
         
     }
@@ -54,7 +57,7 @@ extension MainAPI: TargetType {
         switch self {
         case .getCurrentActivityLevels, .getOverviewMenu, .getDetailedMenu, .getHours, .readUsers:
             return .get
-        case .createUser, .loginUser:
+        case .createUser, .loginUser, .matchUser:
             return .post
         case .updateUser:
             return .put
@@ -76,6 +79,8 @@ extension MainAPI: TargetType {
             return .requestParameters(parameters: ["email": email, "password": password, "first_name": first_name, "last_name": last_name, "major": major, "minor": minor, "year": year, "self_bio":self_bio, "access_token": access_token], encoding: JSONEncoding.default)
         case .deleteUser(let email, let access_token):
             return .requestParameters(parameters: ["email": email, "access_token": access_token], encoding: JSONEncoding.default)
+        case .matchUser(let user, let meal_times, let meal_day, let meal_period, let dining_halls):
+            return .requestParameters(parameters: ["user": user, "meal_times": meal_times, "meal_day": meal_day, "meal_period": meal_period, "dining_halls": dining_halls], encoding: JSONEncoding.default)
         }
     }
     //for testing
@@ -101,6 +106,8 @@ extension MainAPI: TargetType {
             return Data()
         case .deleteUser:
             return Data()
+        case .matchUser:
+            return Data()
         }
     }
     var headers: [String: String]? {
@@ -111,7 +118,7 @@ extension MainAPI: TargetType {
             return ["Content-Type": "application/json"]
         case .loginUser:
             return ["Content-Type": "application/x-www-form-urlencoded"]
-        case .readUsers, .updateUser, .deleteUser:
+        case .readUsers, .updateUser, .deleteUser, .matchUser:
             var temp = "Bearer "
             temp += UserDefaults.standard.object(forKey: MAIN_USER.accessUserInfo(type: "email")) as! String
             return ["Authorization": temp]
