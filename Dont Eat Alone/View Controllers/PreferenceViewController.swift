@@ -9,22 +9,48 @@
 import UIKit
 import CZPicker
 
+
+
 class PreferenceViewController: UIViewController {
 
-    @IBOutlet weak var timeField: UITextField!
-    @IBOutlet weak var dateField: UITextField!
-    @IBOutlet weak var diningField: UITextField!
+    @IBOutlet var TopView: UIView!
+    @IBOutlet var TitleText: UILabel!
+    @IBOutlet var MatchMeButton: UIButton!
+    @IBOutlet var MealText: UITextField!
+    @IBOutlet var DiningText: UITextField!
+    @IBOutlet var DayText: UITextField!
+    @IBOutlet var TimeButton: UIButton!
+    
     var picks = [String]()
     
+    // not working??
+    @IBAction func HideText(_ sender: Any) {
+        TimeButton.titleLabel?.textColor = .clear
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        diningField.font = UIFont(name: "Avenir", size: 18)
-        diningField.textColor = UIColor.darkGray
-        dateField.font = UIFont(name: "Avenir", size: 18)
-        dateField.textColor = UIColor.darkGray
-        timeField.font = UIFont(name: "Avenir", size: 18)
-        timeField.textColor = UIColor.darkGray
+        
+        // formatting top bar
+        TopView.backgroundColor = UIColor.twilightBlue
+        TitleText.font = UIFont.signUpTextFont.withSize(30)
+        
+        // formatting match button
+        MatchMeButton.layer.borderWidth = 1
+        MatchMeButton.layer.borderColor = UIColor.twilightBlue.cgColor
+        MatchMeButton.layer.cornerRadius = 26
+        
+        let attributes = [
+        NSAttributedStringKey.foregroundColor: UIColor.pinkishGrey,
+            NSAttributedStringKey.font: UIFont.avenirNextItalicFont
+        ]
+        
+        // setting color and font of text field place holders
+        DayText.attributedPlaceholder = NSAttributedString(string: "What day are you free?", attributes:attributes)
+        DiningText.attributedPlaceholder = NSAttributedString(string: "Which one's your favorite?", attributes:attributes)
+        MealText.attributedPlaceholder = NSAttributedString(string: "When would you like to eat?", attributes:attributes)
+        TimeButton.titleLabel?.font = UIFont.avenirNextItalicFont
+        
         
         //PREFILL DINING DATE AND TIME FIELDS
         //diningField.text = PUT IN USER PREFERRED DINING HALL WHEN YOU HAVE THE DATA
@@ -34,11 +60,11 @@ class PreferenceViewController: UIViewController {
         formatter.dateStyle = .medium
         formatter.timeStyle = .none
         let dateString = formatter.string(from: curdate!)
-        dateField.text = "\(dateString)"
+        //DayText.text = "\(dateString)"
         formatter.dateStyle = .none
         formatter.timeStyle = .short
         let timeString = formatter.string(from: curdate!)
-        timeField.text = "\(timeString)"
+        //TimeText.text = "\(timeString)"
         
     }
     
@@ -64,7 +90,7 @@ class PreferenceViewController: UIViewController {
     }
     
     @IBAction func selectDate(sender: AnyObject) {
-        let picker = CZPickerView(headerTitle: "Dates", cancelButtonTitle: "Cancel", confirmButtonTitle: "Confirm")
+        /*let picker = CZPickerView(headerTitle: "Dates", cancelButtonTitle: "Cancel", confirmButtonTitle: "Confirm")
         let components = DateComponents()
         var curdate = Calendar.current.date(byAdding: components, to: Date())
         let formatter = DateFormatter()
@@ -91,7 +117,7 @@ class PreferenceViewController: UIViewController {
         picker?.confirmButtonBackgroundColor = UIColor.deaScarlet
         picker?.cancelButtonBackgroundColor = UIColor.deaScarlet
         picker?.cancelButtonNormalColor = UIColor.white
-        picker?.show()
+        picker?.show()*/
     }
     
     @IBAction func selectTime(sender: AnyObject) {
@@ -131,6 +157,7 @@ class PreferenceViewController: UIViewController {
     }
     
 }
+
 
 extension PreferenceViewController: CZPickerViewDelegate, CZPickerViewDataSource {
         func numberOfRows(in pickerView: CZPickerView!) -> Int {
@@ -172,13 +199,13 @@ extension PreferenceViewController: CZPickerViewDelegate, CZPickerViewDataSource
         
         switch(picks[0]) {
         case "Covel":
-            diningField.text = chosen
+            DiningText.text = chosen
             break;
         case currentTime:
-            timeField.text = chosen
+            //TimeText.text = chosen
             break;
         default:
-            dateField.text = chosen
+            DayText.text = chosen
             break;
         }
         

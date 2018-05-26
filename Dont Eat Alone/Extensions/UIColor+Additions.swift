@@ -45,5 +45,9 @@ extension UIColor {
     @nonobjc class var profileOptionGray: UIColor {
         return UIColor(red: 128.0 / 255.0, green: 128.0 / 255.0, blue: 128.0 / 255.0, alpha: 1.0)
     }
+    
+    @nonobjc class var pinkishGrey: UIColor {
+        return UIColor(white: 199.0 / 255.0, alpha: 1.0)
+    }
 
 }
