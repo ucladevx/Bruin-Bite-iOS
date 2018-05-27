@@ -206,6 +206,9 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
             if (a.isAvailable && Array(data.keys)[indexPath.row] == a.location) {
                 cell.menuCard.activityLevelBar.percentage = CGFloat(a.percent)/100
             }
+            else{
+                cell.menuCard.activityLevelBar.percentage = CGFloat(0)
+            }
         }
         UIView.animate(withDuration: 1.5, delay: 0, options: .curveEaseInOut, animations: {
             cell.menuCard.activityLevelBar.animateBar()
