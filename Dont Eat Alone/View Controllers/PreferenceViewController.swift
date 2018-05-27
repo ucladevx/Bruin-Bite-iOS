@@ -22,7 +22,9 @@ class PreferenceViewController: UIViewController {
     @IBOutlet var TimeButton: UIButton!
     
     var picks = [String]()
-    
+    var meal_times = [String]()
+    var meal_day = String()
+    var dining_halls = [String]()
     
     @IBAction func HideText(_ sender: Any) {
         TimeButton.titleLabel?.textColor = .clear
