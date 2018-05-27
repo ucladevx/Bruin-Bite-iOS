@@ -28,6 +28,7 @@
 		2AB62E6C20488A050013CB59 /* MenuAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB62E6B20488A050013CB59 /* MenuAPI.swift */; };
 		2AB62E6E2048D16B0013CB59 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB62E6D2048D16B0013CB59 /* API.swift */; };
 		2AB62E702048D21D0013CB59 /* ActivityLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB62E6F2048D21D0013CB59 /* ActivityLevel.swift */; };
+		2AD1509320BB2C780043B9C8 /* AllergensBarContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD1509220BB2C770043B9C8 /* AllergensBarContentView.swift */; };
 		2AFB41332047DD86004025F9 /* ItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFB41322047DD86004025F9 /* ItemDetailViewController.swift */; };
 		2AFB41372047F0F2004025F9 /* MenuCardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFB41362047F0F2004025F9 /* MenuCardCollectionViewCell.swift */; };
 		2B952C67202BDBB200F27727 /* WeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B952C66202BDBB200F27727 /* WeekView.swift */; };
@@ -107,6 +108,7 @@
 		2AB62E6B20488A050013CB59 /* MenuAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuAPI.swift; sourceTree = "<group>"; };
 		2AB62E6D2048D16B0013CB59 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		2AB62E6F2048D21D0013CB59 /* ActivityLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityLevel.swift; sourceTree = "<group>"; };
+		2AD1509220BB2C770043B9C8 /* AllergensBarContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllergensBarContentView.swift; sourceTree = "<group>"; };
 		2AFB41322047DD86004025F9 /* ItemDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailViewController.swift; sourceTree = "<group>"; };
 		2AFB41362047F0F2004025F9 /* MenuCardCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCardCollectionViewCell.swift; sourceTree = "<group>"; };
 		2B952C66202BDBB200F27727 /* WeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekView.swift; sourceTree = "<group>"; };
@@ -230,6 +232,7 @@
 				2A94477E2055F6290033B6C6 /* Menu */,
 				2A94477D2055F60F0033B6C6 /* Top Bar */,
 				7794996F203BD10400F3B0ED /* AllergyFilterButton.swift */,
+				2AD1509220BB2C770043B9C8 /* AllergensBarContentView.swift */,
 				2A94477F2055FA3E0033B6C6 /* AllergensBarScrollView.swift */,
 			);
 			path = Views;
@@ -751,6 +754,7 @@
 				C0AD0D34204B4EA9008E1206 /* TopBar.swift in Sources */,
 				770251B6201D4079002E4515 /* MenuVC.swift in Sources */,
 				00C2DF0720B677040023CF75 /* User.swift in Sources */,
+				2AD1509320BB2C780043B9C8 /* AllergensBarContentView.swift in Sources */,
 				0058244F20BA106E0044CB88 /* Hours.swift in Sources */,
 				770251E4201D4182002E4515 /* Moya_Service.swift in Sources */,
 				002244DC20B8C53000CBD1C2 /* StringExtensions.swift in Sources */,

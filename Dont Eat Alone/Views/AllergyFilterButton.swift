@@ -8,16 +8,7 @@
 
 import UIKit
 
-//@IBDesignable
 class AllergyFilterButton: UIButton {
-    
-    /*
-     // Only override draw() if you perform custom drawing.
-     // An empty implementation adversely affects performance during animation.
-     override func draw(_ rect: CGRect) {
-     // Drawing code
-     }
-     */
     
     @IBInspectable
     var is_selected: Bool = false
@@ -30,18 +21,10 @@ class AllergyFilterButton: UIButton {
         set (newVal){
             _allergy_enum = newVal
             allergy_name = allergy_enum.rawValue
-            fit_to_word_length()
         }
         get{
             return _allergy_enum
         }
-    }
-    
-    func fit_to_word_length() {
-        self.sizeToFit()
-        let w = self.frame.size.width
-        let h = self.frame.size.height
-        self.frame.size = CGSize(width: 1.3*w, height: h)
     }
     
     @objc func onPress() {
@@ -50,14 +33,14 @@ class AllergyFilterButton: UIButton {
             self.setTitleColor(UIColor.deaWhite, for: .normal)
             self.setTitle(allergy_name, for: .normal)
             parentVC?.allergenUpdateData(allergy_enum, s:"On")
-            fit_to_word_length()
+            self.sizeToFit()
         }
         else {
             self.backgroundColor = UIColor.clear
             self.setTitleColor(UIColor.deaGrey, for: .normal)
             self.setTitle(allergy_name, for: .normal)
             parentVC?.allergenUpdateData(allergy_enum, s:"Off")
-            fit_to_word_length()
+            self.sizeToFit()
         }
     }
     
@@ -66,12 +49,16 @@ class AllergyFilterButton: UIButton {
         setup()
     }
     
+    override func sizeThatFits(_ size: CGSize) -> CGSize {
+        let amendedSize:CGSize = super.sizeThatFits(size)
+        let newSize:CGSize = CGSize.init(width: 1.3*amendedSize.width, height: amendedSize.height)
+        return newSize;
+    }
+    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setup()
     }
-
-    
     
     func setup(){
         self.layer.borderWidth = 1
@@ -80,9 +67,8 @@ class AllergyFilterButton: UIButton {
         self.layer.cornerRadius = 10
         self.setTitleColor(UIColor.deaGrey, for: .normal)
         self.setTitle(allergy_name, for: .normal)
-        fit_to_word_length()
-        
         self.addTarget(self, action: #selector(onPress), for: .touchUpInside)
+        self.sizeToFit()
     }
     
     override func awakeFromNib() {

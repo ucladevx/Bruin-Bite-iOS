@@ -33,7 +33,7 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         
     override func viewDidLoad() {
         super.viewDidLoad()
-        allergensBar.parentVC = self
+        allergensBar.content.parentVC = self
         topBar.parentVC = self
         menuCardsCollection.delegate = self
         menuCardsCollection.dataSource = self
@@ -107,7 +107,7 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
                 var i = 0
                 while i < items.count{
                     if(a == Allergen.Vegan || a == Allergen.Vegetarian) {
-                        if(items[i].allergies?.contains(a))!{
+                        if((items[i].allergies?.contains(a))! || (items[i].allergies?.contains(Allergen.Vegan))!){
                             i+=1
                         }
                         else{
