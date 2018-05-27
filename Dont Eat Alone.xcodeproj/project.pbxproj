@@ -16,10 +16,10 @@
 		00C2DF0D20B678BE0023CF75 /* UserClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C2DF0C20B678BE0023CF75 /* UserClass.swift */; };
 		00C2DF0F20B678E70023CF75 /* BackgroundUserFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C2DF0E20B678E70023CF75 /* BackgroundUserFetch.swift */; };
 		00C2DF1120B6790D0023CF75 /* keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C2DF1020B6790D0023CF75 /* keys.swift */; };
-		2A03D94820B7AFA7004EFC97 /* HomeProfileStaticTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A03D94720B7AFA7004EFC97 /* HomeProfileStaticTableViewController.swift */; };
 		2A03D93E20B76529004EFC97 /* TimePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A03D93D20B76529004EFC97 /* TimePickerViewController.swift */; };
 		2A03D94320B76C92004EFC97 /* PopupViewControllers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A03D94220B76C91004EFC97 /* PopupViewControllers.storyboard */; };
 		2A03D94620B77A1A004EFC97 /* TimePickerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A03D94520B77A1A004EFC97 /* TimePickerCollectionViewCell.swift */; };
+		2A03D94820B7AFA7004EFC97 /* HomeProfileStaticTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A03D94720B7AFA7004EFC97 /* HomeProfileStaticTableViewController.swift */; };
 		2A744895203BBDBC00793AD3 /* MenuCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A744894203BBDBC00793AD3 /* MenuCardView.swift */; };
 		2A744897203BBEDA00793AD3 /* MenuCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A744896203BBEDA00793AD3 /* MenuCardView.xib */; };
 		2A9447802055FA3E0033B6C6 /* AllergensBarScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A94477F2055FA3E0033B6C6 /* AllergensBarScrollView.swift */; };
@@ -94,10 +94,10 @@
 		00C2DF1020B6790D0023CF75 /* keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = keys.swift; sourceTree = "<group>"; };
 		1CE69B303700A4BB00F6EBEA /* Pods-Dont Eat AloneUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dont Eat AloneUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Dont Eat AloneUITests/Pods-Dont Eat AloneUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		266C33EA78F943413B244B8D /* Pods-Dont Eat Alone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dont Eat Alone.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Dont Eat Alone/Pods-Dont Eat Alone.debug.xcconfig"; sourceTree = "<group>"; };
-		2A03D94720B7AFA7004EFC97 /* HomeProfileStaticTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeProfileStaticTableViewController.swift; sourceTree = "<group>"; };
 		2A03D93D20B76529004EFC97 /* TimePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerViewController.swift; sourceTree = "<group>"; };
 		2A03D94220B76C91004EFC97 /* PopupViewControllers.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PopupViewControllers.storyboard; sourceTree = "<group>"; };
 		2A03D94520B77A1A004EFC97 /* TimePickerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerCollectionViewCell.swift; sourceTree = "<group>"; };
+		2A03D94720B7AFA7004EFC97 /* HomeProfileStaticTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeProfileStaticTableViewController.swift; sourceTree = "<group>"; };
 		2A744894203BBDBC00793AD3 /* MenuCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCardView.swift; sourceTree = "<group>"; };
 		2A744896203BBEDA00793AD3 /* MenuCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuCardView.xib; sourceTree = "<group>"; };
 		2A94477F2055FA3E0033B6C6 /* AllergensBarScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllergensBarScrollView.swift; sourceTree = "<group>"; };
@@ -403,7 +403,6 @@
 				770251AD201D4079002E4515 /* Frameworks */,
 				770251AE201D4079002E4515 /* Resources */,
 				D601296F579F59F8E568D410 /* [CP] Embed Pods Frameworks */,
-				83F6858BF12EE0D0660F27F1 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -422,8 +421,6 @@
 				770251C2201D4079002E4515 /* Sources */,
 				770251C3201D4079002E4515 /* Frameworks */,
 				770251C4201D4079002E4515 /* Resources */,
-				3E7CC4834C9483D979EE1DBF /* [CP] Embed Pods Frameworks */,
-				E5E36418F8921C8F487D60AA /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -443,8 +440,6 @@
 				770251CD201D4079002E4515 /* Sources */,
 				770251CE201D4079002E4515 /* Frameworks */,
 				770251CF201D4079002E4515 /* Resources */,
-				26B2E5E02AA3F33BFE504689 /* [CP] Embed Pods Frameworks */,
-				07E2854345686C8BE62E4577 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -533,21 +528,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		07E2854345686C8BE62E4577 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Dont Eat AloneUITests/Pods-Dont Eat AloneUITests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		1DE3B015D4DCEE39A622FF08 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -564,51 +544,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		26B2E5E02AA3F33BFE504689 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Dont Eat AloneUITests/Pods-Dont Eat AloneUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		3E7CC4834C9483D979EE1DBF /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Dont Eat AloneTests/Pods-Dont Eat AloneTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		83F6858BF12EE0D0660F27F1 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Dont Eat Alone/Pods-Dont Eat Alone-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		9CD354889BDF636A445503C0 /* [CP] Check Pods Manifest.lock */ = {
@@ -645,21 +580,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		BDEC6D45DCFAE6F2A2B8C9D4 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Dont Eat AloneTests/Pods-Dont Eat AloneTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D601296F579F59F8E568D410 /* [CP] Embed Pods Frameworks */ = {
@@ -700,21 +620,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Dont Eat Alone/Pods-Dont Eat Alone-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E5E36418F8921C8F487D60AA /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Dont Eat AloneTests/Pods-Dont Eat AloneTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

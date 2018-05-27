@@ -41,6 +41,9 @@ extension UIFont {
     class var profileNameFont: UIFont {
         return UIFont(name: "AvenirNext-DemiBold", size: 28.0)!
     }
-    
+ 
+    class var avenirNextItalicFont: UIFont {
+        return UIFont(name: "AvenirNext-Italic", size: 18.0)!
+    }
 }
 
