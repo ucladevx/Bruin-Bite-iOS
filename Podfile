@@ -12,6 +12,7 @@ target 'Dont Eat Alone' do
   pod 'FacebookLogin'
   pod 'CZPicker'
   pod 'Starscream', :git => 'https://github.com/daltoniam/Starscream', :branch => 'swift3'
+  pod "Pulsator"
 
   target 'Dont Eat AloneTests' do
     inherit! :search_paths
