@@ -13,6 +13,7 @@ enum MainAPI {
     case getCurrentActivityLevels
     case getOverviewMenu
     case getDetailedMenu
+    case getHours
     case createUser(email: String, password: String, first_name: String, last_name: String, major: String, minor: String, year: Int, self_bio: String)
     case readUsers(email: String, access_token: String)
     case loginUser(username:String, password: String, grant_type: String, client_id: String, client_secret: String)
@@ -23,7 +24,7 @@ enum MainAPI {
 extension MainAPI: TargetType {
     var baseURL: URL {
         switch self {
-        case .getCurrentActivityLevels, .getOverviewMenu, .getDetailedMenu:
+        case .getCurrentActivityLevels, .getOverviewMenu, .getDetailedMenu, .getHours:
             return URL(string: "https://api.bruin-bite.com/api/v1")!
         case .createUser, .readUsers, .loginUser, .updateUser, .deleteUser:
             return URL(string: "https://api.bruin-bite.com/api/v1")!
@@ -38,6 +39,8 @@ extension MainAPI: TargetType {
             return "/menu/OverviewMenu"
         case .getDetailedMenu:
             return "/menu/DetailedMenu"
+        case .getHours:
+            return "/menu/Hours"
         case .createUser:
             return "/users/sign_up/"
         case .loginUser:
@@ -49,7 +52,7 @@ extension MainAPI: TargetType {
     }
     var method: Moya.Method {
         switch self {
-        case .getCurrentActivityLevels, .getOverviewMenu, .getDetailedMenu, .readUsers:
+        case .getCurrentActivityLevels, .getOverviewMenu, .getDetailedMenu, .getHours, .readUsers:
             return .get
         case .createUser, .loginUser:
             return .post
@@ -61,7 +64,7 @@ extension MainAPI: TargetType {
     }
     var task: Task{
         switch self {
-        case .getCurrentActivityLevels, .getOverviewMenu, .getDetailedMenu:
+        case .getCurrentActivityLevels, .getOverviewMenu, .getDetailedMenu, .getHours:
             return .requestPlain
         case .createUser(let email, let password, let first_name, let last_name, let major, let minor, let year, let self_bio):
             return .requestParameters(parameters: ["email": email, "password": password, "first_name": first_name, "last_name": last_name, "major": major, "minor": minor, "year": year, "self_bio": self_bio], encoding: JSONEncoding.default)
@@ -86,6 +89,8 @@ extension MainAPI: TargetType {
             
         case .getDetailedMenu:
             return "{\"menus\":[{\"id\":2,\"overviewMenu\":\"{\"breakfast\":{\"De Neve\":{\"Flex Bar\":[{\"name\":\"Chilaquiles Con Huevo\",\"recipelink\":\"http://menu.dining.ucla.edu/Recipes/140128/2\",\"itemcodes\":{\"V\":\"Vegetarian_Menu_Option\",\"AMLK\":\"Contains_Dairy\",\"AEGG\":\"Contains_Eggs\",\"AWHT\":\"Contains_Wheat\"},\"nutrition\":{\"serving_size\":\"Serving Size 2 oz\",\"Calories\":\"116\",\"Fat_Cal.\":\"60\",\"Total_Fat\":[\"6.7g\",\"10%\"],\"Saturated_Fat\":[\"1.8g\",\"9%\"],\"Trans_Fat\":[\"0.1g\",\"-1\"],\"Cholesterol\":[\"32.8mg\",\"11%\"],\"Sodium\":[\"150.2mg\",\"6%\"],\"Total_Carbohydrate\":[\"10.4g\",\"8%\"],\"Dietary_Fiber\":[\"2.1g\",\"8%\"],\"Sugars\":[\"0.3g\",\"-1\"],\"Protein\":[\"4.3g\",\"-1\"],\"Vitamin A\":\"9%\",\"Vitamin C\":\"1%\",\"Calcium\":\"6%\",\"Iron\":\"11%\",\"ingredients\":\"Enchilada Sauce (Water, Flour, Dry Guajillo Chili Pepper, Olive Oil Blend, Garlic, Sea Salt), Tortilla Chips (White Corn Tortilla, Oil), Refried Beans (Water, Pinto Beans, Olive Oil Blend, Onion, Garlic, Jalapeño Peppers, Sea Salt, Pepper), Eggs, Jack Cheese, Olive Oil Blend\"}}]},\"Bruin Plate\":{\"Freshly Bowled\":[{\"name\":\"Egg White\",\"recipelink\":\"http://menu.dining.ucla.edu/Recipes/061005/1\",\"itemcodes\":{\"V\":\"Vegetarian_Menu_Option\",\"AEGG\":\"Contains_Eggs\"},\"nutrition\":{\"serving_size\":\"Serving Size 1 each\",\"Calories\":\"40\",\"Fat_Cal.\":\"0\",\"Total_Fat\":[\"0g\",\"0%\"],\"Saturated_Fat\":[\"0g\",\"0%\"],\"Trans_Fat\":[\"0g\",\"-1\"],\"Cholesterol\":[\"0mg\",\"0%\"],\"Sodium\":[\"134.4mg\",\"6%\"],\"Total_Carbohydrate\":[\"0.9g\",\"1%\"],\"Dietary_Fiber\":[\"0g\",\"0%\"],\"Sugars\":[\"-1\",\"-1\"],\"Protein\":[\"8.3g\",\"-1\"],\"Vitamin A\":\"0%\",\"Vitamin C\":\"0%\",\"Calcium\":\"1%\",\"Iron\":\"0%\",\"ingredients\":\"Egg Whites\"}}]}},\"lunch\":{\"Covel\":{\"Exhibition Kitchen\":[{\"name\":\"Build-Your-Own Pasta Bar\",\"recipelink\":\"http://menu.dining.ucla.edu/Recipes/999070/1\",\"itemcodes\":{},\"nutrition\":{\"serving_size\":\"\",\"ingredients\":\"\"}}],\"Euro Kitchen\":[{\"name\":\"Beef & Lamb Gyro\",\"recipelink\":\"http://menu.dining.ucla.edu/Recipes/075000/1\",\"itemcodes\":{\"AMLK\":\"Contains_Dairy\",\"AWHT\":\"Contains_Wheat\",\"ASOY\":\"Contains_Soy\"},\"nutrition\":{\"serving_size\":\"Serving Size 1 each\",\"Calories\":\"473\",\"Fat_Cal.\":\"263\",\"Total_Fat\":[\"29.2g\",\"45%\"],\"Saturated_Fat\":[\"11.5g\",\"58%\"],\"Trans_Fat\":[\"0g\",\"-1\"],\"Cholesterol\":[\"57.3mg\",\"19%\"],\"Sodium\":[\"977.4mg\",\"41%\"],\"Total_Carbohydrate\":[\"32.9g\",\"25%\"],\"Dietary_Fiber\":[\"1g\",\"4%\"],\"Sugars\":[\"1.6g\",\"-1\"],\"Protein\":[\"17.6g\",\"-1\"],\"Vitamin A\":\"0%\",\"Vitamin C\":\"0%\",\"Calcium\":\"7%\",\"Iron\":\"16%\",\"ingredients\":\"Beef & Lamb Gyros, Pita Bread\"}}]},\"Bruin Plate\":{\"Freshly Bowled\":[{\"name\":\"Egg White\",\"recipelink\":\"http://menu.dining.ucla.edu/Recipes/061005/1\",\"itemcodes\":{\"V\":\"Vegetarian_Menu_Option\",\"AEGG\":\"Contains_Eggs\"},\"nutrition\":{\"serving_size\":\"Serving Size 1 each\",\"Calories\":\"40\",\"Fat_Cal.\":\"0\",\"Total_Fat\":[\"0g\",\"0%\"],\"Saturated_Fat\":[\"0g\",\"0%\"],\"Trans_Fat\":[\"0g\",\"-1\"],\"Cholesterol\":[\"0mg\",\"0%\"],\"Sodium\":[\"134.4mg\",\"6%\"],\"Total_Carbohydrate\":[\"0.9g\",\"1%\"],\"Dietary_Fiber\":[\"0g\",\"0%\"],\"Sugars\":[\"-1\",\"-1\"],\"Protein\":[\"8.3g\",\"-1\"],\"Vitamin A\":\"0%\",\"Vitamin C\":\"0%\",\"Calcium\":\"1%\",\"Iron\":\"0%\",\"ingredients\":\"Egg Whites\"}}]}}}\",\"deletedAt\":null,\"menuDate\":\"2018-03-05\",\"createdAt\":\"2018-03-04T08:02:22.066Z\",\"updatedAt\":\"2018-03-04T08:02:22.066Z\"},{\"id\":3,\"overviewMenu\":\"{\"breakfast\":{\"De Neve\":{\"Flex Bar\":[{\"name\":\"Chilaquiles Con Huevo\",\"recipelink\":\"http://menu.dining.ucla.edu/Recipes/140128/2\",\"itemcodes\":{\"V\":\"Vegetarian_Menu_Option\",\"AMLK\":\"Contains_Dairy\",\"AEGG\":\"Contains_Eggs\",\"AWHT\":\"Contains_Wheat\"},\"nutrition\":{\"serving_size\":\"Serving Size 2 oz\",\"Calories\":\"116\",\"Fat_Cal.\":\"60\",\"Total_Fat\":[\"6.7g\",\"10%\"],\"Saturated_Fat\":[\"1.8g\",\"9%\"],\"Trans_Fat\":[\"0.1g\",\"-1\"],\"Cholesterol\":[\"32.8mg\",\"11%\"],\"Sodium\":[\"150.2mg\",\"6%\"],\"Total_Carbohydrate\":[\"10.4g\",\"8%\"],\"Dietary_Fiber\":[\"2.1g\",\"8%\"],\"Sugars\":[\"0.3g\",\"-1\"],\"Protein\":[\"4.3g\",\"-1\"],\"Vitamin A\":\"9%\",\"Vitamin C\":\"1%\",\"Calcium\":\"6%\",\"Iron\":\"11%\",\"ingredients\":\"Enchilada Sauce (Water, Flour, Dry Guajillo Chili Pepper, Olive Oil Blend, Garlic, Sea Salt), Tortilla Chips (White Corn Tortilla, Oil), Refried Beans (Water, Pinto Beans, Olive Oil Blend, Onion, Garlic, Jalapeño Peppers, Sea Salt, Pepper), Eggs, Jack Cheese, Olive Oil Blend\"}}]},\"Bruin Plate\":{\"Freshly Bowled\":[{\"name\":\"Egg White\",\"recipelink\":\"http://menu.dining.ucla.edu/Recipes/061005/1\",\"itemcodes\":{\"V\":\"Vegetarian_Menu_Option\",\"AEGG\":\"Contains_Eggs\"},\"nutrition\":{\"serving_size\":\"Serving Size 1 each\",\"Calories\":\"40\",\"Fat_Cal.\":\"0\",\"Total_Fat\":[\"0g\",\"0%\"],\"Saturated_Fat\":[\"0g\",\"0%\"],\"Trans_Fat\":[\"0g\",\"-1\"],\"Cholesterol\":[\"0mg\",\"0%\"],\"Sodium\":[\"134.4mg\",\"6%\"],\"Total_Carbohydrate\":[\"0.9g\",\"1%\"],\"Dietary_Fiber\":[\"0g\",\"0%\"],\"Sugars\":[\"-1\",\"-1\"],\"Protein\":[\"8.3g\",\"-1\"],\"Vitamin A\":\"0%\",\"Vitamin C\":\"0%\",\"Calcium\":\"1%\",\"Iron\":\"0%\",\"ingredients\":\"Egg Whites\"}}]}},\"lunch\":{\"Covel\":{\"Exhibition Kitchen\":[{\"name\":\"Build-Your-Own Pasta Bar\",\"recipelink\":\"http://menu.dining.ucla.edu/Recipes/999070/1\",\"itemcodes\":{},\"nutrition\":{\"serving_size\":\"\",\"ingredients\":\"\"}}],\"Euro Kitchen\":[{\"name\":\"Beef & Lamb Gyro\",\"recipelink\":\"http://menu.dining.ucla.edu/Recipes/075000/1\",\"itemcodes\":{\"AMLK\":\"Contains_Dairy\",\"AWHT\":\"Contains_Wheat\",\"ASOY\":\"Contains_Soy\"},\"nutrition\":{\"serving_size\":\"Serving Size 1 each\",\"Calories\":\"473\",\"Fat_Cal.\":\"263\",\"Total_Fat\":[\"29.2g\",\"45%\"],\"Saturated_Fat\":[\"11.5g\",\"58%\"],\"Trans_Fat\":[\"0g\",\"-1\"],\"Cholesterol\":[\"57.3mg\",\"19%\"],\"Sodium\":[\"977.4mg\",\"41%\"],\"Total_Carbohydrate\":[\"32.9g\",\"25%\"],\"Dietary_Fiber\":[\"1g\",\"4%\"],\"Sugars\":[\"1.6g\",\"-1\"],\"Protein\":[\"17.6g\",\"-1\"],\"Vitamin A\":\"0%\",\"Vitamin C\":\"0%\",\"Calcium\":\"7%\",\"Iron\":\"16%\",\"ingredients\":\"Beef & Lamb Gyros, Pita Bread\"}}]},\"Bruin Plate\":{\"Freshly Bowled\":[{\"name\":\"Egg White\",\"recipelink\":\"http://menu.dining.ucla.edu/Recipes/061005/1\",\"itemcodes\":{\"V\":\"Vegetarian_Menu_Option\",\"AEGG\":\"Contains_Eggs\"},\"nutrition\":{\"serving_size\":\"Serving Size 1 each\",\"Calories\":\"40\",\"Fat_Cal.\":\"0\",\"Total_Fat\":[\"0g\",\"0%\"],\"Saturated_Fat\":[\"0g\",\"0%\"],\"Trans_Fat\":[\"0g\",\"-1\"],\"Cholesterol\":[\"0mg\",\"0%\"],\"Sodium\":[\"134.4mg\",\"6%\"],\"Total_Carbohydrate\":[\"0.9g\",\"1%\"],\"Dietary_Fiber\":[\"0g\",\"0%\"],\"Sugars\":[\"-1\",\"-1\"],\"Protein\":[\"8.3g\",\"-1\"],\"Vitamin A\":\"0%\",\"Vitamin C\":\"0%\",\"Calcium\":\"1%\",\"Iron\":\"0%\",\"ingredients\":\"Egg Whites\"}}]}}}\",\"deletedAt\":null,\"menuDate\":\"2018-03-06\",\"createdAt\":\"2018-03-04T08:02:22.066Z\",\"updatedAt\":\"2018-03-04T08:02:22.066Z\"}]}".utf8Encoded
+        case .getHours:
+            return "".utf8Encoded //TODO Sample Data if I need it
         case .createUser:
             return Data()
         case .loginUser:
@@ -100,7 +105,7 @@ extension MainAPI: TargetType {
     }
     var headers: [String: String]? {
         switch self {
-        case .getCurrentActivityLevels, .getDetailedMenu, .getOverviewMenu:
+        case .getCurrentActivityLevels, .getDetailedMenu, .getOverviewMenu, .getHours:
             return ["Content-type": "application/json"]
         case .createUser:
             return ["Content-Type": "application/json"]

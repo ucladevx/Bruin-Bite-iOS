@@ -20,6 +20,7 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
     
     var menuData = MenuController()
     var activityLevelData = [ActivityLevel]()
+    var hoursData = [String:[Location:HallHours]]()
     var currDate = "1"
     var currMP = MealPeriod.breakfast
     var currAllergens: [Allergen] = []
@@ -45,6 +46,11 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         API.getCurrentActivityLevels { (activityLevels) in
             for a in activityLevels{
                 self.activityLevelData.append(a)
+            }
+        }
+        API.getHours { (hours) in
+            for d in hours {
+                self.hoursData[d.key] = d.value
             }
         }
         API.getOverviewMenu { parsedMenus in
@@ -159,6 +165,27 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         cell.menuCard.parentVC = self
         
         cell.menuCard.diningHallName.text? = Array(data.keys)[indexPath.row].rawValue
+        
+        
+        if let hall = Location(rawValue: Array(data.keys)[indexPath.row].rawValue) {
+            var hoursText = ""
+            switch currMP {
+            case .breakfast:
+                hoursText = hoursData[currDate]?[hall]?.breakfast ?? ""
+            case .lunch, .brunch:
+                hoursText = hoursData[currDate]?[hall]?.lunch ?? ""
+            case .dinner:
+                hoursText = hoursData[currDate]?[hall]?.dinner ?? ""
+            case .lateNight:
+                hoursText = hoursData[currDate]?[hall]?.late_night ?? ""
+            }
+            cell.menuCard.diningHallHours.text? = hoursText
+        }
+        else {
+            cell.menuCard.diningHallHours.text? = ""
+        }
+        
+        
         cell.initializeData(data: data[Array(data.keys)[indexPath.row]]!)
         
         cell.parentVC = self

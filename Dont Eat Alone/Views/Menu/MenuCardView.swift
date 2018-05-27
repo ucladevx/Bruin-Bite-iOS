@@ -16,6 +16,7 @@ class MenuCardView: UIView, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var activityLevelBar: ActivityLevelBar!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var diningHallName: UILabel!
+    @IBOutlet weak var diningHallHours: UILabel!
     
     var data: [Item]
     weak var parentVC: MenuVC?
@@ -76,6 +77,7 @@ class MenuCardView: UIView, UITableViewDelegate, UITableViewDataSource {
         self.menuCardView.addSubview(self.activityLevelBar)
         
         menuCardView.addSubview(diningHallName)
+        menuCardView.addSubview(diningHallHours)
         menuCardView.backgroundColor = .white
         tableView.addBorderTop(size: 1.2, color: .gray)
         
@@ -91,6 +93,13 @@ class MenuCardView: UIView, UITableViewDelegate, UITableViewDataSource {
             make.top.equalToSuperview().offset(44)
             make.left.equalToSuperview().offset(12)
             make.right.equalToSuperview()
+        }
+        
+        diningHallHours.snp.makeConstraints{ (make) -> Void in
+            make.height.equalTo(diningHallName.snp.height)
+            make.top.equalToSuperview().offset(44)
+            make.left.equalToSuperview().offset(12)
+            make.right.equalToSuperview().offset(-20)
         }
         
         menuCardView.clipsToBounds = true

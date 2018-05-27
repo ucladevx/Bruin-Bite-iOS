@@ -319,4 +319,39 @@ extension API{
             }
         }
     }
+    
+    static func getHours(completion: @escaping ([String:[Location:HallHours]])->()){
+        provider.request(.getHours) { result in
+            switch result{
+            case let .success(response):
+                do{
+                    let decoder = JSONDecoder()
+                    let allHours = try decoder.decode(AllHours.self, from: response.data)
+                    var hoursData = [String:[Location:HallHours]]()
+                    for day in allHours.hours {
+                        let index = day.hourDate.index(day.hourDate.endIndex, offsetBy: -2)
+                        let dayNum = String(day.hourDate[index...])
+                        hoursData[dayNum] = [Location:HallHours]()
+                        for diningHall in day.hours {
+                            
+                            guard let location = Location(rawValue: diningHall.hall_name) else {
+                                //Skip unknown locations
+                                continue
+                            }
+                            //This should never fail but if it does, I think it's safe
+                            //I had to unwrap to account for missing hours
+                            hoursData[dayNum]?[location] = HallHours(breakfast: diningHall.breakfast ?? "CLOSED", lunch: diningHall.lunch ?? "CLOSED", dinner: diningHall.dinner ?? "CLOSED", late_night: diningHall.late_night ?? "CLOSED")
+                        }
+                    }
+                    
+                    completion(hoursData)
+                }
+                catch{
+                    print("error parsing")
+                }
+            case let .failure(error):
+                print(error)
+            }
+        }
+    }
 }
