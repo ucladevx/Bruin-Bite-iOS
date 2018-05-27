@@ -42,6 +42,8 @@ public class User {
     private var login_model: UserLog?
     private var user_error_model: UserError?
     
+    private var preferred_period: String
+    
     init() {
         user_email = ""
         user_password = ""
@@ -53,6 +55,7 @@ public class User {
         user_bio = ""
         net_error = ""
         user_ID = 0
+        preferred_period = ""
     }
     
     func initUserError (error: UserError) {
@@ -99,6 +102,9 @@ public class User {
         case "error":
             net_error = info
             break
+        case "period":
+            preferred_period = info
+            break
         default:
             print("ERROR TYPE INPUT INCORRECT")
         }
@@ -130,6 +136,8 @@ public class User {
             return user_bio
         case "error":
             return net_error
+        case "period":
+            return preferred_period
         default:
             print("ERROR TYPE INPUT INCORRECT")
             return ""
