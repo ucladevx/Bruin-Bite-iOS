@@ -38,52 +38,21 @@ class ActivityLevelBar: UIView {
     var percentage: CGFloat = 0.5
     
     override func draw(_ rect: CGRect) {
-        //        color.set()
-        //        pathForCircle().fill(
-        
-        
         
         let ctx: CGContext = UIGraphicsGetCurrentContext()!
         ctx.saveGState()
-        
         let width = UIScreen.main.bounds.size.width
         
             if(self.percentage > 0.8) {
-                let start_width = 0.8*width
-                let percent_filled = (self.percentage - 0.8)*width
-                
                 ctx.setFillColor(UIColor.deaScarlet.cgColor)
-                ctx.addPath(UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: CGFloat(start_width+percent_filled), height: 10), byRoundingCorners: [], cornerRadii: CGSize(width: 6, height: 6)).cgPath)
-                
-                
-                ctx.fillPath()
-                
             }
-            if(self.percentage > 0.6) {
+            else if(self.percentage > 0.6) {
                 ctx.setFillColor(UIColor.deaYellow.cgColor)
-                
-                let start_width = 0.6*width
-                var percent_filled: CGFloat
-                if(self.percentage > 0.8) {
-                    percent_filled = 0.2*width
-                }
-                else {
-                    percent_filled = (self.percentage - 0.6)*width
-                }
-                ctx.addPath(UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: start_width + percent_filled, height: 10), byRoundingCorners: [], cornerRadii: CGSize(width: 6, height: 6)).cgPath)
-                ctx.fillPath()
             }
-            
-            var percent_filled: CGFloat = 0
-            if(self.percentage > 0.6) {
-                percent_filled = 1
+            else{
+                ctx.setFillColor(UIColor.deaAppleGreen.cgColor)
             }
-            else {
-                percent_filled = self.percentage/0.6
-            }
-            ctx.setFillColor(UIColor.deaAppleGreen.cgColor)
-            ctx.addPath(UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: 0.6*width*percent_filled, height: 10), byRoundingCorners: [], cornerRadii: CGSize(width: 6, height: 6)).cgPath)
-            //
+            ctx.addPath(UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: width*percentage, height: 10), byRoundingCorners: [], cornerRadii: CGSize(width: 6, height: 6)).cgPath)
             
             ctx.closePath()
             ctx.fillPath()
