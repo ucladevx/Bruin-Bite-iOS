@@ -13,6 +13,8 @@ struct timeData{
     var isSelected: Bool
 }
 
+var chosen = [String]()
+
 class TimePickerViewController: UIViewController {
     
     var times: [timeData] = []
@@ -65,6 +67,13 @@ class TimePickerViewController: UIViewController {
     }
   
   @IBAction func completeActionButton(_ sender: Any) {
+    var temp = [String]()
+    for i in 0...15 {
+        if(times[i].isSelected) {
+            temp.append(times[i].text)
+        }
+    }
+    chosen = temp
         dismiss(animated: true, completion: nil)
   }
 }
