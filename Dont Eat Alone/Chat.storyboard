@@ -214,6 +214,9 @@
                                                 <integer key="value" value="15"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="didPressSendMessage:" destination="VAO-Bi-W3n" eventType="touchUpInside" id="ekc-cY-M8P"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -241,6 +244,7 @@
                     </view>
                     <connections>
                         <outlet property="messagesTableView" destination="Sbd-dn-2VK" id="b4w-pF-SEi"/>
+                        <outlet property="newMessageTxtField" destination="mqA-am-yU9" id="Yub-dm-5Cg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zgg-VV-6Wj" userLabel="First Responder" sceneMemberID="firstResponder"/>

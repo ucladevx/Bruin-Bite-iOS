@@ -13,3 +13,8 @@ struct ChatMessage: Codable {
     var handle: String
     var message: String
 }
+
+struct ChatMessageSend: Codable {
+    var handle: String
+    var message: String
+}
