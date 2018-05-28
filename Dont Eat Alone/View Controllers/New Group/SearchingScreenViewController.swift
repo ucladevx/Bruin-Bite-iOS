@@ -18,15 +18,23 @@ class SearchingScreenViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        puls.numPulse = 2
-        puls.radius = 100
+        view.backgroundColor = UIColor.twilightBlue
+        p.backgroundColor = UIColor.twilightBlue
+        
+        puls.numPulse = 4
+        puls.radius = 120
+        
         p.layer.addSublayer(puls)
-        puls.backgroundColor = UIColor(red: 0, green: 0.46, blue: 0.76, alpha: 1).cgColor
+        puls.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1).cgColor
         
         puls.start()
         
         
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        puls.start()
     }
 
     override func didReceiveMemoryWarning() {
