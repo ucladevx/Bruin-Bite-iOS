@@ -1,7 +1,7 @@
 # Uncomment the next line to define a global platform for your project
 # platform :ios, '9.0'
 
-target 'Dont Eat Alone' do
+target 'Bruin Bite' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
 
@@ -14,12 +14,12 @@ target 'Dont Eat Alone' do
   pod 'Starscream'
   pod "Pulsator"
 
-  target 'Dont Eat AloneTests' do
+  target 'Bruin BiteTests' do
     inherit! :search_paths
     # Pods for testing
   end
 
-  target 'Dont Eat AloneUITests' do
+  target 'Bruin BiteUITests' do
     inherit! :search_paths
     # Pods for testing
   end
