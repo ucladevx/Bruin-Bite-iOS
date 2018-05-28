@@ -59,6 +59,10 @@
 		BDDE7C72207B04D00008A677 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDE7C71207B04D00008A677 /* UserTableViewCell.swift */; };
 		BF0523E1209AA7DC0013EE11 /* PreferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0523E0209AA7DB0013EE11 /* PreferenceViewController.swift */; };
 		BF0523E3209AA7E00013EE11 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0523E2209AA7E00013EE11 /* ProfileViewController.swift */; };
+		BF0943E020BBF1EB00214200 /* ChatScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0943DF20BBF1EB00214200 /* ChatScreenViewController.swift */; };
+		BF0943E220BBF3EE00214200 /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0943E120BBF3EE00214200 /* ChatMessage.swift */; };
+		BF0943E420BBFEEF00214200 /* ChatAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0943E320BBFEEF00214200 /* ChatAPI.swift */; };
+		BF0943E620BC20FE00214200 /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0943E520BC20FE00214200 /* UIViewControllerExtensions.swift */; };
 		BF5D97E220B973570086D451 /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF5D97E120B973570086D451 /* Chat.storyboard */; };
 		BF5D97E420B974F60086D451 /* ChatListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5D97E320B974F60086D451 /* ChatListViewController.swift */; };
 		BF5D97E620B97F490086D451 /* ChatPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5D97E520B97F490086D451 /* ChatPreview.swift */; };
@@ -180,6 +184,10 @@
 		BDDE7C71207B04D00008A677 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		BF0523E0209AA7DB0013EE11 /* PreferenceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferenceViewController.swift; sourceTree = "<group>"; };
 		BF0523E2209AA7E00013EE11 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		BF0943DF20BBF1EB00214200 /* ChatScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatScreenViewController.swift; sourceTree = "<group>"; };
+		BF0943E120BBF3EE00214200 /* ChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
+		BF0943E320BBFEEF00214200 /* ChatAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatAPI.swift; sourceTree = "<group>"; };
+		BF0943E520BC20FE00214200 /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
 		BF5D97E120B973570086D451 /* Chat.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Chat.storyboard; sourceTree = "<group>"; };
 		BF5D97E320B974F60086D451 /* ChatListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListViewController.swift; sourceTree = "<group>"; };
 		BF5D97E520B97F490086D451 /* ChatPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatPreview.swift; sourceTree = "<group>"; };
@@ -270,6 +278,7 @@
 				0058244E20BA106E0044CB88 /* Hours.swift */,
 				00C2DF0620B677040023CF75 /* User.swift */,
 				BF5D97E520B97F490086D451 /* ChatPreview.swift */,
+				BF0943E120BBF3EE00214200 /* ChatMessage.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -307,6 +316,7 @@
 				DCF0E2E520B260CC0036A32F /* SignInViewController.swift */,
 				2A03D94720B7AFA7004EFC97 /* HomeProfileStaticTableViewController.swift */,
 				BF5D97E320B974F60086D451 /* ChatListViewController.swift */,
+				BF0943DF20BBF1EB00214200 /* ChatScreenViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -352,6 +362,7 @@
 				2AB62E6D2048D16B0013CB59 /* API.swift */,
 				00C2DF0820B678890023CF75 /* Moya.swift */,
 				00C2DF0A20B678A00023CF75 /* UserAPI.swift */,
+				BF0943E320BBFEEF00214200 /* ChatAPI.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -469,6 +480,7 @@
 				DCF0E2DD20B260680036A32F /* UIFont+Additions.swift */,
 				002244DB20B8C53000CBD1C2 /* StringExtensions.swift */,
 				2A68339120BC2113000DCAA4 /* UIButtonSignUp.swift */,
+				BF0943E520BC20FE00214200 /* UIViewControllerExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -842,6 +854,7 @@
 				DCF0E2E020B2608B0036A32F /* CreateProfileViewController.swift in Sources */,
 				2A03D93E20B76529004EFC97 /* TimePickerViewController.swift in Sources */,
 				DCF0E2E220B260A90036A32F /* CreateProfilePt2ViewController.swift in Sources */,
+				BF0943E220BBF3EE00214200 /* ChatMessage.swift in Sources */,
 				BDDE7C6E207AF6840008A677 /* LoginViewController.swift in Sources */,
 				00C2DF0B20B678A00023CF75 /* UserAPI.swift in Sources */,
 				BDDE7C72207B04D00008A677 /* UserTableViewCell.swift in Sources */,
@@ -856,6 +869,7 @@
 				2AFA40B120BC07AD0007FB85 /* MatchFoundViewController.swift in Sources */,
 				2AFA40AF20BC07AD0007FB85 /* NoMatchViewController.swift in Sources */,
 				BF0523E1209AA7DC0013EE11 /* PreferenceViewController.swift in Sources */,
+				BF0943E620BC20FE00214200 /* UIViewControllerExtensions.swift in Sources */,
 				DCF0E2DC20B260510036A32F /* UIColor+Additions.swift in Sources */,
 				009FDBC7209682BD00308641 /* BioViewController.swift in Sources */,
 				2AB62E6C20488A050013CB59 /* MenuAPI.swift in Sources */,
@@ -888,7 +902,9 @@
 				0058244F20BA106E0044CB88 /* Hours.swift in Sources */,
 				770251E4201D4182002E4515 /* Moya_Service.swift in Sources */,
 				002244DC20B8C53000CBD1C2 /* StringExtensions.swift in Sources */,
+				BF0943E020BBF1EB00214200 /* ChatScreenViewController.swift in Sources */,
 				2AB62E6E2048D16B0013CB59 /* API.swift in Sources */,
+				BF0943E420BBFEEF00214200 /* ChatAPI.swift in Sources */,
 				00C2DF0920B678890023CF75 /* Moya.swift in Sources */,
 				2A744895203BBDBC00793AD3 /* MenuCardView.swift in Sources */,
 				00C2DF0D20B678BE0023CF75 /* UserClass.swift in Sources */,

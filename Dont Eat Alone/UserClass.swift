@@ -148,6 +148,10 @@ public class User {
         return self.user_year
     }
     
+    public func accessUserId() -> Int {
+        return self.user_ID
+    }
+    
     public func createUser() -> Bool {
         API.createUser(email: user_email, password: user_password, first_name: first_name, last_name: last_name, major: user_major, minor: user_minor, year: user_year, self_bio: user_bio) { (created_user) in
             self.create_read_update = created_user
