@@ -35,9 +35,9 @@ import UIKit
     private func setupView(){
         backgroundColor = UIColor.twilightBlue
         circleSelect.backgroundColor = UIColor.twilightBlue
-        circleLabel.textColor = UIColor.black
+        circleLabel.textColor = UIColor.MenuTopBarGray
         bezelView.backgroundColor = UIColor.twilightBlue
-        bezelLabel.textColor = UIColor.black
+        bezelLabel.textColor = UIColor.MenuTopBarGray
         bezelView.frame = CGRect(x: 0, y: 42, width: 87.5, height: 40)
         bezelLabel.frame = CGRect(x: 12, y: 52, width: 80, height: 20)
         bezelLabel.text = "Breakfast"
@@ -102,6 +102,7 @@ import UIKit
     }
     
     func daySelected(_ selectedLabelText: String, dayLabel: String) {
+        bezelLabel.textColor = UIColor.MenuTopBarGray
         currDay = selectedLabelText
         if (Int(selectedLabelText)! >= 1 && Int(selectedLabelText)! <= 9){
             currDay = "0" + currDay
@@ -162,6 +163,7 @@ import UIKit
     
     func timeSelected(_ selectedLabelText: String){
         bezelLabel.text = selectedLabelText
+        bezelLabel.textColor = UIColor.MenuTopBarGray
         dinner = false
         if(selectedLabelText == "Breakfast"){
             morning = true

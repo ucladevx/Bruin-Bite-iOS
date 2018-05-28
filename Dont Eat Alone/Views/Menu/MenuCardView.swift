@@ -19,6 +19,7 @@ class MenuCardView: UIView, UITableViewDelegate, UITableViewDataSource {
     
     var data: [Item]
     weak var parentVC: MenuVC?
+    let separator = UIView() //(frame: CGRect(x: 0, y: 0, width: 200, height: 50))
     
     //for using custom view in code
     override init(frame: CGRect){
@@ -45,12 +46,13 @@ class MenuCardView: UIView, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 42
+        return 45
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "Cell")
         cell.textLabel?.text = data[indexPath.row].name
+        cell.textLabel?.textColor = UIColor.MenuItemGray
         cell.indentationWidth = 13
         cell.indentationLevel = 1
         cell.preservesSuperviewLayoutMargins = true
@@ -75,23 +77,46 @@ class MenuCardView: UIView, UITableViewDelegate, UITableViewDataSource {
         menuCardView.addSubview(tableView)
         self.menuCardView.addSubview(self.activityLevelBar)
         
+        separator.backgroundColor = .purple
+        self.menuCardView.addSubview(self.separator)
+        
         menuCardView.addSubview(diningHallName)
-        menuCardView.backgroundColor = .white
+        // ?? clear makes background white but white makes background gray
+        menuCardView.backgroundColor = .clear
         tableView.addBorderTop(size: 1.2, color: .white)
         
+        diningHallName.font = UIFont.signUpTextFont
+        diningHallName.textColor = UIColor.twilightBlue
+        
         //Auto-Layout using code. Please do it this way in your future code - Ayush
+        separator.snp.makeConstraints{(make) -> Void in
+            make.height.equalTo(57)
+            make.top.equalToSuperview().offset(0)
+            make.left.equalToSuperview()
+            make.right.equalToSuperview()
+        }
+        
         activityLevelBar.snp.makeConstraints{(make) -> Void in
             make.height.equalTo(7)
-            make.top.equalToSuperview().offset(30)
+            make.top.equalToSuperview().offset(57) //30
             make.left.equalToSuperview()
             make.right.equalToSuperview()
         }
         
         diningHallName.snp.makeConstraints{ (make) -> Void in
-            make.top.equalToSuperview().offset(44)
+            make.top.equalToSuperview().offset(71) //44
             make.left.equalToSuperview().offset(12)
             make.right.equalToSuperview()
         }
+        
+        tableView.snp.makeConstraints{(make) -> Void in
+            make.height.equalTo(135)
+            make.top.equalToSuperview().offset(100)
+            //make.top.equal activityLevelBar offset(56)
+            make.left.equalToSuperview()
+            make.right.equalToSuperview()
+        }
+        
         
         menuCardView.clipsToBounds = true
         

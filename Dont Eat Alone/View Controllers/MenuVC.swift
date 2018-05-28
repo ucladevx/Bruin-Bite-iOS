@@ -28,6 +28,13 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         
     let diningHalls = ["De Neve", "BPlate", "Covel", "Feast"]
     var menuItem: Item?
+    
+    // underline for view more
+    var attrs = [
+        NSAttributedStringKey.font: UIFont.signInFont.withSize(12.0),
+        NSAttributedStringKey.foregroundColor: UIColor.twilightBlue,
+        NSAttributedStringKey.underlineStyle: 1
+        ] as [NSAttributedStringKey: Any]
 
         
     override func viewDidLoad() {
@@ -75,7 +82,8 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
-    let defaultHeight: CGFloat = 215;
+    //let defaultHeight: CGFloat = 215;
+    let defaultHeight: CGFloat = 247;
     var computedHeight: [CGFloat] = [];
         
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -165,13 +173,22 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         cell.parentView = self.menuCardsCollection
         cell.index = indexPath
         
+        cell.viewMoreButton.titleLabel?.font = UIFont.textStyle
+        cell.viewMoreButton.titleLabel?.textColor = UIColor.twilightBlue
+        cell.viewMoreButton.setTitleColor(UIColor.twilightBlue, for: .normal)
+        cell.viewMoreButton.backgroundColor = UIColor.white
+        
         //make sure the button has multiple purposes
         //we need the count because in the beginning/refresh phase computedHeight = []
         if (computedHeight[indexPath.row] > defaultHeight){
-            cell.viewMoreButton.setTitle("View Less", for: .normal)
+            let text = NSMutableAttributedString(string:"View Less", attributes:attrs)
+            cell.viewMoreButton.setAttributedTitle(text, for: .normal)
+            //cell.viewMoreButton.setTitle("View Less", for: .normal)
         }
         else{
-            cell.viewMoreButton.setTitle("View More", for: .normal)
+            let text = NSMutableAttributedString(string:"View More", attributes:attrs)
+            cell.viewMoreButton.setAttributedTitle(text, for: .normal)
+            //cell.viewMoreButton.setTitle("View More", for: .normal)
         }
 
         cell.menuCard.activityLevelBar.resizeToZero()
@@ -187,9 +204,10 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-            return 20
+            return 0
     }
-        
+    
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }

@@ -37,6 +37,13 @@ extension UIColor {
     @nonobjc class var twilightBlue: UIColor {
         return UIColor(red: 7.0 / 255.0, green: 74.0 / 255.0, blue: 119.0 / 255.0, alpha: 1.0)
     }
+
+    @nonobjc class var MenuItemGray: UIColor {
+        return UIColor(red: 135.0 / 255.0, green: 135.0 / 255.0, blue: 135.0 / 255.0, alpha: 1.0)
+    }
     
+    @nonobjc class var MenuTopBarGray: UIColor {
+        return UIColor(red: 118.0 / 255.0, green: 118.0 / 255.0, blue: 118.0 / 255.0, alpha: 1.0)
+    }
 }
 
