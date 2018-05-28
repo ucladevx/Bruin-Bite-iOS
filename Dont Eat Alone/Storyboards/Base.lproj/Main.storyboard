@@ -631,7 +631,6 @@
                     <connections>
                         <segue destination="RAT-qB-Fj9" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="M83-fu-UsU" kind="relationship" relationship="viewControllers" id="2CH-Zb-ZQr"/>
-                        <segue destination="aUf-9F-jVN" kind="relationship" relationship="viewControllers" id="mau-ZH-fAI"/>
                         <segue destination="nzh-LT-kup" kind="relationship" relationship="viewControllers" id="n8F-FK-ulH"/>
                         <segue destination="bUz-zA-Ew8" kind="relationship" relationship="viewControllers" id="Kq0-p4-ere"/>
                     </connections>
@@ -1509,7 +1508,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Chats" width="26" height="25"/>
         <image name="Edit" width="27" height="26"/>
         <image name="Feedback" width="28" height="25"/>
         <image name="Line" width="242" height="2"/>
