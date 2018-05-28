@@ -30,6 +30,16 @@ class PreferenceViewController: UIViewController {
         TimeButton.titleLabel?.textColor = .clear
     }
     
+    
+    @IBAction func MatchButton(_ sender: Any) {
+//        let storyBoard = UIStoryboard(name: "Matching", bundle: nil)
+//        let searching = storyBoard.instantiateViewController(withIdentifier: "searchingForMatch")
+//        
+//        addChildViewController(searching)
+//        view.addSubview(searching.view)
+//        searching.didMove(toParentViewController: self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

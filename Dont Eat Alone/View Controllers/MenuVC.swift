@@ -72,7 +72,7 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
 //                }
 //            }
 //        }
-        backgroundTopBar.backgroundColor = UIColor.deaScarlet
+        backgroundTopBar.backgroundColor = UIColor.twilightBlue
         computedHeight = Array(repeating: defaultHeight, count: self.diningHalls.count)
         // Do any additional setup after loading the view, typically from a nib.
     }
@@ -209,9 +209,9 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
             if (a.isAvailable && Array(data.keys)[indexPath.row] == a.location) {
                 cell.menuCard.activityLevelBar.percentage = CGFloat(a.percent)/100
             }
-//            else if (Array(data.keys)[indexPath.row] == a.location){
-//                cell.menuCard.activityLevelBar.percentage = CGFloat(0)
-//            }
+            else if (Array(data.keys)[indexPath.row] == a.location){
+                cell.menuCard.activityLevelBar.percentage = CGFloat(0)
+            }
         }
         UIView.animate(withDuration: 1.5, delay: 0, options: .curveEaseInOut, animations: {
             cell.menuCard.activityLevelBar.animateBar()

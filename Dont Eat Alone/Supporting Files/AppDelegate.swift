@@ -21,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if statusBar.responds(to:#selector(setter: UIView.backgroundColor)) {
             statusBar.backgroundColor = UIColor.twilightBlue
         }
+        
         UIApplication.shared.statusBarStyle = .lightContent
         
         registerForPushNotifications()

@@ -20,7 +20,7 @@ class ItemDetailViewController: UIViewController {
         super.viewDidLoad()
         webView.scrollView.isScrollEnabled = false
         webView.isUserInteractionEnabled = false
-        self.view.backgroundColor = UIColor.deaScarlet
+        self.view.backgroundColor = UIColor.twilightBlue
         ingredientsBar.backgroundColor = UIColor.white
         // Do any additional setup after loading the view.
     }
@@ -40,7 +40,8 @@ class ItemDetailViewController: UIViewController {
         }
 
         let textView = UITextView(frame: CGRect(x: 10, y: 10, width: 395, height: 165)); // TODO: Add Constraints
-        textView.isEditable = false;
+        textView.isEditable = false
+        textView.backgroundColor = UIColor.white
         
         
         let boldAttrs: [NSAttributedStringKey: Any] = [.font: UIFont(name: "AvenirNext-Medium", size: 12)!]

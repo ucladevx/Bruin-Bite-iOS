@@ -95,16 +95,15 @@ fileprivate extension ViewController {
 
 // MARK: - WebSocketDelegate
 extension ViewController : WebSocketDelegate {
-    public func websocketDidConnect(_ socket: Starscream.WebSocket) {
+    func websocketDidConnect(socket: WebSocketClient) {
         print("WEBSOCKET DID CONNNECT!\n\n\n")
     }
     
-    public func websocketDidDisconnect(_ socket: Starscream.WebSocket, error: NSError?) {
+    func websocketDidDisconnect(socket: WebSocketClient, error: Error?) {
         performSegue(withIdentifier: "websocketDisconnected", sender: self)
     }
     
-    
-    public func websocketDidReceiveMessage(_ socket: Starscream.WebSocket, text: String) {
+    func websocketDidReceiveMessage(socket: WebSocketClient, text: String) {
         print("MESSAGE RECEIVED!\n\n\n")
         print(text)
         
@@ -115,10 +114,9 @@ extension ViewController : WebSocketDelegate {
             let messageAuthor = json!["handle"].stringValue
             messageReceived(messageText, senderName: messageAuthor)
         }
-        
     }
     
-    public func websocketDidReceiveData(_ socket: Starscream.WebSocket, data: Data) {
+    func websocketDidReceiveData(socket: WebSocketClient, data: Data) {
         
     }
 }
