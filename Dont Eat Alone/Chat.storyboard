@@ -122,7 +122,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="G01-rd-gY1"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Chat" image="Chats" id="t2p-ed-WUa"/>
+                    <tabBarItem key="tabBarItem" title="Chat" image="Chats" selectedImage="Chats" id="t2p-ed-WUa"/>
                     <navigationItem key="navigationItem" title="Chats" id="ndT-kG-RJQ"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
