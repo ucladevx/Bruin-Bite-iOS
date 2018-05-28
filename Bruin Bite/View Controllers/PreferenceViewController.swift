@@ -16,20 +16,16 @@ class PreferenceViewController: UIViewController {
     @IBOutlet var TopView: UIView!
     @IBOutlet var TitleText: UILabel!
     @IBOutlet var MatchMeButton: UIButton!
-    @IBOutlet var MealText: UITextField!
-    @IBOutlet var DiningText: UITextField!
-    @IBOutlet var DayText: UITextField!
+    @IBOutlet var MealButton: UIButton!
+    @IBOutlet var DiningHallButton: UIButton!
+    @IBOutlet var DayButton: UIButton!
     @IBOutlet var TimeButton: UIButton!
     
     var picks = [String]()
     var meal_times = [String]()
     var meal_day = String()
     var dining_halls = [String]()
-    
-    @IBAction func HideText(_ sender: Any) {
-        TimeButton.titleLabel?.textColor = .clear
-    }
-    
+    var buttonSelected = false
     
     @IBAction func MatchButton(_ sender: Any) {
 //        let storyBoard = UIStoryboard(name: "Matching", bundle: nil)
@@ -52,17 +48,23 @@ class PreferenceViewController: UIViewController {
         MatchMeButton.layer.borderColor = UIColor.twilightBlue.cgColor
         MatchMeButton.layer.cornerRadius = 26
         
-        let attributes = [
-        NSAttributedStringKey.foregroundColor: UIColor.pinkishGrey,
-            NSAttributedStringKey.font: UIFont.avenirNextItalicFont
-        ]
-        
         // setting color and font of text field place holders
-        DayText.attributedPlaceholder = NSAttributedString(string: "What day are you free?", attributes:attributes)
-        DiningText.attributedPlaceholder = NSAttributedString(string: "Which one's your favorite?", attributes:attributes)
-        MealText.attributedPlaceholder = NSAttributedString(string: "When would you like to eat?", attributes:attributes)
-        TimeButton.titleLabel?.font = UIFont.avenirNextItalicFont
+        DayButton.setTitle("What day are you free?", for: .normal)
+        DayButton.setTitleColor(.pinkishGrey, for: .normal)
+        DayButton.titleLabel?.font = UIFont.avenirNextItalicFont.withSize(18)
         
+        DiningHallButton.setTitle("Which one's your favorite?", for: .normal)
+        DiningHallButton.setTitleColor(.pinkishGrey, for: .normal)
+        DiningHallButton.titleLabel?.font = UIFont.avenirNextItalicFont.withSize(18)
+        
+        MealButton.setTitle("When would you like to eat?", for: .normal)
+        MealButton.setTitleColor(.pinkishGrey, for: .normal)
+        MealButton.titleLabel?.font = UIFont.avenirNextItalicFont.withSize(18)
+        
+        TimeButton.setTitle("Starting time?", for: .normal)
+        TimeButton.setTitleColor(.pinkishGrey, for: .normal)
+        TimeButton.titleLabel?.font = UIFont.avenirNextItalicFont.withSize(18)
+
         
         //PREFILL DINING DATE AND TIME FIELDS
         //diningField.text = PUT IN USER PREFERRED DINING HALL WHEN YOU HAVE THE DATA
@@ -181,7 +183,7 @@ extension PreferenceViewController: CZPickerViewDelegate, CZPickerViewDataSource
     
     func czpickerView(pickerView: CZPickerView!, didConfirmWithItemAtRow row: Int){
         print(row)
-        DayText.text = picks[row]
+        DayButton.setTitle(picks[row], for: .normal)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
@@ -209,10 +211,10 @@ extension PreferenceViewController: CZPickerViewDelegate, CZPickerViewDataSource
         
         switch(picks[0]) {
         case "Covel":
-            DiningText.text = chosen
+            DiningHallButton.setTitle(chosen, for: .normal)
             break;
         case "Breakfast":
-            MealText.text = chosen
+            MealButton.setTitle(chosen, for: .normal)
             switch(chosen) {
             case "Breakfast":
                 MAIN_USER.changeUserInfo(type: "period", info: "BR")
@@ -233,7 +235,7 @@ extension PreferenceViewController: CZPickerViewDelegate, CZPickerViewDataSource
             //TimeText.text = chosen
             break;
         default:
-            DayText.text = chosen
+            DayButton.setTitle(chosen, for: .normal)
             break;
         }
         
