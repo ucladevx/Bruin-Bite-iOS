@@ -21,6 +21,7 @@
 		2A03D94320B76C92004EFC97 /* PopupViewControllers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A03D94220B76C91004EFC97 /* PopupViewControllers.storyboard */; };
 		2A03D94620B77A1A004EFC97 /* TimePickerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A03D94520B77A1A004EFC97 /* TimePickerCollectionViewCell.swift */; };
 		2A03D94820B7AFA7004EFC97 /* HomeProfileStaticTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A03D94720B7AFA7004EFC97 /* HomeProfileStaticTableViewController.swift */; };
+		2A68339220BC2113000DCAA4 /* UIButtonSignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A68339120BC2113000DCAA4 /* UIButtonSignUp.swift */; };
 		2A744895203BBDBC00793AD3 /* MenuCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A744894203BBDBC00793AD3 /* MenuCardView.swift */; };
 		2A744897203BBEDA00793AD3 /* MenuCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A744896203BBEDA00793AD3 /* MenuCardView.xib */; };
 		2A9447802055FA3E0033B6C6 /* AllergensBarScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A94477F2055FA3E0033B6C6 /* AllergensBarScrollView.swift */; };
@@ -129,6 +130,7 @@
 		2A03D94520B77A1A004EFC97 /* TimePickerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerCollectionViewCell.swift; sourceTree = "<group>"; };
 		2A03D94720B7AFA7004EFC97 /* HomeProfileStaticTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeProfileStaticTableViewController.swift; sourceTree = "<group>"; };
 		2A36F1E320B969FF00F39689 /* Dont Eat Alone.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Dont Eat Alone.entitlements"; sourceTree = "<group>"; };
+		2A68339120BC2113000DCAA4 /* UIButtonSignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonSignUp.swift; sourceTree = "<group>"; };
 		2A744894203BBDBC00793AD3 /* MenuCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCardView.swift; sourceTree = "<group>"; };
 		2A744896203BBEDA00793AD3 /* MenuCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuCardView.xib; sourceTree = "<group>"; };
 		2A94477F2055FA3E0033B6C6 /* AllergensBarScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllergensBarScrollView.swift; sourceTree = "<group>"; };
@@ -460,6 +462,7 @@
 				DCF0E2DB20B260510036A32F /* UIColor+Additions.swift */,
 				DCF0E2DD20B260680036A32F /* UIFont+Additions.swift */,
 				002244DB20B8C53000CBD1C2 /* StringExtensions.swift */,
+				2A68339120BC2113000DCAA4 /* UIButtonSignUp.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -838,6 +841,7 @@
 				C0CD676C203C1B19006B265D /* ColoredBezel.swift in Sources */,
 				770251B4201D4079002E4515 /* AppDelegate.swift in Sources */,
 				2AFB41332047DD86004025F9 /* ItemDetailViewController.swift in Sources */,
+				2A68339220BC2113000DCAA4 /* UIButtonSignUp.swift in Sources */,
 				BF0523E3209AA7E00013EE11 /* ProfileViewController.swift in Sources */,
 				2AFB41372047F0F2004025F9 /* MenuCardCollectionViewCell.swift in Sources */,
 				770CDEAE20266B0800658925 /* ColoredCircle.swift in Sources */,
