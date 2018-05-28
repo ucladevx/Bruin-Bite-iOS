@@ -212,7 +212,7 @@
                                 <color key="backgroundColor" red="0.027450980392156862" green="0.29019607843137252" blue="0.46666666666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="lJp-pT-B4Q" userLabel="User Info">
-                                <rect key="frame" x="59" y="59" width="257" height="344"/>
+                                <rect key="frame" x="59" y="80.5" width="257" height="322.5"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iwq-dm-eBp">
                                         <rect key="frame" x="54.5" y="0.0" width="148" height="148"/>
@@ -252,7 +252,7 @@
                                         </subviews>
                                     </stackView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="I love dancing, singing and meeting new people. Let’s grab a meal and get to know each other!" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sNl-Xv-S4T">
-                                        <rect key="frame" x="0.0" y="191.5" width="257" height="152.5"/>
+                                        <rect key="frame" x="0.0" y="191.5" width="257" height="131"/>
                                         <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -275,9 +275,9 @@
                         </subviews>
                         <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="lJp-pT-B4Q" firstAttribute="top" secondItem="Sns-AX-pfm" secondAttribute="top" constant="39" id="9H9-Bv-ka7"/>
                             <constraint firstItem="Sns-AX-pfm" firstAttribute="bottom" secondItem="K0l-aO-UH0" secondAttribute="bottom" id="9te-1L-cU7"/>
                             <constraint firstItem="K0l-aO-UH0" firstAttribute="top" secondItem="XDA-kA-QHi" secondAttribute="bottom" id="CSC-bz-TGe"/>
+                            <constraint firstItem="lJp-pT-B4Q" firstAttribute="height" secondItem="XDA-kA-QHi" secondAttribute="height" multiplier="0.8" id="E1n-dj-186"/>
                             <constraint firstItem="K0l-aO-UH0" firstAttribute="leading" secondItem="Sns-AX-pfm" secondAttribute="leading" id="EOc-7W-cBc"/>
                             <constraint firstItem="lJp-pT-B4Q" firstAttribute="centerX" secondItem="KoU-87-KGi" secondAttribute="centerX" id="Eya-8t-IXF"/>
                             <constraint firstItem="Sns-AX-pfm" firstAttribute="trailing" secondItem="XDA-kA-QHi" secondAttribute="trailing" id="INy-45-UUk"/>

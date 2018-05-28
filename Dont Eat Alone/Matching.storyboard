@@ -71,23 +71,23 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="iOy-ba-G8C">
-                                <rect key="frame" x="13.5" y="67" width="360" height="518"/>
+                                <rect key="frame" x="0.0" y="120" width="375" height="447"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Time's Out!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T1Q-f8-enb">
-                                        <rect key="frame" x="102" y="20" width="169" height="41"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time's Out!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T1Q-f8-enb">
+                                        <rect key="frame" x="103.5" y="0.0" width="168.5" height="110"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="30"/>
                                         <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="Paw" translatesAutoresizingMaskIntoConstraints="NO" id="wFL-TZ-2na">
-                                        <rect key="frame" x="102" y="157" width="156" height="157"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Paw" translatesAutoresizingMaskIntoConstraints="NO" id="wFL-TZ-2na">
+                                        <rect key="frame" x="112.5" y="120" width="150" height="150"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="150" id="fQS-dA-4kP"/>
                                             <constraint firstAttribute="width" constant="150" id="uhZ-Xb-cT3"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Sorry, we couldn't find you a match at this time :(" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a1z-R0-t2d">
-                                        <rect key="frame" x="20" y="305" width="320" height="128"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sorry, we couldn't find you a match at this time :(" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a1z-R0-t2d">
+                                        <rect key="frame" x="62.5" y="280" width="250" height="100"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="Ren-Be-hrW"/>
                                             <constraint firstAttribute="width" constant="250" id="W1H-cP-DxV"/>
@@ -96,8 +96,8 @@
                                         <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TWV-Rl-1LR" customClass="UIButtonSignUp" customModule="Dont_Eat_Alone" customModuleProvider="target">
-                                        <rect key="frame" x="65" y="441" width="242" height="57"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TWV-Rl-1LR" customClass="UIButtonSignUp" customModule="Dont_Eat_Alone" customModuleProvider="target">
+                                        <rect key="frame" x="82.5" y="390" width="210" height="57"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="57" id="dId-Eu-uGm"/>
                                             <constraint firstAttribute="width" constant="210" id="ySB-Nd-99G"/>
