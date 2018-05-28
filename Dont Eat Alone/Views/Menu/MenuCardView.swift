@@ -77,7 +77,7 @@ class MenuCardView: UIView, UITableViewDelegate, UITableViewDataSource {
         menuCardView.addSubview(tableView)
         self.menuCardView.addSubview(self.activityLevelBar)
         
-        separator.backgroundColor = .purple
+        separator.backgroundColor = UIColor(red: 235.0 / 255.0, green: 235.0 / 255.0, blue: 235.0 / 255.0, alpha: 1.0)
         self.menuCardView.addSubview(self.separator)
         
         menuCardView.addSubview(diningHallName)

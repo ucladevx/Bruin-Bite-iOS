@@ -44,10 +44,10 @@ class ItemDetailViewController: UIViewController {
         
         
         let boldAttrs: [NSAttributedStringKey: Any] = [.font: UIFont(name: "AvenirNext-Medium", size: 12)!]
-        let normalAttrs: [NSAttributedStringKey: Any] = [.font: UIFont(name: "AvenirNext-Regular", size: 12)!]
-        let attributedString = NSMutableAttributedString(string: "Ingredients: ", attributes:boldAttrs)
+        let normalAttrs: [NSAttributedStringKey: Any] = [.font: UIFont(name: "AvenirNext-Regular", size: 13)!]
+        let attributedString = NSMutableAttributedString(string: "INGREDIENTS: ", attributes:boldAttrs)
         attributedString.append(NSAttributedString(string: (menuItem?.ingredients)!, attributes: normalAttrs))
-        attributedString.append(NSMutableAttributedString(string: "\n\nAllergens: ", attributes:boldAttrs))
+        attributedString.append(NSMutableAttributedString(string: "\n\nALLERGENS: ", attributes:boldAttrs))
         let allergyString = buildAllergenString(allergies: (menuItem?.allergies)!)
         attributedString.append(NSMutableAttributedString(string: allergyString, attributes: normalAttrs))
         textView.attributedText = attributedString
