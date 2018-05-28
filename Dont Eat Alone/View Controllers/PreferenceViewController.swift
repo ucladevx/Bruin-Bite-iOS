@@ -22,8 +22,10 @@ class PreferenceViewController: UIViewController {
     @IBOutlet var TimeButton: UIButton!
     
     var picks = [String]()
+    var meal_times = [String]()
+    var meal_day = String()
+    var dining_halls = [String]()
     
-    // not working??
     @IBAction func HideText(_ sender: Any) {
         TimeButton.titleLabel?.textColor = .clear
     }
@@ -90,7 +92,7 @@ class PreferenceViewController: UIViewController {
     }
     
     @IBAction func selectDate(sender: AnyObject) {
-        /*let picker = CZPickerView(headerTitle: "Dates", cancelButtonTitle: "Cancel", confirmButtonTitle: "Confirm")
+        let picker = CZPickerView(headerTitle: "Dates", cancelButtonTitle: "Cancel", confirmButtonTitle: "Confirm")
         let components = DateComponents()
         var curdate = Calendar.current.date(byAdding: components, to: Date())
         let formatter = DateFormatter()
@@ -100,12 +102,12 @@ class PreferenceViewController: UIViewController {
         var j = 1
         var temppicks = [String]()
         if(temppicks.count == 0) {
-        while(i < 4) {
-            let dateString = formatter.string(from: curdate!)
-            curdate?.addTimeInterval(TimeInterval(60*60*24))
-            temppicks.append(dateString)
-            i += 1
-            j += 1
+            while(i < 4) {
+                let dateString = formatter.string(from: curdate!)
+                curdate?.addTimeInterval(TimeInterval(60*60*24))
+                temppicks.append(dateString)
+                i += 1
+                j += 1
             } }
         picks = temppicks
         picker?.delegate = self as CZPickerViewDelegate
@@ -117,7 +119,7 @@ class PreferenceViewController: UIViewController {
         picker?.confirmButtonBackgroundColor = UIColor.deaScarlet
         picker?.cancelButtonBackgroundColor = UIColor.deaScarlet
         picker?.cancelButtonNormalColor = UIColor.white
-        picker?.show()*/
+        picker?.show()
     }
     
     @IBAction func selectTime(sender: AnyObject) {
@@ -125,35 +127,23 @@ class PreferenceViewController: UIViewController {
         let storyBoard = UIStoryboard(name: "PopupViewControllers", bundle: nil)
         let timePicker = storyBoard.instantiateViewController(withIdentifier: "TimePickerViewController")
         self.present(timePicker, animated: true)
-        
-//        let picker = CZPickerView(headerTitle: "Times", cancelButtonTitle: "Cancel", confirmButtonTitle: "Confirm")
-//        let components = DateComponents()
-//        var curdate = Calendar.current.date(byAdding: components, to: Date())
-//        let formatter = DateFormatter()
-//        formatter.dateStyle = .none
-//        formatter.timeStyle = .short
-//        var i = 0
-//        var j = 1
-//        var temppicks = [String]()
-//        if(temppicks.count == 0) {
-//            while(i < 4) {
-//                let dateString = formatter.string(from: curdate!)
-//                curdate?.addTimeInterval(TimeInterval(60*15))
-//                temppicks.append(dateString)
-//                i += 1
-//                j += 1
-//            } }
-//        picks = temppicks
-//        picker?.delegate = self as CZPickerViewDelegate
-//        picker?.dataSource = self as CZPickerViewDataSource
-//        picker?.needFooterView = false
-//        picker?.allowMultipleSelection = true
-//        picker?.checkmarkColor = UIColor.deaScarlet
-//        picker?.headerBackgroundColor = UIColor.deaScarlet
-//        picker?.confirmButtonBackgroundColor = UIColor.deaScarlet
-//        picker?.cancelButtonBackgroundColor = UIColor.deaScarlet
-//        picker?.cancelButtonNormalColor = UIColor.white
-//        picker?.show()
+    }
+    
+    
+    @IBAction func mealPeriod(_ sender: Any) {
+        let picker = CZPickerView(headerTitle: "Meal Period", cancelButtonTitle: "Cancel", confirmButtonTitle: "Confirm")
+        let meal_periods = ["Breakfast", "Lunch", "Dinner", "Latenight"]
+        picks = meal_periods
+        picker?.delegate = self as CZPickerViewDelegate
+        picker?.dataSource = self as CZPickerViewDataSource
+        picker?.needFooterView = false
+        picker?.allowMultipleSelection = true
+        picker?.checkmarkColor = UIColor.deaScarlet
+        picker?.headerBackgroundColor = UIColor.deaScarlet
+        picker?.confirmButtonBackgroundColor = UIColor.deaScarlet
+        picker?.cancelButtonBackgroundColor = UIColor.deaScarlet
+        picker?.cancelButtonNormalColor = UIColor.white
+        picker?.show()
     }
     
 }
@@ -179,13 +169,23 @@ extension PreferenceViewController: CZPickerViewDelegate, CZPickerViewDataSource
             self.navigationController?.setNavigationBarHidden(true, animated: true)
         }
     
+    func czpickerView(pickerView: CZPickerView!, didConfirmWithItemAtRow row: Int){
+        print(row)
+        DayText.text = picks[row]
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    
     func czpickerView(_ pickerView: CZPickerView!, didConfirmWithItemsAtRows rows: [Any]!) {
         var chosen = String()
         var i = 1
         for row in rows {
             chosen += picks[row as! Int]
+            if(picks[0] != "Breakfast") {
             if i != rows.count {
                 chosen += ", "
+            }
+            } else {
+                break
             }
             i += 1
         }
@@ -200,6 +200,24 @@ extension PreferenceViewController: CZPickerViewDelegate, CZPickerViewDataSource
         switch(picks[0]) {
         case "Covel":
             DiningText.text = chosen
+            break;
+        case "Breakfast":
+            MealText.text = chosen
+            switch(chosen) {
+            case "Breakfast":
+                MAIN_USER.changeUserInfo(type: "period", info: "BR")
+                break
+            case "Lunch":
+                MAIN_USER.changeUserInfo(type: "period", info: "LU")
+                break
+            case "Dinner":
+                MAIN_USER.changeUserInfo(type: "period", info: "DI")
+                break
+            case "Latenight":
+                MAIN_USER.changeUserInfo(type: "period", info: "LN")
+            default:
+                break
+            }
             break;
         case currentTime:
             //TimeText.text = chosen
