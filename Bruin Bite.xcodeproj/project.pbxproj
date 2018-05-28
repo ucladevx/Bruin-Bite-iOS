@@ -21,6 +21,7 @@
 		2A03D94320B76C92004EFC97 /* PopupViewControllers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A03D94220B76C91004EFC97 /* PopupViewControllers.storyboard */; };
 		2A03D94620B77A1A004EFC97 /* TimePickerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A03D94520B77A1A004EFC97 /* TimePickerCollectionViewCell.swift */; };
 		2A03D94820B7AFA7004EFC97 /* HomeProfileStaticTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A03D94720B7AFA7004EFC97 /* HomeProfileStaticTableViewController.swift */; };
+		2A62E49320BC99D2008075B0 /* Menu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A62E49220BC99D2008075B0 /* Menu.storyboard */; };
 		2A68339220BC2113000DCAA4 /* UIButtonSignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A68339120BC2113000DCAA4 /* UIButtonSignUp.swift */; };
 		2A744895203BBDBC00793AD3 /* MenuCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A744894203BBDBC00793AD3 /* MenuCardView.swift */; };
 		2A744897203BBEDA00793AD3 /* MenuCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A744896203BBEDA00793AD3 /* MenuCardView.xib */; };
@@ -40,20 +41,16 @@
 		2AFB41332047DD86004025F9 /* ItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFB41322047DD86004025F9 /* ItemDetailViewController.swift */; };
 		2AFB41372047F0F2004025F9 /* MenuCardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFB41362047F0F2004025F9 /* MenuCardCollectionViewCell.swift */; };
 		2B952C67202BDBB200F27727 /* WeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B952C66202BDBB200F27727 /* WeekView.swift */; };
-		73F26D7E9B43FA43D80236FD /* Pods_Bruin_BiteUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFB422BA884109EBFA9AD0E9 /* Pods_Bruin_BiteUITests.framework */; };
 		770251B4201D4079002E4515 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770251B3201D4079002E4515 /* AppDelegate.swift */; };
 		770251B6201D4079002E4515 /* MenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770251B5201D4079002E4515 /* MenuVC.swift */; };
 		770251BB201D4079002E4515 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 770251B9201D4079002E4515 /* Main.storyboard */; };
 		770251BD201D4079002E4515 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 770251BC201D4079002E4515 /* Assets.xcassets */; };
 		770251C0201D4079002E4515 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 770251BE201D4079002E4515 /* LaunchScreen.storyboard */; };
-		770251CB201D4079002E4515 /* Dont_Eat_AloneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770251CA201D4079002E4515 /* Dont_Eat_AloneTests.swift */; };
-		770251D6201D4079002E4515 /* Dont_Eat_AloneUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770251D5201D4079002E4515 /* Dont_Eat_AloneUITests.swift */; };
 		770251E4201D4182002E4515 /* Moya_Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770251E3201D4182002E4515 /* Moya_Service.swift */; };
 		770CDEAE20266B0800658925 /* ColoredCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770CDEAD20266B0800658925 /* ColoredCircle.swift */; };
 		770CDEB020266B6000658925 /* ActivityLevelBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770CDEAF20266B6000658925 /* ActivityLevelBar.swift */; };
 		77949970203BD10500F3B0ED /* AllergyFilterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7794996F203BD10400F3B0ED /* AllergyFilterButton.swift */; };
 		77949972203BD12B00F3B0ED /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77949971203BD12B00F3B0ED /* Extensions.swift */; };
-		97E3CB3E0F330B12C3696BE7 /* Pods_Bruin_BiteTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1CD237D5575B0963C324829 /* Pods_Bruin_BiteTests.framework */; };
 		9C91B493798C96CEA3BC0AA4 /* Pods_Bruin_Bite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D31D0C9107AF44D73AA341C1 /* Pods_Bruin_Bite.framework */; };
 		BDDE7C6E207AF6840008A677 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDE7C6D207AF6840008A677 /* LoginViewController.swift */; };
 		BDDE7C70207B04590008A677 /* MatchingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDE7C6F207B04590008A677 /* MatchingListViewController.swift */; };
@@ -88,20 +85,6 @@
 			remoteGlobalIDString = 2AFA409320BBD7A00007FB85;
 			remoteInfo = NotificationService;
 		};
-		770251C7201D4079002E4515 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 770251A8201D4079002E4515 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 770251AF201D4079002E4515;
-			remoteInfo = "Dont Eat Alone";
-		};
-		770251D2201D4079002E4515 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 770251A8201D4079002E4515 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 770251AF201D4079002E4515;
-			remoteInfo = "Dont Eat Alone";
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -130,14 +113,12 @@
 		00C2DF0E20B678E70023CF75 /* BackgroundUserFetch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundUserFetch.swift; sourceTree = "<group>"; };
 		00C2DF1020B6790D0023CF75 /* keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = keys.swift; sourceTree = "<group>"; };
 		0934E0A890547BC163C95F6D /* Pods-Bruin BiteUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bruin BiteUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bruin BiteUITests/Pods-Bruin BiteUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		1CE69B303700A4BB00F6EBEA /* Pods-Dont Eat AloneUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dont Eat AloneUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Dont Eat AloneUITests/Pods-Dont Eat AloneUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		2297A93A4C0BCDCDA33D889F /* Pods-Bruin BiteTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bruin BiteTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bruin BiteTests/Pods-Bruin BiteTests.release.xcconfig"; sourceTree = "<group>"; };
-		266C33EA78F943413B244B8D /* Pods-Dont Eat Alone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dont Eat Alone.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Dont Eat Alone/Pods-Dont Eat Alone.debug.xcconfig"; sourceTree = "<group>"; };
 		2A03D93D20B76529004EFC97 /* TimePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerViewController.swift; sourceTree = "<group>"; };
 		2A03D94220B76C91004EFC97 /* PopupViewControllers.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PopupViewControllers.storyboard; sourceTree = "<group>"; };
 		2A03D94520B77A1A004EFC97 /* TimePickerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerCollectionViewCell.swift; sourceTree = "<group>"; };
 		2A03D94720B7AFA7004EFC97 /* HomeProfileStaticTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeProfileStaticTableViewController.swift; sourceTree = "<group>"; };
-		2A36F1E320B969FF00F39689 /* Dont Eat Alone.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Dont Eat Alone.entitlements"; sourceTree = "<group>"; };
+		2A62E49220BC99D2008075B0 /* Menu.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Menu.storyboard; sourceTree = "<group>"; };
 		2A68339120BC2113000DCAA4 /* UIButtonSignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonSignUp.swift; sourceTree = "<group>"; };
 		2A744894203BBDBC00793AD3 /* MenuCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCardView.swift; sourceTree = "<group>"; };
 		2A744896203BBEDA00793AD3 /* MenuCardView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuCardView.xib; sourceTree = "<group>"; };
@@ -158,9 +139,7 @@
 		2AFB41322047DD86004025F9 /* ItemDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailViewController.swift; sourceTree = "<group>"; };
 		2AFB41362047F0F2004025F9 /* MenuCardCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCardCollectionViewCell.swift; sourceTree = "<group>"; };
 		2B952C66202BDBB200F27727 /* WeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekView.swift; sourceTree = "<group>"; };
-		486D54EAA20C6801495DCB82 /* Pods_Dont_Eat_AloneUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Dont_Eat_AloneUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5501BD2F8F60C3BBB00E20F6 /* Pods-Bruin Bite.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bruin Bite.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bruin Bite/Pods-Bruin Bite.release.xcconfig"; sourceTree = "<group>"; };
-		613DC376493206C810E3C951 /* Pods_Dont_Eat_AloneTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Dont_Eat_AloneTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		72949D574D1FB4DE5AE9AB25 /* Pods-Bruin BiteTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bruin BiteTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bruin BiteTests/Pods-Bruin BiteTests.debug.xcconfig"; sourceTree = "<group>"; };
 		770251B0201D4079002E4515 /* Bruin Bite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bruin Bite.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		770251B3201D4079002E4515 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -169,20 +148,11 @@
 		770251BC201D4079002E4515 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		770251BF201D4079002E4515 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		770251C1201D4079002E4515 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		770251C6201D4079002E4515 /* Bruin BiteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Bruin BiteTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		770251CA201D4079002E4515 /* Dont_Eat_AloneTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dont_Eat_AloneTests.swift; sourceTree = "<group>"; };
-		770251CC201D4079002E4515 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		770251D1201D4079002E4515 /* Bruin BiteUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Bruin BiteUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		770251D5201D4079002E4515 /* Dont_Eat_AloneUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dont_Eat_AloneUITests.swift; sourceTree = "<group>"; };
-		770251D7201D4079002E4515 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		770251E3201D4182002E4515 /* Moya_Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Moya_Service.swift; sourceTree = "<group>"; };
 		770CDEAD20266B0800658925 /* ColoredCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColoredCircle.swift; sourceTree = "<group>"; };
 		770CDEAF20266B6000658925 /* ActivityLevelBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityLevelBar.swift; sourceTree = "<group>"; };
 		7794996F203BD10400F3B0ED /* AllergyFilterButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllergyFilterButton.swift; sourceTree = "<group>"; };
 		77949971203BD12B00F3B0ED /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		95F72EF072C1BCB2A65BF28C /* Pods-Dont Eat AloneTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dont Eat AloneTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Dont Eat AloneTests/Pods-Dont Eat AloneTests.debug.xcconfig"; sourceTree = "<group>"; };
-		9F5BCEA43F1BA73C8236EDF3 /* Pods-Dont Eat AloneUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dont Eat AloneUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Dont Eat AloneUITests/Pods-Dont Eat AloneUITests.release.xcconfig"; sourceTree = "<group>"; };
-		AB594487D41E5DD55611BCEC /* Pods_Dont_Eat_Alone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Dont_Eat_Alone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDDE7C6D207AF6840008A677 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		BDDE7C6F207B04590008A677 /* MatchingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchingListViewController.swift; sourceTree = "<group>"; };
 		BDDE7C71207B04D00008A677 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
@@ -199,7 +169,6 @@
 		C0AD0D33204B4EA9008E1206 /* TopBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBar.swift; sourceTree = "<group>"; };
 		C0CD6769203C15CC006B265D /* TimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeView.swift; sourceTree = "<group>"; };
 		C0CD676B203C1B19006B265D /* ColoredBezel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColoredBezel.swift; sourceTree = "<group>"; };
-		C1CD237D5575B0963C324829 /* Pods_Bruin_BiteTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bruin_BiteTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC9C8F47B5A0B8DB48A43377 /* Pods-Bruin BiteUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bruin BiteUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bruin BiteUITests/Pods-Bruin BiteUITests.release.xcconfig"; sourceTree = "<group>"; };
 		D31D0C9107AF44D73AA341C1 /* Pods_Bruin_Bite.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bruin_Bite.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC5FC98320B788C400DFCCC7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Dont Eat Alone/Base.lproj/Profile.storyboard"; sourceTree = "<group>"; };
@@ -209,10 +178,7 @@
 		DCF0E2E120B260A90036A32F /* CreateProfilePt2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProfilePt2ViewController.swift; sourceTree = "<group>"; };
 		DCF0E2E320B260BA0036A32F /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		DCF0E2E520B260CC0036A32F /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
-		DF44B8487E96FD9841E4D83A /* Pods-Dont Eat Alone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dont Eat Alone.release.xcconfig"; path = "Pods/Target Support Files/Pods-Dont Eat Alone/Pods-Dont Eat Alone.release.xcconfig"; sourceTree = "<group>"; };
-		EF0EBD86FFEBAFFA12C9C06E /* Pods-Dont Eat AloneTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dont Eat AloneTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Dont Eat AloneTests/Pods-Dont Eat AloneTests.release.xcconfig"; sourceTree = "<group>"; };
 		FDC82735AAF52033CD40ACDF /* Pods-Bruin Bite.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bruin Bite.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bruin Bite/Pods-Bruin Bite.debug.xcconfig"; sourceTree = "<group>"; };
-		FFB422BA884109EBFA9AD0E9 /* Pods_Bruin_BiteUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bruin_BiteUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -231,34 +197,12 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		770251C3201D4079002E4515 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				97E3CB3E0F330B12C3696BE7 /* Pods_Bruin_BiteTests.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		770251CE201D4079002E4515 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				73F26D7E9B43FA43D80236FD /* Pods_Bruin_BiteUITests.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		1C5B3B524C187B41721DC5CD /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				266C33EA78F943413B244B8D /* Pods-Dont Eat Alone.debug.xcconfig */,
-				DF44B8487E96FD9841E4D83A /* Pods-Dont Eat Alone.release.xcconfig */,
-				95F72EF072C1BCB2A65BF28C /* Pods-Dont Eat AloneTests.debug.xcconfig */,
-				EF0EBD86FFEBAFFA12C9C06E /* Pods-Dont Eat AloneTests.release.xcconfig */,
-				1CE69B303700A4BB00F6EBEA /* Pods-Dont Eat AloneUITests.debug.xcconfig */,
-				9F5BCEA43F1BA73C8236EDF3 /* Pods-Dont Eat AloneUITests.release.xcconfig */,
 				FDC82735AAF52033CD40ACDF /* Pods-Bruin Bite.debug.xcconfig */,
 				5501BD2F8F60C3BBB00E20F6 /* Pods-Bruin Bite.release.xcconfig */,
 				72949D574D1FB4DE5AE9AB25 /* Pods-Bruin BiteTests.debug.xcconfig */,
@@ -407,8 +351,6 @@
 			isa = PBXGroup;
 			children = (
 				770251B2201D4079002E4515 /* Bruin Bite */,
-				770251C9201D4079002E4515 /* Bruin BiteTests */,
-				770251D4201D4079002E4515 /* Bruin BiteUITests */,
 				2AFA409520BBD7A00007FB85 /* NotificationService */,
 				770251B1201D4079002E4515 /* Products */,
 				1C5B3B524C187B41721DC5CD /* Pods */,
@@ -420,8 +362,6 @@
 			isa = PBXGroup;
 			children = (
 				770251B0201D4079002E4515 /* Bruin Bite.app */,
-				770251C6201D4079002E4515 /* Bruin BiteTests.xctest */,
-				770251D1201D4079002E4515 /* Bruin BiteUITests.xctest */,
 				2AFA409420BBD7A00007FB85 /* NotificationService.appex */,
 			);
 			name = Products;
@@ -431,7 +371,6 @@
 			isa = PBXGroup;
 			children = (
 				BF41FB5F20BC2F390010306E /* Storyboards */,
-				2A36F1E320B969FF00F39689 /* Dont Eat Alone.entitlements */,
 				2A94477B2055F5570033B6C6 /* View Controllers */,
 				2A94477A2055F50B0033B6C6 /* Views */,
 				2A744891203B8E9F00793AD3 /* Models */,
@@ -448,33 +387,10 @@
 			path = "Bruin Bite";
 			sourceTree = "<group>";
 		};
-		770251C9201D4079002E4515 /* Bruin BiteTests */ = {
-			isa = PBXGroup;
-			children = (
-				770251CA201D4079002E4515 /* Dont_Eat_AloneTests.swift */,
-				770251CC201D4079002E4515 /* Info.plist */,
-			);
-			path = "Bruin BiteTests";
-			sourceTree = "<group>";
-		};
-		770251D4201D4079002E4515 /* Bruin BiteUITests */ = {
-			isa = PBXGroup;
-			children = (
-				770251D5201D4079002E4515 /* Dont_Eat_AloneUITests.swift */,
-				770251D7201D4079002E4515 /* Info.plist */,
-			);
-			path = "Bruin BiteUITests";
-			sourceTree = "<group>";
-		};
 		898B4B92943EFC7BAF49F286 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				AB594487D41E5DD55611BCEC /* Pods_Dont_Eat_Alone.framework */,
-				613DC376493206C810E3C951 /* Pods_Dont_Eat_AloneTests.framework */,
-				486D54EAA20C6801495DCB82 /* Pods_Dont_Eat_AloneUITests.framework */,
 				D31D0C9107AF44D73AA341C1 /* Pods_Bruin_Bite.framework */,
-				C1CD237D5575B0963C324829 /* Pods_Bruin_BiteTests.framework */,
-				FFB422BA884109EBFA9AD0E9 /* Pods_Bruin_BiteUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -490,6 +406,7 @@
 		BF41FB5F20BC2F390010306E /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				2A62E49220BC99D2008075B0 /* Menu.storyboard */,
 				2AFA40B420BC08200007FB85 /* Matching.storyboard */,
 				770251B9201D4079002E4515 /* Main.storyboard */,
 				DC5FC98220B788C400DFCCC7 /* Profile.storyboard */,
@@ -553,48 +470,6 @@
 			productReference = 770251B0201D4079002E4515 /* Bruin Bite.app */;
 			productType = "com.apple.product-type.application";
 		};
-		770251C5201D4079002E4515 /* Bruin BiteTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 770251DD201D4079002E4515 /* Build configuration list for PBXNativeTarget "Bruin BiteTests" */;
-			buildPhases = (
-				1DE3B015D4DCEE39A622FF08 /* [CP] Check Pods Manifest.lock */,
-				770251C2201D4079002E4515 /* Sources */,
-				770251C3201D4079002E4515 /* Frameworks */,
-				770251C4201D4079002E4515 /* Resources */,
-				3679BA71C829709F7189AA68 /* [CP] Embed Pods Frameworks */,
-				A8B69BF10B84B6E8397ED076 /* [CP] Copy Pods Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				770251C8201D4079002E4515 /* PBXTargetDependency */,
-			);
-			name = "Bruin BiteTests";
-			productName = "Dont Eat AloneTests";
-			productReference = 770251C6201D4079002E4515 /* Bruin BiteTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		770251D0201D4079002E4515 /* Bruin BiteUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 770251E0201D4079002E4515 /* Build configuration list for PBXNativeTarget "Bruin BiteUITests" */;
-			buildPhases = (
-				9CD354889BDF636A445503C0 /* [CP] Check Pods Manifest.lock */,
-				770251CD201D4079002E4515 /* Sources */,
-				770251CE201D4079002E4515 /* Frameworks */,
-				770251CF201D4079002E4515 /* Resources */,
-				FD36A9FC530660C852BA74D2 /* [CP] Embed Pods Frameworks */,
-				D12A9D2583C5E71D9DD87ED7 /* [CP] Copy Pods Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				770251D3201D4079002E4515 /* PBXTargetDependency */,
-			);
-			name = "Bruin BiteUITests";
-			productName = "Dont Eat AloneUITests";
-			productReference = 770251D1201D4079002E4515 /* Bruin BiteUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -618,16 +493,6 @@
 							};
 						};
 					};
-					770251C5201D4079002E4515 = {
-						CreatedOnToolsVersion = 9.2;
-						ProvisioningStyle = Automatic;
-						TestTargetID = 770251AF201D4079002E4515;
-					};
-					770251D0201D4079002E4515 = {
-						CreatedOnToolsVersion = 9.2;
-						ProvisioningStyle = Automatic;
-						TestTargetID = 770251AF201D4079002E4515;
-					};
 				};
 			};
 			buildConfigurationList = 770251AB201D4079002E4515 /* Build configuration list for PBXProject "Bruin Bite" */;
@@ -644,8 +509,6 @@
 			projectRoot = "";
 			targets = (
 				770251AF201D4079002E4515 /* Bruin Bite */,
-				770251C5201D4079002E4515 /* Bruin BiteTests */,
-				770251D0201D4079002E4515 /* Bruin BiteUITests */,
 				2AFA409320BBD7A00007FB85 /* NotificationService */,
 			);
 		};
@@ -666,6 +529,7 @@
 				BF5D97E220B973570086D451 /* Chat.storyboard in Resources */,
 				2A744897203BBEDA00793AD3 /* MenuCardView.xib in Resources */,
 				2A03D94320B76C92004EFC97 /* PopupViewControllers.storyboard in Resources */,
+				2A62E49320BC99D2008075B0 /* Menu.storyboard in Resources */,
 				770251C0201D4079002E4515 /* LaunchScreen.storyboard in Resources */,
 				DC5FC98420B788C400DFCCC7 /* Profile.storyboard in Resources */,
 				2AFA40B520BC08200007FB85 /* Matching.storyboard in Resources */,
@@ -674,74 +538,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		770251C4201D4079002E4515 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		770251CF201D4079002E4515 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1DE3B015D4DCEE39A622FF08 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Bruin BiteTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		3679BA71C829709F7189AA68 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Bruin BiteTests/Pods-Bruin BiteTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		9CD354889BDF636A445503C0 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Bruin BiteUITests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 		9DB29EBED83346BDBACE0D17 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -760,21 +559,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A8B69BF10B84B6E8397ED076 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Bruin BiteTests/Pods-Bruin BiteTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		C79CDE3F576335013756115F /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -788,21 +572,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Bruin Bite/Pods-Bruin Bite-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D12A9D2583C5E71D9DD87ED7 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Bruin BiteUITests/Pods-Bruin BiteUITests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D601296F579F59F8E568D410 /* [CP] Embed Pods Frameworks */ = {
@@ -845,21 +614,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Bruin Bite/Pods-Bruin Bite-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		FD36A9FC530660C852BA74D2 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Bruin BiteUITests/Pods-Bruin BiteUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -936,22 +690,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		770251C2201D4079002E4515 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				770251CB201D4079002E4515 /* Dont_Eat_AloneTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		770251CD201D4079002E4515 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				770251D6201D4079002E4515 /* Dont_Eat_AloneUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -959,16 +697,6 @@
 			isa = PBXTargetDependency;
 			target = 2AFA409320BBD7A00007FB85 /* NotificationService */;
 			targetProxy = 2AFA409920BBD7A00007FB85 /* PBXContainerItemProxy */;
-		};
-		770251C8201D4079002E4515 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 770251AF201D4079002E4515 /* Bruin Bite */;
-			targetProxy = 770251C7201D4079002E4515 /* PBXContainerItemProxy */;
-		};
-		770251D3201D4079002E4515 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 770251AF201D4079002E4515 /* Bruin Bite */;
-			targetProxy = 770251D2201D4079002E4515 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1185,72 +913,6 @@
 			};
 			name = Release;
 		};
-		770251DE201D4079002E4515 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 72949D574D1FB4DE5AE9AB25 /* Pods-Bruin BiteTests.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = "Bruin BiteTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "Bruin-Bite.Bruin-BiteTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Bruin Bite.app/Bruin Bite";
-			};
-			name = Debug;
-		};
-		770251DF201D4079002E4515 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2297A93A4C0BCDCDA33D889F /* Pods-Bruin BiteTests.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = "Bruin BiteTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "Bruin-Bite.Bruin-BiteTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Bruin Bite.app/Bruin Bite";
-			};
-			name = Release;
-		};
-		770251E1201D4079002E4515 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0934E0A890547BC163C95F6D /* Pods-Bruin BiteUITests.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = "Bruin BiteUITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "Bruin-Bite.Bruin-BiteUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "Dont Eat Alone";
-			};
-			name = Debug;
-		};
-		770251E2201D4079002E4515 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = CC9C8F47B5A0B8DB48A43377 /* Pods-Bruin BiteUITests.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = "Bruin BiteUITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "Bruin-Bite.Bruin-BiteUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "Dont Eat Alone";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1277,24 +939,6 @@
 			buildConfigurations = (
 				770251DB201D4079002E4515 /* Debug */,
 				770251DC201D4079002E4515 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		770251DD201D4079002E4515 /* Build configuration list for PBXNativeTarget "Bruin BiteTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				770251DE201D4079002E4515 /* Debug */,
-				770251DF201D4079002E4515 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		770251E0201D4079002E4515 /* Build configuration list for PBXNativeTarget "Bruin BiteUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				770251E1201D4079002E4515 /* Debug */,
-				770251E2201D4079002E4515 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

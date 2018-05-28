@@ -2,12 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/ayush/Documents/Development/DevX/UCLAEats-iOS/Bruin Bite.xcodeproj">
+      location = "group:Bruin Bite.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:Bruin Bite.xcodeproj">
    </FileRef>
 </Workspace>

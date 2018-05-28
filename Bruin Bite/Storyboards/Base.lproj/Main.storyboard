@@ -11,184 +11,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--MenuVC-->
-        <scene sceneID="hNz-n2-bh7">
-            <objects>
-                <viewController id="9pv-A4-QxB" customClass="MenuVC" customModule="Dont_Eat_Alone" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="tsR-hK-woN">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="H9C-p3-hMb">
-                                <rect key="frame" x="0.0" y="80" width="375" height="419"/>
-                                <color key="backgroundColor" red="0.95688390729999995" green="0.95684528349999998" blue="0.9568617344" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="20" id="rXL-ol-5Oo">
-                                    <size key="itemSize" width="365" height="214"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="menuCardCell" id="3Wq-Cu-Ohf" customClass="MenuCardCollectionViewCell" customModule="Dont_Eat_Alone" customModuleProvider="target">
-                                        <rect key="frame" x="5" y="0.0" width="365" height="214"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="365" height="214"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5p1-LZ-0pv" userLabel="Gray Background View">
-                                                    <rect key="frame" x="0.0" y="0.0" width="365" height="27"/>
-                                                    <color key="backgroundColor" red="0.95688390729999995" green="0.95684528349999998" blue="0.9568617344" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="27" id="B7c-PO-ypB"/>
-                                                    </constraints>
-                                                </view>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W3F-Bz-ncT" customClass="MenuCardView" customModule="Dont_Eat_Alone" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="-30" width="365" height="244"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
-                                                            <real key="value" value="4.5"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
-                                                            <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
-                                                            <size key="value" width="0.0" height="3"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
-                                                            <real key="value" value="0.5"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
-                                                </view>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gf5-xc-tYP">
-                                                    <rect key="frame" x="0.0" y="172" width="365" height="42"/>
-                                                    <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="42" id="IsT-NG-zPc"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <state key="normal" title="View More">
-                                                        <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </state>
-                                                    <connections>
-                                                        <action selector="viewMorePressed:" destination="3Wq-Cu-Ohf" eventType="touchUpInside" id="uAU-LA-s5R"/>
-                                                    </connections>
-                                                </button>
-                                            </subviews>
-                                        </view>
-                                        <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="Gf5-xc-tYP" secondAttribute="bottom" id="1g2-EP-Ffn"/>
-                                            <constraint firstItem="W3F-Bz-ncT" firstAttribute="top" secondItem="3Wq-Cu-Ohf" secondAttribute="top" constant="-30" id="7Ce-eL-GjU"/>
-                                            <constraint firstItem="5p1-LZ-0pv" firstAttribute="top" secondItem="3Wq-Cu-Ohf" secondAttribute="top" id="8iI-vh-oXn"/>
-                                            <constraint firstAttribute="trailing" secondItem="W3F-Bz-ncT" secondAttribute="trailing" id="BJz-zX-ot2"/>
-                                            <constraint firstItem="Gf5-xc-tYP" firstAttribute="leading" secondItem="3Wq-Cu-Ohf" secondAttribute="leading" id="DhL-De-dSN"/>
-                                            <constraint firstAttribute="trailing" secondItem="Gf5-xc-tYP" secondAttribute="trailing" id="M3T-Po-eRv"/>
-                                            <constraint firstAttribute="trailing" secondItem="5p1-LZ-0pv" secondAttribute="trailing" id="RVq-wb-tf6"/>
-                                            <constraint firstAttribute="bottom" secondItem="W3F-Bz-ncT" secondAttribute="bottom" id="Ucy-m7-wyt"/>
-                                            <constraint firstItem="5p1-LZ-0pv" firstAttribute="leading" secondItem="3Wq-Cu-Ohf" secondAttribute="leading" id="Zzc-7Z-j9c"/>
-                                            <constraint firstItem="Gf5-xc-tYP" firstAttribute="centerX" secondItem="3Wq-Cu-Ohf" secondAttribute="centerX" id="fE7-nB-4oy"/>
-                                            <constraint firstItem="W3F-Bz-ncT" firstAttribute="leading" secondItem="3Wq-Cu-Ohf" secondAttribute="leading" id="iIA-am-jh9"/>
-                                        </constraints>
-                                        <connections>
-                                            <outlet property="menuCard" destination="W3F-Bz-ncT" id="xzH-rH-m85"/>
-                                            <outlet property="viewMoreButton" destination="Gf5-xc-tYP" id="Rbo-ME-tOW"/>
-                                        </connections>
-                                    </collectionViewCell>
-                                </cells>
-                            </collectionView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DoT-Hh-LNo" userLabel="BackgroundTopBar">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="82"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="82" id="sl1-BF-aI0"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fRI-GQ-wjj" userLabel="Allergens View" customClass="AllergensBarScrollView" customModule="Dont_Eat_Alone" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="499" width="375" height="55"/>
-                                <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="55" id="mHn-h5-kFh"/>
-                                </constraints>
-                            </scrollView>
-                        </subviews>
-                        <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="tintColor" red="0.95688390729999995" green="0.95684528349999998" blue="0.9568617344" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                        <constraints>
-                            <constraint firstItem="fRI-GQ-wjj" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" id="8cS-SA-jny"/>
-                            <constraint firstItem="H9C-p3-hMb" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" constant="80" id="CGj-th-SsE"/>
-                            <constraint firstItem="DoT-Hh-LNo" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" id="K4U-dj-W9x"/>
-                            <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="fRI-GQ-wjj" secondAttribute="trailing" id="LDr-dc-cQb"/>
-                            <constraint firstItem="H9C-p3-hMb" firstAttribute="trailing" secondItem="PQr-Ze-W5v" secondAttribute="trailing" id="Vfp-VQ-pba"/>
-                            <constraint firstItem="H9C-p3-hMb" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" id="ezl-rr-OlX"/>
-                            <constraint firstItem="fRI-GQ-wjj" firstAttribute="bottom" secondItem="PQr-Ze-W5v" secondAttribute="bottom" id="gjf-bK-ZF7"/>
-                            <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="DoT-Hh-LNo" secondAttribute="trailing" id="i5u-Sz-fXK"/>
-                            <constraint firstItem="fRI-GQ-wjj" firstAttribute="top" secondItem="H9C-p3-hMb" secondAttribute="bottom" id="xKN-ml-oJK"/>
-                            <constraint firstItem="DoT-Hh-LNo" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" id="yCD-JF-0EZ"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="moO-8J-WrT">
-                        <barButtonItem key="backBarButtonItem" title=" " id="yiO-24-r0l"/>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="allergensBar" destination="fRI-GQ-wjj" id="VHL-kb-3Yb"/>
-                        <outlet property="backgroundTopBar" destination="DoT-Hh-LNo" id="mh4-dU-Vvb"/>
-                        <outlet property="menuCardsCollection" destination="H9C-p3-hMb" id="hir-Sr-zQM"/>
-                        <segue destination="G2B-ru-Cr9" kind="show" identifier="segueToItemDetailVC" id="lgn-hs-Vbn"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1688.8" y="-320.68965517241384"/>
-        </scene>
-        <!--Item Detail View Controller-->
-        <scene sceneID="8no-JV-0B6">
-            <objects>
-                <viewController id="G2B-ru-Cr9" customClass="ItemDetailViewController" customModule="Dont_Eat_Alone" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="aZ5-99-Wlm">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nJW-37-XZM">
-                                <rect key="frame" x="0.0" y="403.5" width="375" height="150.5"/>
-                                <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </view>
-                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pwm-cg-sxf">
-                                <rect key="frame" x="72.5" y="23.5" width="230" height="360"/>
-                                <color key="backgroundColor" red="0.65110021829999998" green="0.65865963699999996" blue="0.66666835550000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="230" id="1mY-Ja-A8m"/>
-                                    <constraint firstAttribute="height" constant="360" id="A4D-rD-kNg"/>
-                                </constraints>
-                                <wkWebViewConfiguration key="configuration">
-                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
-                                    <wkPreferences key="preferences"/>
-                                </wkWebViewConfiguration>
-                            </wkWebView>
-                        </subviews>
-                        <color key="backgroundColor" red="0.027450980390000001" green="0.2901960784" blue="0.46666666670000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                        <constraints>
-                            <constraint firstItem="nJW-37-XZM" firstAttribute="height" secondItem="aZ5-99-Wlm" secondAttribute="height" multiplier="1:4" id="Bgh-rl-oMq"/>
-                            <constraint firstItem="Pwm-cg-sxf" firstAttribute="top" secondItem="EtT-jG-4fG" secondAttribute="top" constant="23.5" id="GkR-kr-ek7"/>
-                            <constraint firstItem="nJW-37-XZM" firstAttribute="trailing" secondItem="EtT-jG-4fG" secondAttribute="trailing" id="UmS-dU-9G2"/>
-                            <constraint firstItem="Pwm-cg-sxf" firstAttribute="centerX" secondItem="EtT-jG-4fG" secondAttribute="centerX" id="h1R-BW-bAX"/>
-                            <constraint firstItem="nJW-37-XZM" firstAttribute="bottom" secondItem="EtT-jG-4fG" secondAttribute="bottom" id="irN-h0-OQw"/>
-                            <constraint firstItem="nJW-37-XZM" firstAttribute="leading" secondItem="EtT-jG-4fG" secondAttribute="leading" id="oot-CB-eDp"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="EtT-jG-4fG"/>
-                    </view>
-                    <connections>
-                        <outlet property="ingredientsBar" destination="nJW-37-XZM" id="C0m-iq-rEZ"/>
-                        <outlet property="webView" destination="Pwm-cg-sxf" id="625-lP-qPa"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ZmK-mX-m7T" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2632.8000000000002" y="-191.1544227886057"/>
-        </scene>
         <!--searchingNavigationViewController-->
         <scene sceneID="4fy-ZA-ukb">
             <objects>
@@ -197,12 +19,12 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iqz-By-L9r" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-755" y="720"/>
+            <point key="canvasLocation" x="-392" y="455"/>
         </scene>
         <!--Profile-->
         <scene sceneID="v0O-Ga-TGB">
             <objects>
-                <viewController id="nzh-LT-kup" customClass="ProfileViewController" customModule="Dont_Eat_Alone" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="nzh-LT-kup" customClass="ProfileViewController" customModule="Bruin_Bite" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KoU-87-KGi">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -304,12 +126,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hqO-b6-4Ri" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2.3999999999999999" y="1090.704647676162"/>
+            <point key="canvasLocation" x="484" y="771"/>
         </scene>
         <!--Bio View Controller-->
         <scene sceneID="ndW-o8-rCa">
             <objects>
-                <viewController id="gIh-FW-NtU" customClass="BioViewController" customModule="Dont_Eat_Alone" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="gIh-FW-NtU" customClass="BioViewController" customModule="Bruin_Bite" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8c0-dI-g17">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -371,7 +193,7 @@
         <!--Registration View Controller-->
         <scene sceneID="D2H-HL-KRJ">
             <objects>
-                <viewController storyboardIdentifier="RegistrationView" id="mb2-NP-bC3" customClass="RegistrationViewController" customModule="Dont_Eat_Alone" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RegistrationView" id="mb2-NP-bC3" customClass="RegistrationViewController" customModule="Bruin_Bite" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Qe2-w3-d0W">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -629,10 +451,10 @@
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
-                        <segue destination="RAT-qB-Fj9" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
+                        <segue destination="nq0-jD-yUW" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="M83-fu-UsU" kind="relationship" relationship="viewControllers" id="2CH-Zb-ZQr"/>
-                        <segue destination="nzh-LT-kup" kind="relationship" relationship="viewControllers" id="n8F-FK-ulH"/>
                         <segue destination="bUz-zA-Ew8" kind="relationship" relationship="viewControllers" id="Kq0-p4-ere"/>
+                        <segue destination="nzh-LT-kup" kind="relationship" relationship="viewControllers" id="n8F-FK-ulH"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
@@ -647,37 +469,12 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MMd-mE-QF2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1011" y="368"/>
-        </scene>
-        <!--Menu-->
-        <scene sceneID="ieK-Zc-Zn1">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="RAT-qB-Fj9" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Menu" image="Menu" id="acW-dT-cKf"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="Q4t-fk-ftE">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="barTintColor" red="0.027450980390000001" green="0.2901960784" blue="0.46666666670000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                        <textAttributes key="titleTextAttributes">
-                            <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="20"/>
-                            <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        </textAttributes>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="9pv-A4-QxB" kind="relationship" relationship="rootViewController" id="JpJ-xp-RtK"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="D7A-yq-DAM" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="749.60000000000002" y="-320.68965517241384"/>
+            <point key="canvasLocation" x="-2" y="455"/>
         </scene>
         <!--LoginViewController-->
         <scene sceneID="gNu-Hl-IrQ">
             <objects>
-                <viewController title="LoginViewController" id="8gz-gb-DS3" customClass="LoginViewController" customModule="Dont_Eat_Alone" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="LoginViewController" id="8gz-gb-DS3" customClass="LoginViewController" customModule="Bruin_Bite" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3gj-1C-3xi">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -774,12 +571,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5BW-g6-aqu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3692" y="-333"/>
+            <point key="canvasLocation" x="-3510" y="-932"/>
         </scene>
         <!--Sign In View Controller-->
         <scene sceneID="4i5-iO-M0t">
             <objects>
-                <viewController id="7xm-ve-xyf" customClass="SignInViewController" customModule="Dont_Eat_Alone" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="7xm-ve-xyf" customClass="SignInViewController" customModule="Bruin_Bite" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hGL-ds-VKk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -922,12 +719,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Nz-QJ-3ED" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3692" y="716"/>
+            <point key="canvasLocation" x="-2735" y="-477"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="tUF-fO-1dm">
             <objects>
-                <viewController id="jrE-gA-JCy" customClass="SignUpViewController" customModule="Dont_Eat_Alone" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="jrE-gA-JCy" customClass="SignUpViewController" customModule="Bruin_Bite" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OUS-eD-UMH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1109,12 +906,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SOP-RA-OYr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2449" y="-1509"/>
+            <point key="canvasLocation" x="-2735" y="-1247"/>
         </scene>
         <!--Create Profile View Controller-->
         <scene sceneID="YLj-DL-3cg">
             <objects>
-                <viewController id="Re2-AQ-gBu" customClass="CreateProfileViewController" customModule="Dont_Eat_Alone" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Re2-AQ-gBu" customClass="CreateProfileViewController" customModule="Bruin_Bite" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0N9-RA-clT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1230,12 +1027,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2cI-70-02Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1369" y="-1509"/>
+            <point key="canvasLocation" x="-2025" y="-932"/>
         </scene>
         <!--Create Profile Pt2 View Controller-->
         <scene sceneID="72I-ff-McM">
             <objects>
-                <viewController id="yIm-xr-gFV" customClass="CreateProfilePt2ViewController" customModule="Dont_Eat_Alone" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="yIm-xr-gFV" customClass="CreateProfilePt2ViewController" customModule="Bruin_Bite" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gD2-1Y-LLv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1383,7 +1180,7 @@
         <!--Home Profile Static Table View Controller-->
         <scene sceneID="59z-In-R4x">
             <objects>
-                <tableViewController id="h3B-V1-yct" customClass="HomeProfileStaticTableViewController" customModule="Dont_Eat_Alone" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="h3B-V1-yct" customClass="HomeProfileStaticTableViewController" customModule="Bruin_Bite" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="0mn-c2-nBr">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="195"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1504,7 +1301,17 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6JR-x5-ixo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="750" y="1272"/>
+            <point key="canvasLocation" x="1279" y="942"/>
+        </scene>
+        <!--Menu-->
+        <scene sceneID="aXP-wd-fC2">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Menu" id="nq0-jD-yUW" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="yT0-gV-Ipj"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BaW-OJ-OMX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-762" y="455"/>
         </scene>
     </scenes>
     <resources>
@@ -1512,7 +1319,6 @@
         <image name="Feedback" width="28" height="25"/>
         <image name="Line" width="242" height="2"/>
         <image name="LoginLogo" width="108" height="144"/>
-        <image name="Menu" width="22" height="18"/>
         <image name="NextArrow" width="46" height="46"/>
         <image name="PrevArrow" width="12" height="17"/>
         <image name="Profile" width="24" height="23"/>
@@ -1521,9 +1327,9 @@
         <image name="x" width="15" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="RdZ-oP-1QG"/>
-        <segue reference="jEo-FG-EqQ"/>
-        <segue reference="WWJ-TC-Qti"/>
-        <segue reference="6ji-u5-cDs"/>
+        <segue reference="1eE-UU-7Ui"/>
+        <segue reference="OQb-Mg-l73"/>
+        <segue reference="6mL-fa-w2t"/>
+        <segue reference="Z2J-D1-wO8"/>
     </inferredMetricsTieBreakers>
 </document>
