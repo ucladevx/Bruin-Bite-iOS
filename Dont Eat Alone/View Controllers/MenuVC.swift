@@ -206,7 +206,7 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
             if (a.isAvailable && Array(data.keys)[indexPath.row] == a.location) {
                 cell.menuCard.activityLevelBar.percentage = CGFloat(a.percent)/100
             }
-            else{
+            else if (Array(data.keys)[indexPath.row] == a.location){
                 cell.menuCard.activityLevelBar.percentage = CGFloat(0)
             }
         }
