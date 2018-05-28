@@ -19,7 +19,7 @@ class MenuCardCollectionViewCell: UICollectionViewCell {
     
     var parentView: UICollectionView!
     var index: IndexPath = []
-    var computedHeight: CGFloat = 215
+    var computedHeight: CGFloat = 235
     
     @IBAction func viewMorePressed(_ sender: UIButton) {
         var diff = menuCard.data.count - 3

@@ -14,6 +14,7 @@
                 <outlet property="activityLevelBar" destination="7Eq-i4-wgN" id="l7z-t8-4yO"/>
                 <outlet property="diningHallHours" destination="Hkr-f8-X34" id="XnI-C0-Fcd"/>
                 <outlet property="diningHallName" destination="W8w-Qi-BOa" id="OqR-Ie-erC"/>
+                <outlet property="greyBackground" destination="NBk-el-Wrj" id="cYf-rb-pZA"/>
                 <outlet property="menuCardView" destination="iN0-l3-epB" id="6Ub-R4-c3o"/>
                 <outlet property="tableView" destination="2j7-BS-qia" id="CDR-PL-z33"/>
             </connections>
@@ -23,6 +24,12 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NBk-el-Wrj" userLabel="Gray Background View">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.95688390729999995" green="0.95684528349999998" blue="0.9568617344" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <viewLayoutGuide key="safeArea" id="zOG-G7-tau"/>
+                </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W8w-Qi-BOa">
                     <rect key="frame" x="16" y="323" width="192" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>

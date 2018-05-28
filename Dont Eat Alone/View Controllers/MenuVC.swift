@@ -38,6 +38,7 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         menuCardsCollection.delegate = self
         menuCardsCollection.dataSource = self
         menuCardsCollection.alwaysBounceVertical = true
+        menuCardsCollection.allowsSelection = false
         
         topBar.frame = CGRect(x:12.5, y:20, width: 350, height: 82)
         topBar.center.x = self.view.center.x
@@ -81,7 +82,7 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
-    let defaultHeight: CGFloat = 215;
+    let defaultHeight: CGFloat = 235;
     var computedHeight: [CGFloat] = [];
         
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -161,6 +162,8 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = menuCardsCollection.dequeueReusableCell(withReuseIdentifier: "menuCardCell", for: indexPath) as! MenuCardCollectionViewCell
         cell.menuCard.tableView.delegate = cell.menuCard
+        cell.menuCard.tableView.isScrollEnabled = false
+        cell.menuCard.tableView.allowsMultipleSelection = false
         cell.menuCard.tableView.dataSource = cell.menuCard
         cell.menuCard.parentVC = self
         
@@ -206,9 +209,9 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
             if (a.isAvailable && Array(data.keys)[indexPath.row] == a.location) {
                 cell.menuCard.activityLevelBar.percentage = CGFloat(a.percent)/100
             }
-            else if (Array(data.keys)[indexPath.row] == a.location){
-                cell.menuCard.activityLevelBar.percentage = CGFloat(0)
-            }
+//            else if (Array(data.keys)[indexPath.row] == a.location){
+//                cell.menuCard.activityLevelBar.percentage = CGFloat(0)
+//            }
         }
         UIView.animate(withDuration: 1.5, delay: 0, options: .curveEaseInOut, animations: {
             cell.menuCard.activityLevelBar.animateBar()
@@ -217,7 +220,7 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-            return 20
+            return 0
     }
         
     func numberOfSections(in tableView: UITableView) -> Int {

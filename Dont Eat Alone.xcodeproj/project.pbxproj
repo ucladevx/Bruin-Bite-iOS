@@ -29,6 +29,8 @@
 		2AB62E6E2048D16B0013CB59 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB62E6D2048D16B0013CB59 /* API.swift */; };
 		2AB62E702048D21D0013CB59 /* ActivityLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB62E6F2048D21D0013CB59 /* ActivityLevel.swift */; };
 		2AD1509320BB2C780043B9C8 /* AllergensBarContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD1509220BB2C770043B9C8 /* AllergensBarContentView.swift */; };
+		2AFA409720BBD7A00007FB85 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFA409620BBD7A00007FB85 /* NotificationService.swift */; };
+		2AFA409B20BBD7A00007FB85 /* NotificationService.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 2AFA409420BBD7A00007FB85 /* NotificationService.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		2AFB41332047DD86004025F9 /* ItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFB41322047DD86004025F9 /* ItemDetailViewController.swift */; };
 		2AFB41372047F0F2004025F9 /* MenuCardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AFB41362047F0F2004025F9 /* MenuCardCollectionViewCell.swift */; };
 		2B952C67202BDBB200F27727 /* WeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B952C66202BDBB200F27727 /* WeekView.swift */; };
@@ -68,6 +70,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		2AFA409920BBD7A00007FB85 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 770251A8201D4079002E4515 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2AFA409320BBD7A00007FB85;
+			remoteInfo = NotificationService;
+		};
 		770251C7201D4079002E4515 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 770251A8201D4079002E4515 /* Project object */;
@@ -83,6 +92,20 @@
 			remoteInfo = "Dont Eat Alone";
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		2AFA409F20BBD7A00007FB85 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				2AFA409B20BBD7A00007FB85 /* NotificationService.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		002244DB20B8C53000CBD1C2 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
@@ -110,6 +133,9 @@
 		2AB62E6D2048D16B0013CB59 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		2AB62E6F2048D21D0013CB59 /* ActivityLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityLevel.swift; sourceTree = "<group>"; };
 		2AD1509220BB2C770043B9C8 /* AllergensBarContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllergensBarContentView.swift; sourceTree = "<group>"; };
+		2AFA409420BBD7A00007FB85 /* NotificationService.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NotificationService.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		2AFA409620BBD7A00007FB85 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		2AFA409820BBD7A00007FB85 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2AFB41322047DD86004025F9 /* ItemDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailViewController.swift; sourceTree = "<group>"; };
 		2AFB41362047F0F2004025F9 /* MenuCardCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCardCollectionViewCell.swift; sourceTree = "<group>"; };
 		2B952C66202BDBB200F27727 /* WeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekView.swift; sourceTree = "<group>"; };
@@ -159,6 +185,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		2AFA409120BBD7A00007FB85 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		770251AD201D4079002E4515 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -308,12 +341,22 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
+		2AFA409520BBD7A00007FB85 /* NotificationService */ = {
+			isa = PBXGroup;
+			children = (
+				2AFA409620BBD7A00007FB85 /* NotificationService.swift */,
+				2AFA409820BBD7A00007FB85 /* Info.plist */,
+			);
+			path = NotificationService;
+			sourceTree = "<group>";
+		};
 		770251A7201D4079002E4515 = {
 			isa = PBXGroup;
 			children = (
 				770251B2201D4079002E4515 /* Dont Eat Alone */,
 				770251C9201D4079002E4515 /* Dont Eat AloneTests */,
 				770251D4201D4079002E4515 /* Dont Eat AloneUITests */,
+				2AFA409520BBD7A00007FB85 /* NotificationService */,
 				770251B1201D4079002E4515 /* Products */,
 				1C5B3B524C187B41721DC5CD /* Pods */,
 				898B4B92943EFC7BAF49F286 /* Frameworks */,
@@ -326,6 +369,7 @@
 				770251B0201D4079002E4515 /* Dont Eat Alone.app */,
 				770251C6201D4079002E4515 /* Dont Eat AloneTests.xctest */,
 				770251D1201D4079002E4515 /* Dont Eat AloneUITests.xctest */,
+				2AFA409420BBD7A00007FB85 /* NotificationService.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -402,6 +446,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		2AFA409320BBD7A00007FB85 /* NotificationService */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2AFA409E20BBD7A00007FB85 /* Build configuration list for PBXNativeTarget "NotificationService" */;
+			buildPhases = (
+				2AFA409020BBD7A00007FB85 /* Sources */,
+				2AFA409120BBD7A00007FB85 /* Frameworks */,
+				2AFA409220BBD7A00007FB85 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NotificationService;
+			productName = NotificationService;
+			productReference = 2AFA409420BBD7A00007FB85 /* NotificationService.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		770251AF201D4079002E4515 /* Dont Eat Alone */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 770251DA201D4079002E4515 /* Build configuration list for PBXNativeTarget "Dont Eat Alone" */;
@@ -412,10 +473,12 @@
 				770251AE201D4079002E4515 /* Resources */,
 				D601296F579F59F8E568D410 /* [CP] Embed Pods Frameworks */,
 				C79CDE3F576335013756115F /* [CP] Copy Pods Resources */,
+				2AFA409F20BBD7A00007FB85 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				2AFA409A20BBD7A00007FB85 /* PBXTargetDependency */,
 			);
 			name = "Dont Eat Alone";
 			productName = "Dont Eat Alone";
@@ -470,10 +533,14 @@
 		770251A8201D4079002E4515 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0920;
+				LastSwiftUpdateCheck = 0930;
 				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = "Dont Eat Alone";
 				TargetAttributes = {
+					2AFA409320BBD7A00007FB85 = {
+						CreatedOnToolsVersion = 9.3.1;
+						ProvisioningStyle = Automatic;
+					};
 					770251AF201D4079002E4515 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
@@ -511,11 +578,19 @@
 				770251AF201D4079002E4515 /* Dont Eat Alone */,
 				770251C5201D4079002E4515 /* Dont Eat AloneTests */,
 				770251D0201D4079002E4515 /* Dont Eat AloneUITests */,
+				2AFA409320BBD7A00007FB85 /* NotificationService */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		2AFA409220BBD7A00007FB85 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		770251AE201D4079002E4515 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -718,6 +793,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		2AFA409020BBD7A00007FB85 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2AFA409720BBD7A00007FB85 /* NotificationService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		770251AC201D4079002E4515 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -791,6 +874,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		2AFA409A20BBD7A00007FB85 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2AFA409320BBD7A00007FB85 /* NotificationService */;
+			targetProxy = 2AFA409920BBD7A00007FB85 /* PBXContainerItemProxy */;
+		};
 		770251C8201D4079002E4515 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 770251AF201D4079002E4515 /* Dont Eat Alone */;
@@ -831,6 +919,44 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		2AFA409C20BBD7A00007FB85 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8DDCRUXY46;
+				INFOPLIST_FILE = NotificationService/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kloktech.bruinbite.NotificationService;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		2AFA409D20BBD7A00007FB85 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8DDCRUXY46;
+				INFOPLIST_FILE = NotificationService/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kloktech.bruinbite.NotificationService;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
 		770251D8201D4079002E4515 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -944,6 +1070,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 266C33EA78F943413B244B8D /* Pods-Dont Eat Alone.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Dont Eat Alone/Dont Eat Alone.entitlements";
 				CODE_SIGN_STYLE = Automatic;
@@ -962,6 +1089,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DF44B8487E96FD9841E4D83A /* Pods-Dont Eat Alone.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Dont Eat Alone/Dont Eat Alone.entitlements";
 				CODE_SIGN_STYLE = Automatic;
@@ -1045,6 +1173,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		2AFA409E20BBD7A00007FB85 /* Build configuration list for PBXNativeTarget "NotificationService" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2AFA409C20BBD7A00007FB85 /* Debug */,
+				2AFA409D20BBD7A00007FB85 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		770251AB201D4079002E4515 /* Build configuration list for PBXProject "Dont Eat Alone" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

@@ -49,7 +49,7 @@ class AllergensBarContentView: UIView {
         vegan.setup()
         vegan.snp.makeConstraints{(make) -> Void in
             make.top.bottom.equalTo(vegetarian)
-            make.left.equalTo(vegetarian).offset(115.1)
+            make.left.equalTo(vegetarian.snp.rightMargin).offset(15)
             make.size.equalTo(CGSize(width: 66.3, height: 34))
         }
         
@@ -59,7 +59,7 @@ class AllergensBarContentView: UIView {
         peanuts.setup()
         peanuts.snp.makeConstraints{(make) -> Void in
             make.top.bottom.equalTo(vegetarian)
-            make.left.equalTo(vegan).offset(68.3)
+            make.left.equalTo(vegan.snp.rightMargin).offset(15)
             make.size.equalTo(CGSize(width: 85.8, height: 34))
         }
         
@@ -69,7 +69,7 @@ class AllergensBarContentView: UIView {
         treenuts.setup()
         treenuts.snp.makeConstraints{(make) -> Void in
             make.top.bottom.equalTo(vegetarian)
-            make.left.equalTo(peanuts).offset(87.8)
+            make.left.equalTo(peanuts.snp.rightMargin).offset(15)
             make.size.equalTo(CGSize(width: 96.2, height: 34))
         }
         
@@ -79,7 +79,7 @@ class AllergensBarContentView: UIView {
         wheat.setup()
         wheat.snp.makeConstraints{(make) -> Void in
             make.top.bottom.equalTo(vegetarian)
-            make.left.equalTo(treenuts).offset(98.2)
+            make.left.equalTo(treenuts.snp.rightMargin).offset(15)
             make.size.equalTo(CGSize(width: 68.9, height: 34))
         }
         
@@ -89,7 +89,7 @@ class AllergensBarContentView: UIView {
         soy.setup()
         soy.snp.makeConstraints{(make) -> Void in
             make.top.bottom.equalTo(vegetarian)
-            make.left.equalTo(wheat).offset(70.9)
+            make.left.equalTo(wheat.snp.rightMargin).offset(15)
             make.size.equalTo(CGSize(width: 40.3, height: 34))
         }
         
@@ -99,7 +99,7 @@ class AllergensBarContentView: UIView {
         dairy.setup()
         dairy.snp.makeConstraints{(make) -> Void in
             make.top.bottom.equalTo(vegetarian)
-            make.left.equalTo(soy).offset(42.3)
+            make.left.equalTo(soy.snp.rightMargin).offset(15)
             make.size.equalTo(CGSize(width: 54.6, height: 34))
         }
         
@@ -109,7 +109,7 @@ class AllergensBarContentView: UIView {
         shellfish.setup()
         shellfish.snp.makeConstraints{(make) -> Void in
             make.top.bottom.equalTo(vegetarian)
-            make.left.equalTo(dairy).offset(56.6)
+            make.left.equalTo(dairy.snp.rightMargin).offset(15)
             make.size.equalTo(CGSize(width: 89.7, height: 34))
         }
         
@@ -119,7 +119,7 @@ class AllergensBarContentView: UIView {
         fish.setup()
         fish.snp.makeConstraints{(make) -> Void in
             make.top.bottom.equalTo(vegetarian)
-            make.left.equalTo(shellfish).offset(91.7)
+            make.left.equalTo(shellfish.snp.rightMargin).offset(15)
             make.size.equalTo(CGSize(width: 44.2, height: 34))
         }
     }

@@ -12,6 +12,7 @@ import SnapKit
 @IBDesignable
 class MenuCardView: UIView, UITableViewDelegate, UITableViewDataSource {
     
+    @IBOutlet weak var greyBackground: UIView!
     @IBOutlet weak var menuCardView: UIView!
     @IBOutlet weak var activityLevelBar: ActivityLevelBar!
     @IBOutlet weak var tableView: UITableView!
@@ -74,32 +75,45 @@ class MenuCardView: UIView, UITableViewDelegate, UITableViewDataSource {
         Bundle.main.loadNibNamed("MenuCardView", owner: self, options: nil)
         addSubview(menuCardView)
         menuCardView.addSubview(tableView)
-        self.menuCardView.addSubview(self.activityLevelBar)
-        
+        menuCardView.addSubview(greyBackground)
+        menuCardView.addSubview(activityLevelBar)
         menuCardView.addSubview(diningHallName)
         menuCardView.addSubview(diningHallHours)
-        menuCardView.backgroundColor = .white
-        tableView.addBorderTop(size: 1.2, color: .gray)
+        menuCardView.backgroundColor = .clear
+//        tableView.addBorderTop(size: 1.2, color: .gray)
         
         //Auto-Layout using code. Please do it this way in your future code - Ayush
+        greyBackground.snp.makeConstraints{(make) -> Void in
+            make.height.equalTo(27)
+            make.top.equalToSuperview().offset(30)
+            make.left.equalToSuperview()
+            make.right.equalToSuperview()
+        }
         activityLevelBar.snp.makeConstraints{(make) -> Void in
             make.height.equalTo(7)
-            make.top.equalToSuperview().offset(30)
+            make.top.equalToSuperview().offset(50)
             make.left.equalToSuperview()
             make.right.equalToSuperview()
         }
         
         diningHallName.snp.makeConstraints{ (make) -> Void in
-            make.top.equalToSuperview().offset(44)
+            make.top.equalToSuperview().offset(64)
             make.left.equalToSuperview().offset(12)
             make.right.equalToSuperview()
         }
         
         diningHallHours.snp.makeConstraints{ (make) -> Void in
             make.height.equalTo(diningHallName.snp.height)
-            make.top.equalToSuperview().offset(44)
+            make.top.equalToSuperview().offset(64)
             make.left.equalToSuperview().offset(12)
             make.right.equalToSuperview().offset(-20)
+        }
+        tableView.snp.makeConstraints{ (make) -> Void in
+            make.height.greaterThanOrEqualTo(126)
+            make.bottom.equalToSuperview().offset(42)
+            make.top.equalToSuperview().offset(100)
+            make.left.equalToSuperview()
+            make.right.equalToSuperview()
         }
         
         menuCardView.clipsToBounds = true
