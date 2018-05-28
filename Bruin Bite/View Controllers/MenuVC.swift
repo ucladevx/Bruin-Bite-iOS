@@ -29,6 +29,12 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         
     let diningHalls = ["De Neve", "BPlate", "Covel", "Feast"]
     var menuItem: Item?
+    
+    var attrs = [
+        NSAttributedStringKey.font: UIFont.signInFont.withSize(12.0),
+        NSAttributedStringKey.foregroundColor: UIColor.twilightBlue,
+        NSAttributedStringKey.underlineStyle: 1
+        ] as [NSAttributedStringKey: Any]
 
         
     override func viewDidLoad() {
@@ -167,6 +173,12 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         cell.menuCard.tableView.dataSource = cell.menuCard
         cell.menuCard.parentVC = self
         
+        cell.viewMoreButton.titleLabel?.font = UIFont.textStyle
+        cell.viewMoreButton.titleLabel?.textColor = UIColor.twilightBlue
+        
+        cell.viewMoreButton.setTitleColor(UIColor.twilightBlue, for: .normal)
+        cell.viewMoreButton.backgroundColor = UIColor.white
+        
         cell.menuCard.diningHallName.text? = Array(data.keys)[indexPath.row].rawValue
         
         
@@ -198,10 +210,12 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         //make sure the button has multiple purposes
         //we need the count because in the beginning/refresh phase computedHeight = []
         if (computedHeight[indexPath.row] > defaultHeight){
-            cell.viewMoreButton.setTitle("View Less", for: .normal)
+            let text = NSMutableAttributedString(string:"View Less", attributes:attrs)
+            cell.viewMoreButton.setAttributedTitle(text, for: .normal)
         }
         else{
-            cell.viewMoreButton.setTitle("View More", for: .normal)
+            let text = NSMutableAttributedString(string:"View More", attributes:attrs)
+            cell.viewMoreButton.setAttributedTitle(text, for: .normal)
         }
 
         cell.menuCard.activityLevelBar.resizeToZero()

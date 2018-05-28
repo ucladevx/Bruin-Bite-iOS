@@ -80,6 +80,8 @@ class MenuCardView: UIView, UITableViewDelegate, UITableViewDataSource {
         menuCardView.addSubview(diningHallName)
         menuCardView.addSubview(diningHallHours)
         menuCardView.backgroundColor = .clear
+        diningHallName.font = UIFont.menuLocationTitle
+        diningHallName.textColor = UIColor.twilightBlue
 //        tableView.addBorderTop(size: 1.2, color: .gray)
         
         //Auto-Layout using code. Please do it this way in your future code - Ayush
