@@ -2,7 +2,7 @@
 //  UIViewControllerExtensions.swift
 //  Dont Eat Alone
 //
-//  Created by Hirday Gupta on 28/05/18.
+//  Created by Ayush Patel on 28/05/18.
 //  Copyright © 2018 Dont Eat Alone. All rights reserved.
 //
 

@@ -19,6 +19,7 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideKeyboardWhenTappedAround()
         MAIN_USER.readUser()
         //Set background color
         view.backgroundColor = UIColor.twilightBlue
