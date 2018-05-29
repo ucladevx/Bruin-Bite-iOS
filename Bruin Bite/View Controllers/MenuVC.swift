@@ -207,6 +207,8 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         cell.parentView = self.menuCardsCollection
         cell.index = indexPath
         
+        cell.viewMoreButton.backgroundColor = UIColor(red: 254.9 / 255.0, green: 254.9 / 255.0, blue: 254.9 / 255.0, alpha: 1.0)
+        
         //make sure the button has multiple purposes
         //we need the count because in the beginning/refresh phase computedHeight = []
         if (computedHeight[indexPath.row] > defaultHeight){
