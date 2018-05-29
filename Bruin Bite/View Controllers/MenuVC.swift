@@ -122,7 +122,7 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
-    let defaultHeight: CGFloat = 235;
+    let defaultHeight: CGFloat = 250;
     var computedHeight: [CGFloat] = [];
         
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
