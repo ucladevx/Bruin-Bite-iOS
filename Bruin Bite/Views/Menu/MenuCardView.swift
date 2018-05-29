@@ -21,6 +21,7 @@ class MenuCardView: UIView, UITableViewDelegate, UITableViewDataSource {
     
     var data: [Item]
     weak var parentVC: MenuVC?
+    let clockIcon = UIImageView(image: #imageLiteral(resourceName: "clock"))
     
     //for using custom view in code
     override init(frame: CGRect){
@@ -73,7 +74,6 @@ class MenuCardView: UIView, UITableViewDelegate, UITableViewDataSource {
     }
     
     private func commonInit(){
-        
         Bundle.main.loadNibNamed("MenuCardView", owner: self, options: nil)
         addSubview(menuCardView)
         menuCardView.addSubview(tableView)
@@ -81,10 +81,12 @@ class MenuCardView: UIView, UITableViewDelegate, UITableViewDataSource {
         menuCardView.addSubview(activityLevelBar)
         menuCardView.addSubview(diningHallName)
         menuCardView.addSubview(diningHallHours)
+        menuCardView.addSubview(clockIcon)
         menuCardView.backgroundColor = .clear
         diningHallName.font = UIFont.menuLocationTitle
         diningHallName.textColor = UIColor.twilightBlue
         diningHallHours.textColor = UIColor.MenuItemGray
+        clockIcon.frame = CGRect(x: 0, y: 0, width: 14, height: 14)
 //        tableView.addBorderTop(size: 1.2, color: .gray)
         
         //Auto-Layout using code. Please do it this way in your future code - Ayush
@@ -108,17 +110,26 @@ class MenuCardView: UIView, UITableViewDelegate, UITableViewDataSource {
         }
         
         diningHallHours.snp.makeConstraints{ (make) -> Void in
-            make.height.equalTo(diningHallName.snp.height)
+            make.height.equalTo(diningHallName.snp.height) // 17?
             make.top.equalToSuperview().offset(64)
             make.left.equalToSuperview().offset(12)
             make.right.equalToSuperview().offset(-20)
         }
+        
         tableView.snp.makeConstraints{ (make) -> Void in
             make.height.greaterThanOrEqualTo(126)
             make.bottom.equalToSuperview().offset(42)
             make.top.equalToSuperview().offset(100)
             make.left.equalToSuperview()
             make.right.equalToSuperview()
+        }
+        
+        // Ayush please fix these constraints, it only looks good on a 8+ rn
+        clockIcon.snp.makeConstraints{ (make) -> Void in
+            make.height.width.equalTo(14)
+            make.top.equalToSuperview().offset(73)
+            make.left.equalToSuperview().offset(237)
+            make.right.equalToSuperview().offset(-173)
         }
         
         menuCardView.clipsToBounds = true
