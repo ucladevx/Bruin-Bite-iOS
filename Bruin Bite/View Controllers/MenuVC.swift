@@ -38,6 +38,8 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
 
         
     override func viewDidLoad() {
+        self.view.backgroundColor = UIColor.white
+        
         super.viewDidLoad()
         allergensBar.content.parentVC = self
         topBar.parentVC = self
