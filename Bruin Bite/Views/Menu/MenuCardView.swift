@@ -47,12 +47,14 @@ class MenuCardView: UIView, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 42
+        return 45
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "Cell")
         cell.textLabel?.text = data[indexPath.row].name
+        cell.textLabel?.textColor = UIColor.MenuItemGray
+        cell.textLabel?.font = UIFont.textStyle
         cell.indentationWidth = 13
         cell.indentationLevel = 1
         cell.preservesSuperviewLayoutMargins = true
@@ -80,6 +82,9 @@ class MenuCardView: UIView, UITableViewDelegate, UITableViewDataSource {
         menuCardView.addSubview(diningHallName)
         menuCardView.addSubview(diningHallHours)
         menuCardView.backgroundColor = .clear
+        diningHallName.font = UIFont.menuLocationTitle
+        diningHallName.textColor = UIColor.twilightBlue
+        diningHallHours.textColor = UIColor.MenuItemGray
 //        tableView.addBorderTop(size: 1.2, color: .gray)
         
         //Auto-Layout using code. Please do it this way in your future code - Ayush

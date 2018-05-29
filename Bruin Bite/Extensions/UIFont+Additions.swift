@@ -45,5 +45,9 @@ extension UIFont {
     class var avenirNextItalicFont: UIFont {
         return UIFont(name: "AvenirNext-Italic", size: 18.0)!
     }
+    
+    class var menuLocationTitle: UIFont {
+        return UIFont(name: "AvenirNext-Bold", size: 24.0)!
+    }
 }
 
