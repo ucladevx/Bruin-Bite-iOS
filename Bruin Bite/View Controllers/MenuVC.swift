@@ -51,6 +51,37 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         topBar.frame = CGRect(x:12.5, y:20, width: 350, height: 82)
         topBar.center.x = self.view.center.x
         self.view.addSubview(topBar)
+        
+        let hour = Calendar.current.component(.hour, from: Date())
+        switch hour {
+        case 0..<2:
+            self.topBar.timeSelected("Night")
+        case 2..<9:
+            if(!self.topBar.brunch) {
+                self.topBar.timeSelected("Breakfast")
+            }
+            else {
+                self.topBar.timeSelected("Brunch")
+            }
+        case 9..<15:
+            if(!self.topBar.brunch) {
+                self.topBar.timeSelected("Lunch")
+            }
+            else {
+                self.topBar.timeSelected("Brunch")
+            }
+        case 15..<21:
+            self.topBar.timeSelected("Dinner")
+        case 21..<24:
+            self.topBar.timeSelected("Night")
+        default:
+            print("Current Meal Period could not be determined")
+        }
+        
+        if let dateLbl = self.topBar.dayBtns[1].dateLbl.text, let dayLbl = self.topBar.dayBtns[1].dateLbl.text {
+            self.topBar.daySelected(dateLbl, dayLabel: dayLbl)
+        }
+        
         // Do any additional setup after loading the view, typically from a nib.
         API.getCurrentActivityLevels { (activityLevels) in
             for a in activityLevels{
@@ -69,7 +100,8 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
             let date = Date()
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "d"
-            self.updateData(dateFormatter.string(from: date), mP: MealPeriod.breakfast)
+            
+            self.updateData(dateFormatter.string(from: date), mP: self.currMP)
         }
 //        API.getDetailedMenu { parsedMenus in
 //            for m in parsedMenus{
