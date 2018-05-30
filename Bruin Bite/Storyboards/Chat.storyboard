@@ -113,7 +113,7 @@
                                 </prototypes>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sIi-qc-o7E" customClass="ComingSoonPopup" customModule="Bruin_Bite" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="-8" width="375" height="619"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="611"/>
                                 <viewLayoutGuide key="safeArea" id="7Gh-mA-Cxo"/>
                             </view>
                         </subviews>
