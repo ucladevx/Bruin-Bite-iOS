@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ComingSoonPopup" customModule="Bruin_Bite" customModuleProvider="target">
+            <connections>
+                <outlet property="contenView" destination="iN0-l3-epB" id="JFs-bP-OJd"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view alpha="0.20000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qO7-aS-0K9">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                </view>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Coming Soon Popup" translatesAutoresizingMaskIntoConstraints="NO" id="uYY-Or-gAs">
+                    <rect key="frame" x="42.5" y="188.5" width="290" height="290"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="290" id="2Qz-o3-Uuj"/>
+                        <constraint firstAttribute="height" constant="290" id="UxY-nj-Vmw"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <constraints>
+                <constraint firstItem="qO7-aS-0K9" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="BWb-9y-3sJ"/>
+                <constraint firstItem="qO7-aS-0K9" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="RSO-ja-m93"/>
+                <constraint firstItem="qO7-aS-0K9" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="Z6f-u1-wD9"/>
+                <constraint firstItem="qO7-aS-0K9" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="pmH-PH-SPy"/>
+                <constraint firstItem="uYY-Or-gAs" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="pux-VU-b0S"/>
+                <constraint firstItem="uYY-Or-gAs" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="rUm-W0-tYo"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="33.5" y="53.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Coming Soon Popup" width="310" height="310"/>
+    </resources>
+</document>

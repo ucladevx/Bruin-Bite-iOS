@@ -494,6 +494,9 @@
                                     <segue destination="JBV-Dc-6bW" kind="show" id="0qA-oy-Ggi"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ntO-NG-dBx" customClass="ComingSoonPopup" customModule="Bruin_Bite" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -513,6 +516,7 @@
                             <constraint firstItem="d81-kz-Xiv" firstAttribute="trailing" secondItem="WME-bG-M8r" secondAttribute="trailing" constant="50" id="KeO-RD-s1v"/>
                             <constraint firstItem="d81-kz-Xiv" firstAttribute="trailing" secondItem="QDj-8C-7r4" secondAttribute="trailing" constant="110" id="OOm-gj-dGE"/>
                             <constraint firstItem="VQD-7X-b0A" firstAttribute="leading" secondItem="d81-kz-Xiv" secondAttribute="leading" constant="50" id="OVq-fO-ctt"/>
+                            <constraint firstItem="d81-kz-Xiv" firstAttribute="trailing" secondItem="ntO-NG-dBx" secondAttribute="trailing" id="TFK-Jk-pzH"/>
                             <constraint firstItem="QDj-8C-7r4" firstAttribute="leading" secondItem="d81-kz-Xiv" secondAttribute="leading" constant="109" id="Uu1-R8-hn5"/>
                             <constraint firstItem="d81-kz-Xiv" firstAttribute="trailing" secondItem="ngn-Xz-6ns" secondAttribute="trailing" constant="50" id="V73-ne-FsL"/>
                             <constraint firstItem="HIK-Bu-zA4" firstAttribute="top" secondItem="WME-bG-M8r" secondAttribute="bottom" constant="21" id="Vdw-xT-kK4"/>
@@ -522,7 +526,10 @@
                             <constraint firstItem="VQD-7X-b0A" firstAttribute="top" secondItem="mRj-SQ-i5W" secondAttribute="bottom" constant="21" id="etT-AW-tdC"/>
                             <constraint firstItem="d81-kz-Xiv" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="HIK-Bu-zA4" secondAttribute="trailing" constant="70" id="fXX-SW-Bz3"/>
                             <constraint firstItem="Jmp-Il-LpF" firstAttribute="top" secondItem="ngn-Xz-6ns" secondAttribute="bottom" constant="21" id="gZ9-eO-Q7s"/>
+                            <constraint firstItem="ntO-NG-dBx" firstAttribute="top" secondItem="Vt4-pT-49c" secondAttribute="top" id="gng-DV-CdJ"/>
+                            <constraint firstItem="d81-kz-Xiv" firstAttribute="bottom" secondItem="ntO-NG-dBx" secondAttribute="bottom" id="gqY-JC-Hrk"/>
                             <constraint firstItem="mRj-SQ-i5W" firstAttribute="top" secondItem="Jmp-Il-LpF" secondAttribute="bottom" constant="0.5" id="kbE-5X-oU3"/>
+                            <constraint firstItem="ntO-NG-dBx" firstAttribute="leading" secondItem="d81-kz-Xiv" secondAttribute="leading" id="la4-gj-6yy"/>
                             <constraint firstItem="2rZ-Zr-vbM" firstAttribute="top" secondItem="Dhc-QX-g7l" secondAttribute="bottom" constant="34" id="lbb-sg-wtY">
                                 <variation key="heightClass=regular" constant="25"/>
                             </constraint>

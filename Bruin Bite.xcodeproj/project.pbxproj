@@ -19,6 +19,8 @@
 		2A03D94320B76C92004EFC97 /* PopupViewControllers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A03D94220B76C91004EFC97 /* PopupViewControllers.storyboard */; };
 		2A03D94620B77A1A004EFC97 /* TimePickerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A03D94520B77A1A004EFC97 /* TimePickerCollectionViewCell.swift */; };
 		2A03D94820B7AFA7004EFC97 /* HomeProfileStaticTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A03D94720B7AFA7004EFC97 /* HomeProfileStaticTableViewController.swift */; };
+		2A16F9A520BEA107008BA4E3 /* ComingSoonPopup.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A16F9A420BEA107008BA4E3 /* ComingSoonPopup.xib */; };
+		2A16F9A720BEA204008BA4E3 /* ComingSoonPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A16F9A620BEA204008BA4E3 /* ComingSoonPopup.swift */; };
 		2A62E49320BC99D2008075B0 /* Menu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A62E49220BC99D2008075B0 /* Menu.storyboard */; };
 		2A68339220BC2113000DCAA4 /* UIButtonSignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A68339120BC2113000DCAA4 /* UIButtonSignUp.swift */; };
 		2A744895203BBDBC00793AD3 /* MenuCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A744894203BBDBC00793AD3 /* MenuCardView.swift */; };
@@ -114,6 +116,8 @@
 		2A03D94220B76C91004EFC97 /* PopupViewControllers.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PopupViewControllers.storyboard; sourceTree = "<group>"; };
 		2A03D94520B77A1A004EFC97 /* TimePickerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerCollectionViewCell.swift; sourceTree = "<group>"; };
 		2A03D94720B7AFA7004EFC97 /* HomeProfileStaticTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeProfileStaticTableViewController.swift; sourceTree = "<group>"; };
+		2A16F9A420BEA107008BA4E3 /* ComingSoonPopup.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ComingSoonPopup.xib; sourceTree = "<group>"; };
+		2A16F9A620BEA204008BA4E3 /* ComingSoonPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComingSoonPopup.swift; sourceTree = "<group>"; };
 		2A62E49220BC99D2008075B0 /* Menu.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Menu.storyboard; sourceTree = "<group>"; };
 		2A68339120BC2113000DCAA4 /* UIButtonSignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonSignUp.swift; sourceTree = "<group>"; };
 		2A744894203BBDBC00793AD3 /* MenuCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCardView.swift; sourceTree = "<group>"; };
@@ -247,6 +251,8 @@
 				7794996F203BD10400F3B0ED /* AllergyFilterButton.swift */,
 				2AD1509220BB2C770043B9C8 /* AllergensBarContentView.swift */,
 				2A94477F2055FA3E0033B6C6 /* AllergensBarScrollView.swift */,
+				2A16F9A620BEA204008BA4E3 /* ComingSoonPopup.swift */,
+				2A16F9A420BEA107008BA4E3 /* ComingSoonPopup.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -452,6 +458,7 @@
 				770251AE201D4079002E4515 /* Resources */,
 				D601296F579F59F8E568D410 /* [CP] Embed Pods Frameworks */,
 				2AFA409F20BBD7A00007FB85 /* Embed App Extensions */,
+				B07B36A50D293F857D95C037 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -523,6 +530,7 @@
 				2A744897203BBEDA00793AD3 /* MenuCardView.xib in Resources */,
 				2A03D94320B76C92004EFC97 /* PopupViewControllers.storyboard in Resources */,
 				2A62E49320BC99D2008075B0 /* Menu.storyboard in Resources */,
+				2A16F9A520BEA107008BA4E3 /* ComingSoonPopup.xib in Resources */,
 				770251C0201D4079002E4515 /* LaunchScreen.storyboard in Resources */,
 				DC5FC98420B788C400DFCCC7 /* Profile.storyboard in Resources */,
 				2AFA40B520BC08200007FB85 /* Matching.storyboard in Resources */,
@@ -550,6 +558,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B07B36A50D293F857D95C037 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Bruin Bite/Pods-Bruin Bite-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D601296F579F59F8E568D410 /* [CP] Embed Pods Frameworks */ = {
@@ -622,6 +645,7 @@
 				2A68339220BC2113000DCAA4 /* UIButtonSignUp.swift in Sources */,
 				BF0523E3209AA7E00013EE11 /* ProfileViewController.swift in Sources */,
 				2AFB41372047F0F2004025F9 /* MenuCardCollectionViewCell.swift in Sources */,
+				2A16F9A720BEA204008BA4E3 /* ComingSoonPopup.swift in Sources */,
 				770CDEAE20266B0800658925 /* ColoredCircle.swift in Sources */,
 				2AB62E702048D21D0013CB59 /* ActivityLevel.swift in Sources */,
 				2AFA40B120BC07AD0007FB85 /* MatchFoundViewController.swift in Sources */,

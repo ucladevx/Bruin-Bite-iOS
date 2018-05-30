@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -94,9 +94,14 @@
                                     <segue destination="h3B-V1-yct" kind="embed" id="dcK-F3-hLM"/>
                                 </connections>
                             </containerView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LnT-tO-ijm" customClass="ComingSoonPopup" customModule="Bruin_Bite" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="LnT-tO-ijm" firstAttribute="leading" secondItem="Sns-AX-pfm" secondAttribute="leading" id="2ov-iP-pU6"/>
+                            <constraint firstItem="Sns-AX-pfm" firstAttribute="bottom" secondItem="LnT-tO-ijm" secondAttribute="bottom" id="8Nr-eS-eqU"/>
                             <constraint firstItem="Sns-AX-pfm" firstAttribute="bottom" secondItem="K0l-aO-UH0" secondAttribute="bottom" id="9te-1L-cU7"/>
                             <constraint firstItem="K0l-aO-UH0" firstAttribute="top" secondItem="XDA-kA-QHi" secondAttribute="bottom" id="CSC-bz-TGe"/>
                             <constraint firstItem="lJp-pT-B4Q" firstAttribute="height" secondItem="XDA-kA-QHi" secondAttribute="height" multiplier="0.8" id="E1n-dj-186"/>
@@ -109,6 +114,8 @@
                             <constraint firstItem="XDA-kA-QHi" firstAttribute="top" secondItem="Sns-AX-pfm" secondAttribute="top" id="gxd-Fh-F8z"/>
                             <constraint firstItem="Sns-AX-pfm" firstAttribute="trailing" secondItem="lJp-pT-B4Q" secondAttribute="trailing" constant="59" id="hc6-l4-q7Z"/>
                             <constraint firstItem="K0l-aO-UH0" firstAttribute="trailing" secondItem="Sns-AX-pfm" secondAttribute="trailing" id="kKr-xM-V8Z"/>
+                            <constraint firstItem="Sns-AX-pfm" firstAttribute="trailing" secondItem="LnT-tO-ijm" secondAttribute="trailing" id="t2P-qr-sjB"/>
+                            <constraint firstItem="LnT-tO-ijm" firstAttribute="top" secondItem="KoU-87-KGi" secondAttribute="top" id="u7s-7b-89k"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Sns-AX-pfm"/>
                     </view>

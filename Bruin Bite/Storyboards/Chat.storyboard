@@ -12,7 +12,7 @@
         <!--Chats-->
         <scene sceneID="ICu-8A-NiY">
             <objects>
-                <viewController storyboardIdentifier="ChatListViewController" id="D6w-8k-bCY" customClass="ChatListViewController" customModule="Dont_Eat_Alone" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ChatListViewController" id="D6w-8k-bCY" customClass="ChatListViewController" customModule="Bruin_Bite" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0yp-wb-5jd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -21,7 +21,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChatListCell" rowHeight="78" id="pZP-aZ-CQe" customClass="ChatListTableViewCell" customModule="Dont_Eat_Alone" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChatListCell" rowHeight="78" id="pZP-aZ-CQe" customClass="ChatListTableViewCell" customModule="Bruin_Bite" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="78"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pZP-aZ-CQe" id="MuG-sN-WFM">
@@ -47,7 +47,7 @@
                                                         <constraint firstAttribute="height" constant="21" id="Ppw-jK-FWJ"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="20"/>
-                                                    <color key="textColor" red="0.043137256059999997" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="textColor" red="0.027450980390000001" green="0.2901960784" blue="0.46666666670000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10:30 PM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Qq-uE-yxm">
@@ -71,7 +71,7 @@
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r8v-2Z-7LS">
                                                     <rect key="frame" x="339" y="34" width="21" height="21"/>
-                                                    <color key="backgroundColor" red="0.027450980390000001" green="0.2901960784" blue="0.46666666670000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="backgroundColor" red="0.027450980390000001" green="0.2901960784" blue="0.46666666670000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="FW3-F8-oCM"/>
                                                         <constraint firstAttribute="width" constant="21" id="bWO-Xk-JaS"/>
@@ -112,13 +112,21 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sIi-qc-o7E" customClass="ComingSoonPopup" customModule="Bruin_Bite" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="-8" width="375" height="619"/>
+                                <viewLayoutGuide key="safeArea" id="7Gh-mA-Cxo"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="uad-lQ-3ce" firstAttribute="trailing" secondItem="G01-rd-gY1" secondAttribute="trailing" id="1Hp-uq-HGG"/>
                             <constraint firstItem="uad-lQ-3ce" firstAttribute="leading" secondItem="G01-rd-gY1" secondAttribute="leading" id="1PP-yg-bJd"/>
+                            <constraint firstItem="G01-rd-gY1" firstAttribute="bottom" secondItem="sIi-qc-o7E" secondAttribute="bottom" constant="-57" id="4Na-Sz-1ID"/>
                             <constraint firstItem="uad-lQ-3ce" firstAttribute="top" secondItem="G01-rd-gY1" secondAttribute="top" id="HAM-RJ-TWS"/>
                             <constraint firstItem="G01-rd-gY1" firstAttribute="bottom" secondItem="uad-lQ-3ce" secondAttribute="bottom" id="LVx-uR-b9n"/>
+                            <constraint firstItem="sIi-qc-o7E" firstAttribute="top" secondItem="0yp-wb-5jd" secondAttribute="top" id="LYF-hi-wkK"/>
+                            <constraint firstItem="sIi-qc-o7E" firstAttribute="leading" secondItem="G01-rd-gY1" secondAttribute="leading" id="WoY-b9-YOl"/>
+                            <constraint firstItem="sIi-qc-o7E" firstAttribute="trailing" secondItem="G01-rd-gY1" secondAttribute="trailing" id="qU4-YY-eR7"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="G01-rd-gY1"/>
                     </view>
@@ -139,7 +147,7 @@
         <!--Chat Screen View Controller-->
         <scene sceneID="wkL-WG-F8t">
             <objects>
-                <viewController id="VAO-Bi-W3n" customClass="ChatScreenViewController" customModule="Dont_Eat_Alone" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="VAO-Bi-W3n" customClass="ChatScreenViewController" customModule="Bruin_Bite" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="37f-LR-V0w">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -148,7 +156,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="496"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MessageBubbleCell" id="EUE-Bz-1Er" customClass="MessageBubbleCell" customModule="Dont_Eat_Alone" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MessageBubbleCell" id="EUE-Bz-1Er" customClass="MessageBubbleCell" customModule="Bruin_Bite" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="EUE-Bz-1Er" id="E1X-qB-6A2">
