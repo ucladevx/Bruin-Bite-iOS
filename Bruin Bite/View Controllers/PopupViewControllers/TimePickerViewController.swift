@@ -68,12 +68,14 @@ class TimePickerViewController: UIViewController {
   
   @IBAction func completeActionButton(_ sender: Any) {
     var temp = [String]()
+    if(times.isEmpty == false) {
     for i in 0...15 {
         if(times[i].isSelected) {
             temp.append(times[i].text)
         }
     }
     chosen = temp
+    }
         dismiss(animated: true, completion: nil)
   }
 }
