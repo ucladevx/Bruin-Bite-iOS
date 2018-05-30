@@ -140,38 +140,48 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         return data.count
     }
     
-    func allergenUpdateData(_ a: Allergen, s: String){
-        //print(a,s)
-        if (s == "On") {
-            currAllergens.append(a)
-            for(loc, var items) in self.data{
-                var i = 0
-                while i < items.count{
-                    if(a == Allergen.Vegan || a == Allergen.Vegetarian) {
-                        if((items[i].allergies?.contains(a))! || (items[i].allergies?.contains(Allergen.Vegan))!){
-                            i+=1
-                        }
-                        else{
-                            items.remove(at: i)
-                        }
+    //the name is slightly misleading for vegetarian and vegan because we actaully remove everything else for them
+    func removeItems(with allergen: Allergen){
+        print(currAllergens)
+        for(loc, var items) in self.data{
+            var i = 0
+            while i < items.count{
+                //duh every vegan items is also vegetarian, but dining data doesn't think so
+                if(allergen == Allergen.Vegan || allergen == Allergen.Vegetarian) {
+                    if((items[i].allergies?.contains(allergen))! || (items[i].allergies?.contains(Allergen.Vegan))!){
+                        i+=1
                     }
                     else{
-                        if(items[i].allergies?.contains(a))!{
-                            items.remove(at: i)
-                        }
-                        else{
-                            i+=1
-                        }
+                        items.remove(at: i)
                     }
                 }
-                self.data.updateValue(items, forKey: loc)
+                else{
+                    if(items[i].allergies?.contains(allergen))!{
+                        items.remove(at: i)
+                    }
+                    else{
+                        i+=1
+                    }
+                }
             }
+            self.data.updateValue(items, forKey: loc)
+        }
+    }
+    
+    func allergenUpdateData(_ a: Allergen, status: Bool){
+        if (status == true) {
+            currAllergens.append(a)
+            removeItems(with: a)
             self.computedHeight = Array(repeating: self.defaultHeight, count: self.data.count)
             self.menuCardsCollection.reloadData()
         }
         else{
             currAllergens.remove(at: currAllergens.index(of: a)!)
+            print(currAllergens)
             self.data = self.menuData.getOverviewMenu(date: currDate, mealPeriod: currMP) ?? [:]
+            for allergen in currAllergens{
+                removeItems(with: allergen)
+            }
             self.computedHeight = Array(repeating: self.defaultHeight, count: self.data.count)
             self.menuCardsCollection.reloadData()
         }
@@ -193,7 +203,7 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
             while i >= 0 {
                 a = tempAllergens[i]
                 tempAllergens.remove(at: i)
-                allergenUpdateData(a, s: "On")
+                allergenUpdateData(a, status: true)
                 i-=1
             }
         }
@@ -259,9 +269,9 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
             if (a.isAvailable && Array(data.keys)[indexPath.row] == a.location) {
                 cell.menuCard.activityLevelBar.percentage = CGFloat(a.percent)/100
             }
-            else if (Array(data.keys)[indexPath.row] == a.location){
-                cell.menuCard.activityLevelBar.percentage = CGFloat(0)
-            }
+//            else if (Array(data.keys)[indexPath.row] == a.location){
+//                cell.menuCard.activityLevelBar.percentage = CGFloat(0)
+//            }
         }
         UIView.animate(withDuration: 1.5, delay: 0, options: .curveEaseInOut, animations: {
             cell.menuCard.activityLevelBar.animateBar()

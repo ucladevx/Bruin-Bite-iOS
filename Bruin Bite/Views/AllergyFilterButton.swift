@@ -32,14 +32,14 @@ class AllergyFilterButton: UIButton {
             self.backgroundColor = UIColor.deaGrey
             self.setTitleColor(UIColor.deaWhite, for: .normal)
             self.setTitle(allergy_name, for: .normal)
-            parentVC?.allergenUpdateData(allergy_enum, s:"On")
+            parentVC?.allergenUpdateData(allergy_enum, status: true)
             self.sizeToFit()
         }
         else {
             self.backgroundColor = UIColor.clear
             self.setTitleColor(UIColor.deaGrey, for: .normal)
             self.setTitle(allergy_name, for: .normal)
-            parentVC?.allergenUpdateData(allergy_enum, s:"Off")
+            parentVC?.allergenUpdateData(allergy_enum, status: false)
             self.sizeToFit()
         }
     }
