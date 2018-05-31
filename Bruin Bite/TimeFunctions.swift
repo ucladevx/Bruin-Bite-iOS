@@ -8,6 +8,99 @@
 
 import Foundation
 
+func convertDate(month: String, day: String, year: String) -> String {
+    var tempMonth = ""
+    tempMonth += year
+    tempMonth = tempMonth + "-"
+    switch(month) {
+    case "January":
+        tempMonth = tempMonth + "01-" + day
+        break
+    case "February":
+        tempMonth = tempMonth + "02-" + day
+        break
+    case "March":
+        tempMonth = tempMonth + "03-" + day
+        break
+    case "April":
+        tempMonth = tempMonth + "04-" + day
+        break
+    case "May":
+        tempMonth = tempMonth + "05-" + day
+        break
+    case "June":
+        tempMonth = tempMonth + "06-" + day
+        break
+    case "July":
+        tempMonth = tempMonth + "07-" + day
+        break
+    case "August":
+        tempMonth = tempMonth + "08-" + day
+        break
+    case "September":
+        tempMonth = tempMonth + "09-" + day
+        break
+    case "October":
+        tempMonth = tempMonth + "10-" + day
+        break
+    case "November":
+        tempMonth = tempMonth + "11-" + day
+        break
+    case "December":
+        tempMonth = tempMonth + "12-" + day
+        break
+    default:
+        break
+    }
+    return tempMonth
+}
+
+func getMonth(dateMonth: String) -> String {
+    var temp = ""
+    for i in dateMonth {
+        if(i == " ") {
+            break
+        }
+        temp += String(i)
+    }
+    return temp
+}
+
+func getDay(date: String) -> String {
+    var temp = ""
+    var counter = 0
+    var check = 0
+    for i in date {
+        if(counter == 1 && i != ",") {
+            temp += String(i)
+        }
+        if(i == " " && check == 1) {
+            break
+        }
+        if(i == " ") {
+            counter = 1
+            check = 1
+        }
+    }
+    return temp
+}
+
+func getYear(date: String) -> String {
+    var temp = ""
+    var check = 0
+    for i in date {
+        if(check == 1 && i != " ") {
+            temp += String(i)
+        }
+        if(i == ",") {
+            check = 1
+        }
+    }
+    return temp
+}
+
+
+
 func timeForm(time: String) -> String {
     switch(time) {
     case "1:00":

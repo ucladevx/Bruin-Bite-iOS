@@ -28,7 +28,12 @@ class PreferenceViewController: UIViewController {
     
     @IBAction func MatchButton(_ sender: Any) {
         meal_times = chosen
-        //MEAL TIMES ADD DAY TO
+        meal_day = convertDate(month: getMonth(dateMonth: meal_day), day: getDay(date: meal_day), year: getYear(date: meal_day))
+        print(meal_day)
+        for i in 0...meal_times.count-1 {
+            meal_times[i] = meal_day + " " + meal_times[i]
+            print(meal_times[i])
+        }
         if(!meal_times.isEmpty && meal_day != "" && !dining_halls.isEmpty) {
         MAIN_USER.userMatch(mealTimes: meal_times, mealDay: meal_day, mealPeriod: MAIN_USER.accessUserInfo(type: "period"), dineHalls: dining_halls)
         } else {
@@ -214,7 +219,7 @@ extension PreferenceViewController: CZPickerViewDelegate, CZPickerViewDataSource
             default:
                 break
             }
-            if(picks[0] != "Breakfast") {
+            if(picks[0] != "Breakfast" && (picks[0] == "Covel" || picks[0] == "De Neve" || picks[0] == "Bruin Plate" || picks[0] == "Feast")) {
             if i != rows.count {
                 chosen += ", "
             }
@@ -258,6 +263,7 @@ extension PreferenceViewController: CZPickerViewDelegate, CZPickerViewDataSource
             break;
         default:
             DayButton.setTitle(chosen, for: .normal)
+            meal_day = chosen
             break;
         }
         
