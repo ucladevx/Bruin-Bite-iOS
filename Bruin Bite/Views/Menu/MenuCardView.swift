@@ -22,6 +22,10 @@ class MenuCardView: UIView, UITableViewDelegate, UITableViewDataSource {
     var data: [Item]
     weak var parentVC: MenuVC?
     let clockIcon = UIImageView(image: #imageLiteral(resourceName: "clock"))
+    let arrowIcon = UIImageView(image: #imageLiteral(resourceName: "menuArrow"))
+    let vegIcon = UIImageView(image: #imageLiteral(resourceName: "vegetarian"))
+    let veganIcon = UIImageView(image: #imageLiteral(resourceName: "vegan"))
+    let glutenFreeIcon = UIImageView(image: #imageLiteral(resourceName: "glutenfree3x"))
     
     //for using custom view in code
     override init(frame: CGRect){
@@ -61,6 +65,8 @@ class MenuCardView: UIView, UITableViewDelegate, UITableViewDataSource {
         cell.preservesSuperviewLayoutMargins = true
         cell.separatorInset = UIEdgeInsets.zero
         cell.layoutMargins = UIEdgeInsets.zero
+        cell.imageView?.image = #imageLiteral(resourceName: "menuArrow")
+        
         return cell
     }
     
