@@ -65,6 +65,7 @@ class ActivityLevelBar: UIView {
     
     func animateBar(){
         self.frame.size.width = UIScreen.main.bounds.size.width
+        self.setNeedsDisplay()
     }
 }
 

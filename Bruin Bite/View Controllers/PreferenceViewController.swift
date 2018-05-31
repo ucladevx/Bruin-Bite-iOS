@@ -10,7 +10,6 @@ import UIKit
 import CZPicker
 
 
-
 class PreferenceViewController: UIViewController {
 
     @IBOutlet var TopView: UIView!
@@ -28,6 +27,18 @@ class PreferenceViewController: UIViewController {
     var buttonSelected = false
     
     @IBAction func MatchButton(_ sender: Any) {
+        meal_times = chosen
+        meal_day = convertDate(month: getMonth(dateMonth: meal_day), day: getDay(date: meal_day), year: getYear(date: meal_day))
+        print(meal_day)
+        for i in 0...meal_times.count-1 {
+            meal_times[i] = meal_day + " " + meal_times[i]
+            print(meal_times[i])
+        }
+        if(!meal_times.isEmpty && meal_day != "" && !dining_halls.isEmpty) {
+        MAIN_USER.userMatch(mealTimes: meal_times, mealDay: meal_day, mealPeriod: MAIN_USER.accessUserInfo(type: "period"), dineHalls: dining_halls)
+        } else {
+            return
+        }
 //        let storyBoard = UIStoryboard(name: "Matching", bundle: nil)
 //        let searching = storyBoard.instantiateViewController(withIdentifier: "searchingForMatch")
 //        
@@ -38,7 +49,7 @@ class PreferenceViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        meal_day = ""
         // formatting top bar
         TopView.backgroundColor = UIColor.twilightBlue
         TitleText.font = UIFont.signUpTextFont.withSize(30)
@@ -192,7 +203,23 @@ extension PreferenceViewController: CZPickerViewDelegate, CZPickerViewDataSource
         var i = 1
         for row in rows {
             chosen += picks[row as! Int]
-            if(picks[0] != "Breakfast") {
+            switch(picks[row as! Int]) {
+            case "Covel":
+                dining_halls.append("CO")
+                break
+            case "De Neve":
+                dining_halls.append("DN")
+                break
+            case "Bruin Plate":
+                dining_halls.append("BP")
+                break
+            case "Feast":
+                dining_halls.append("FE")
+                break
+            default:
+                break
+            }
+            if(picks[0] != "Breakfast" && (picks[0] == "Covel" || picks[0] == "De Neve" || picks[0] == "Bruin Plate" || picks[0] == "Feast")) {
             if i != rows.count {
                 chosen += ", "
             }
@@ -236,6 +263,7 @@ extension PreferenceViewController: CZPickerViewDelegate, CZPickerViewDataSource
             break;
         default:
             DayButton.setTitle(chosen, for: .normal)
+            meal_day = chosen
             break;
         }
         

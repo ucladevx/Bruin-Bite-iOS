@@ -23,6 +23,8 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
     var hoursData = [String:[Location:HallHours]]()
     var currDate = "1"
     var currMP = MealPeriod.breakfast
+    var initDate = "1"
+    var initMP = MealPeriod.breakfast
     var currAllergens: [Allergen] = []
     
     var data: [Location: [Item]] = [:]
@@ -87,6 +89,13 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
             for a in activityLevels{
                 self.activityLevelData.append(a)
             }
+            
+            /* Test Data
+            self.activityLevelData.append(ActivityLevel(isAvailable: true, location: Location.bPlate, percent: 100))
+            self.activityLevelData.append(ActivityLevel(isAvailable: true, location: Location.feast, percent: 90))
+            self.activityLevelData.append(ActivityLevel(isAvailable: true, location: Location.covel, percent: 20))
+            self.activityLevelData.append(ActivityLevel(isAvailable: true, location: Location.deNeve, percent: 50))
+            */
         }
         API.getHours { (hours) in
             for d in hours {
@@ -100,6 +109,9 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
             let date = Date()
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "d"
+            
+            self.initDate = dateFormatter.string(from: date)
+            self.initMP = self.currMP
             
             self.updateData(dateFormatter.string(from: date), mP: self.currMP)
         }
@@ -263,10 +275,12 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
             let text = NSMutableAttributedString(string:"View More", attributes:attrs)
             cell.viewMoreButton.setAttributedTitle(text, for: .normal)
         }
-
+        
+        //Activity Level Loading
         cell.menuCard.activityLevelBar.resizeToZero()
+        cell.menuCard.activityLevelBar.percentage = CGFloat(0)
         for a in activityLevelData{
-            if (a.isAvailable && Array(data.keys)[indexPath.row] == a.location) {
+            if (a.isAvailable && Array(data.keys)[indexPath.row] == a.location && currDate == initDate && currMP == initMP) {
                 cell.menuCard.activityLevelBar.percentage = CGFloat(a.percent)/100
             }
             else if (Array(data.keys)[indexPath.row] == a.location){
@@ -276,6 +290,7 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         UIView.animate(withDuration: 1.5, delay: 0, options: .curveEaseInOut, animations: {
             cell.menuCard.activityLevelBar.animateBar()
         }) { (_) in }
+        
         return cell
     }
     

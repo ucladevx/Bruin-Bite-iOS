@@ -21,6 +21,7 @@
 		2A03D94820B7AFA7004EFC97 /* HomeProfileStaticTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A03D94720B7AFA7004EFC97 /* HomeProfileStaticTableViewController.swift */; };
 		2A16F9A520BEA107008BA4E3 /* ComingSoonPopup.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A16F9A420BEA107008BA4E3 /* ComingSoonPopup.xib */; };
 		2A16F9A720BEA204008BA4E3 /* ComingSoonPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A16F9A620BEA204008BA4E3 /* ComingSoonPopup.swift */; };
+		2A16F9A920C0B8CC008BA4E3 /* TimeFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A16F9A820C0B8CB008BA4E3 /* TimeFunctions.swift */; };
 		2A62E49320BC99D2008075B0 /* Menu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A62E49220BC99D2008075B0 /* Menu.storyboard */; };
 		2A68339220BC2113000DCAA4 /* UIButtonSignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A68339120BC2113000DCAA4 /* UIButtonSignUp.swift */; };
 		2A744895203BBDBC00793AD3 /* MenuCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A744894203BBDBC00793AD3 /* MenuCardView.swift */; };
@@ -118,6 +119,7 @@
 		2A03D94720B7AFA7004EFC97 /* HomeProfileStaticTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeProfileStaticTableViewController.swift; sourceTree = "<group>"; };
 		2A16F9A420BEA107008BA4E3 /* ComingSoonPopup.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ComingSoonPopup.xib; sourceTree = "<group>"; };
 		2A16F9A620BEA204008BA4E3 /* ComingSoonPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComingSoonPopup.swift; sourceTree = "<group>"; };
+		2A16F9A820C0B8CB008BA4E3 /* TimeFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeFunctions.swift; sourceTree = "<group>"; };
 		2A62E49220BC99D2008075B0 /* Menu.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Menu.storyboard; sourceTree = "<group>"; };
 		2A68339120BC2113000DCAA4 /* UIButtonSignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonSignUp.swift; sourceTree = "<group>"; };
 		2A744894203BBDBC00793AD3 /* MenuCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCardView.swift; sourceTree = "<group>"; };
@@ -283,6 +285,7 @@
 		2A94477C2055F5860033B6C6 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				2A16F9A820C0B8CB008BA4E3 /* TimeFunctions.swift */,
 				77949971203BD12B00F3B0ED /* Extensions.swift */,
 				770251B3201D4079002E4515 /* AppDelegate.swift */,
 				770251BC201D4079002E4515 /* Assets.xcassets */,
@@ -678,6 +681,7 @@
 				770251B6201D4079002E4515 /* MenuVC.swift in Sources */,
 				00C2DF0720B677040023CF75 /* User.swift in Sources */,
 				2AD1509320BB2C780043B9C8 /* AllergensBarContentView.swift in Sources */,
+				2A16F9A920C0B8CC008BA4E3 /* TimeFunctions.swift in Sources */,
 				0058244F20BA106E0044CB88 /* Hours.swift in Sources */,
 				770251E4201D4182002E4515 /* Moya_Service.swift in Sources */,
 				002244DC20B8C53000CBD1C2 /* StringExtensions.swift in Sources */,
