@@ -412,7 +412,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Ru-fN-ZSj" userLabel="NextButton">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Ru-fN-ZSj" userLabel="NextButton">
                                 <rect key="frame" x="263" y="339" width="46" height="46"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="7Ru-fN-ZSj" secondAttribute="height" multiplier="1:1" id="hWX-1J-soe"/>
@@ -422,7 +422,7 @@
                                     <action selector="nextButtonPressed:" destination="jrE-gA-JCy" eventType="touchUpInside" id="RAC-6a-EtM"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SIGN UP" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LP1-WN-g5l">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="SIGN UP" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LP1-WN-g5l">
                                 <rect key="frame" x="0.0" y="23" width="375" height="46"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="46" id="z9C-0O-4Uc"/>
@@ -431,7 +431,7 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FzI-6G-sdZ" userLabel="PrevButton">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FzI-6G-sdZ" userLabel="PrevButton">
                                 <rect key="frame" x="33" y="38" width="9" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="ZSc-fy-Gcn"/>
@@ -498,13 +498,13 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Line" translatesAutoresizingMaskIntoConstraints="NO" id="8Gh-UG-q4M">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="Line" translatesAutoresizingMaskIntoConstraints="NO" id="8Gh-UG-q4M">
                                 <rect key="frame" x="67" y="116" width="242" height="2"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="2" id="Nxb-hC-Huh"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Line" translatesAutoresizingMaskIntoConstraints="NO" id="4ZI-IY-a3O">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="Line" translatesAutoresizingMaskIntoConstraints="NO" id="4ZI-IY-a3O">
                                 <rect key="frame" x="67" y="183" width="242" height="2"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="2" id="M1e-ME-HGb"/>
