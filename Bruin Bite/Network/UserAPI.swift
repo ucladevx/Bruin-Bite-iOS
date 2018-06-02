@@ -41,20 +41,25 @@ extension API {
             case let .success(response):
                 do {
                     let results = try JSONDecoder().decode(UserLog.self, from: response.data)
-                    UserDefaults.standard.set(results.access_token, forKey: MAIN_USER.accessUserInfo(type: "email"))
+                    UserDefaults.standard.set(username, forKey: "email")
+                    UserDefaults.standard.set(results.access_token, forKey: "accessToken")
+                    UserDefaults.standard.set(results.refresh_token, forKey: "refreshToken")
                     completion(results)
                 } catch let err {
                     do {
                         let errresults = try JSONDecoder().decode(UserError.self, from: response.data)
-                        UserDefaults.standard.set(nil, forKey: MAIN_USER.accessUserInfo(type: "email"))
+                        UserDefaults.standard.set(nil, forKey: "accessToken")
+                        UserDefaults.standard.set(nil, forKey: "refreshToken")
                         MAIN_USER.initUserError(error: errresults)
                         print(err)
                     } catch let reserr {
-                        UserDefaults.standard.set(nil, forKey: MAIN_USER.accessUserInfo(type: "email"))
+                        UserDefaults.standard.set(nil, forKey: "accessToken")
+                        UserDefaults.standard.set(nil, forKey: "refreshToken")
                         print(reserr)
                     }
                 }            case let .failure(error):
-                    UserDefaults.standard.set(nil, forKey: MAIN_USER.accessUserInfo(type: "email"))
+                    UserDefaults.standard.set(nil, forKey: "accessToken")
+                    UserDefaults.standard.set(nil, forKey: "refreshToken")
                 print(error)
             }
             

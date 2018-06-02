@@ -60,7 +60,7 @@ class SignInViewController: UIViewController {
         MAIN_USER.changeUserInfo(type: "email", info: EmailText.text!)
         MAIN_USER.changeUserInfo(type: "password", info: PasswordText.text!)
         MAIN_USER.loginUser()
-        if(UserDefaults.standard.object(forKey: MAIN_USER.accessUserInfo(type: "email")) == nil) {
+        if(UserDefaults.standard.object(forKey: "accessToken") == nil) {
             return
         }
         if(MAIN_USER.getToken() != nil) {
