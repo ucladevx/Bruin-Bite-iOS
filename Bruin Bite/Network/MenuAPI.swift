@@ -60,7 +60,7 @@ extension API{
                                         var currItem = Item(itemCategory: "Overview", subLocation: "", name: "", serving: nil, calories: nil, fatcal: nil, ingredients: nil, vita: nil, vitc: nil, calc: nil, iron: nil, allergies: nil, nutrition: nil, recipeLink: nil)
                                         currItem.subLocation = sublocation
                                         currItem.name = item["name"].string!
-                                        currItem.recipeLink = item["recipelink"].string
+                                        currItem.recipeLink = item["recipe_link"].string
                                         var allergens = [Allergen]()
                                         if (item["itemcodes"].isEmpty){ // checks for Allergens
                                             allergens.append(Allergen.None)
@@ -195,7 +195,7 @@ extension API{
                                         var currItem = Item(itemCategory: "Detailed", subLocation: "", name: "", serving: nil, calories: nil, fatcal: nil, ingredients: nil, vita: nil, vitc: nil, calc: nil, iron: nil, allergies: nil, nutrition: nil, recipeLink: nil)
                                         currItem.subLocation = sublocation
                                         currItem.name = item["name"].string!
-                                        currItem.recipeLink = item["recipelink"].string
+                                        currItem.recipeLink = item["recipe_link"].string
                                         var allergens = [Allergen]()
                                         if (item["itemcodes"].isEmpty){ // checks for Allergens
                                             allergens.append(Allergen.None)
