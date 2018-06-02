@@ -65,6 +65,7 @@ class SignInViewController: UIViewController {
         }
         if(MAIN_USER.getToken() != nil) {
             MAIN_USER.readUser()
+            MAIN_USER.updateUser(dev_id: UserDefaults.standard.object(forKey: "Dev_Token") as? String ?? "")
             self.performSegue(withIdentifier: "ShowMenuVC_2", sender: nil)
         } else {
             return

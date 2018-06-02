@@ -153,6 +153,15 @@ public class User {
     }
     
     public func createUser(devid: String) -> Bool {
+        print(user_email)
+        print(user_password)
+        print(first_name)
+        print(last_name)
+        print(user_major)
+        print(user_minor)
+        print(user_year)
+        print(user_bio)
+        print(devid)
         API.createUser(email: user_email, password: user_password, first_name: first_name, last_name: last_name, major: user_major, minor: user_minor, year: user_year, self_bio: user_bio, device_id: devid) { (created_user) in
             self.create_read_update = created_user
         }
