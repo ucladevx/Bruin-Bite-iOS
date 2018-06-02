@@ -9,12 +9,12 @@
 import UIKit
 
 class CreateProfilePt2ViewController: UIViewController {
-
+    
     @IBOutlet var CreateButton: UIButton!
     @IBOutlet var CreateProfileText: UILabel!
     @IBOutlet var YearText: UITextField!
     @IBOutlet var MajorText: UITextField!
-
+    
     @IBAction func CreateTap(_ sender: Any) {
         if CreateButton.backgroundColor == .clear {
             CreateButton.backgroundColor = UIColor.white
@@ -25,7 +25,7 @@ class CreateProfilePt2ViewController: UIViewController {
             CreateButton.setTitleColor(UIColor.white, for: .normal)
         }
     }
-
+    
     @IBAction func didPressCreate(_ sender: UIButton) {
         if((MajorText.text ?? "") == "") {
             //Invalid Major
@@ -44,32 +44,35 @@ class CreateProfilePt2ViewController: UIViewController {
         // Attempts to create a user, returns false if
         if(!MAIN_USER.createUser(devid: UserDefaults.standard.object(forKey: "Dev_Token") as? String ?? "")) {
             print(MAIN_USER.accessUserInfo(type: "error"))
-            return
         }
 
-//        switch MAIN_USER.accessUserInfo(type: "error") {
-//        case "major":
-//            //Invalid Major
-//            return
-//        case "year":
-//            //Invalid Year
-//            return
-//        case: "bio":
-//            //Invalid Bio
-//            return
-//        default:
-//            //Unknown Invalid
-//            return
-//        }
-
+        if(MAIN_USER.accessUserId() == -1) {
+            return
+        }
+        
+        //        switch MAIN_USER.accessUserInfo(type: "error") {
+        //        case "major":
+        //            //Invalid Major
+        //            return
+        //        case "year":
+        //            //Invalid Year
+        //            return
+        //        case: "bio":
+        //            //Invalid Bio
+        //            return
+        //        default:
+        //            //Unknown Invalid
+        //            return
+        //        }
+      
         self.performSegue(withIdentifier: "ShowMenuVC_1", sender: nil)
     }
-
-
-
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         view.backgroundColor = UIColor.twilightBlue
         CreateProfileText.font = UIFont.signUpTextFont
         YearText.font = UIFont.signUpInfoFieldFont
@@ -78,18 +81,18 @@ class CreateProfilePt2ViewController: UIViewController {
         MajorText.textColor = .white
         CreateButton.setTitleColor(UIColor.white, for: .normal)
         CreateButton.titleLabel?.font = UIFont.signUpInfoFieldFont
-
+        
         YearText.becomeFirstResponder()
-
+        
         CreateButton.layer.borderWidth = 1
         CreateButton.layer.borderColor = UIColor.white.cgColor
         CreateButton.layer.cornerRadius = 26
-
+        
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
 }

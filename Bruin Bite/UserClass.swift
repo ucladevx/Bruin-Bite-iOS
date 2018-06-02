@@ -25,7 +25,7 @@ public class User {
      loginUser - Attempts to login user and if not logged in, then I will store the error in net_error as well, which I do in UserAPI. In Log in Auth, I check for the auth token and will return if not found. If not found, you can also access the error Terrence sends through net_error
      readUser - same as login User except reads the User and updates creat_read_update
      updateUser - updates the User on the backend by using the current values
-                - so If I want to update the profile, I would store the new profile bio into user_bio, then I would just call MAIN_USER.updateUser()
+     - so If I want to update the profile, I would store the new profile bio into user_bio, then I would just call MAIN_USER.updateUser()
      deleteUser - deletes the user
      */
     private var user_ID: Int
@@ -54,7 +54,7 @@ public class User {
         user_year = 0
         user_bio = ""
         net_error = ""
-        user_ID = 0
+        user_ID = -1
         preferred_period = ""
     }
     
@@ -162,6 +162,8 @@ public class User {
         print(user_year)
         print(user_bio)
         print(devid)
+        self.user_ID = -2
+      
         API.createUser(email: user_email, password: user_password, first_name: first_name, last_name: last_name, major: user_major, minor: user_minor, year: user_year, self_bio: user_bio, device_id: devid) { (created_user) in
             self.create_read_update = created_user
         }
