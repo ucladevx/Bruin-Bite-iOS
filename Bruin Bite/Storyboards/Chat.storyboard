@@ -112,21 +112,13 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sIi-qc-o7E" customClass="ComingSoonPopup" customModule="Bruin_Bite" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="611"/>
-                                <viewLayoutGuide key="safeArea" id="7Gh-mA-Cxo"/>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="uad-lQ-3ce" firstAttribute="trailing" secondItem="G01-rd-gY1" secondAttribute="trailing" id="1Hp-uq-HGG"/>
                             <constraint firstItem="uad-lQ-3ce" firstAttribute="leading" secondItem="G01-rd-gY1" secondAttribute="leading" id="1PP-yg-bJd"/>
-                            <constraint firstItem="G01-rd-gY1" firstAttribute="bottom" secondItem="sIi-qc-o7E" secondAttribute="bottom" constant="-57" id="4Na-Sz-1ID"/>
                             <constraint firstItem="uad-lQ-3ce" firstAttribute="top" secondItem="G01-rd-gY1" secondAttribute="top" id="HAM-RJ-TWS"/>
                             <constraint firstItem="G01-rd-gY1" firstAttribute="bottom" secondItem="uad-lQ-3ce" secondAttribute="bottom" id="LVx-uR-b9n"/>
-                            <constraint firstItem="sIi-qc-o7E" firstAttribute="top" secondItem="0yp-wb-5jd" secondAttribute="top" id="LYF-hi-wkK"/>
-                            <constraint firstItem="sIi-qc-o7E" firstAttribute="leading" secondItem="G01-rd-gY1" secondAttribute="leading" id="WoY-b9-YOl"/>
-                            <constraint firstItem="sIi-qc-o7E" firstAttribute="trailing" secondItem="G01-rd-gY1" secondAttribute="trailing" id="qU4-YY-eR7"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="G01-rd-gY1"/>
                     </view>
