@@ -14,10 +14,10 @@ enum MainAPI {
     case getOverviewMenu
     case getDetailedMenu
     case getHours
-    case createUser(email: String, password: String, first_name: String, last_name: String, major: String, minor: String, year: Int, self_bio: String)
+    case createUser(email: String, password: String, first_name: String, last_name: String, major: String, minor: String, year: Int, self_bio: String, device_id: String)
     case readUsers(email: String, access_token: String)
     case loginUser(username:String, password: String, grant_type: String, client_id: String, client_secret: String)
-    case updateUser(email: String, password: String, first_name: String, last_name: String, major: String, minor: String, year: Int, self_bio: String, access_token: String) //send it as it is if it hasn't changed
+    case updateUser(email: String, password: String, first_name: String, last_name: String, major: String, minor: String, year: Int, self_bio: String, access_token: String, device_id: String) //send it as it is if it hasn't changed
     case deleteUser(email: String, access_token: String)
     case matchUser(user: Int, meal_times: [String], meal_day: String, meal_period: String, dining_halls: [String])
 }
@@ -69,14 +69,14 @@ extension MainAPI: TargetType {
         switch self {
         case .getCurrentActivityLevels, .getOverviewMenu, .getDetailedMenu, .getHours:
             return .requestPlain
-        case .createUser(let email, let password, let first_name, let last_name, let major, let minor, let year, let self_bio):
-            return .requestParameters(parameters: ["email": email, "password": password, "first_name": first_name, "last_name": last_name, "major": major, "minor": minor, "year": year, "self_bio": self_bio], encoding: JSONEncoding.default)
+        case .createUser(let email, let password, let first_name, let last_name, let major, let minor, let year, let self_bio, let device_id):
+            return .requestParameters(parameters: ["email": email, "password": password, "first_name": first_name, "last_name": last_name, "major": major, "minor": minor, "year": year, "self_bio": self_bio, "device_id": device_id], encoding: JSONEncoding.default)
         case .loginUser(let username, let password, let grant_type, let client_id, let client_secret):
             return .requestParameters(parameters: ["username": username, "password": password, "grant_type": grant_type, "client_id": client_id, "client_secret": client_secret], encoding: URLEncoding.default)
         case .readUsers(let email, let access_token):
             return .requestParameters(parameters: ["email": email, "access_token": access_token], encoding: URLEncoding.queryString)
-        case .updateUser(let email, let password, let first_name, let last_name, let major, let minor, let year, let self_bio, let access_token):
-            return .requestParameters(parameters: ["email": email, "password": password, "first_name": first_name, "last_name": last_name, "major": major, "minor": minor, "year": year, "self_bio":self_bio, "access_token": access_token], encoding: JSONEncoding.default)
+        case .updateUser(let email, let password, let first_name, let last_name, let major, let minor, let year, let self_bio, let access_token, let device_id):
+            return .requestParameters(parameters: ["email": email, "password": password, "first_name": first_name, "last_name": last_name, "major": major, "minor": minor, "year": year, "self_bio":self_bio, "access_token": access_token, "device_id": device_id], encoding: JSONEncoding.default)
         case .deleteUser(let email, let access_token):
             return .requestParameters(parameters: ["email": email, "access_token": access_token], encoding: JSONEncoding.default)
         case .matchUser(let user, let meal_times, let meal_day, let meal_period, let dining_halls):
@@ -120,7 +120,7 @@ extension MainAPI: TargetType {
             return ["Content-Type": "application/x-www-form-urlencoded"]
         case .readUsers, .updateUser, .deleteUser, .matchUser:
             var temp = "Bearer "
-            temp += UserDefaults.standard.object(forKey: MAIN_USER.accessUserInfo(type: "email")) as! String
+            temp += UserDefaults.standard.object(forKey: MAIN_USER.accessUserInfo(type: "email")) as? String ?? ""
             return ["Authorization": temp]
         }
     }

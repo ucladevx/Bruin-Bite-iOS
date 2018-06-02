@@ -152,8 +152,17 @@ public class User {
         return self.user_ID
     }
     
-    public func createUser() -> Bool {
-        API.createUser(email: user_email, password: user_password, first_name: first_name, last_name: last_name, major: user_major, minor: user_minor, year: user_year, self_bio: user_bio) { (created_user) in
+    public func createUser(devid: String) -> Bool {
+        print(user_email)
+        print(user_password)
+        print(first_name)
+        print(last_name)
+        print(user_major)
+        print(user_minor)
+        print(user_year)
+        print(user_bio)
+        print(devid)
+        API.createUser(email: user_email, password: user_password, first_name: first_name, last_name: last_name, major: user_major, minor: user_minor, year: user_year, self_bio: user_bio, device_id: devid) { (created_user) in
             self.create_read_update = created_user
         }
         if(self.create_read_update != nil) {
@@ -171,9 +180,8 @@ public class User {
         }
     }
     public func readUser() {
-        /*
         DispatchQueue.global(qos: .background).async {
-            API.readUsers(email: self.user_email, access_token: MAIN_USER.getToken()!) { (sent_user) in
+            API.readUsers(email: self.user_email, access_token: MAIN_USER.getToken() ?? "") { (sent_user) in
                 self.create_read_update = sent_user
                 self.user_email = self.create_read_update?.email ?? ""
                 self.first_name = self.create_read_update?.first_name ?? ""
@@ -182,19 +190,20 @@ public class User {
                 self.user_minor = self.create_read_update?.minor ?? ""
                 self.user_bio = self.create_read_update?.self_bio ?? ""
                 self.user_year = self.create_read_update?.year ?? 0
+                self.user_ID = self.create_read_update?.id ?? 0
             }
-        }*/
+        }
     }
-    public func updateUser() {
+    public func updateUser(dev_id: String) {
         DispatchQueue.global(qos: .background).async {
-            API.updateUser(email: self.user_email, password: self.user_password, first_name: self.first_name, last_name: self.last_name, major: self.user_major, minor: self.user_minor, year: self.user_year, self_bio: self.user_bio, access_token: UserDefaults.standard.object(forKey: self.user_email) as! String) { (updatedUser) in
+            API.updateUser(email: self.user_email, password: self.user_password, first_name: self.first_name, last_name: self.last_name, major: self.user_major, minor: self.user_minor, year: self.user_year, self_bio: self.user_bio, access_token: UserDefaults.standard.object(forKey: self.user_email) as? String ?? "", device_id: dev_id) { (updatedUser) in
                 self.create_read_update = updatedUser
             }
         }
     }
     public func deleteUser() {
         DispatchQueue.global(qos: .background).async {
-            API.deleteUser(email: self.user_email, access_token: UserDefaults.standard.object(forKey: self.user_email) as! String) {
+            API.deleteUser(email: self.user_email, access_token: UserDefaults.standard.object(forKey: self.user_email) as? String ?? "") {
                 print("Deleted User")
             }
         }
