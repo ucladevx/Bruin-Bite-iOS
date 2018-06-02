@@ -13,8 +13,8 @@ extension API {
     
     static let UserAPIKey = "myKey"
     
-    static func createUser(email: String, password: String, first_name: String, last_name: String, major: String, minor: String, year: Int, self_bio: String, completion: @escaping (UserCreate) -> ()) {
-        provider.request(.createUser(email: email, password: password, first_name: first_name, last_name: last_name, major: major, minor: minor, year: year, self_bio: self_bio)) { result in
+    static func createUser(email: String, password: String, first_name: String, last_name: String, major: String, minor: String, year: Int, self_bio: String, device_id: String, completion: @escaping (UserCreate) -> ()) {
+        provider.request(.createUser(email: email, password: password, first_name: first_name, last_name: last_name, major: major, minor: minor, year: year, self_bio: self_bio, device_id: device_id)) { result in
             switch result {
             case let .success(response):
                 do {
@@ -46,12 +46,15 @@ extension API {
                 } catch let err {
                     do {
                         let errresults = try JSONDecoder().decode(UserError.self, from: response.data)
+                        UserDefaults.standard.set(nil, forKey: MAIN_USER.accessUserInfo(type: "email"))
                         MAIN_USER.initUserError(error: errresults)
                         print(err)
                     } catch let reserr {
+                        UserDefaults.standard.set(nil, forKey: MAIN_USER.accessUserInfo(type: "email"))
                         print(reserr)
                     }
                 }            case let .failure(error):
+                    UserDefaults.standard.set(nil, forKey: MAIN_USER.accessUserInfo(type: "email"))
                 print(error)
             }
             
@@ -80,8 +83,8 @@ extension API {
         }
     }
     
-    static func updateUser(email: String, password: String, first_name: String, last_name: String, major: String, minor: String, year: Int, self_bio: String, access_token: String, completion: @escaping (UserCreate) -> ()) {
-        provider.request(.updateUser(email: email, password: password, first_name: first_name, last_name: last_name, major: major, minor: minor, year: year, self_bio: self_bio, access_token: access_token)) { result in
+    static func updateUser(email: String, password: String, first_name: String, last_name: String, major: String, minor: String, year: Int, self_bio: String, access_token: String, device_id: String, completion: @escaping (UserCreate) -> ()) {
+        provider.request(.updateUser(email: email, password: password, first_name: first_name, last_name: last_name, major: major, minor: minor, year: year, self_bio: self_bio, access_token: access_token, device_id: device_id)) { result in
             switch result {
             case let .success(response):
                 do {
@@ -116,9 +119,14 @@ extension API {
     }
     
     static func matchUser(user: Int, meal_times: [String], meal_day: String, meal_period: String, dining_halls: [String], completion: @escaping() -> Void) {
+        print(user)
+        print(meal_times)
+        print(meal_day)
+        print(meal_period)
+        print(dining_halls)
         provider.request(.matchUser(user: user, meal_times: meal_times, meal_day: meal_day, meal_period: meal_period, dining_halls: dining_halls)) { result in
             switch result {
-            case let .success(response):
+            case let .success:
                 print("Successfully Sent match")
             case let .failure(error):
                 print(error)

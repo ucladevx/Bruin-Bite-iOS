@@ -42,16 +42,15 @@ class ProfileViewController: UIViewController {
 //        ShortBio.textAlignment = NSTextAlignment.center
 
         //Set labels equal to name
-//        userName.text = MAIN_USER.accessUserInfo(type: "first")
+        userName.text = MAIN_USER.accessUserInfo(type: "first")
         let combine = String(MAIN_USER.accessUserYear()) + " | " + MAIN_USER.accessUserInfo(type: "major")
-//        yearMajor.text = combine
+        yearMajor.text = combine
 
         //set profile picture
         //profilePic.image = John.pic
 
         //Set Bio Text
-        let text = "I love dancing, singing and meeting new people. Let’s grab a meal and get to know each other!"
-//        ShortBio.text = text
+        ShortBio.text = MAIN_USER.accessUserInfo(type: "bio")
 
         //Circular Profile Picture
         profilePic.layer.cornerRadius = profilePic.frame.size.width/2

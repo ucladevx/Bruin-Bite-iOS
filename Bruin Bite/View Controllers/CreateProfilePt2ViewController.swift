@@ -45,6 +45,7 @@ class CreateProfilePt2ViewController: UIViewController {
         if(!MAIN_USER.createUser(devid: UserDefaults.standard.object(forKey: "Dev_Token") as? String ?? "")) {
             print(MAIN_USER.accessUserInfo(type: "error"))
         }
+
         if(MAIN_USER.accessUserId() == -1) {
             return
         }
@@ -63,7 +64,7 @@ class CreateProfilePt2ViewController: UIViewController {
         //            //Unknown Invalid
         //            return
         //        }
-        
+      
         self.performSegue(withIdentifier: "ShowMenuVC_1", sender: nil)
     }
     

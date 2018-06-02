@@ -163,6 +163,7 @@ public class User {
         print(user_bio)
         print(devid)
         self.user_ID = -2
+      
         API.createUser(email: user_email, password: user_password, first_name: first_name, last_name: last_name, major: user_major, minor: user_minor, year: user_year, self_bio: user_bio, device_id: devid) { (created_user) in
             self.create_read_update = created_user
         }

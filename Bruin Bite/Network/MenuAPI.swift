@@ -282,6 +282,7 @@ extension API{
         }
     }
     
+    //note: server returns "-1" if no activity level is present, else they return "value%"
     static func getCurrentActivityLevels(completion: @escaping ([ActivityLevel])->()){
         provider.request(.getCurrentActivityLevels) { result in
             switch result{
@@ -298,12 +299,12 @@ extension API{
                         let value = String(describing: value)
                         var percentage = 0
                         activityLevel.location = Location(rawValue: name)!
-                        if value == "-1%"{
+                        if value == "-1"{
                             activityLevel.isAvailable = false
                         }
                         else{
                             let index = value.index(value.endIndex, offsetBy: -1)
-                            percentage = Int(value[..<index])!
+                            percentage = Int(value[..<index]) ?? 0 //to remove the percentage sign
                             activityLevel.isAvailable = true
                             activityLevel.percent = percentage
                         }

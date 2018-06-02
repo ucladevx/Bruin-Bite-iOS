@@ -31,7 +31,7 @@ class ChatAPI {
     
     public func getChatLabel(user1: String, user2: String) {
         let param = ["user1": user1, "user2": user2]
-        Alamofire.request("http://localhost:8000/new/", method: HTTPMethod.get, parameters: param, headers: nil).responseJSON { response in
+        Alamofire.request("https://api.bruin-bite.com/api/v1/messages/new/", method: HTTPMethod.get, parameters: param, headers: nil).responseJSON { response in
             if let result = response.data {
                 if let resultStruct = try? JSONDecoder().decode(LabelResult.self, from: result) {
                     self.delegate?.didReceiveLabel(label: resultStruct.label)
@@ -44,7 +44,7 @@ class ChatAPI {
     
     public func getLast50Messages(forChatRoomWithLabel chatRoomLabel: String) {
         //  Load the last 50 messages from the server when the view controller loads
-        Alamofire.request("http://localhost:8000/" + chatRoomLabel + "/").responseJSON { response in
+        Alamofire.request("https://api.bruin-bite.com/api/v1/messages/" + chatRoomLabel + "/").responseJSON { response in
             if let result = response.data {
                 if let resultStruct = try? JSONDecoder().decode(Last50MessagesResult.self, from: result) {
                     self.delegate?.didReceiveMessages(messages: resultStruct.messages)
