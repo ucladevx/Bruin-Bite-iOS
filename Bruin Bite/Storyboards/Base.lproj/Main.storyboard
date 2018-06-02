@@ -699,10 +699,11 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a3k-i5-jFI" userLabel="XButton">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a3k-i5-jFI" userLabel="XButton">
                                 <rect key="frame" x="337.5" y="38" width="13" height="14"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="14" id="chH-KB-xqU"/>
+                                    <constraint firstAttribute="width" constant="13" id="srW-UX-rmI"/>
                                 </constraints>
                                 <state key="normal" image="x"/>
                                 <connections>
@@ -721,7 +722,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Year" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="B7L-js-gqD">
-                                <rect key="frame" x="67" y="77" width="241" height="38"/>
+                                <rect key="frame" x="67" y="77" width="242" height="38"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="38" id="5E0-oC-6gb"/>
                                 </constraints>
@@ -742,7 +743,7 @@
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Major" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gK0-SR-nsb">
-                                <rect key="frame" x="67" y="144" width="241" height="38"/>
+                                <rect key="frame" x="67" y="144" width="242" height="38"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="38" id="y1A-Kw-cec"/>
                                 </constraints>
@@ -784,7 +785,7 @@
                             <constraint firstItem="B7L-js-gqD" firstAttribute="leading" secondItem="Fat-Do-mOB" secondAttribute="leading" constant="67" id="9l1-nf-K3q"/>
                             <constraint firstItem="Fat-Do-mOB" firstAttribute="trailing" secondItem="Ovy-xh-tkP" secondAttribute="trailing" id="Au0-tx-rZr"/>
                             <constraint firstItem="kID-wk-jUQ" firstAttribute="top" secondItem="Fat-Do-mOB" secondAttribute="top" constant="18" id="CDr-cV-wZY"/>
-                            <constraint firstItem="Fat-Do-mOB" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="KqW-kP-9Ce" secondAttribute="trailing" constant="73" id="EJ9-tF-q9N"/>
+                            <constraint firstItem="Fat-Do-mOB" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="KqW-kP-9Ce" secondAttribute="trailing" constant="66" id="EJ9-tF-q9N"/>
                             <constraint firstItem="Ovy-xh-tkP" firstAttribute="top" secondItem="Fat-Do-mOB" secondAttribute="top" constant="3" id="Kx5-hp-jC6"/>
                             <constraint firstItem="KqW-kP-9Ce" firstAttribute="leading" secondItem="Fat-Do-mOB" secondAttribute="leading" constant="67" id="LGh-qK-hkm"/>
                             <constraint firstItem="a3k-i5-jFI" firstAttribute="top" secondItem="Fat-Do-mOB" secondAttribute="top" constant="18" id="MIL-pc-WEr"/>
@@ -793,7 +794,7 @@
                             <constraint firstItem="Fat-Do-mOB" firstAttribute="trailing" secondItem="a3k-i5-jFI" secondAttribute="trailing" constant="24.5" id="VLU-73-Xrg"/>
                             <constraint firstItem="KqW-kP-9Ce" firstAttribute="top" secondItem="gK0-SR-nsb" secondAttribute="bottom" constant="1" id="W8t-zo-N8r"/>
                             <constraint firstItem="B7L-js-gqD" firstAttribute="centerX" secondItem="gD2-1Y-LLv" secondAttribute="centerX" id="Xix-JI-V3Z"/>
-                            <constraint firstItem="Fat-Do-mOB" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="gK0-SR-nsb" secondAttribute="trailing" constant="73" id="bdr-bY-bKq"/>
+                            <constraint firstItem="Fat-Do-mOB" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="gK0-SR-nsb" secondAttribute="trailing" constant="66" id="bdr-bY-bKq"/>
                             <constraint firstItem="Ovy-xh-tkP" firstAttribute="centerX" secondItem="gD2-1Y-LLv" secondAttribute="centerX" id="i9X-hB-poe"/>
                             <constraint firstItem="gK0-SR-nsb" firstAttribute="top" secondItem="Jg4-qu-FhV" secondAttribute="bottom" constant="26" id="jRs-lX-dFe"/>
                             <constraint firstItem="kID-wk-jUQ" firstAttribute="leading" secondItem="Fat-Do-mOB" secondAttribute="leading" constant="33" id="k3A-0Z-DV9"/>
@@ -801,8 +802,8 @@
                             <constraint firstItem="Jg4-qu-FhV" firstAttribute="leading" secondItem="Fat-Do-mOB" secondAttribute="leading" constant="67" id="t22-yF-iYZ"/>
                             <constraint firstItem="4vm-uS-4Bb" firstAttribute="centerX" secondItem="gD2-1Y-LLv" secondAttribute="centerX" id="tks-lM-l8U"/>
                             <constraint firstItem="4vm-uS-4Bb" firstAttribute="top" secondItem="KqW-kP-9Ce" secondAttribute="bottom" constant="42" id="wIu-nY-C4S"/>
-                            <constraint firstItem="Fat-Do-mOB" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="B7L-js-gqD" secondAttribute="trailing" constant="73" id="wce-UE-lLV"/>
-                            <constraint firstItem="Fat-Do-mOB" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="Jg4-qu-FhV" secondAttribute="trailing" constant="73" id="yWl-Le-qgU"/>
+                            <constraint firstItem="Fat-Do-mOB" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="B7L-js-gqD" secondAttribute="trailing" constant="66" id="wce-UE-lLV"/>
+                            <constraint firstItem="Fat-Do-mOB" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="Jg4-qu-FhV" secondAttribute="trailing" constant="66" id="yWl-Le-qgU"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Fat-Do-mOB"/>
                     </view>
@@ -968,9 +969,9 @@
         <image name="x" width="15" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="kHV-7h-cOA"/>
+        <segue reference="1eE-UU-7Ui"/>
         <segue reference="OQb-Mg-l73"/>
-        <segue reference="WWJ-TC-Qti"/>
+        <segue reference="PNa-Ke-Vgp"/>
         <segue reference="c5I-PD-MuZ"/>
     </inferredMetricsTieBreakers>
 </document>
