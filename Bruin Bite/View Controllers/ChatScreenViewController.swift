@@ -20,12 +20,17 @@ class MessageBubbleCell: UITableViewCell {
 class ChatScreenViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ChatMessagesDelegate, WebSocketDelegate {
     @IBOutlet weak var messagesTableView: UITableView!
     @IBOutlet weak var newMessageTxtField: UITextField!
+    
     var socket: WebSocket? = nil
     var isSocketConnected: Bool = false
     
     let currUserId = "456"
     
     var messagesList: [ChatMessage] = []
+    var chatRoomLabel: String? = nil
+    
+    let BACKEND_CHAT_WEBSOCKET_URL = "https://api.bruin-bite.com/api/v1/messaging/chat/"
+    
     let chatAPI = ChatAPI()
     
     override func viewDidLoad() {
@@ -41,7 +46,10 @@ class ChatScreenViewController: UIViewController, UITableViewDelegate, UITableVi
         self.messagesTableView.scrollIndicatorInsets = UIEdgeInsetsMake(0.0, 0.0, 0.0, self.messagesTableView.bounds.size.width - 8.0)
 
         self.chatAPI.delegate = self
-        self.chatAPI.getChatLabel(user1: "123", user2: "456")
+        self.chatAPI.getLast50Messages(forChatRoomWithLabel: chatRoomLabel)
+        self.socket = WebSocket(url: URL(string: BACKEND_CHAT_WEBSOCKET_URL + (chatRoomLabel ?? ""))!)
+        self.socket?.delegate = self
+        self.socket?.connect()
     }
     
     override func didReceiveMemoryWarning() {
@@ -76,10 +84,6 @@ class ChatScreenViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func didReceiveLabel(label: String) {
         print (label)
-        chatAPI.getLast50Messages(forChatRoomWithLabel: label)
-        self.socket = WebSocket(url: URL(string: "http://localhost:8000/chat/" + label)!)
-        self.socket?.delegate = self
-        self.socket?.connect()
     }
     
     @IBAction func didPressSendMessage(_ sender: UIButton) {

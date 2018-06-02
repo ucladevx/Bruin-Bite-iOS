@@ -27,6 +27,8 @@ class ChatAPI {
     
     var delegate: ChatMessagesDelegate?
     
+    private let BACKEND_GET_LAST_50_MSGS_URL = "https://api.bruin-bite.com/api/v1/messaging/messages/"
+    
     //var chatRoomLabel: String
     
     public func getChatLabel(user1: String, user2: String) {
@@ -42,16 +44,20 @@ class ChatAPI {
         }
     }
     
-    public func getLast50Messages(forChatRoomWithLabel chatRoomLabel: String) {
+    public func getLast50Messages(forChatRoomWithLabel chatRoomLabel: String?) {
         //  Load the last 50 messages from the server when the view controller loads
-        Alamofire.request("https://api.bruin-bite.com/api/v1/messages/" + chatRoomLabel + "/").responseJSON { response in
-            if let result = response.data {
-                if let resultStruct = try? JSONDecoder().decode(Last50MessagesResult.self, from: result) {
-                    self.delegate?.didReceiveMessages(messages: resultStruct.messages)
-                } else {
-                    print ("Error getting last 50 messages!")
+        if let chatRoomLabel = chatRoomLabel {
+            Alamofire.request(BACKEND_GET_LAST_50_MSGS_URL + chatRoomLabel + "/").responseJSON { response in
+                if let result = response.data {
+                    if let resultStruct = try? JSONDecoder().decode(Last50MessagesResult.self, from: result) {
+                        self.delegate?.didReceiveMessages(messages: resultStruct.messages)
+                    } else {
+                        print ("Error getting last 50 messages!")
+                    }
                 }
             }
+        } else {
+            print ("No chat room label given")
         }
     }
 }

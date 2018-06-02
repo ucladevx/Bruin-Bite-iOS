@@ -21,7 +21,10 @@ class ChatListTableViewCell: UITableViewCell {
 class ChatListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ChatListDelegate {
     
     let chatPreview1: ChatPreview = ChatPreview(name: "Josie Bruin", date: "04/22", meal: "Dinner", time: "10:30 PM", profileImage: "", unreadMessage: 2)
+    
+
     var data: [ChatListItem] = []
+    var selectedChatRoom: String? = nil
     
     let chatListAPI: ChatListAPI = ChatListAPI()
     
@@ -68,6 +71,7 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        self.selectedChatRoom = data[indexPath.row].chat_url
         self.performSegue(withIdentifier: "ShowChatScreenVC", sender: nil)
     }
     
@@ -75,6 +79,17 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
         self.data = chatListData
         self.chatListTableView.reloadData()
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowChatScreenVC" {
+            if let destVC = segue.destination as? ChatScreenViewController {
+                destVC.chatRoomLabel = selectedChatRoom
+            }
+        }
+    }
+    
+    
+    // UTILITY FUNCTIONS:
     
     func getDateObject(fromDateTimeString dateTime: String) -> Date? {
         let dateFormatter = DateFormatter()
