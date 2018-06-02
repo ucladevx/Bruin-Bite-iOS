@@ -82,10 +82,6 @@ class ChatScreenViewController: UIViewController, UITableViewDelegate, UITableVi
         print (cell.debugData)
     }
     
-    func didReceiveLabel(label: String) {
-        print (label)
-    }
-    
     @IBAction func didPressSendMessage(_ sender: UIButton) {
         let newMessage = newMessageTxtField.text!
         self.newMessageTxtField.text = ""
