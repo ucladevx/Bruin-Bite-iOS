@@ -36,7 +36,7 @@ class CreateProfileViewController: UIViewController {
     }
     
     @IBAction func nextButtonPressed (_ sender: Any?) {
-        MAIN_USER.changeUserInfo(type: "bio", info: BioText.text!)
+        MAIN_USER.changeUserInfo(type: "bio", info: BioTextBox.text ?? "")
         self.performSegue(withIdentifier: "EndPt1", sender: sender)
     }
 }
