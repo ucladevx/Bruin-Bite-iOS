@@ -43,10 +43,14 @@ extension API{
                                     mealPeriod = MealPeriod.brunch
                                 }
                                 break
+                            case "brunch":
+                                mealPeriod = MealPeriod.brunch
+                                break
                             case "dinner":
                                 mealPeriod = MealPeriod.dinner
                                 break
                             default:
+                                print("Invalid Meal Period: \(time)")
                                 break
                             }
                             for (location, items) in meal{
