@@ -66,6 +66,8 @@ class SignInViewController: UIViewController {
         if(MAIN_USER.getToken() != nil) {
             MAIN_USER.readUser()
             self.performSegue(withIdentifier: "ShowMenuVC_2", sender: nil)
+        } else {
+            return
         }
     }
     

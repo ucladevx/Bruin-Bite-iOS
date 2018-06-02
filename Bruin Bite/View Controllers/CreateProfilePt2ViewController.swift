@@ -42,28 +42,26 @@ class CreateProfilePt2ViewController: UIViewController {
         MAIN_USER.changeUserInfo(type: "major", info: MajorText.text!)
         MAIN_USER.changeYear(year: year)
         // Attempts to create a user, returns false if
-        if(!MAIN_USER.createUser()) {
+        if(!MAIN_USER.createUser(devid: UserDefaults.standard.object(forKey: "Dev_Token") as! String)) {
             print(MAIN_USER.accessUserInfo(type: "error"))
             return
         }
 
-        /* Waiting for Sam
-        let result = MAIN_USER.updateUser()
-        switch result {
-        case "major":
-            //Invalid Major
-            return
-        case "year":
-            //Invalid Year
-            return
-        case: "bio":
-            //Invalid Bio
-            return
-        default:
-            //Unknown Invalid
-            return
-        }
-        */
+        MAIN_USER.updateUser(dev_id: UserDefaults.standard.object(forKey: "Dev_Token") as! String)
+//        switch MAIN_USER.accessUserInfo(type: "error") {
+//        case "major":
+//            //Invalid Major
+//            return
+//        case "year":
+//            //Invalid Year
+//            return
+//        case: "bio":
+//            //Invalid Bio
+//            return
+//        default:
+//            //Unknown Invalid
+//            return
+//        }
 
         self.performSegue(withIdentifier: "ShowMenuVC_1", sender: nil)
     }

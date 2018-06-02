@@ -171,7 +171,6 @@ public class User {
         }
     }
     public func readUser() {
-        /*
         DispatchQueue.global(qos: .background).async {
             API.readUsers(email: self.user_email, access_token: MAIN_USER.getToken()!) { (sent_user) in
                 self.create_read_update = sent_user
@@ -182,8 +181,9 @@ public class User {
                 self.user_minor = self.create_read_update?.minor ?? ""
                 self.user_bio = self.create_read_update?.self_bio ?? ""
                 self.user_year = self.create_read_update?.year ?? 0
+                self.user_ID = self.create_read_update?.id ?? 0
             }
-        }*/
+        }
     }
     public func updateUser(dev_id: String) {
         DispatchQueue.global(qos: .background).async {
