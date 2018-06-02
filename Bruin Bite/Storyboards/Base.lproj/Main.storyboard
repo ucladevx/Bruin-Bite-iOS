@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8gz-gb-DS3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Re2-AQ-gBu">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -789,7 +790,6 @@
                             <constraint firstItem="Ovy-xh-tkP" firstAttribute="leading" secondItem="Fat-Do-mOB" secondAttribute="leading" id="5sI-TS-Ofc"/>
                             <constraint firstItem="B7L-js-gqD" firstAttribute="top" secondItem="Ovy-xh-tkP" secondAttribute="bottom" constant="8" id="7BA-AS-te6"/>
                             <constraint firstItem="B7L-js-gqD" firstAttribute="leading" secondItem="Fat-Do-mOB" secondAttribute="leading" constant="67" id="9l1-nf-K3q"/>
-                            <constraint firstItem="Fat-Do-mOB" firstAttribute="trailing" secondItem="Ovy-xh-tkP" secondAttribute="trailing" id="Au0-tx-rZr"/>
                             <constraint firstItem="kID-wk-jUQ" firstAttribute="top" secondItem="Fat-Do-mOB" secondAttribute="top" constant="18" id="CDr-cV-wZY"/>
                             <constraint firstItem="Fat-Do-mOB" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="KqW-kP-9Ce" secondAttribute="trailing" constant="66" id="EJ9-tF-q9N"/>
                             <constraint firstItem="Ovy-xh-tkP" firstAttribute="top" secondItem="Fat-Do-mOB" secondAttribute="top" constant="3" id="Kx5-hp-jC6"/>
@@ -975,9 +975,9 @@
         <image name="x" width="15" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="1eE-UU-7Ui"/>
+        <segue reference="kHV-7h-cOA"/>
         <segue reference="OQb-Mg-l73"/>
-        <segue reference="PNa-Ke-Vgp"/>
+        <segue reference="WWJ-TC-Qti"/>
         <segue reference="c5I-PD-MuZ"/>
     </inferredMetricsTieBreakers>
 </document>
