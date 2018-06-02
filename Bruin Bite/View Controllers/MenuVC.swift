@@ -61,7 +61,33 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
             let date = Date()
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "d"
-            self.updateData(dateFormatter.string(from: date), mP: MealPeriod.breakfast)
+            let hour = Calendar.current.component(.hour, from: Date())
+            switch hour {
+            case 0..<2:
+                self.topBar.timeSelected("Night")
+            case 2..<9:
+                if(!self.topBar.brunch) {
+                    self.topBar.timeSelected("Breakfast")
+                }
+                else {
+                    self.topBar.timeSelected("Brunch")
+                }
+            case 9..<15:
+                if(!self.topBar.brunch) {
+                    self.topBar.timeSelected("Lunch")
+                }
+                else {
+                    self.topBar.timeSelected("Brunch")
+                }
+            case 15..<21:
+                self.topBar.timeSelected("Dinner")
+            case 21..<24:
+                self.topBar.timeSelected("Night")
+            default:
+                print("Current Meal Period could not be determined")
+                self.currMP = MealPeriod.breakfast
+            }
+            self.updateData(dateFormatter.string(from: date), mP: self.currMP)
         }
 //        API.getDetailedMenu { parsedMenus in
 //            for m in parsedMenus{
