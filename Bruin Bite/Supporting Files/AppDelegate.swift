@@ -29,6 +29,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         registerForPushNotifications()
         
+        //Try to log in automatically
+        if let _ = UserDefaults.standard.value(forKey: "accessToken") , let email = UserDefaults.standard.value(forKey: "email") as? String {
+            MAIN_USER.changeUserInfo(type: "email", info: email)
+            
+            MAIN_USER.readUser() //TODO: if read user is successful, then go to menus
+                presentMenus()
+        }
+        
         return true
     }
 
@@ -88,5 +96,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("Failed to register for remote notifications with error: \(error)")
     }
 
+    func presentMenus() {
+        if let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainView") as? UIViewController {
+                self.window?.rootViewController = controller
+        }
+    }
 }
 
