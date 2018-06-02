@@ -50,6 +50,7 @@ extension API{
                                 mealPeriod = MealPeriod.dinner
                                 break
                             default:
+                                print("Invalid Meal Period: \(time)")
                                 break
                             }
                             for (location, items) in meal{
