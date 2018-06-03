@@ -29,7 +29,7 @@ class AllergensBarScrollView: UIScrollView {
         self.addSubview(content)
         content.snp.makeConstraints{(make) -> Void in
             make.edges.equalTo(self)
-            make.size.equalTo(CGSize(width: 695, height: self.frame.height))
+            make.size.equalTo(CGSize(width: 735, height: self.frame.height))
         }
     }
     
