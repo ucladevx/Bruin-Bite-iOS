@@ -243,6 +243,7 @@
                         <viewLayoutGuide key="safeArea" id="qKf-Z9-tps"/>
                     </view>
                     <connections>
+                        <outlet property="bottomLayoutConstraint" destination="l3K-Dw-Lde" id="WKD-22-O9F"/>
                         <outlet property="messagesTableView" destination="Sbd-dn-2VK" id="b4w-pF-SEi"/>
                         <outlet property="newMessageTxtField" destination="mqA-am-yU9" id="Yub-dm-5Cg"/>
                     </connections>
