@@ -15,7 +15,13 @@ struct timeData{
 
 var chosen = [String]()
 
+protocol TimePickerViewControllerDelegate {
+    func didConfirm(withChoices: String)
+}
+
 class TimePickerViewController: UIViewController {
+    
+    var delegate: TimePickerViewControllerDelegate? = nil
     
     var times: [timeData] = []
 //    var times: [String] = ["10:00", "10:15", "10:30", "10:45", "11:00", "11:15", "11:30", "10:45", "12:00", "12:15"]
@@ -68,19 +74,23 @@ class TimePickerViewController: UIViewController {
   
   @IBAction func completeActionButton(_ sender: Any) {
     var temp = [String]()
+    var chosenString = ""
     if(times.isEmpty == false) {
-    for i in 0...15 {
-        if(times[i].isSelected) {
-            if(MAIN_USER.accessUserInfo(type: "period") != "BR") {
-                let tempor = timeForm(time: times[i].text) + ":00"
-                temp.append(tempor)
-            } else {
-                let tempor2 = times[i].text + ":00"
-            temp.append(tempor2)
+        for i in 0...15 {
+            if(times[i].isSelected) {
+                if(MAIN_USER.accessUserInfo(type: "period") != "BR") {
+                    let tempor = timeForm(time: times[i].text) + ":00"
+                    temp.append(tempor)
+                } else {
+                    let tempor2 = times[i].text + ":00"
+                temp.append(tempor2)
+                }
+                chosenString += times[i].text + ", "
             }
         }
-    }
-    chosen = temp
+        chosen = temp
+        chosenString = chosenString.isEmpty ? "" : String(chosenString[chosenString.startIndex..<chosenString.index(chosenString.endIndex, offsetBy: -2)])
+        self.delegate?.didConfirm(withChoices: chosenString)
     }
         dismiss(animated: true, completion: nil)
   }

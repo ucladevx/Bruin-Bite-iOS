@@ -148,8 +148,10 @@ class PreferenceViewController: UIViewController {
     @IBAction func selectTime(sender: AnyObject) {
         //Refactored storyboard
         let storyBoard = UIStoryboard(name: "PopupViewControllers", bundle: nil)
-        let timePicker = storyBoard.instantiateViewController(withIdentifier: "TimePickerViewController")
-        self.present(timePicker, animated: true)
+        if let timePicker = storyBoard.instantiateViewController(withIdentifier: "TimePickerViewController") as? TimePickerViewController {
+            timePicker.delegate = self
+            self.present(timePicker, animated: true)
+        }
     }
     
     
@@ -172,7 +174,7 @@ class PreferenceViewController: UIViewController {
 }
 
 
-extension PreferenceViewController: CZPickerViewDelegate, CZPickerViewDataSource {
+extension PreferenceViewController: CZPickerViewDelegate, CZPickerViewDataSource, TimePickerViewControllerDelegate {
         func numberOfRows(in pickerView: CZPickerView!) -> Int {
             return picks.count
         }
@@ -259,7 +261,7 @@ extension PreferenceViewController: CZPickerViewDelegate, CZPickerViewDataSource
             }
             break;
         case currentTime:
-            //TimeText.text = chosen
+            //TimeButton.setTitle(chosen, for: .normal)
             break;
         default:
             DayButton.setTitle(chosen, for: .normal)
@@ -267,6 +269,10 @@ extension PreferenceViewController: CZPickerViewDelegate, CZPickerViewDataSource
             break;
         }
         
+    }
+    
+    func didConfirm(withChoices: String) {
+        TimeButton.setTitle(withChoices, for: .normal)
     }
     
     /*
