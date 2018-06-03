@@ -36,7 +36,7 @@ class ChatListAPI {
     var delegate: ChatListDelegate? = nil
     let CHAT_LIST_BACKEND_URL = "https://api.bruin-bite.com/api/v1/users/matching/new/"
     
-    func getChatList(forUserWithID user: String) {
+    func getChatList(forUserWithID user: Int) {
         let param = ["id": user]
         Alamofire.request(CHAT_LIST_BACKEND_URL, method: HTTPMethod.get, parameters: param, headers: nil).responseJSON { response in
             

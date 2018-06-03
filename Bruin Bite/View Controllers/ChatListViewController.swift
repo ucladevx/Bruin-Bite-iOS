@@ -34,7 +34,8 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
         chatListTableView.delegate = self
         chatListTableView.dataSource = self
         chatListAPI.delegate = self
-        chatListAPI.getChatList(forUserWithID: "31"); // TODO: Send current user's chat ID instead of sample ID
+        //chatListAPI.getChatList(forUserWithID: "31"); // TODO: Send current user's chat ID instead of sample ID
+        chatListAPI.getChatList(forUserWithID: MAIN_USER.accessUserId())
         //data = [chatPreview1];
     }
     
