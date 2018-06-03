@@ -39,6 +39,12 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
         //data = [chatPreview1];
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        chatListAPI.delegate = self
+        chatListAPI.getChatList(forUserWithID: MAIN_USER.accessUserId())
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // code here
