@@ -464,6 +464,7 @@
 				770251AE201D4079002E4515 /* Resources */,
 				D601296F579F59F8E568D410 /* [CP] Embed Pods Frameworks */,
 				2AFA409F20BBD7A00007FB85 /* Embed App Extensions */,
+				1BA67573EDFC2712CE80EAFF /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -547,6 +548,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		1BA67573EDFC2712CE80EAFF /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Bruin Bite/Pods-Bruin Bite-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		9DB29EBED83346BDBACE0D17 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
