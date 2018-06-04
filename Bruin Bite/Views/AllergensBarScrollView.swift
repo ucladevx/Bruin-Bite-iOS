@@ -25,10 +25,18 @@ class AllergensBarScrollView: UIScrollView {
         self.isExclusiveTouch = false
         self.isUserInteractionEnabled = true
         self.delaysContentTouches = false
+        self.canCancelContentTouches = true
         self.addSubview(content)
         content.snp.makeConstraints{(make) -> Void in
             make.edges.equalTo(self)
-            make.size.equalTo(CGSize(width: 695, height: self.frame.height))
+            make.size.equalTo(CGSize(width: 735, height: self.frame.height))
         }
+    }
+    
+    override func touchesShouldCancel(in view: UIView) -> Bool {
+        if view is UIButton {
+            return true
+        }
+        return super.touchesShouldCancel(in: view)
     }
 }

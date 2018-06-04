@@ -5,7 +5,7 @@
 //  Created by Ayush Patel on 5/30/18.
 //  Copyright © 2018 Dont Eat Alone. All rights reserved.
 //
-
+/*
 import UIKit
 
 @IBDesignable
@@ -29,3 +29,4 @@ class ComingSoonPopup: UIView {
         contenView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
     }
 }
+*/

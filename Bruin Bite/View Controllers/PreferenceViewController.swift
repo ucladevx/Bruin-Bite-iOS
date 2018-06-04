@@ -10,7 +10,7 @@ import UIKit
 import CZPicker
 
 
-class PreferenceViewController: UIViewController {
+class PreferenceViewController: UIViewController, MatchDelegate {
 
     @IBOutlet var TopView: UIView!
     @IBOutlet var TitleText: UILabel!
@@ -26,6 +26,8 @@ class PreferenceViewController: UIViewController {
     var dining_halls = [String]()
     var buttonSelected = false
     
+    var generatedMatchID: Int? = nil // note:  if set, means that we can segue to searching screen. If not set, then we have a problem.
+    
     @IBAction func MatchButton(_ sender: Any) {
         meal_times = chosen
         meal_day = convertDate(month: getMonth(dateMonth: meal_day), day: getDay(date: meal_day), year: getYear(date: meal_day))
@@ -35,7 +37,7 @@ class PreferenceViewController: UIViewController {
             print(meal_times[i])
         }
         if(!meal_times.isEmpty && meal_day != "" && !dining_halls.isEmpty) {
-        MAIN_USER.userMatch(mealTimes: meal_times, mealDay: meal_day, mealPeriod: MAIN_USER.accessUserInfo(type: "period"), dineHalls: dining_halls)
+            MAIN_USER.userMatch(mealTimes: meal_times, mealDay: meal_day, mealPeriod: MAIN_USER.accessUserInfo(type: "period"), dineHalls: dining_halls, completionDelegate: self)
         } else {
             return
         }
@@ -45,6 +47,24 @@ class PreferenceViewController: UIViewController {
 //        addChildViewController(searching)
 //        view.addSubview(searching.view)
 //        searching.didMove(toParentViewController: self)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if self.generatedMatchID != nil {
+            self.performSegue(withIdentifier: "showSearchingVC", sender: nil)
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        meal_times = [String]()
+        meal_day = String()
+        dining_halls = [String]()
+        DayButton.setTitle("What day are you free?", for: .normal)
+        DiningHallButton.setTitle("Which one's your favorite?", for: .normal)
+        MealButton.setTitle("When would you like to eat?", for: .normal)
+        TimeButton.setTitle("Starting time?", for: .normal)
     }
     
     override func viewDidLoad() {
@@ -106,10 +126,10 @@ class PreferenceViewController: UIViewController {
         picker?.dataSource = self as CZPickerViewDataSource
         picker?.needFooterView = false
         picker?.allowMultipleSelection = true
-        picker?.checkmarkColor = UIColor.deaScarlet
-        picker?.headerBackgroundColor = UIColor.deaScarlet
-        picker?.confirmButtonBackgroundColor = UIColor.deaScarlet
-        picker?.cancelButtonBackgroundColor = UIColor.deaScarlet
+        picker?.checkmarkColor = UIColor.twilightBlue
+        picker?.headerBackgroundColor = UIColor.twilightBlue
+        picker?.confirmButtonBackgroundColor = UIColor.twilightBlue
+        picker?.cancelButtonBackgroundColor = UIColor.twilightBlue
         picker?.cancelButtonNormalColor = UIColor.white
         picker?.show()
     }
@@ -137,10 +157,10 @@ class PreferenceViewController: UIViewController {
         picker?.dataSource = self as CZPickerViewDataSource
         picker?.needFooterView = false
         picker?.allowMultipleSelection = true
-        picker?.checkmarkColor = UIColor.deaScarlet
-        picker?.headerBackgroundColor = UIColor.deaScarlet
-        picker?.confirmButtonBackgroundColor = UIColor.deaScarlet
-        picker?.cancelButtonBackgroundColor = UIColor.deaScarlet
+        picker?.checkmarkColor = UIColor.twilightBlue
+        picker?.headerBackgroundColor = UIColor.twilightBlue
+        picker?.confirmButtonBackgroundColor = UIColor.twilightBlue
+        picker?.cancelButtonBackgroundColor = UIColor.twilightBlue
         picker?.cancelButtonNormalColor = UIColor.white
         picker?.show()
     }
@@ -148,8 +168,10 @@ class PreferenceViewController: UIViewController {
     @IBAction func selectTime(sender: AnyObject) {
         //Refactored storyboard
         let storyBoard = UIStoryboard(name: "PopupViewControllers", bundle: nil)
-        let timePicker = storyBoard.instantiateViewController(withIdentifier: "TimePickerViewController")
-        self.present(timePicker, animated: true)
+        if let timePicker = storyBoard.instantiateViewController(withIdentifier: "TimePickerViewController") as? TimePickerViewController {
+            timePicker.delegate = self
+            self.present(timePicker, animated: true)
+        }
     }
     
     
@@ -161,18 +183,34 @@ class PreferenceViewController: UIViewController {
         picker?.dataSource = self as CZPickerViewDataSource
         picker?.needFooterView = false
         picker?.allowMultipleSelection = true
-        picker?.checkmarkColor = UIColor.deaScarlet
-        picker?.headerBackgroundColor = UIColor.deaScarlet
-        picker?.confirmButtonBackgroundColor = UIColor.deaScarlet
-        picker?.cancelButtonBackgroundColor = UIColor.deaScarlet
+        picker?.checkmarkColor = UIColor.twilightBlue
+        picker?.headerBackgroundColor = UIColor.twilightBlue
+        picker?.confirmButtonBackgroundColor = UIColor.twilightBlue
+        picker?.cancelButtonBackgroundColor = UIColor.twilightBlue
         picker?.cancelButtonNormalColor = UIColor.white
         picker?.show()
     }
     
+    func didReceiveMatch(withID id: Int) {
+        generatedMatchID = id
+        self.performSegue(withIdentifier: "showSearchingVC", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showSearchingVC" {
+            if let destVC = segue.destination as? SearchingScreenViewController {
+                destVC.matchID = self.generatedMatchID
+            }
+        }
+    }
+    
+    @IBAction func unwindToPreferenceViewController(segue: UIStoryboardSegue) {
+        self.generatedMatchID = nil
+    }
 }
 
 
-extension PreferenceViewController: CZPickerViewDelegate, CZPickerViewDataSource {
+extension PreferenceViewController: CZPickerViewDelegate, CZPickerViewDataSource, TimePickerViewControllerDelegate {
         func numberOfRows(in pickerView: CZPickerView!) -> Int {
             return picks.count
         }
@@ -259,7 +297,7 @@ extension PreferenceViewController: CZPickerViewDelegate, CZPickerViewDataSource
             }
             break;
         case currentTime:
-            //TimeText.text = chosen
+            //TimeButton.setTitle(chosen, for: .normal)
             break;
         default:
             DayButton.setTitle(chosen, for: .normal)
@@ -267,6 +305,10 @@ extension PreferenceViewController: CZPickerViewDelegate, CZPickerViewDataSource
             break;
         }
         
+    }
+    
+    func didConfirm(withChoices: String) {
+        TimeButton.setTitle(withChoices, for: .normal)
     }
     
     /*

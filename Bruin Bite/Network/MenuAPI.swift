@@ -43,10 +43,14 @@ extension API{
                                     mealPeriod = MealPeriod.brunch
                                 }
                                 break
+                            case "brunch":
+                                mealPeriod = MealPeriod.brunch
+                                break
                             case "dinner":
                                 mealPeriod = MealPeriod.dinner
                                 break
                             default:
+                                print("Invalid Meal Period: \(time)")
                                 break
                             }
                             for (location, items) in meal{
@@ -56,7 +60,7 @@ extension API{
                                         var currItem = Item(itemCategory: "Overview", subLocation: "", name: "", serving: nil, calories: nil, fatcal: nil, ingredients: nil, vita: nil, vitc: nil, calc: nil, iron: nil, allergies: nil, nutrition: nil, recipeLink: nil)
                                         currItem.subLocation = sublocation
                                         currItem.name = item["name"].string!
-                                        currItem.recipeLink = item["recipelink"].string
+                                        currItem.recipeLink = item["recipe_link"].string
                                         var allergens = [Allergen]()
                                         if (item["itemcodes"].isEmpty){ // checks for Allergens
                                             allergens.append(Allergen.None)
@@ -191,7 +195,7 @@ extension API{
                                         var currItem = Item(itemCategory: "Detailed", subLocation: "", name: "", serving: nil, calories: nil, fatcal: nil, ingredients: nil, vita: nil, vitc: nil, calc: nil, iron: nil, allergies: nil, nutrition: nil, recipeLink: nil)
                                         currItem.subLocation = sublocation
                                         currItem.name = item["name"].string!
-                                        currItem.recipeLink = item["recipelink"].string
+                                        currItem.recipeLink = item["recipe_link"].string
                                         var allergens = [Allergen]()
                                         if (item["itemcodes"].isEmpty){ // checks for Allergens
                                             allergens.append(Allergen.None)
@@ -282,6 +286,7 @@ extension API{
         }
     }
     
+    //note: server returns "-1" if no activity level is present, else they return "value%"
     static func getCurrentActivityLevels(completion: @escaping ([ActivityLevel])->()){
         provider.request(.getCurrentActivityLevels) { result in
             switch result{
@@ -298,12 +303,12 @@ extension API{
                         let value = String(describing: value)
                         var percentage = 0
                         activityLevel.location = Location(rawValue: name)!
-                        if value == "-1%"{
+                        if value == "-1"{
                             activityLevel.isAvailable = false
                         }
                         else{
                             let index = value.index(value.endIndex, offsetBy: -1)
-                            percentage = Int(value[..<index])!
+                            percentage = Int(value[..<index]) ?? 0 //to remove the percentage sign
                             activityLevel.isAvailable = true
                             activityLevel.percent = percentage
                         }

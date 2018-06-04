@@ -5,6 +5,7 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -14,11 +15,11 @@
             <objects>
                 <viewController storyboardIdentifier="ChatListViewController" id="D6w-8k-bCY" customClass="ChatListViewController" customModule="Bruin_Bite" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0yp-wb-5jd">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uad-lQ-3ce">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
+                                <rect key="frame" x="0.0" y="122" width="375" height="496"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChatListCell" rowHeight="78" id="pZP-aZ-CQe" customClass="ChatListTableViewCell" customModule="Bruin_Bite" customModuleProvider="target">
@@ -50,7 +51,7 @@
                                                     <color key="textColor" red="0.027450980390000001" green="0.2901960784" blue="0.46666666670000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10:30 PM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Qq-uE-yxm">
+                                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10:30 PM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Qq-uE-yxm">
                                                     <rect key="frame" x="304" y="8" width="56" height="19"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="56" id="mLd-wM-LEj"/>
@@ -69,7 +70,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r8v-2Z-7LS">
+                                                <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r8v-2Z-7LS">
                                                     <rect key="frame" x="339" y="34" width="21" height="21"/>
                                                     <color key="backgroundColor" red="0.027450980390000001" green="0.2901960784" blue="0.46666666670000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <constraints>
@@ -112,21 +113,38 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sIi-qc-o7E" customClass="ComingSoonPopup" customModule="Bruin_Bite" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="611"/>
-                                <viewLayoutGuide key="safeArea" id="7Gh-mA-Cxo"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OZg-HC-eeW" userLabel="TopView">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="114"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chats" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QJH-2U-hFc">
+                                        <rect key="frame" x="147.5" y="57" width="81.5" height="46"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="46" id="sNE-3W-F0O"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="30"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.027450980390000001" green="0.2901960784" blue="0.46666666670000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstItem="QJH-2U-hFc" firstAttribute="centerX" secondItem="OZg-HC-eeW" secondAttribute="centerX" id="5dg-DM-TNH"/>
+                                    <constraint firstAttribute="bottom" secondItem="QJH-2U-hFc" secondAttribute="bottom" constant="11" id="USz-yb-t7I"/>
+                                    <constraint firstAttribute="height" constant="114" id="mu0-pD-Mm8">
+                                        <variation key="heightClass=regular" constant="114"/>
+                                    </constraint>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="uad-lQ-3ce" firstAttribute="trailing" secondItem="G01-rd-gY1" secondAttribute="trailing" id="1Hp-uq-HGG"/>
                             <constraint firstItem="uad-lQ-3ce" firstAttribute="leading" secondItem="G01-rd-gY1" secondAttribute="leading" id="1PP-yg-bJd"/>
-                            <constraint firstItem="G01-rd-gY1" firstAttribute="bottom" secondItem="sIi-qc-o7E" secondAttribute="bottom" constant="-57" id="4Na-Sz-1ID"/>
-                            <constraint firstItem="uad-lQ-3ce" firstAttribute="top" secondItem="G01-rd-gY1" secondAttribute="top" id="HAM-RJ-TWS"/>
+                            <constraint firstItem="OZg-HC-eeW" firstAttribute="trailing" secondItem="G01-rd-gY1" secondAttribute="trailing" id="91c-cZ-Qta"/>
                             <constraint firstItem="G01-rd-gY1" firstAttribute="bottom" secondItem="uad-lQ-3ce" secondAttribute="bottom" id="LVx-uR-b9n"/>
-                            <constraint firstItem="sIi-qc-o7E" firstAttribute="top" secondItem="0yp-wb-5jd" secondAttribute="top" id="LYF-hi-wkK"/>
-                            <constraint firstItem="sIi-qc-o7E" firstAttribute="leading" secondItem="G01-rd-gY1" secondAttribute="leading" id="WoY-b9-YOl"/>
-                            <constraint firstItem="sIi-qc-o7E" firstAttribute="trailing" secondItem="G01-rd-gY1" secondAttribute="trailing" id="qU4-YY-eR7"/>
+                            <constraint firstItem="OZg-HC-eeW" firstAttribute="top" secondItem="0yp-wb-5jd" secondAttribute="top" id="gIH-q5-Vm5"/>
+                            <constraint firstItem="uad-lQ-3ce" firstAttribute="top" secondItem="OZg-HC-eeW" secondAttribute="bottom" constant="8" id="jjT-zu-PBF"/>
+                            <constraint firstItem="OZg-HC-eeW" firstAttribute="leading" secondItem="G01-rd-gY1" secondAttribute="leading" id="tAY-q8-Gi4"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="G01-rd-gY1"/>
                     </view>
@@ -134,6 +152,7 @@
                     <navigationItem key="navigationItem" title="Chats" id="ndT-kG-RJQ">
                         <barButtonItem key="backBarButtonItem" title=" " id="iZu-y0-VIq"/>
                     </navigationItem>
+                    <nil key="simulatedTopBarMetrics"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="chatListTableView" destination="uad-lQ-3ce" id="5oJ-oj-wcI"/>
@@ -149,11 +168,11 @@
             <objects>
                 <viewController id="VAO-Bi-W3n" customClass="ChatScreenViewController" customModule="Bruin_Bite" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="37f-LR-V0w">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Sbd-dn-2VK">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="496"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Sbd-dn-2VK">
+                                <rect key="frame" x="0.0" y="20" width="375" height="540"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MessageBubbleCell" id="EUE-Bz-1Er" customClass="MessageBubbleCell" customModule="Bruin_Bite" customModuleProvider="target">
@@ -163,9 +182,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DX9-EG-oW7">
-                                                    <rect key="frame" x="15" y="11" width="235" height="22"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DX9-EG-oW7" customClass="ChatMessageLabel" customModule="Bruin_Bite" customModuleProvider="target">
+                                                    <rect key="frame" x="15" y="11" width="43" height="23.5"/>
                                                     <color key="backgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -174,11 +192,25 @@
                                                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                             <integer key="value" value="5"/>
                                                         </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="topInset">
+                                                            <real key="value" value="10"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="bottomInset">
+                                                            <real key="value" value="10"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="leftInset">
+                                                            <real key="value" value="15"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="rightInset">
+                                                            <real key="value" value="15"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="20"/>
+                                                        </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8lx-yI-ezX">
-                                                    <rect key="frame" x="125" y="12" width="235" height="22"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8lx-yI-ezX" customClass="ChatMessageLabel" customModule="Bruin_Bite" customModuleProvider="target">
+                                                    <rect key="frame" x="317" y="12" width="43" height="23.5"/>
                                                     <color key="backgroundColor" red="0.027450980390000001" green="0.2901960784" blue="0.46666666670000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                                     <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -187,9 +219,34 @@
                                                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                             <integer key="value" value="5"/>
                                                         </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="topInset">
+                                                            <real key="value" value="10"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="bottomInset">
+                                                            <real key="value" value="10"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="leftInset">
+                                                            <real key="value" value="15"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="rightInset">
+                                                            <real key="value" value="15"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="20"/>
+                                                        </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="8lx-yI-ezX" firstAttribute="width" relation="lessThanOrEqual" secondItem="E1X-qB-6A2" secondAttribute="width" multiplier="0.75" id="AID-gw-haf"/>
+                                                <constraint firstItem="8lx-yI-ezX" firstAttribute="top" relation="lessThanOrEqual" secondItem="E1X-qB-6A2" secondAttribute="top" constant="12" id="HcX-OW-cBw"/>
+                                                <constraint firstAttribute="trailing" secondItem="8lx-yI-ezX" secondAttribute="trailing" constant="15" id="Uuo-bk-W1O"/>
+                                                <constraint firstItem="DX9-EG-oW7" firstAttribute="width" relation="lessThanOrEqual" secondItem="E1X-qB-6A2" secondAttribute="width" multiplier="0.75" id="byw-4u-fhz"/>
+                                                <constraint firstItem="DX9-EG-oW7" firstAttribute="top" secondItem="E1X-qB-6A2" secondAttribute="top" constant="11" id="ev4-hV-bPn"/>
+                                                <constraint firstAttribute="bottom" secondItem="DX9-EG-oW7" secondAttribute="bottom" constant="9" id="q33-Zf-7e8"/>
+                                                <constraint firstItem="DX9-EG-oW7" firstAttribute="leading" secondItem="E1X-qB-6A2" secondAttribute="leading" constant="15" id="qSt-td-57Z"/>
+                                                <constraint firstAttribute="bottom" secondItem="8lx-yI-ezX" secondAttribute="bottom" constant="8" id="xCc-cx-AX4"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="receivedMessageLabel" destination="DX9-EG-oW7" id="tlm-F9-vVn"/>
@@ -199,7 +256,7 @@
                                 </prototypes>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Ni-Bi-mls">
-                                <rect key="frame" x="0.0" y="504" width="375" height="34"/>
+                                <rect key="frame" x="0.0" y="568" width="375" height="34"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Your message here.." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mqA-am-yU9">
                                         <rect key="frame" x="8" y="2" width="313" height="30"/>
@@ -251,6 +308,7 @@
                         <viewLayoutGuide key="safeArea" id="qKf-Z9-tps"/>
                     </view>
                     <connections>
+                        <outlet property="bottomLayoutConstraint" destination="l3K-Dw-Lde" id="WKD-22-O9F"/>
                         <outlet property="messagesTableView" destination="Sbd-dn-2VK" id="b4w-pF-SEi"/>
                         <outlet property="newMessageTxtField" destination="mqA-am-yU9" id="Yub-dm-5Cg"/>
                     </connections>

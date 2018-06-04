@@ -20,13 +20,29 @@ class MessageBubbleCell: UITableViewCell {
 class ChatScreenViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ChatMessagesDelegate, WebSocketDelegate {
     @IBOutlet weak var messagesTableView: UITableView!
     @IBOutlet weak var newMessageTxtField: UITextField!
+    @IBOutlet weak var bottomLayoutConstraint: NSLayoutConstraint!
+    
     var socket: WebSocket? = nil
     var isSocketConnected: Bool = false
     
-    let currUserId = "456"
+    let currUserId = String(MAIN_USER.accessUserId())
     
     var messagesList: [ChatMessage] = []
+    var chatRoomLabel: String? = nil
+    
+    let BACKEND_CHAT_WEBSOCKET_URL = "https://api.bruin-bite.com/api/v1/messaging/chat/"
+    
     let chatAPI = ChatAPI()
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        registerForKeyboardNotifications()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        deregisterFromKeyboardNotifications()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +57,10 @@ class ChatScreenViewController: UIViewController, UITableViewDelegate, UITableVi
         self.messagesTableView.scrollIndicatorInsets = UIEdgeInsetsMake(0.0, 0.0, 0.0, self.messagesTableView.bounds.size.width - 8.0)
 
         self.chatAPI.delegate = self
-        self.chatAPI.getChatLabel(user1: "123", user2: "456")
+        self.chatAPI.getLast50Messages(forChatRoomWithLabel: chatRoomLabel)
+        self.socket = WebSocket(url: URL(string: BACKEND_CHAT_WEBSOCKET_URL + (chatRoomLabel ?? ""))!)
+        self.socket?.delegate = self
+        self.socket?.connect()
     }
     
     override func didReceiveMemoryWarning() {
@@ -72,14 +91,6 @@ class ChatScreenViewController: UIViewController, UITableViewDelegate, UITableVi
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! MessageBubbleCell
         print (cell.debugData)
-    }
-    
-    func didReceiveLabel(label: String) {
-        print (label)
-        chatAPI.getLast50Messages(forChatRoomWithLabel: label)
-        self.socket = WebSocket(url: URL(string: "http://localhost:8000/chat/" + label)!)
-        self.socket?.delegate = self
-        self.socket?.connect()
     }
     
     @IBAction func didPressSendMessage(_ sender: UIButton) {
@@ -124,6 +135,38 @@ class ChatScreenViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func websocketDidReceiveData(socket: WebSocketClient, data: Data) {
         // Code
+    }
+    
+    @objc func keyboardUpdated(notification: NSNotification) {
+        let userInfo = notification.userInfo!
+        
+        let animationDuration = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as! NSNumber).doubleValue
+        let keyboardEndFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        let convertedKeyboardEndFrame = view.convert(keyboardEndFrame, from: view.window)
+        let rawAnimationCurve = (notification.userInfo![UIKeyboardAnimationCurveUserInfoKey] as! NSNumber).uint32Value << 16
+        let animationCurve = UIViewAnimationOptions(rawValue: UInt(rawAnimationCurve))
+        var updatedConstant = (view.bounds.maxY - convertedKeyboardEndFrame.minY) + 16
+        // Slightly brute force-y, but desperate times call for desperate measures. - Hirday.
+        if (updatedConstant < 0) {
+            updatedConstant = 16
+        }
+        bottomLayoutConstraint.constant = updatedConstant
+        
+        UIView.animate(withDuration: animationDuration, delay: 0.0, options: animationCurve, animations: {
+            self.view.layoutIfNeeded()
+        }, completion: nil)
+    }
+    
+    func registerForKeyboardNotifications() {
+        //Adding notifies on keyboard appearing
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardUpdated(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardUpdated(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    func deregisterFromKeyboardNotifications(){
+        //Removing notifies on keyboard appearing
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     
 }

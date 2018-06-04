@@ -25,7 +25,7 @@ public class User {
      loginUser - Attempts to login user and if not logged in, then I will store the error in net_error as well, which I do in UserAPI. In Log in Auth, I check for the auth token and will return if not found. If not found, you can also access the error Terrence sends through net_error
      readUser - same as login User except reads the User and updates creat_read_update
      updateUser - updates the User on the backend by using the current values
-                - so If I want to update the profile, I would store the new profile bio into user_bio, then I would just call MAIN_USER.updateUser()
+     - so If I want to update the profile, I would store the new profile bio into user_bio, then I would just call MAIN_USER.updateUser()
      deleteUser - deletes the user
      */
     private var user_ID: Int
@@ -54,7 +54,7 @@ public class User {
         user_year = 0
         user_bio = ""
         net_error = ""
-        user_ID = 0
+        user_ID = -1
         preferred_period = ""
     }
     
@@ -115,7 +115,7 @@ public class User {
     }
     
     public func getToken() -> String? {
-        return ((UserDefaults.standard.object(forKey: self.user_email) as? String) ?? nil)
+        return ((UserDefaults.standard.object(forKey: "accessToken") as? String) ?? nil)
     }
     
     public func accessUserInfo(type: String) -> String {
@@ -152,8 +152,19 @@ public class User {
         return self.user_ID
     }
     
-    public func createUser() -> Bool {
-        API.createUser(email: user_email, password: user_password, first_name: first_name, last_name: last_name, major: user_major, minor: user_minor, year: user_year, self_bio: user_bio) { (created_user) in
+    public func createUser(devid: String) -> Bool {
+        print(user_email)
+        print(user_password)
+        print(first_name)
+        print(last_name)
+        print(user_major)
+        print(user_minor)
+        print(user_year)
+        print(user_bio)
+        print(devid)
+        self.user_ID = -2
+      
+        API.createUser(email: user_email, password: user_password, first_name: first_name, last_name: last_name, major: user_major, minor: user_minor, year: user_year, self_bio: user_bio, device_id: devid) { (created_user) in
             self.create_read_update = created_user
         }
         if(self.create_read_update != nil) {
@@ -171,9 +182,8 @@ public class User {
         }
     }
     public func readUser() {
-        /*
         DispatchQueue.global(qos: .background).async {
-            API.readUsers(email: self.user_email, access_token: MAIN_USER.getToken()!) { (sent_user) in
+            API.readUsers(email: self.user_email, access_token: MAIN_USER.getToken() ?? "") { (sent_user) in
                 self.create_read_update = sent_user
                 self.user_email = self.create_read_update?.email ?? ""
                 self.first_name = self.create_read_update?.first_name ?? ""
@@ -182,27 +192,28 @@ public class User {
                 self.user_minor = self.create_read_update?.minor ?? ""
                 self.user_bio = self.create_read_update?.self_bio ?? ""
                 self.user_year = self.create_read_update?.year ?? 0
+                self.user_ID = self.create_read_update?.id ?? 0
             }
-        }*/
+        }
     }
-    public func updateUser() {
+    public func updateUser(dev_id: String) {
         DispatchQueue.global(qos: .background).async {
-            API.updateUser(email: self.user_email, password: self.user_password, first_name: self.first_name, last_name: self.last_name, major: self.user_major, minor: self.user_minor, year: self.user_year, self_bio: self.user_bio, access_token: UserDefaults.standard.object(forKey: self.user_email) as! String) { (updatedUser) in
+            API.updateUser(email: self.user_email, password: self.user_password, first_name: self.first_name, last_name: self.last_name, major: self.user_major, minor: self.user_minor, year: self.user_year, self_bio: self.user_bio, access_token: UserDefaults.standard.object(forKey: "accessToken") as? String ?? "", device_id: dev_id) { (updatedUser) in
                 self.create_read_update = updatedUser
             }
         }
     }
     public func deleteUser() {
         DispatchQueue.global(qos: .background).async {
-            API.deleteUser(email: self.user_email, access_token: UserDefaults.standard.object(forKey: self.user_email) as! String) {
+            API.deleteUser(email: self.user_email, access_token: UserDefaults.standard.object(forKey: "accessToken") as? String ?? "") {
                 print("Deleted User")
             }
         }
     }
     
-    public func userMatch(mealTimes: [String], mealDay: String, mealPeriod: String, dineHalls: [String]) {
+    func userMatch(mealTimes: [String], mealDay: String, mealPeriod: String, dineHalls: [String], completionDelegate: MatchDelegate) {
         DispatchQueue.global(qos: .background).async {
-            API.matchUser(user: self.user_ID, meal_times: mealTimes, meal_day: mealDay, meal_period: mealPeriod, dining_halls: dineHalls, completion: {
+            API.matchUser(completionDelegate: completionDelegate, user: self.user_ID, meal_times: mealTimes, meal_day: mealDay, meal_period: mealPeriod, dining_halls: dineHalls, completion: {
                 print("Sent User match")
             })
         }

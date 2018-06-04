@@ -11,5 +11,4 @@ import Moya
 
 class API{
     static let provider = MoyaProvider<MainAPI>()
-    
 }

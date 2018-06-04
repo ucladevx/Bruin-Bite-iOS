@@ -80,8 +80,8 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
             print("Current Meal Period could not be determined")
         }
         
-        if let dateLbl = self.topBar.dayBtns[1].dateLbl.text, let dayLbl = self.topBar.dayBtns[1].dateLbl.text {
-            self.topBar.daySelected(dateLbl, dayLabel: dayLbl)
+        if let dateLbl = self.topBar.dayBtns[1].dateLbl.text, let weekLbl = self.topBar.dayBtns[1].weekLbl.text {
+            self.topBar.daySelected(dateLbl, dayLabel: weekLbl)
         }
         
         // Do any additional setup after loading the view, typically from a nib.

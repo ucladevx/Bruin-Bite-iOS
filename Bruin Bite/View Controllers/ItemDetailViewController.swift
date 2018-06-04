@@ -33,7 +33,10 @@ class ItemDetailViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        let recipeID = extractRecipeIDFromRecipeURL(recipeURL: (menuItem?.recipeLink!)!) // TODO: hopefully, handle empty RecipeID
+        var recipeID = ""
+        if let item = menuItem {
+            recipeID = extractRecipeIDFromRecipeURL(recipeURL: (item.recipeLink) ?? "") // TODO: hopefully, handle empty RecipeID
+        }
         if let url = URL(string: nutritionBoxURL + recipeID) {
             let urlRequest: URLRequest = URLRequest(url: url)
             webView.load(urlRequest)
