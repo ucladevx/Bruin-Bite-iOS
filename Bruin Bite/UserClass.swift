@@ -211,9 +211,9 @@ public class User {
         }
     }
     
-    public func userMatch(mealTimes: [String], mealDay: String, mealPeriod: String, dineHalls: [String]) {
+    func userMatch(mealTimes: [String], mealDay: String, mealPeriod: String, dineHalls: [String], completionDelegate: MatchDelegate) {
         DispatchQueue.global(qos: .background).async {
-            API.matchUser(user: self.user_ID, meal_times: mealTimes, meal_day: mealDay, meal_period: mealPeriod, dining_halls: dineHalls, completion: {
+            API.matchUser(completionDelegate: completionDelegate, user: self.user_ID, meal_times: mealTimes, meal_day: mealDay, meal_period: mealPeriod, dining_halls: dineHalls, completion: {
                 print("Sent User match")
             })
         }

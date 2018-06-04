@@ -11,5 +11,5 @@ import Moya
 
 class API{
     static let provider = MoyaProvider<MainAPI>()
-    
+    public var matchDelegate: MatchDelegate? = nil // Desperate times, call for desperate measures - Hirday & Sam - 06/03, 10:45 PM
 }

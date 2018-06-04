@@ -10,7 +10,7 @@ import UIKit
 import CZPicker
 
 
-class PreferenceViewController: UIViewController {
+class PreferenceViewController: UIViewController, MatchDelegate {
 
     @IBOutlet var TopView: UIView!
     @IBOutlet var TitleText: UILabel!
@@ -35,7 +35,7 @@ class PreferenceViewController: UIViewController {
             print(meal_times[i])
         }
         if(!meal_times.isEmpty && meal_day != "" && !dining_halls.isEmpty) {
-        MAIN_USER.userMatch(mealTimes: meal_times, mealDay: meal_day, mealPeriod: MAIN_USER.accessUserInfo(type: "period"), dineHalls: dining_halls)
+            MAIN_USER.userMatch(mealTimes: meal_times, mealDay: meal_day, mealPeriod: MAIN_USER.accessUserInfo(type: "period"), dineHalls: dining_halls, completionDelegate: self)
         } else {
             return
         }
@@ -169,6 +169,10 @@ class PreferenceViewController: UIViewController {
         picker?.cancelButtonBackgroundColor = UIColor.twilightBlue
         picker?.cancelButtonNormalColor = UIColor.white
         picker?.show()
+    }
+    
+    func didReceiveMatch(withID id: Int) {
+        // Do something with recd ID.
     }
     
 }
