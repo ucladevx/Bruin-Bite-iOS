@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftyJSON
 import Result
 
 protocol MatchDelegate {
@@ -133,6 +134,8 @@ extension API {
             case let .success(response):
                 do {
                     let results = try JSONDecoder().decode(MatchRequestData.self, from: response.data)
+                    let jsonData = JSON(response.data)
+                    print(jsonData)
                     let matchID = results.id
                     completionDelegate.didReceiveMatch(withID: matchID)
                     print (results)

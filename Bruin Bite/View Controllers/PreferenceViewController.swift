@@ -26,6 +26,8 @@ class PreferenceViewController: UIViewController, MatchDelegate {
     var dining_halls = [String]()
     var buttonSelected = false
     
+    var generatedMatchID: Int? = nil // note:  if set, means that we can segue to searching screen. If not set, then we have a problem.
+    
     @IBAction func MatchButton(_ sender: Any) {
         meal_times = chosen
         meal_day = convertDate(month: getMonth(dateMonth: meal_day), day: getDay(date: meal_day), year: getYear(date: meal_day))
@@ -45,6 +47,24 @@ class PreferenceViewController: UIViewController, MatchDelegate {
 //        addChildViewController(searching)
 //        view.addSubview(searching.view)
 //        searching.didMove(toParentViewController: self)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if self.generatedMatchID != nil {
+            self.performSegue(withIdentifier: "showSearchingVC", sender: nil)
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        meal_times = [String]()
+        meal_day = String()
+        dining_halls = [String]()
+        DayButton.setTitle("What day are you free?", for: .normal)
+        DiningHallButton.setTitle("Which one's your favorite?", for: .normal)
+        MealButton.setTitle("When would you like to eat?", for: .normal)
+        TimeButton.setTitle("Starting time?", for: .normal)
     }
     
     override func viewDidLoad() {
@@ -172,9 +192,21 @@ class PreferenceViewController: UIViewController, MatchDelegate {
     }
     
     func didReceiveMatch(withID id: Int) {
-        // Do something with recd ID.
+        generatedMatchID = id
+        self.performSegue(withIdentifier: "showSearchingVC", sender: nil)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showSearchingVC" {
+            if let destVC = segue.destination as? SearchingScreenViewController {
+                destVC.matchID = self.generatedMatchID
+            }
+        }
+    }
+    
+    @IBAction func unwindToPreferenceViewController(segue: UIStoryboardSegue) {
+        self.generatedMatchID = nil
+    }
 }
 
 
