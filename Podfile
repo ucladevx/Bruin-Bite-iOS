@@ -12,6 +12,7 @@ target 'Bruin Bite' do
   pod 'FacebookLogin'
   pod 'CZPicker'
   pod 'Starscream'
+  pod 'Repeat'
   pod "Pulsator"
 
 end
