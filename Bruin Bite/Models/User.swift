@@ -110,7 +110,42 @@ extension UserError: Decodable {
     }
 }
 
+//User Model for Match Response
 
+struct MatchRequestData {
+    let user: Int
+    let id: Int
+    let meal_day: String
+    let meal_period: String
+    let found_match: Bool
+    let dining_halls: [String]
+    let meal_times: [String]
+}
+
+extension MatchRequestData: Decodable {
+    enum MatchCodingKeys: String, CodingKey {
+        case user
+        case id
+        case meal_day
+        case meal_period
+        case found_match
+        case dining_halls
+        case meal_times
+    }
+    
+    init(from decoder: Decoder) throws {
+        
+        let container = try decoder.container(keyedBy: MatchCodingKeys.self)
+        
+        user = try container.decode(Int.self, forKey: .user)
+        id = try container.decode(Int.self, forKey: .id)
+        meal_day = try container.decode(String.self, forKey: .meal_day)
+        meal_period = try container.decode(String.self, forKey: .meal_period)
+        found_match = try container.decode(Bool.self, forKey: .found_match)
+        dining_halls = try container.decode([String].self, forKey: .dining_halls)
+        meal_times = try container.decode([String].self, forKey: .meal_times)
+    }
+}
 
 
 

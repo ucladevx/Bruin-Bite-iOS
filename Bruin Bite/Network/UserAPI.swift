@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import SwiftyJSON
 import Result
 
 protocol MatchDelegate {
@@ -129,27 +128,22 @@ extension API {
     }
     
     static func matchUser(completionDelegate: MatchDelegate, user: Int, meal_times: [String], meal_day: String, meal_period: String, dining_halls: [String], completion: @escaping() -> Void) {
-        print(user)
-        print(meal_times)
-        print(meal_day)
-        print(meal_period)
-        print(dining_halls)
         provider.request(.matchUser(user: user, meal_times: meal_times, meal_day: meal_day, meal_period: meal_period, dining_halls: dining_halls)) { result in
             switch result {
             case let .success(response):
                 do {
-                    let results = JSON(response.data)
-                    let matchID = 10 // TODO: Replace with actual ID.
+                    let results = try JSONDecoder().decode(MatchRequestData.self, from: response.data)
+                    let matchID = results.id
                     completionDelegate.didReceiveMatch(withID: matchID)
                     print (results)
+                } catch let err {
+                    print(err)
                 }
                 print("Successfully Sent match")
             case let .failure(error):
                 print(error)
             }
-            
         }
     }
-    
 }
 
