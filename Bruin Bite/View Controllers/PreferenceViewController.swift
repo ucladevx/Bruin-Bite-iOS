@@ -29,6 +29,11 @@ class PreferenceViewController: UIViewController, MatchDelegate {
     var generatedMatchID: Int? = nil // note:  if set, means that we can segue to searching screen. If not set, then we have a problem.
     
     @IBAction func MatchButton(_ sender: Any) {
+        
+        if(chosen.isEmpty || meal_day == "" || dining_halls.isEmpty || MAIN_USER.accessUserInfo(type: "period") == "") {
+            return
+        }
+        
         meal_times = chosen
         meal_day = convertDate(month: getMonth(dateMonth: meal_day), day: getDay(date: meal_day), year: getYear(date: meal_day))
         print(meal_day)
