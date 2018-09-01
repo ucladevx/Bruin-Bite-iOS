@@ -67,7 +67,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let center = UNUserNotificationCenter.current()
         center.requestAuthorization(options: [.alert, .sound, .badge]) {
             (granted, error) in
-            print("Permission granted: \(granted)")
+            Logger.shared.handle(type: .info, message: "Permission granted: \(granted)")
             // 1. Check if permission granted
             
             guard granted else { return }
@@ -86,14 +86,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let token = tokenParts.joined()
         // 2. Print device token to use for PNs payloads
-        print("Device Token: \(token)")
-        print(token)
+        Logger.shared.handle(type: .debug, message: "Device Token: \(token)")
+        Logger.shared.handle(type: .debug, message: token)
         UserDefaults.standard.set(token, forKey: "Dev_Token")
     }
     
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
         // 1. Print out error if PNs registration not successful
-        print("Failed to register for remote notifications with error: \(error)")
+        Logger.shared.handle(type: .warning, message: "Failed to register for remote notifications: \(error)")
     }
 
     func presentMenus() {

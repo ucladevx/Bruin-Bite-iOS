@@ -29,13 +29,13 @@ extension API {
                     do {
                         let errresults = try JSONDecoder().decode(UserError.self, from: response.data)
                         MAIN_USER.initUserError(error: errresults)
-                        print(err)
+                        Logger.shared.handle(type: .error, message: "createUser: \(err)")
                     } catch let reserr {
-                        print(reserr)
+                        Logger.shared.handle(type: .error, message: "createUser: \(reserr)")
                     }
                 }
             case let .failure(error):
-                print(error)
+                Logger.shared.handle(type: .error, message: "createUser: \(error)")
             }
         }
     }
@@ -56,16 +56,16 @@ extension API {
                         UserDefaults.standard.set(nil, forKey: "accessToken")
                         UserDefaults.standard.set(nil, forKey: "refreshToken")
                         MAIN_USER.initUserError(error: errresults)
-                        print(err)
+                        Logger.shared.handle(type: .error, message: "loginUser: \(err)")
                     } catch let reserr {
                         UserDefaults.standard.set(nil, forKey: "accessToken")
                         UserDefaults.standard.set(nil, forKey: "refreshToken")
-                        print(reserr)
+                        Logger.shared.handle(type: .error, message: "loginUser: \(reserr)")
                     }
                 }            case let .failure(error):
                     UserDefaults.standard.set(nil, forKey: "accessToken")
                     UserDefaults.standard.set(nil, forKey: "refreshToken")
-                print(error)
+                Logger.shared.handle(type: .error, message: "loginUser: \(error)")
             }
             
         }
@@ -82,13 +82,13 @@ extension API {
                     do {
                         let errresults = try JSONDecoder().decode(UserError.self, from: response.data)
                         MAIN_USER.initUserError(error: errresults)
-                        print(err)
+                        Logger.shared.handle(type: .warning, message: "Could not read user: \(err)")
                     } catch let reserr {
-                        print(reserr)
+                        Logger.shared.handle(type: .warning, message: "Could not read user: \(reserr)")
                     }
                 }
             case let .failure(error):
-                print(error)
+                Logger.shared.handle(type: .warning, message: "Could not read user: \(error)")
             }
         }
     }
@@ -104,13 +104,13 @@ extension API {
                     do {
                     let errresults = try JSONDecoder().decode(UserError.self, from: response.data)
                     MAIN_USER.initUserError(error: errresults)
-                    print(err)
+                    Logger.shared.handle(type: .error, message: "updateUser: \(err)")
                     } catch let reserr {
-                        print(reserr)
+                        Logger.shared.handle(type: .error, message: "updateUser: \(reserr)")
                     }
                 }
             case let .failure(error):
-                print(error)
+                Logger.shared.handle(type: .error, message: "updateUser: \(error)")
             }
         }
     }
@@ -119,10 +119,10 @@ extension API {
         provider.request(.deleteUser(email:email, access_token: access_token)) { result in
             switch result {
             case let .success(response):
-                print("Delete: \(response)")
+                Logger.shared.handle(type: .info, message: "User Deleted: \(response)")
                 completion()
             case let .failure(error):
-                print(error)
+                Logger.shared.handle(type: .error, message: "Could not delete User: \(error)")
             }
             UserDefaults.standard.removeObject(forKey: email)
         }
@@ -135,16 +135,16 @@ extension API {
                 do {
                     let results = try JSONDecoder().decode(MatchRequestData.self, from: response.data)
                     let jsonData = JSON(response.data)
-                    print(jsonData)
+                    Logger.shared.handle(type: .debug, message: "matchUser JSON data: \(jsonData)")
                     let matchID = results.id
                     completionDelegate.didReceiveMatch(withID: matchID)
-                    print (results)
+                    Logger.shared.handle(type: .debug, message: "matchUser results: \(results)")
                 } catch let err {
-                    print(err)
+                    Logger.shared.handle(type: .error, message: "matchUser: \(err)")
                 }
-                print("Successfully Sent match")
+                Logger.shared.handle(type: .verbose, message: "Successfully Sent match")
             case let .failure(error):
-                print(error)
+                Logger.shared.handle(type: .error, message: "matchUser: \(error)")
             }
         }
     }

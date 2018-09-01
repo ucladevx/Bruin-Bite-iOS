@@ -90,7 +90,7 @@ class ChatScreenViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! MessageBubbleCell
-        print (cell.debugData)
+        Logger.shared.handle(type: .debug, message: "cell debugData: \(cell.debugData)")
     }
     
     @IBAction func didPressSendMessage(_ sender: UIButton) {
@@ -102,12 +102,12 @@ class ChatScreenViewController: UIViewController, UITableViewDelegate, UITableVi
                 let stringedJSON = String(data: messageData, encoding: .utf8) ?? ""
                 socket?.write(string: stringedJSON)
             } else {
-                print ("Error converting ChatMessageSend object to Data")
+                Logger.shared.handle(type: .error, message: "Error converting ChatMessageSend object to Data")
             }
         }
     }
     func didReceiveMessages(messages: [ChatMessage]) {
-        print (messages)
+        Logger.shared.handle(type: .debug, message: "chat messages: \(messages)")
         self.messagesList = messages
         messagesTableView.reloadData()
     }
@@ -121,14 +121,14 @@ class ChatScreenViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func websocketDidReceiveMessage(socket: WebSocketClient, text: String) {
-        print("MESSAGE RECEIVED!\n\n\n")
-        print("LOOK IM SO COOL: ", text)
+        Logger.shared.handle(type: .debug, message: "MESSAGE RECEIVED!\n\n\n")
+        Logger.shared.handle(type: .debug, message: "LOOK IM SO COOL: \(text)")
         if let dataFromMessage = text.data(using: .utf8, allowLossyConversion: false) {
             if let newMessage = try? JSONDecoder().decode(ChatMessage.self, from: dataFromMessage) {
                 self.messagesList.insert(newMessage, at: 0)
                 self.messagesTableView.reloadData()
             } else {
-                print ("Error parsing websocket message to ChatMessage struct")
+                Logger.shared.handle(type: .error, message: "Error parsing websocket message to ChatMessage struct")
             }
         }
     }

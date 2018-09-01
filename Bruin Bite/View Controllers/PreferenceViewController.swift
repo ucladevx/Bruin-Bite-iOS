@@ -36,10 +36,10 @@ class PreferenceViewController: UIViewController, MatchDelegate {
         
         meal_times = chosen
         meal_day = convertDate(month: getMonth(dateMonth: meal_day), day: getDay(date: meal_day), year: getYear(date: meal_day))
-        print(meal_day)
+        Logger.shared.handle(type: .debug, message: meal_day)
         for i in 0...meal_times.count-1 {
             meal_times[i] = meal_day + " " + meal_times[i]
-            print(meal_times[i])
+            Logger.shared.handle(type: .debug, message: meal_times[i])
         }
         if(!meal_times.isEmpty && meal_day != "" && !dining_halls.isEmpty) {
             MAIN_USER.userMatch(mealTimes: meal_times, mealDay: meal_day, mealPeriod: MAIN_USER.accessUserInfo(type: "period"), dineHalls: dining_halls, completionDelegate: self)
@@ -226,7 +226,7 @@ extension PreferenceViewController: CZPickerViewDelegate, CZPickerViewDataSource
         }
         
     func czpickerView(_ pickerView: CZPickerView!, didConfirmWithItemAtRow row: Int){
-        print(picks[row])
+        Logger.shared.handle(type: .debug, message: picks[row])
             self.navigationController?.setNavigationBarHidden(true, animated: true)
             
         }
@@ -236,7 +236,7 @@ extension PreferenceViewController: CZPickerViewDelegate, CZPickerViewDataSource
         }
     
     func czpickerView(pickerView: CZPickerView!, didConfirmWithItemAtRow row: Int){
-        print(row)
+        Logger.shared.handle(type: .debug, message: "row: \(row)")
         DayButton.setTitle(picks[row], for: .normal)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
     }

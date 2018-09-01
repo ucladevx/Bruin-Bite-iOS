@@ -73,10 +73,10 @@ class SearchingScreenViewController: UIViewController {
                 if let resultStruct = try? JSONDecoder().decode(MatchStatusData.self, from: result) {
                     self.didReceiveMatchStatusData(withStatus: resultStruct.found_match)
                 } else {
-                    print ("Error decoding match status data to MatchStatusData struct")
+                    Logger.shared.handle(type: .error, message: "Error decoding match status data to MatchStatusData struct")
                 }
             } else {
-                print ("Error fetching match status data")
+                Logger.shared.handle(type: .error, message: "Error fetching match status data")
             }
         }
     }

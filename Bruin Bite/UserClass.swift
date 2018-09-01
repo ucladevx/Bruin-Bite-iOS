@@ -73,7 +73,9 @@ public class User {
         else if ((user_error_model?.error_description ?? nil) != nil) {
             net_error = (user_error_model?.error_description)!
         }
-        print(net_error)
+        if(net_error != "") {
+            Logger.shared.handle(type: .warning, message: "Net Error: \(net_error)")
+        }
     }
     
     public func changeUserInfo(type: String, info: String) {
@@ -106,7 +108,7 @@ public class User {
             preferred_period = info
             break
         default:
-            print("ERROR TYPE INPUT INCORRECT")
+            Logger.shared.handle(type: .error, message: "changeUserInfo: Incorrect User Info type")
         }
     }
     
@@ -139,7 +141,7 @@ public class User {
         case "period":
             return preferred_period
         default:
-            print("ERROR TYPE INPUT INCORRECT")
+            Logger.shared.handle(type: .error, message: "accessUserInfo: Incorrect User Info type")
             return ""
         }
     }
@@ -153,15 +155,15 @@ public class User {
     }
     
     public func createUser(devid: String) -> Bool {
-        print(user_email)
-        print(user_password)
-        print(first_name)
-        print(last_name)
-        print(user_major)
-        print(user_minor)
-        print(user_year)
-        print(user_bio)
-        print(devid)
+        Logger.shared.handle(type: .debug, message: "UserEmail: \(user_email)")
+        Logger.shared.handle(type: .debug, message: "UserPassword: \(user_password)")
+        Logger.shared.handle(type: .debug, message: "FirstName: \(first_name)")
+        Logger.shared.handle(type: .debug, message: "LastName: \(last_name)")
+        Logger.shared.handle(type: .debug, message: "UserMajor: \(user_major)")
+        Logger.shared.handle(type: .debug, message: "UserMinor: \(user_minor)")
+        Logger.shared.handle(type: .debug, message: "UserYear: \(user_year)")
+        Logger.shared.handle(type: .debug, message: "UserBio: \(user_bio)")
+        Logger.shared.handle(type: .debug, message: "DevID: \(devid)")
         self.user_ID = -2
       
         API.createUser(email: user_email, password: user_password, first_name: first_name, last_name: last_name, major: user_major, minor: user_minor, year: user_year, self_bio: user_bio, device_id: devid) { (created_user) in
@@ -206,7 +208,7 @@ public class User {
     public func deleteUser() {
         DispatchQueue.global(qos: .background).async {
             API.deleteUser(email: self.user_email, access_token: UserDefaults.standard.object(forKey: "accessToken") as? String ?? "") {
-                print("Deleted User")
+                Logger.shared.handle(type: .info, message: "User Deleted")
             }
         }
     }
@@ -214,7 +216,7 @@ public class User {
     func userMatch(mealTimes: [String], mealDay: String, mealPeriod: String, dineHalls: [String], completionDelegate: MatchDelegate) {
         DispatchQueue.global(qos: .background).async {
             API.matchUser(completionDelegate: completionDelegate, user: self.user_ID, meal_times: mealTimes, meal_day: mealDay, meal_period: mealPeriod, dining_halls: dineHalls, completion: {
-                print("Sent User match")
+                Logger.shared.handle(type: .info, message: "Sent User match")
             })
         }
     }
