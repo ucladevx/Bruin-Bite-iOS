@@ -14,5 +14,8 @@ target 'Bruin Bite' do
   pod 'Starscream'
   pod 'Repeat'
   pod "Pulsator"
+  pod "Whisper"
+  pod "GSMessages"
+  pod "SwiftEntryKit"
 
 end
