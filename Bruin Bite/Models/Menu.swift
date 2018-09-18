@@ -48,6 +48,8 @@ enum Location: String{
     case covel = "Covel"
     case bPlate = "Bruin Plate"
     case feast = "FEAST at Rieber"
+    case rieber = "Rieber"
+    case sproul = "Sproul"
 }
 
 //---Structures---
