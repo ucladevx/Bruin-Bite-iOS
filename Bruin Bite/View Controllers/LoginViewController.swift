@@ -55,9 +55,9 @@ class LoginViewController: UIViewController {
         loginManager.logIn(readPermissions: [.publicProfile, .email, .userFriends], viewController: self) { (loginResult) in
             switch loginResult {
             case .failed(let error):
-                Logger.shared.handle(type: .error, message: "Facebook Auth: \(error)")
+                Logger.log("Facebook Auth failed with error: \(error)", withLevel: .error)
             case .cancelled:
-                Logger.shared.handle(type: .info, message: "Facebook Auth: User cancelled login.")
+                Logger.log("Facebook Auth failed with error: User cancelled login.", withLevel: .info)
             case .success(let grantedPermissions, let declinedPermissions, let accessToken):
                 //if user exists and login suceeds
                 //self.performSegue(withIdentifier: "CheckMenusSegue", sender: sender)

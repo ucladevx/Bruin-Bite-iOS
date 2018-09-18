@@ -67,7 +67,7 @@ class TimePickerViewController: UIViewController {
             times.append(time)
         }
     } else {
-        Logger.shared.handle(type: .warning, message: "No meal period selected")
+        Logger.log("No meal period selected", withLevel: .warning)
     }
     
     }
@@ -117,7 +117,7 @@ extension TimePickerViewController: UICollectionViewDataSource{
 
 extension TimePickerViewController: UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        Logger.shared.handle(type: .debug, message: "tapped")
+        Logger.log("tapped", withLevel: .debug)
         let cell = collectionView.cellForItem(at: indexPath) as! TimePickerCollectionViewCell
         
         if times[indexPath.row].isSelected == false{

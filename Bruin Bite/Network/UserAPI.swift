@@ -29,13 +29,13 @@ extension API {
                     do {
                         let errresults = try JSONDecoder().decode(UserError.self, from: response.data)
                         MAIN_USER.initUserError(error: errresults)
-                        Logger.shared.handle(type: .error, message: "createUser: \(err)")
+                        Logger.log("createUser failed with error: \(err)", withLevel: .error)
                     } catch let reserr {
-                        Logger.shared.handle(type: .error, message: "createUser: \(reserr)")
+                        Logger.log("createUser failed with error: \(reserr)", withLevel: .error)
                     }
                 }
             case let .failure(error):
-                Logger.shared.handle(type: .error, message: "createUser: \(error)")
+                Logger.log("createUser failed with error: \(error)", withLevel: .error)
             }
         }
     }
@@ -56,16 +56,16 @@ extension API {
                         UserDefaults.standard.set(nil, forKey: "accessToken")
                         UserDefaults.standard.set(nil, forKey: "refreshToken")
                         MAIN_USER.initUserError(error: errresults)
-                        Logger.shared.handle(type: .error, message: "loginUser: \(err)")
+                        Logger.log("loginUser failed with error: \(err)", withLevel: .error)
                     } catch let reserr {
                         UserDefaults.standard.set(nil, forKey: "accessToken")
                         UserDefaults.standard.set(nil, forKey: "refreshToken")
-                        Logger.shared.handle(type: .error, message: "loginUser: \(reserr)")
+                        Logger.log("loginUser failed with error: \(reserr)", withLevel: .error)
                     }
                 }            case let .failure(error):
                     UserDefaults.standard.set(nil, forKey: "accessToken")
                     UserDefaults.standard.set(nil, forKey: "refreshToken")
-                Logger.shared.handle(type: .error, message: "loginUser: \(error)")
+                    Logger.log("loginUser failed with error: \(error)", withLevel: .error)
             }
             
         }
@@ -82,13 +82,13 @@ extension API {
                     do {
                         let errresults = try JSONDecoder().decode(UserError.self, from: response.data)
                         MAIN_USER.initUserError(error: errresults)
-                        Logger.shared.handle(type: .warning, message: "Could not read user: \(err)")
+                        Logger.log("Could not read user: \(err)", withLevel: .warning)
                     } catch let reserr {
-                        Logger.shared.handle(type: .warning, message: "Could not read user: \(reserr)")
+                        Logger.log("Could not read user: \(reserr)", withLevel: .warning)
                     }
                 }
             case let .failure(error):
-                Logger.shared.handle(type: .warning, message: "Could not read user: \(error)")
+                Logger.log("Could not read user: \(error)", withLevel: .warning)
             }
         }
     }
@@ -104,13 +104,13 @@ extension API {
                     do {
                     let errresults = try JSONDecoder().decode(UserError.self, from: response.data)
                     MAIN_USER.initUserError(error: errresults)
-                    Logger.shared.handle(type: .error, message: "updateUser: \(err)")
+                        Logger.log("updateUser failed with error: \(err)", withLevel: .error)
                     } catch let reserr {
-                        Logger.shared.handle(type: .error, message: "updateUser: \(reserr)")
+                        Logger.log("updateUser failed with error: \(reserr)", withLevel: .error)
                     }
                 }
             case let .failure(error):
-                Logger.shared.handle(type: .error, message: "updateUser: \(error)")
+                Logger.log("updateUser failed with error: \(error)", withLevel: .error)
             }
         }
     }
@@ -119,10 +119,10 @@ extension API {
         provider.request(.deleteUser(email:email, access_token: access_token)) { result in
             switch result {
             case let .success(response):
-                Logger.shared.handle(type: .info, message: "User Deleted: \(response)")
+                Logger.log("User Deleted: \(response)", withLevel: .info)
                 completion()
             case let .failure(error):
-                Logger.shared.handle(type: .error, message: "Could not delete User: \(error)")
+                Logger.log("Could not delete User: \(error)", withLevel: .error)
             }
             UserDefaults.standard.removeObject(forKey: email)
         }
@@ -135,16 +135,16 @@ extension API {
                 do {
                     let results = try JSONDecoder().decode(MatchRequestData.self, from: response.data)
                     let jsonData = JSON(response.data)
-                    Logger.shared.handle(type: .debug, message: "matchUser JSON data: \(jsonData)")
+                    Logger.log("matchUser JSON data: \(jsonData)", withLevel: .debug)
                     let matchID = results.id
                     completionDelegate.didReceiveMatch(withID: matchID)
-                    Logger.shared.handle(type: .debug, message: "matchUser results: \(results)")
+                    Logger.log("matchUser results: \(results)", withLevel: .debug)
                 } catch let err {
-                    Logger.shared.handle(type: .error, message: "matchUser: \(err)")
+                    Logger.log("matchUser failed with error: \(err)", withLevel: .error)
                 }
-                Logger.shared.handle(type: .verbose, message: "Successfully Sent match")
+                Logger.log("Successfully Sent match", withLevel: .info)
             case let .failure(error):
-                Logger.shared.handle(type: .error, message: "matchUser: \(error)")
+                Logger.log("matchUser failed with error: \(error)", withLevel: .error)
             }
         }
     }

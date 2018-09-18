@@ -95,7 +95,7 @@ class MenuController{
                 }
             } else {
                 // TODO: This should never happen, but handle this error gracefully if it does.
-                Logger.shared.handle(type: .error, message: "Menu.swift L92: Could not cast day to int")
+                Logger.log("Menu.swift L92: Could not cast day to int", withLevel: .error)
             }
         }
         return nil

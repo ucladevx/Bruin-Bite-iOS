@@ -36,10 +36,10 @@ class PreferenceViewController: UIViewController, MatchDelegate {
         
         meal_times = chosen
         meal_day = convertDate(month: getMonth(dateMonth: meal_day), day: getDay(date: meal_day), year: getYear(date: meal_day))
-        Logger.shared.handle(type: .debug, message: meal_day)
+        Logger.log(meal_day, withLevel: .debug)
         for i in 0...meal_times.count-1 {
             meal_times[i] = meal_day + " " + meal_times[i]
-            Logger.shared.handle(type: .debug, message: meal_times[i])
+            Logger.log(meal_times[i], withLevel: .debug)
         }
         if(!meal_times.isEmpty && meal_day != "" && !dining_halls.isEmpty) {
             MAIN_USER.userMatch(mealTimes: meal_times, mealDay: meal_day, mealPeriod: MAIN_USER.accessUserInfo(type: "period"), dineHalls: dining_halls, completionDelegate: self)
@@ -226,7 +226,7 @@ extension PreferenceViewController: CZPickerViewDelegate, CZPickerViewDataSource
         }
         
     func czpickerView(_ pickerView: CZPickerView!, didConfirmWithItemAtRow row: Int){
-        Logger.shared.handle(type: .debug, message: picks[row])
+        Logger.log(picks[row], withLevel: .debug)
             self.navigationController?.setNavigationBarHidden(true, animated: true)
             
         }
@@ -236,7 +236,7 @@ extension PreferenceViewController: CZPickerViewDelegate, CZPickerViewDataSource
         }
     
     func czpickerView(pickerView: CZPickerView!, didConfirmWithItemAtRow row: Int){
-        Logger.shared.handle(type: .debug, message: "row: \(row)")
+        Logger.log("row: \(row)", withLevel: .debug)
         DayButton.setTitle(picks[row], for: .normal)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
     }

@@ -50,7 +50,8 @@ extension API{
                                 mealPeriod = MealPeriod.dinner
                                 break
                             default:
-                                Logger.shared.handle(type: .error, message: "Invalid Meal Period: \(time)")
+
+                                Logger.log("Invalid Meal Period: \(time)", withLevel: .error)
                                 break
                             }
                             for (location, items) in meal{
@@ -137,7 +138,7 @@ extension API{
                                     parsedLocation[loc] = parsedItems
                                 }
                                 else {
-                                    Logger.shared.handle(type: .error, message: "Could not parse location: \(location)")
+                                    Logger.log("Could not parse location: \(location)", withLevel: .error)
                                 }
                             }
                             parsedMeal[mealPeriod] = parsedLocation
@@ -148,10 +149,10 @@ extension API{
                     completion(menus)
                 }
                 catch{
-                    Logger.shared.handle(type: .error, message: "Could not parse menu")
+                    Logger.log("Could not parse menu", withLevel: .error)
                 }
             case let .failure(error):
-                Logger.shared.handle(type: .error, message: "getOverviewMenu: \(error)")
+                Logger.log("getOverviewMenu failed with error: \(error)", withLevel: .error)
             }
         }
     }
@@ -283,10 +284,10 @@ extension API{
                     completion(menus)
                 }
                 catch{
-                    Logger.shared.handle(type: .error, message: "Could not parse detailed menu")
+                    Logger.log("Could not parse detailed menu", withLevel: .error)
                 }
             case let .failure(error):
-                Logger.shared.handle(type: .error, message: "getDetailedMenu: \(error)")
+                Logger.log("getDetailedMenu failed with error: \(error)", withLevel: .error)
             }
         }
     }
@@ -307,7 +308,9 @@ extension API{
                         var activityLevel = ActivityLevel(isAvailable: false, location: nil, percent: 0)
                         let value = String(describing: value)
                         var percentage = 0
-                        activityLevel.location = Location(rawValue: name)!
+                        if let loc = Location(rawValue: name) {
+                            activityLevel.location = loc
+                        }
                         if value == "-1"{
                             activityLevel.isAvailable = false
                         }
@@ -322,10 +325,13 @@ extension API{
                     completion(activityLevels)
                 }
                 catch{
-                    Logger.shared.handle(type: .error, message: "Could not parse current activity levels")
+
+
+                    Logger.log("Could not parse current activity levels", withLevel: .error)
                 }
             case let .failure(error):
-                Logger.shared.handle(type: .error, message: "Activity Levels: \(error)")
+
+                Logger.log("Get Current Activity Levels failed with error: \(error)", withLevel: .error)
             }
         }
     }
@@ -357,10 +363,12 @@ extension API{
                     completion(hoursData)
                 }
                 catch{
-                    Logger.shared.handle(type: .error, message: "Could not parse hours")
+
+                    Logger.log("Could not parse hours", withLevel: .error)
                 }
             case let .failure(error):
-                Logger.shared.handle(type: .error, message: "getHours: \(error)")
+
+                Logger.log("getHours failed with error: \(error)", withLevel: .error)
             }
         }
     }

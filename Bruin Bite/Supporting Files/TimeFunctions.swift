@@ -87,7 +87,7 @@ func getDay(date: String) -> String {
             check = 1
         }
     }
-    Logger.shared.handle(type: .debug, message: temp)
+    Logger.log(temp, withLevel: .debug)
     return temp
 }
 
