@@ -50,9 +50,9 @@ class ItemDetailViewController: UIViewController {
         let boldAttrs: [NSAttributedStringKey: Any] = [.font: UIFont(name: "AvenirNext-Medium", size: 12)!]
         let normalAttrs: [NSAttributedStringKey: Any] = [.font: UIFont(name: "AvenirNext-Regular", size: 12)!]
         let attributedString = NSMutableAttributedString(string: "Ingredients: ", attributes:boldAttrs)
-        attributedString.append(NSAttributedString(string: (menuItem?.ingredients)!, attributes: normalAttrs))
+        attributedString.append(NSAttributedString(string: (menuItem?.ingredients) ?? "Error fetching ingredients.", attributes: normalAttrs))
         attributedString.append(NSMutableAttributedString(string: "\n\nAllergens: ", attributes:boldAttrs))
-        let allergyString = buildAllergenString(allergies: (menuItem?.allergies)!)
+        let allergyString = buildAllergenString(allergies: (menuItem?.allergies))
         attributedString.append(NSMutableAttributedString(string: allergyString, attributes: normalAttrs))
         textView.attributedText = attributedString
         
@@ -79,7 +79,10 @@ class ItemDetailViewController: UIViewController {
         return String(recipeURL[index...]);
     }
     
-    func buildAllergenString(allergies: [Allergen]) -> String {
+    func buildAllergenString(allergies: [Allergen]?) -> String {
+        guard let allergies = allergies else {
+            return "Error loading allergens."
+        }
         var allergyString: String = ""
         for allergen in allergies {
             if (allergen != Allergen.Vegan && allergen != Allergen.Vegetarian) {
