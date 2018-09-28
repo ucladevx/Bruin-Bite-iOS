@@ -9,19 +9,23 @@
 import UIKit
 import WebKit
 
-class ItemDetailViewController: UIViewController {
+class ItemDetailViewController: UIViewController, WKNavigationDelegate {
 
     @IBOutlet weak var webView: WKWebView!
     var menuItem: Item?
     let nutritionBoxURL = "https://api.bruin-bite.com/api/v1/menu/nutritionbox?recipe_link="
+    let activityIndicator = UIActivityIndicatorView()
     
     @IBOutlet weak var ingredientsBar: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
         webView.scrollView.isScrollEnabled = false
         webView.isUserInteractionEnabled = false
+        webView.navigationDelegate = self
         self.view.backgroundColor = UIColor.twilightBlue
         ingredientsBar.backgroundColor = UIColor.white
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.activityIndicatorViewStyle = .gray
         // Do any additional setup after loading the view.
     }
     
@@ -94,6 +98,25 @@ class ItemDetailViewController: UIViewController {
         }
         let index = allergyString.index(allergyString.endIndex, offsetBy: -2)
         return String(allergyString[..<index])
+    }
+    
+    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+        activityIndicator.startAnimating()
+        view.addSubview(activityIndicator)
+        view.bringSubview(toFront: activityIndicator)
+        activityIndicator.center = webView.center
+    }
+    
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        activityIndicator.stopAnimating()
+    }
+    
+    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
+        activityIndicator.stopAnimating()
+    }
+    
+    func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
+        activityIndicator.stopAnimating()
     }
 
 
