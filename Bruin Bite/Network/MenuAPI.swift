@@ -26,8 +26,10 @@ extension API{
                         var parsedMeal: [MealPeriod: [Location: [Item]]] = [:]
                         var brunch = false
                         for (time, meal) in overview{
-                            if(time == "breakfast" && meal.isEmpty){
-                                brunch = true;
+                            if let menuDate = Date(fromYearMonthDayString: currMenu.date) {
+                                if menuDate.isWeekend() {
+                                    brunch = true
+                                }
                             }
                         }
                         for (time, meal) in overview{
