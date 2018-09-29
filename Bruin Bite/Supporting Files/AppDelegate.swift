@@ -87,7 +87,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let token = tokenParts.joined()
         // 2. Print device token to use for PNs payloads
         Logger.log("Device Token: \(token)", withLevel: .debug)
-        Logger.log(token, withLevel: .debug)
         UserDefaults.standard.set(token, forKey: "Dev_Token")
     }
     

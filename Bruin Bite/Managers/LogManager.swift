@@ -46,8 +46,15 @@ enum LogLevel {
 
 class Logger {
     
-    private init() {    }
+    init() {    }
     
+    /**
+     Prints the given message to the log pre-fixed by the header associated with the given log level.
+     
+     - Parameters:
+     - message: A string with the message that needs to be logged.
+     - level: The LogLevel with which the message needs to be logged
+     */
     static func log(_ message:String, withLevel level:LogLevel) {
         
         if(message.isEmpty)
