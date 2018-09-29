@@ -8,6 +8,7 @@
 
 import UIKit
 import Moya
+import SnapKit
 
 class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
@@ -49,11 +50,16 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         menuCardsCollection.dataSource = self
         menuCardsCollection.alwaysBounceVertical = true
         menuCardsCollection.allowsSelection = false
-        
-        topBar.frame = CGRect(x:12.5, y:20, width: 350, height: 82)
-        topBar.center.x = self.view.center.x
+
         self.view.addSubview(topBar)
-        
+        topBar.snp.makeConstraints { (make) -> Void in
+            make.top.equalTo(self.view.safeAreaLayoutGuide)
+            make.left.equalTo(self.view).offset(12.5)
+            make.width.equalTo(350)
+            make.height.equalTo(82)
+            make.centerX.equalTo(self.view)
+        }
+
         let hour = Calendar.current.component(.hour, from: Date())
         switch hour {
         case 0..<2:
