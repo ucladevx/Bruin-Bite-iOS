@@ -53,6 +53,7 @@
 		77949970203BD10500F3B0ED /* AllergyFilterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7794996F203BD10400F3B0ED /* AllergyFilterButton.swift */; };
 		77949972203BD12B00F3B0ED /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77949971203BD12B00F3B0ED /* Extensions.swift */; };
 		9C91B493798C96CEA3BC0AA4 /* Pods_Bruin_Bite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D31D0C9107AF44D73AA341C1 /* Pods_Bruin_Bite.framework */; };
+		BD392821215C3638007FD4AD /* BBStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD392820215C3638007FD4AD /* BBStoryboard.swift */; };
 		BDDE7C6E207AF6840008A677 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDE7C6D207AF6840008A677 /* LoginViewController.swift */; };
 		BDDE7C70207B04590008A677 /* MatchingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDE7C6F207B04590008A677 /* MatchingListViewController.swift */; };
 		BDDE7C72207B04D00008A677 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDE7C71207B04D00008A677 /* UserTableViewCell.swift */; };
@@ -157,6 +158,7 @@
 		770CDEAF20266B6000658925 /* ActivityLevelBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityLevelBar.swift; sourceTree = "<group>"; };
 		7794996F203BD10400F3B0ED /* AllergyFilterButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllergyFilterButton.swift; sourceTree = "<group>"; };
 		77949971203BD12B00F3B0ED /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		BD392820215C3638007FD4AD /* BBStoryboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BBStoryboard.swift; sourceTree = "<group>"; };
 		BDDE7C6D207AF6840008A677 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		BDDE7C6F207B04590008A677 /* MatchingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchingListViewController.swift; sourceTree = "<group>"; };
 		BDDE7C71207B04D00008A677 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
@@ -378,6 +380,7 @@
 		770251B2201D4079002E4515 /* Bruin Bite */ = {
 			isa = PBXGroup;
 			children = (
+				BD39281F215C3626007FD4AD /* Helpers */,
 				BF41FB5F20BC2F390010306E /* Storyboards */,
 				2A94477B2055F5570033B6C6 /* View Controllers */,
 				2A94477A2055F50B0033B6C6 /* Views */,
@@ -401,6 +404,14 @@
 				D31D0C9107AF44D73AA341C1 /* Pods_Bruin_Bite.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BD39281F215C3626007FD4AD /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				BD392820215C3638007FD4AD /* BBStoryboard.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		BDDE7C73207B04F80008A677 /* UserList */ = {
@@ -467,7 +478,6 @@
 				770251AE201D4079002E4515 /* Resources */,
 				D601296F579F59F8E568D410 /* [CP] Embed Pods Frameworks */,
 				2AFA409F20BBD7A00007FB85 /* Embed App Extensions */,
-				1BA67573EDFC2712CE80EAFF /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -551,21 +561,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1BA67573EDFC2712CE80EAFF /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Bruin Bite/Pods-Bruin Bite-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		9DB29EBED83346BDBACE0D17 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -677,6 +672,7 @@
 				2A9447802055FA3E0033B6C6 /* AllergensBarScrollView.swift in Sources */,
 				DCF0E2E420B260BA0036A32F /* SignUpViewController.swift in Sources */,
 				00C2DF1120B6790D0023CF75 /* keys.swift in Sources */,
+				BD392821215C3638007FD4AD /* BBStoryboard.swift in Sources */,
 				2AFA40B020BC07AD0007FB85 /* CancelMatchViewController.swift in Sources */,
 				BF5D97E420B974F60086D451 /* ChatListViewController.swift in Sources */,
 				BFC8567C20C4CE3D00E5230E /* UILabelExtensions.swift in Sources */,
