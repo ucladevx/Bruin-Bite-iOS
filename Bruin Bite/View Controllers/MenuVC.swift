@@ -18,6 +18,8 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
     var topBar = TopBar()
     @IBOutlet weak var backgroundTopBar: UILabel!
     @IBOutlet weak var menuCardsCollection: UICollectionView!
+    @IBOutlet weak var comingSoonPopup: UIImageView!
+    @IBOutlet weak var comingSoonLabel: UILabel!
     
     var menuData = MenuController()
     var activityLevelData = [ActivityLevel]()
@@ -155,6 +157,13 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
     }
         
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if data.count == 0 {
+            comingSoonPopup.isHidden = false
+            comingSoonLabel.isHidden = false
+        } else {
+            comingSoonPopup.isHidden = true
+            comingSoonLabel.isHidden = true
+        }
         return data.count
     }
     
