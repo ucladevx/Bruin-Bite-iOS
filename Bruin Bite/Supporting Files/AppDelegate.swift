@@ -27,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UIApplication.shared.statusBarStyle = .lightContent
         
-        registerForPushNotifications()
+        //registerForPushNotifications()
         
         //Try to log in automatically
         if let _ = UserDefaults.standard.value(forKey: "accessToken") , let email = UserDefaults.standard.value(forKey: "email") as? String {
