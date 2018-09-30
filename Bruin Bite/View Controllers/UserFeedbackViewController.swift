@@ -14,7 +14,7 @@ class UserFeedbackViewController: UIViewController, WKNavigationDelegate {
     @IBOutlet weak var feedbackWebView: WKWebView!
     
     private let activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
-    private let FEEDBACK_FORM_URL: URL = URL(string: "https://airtable.com/shrDnqfJ7cF0jqncc")
+    private let FEEDBACK_FORM_URL: URL = URL(string: "https://airtable.com/shrDnqfJ7cF0jqncc")!
     private var URL_REQUEST: URLRequest {
         get {
             return URLRequest(url: FEEDBACK_FORM_URL)
@@ -29,6 +29,8 @@ class UserFeedbackViewController: UIViewController, WKNavigationDelegate {
         activityIndicator.activityIndicatorViewStyle = .gray
         
         // Load web view
+        feedbackWebView.navigationDelegate = self
+        feedbackWebView.scrollView.isScrollEnabled = true
         feedbackWebView.load(URL_REQUEST)
     }
     

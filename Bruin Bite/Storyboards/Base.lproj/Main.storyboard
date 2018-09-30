@@ -179,7 +179,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="SWn-R8-pZW"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Feedback" id="0VW-Hg-Mi5"/>
+                    <tabBarItem key="tabBarItem" title="Feedback" image="Feedback" id="0VW-Hg-Mi5"/>
                     <connections>
                         <outlet property="feedbackWebView" destination="qrb-gb-3CX" id="YrD-oC-z9n"/>
                     </connections>
