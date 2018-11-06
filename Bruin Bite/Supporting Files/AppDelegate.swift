@@ -37,6 +37,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 presentMenus()
         }
         
+        let storyBoard = UIStoryboard(name: "Login", bundle: nil)
+        let secondVC = storyBoard.instantiateViewController(withIdentifier: "navController") as! UINavigationController
+        Utilities.sharedInstance.formatNavigation(controller: secondVC)
+        self.window?.rootViewController = secondVC
+        
         return true
     }
 

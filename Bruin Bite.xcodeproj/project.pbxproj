@@ -79,6 +79,8 @@
 		DCF0E2E220B260A90036A32F /* CreateProfilePt2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF0E2E120B260A90036A32F /* CreateProfilePt2ViewController.swift */; };
 		DCF0E2E420B260BA0036A32F /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF0E2E320B260BA0036A32F /* SignUpViewController.swift */; };
 		DCF0E2E620B260CC0036A32F /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF0E2E520B260CC0036A32F /* SignInViewController.swift */; };
+		FCA7A0E1218795370096E821 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCA7A0E0218795370096E821 /* Login.storyboard */; };
+		FCA7A0F62190E0040096E821 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA7A0F52190E0030096E821 /* Utilities.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -186,6 +188,8 @@
 		DCF0E2E120B260A90036A32F /* CreateProfilePt2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProfilePt2ViewController.swift; sourceTree = "<group>"; };
 		DCF0E2E320B260BA0036A32F /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		DCF0E2E520B260CC0036A32F /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		FCA7A0E0218795370096E821 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		FCA7A0F52190E0030096E821 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		FDC82735AAF52033CD40ACDF /* Pods-Bruin Bite.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bruin Bite.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bruin Bite/Pods-Bruin Bite.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -410,6 +414,7 @@
 			isa = PBXGroup;
 			children = (
 				BD392820215C3638007FD4AD /* BBStoryboard.swift */,
+				FCA7A0F52190E0030096E821 /* Utilities.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -428,6 +433,7 @@
 				2A62E49220BC99D2008075B0 /* Menu.storyboard */,
 				2AFA40B420BC08200007FB85 /* Matching.storyboard */,
 				770251B9201D4079002E4515 /* Main.storyboard */,
+				FCA7A0E0218795370096E821 /* Login.storyboard */,
 				DC5FC98220B788C400DFCCC7 /* Profile.storyboard */,
 				BF5D97E120B973570086D451 /* Chat.storyboard */,
 				2A03D94220B76C91004EFC97 /* PopupViewControllers.storyboard */,
@@ -505,7 +511,7 @@
 					};
 					770251AF201D4079002E4515 = {
 						CreatedOnToolsVersion = 9.2;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.Push = {
 								enabled = 1;
@@ -549,6 +555,7 @@
 				2A744897203BBEDA00793AD3 /* MenuCardView.xib in Resources */,
 				2A03D94320B76C92004EFC97 /* PopupViewControllers.storyboard in Resources */,
 				2A62E49320BC99D2008075B0 /* Menu.storyboard in Resources */,
+				FCA7A0E1218795370096E821 /* Login.storyboard in Resources */,
 				2A16F9A520BEA107008BA4E3 /* ComingSoonPopup.xib in Resources */,
 				770251C0201D4079002E4515 /* LaunchScreen.storyboard in Resources */,
 				DC5FC98420B788C400DFCCC7 /* Profile.storyboard in Resources */,
@@ -600,6 +607,7 @@
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/ViewAnimator/ViewAnimator.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -617,6 +625,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ViewAnimator.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -656,6 +665,7 @@
 				2AB62E702048D21D0013CB59 /* ActivityLevel.swift in Sources */,
 				2AFA40B120BC07AD0007FB85 /* MatchFoundViewController.swift in Sources */,
 				2AFA40AF20BC07AD0007FB85 /* NoMatchViewController.swift in Sources */,
+				FCA7A0F62190E0040096E821 /* Utilities.swift in Sources */,
 				BF0523E1209AA7DC0013EE11 /* PreferenceViewController.swift in Sources */,
 				BF0943E620BC20FE00214200 /* UIViewControllerExtensions.swift in Sources */,
 				DCF0E2DC20B260510036A32F /* UIColor+Additions.swift in Sources */,
@@ -892,13 +902,14 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Bruin Bite/Bruin Bite.entitlements";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8DDCRUXY46;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Bruin Bite/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.kloktech.bruinbite;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -911,13 +922,14 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Bruin Bite/Bruin Bite.entitlements";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8DDCRUXY46;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Bruin Bite/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.kloktech.bruinbite;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

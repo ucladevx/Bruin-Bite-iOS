@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8gz-gb-DS3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8gz-gb-DS3">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -737,7 +737,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2cI-70-02Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2026.4000000000001" y="-932.38380809595208"/>
+            <point key="canvasLocation" x="-1724" y="-1095"/>
         </scene>
         <!--Create Profile Pt2 View Controller-->
         <scene sceneID="72I-ff-McM">
@@ -1049,9 +1049,9 @@
         <image name="x" width="15" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="1eE-UU-7Ui"/>
+        <segue reference="RdZ-oP-1QG"/>
         <segue reference="OQb-Mg-l73"/>
-        <segue reference="PNa-Ke-Vgp"/>
-        <segue reference="c5I-PD-MuZ"/>
+        <segue reference="6mL-fa-w2t"/>
+        <segue reference="6ji-u5-cDs"/>
     </inferredMetricsTieBreakers>
 </document>

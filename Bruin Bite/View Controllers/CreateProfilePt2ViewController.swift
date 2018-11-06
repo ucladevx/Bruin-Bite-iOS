@@ -11,7 +11,6 @@ import UIKit
 class CreateProfilePt2ViewController: UIViewController {
     
     @IBOutlet var CreateButton: UIButton!
-    @IBOutlet var CreateProfileText: UILabel!
     @IBOutlet var YearText: UITextField!
     @IBOutlet var MajorText: UITextField!
     
@@ -74,7 +73,6 @@ class CreateProfilePt2ViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = UIColor.twilightBlue
-        CreateProfileText.font = UIFont.signUpTextFont
         YearText.font = UIFont.signUpInfoFieldFont
         MajorText.font = UIFont.signUpInfoFieldFont
         YearText.textColor = .white
@@ -88,6 +86,19 @@ class CreateProfilePt2ViewController: UIViewController {
         CreateButton.layer.borderColor = UIColor.white.cgColor
         CreateButton.layer.cornerRadius = 26
         
+        Utilities.sharedInstance.formatNavigation(controller: self.navigationController!)
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor : UIColor.white, NSAttributedStringKey.font: UIFont(name: "AvenirNext-Bold", size: 17.0)!]
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        let xButton = UIBarButtonItem(image: UIImage(named: "x"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(popToRoot(_:)))
+        self.navigationController?.navigationBar.topItem?.rightBarButtonItem = xButton
+    }
+    
+    @objc
+    func popToRoot(_ sender: Any) {
+        self.navigationController?.popToRootViewController(animated: true)
     }
     
     override func didReceiveMemoryWarning() {

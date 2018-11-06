@@ -7,11 +7,10 @@
 //
 
 import UIKit
-
+import ViewAnimator
 
 class SignUpViewController: UIViewController {
     
-    @IBOutlet var SignUpText: UILabel!
     @IBOutlet var NameText: UITextField!
     @IBOutlet var EmailText: UITextField!
     @IBOutlet var PasswordText: UITextField!
@@ -21,7 +20,6 @@ class SignUpViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = UIColor.twilightBlue
-        SignUpText.font = UIFont.signUpTextFont.withSize(20)
         
         NameText.font = UIFont.signUpInfoFieldFont
         EmailText.font = UIFont.signUpInfoFieldFont
@@ -31,13 +29,27 @@ class SignUpViewController: UIViewController {
         ConfirmPassText.font = UIFont.signUpInfoFieldFont
         
         NameText.becomeFirstResponder()
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        // Clear away "x" button if returning from createProfileView
+        self.navigationController?.navigationBar.topItem?.rightBarButtonItem = nil
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toProfileController" {
+            // Pass data to CreateProfileViewController
+        }
+    }
+    
     @IBAction func nextButtonPressed (_ sender: Any?) {
+        
         if(NameText.text ?? "" == "") {
             //Invalid Name
             return
@@ -69,7 +81,7 @@ class SignUpViewController: UIViewController {
         }
         */
         
-        self.performSegue(withIdentifier: "DoneWithSignUp", sender: sender)
+        self.performSegue(withIdentifier: "toProfileController", sender: sender)
     }
 }
 

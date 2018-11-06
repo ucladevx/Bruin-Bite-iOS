@@ -32,10 +32,9 @@ class LoginViewController: UIViewController {
             SignUpButton.backgroundColor = UIColor.white
             SignUpButton.setTitleColor(UIColor.twilightBlue, for: .normal)
         }
-        else {
-            SignUpButton.backgroundColor = .clear
-            SignUpButton.setTitleColor(UIColor.white, for: .normal)
-        }
+        
+        self.performSegue(withIdentifier: "toSignUpController", sender: sender)
+        
     }
     
     // change button and text color when pressed
@@ -43,11 +42,6 @@ class LoginViewController: UIViewController {
         if ContinueFBButton.backgroundColor == .clear {
             ContinueFBButton.backgroundColor = UIColor.white
             ContinueFBButton.setTitleColor(UIColor.twilightBlue, for: .normal)
-        }
-            
-        else {
-            ContinueFBButton.backgroundColor = .clear
-            ContinueFBButton.setTitleColor(UIColor.white, for: .normal)
         }
         
         // FB authentification
@@ -73,10 +67,10 @@ class LoginViewController: UIViewController {
             CheckMenuButton.backgroundColor = UIColor.white
             CheckMenuButton.setTitleColor(UIColor.twilightBlue, for: .normal)
         }
-        else {
-            CheckMenuButton.backgroundColor = .clear
-            CheckMenuButton.setTitleColor(UIColor.white, for: .normal)
-        }
+    }
+    
+    @IBAction func SignInTap(_ sender: Any) {
+        self.performSegue(withIdentifier: "toSignInController", sender: sender)
     }
     
     var attrs = [
@@ -127,6 +121,25 @@ class LoginViewController: UIViewController {
         CheckMenuButton.titleLabel?.font = UIFont.signUpFont
         
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        SignUpButton.backgroundColor = .clear
+        SignUpButton.setTitleColor(UIColor.white, for: .normal)
+        ContinueFBButton.backgroundColor = .clear
+        ContinueFBButton.setTitleColor(UIColor.white, for: .normal)
+        CheckMenuButton.backgroundColor = .clear
+        CheckMenuButton.setTitleColor(UIColor.white, for: .normal)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toSignUpController" {
+            // Pass data to SignUpViewController
+        }
+        if segue.identifier == "toSignInController" {
+            // Pass data to SignInViewController
+        }
     }
     
     override func didReceiveMemoryWarning() {

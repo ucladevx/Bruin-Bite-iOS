@@ -11,7 +11,6 @@ import Moya
 
 class SignInViewController: UIViewController {
     
-    @IBOutlet var SignInText: UILabel!
     @IBOutlet var EmailText: UITextField!
     @IBOutlet var PasswordText: UITextField!
     @IBOutlet var ForgotPassButton: UIButton!
@@ -21,7 +20,6 @@ class SignInViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = UIColor.twilightBlue
-        SignInText.font = UIFont.signUpTextFont.withSize(20)
         EmailText.font = UIFont.signUpInfoFieldFont
         PasswordText.font = UIFont.signUpInfoFieldFont
         EmailText.textColor = .white
@@ -35,7 +33,7 @@ class SignInViewController: UIViewController {
         
         EmailText.becomeFirstResponder()
         
-        // Do any additional setup after loading the view.
+        Utilities.sharedInstance.formatNavigation(controller: self.navigationController!)
     }
     
     override func didReceiveMemoryWarning() {
