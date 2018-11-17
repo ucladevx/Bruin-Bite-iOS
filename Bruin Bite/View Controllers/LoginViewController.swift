@@ -121,7 +121,7 @@ class LoginViewController: UIViewController {
         // set CheckMenuButton font, color, text, border
         CheckMenuButton.layer.borderWidth = 1
         CheckMenuButton.backgroundColor = .clear
-        CheckMenuButton.layer.borderColor = UIColor.white.cgColor
+        CheckMenuButton.layer.borderColor = UIColor.green.cgColor
         CheckMenuButton.layer.cornerRadius = 26
         CheckMenuButton.setTitleColor(UIColor.white, for: .normal)
         CheckMenuButton.titleLabel?.font = UIFont.signUpFont
