@@ -122,7 +122,7 @@ class LoginViewController: UIViewController {
         CheckMenuButton.layer.borderWidth = 1
         CheckMenuButton.backgroundColor = .clear
         CheckMenuButton.layer.borderColor = UIColor.white.cgColor
-        CheckMenuButton.layer.cornerRadius = 26
+        CheckMenuButton.layer.cornerRadius = 42
         CheckMenuButton.setTitleColor(UIColor.white, for: .normal)
         CheckMenuButton.titleLabel?.font = UIFont.signUpFont
         
