@@ -15,6 +15,11 @@ class UserManager {
     private init() {
         currentUser = UserModel()
     }
+
+    func createUser() {
+        //Make call to create user, if successful call didFinishSignUp
+        //Store email and password in currentUser
+    }
 }
 
 protocol SignupDelegate {

@@ -9,7 +9,7 @@
 import UIKit
 
 
-class SignUpViewController: UIViewController {
+class SignUpViewController: UIViewController, SignupDelegate {
     
     @IBOutlet var SignUpText: UILabel!
     @IBOutlet var NameText: UITextField!
@@ -19,6 +19,7 @@ class SignUpViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        UserManager.shared.signupDelegate = self
         
         view.backgroundColor = UIColor.twilightBlue
         SignUpText.font = UIFont.signUpTextFont.withSize(20)
@@ -54,22 +55,11 @@ class SignUpViewController: UIViewController {
             //Passwords don't match
             return
         }
-        
-        MAIN_USER.changeUserInfo(type: "first", info: NameText.text!)
-        MAIN_USER.changeUserInfo(type: "email", info: EmailText.text!)
-        MAIN_USER.changeUserInfo(type: "password", info: PasswordText.text!)
-        
-        /* Waiting for Sam
-        let result = MAIN_USER.createUser()
-        if(result == "username") {
-            return
-        }
-        else if(result == "password") {
-            return
-        }
-        */
-        
-        self.performSegue(withIdentifier: "DoneWithSignUp", sender: sender)
+        //Attempt to create user with email and password
+    }
+
+    func didFinishSignup() {
+        self.performSegue(withIdentifier: "DoneWithSignUp", sender: nil)
     }
 }
 
