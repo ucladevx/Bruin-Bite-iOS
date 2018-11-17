@@ -54,6 +54,8 @@
 		77949972203BD12B00F3B0ED /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77949971203BD12B00F3B0ED /* Extensions.swift */; };
 		9C91B493798C96CEA3BC0AA4 /* Pods_Bruin_Bite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D31D0C9107AF44D73AA341C1 /* Pods_Bruin_Bite.framework */; };
 		BD392821215C3638007FD4AD /* BBStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD392820215C3638007FD4AD /* BBStoryboard.swift */; };
+		BDAED25D219FD598005A22F3 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDAED25C219FD598005A22F3 /* UserManager.swift */; };
+		BDAED25F219FD601005A22F3 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDAED25E219FD601005A22F3 /* UserModel.swift */; };
 		BDDE7C6E207AF6840008A677 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDE7C6D207AF6840008A677 /* LoginViewController.swift */; };
 		BDDE7C70207B04590008A677 /* MatchingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDE7C6F207B04590008A677 /* MatchingListViewController.swift */; };
 		BDDE7C72207B04D00008A677 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDE7C71207B04D00008A677 /* UserTableViewCell.swift */; };
@@ -159,6 +161,8 @@
 		7794996F203BD10400F3B0ED /* AllergyFilterButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllergyFilterButton.swift; sourceTree = "<group>"; };
 		77949971203BD12B00F3B0ED /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		BD392820215C3638007FD4AD /* BBStoryboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BBStoryboard.swift; sourceTree = "<group>"; };
+		BDAED25C219FD598005A22F3 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		BDAED25E219FD601005A22F3 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		BDDE7C6D207AF6840008A677 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		BDDE7C6F207B04590008A677 /* MatchingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchingListViewController.swift; sourceTree = "<group>"; };
 		BDDE7C71207B04D00008A677 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
@@ -380,6 +384,7 @@
 		770251B2201D4079002E4515 /* Bruin Bite */ = {
 			isa = PBXGroup;
 			children = (
+				BDAED25B219FD588005A22F3 /* User */,
 				BD39281F215C3626007FD4AD /* Helpers */,
 				BF41FB5F20BC2F390010306E /* Storyboards */,
 				2A94477B2055F5570033B6C6 /* View Controllers */,
@@ -412,6 +417,15 @@
 				BD392820215C3638007FD4AD /* BBStoryboard.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		BDAED25B219FD588005A22F3 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				BDAED25C219FD598005A22F3 /* UserManager.swift */,
+				BDAED25E219FD601005A22F3 /* UserModel.swift */,
+			);
+			path = User;
 			sourceTree = "<group>";
 		};
 		BDDE7C73207B04F80008A677 /* UserList */ = {
@@ -656,6 +670,7 @@
 				2AB62E702048D21D0013CB59 /* ActivityLevel.swift in Sources */,
 				2AFA40B120BC07AD0007FB85 /* MatchFoundViewController.swift in Sources */,
 				2AFA40AF20BC07AD0007FB85 /* NoMatchViewController.swift in Sources */,
+				BDAED25D219FD598005A22F3 /* UserManager.swift in Sources */,
 				BF0523E1209AA7DC0013EE11 /* PreferenceViewController.swift in Sources */,
 				BF0943E620BC20FE00214200 /* UIViewControllerExtensions.swift in Sources */,
 				DCF0E2DC20B260510036A32F /* UIColor+Additions.swift in Sources */,
@@ -696,6 +711,7 @@
 				BF0943E420BBFEEF00214200 /* ChatAPI.swift in Sources */,
 				00C2DF0920B678890023CF75 /* Moya.swift in Sources */,
 				2A744895203BBDBC00793AD3 /* MenuCardView.swift in Sources */,
+				BDAED25F219FD601005A22F3 /* UserModel.swift in Sources */,
 				00C2DF0D20B678BE0023CF75 /* UserClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
