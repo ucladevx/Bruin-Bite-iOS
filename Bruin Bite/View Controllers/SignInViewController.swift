@@ -9,7 +9,7 @@
 import UIKit
 import Moya
 
-class SignInViewController: UIViewController {
+class SignInViewController: UIViewController, LoginDelegate {
     
     @IBOutlet var SignInText: UILabel!
     @IBOutlet var EmailText: UITextField!
@@ -19,6 +19,8 @@ class SignInViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        UserManager.shared.loginDelegate = self
         
         view.backgroundColor = UIColor.twilightBlue
         SignInText.font = UIFont.signUpTextFont.withSize(20)
@@ -56,32 +58,11 @@ class SignInViewController: UIViewController {
             //Invalid Password
             return
         }
-        
-        MAIN_USER.changeUserInfo(type: "email", info: EmailText.text!)
-        MAIN_USER.changeUserInfo(type: "password", info: PasswordText.text!)
-        MAIN_USER.loginUser()
-        if(UserDefaults.standard.object(forKey: "accessToken") == nil) {
-            return
-        }
-        if(MAIN_USER.getToken() != nil) {
-            MAIN_USER.readUser()
-            MAIN_USER.updateUser(dev_id: UserDefaults.standard.object(forKey: "Dev_Token") as? String ?? "")
-            self.performSegue(withIdentifier: "ShowMenuVC_2", sender: nil)
-        } else {
-            return
-        }
+        UserManager.shared.loginUser()
     }
-    
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
+
+    func didLogin() {
+        self.performSegue(withIdentifier: "ShowMenuVC_2", sender: nil)
+    }
 }
 

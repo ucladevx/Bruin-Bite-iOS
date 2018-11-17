@@ -55,7 +55,7 @@ class SignUpViewController: UIViewController, SignupDelegate {
             //Passwords don't match
             return
         }
-        //Attempt to create user with email and password
+        UserManager.shared.createUser()
     }
 
     func didFinishSignup() {
