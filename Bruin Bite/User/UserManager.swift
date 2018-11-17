@@ -34,6 +34,9 @@ class UserManager {
     }
 
     func readUser() {
+        //After reading user, store into currentUser
+        //Add parameters to didReadUser so that when you call it
+        //you can pass in the new information from currentUser
     }
 }
 
