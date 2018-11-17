@@ -15,6 +15,7 @@ class UserManager {
     //Delegates
     var signupDelegate: SignupDelegate? = nil
     var loginDelegate: LoginDelegate? = nil
+    var readDelegate: ReadDelegate? = nil
 
     private init() {
         currentUser = UserModel()
@@ -31,8 +32,13 @@ class UserManager {
         //Store tokens
         //Read User
     }
+
+    func readUser() {
+    }
 }
 
 protocol SignupDelegate { func didFinishSignup() }
 
 protocol LoginDelegate { func didLogin() }
+
+protocol ReadDelegate { func didReadUser() }
