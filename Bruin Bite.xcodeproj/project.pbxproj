@@ -245,6 +245,7 @@
 			isa = PBXGroup;
 			children = (
 				2AB62E68204887820013CB59 /* Menu.swift */,
+				BDAED25E219FD601005A22F3 /* UserModel.swift */,
 				2AB62E6F2048D21D0013CB59 /* ActivityLevel.swift */,
 				0058244E20BA106E0044CB88 /* Hours.swift */,
 				00C2DF0620B677040023CF75 /* User.swift */,
@@ -330,6 +331,7 @@
 		2AB62E6A204888760013CB59 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				BDAED25C219FD598005A22F3 /* UserManager.swift */,
 				2AB62E6B20488A050013CB59 /* MenuAPI.swift */,
 				2AB62E6D2048D16B0013CB59 /* API.swift */,
 				00C2DF0820B678890023CF75 /* Moya.swift */,
@@ -384,7 +386,6 @@
 		770251B2201D4079002E4515 /* Bruin Bite */ = {
 			isa = PBXGroup;
 			children = (
-				BDAED25B219FD588005A22F3 /* User */,
 				BD39281F215C3626007FD4AD /* Helpers */,
 				BF41FB5F20BC2F390010306E /* Storyboards */,
 				2A94477B2055F5570033B6C6 /* View Controllers */,
@@ -417,15 +418,6 @@
 				BD392820215C3638007FD4AD /* BBStoryboard.swift */,
 			);
 			path = Helpers;
-			sourceTree = "<group>";
-		};
-		BDAED25B219FD588005A22F3 /* User */ = {
-			isa = PBXGroup;
-			children = (
-				BDAED25C219FD598005A22F3 /* UserManager.swift */,
-				BDAED25E219FD601005A22F3 /* UserModel.swift */,
-			);
-			path = User;
 			sourceTree = "<group>";
 		};
 		BDDE7C73207B04F80008A677 /* UserList */ = {
