@@ -9,10 +9,86 @@
 import UIKit
 import Moya
 import SnapKit
+import Reachability
+
+    class NetworkManager: NSObject {
+        
+        var reachability: Reachability!
+        
+        // Create a singleton instance
+        static let sharedInstance: NetworkManager = { return NetworkManager() }()
+        
+        
+        override init() {
+            super.init()
+            
+            // Initialise reachability
+            reachability = Reachability()!
+            
+            // Register an observer for the network status
+            NotificationCenter.default.addObserver(
+                self,
+                selector: #selector(networkStatusChanged(_:)),
+                name: .reachabilityChanged,
+                object: reachability
+            )
+            
+            do {
+                // Start the network status notifier
+                try reachability.startNotifier()
+            } catch {
+                print("Unable to start notifier")
+            }
+        }
+        
+        @objc func networkStatusChanged(_ notification: Notification) {
+            // Do something globally here!
+        }
+        
+        static func stopNotifier() -> Void {
+            do {
+                // Stop the network status notifier
+                try (NetworkManager.sharedInstance.reachability).startNotifier()
+            } catch {
+                print("Error stopping notifier")
+            }
+        }
+        
+        // Network is reachable
+        static func isReachable(completed: @escaping (NetworkManager) -> Void) {
+            if (NetworkManager.sharedInstance.reachability).connection != .none {
+                completed(NetworkManager.sharedInstance)
+            }
+        }
+        
+        // Network is unreachable
+        static func isUnreachable(completed: @escaping (NetworkManager) -> Void) {
+            if (NetworkManager.sharedInstance.reachability).connection == .none {
+                completed(NetworkManager.sharedInstance)
+            }
+        }
+        
+        // Network is reachable via WWAN/Cellular
+        static func isReachableViaWWAN(completed: @escaping (NetworkManager) -> Void) {
+            if (NetworkManager.sharedInstance.reachability).connection == .cellular {
+                completed(NetworkManager.sharedInstance)
+            }
+        }
+        
+        // Network is reachable via WiFi
+        static func isReachableViaWiFi(completed: @escaping (NetworkManager) -> Void) {
+            if (NetworkManager.sharedInstance.reachability).connection == .wifi {
+                completed(NetworkManager.sharedInstance)
+            }
+        }
+    }
+    
+    
 
 class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
     let provider = MoyaProvider<API_methods>()
+    let reachability = Reachability()!
     
     @IBOutlet weak var allergensBar: AllergensBarScrollView!
     var topBar = TopBar()
@@ -39,8 +115,20 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         NSAttributedStringKey.underlineStyle: 1
         ] as [NSAttributedStringKey: Any]
 
-        
+    
+    
+    @IBOutlet weak var loadingLabel: UILabel!
+    
+
     override func viewDidLoad() {
+        NetworkManager.isReachable { networkManagerInstance in
+            print("Network is available")
+        }
+        
+        NetworkManager.isUnreachable { networkManagerInstance in
+            self.loadingLabel.text = "No internet!"
+        }
+   
         self.view.backgroundColor = UIColor.white
         
         super.viewDidLoad()
@@ -50,6 +138,8 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         menuCardsCollection.dataSource = self
         menuCardsCollection.alwaysBounceVertical = true
         menuCardsCollection.allowsSelection = false
+        
+
 
         self.view.addSubview(topBar)
         topBar.snp.makeConstraints { (make) -> Void in
@@ -321,7 +411,5 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         if (segue.identifier == "segueToItemDetailVC") {
             let vc = segue.destination as! ItemDetailViewController
             vc.menuItem = self.menuItem
-        }
-    }
+        }    }
 }
-
