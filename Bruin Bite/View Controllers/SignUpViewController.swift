@@ -52,24 +52,28 @@ class SignUpViewController: UIViewController {
         
         if(NameText.text ?? "" == "") {
             //Invalid Name
+            Utilities.sharedInstance.displayErrorLabel(text: "Enter a name", field: NameText)
             return
         }
         if(!(EmailText.text?.isEmail() ?? false)) {
             //Invalid Email
+            Utilities.sharedInstance.displayErrorLabel(text: "Enter a valid email", field: EmailText)
             return
         }
         if((PasswordText.text?.count ?? 0) < 8) {
             //Invalid Password
+            Utilities.sharedInstance.displayErrorLabel(text: "Password is too short", field: PasswordText)
              return
         }
         if((PasswordText.text ?? "") != ConfirmPassText.text ) { //I was worried about nil == nil
             //Passwords don't match
+            Utilities.sharedInstance.displayErrorLabel(text: "Passwords don't match", field: ConfirmPassText)
             return
         }
         
-        MAIN_USER.changeUserInfo(type: "first", info: NameText.text!)
-        MAIN_USER.changeUserInfo(type: "email", info: EmailText.text!)
-        MAIN_USER.changeUserInfo(type: "password", info: PasswordText.text!)
+//        MAIN_USER.changeUserInfo(type: "first", info: NameText.text!)
+//        MAIN_USER.changeUserInfo(type: "email", info: EmailText.text!)
+//        MAIN_USER.changeUserInfo(type: "password", info: PasswordText.text!)
         
         /* Waiting for Sam
         let result = MAIN_USER.createUser()

@@ -28,26 +28,29 @@ class CreateProfilePt2ViewController: UIViewController {
     @IBAction func didPressCreate(_ sender: UIButton) {
         if((MajorText.text ?? "") == "") {
             //Invalid Major
+            Utilities.sharedInstance.displayErrorLabel(text: "Enter a major", field: MajorText)
             return
         }
         guard let year = Int(YearText.text!) else {
             //Invalid Year
+            Utilities.sharedInstance.displayErrorLabel(text: "Enter a valid year", field: YearText)
             return
         }
         if( year < 0 || year > 5 ) {
             //Invalid Year
+            Utilities.sharedInstance.displayErrorLabel(text: "Enter a valid year", field: YearText)
             return
         }
-        MAIN_USER.changeUserInfo(type: "major", info: MajorText.text!)
-        MAIN_USER.changeYear(year: year)
-        // Attempts to create a user, returns false if
-        if(!MAIN_USER.createUser(devid: UserDefaults.standard.object(forKey: "Dev_Token") as? String ?? "")) {
-            print(MAIN_USER.accessUserInfo(type: "error"))
-        }
-
-        if(MAIN_USER.accessUserId() == -1) {
-            return
-        }
+//        MAIN_USER.changeUserInfo(type: "major", info: MajorText.text!)
+//        MAIN_USER.changeYear(year: year)
+//        // Attempts to create a user, returns false if
+//        if(!MAIN_USER.createUser(devid: UserDefaults.standard.object(forKey: "Dev_Token") as? String ?? "")) {
+//            print(MAIN_USER.accessUserInfo(type: "error"))
+//        }
+//
+//        if(MAIN_USER.accessUserId() == -1) {
+//            return
+//        }
         
         //        switch MAIN_USER.accessUserInfo(type: "error") {
         //        case "major":

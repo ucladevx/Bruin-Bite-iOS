@@ -67,6 +67,9 @@ class LoginViewController: UIViewController {
             CheckMenuButton.backgroundColor = UIColor.white
             CheckMenuButton.setTitleColor(UIColor.twilightBlue, for: .normal)
         }
+        let storyBoard = UIStoryboard(name: "Menu", bundle: nil)
+        let menuVC = storyBoard.instantiateViewController(withIdentifier: "menuNavController") as! UINavigationController
+        self.present(menuVC, animated: true, completion: { })
     }
     
     @IBAction func SignInTap(_ sender: Any) {
@@ -89,7 +92,7 @@ class LoginViewController: UIViewController {
         view.backgroundColor = UIColor.twilightBlue
         
         // set SignInButton font, color, text
-        let SignInText = NSMutableAttributedString(string:"Sign In", attributes:attrs)
+        let SignInText = NSMutableAttributedString(string:"Already have an account? Sign In", attributes:attrs)
         attributedString.append(SignInText)
         SignInButton.setAttributedTitle(attributedString, for: .normal)
         SignInButton.backgroundColor = .clear
