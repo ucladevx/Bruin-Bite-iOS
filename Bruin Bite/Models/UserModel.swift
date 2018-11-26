@@ -9,20 +9,20 @@
 import Foundation
 
 struct UserModel {
-    private var uID: Int?
-    private var uEmail: String
+    var uID: Int?
+    var uEmail: String
 
     // Tokens
-    private var access_token: String?
-    private var refresh_token: String?
+    var access_token: String?
+    var refresh_token: String?
 
     // User Information
-    private var uFirstName: String
-    private var uLastName: String
-    private var uMajor: String
-    private var uMinor: String
-    private var uYear: Int
-    private var uBio: String
+    var uFirstName: String
+    var uLastName: String
+    var uMajor: String
+    var uMinor: String
+    var uYear: Int
+    var uBio: String
 
     init() {
         uEmail = ""

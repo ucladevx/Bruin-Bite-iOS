@@ -58,7 +58,7 @@ class SignInViewController: UIViewController, LoginDelegate {
             //Invalid Password
             return
         }
-        UserManager.shared.loginUser()
+//        UserManager.shared.loginUser()
     }
 
     func didLogin() {
