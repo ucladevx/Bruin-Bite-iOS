@@ -19,7 +19,7 @@ extension API {
     static let UserAPIKey = "myKey"
     
     static func createUser(email: String, password: String, first_name: String, last_name: String, major: String, minor: String, year: Int, self_bio: String, device_id: String, completion: @escaping (UserCreate) -> ()) {
-        provider.request(.createUser(email: email, password: password, first_name: first_name, last_name: last_name, major: major, minor: minor, year: year, self_bio: self_bio, device_id: device_id)) { result in
+        provider.request(.createUser(email: email, password: password, is_active: true)) { result in
             switch result {
             case let .success(response):
                 do {
@@ -72,7 +72,7 @@ extension API {
     }
     
     static func readUsers(email: String, access_token: String, completion: @escaping (UserCreate) -> ()) {
-        API.provider.request(.readUsers(email: email, access_token: access_token)) { result in
+        API.provider.request(.readUser(email: email)) { result in
             switch result {
             case let .success(response):
                 do {
@@ -116,7 +116,7 @@ extension API {
     }
     
     static func deleteUser(email: String, access_token: String, completion: @escaping () -> Void) {
-        provider.request(.deleteUser(email:email, access_token: access_token)) { result in
+        provider.request(.deleteUser(email:email)) { result in
             switch result {
             case let .success(response):
                 print("Delete: \(response)")

@@ -59,6 +59,7 @@ class SignUpViewController: UIViewController, SignupDelegate {
     }
 
     func didFinishSignup() {
+        //TODO: Call Login and then perform segue
         self.performSegue(withIdentifier: "DoneWithSignUp", sender: nil)
     }
 }

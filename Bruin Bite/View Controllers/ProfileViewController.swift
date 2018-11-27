@@ -45,7 +45,7 @@ class ProfileViewController: UIViewController, ReadDelegate {
         profilePic.layer.shadowRadius = 1.0
 
         //Set the labels/profile picture with default or old information
-        UserManager.shared.readUser()
+//        UserManager.shared.readUser(email: )
     }
 
     func didReadUser() {

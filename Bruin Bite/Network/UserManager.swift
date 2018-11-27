@@ -7,8 +7,10 @@
 //
 
 import Foundation
+import Moya
 
 class UserManager {
+    private let provider = MoyaProvider<MainAPI>()
     static let shared: UserManager = UserManager()
     private var currentUser: UserModel
     //local copy, database -> userdef
@@ -16,40 +18,74 @@ class UserManager {
     //Delegates
     var signupDelegate: SignupDelegate? = nil // The first signup vc will be this delegate.
     var loginDelegate: LoginDelegate? = nil // Login VC will be this delegate
-    var readDelegate: ReadDelegate? = nil //
+    var readDelegate: ReadDelegate? = nil
+    var logoutDelegate: LogoutDelegate? = nil
+    var deleteUserDelegate: DeleteUserDelegate? = nil
 
     //UserDefaults keys
-    private var kEmail = "email"
-    private var kID = "uid"
-    private var kAccessToken = "accessToken"
-    private var kRefreshToken = "refreshToken"
+    private var email_KEY = "Email"
+    private var id_KEY = "U_ID"
+    private var accessToken_KEY = "Access_Token"
+    private var refreshToken_KEY = "Refresh_Token"
+    private var firstName_KEY = "First_Name"
+    private var lastName_KEY = "Last_Name"
+    private var major_KEY = "Major"
+    private var minor_KEY = "Minor"
+    private var year_KEY = "Year"
+    private var selfBio_KEY = "Self_Bio"
 
     private init() {
         currentUser = UserModel()
     }
 
-    func createUser(email: String, uID: Int) {
+    func createUser(email: String, password: String) {
+        provider.request(.createUser(email: email, password: password, is_active: true)) { result in
+            switch result {
+            case let .success(response):
+                do {
+                    let results = try JSONDecoder().decode(UserCreate.self, from: response.data)
+                    UserDefaults.standard.set(results.email, forKey: self.email_KEY)
+                    UserDefaults.standard.set(results.id, forKey: self.id_KEY)
+                    self.currentUser.uEmail = results.email
+                    self.currentUser.uID = results.id
+                    self.signupDelegate?.didFinishSignup()
+                } catch let err {
+                    //implement err catch
+                    print(err)
+                }
+            case let .failure(error):
+                print(error)
+            }
+        }
         //Make call to create user, if successful
             // add email to userdefaults & uid
             // call didFinishSignUp
-        UserDefaults.standard.set(email, forKey: kEmail)
-        UserDefaults.standard.set(uID, forKey: kID)
-        currentUser.uEmail = email
-        currentUser.uID = uID
-        //Store email and password in currentUser
-        //Login User
+        //Store email in currentUser
     }
 
-    func loginUser(accessToken: String, refreshToken: String) {
+    func loginUser(email: String, password: String) {
+        provider.request(.loginUser(username: email, password: password, grant_type: "password", client_id: CLIENTID, client_secret: CLIENTSECRET)) { result in
+            switch result {
+            case let .success(response):
+                do {
+                    let results = try JSONDecoder().decode(UserLog.self, from: response.data)
+                    UserDefaults.standard.set(results.access_token, forKey: self.accessToken_KEY)
+                    UserDefaults.standard.set(results.refresh_token, forKey: self.refreshToken_KEY)
+                    self.currentUser.access_token = results.access_token
+                    self.currentUser.refresh_token = results.refresh_token
+                    self.loginDelegate?.didLogin()
+                } catch let err {
+                    print(err)
+                    //handle error
+                }
+            case let .failure(error):
+                print(error)
+            }
+        }
         //Make call to log in, if successful
             // add access & refresh token to userdefaults
             // call didLogin
-        UserDefaults.standard.set(accessToken, forKey: kAccessToken)
-        UserDefaults.standard.set(refreshToken, forKey: kRefreshToken)
-        currentUser.access_token = accessToken
-        currentUser.refresh_token = refreshToken
         //Store tokens
-        //Read User
     }
 
     func signupScreen1() {
@@ -60,20 +96,62 @@ class UserManager {
         // update userdefaults & backend with new info
     }
 
-    func readUser() {
+    func readUser(email: String) {
+        provider.request(.readUser(email: email)) { result in
+            switch result {
+            case let .success(response):
+                do {
+                    let results = try JSONDecoder().decode(UserCreate.self, from: response.data)
+                    self.updateCurrentUser(newUserInfo: results)
+                    self.readDelegate?.didReadUser()
+                } catch let err {
+                    print(err)
+                    //handle error
+                }
+            case let .failure(error):
+                print(error)
+            }
+        }
         //After reading user, store into currentUser
         //Add parameters to didReadUser so that when you call it
         //you can pass in the new information from currentUser
     }
 
+    func updateCurrentUser(newUserInfo: UserCreate) {
+        self.currentUser.uBio = newUserInfo.self_bio
+        self.currentUser.uFirstName = newUserInfo.first_name
+        self.currentUser.uLastName = newUserInfo.last_name
+        self.currentUser.uMajor = newUserInfo.major
+        self.currentUser.uMinor = newUserInfo.minor
+        self.currentUser.uYear = newUserInfo.year
+        UserDefaults.standard.set(newUserInfo.self_bio, forKey: selfBio_KEY)
+        UserDefaults.standard.set(newUserInfo.first_name, forKey: firstName_KEY)
+        UserDefaults.standard.set(newUserInfo.last_name, forKey: lastName_KEY)
+        UserDefaults.standard.set(newUserInfo.major, forKey: major_KEY)
+        UserDefaults.standard.set(newUserInfo.minor, forKey: minor_KEY)
+        UserDefaults.standard.set(newUserInfo.year, forKey: year_KEY)
+    }
+
     func logOutUser() {
-        // Should empty out user struct in userdefaults - ESP ACCESS TOKEN & REFRESH TOKEN.
-        UserDefaults.standard.removeObject(forKey: kAccessToken)
-        UserDefaults.standard.removeObject(forKey: kRefreshToken)
-        UserDefaults.standard.removeObject(forKey: kEmail)
-        UserDefaults.standard.removeObject(forKey: kID)
+        UserDefaults.standard.removeObject(forKey: accessToken_KEY)
+        UserDefaults.standard.removeObject(forKey: refreshToken_KEY)
+        UserDefaults.standard.removeObject(forKey: email_KEY)
+        UserDefaults.standard.removeObject(forKey: id_KEY)
         currentUser = UserModel()
-        // Calls didCompleteLogout()
+        logoutDelegate?.didCompleteLogout()
+    }
+
+    func deleteUser(email: String) {
+        provider.request(.deleteUser(email: email)) { result in
+            switch result {
+            case let .success(response):
+                print("Delete: \(response)")
+                self.logOutUser()
+                self.deleteUserDelegate?.didDeleteUser()
+            case let .failure(error):
+                print(error)
+            }
+        }
     }
 
     //Current User Accesors
@@ -85,6 +163,7 @@ class UserManager {
     func getMinor() -> String { return currentUser.uMinor }
     func getYear() -> Int { return currentUser.uYear }
     func getBio() -> String { return currentUser.uBio }
+    func getAccessToken() -> String { return currentUser.access_token ?? "" }
 }
 
 protocol SignupDelegate {
@@ -101,4 +180,8 @@ protocol ReadDelegate {
 
 protocol LogoutDelegate {
     func didCompleteLogout()
+}
+
+protocol DeleteUserDelegate {
+    func didDeleteUser()
 }

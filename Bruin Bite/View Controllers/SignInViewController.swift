@@ -62,6 +62,7 @@ class SignInViewController: UIViewController, LoginDelegate {
     }
 
     func didLogin() {
+        //TODO: Call read user and then perform segue
         self.performSegue(withIdentifier: "ShowMenuVC_2", sender: nil)
     }
 }
