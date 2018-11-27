@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CreateProfilePt2ViewController: UIViewController {
+class CreateProfilePt2ViewController: UIViewController, UpdateDelegate {
     
     @IBOutlet var CreateButton: UIButton!
     @IBOutlet var CreateProfileText: UILabel!
@@ -39,39 +39,21 @@ class CreateProfilePt2ViewController: UIViewController {
             //Invalid Year
             return
         }
-        MAIN_USER.changeUserInfo(type: "major", info: MajorText.text!)
-        MAIN_USER.changeYear(year: year)
-        // Attempts to create a user, returns false if
-        if(!MAIN_USER.createUser(devid: UserDefaults.standard.object(forKey: "Dev_Token") as? String ?? "")) {
-            print(MAIN_USER.accessUserInfo(type: "error"))
-        }
 
-        if(MAIN_USER.accessUserId() == -1) {
-            return
-        }
-        
-        //        switch MAIN_USER.accessUserInfo(type: "error") {
-        //        case "major":
-        //            //Invalid Major
-        //            return
-        //        case "year":
-        //            //Invalid Year
-        //            return
-        //        case: "bio":
-        //            //Invalid Bio
-        //            return
-        //        default:
-        //            //Unknown Invalid
-        //            return
-        //        }
-      
-        self.performSegue(withIdentifier: "ShowMenuVC_1", sender: nil)
+        UserManager.shared.signupUpdate(email: UserManager.shared.getEmail(),
+                                        password: UserDefaultsManager.shared.getPassword(),
+                                        first_name: UserManager.shared.getFirstName(), last_name: UserManager.shared.getLastName(),
+                                        major: MajorText.text ?? "",
+                                        minor: UserManager.shared.getMinor(),
+                                        year: Int(YearText.text ?? "") ?? 0,
+                                        self_bio: UserManager.shared.getBio())
     }
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        UserManager.shared.updateDelegate = self
         
         view.backgroundColor = UIColor.twilightBlue
         CreateProfileText.font = UIFont.signUpTextFont
@@ -93,6 +75,10 @@ class CreateProfilePt2ViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+
+    func didUpdateUser() {
+        self.performSegue(withIdentifier: "ShowMenuVC_1", sender: nil)
     }
     
 }

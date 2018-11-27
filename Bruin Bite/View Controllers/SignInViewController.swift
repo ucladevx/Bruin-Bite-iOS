@@ -58,11 +58,12 @@ class SignInViewController: UIViewController, LoginDelegate {
             //Invalid Password
             return
         }
-//        UserManager.shared.loginUser()
+        UserManager.shared.loginUser(email: EmailText.text ?? "", password: PasswordText.text ?? "")
     }
 
     func didLogin() {
-        //TODO: Call read user and then perform segue
+        UserManager.shared.readUser(email: UserManager.shared.getEmail())
+        UserDefaultsManager.shared.setPassword(to: PasswordText.text ?? "")
         self.performSegue(withIdentifier: "ShowMenuVC_2", sender: nil)
     }
 }

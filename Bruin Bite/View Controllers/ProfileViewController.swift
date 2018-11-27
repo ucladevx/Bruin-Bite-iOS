@@ -44,11 +44,26 @@ class ProfileViewController: UIViewController, ReadDelegate {
         profilePic.layer.shadowOpacity = 1
         profilePic.layer.shadowRadius = 1.0
 
+        fillInformation()
         //Set the labels/profile picture with default or old information
-//        UserManager.shared.readUser(email: )
+        UserManager.shared.readUser(email: UserDefaultsManager.shared.getUserEmail())
     }
 
     func didReadUser() {
-        //Update the labels with new data
+        fillInformation()
+    }
+
+    func fillInformation() {
+        userName.text = combineFirstAndLastName(first: UserDefaultsManager.shared.getFirstName(),
+                                                last: UserDefaultsManager.shared.getLastName())
+        let year: Int = UserDefaultsManager.shared.getYear()
+        let major: String = UserDefaultsManager.shared.getMajor()
+        yearMajor.text = "Year: \(year)" + " " + "Major: \(major)"
+        ShortBio.text = UserDefaultsManager.shared.getSelfBio()
+    }
+
+    func combineFirstAndLastName(first: String, last: String) -> String {
+        let combined: String = first + " " + last
+        return combined
     }
 }

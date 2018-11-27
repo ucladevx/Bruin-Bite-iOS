@@ -20,6 +20,7 @@ class UserDefaultsManager {
     private var minor_KEY = "Minor"
     private var year_KEY = "Year"
     private var selfBio_KEY = "Self_Bio"
+    private var password_KEY = "Password"
 
     //Setters
     func setUserEmail(to email: String) { UserDefaults.standard.set(email, forKey: email_KEY) }
@@ -32,6 +33,7 @@ class UserDefaultsManager {
     func setMinor(to minor: String) { UserDefaults.standard.set(minor, forKey: minor_KEY) }
     func setYear(to year: Int) { UserDefaults.standard.set(year, forKey: year_KEY) }
     func setSelfBio(to selfBio: String) { UserDefaults.standard.set(selfBio, forKey: selfBio_KEY) }
+    func setPassword(to password: String) { UserDefaults.standard.set(password, forKey: password_KEY) }
 
     //Access
     func getUserID() -> Int { return UserDefaults.standard.object(forKey: id_KEY) as? Int ?? -1 }
@@ -44,6 +46,8 @@ class UserDefaultsManager {
     func getMinor() -> String { return UserDefaults.standard.object(forKey: minor_KEY) as? String ?? "" }
     func getMajor() -> Int { return UserDefaults.standard.object(forKey: year_KEY) as? Int ?? 0 }
     func getSelfBio() -> String { return UserDefaults.standard.object(forKey: selfBio_KEY) as? String ?? "" }
+    func getYear() -> Int { return UserDefaults.standard.object(forKey: year_KEY) as? Int ?? 0}
+    func getPassword() -> String { return UserDefaults.standard.object(forKey: password_KEY) as? String ?? ""}
 
     //Remove
     func removeEmail() { UserDefaults.standard.removeObject(forKey: email_KEY) }
@@ -56,8 +60,9 @@ class UserDefaultsManager {
     func removeMinor() { UserDefaults.standard.removeObject(forKey: minor_KEY) }
     func removeYear() { UserDefaults.standard.removeObject(forKey: year_KEY) }
     func removeBio() { UserDefaults.standard.removeObject(forKey: selfBio_KEY) }
+    func removePassword() { UserDefaults.standard.removeObject(forKey: password_KEY) }
     func removeAll() {
         removeEmail();removeID();removeAccessToken();removeRefreshToken();removeFirstName()
-        removeLastName();removeMajor();removeMinor();removeYear();removeBio()
+        removeLastName();removeMajor();removeMinor();removeYear();removeBio();removePassword()
     }
 }

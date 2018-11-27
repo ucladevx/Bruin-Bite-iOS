@@ -9,7 +9,7 @@
 import UIKit
 
 
-class SignUpViewController: UIViewController, SignupDelegate {
+class SignUpViewController: UIViewController, SignupDelegate, LoginDelegate {
     
     @IBOutlet var SignUpText: UILabel!
     @IBOutlet var NameText: UITextField!
@@ -20,6 +20,7 @@ class SignUpViewController: UIViewController, SignupDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         UserManager.shared.signupDelegate = self
+        UserManager.shared.loginDelegate = self
         
         view.backgroundColor = UIColor.twilightBlue
         SignUpText.font = UIFont.signUpTextFont.withSize(20)
@@ -55,11 +56,15 @@ class SignUpViewController: UIViewController, SignupDelegate {
             //Passwords don't match
             return
         }
-//        UserManager.shared.createUser()
+        UserManager.shared.createUser(email: EmailText.text ?? "", password: PasswordText.text ?? "", firstName: NameText.text ?? "")
     }
 
     func didFinishSignup() {
-        //TODO: Call Login and then perform segue
+        UserManager.shared.loginUser(email: UserManager.shared.getEmail(), password: PasswordText.text ?? "")
+        UserDefaultsManager.shared.setPassword(to: PasswordText.text ?? "")
+    }
+
+    func didLogin() {
         self.performSegue(withIdentifier: "DoneWithSignUp", sender: nil)
     }
 }

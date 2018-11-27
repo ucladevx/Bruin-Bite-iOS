@@ -26,19 +26,21 @@ class UserManager {
         currentUser = UserModel()
     }
 
-    func createUser(email: String, password: String) {
-        provider.request(.createUser(email: email, password: password, is_active: true)) { result in
+    func createUser(email: String, password: String, firstName: String) {
+        provider.request(.createUser(email: email, password: password, firstName: firstName, is_active: true)) { result in
             switch result {
             case let .success(response):
                 do {
                     let results = try JSONDecoder().decode(UserCreate.self, from: response.data)
                     UserDefaultsManager.shared.setUserEmail(to: results.email)
                     UserDefaultsManager.shared.setUserID(to: results.id)
+                    UserDefaultsManager.shared.setFirstName(to: results.first_name)
+                    self.currentUser.uFirstName = results.first_name
                     self.currentUser.uEmail = results.email
                     self.currentUser.uID = results.id
                     self.signupDelegate?.didFinishSignup()
                 } catch let err {
-                    //implement err catch
+                    //TODO: Implement Error Handling
                     print(err)
                 }
             case let .failure(error):
@@ -60,7 +62,7 @@ class UserManager {
                     self.loginDelegate?.didLogin()
                 } catch let err {
                     print(err)
-                    //handle error
+                    //TODO: Implement Error Handling
                 }
             case let .failure(error):
                 print(error)
@@ -69,42 +71,46 @@ class UserManager {
     }
 
     func signupUpdate(email: String, password: String, first_name: String, last_name: String, major: String, minor: String, year: Int, self_bio: String) {
-        provider.request(.updateUser(email: email, password: password, first_name: first_name, last_name: last_name, major: major, minor: minor, year: year, self_bio: self_bio)) { result in
-            switch result {
-            case let .success(response):
-                do {
-                    let results = try JSONDecoder().decode(UserCreate.self, from: response.data)
-                    self.updateCurrentUser(newUserInfo: results)
-                    self.updateDelegate?.didUpdateUser()
-                } catch let err {
-                    print(err)
-                    //handle error
+        DispatchQueue.global(qos: .background).async {
+            self.provider.request(.updateUser(email: email, password: password, first_name: first_name, last_name: last_name, major: major, minor: minor, year: year, self_bio: self_bio)) { result in
+                switch result {
+                case let .success(response):
+                    do {
+                        let results = try JSONDecoder().decode(UserCreate.self, from: response.data)
+                        self.updateCurrentUser(newUserInfo: results)
+                        self.updateDelegate?.didUpdateUser()
+                    } catch let err {
+                        print(err)
+                        //TODO: Implement Error Handling
+                    }
+                case let .failure(error):
+                    print(error)
                 }
-            case let .failure(error):
-                print(error)
             }
         }
     }
 
     func readUser(email: String) {
-        provider.request(.readUser(email: email)) { result in
-            switch result {
-            case let .success(response):
-                do {
-                    let results = try JSONDecoder().decode(UserCreate.self, from: response.data)
-                    self.updateCurrentUser(newUserInfo: results)
-                    self.readDelegate?.didReadUser()
-                } catch let err {
-                    print(err)
-                    //handle error
+        DispatchQueue.global(qos: .background).async {
+            self.provider.request(.readUser(email: email)) { result in
+                switch result {
+                case let .success(response):
+                    do {
+                        let results = try JSONDecoder().decode(UserCreate.self, from: response.data)
+                        self.updateCurrentUser(newUserInfo: results)
+                        self.readDelegate?.didReadUser()
+                    } catch let err {
+                        print(err)
+                        //TODO: Implement Error Handling
+                    }
+                case let .failure(error):
+                    print(error)
                 }
-            case let .failure(error):
-                print(error)
             }
         }
     }
 
-    func updateCurrentUser(newUserInfo: UserCreate) {
+    private func updateCurrentUser(newUserInfo: UserCreate) {
         self.currentUser.uBio = newUserInfo.self_bio
         self.currentUser.uFirstName = newUserInfo.first_name
         self.currentUser.uLastName = newUserInfo.last_name

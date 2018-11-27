@@ -19,7 +19,7 @@ extension API {
     static let UserAPIKey = "myKey"
     
     static func createUser(email: String, password: String, first_name: String, last_name: String, major: String, minor: String, year: Int, self_bio: String, device_id: String, completion: @escaping (UserCreate) -> ()) {
-        provider.request(.createUser(email: email, password: password, is_active: true)) { result in
+        provider.request(.createUser(email: email, password: password, firstName: first_name, is_active: true)) { result in
             switch result {
             case let .success(response):
                 do {
