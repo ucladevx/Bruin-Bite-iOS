@@ -9,6 +9,10 @@
 import UIKit
 import Moya
 import SnapKit
+import Reachability
+    
+
+    
 
 class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
@@ -17,6 +21,7 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
     @IBOutlet weak var allergensBar: AllergensBarScrollView!
     var topBar = TopBar()
     @IBOutlet weak var backgroundTopBar: UILabel!
+    @IBOutlet weak var loadingLabel: UILabel!
     @IBOutlet weak var menuCardsCollection: UICollectionView!
     
     var menuData = MenuController()
@@ -44,6 +49,12 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         self.view.backgroundColor = UIColor.white
         
         super.viewDidLoad()
+        
+        NetworkManager.isUnreachable { networkManagerInstance in
+            
+           self.loadingLabel.text = "No internet!"
+            
+        }
         allergensBar.content.parentVC = self
         topBar.parentVC = self
         menuCardsCollection.delegate = self

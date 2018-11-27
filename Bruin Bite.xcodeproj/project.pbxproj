@@ -79,6 +79,7 @@
 		DCF0E2E220B260A90036A32F /* CreateProfilePt2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF0E2E120B260A90036A32F /* CreateProfilePt2ViewController.swift */; };
 		DCF0E2E420B260BA0036A32F /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF0E2E320B260BA0036A32F /* SignUpViewController.swift */; };
 		DCF0E2E620B260CC0036A32F /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF0E2E520B260CC0036A32F /* SignInViewController.swift */; };
+		DCF15B1521AD13F000481E06 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF15B1421AD13F000481E06 /* NetworkManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -186,6 +187,7 @@
 		DCF0E2E120B260A90036A32F /* CreateProfilePt2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProfilePt2ViewController.swift; sourceTree = "<group>"; };
 		DCF0E2E320B260BA0036A32F /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		DCF0E2E520B260CC0036A32F /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		DCF15B1421AD13F000481E06 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		FDC82735AAF52033CD40ACDF /* Pods-Bruin Bite.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bruin Bite.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bruin Bite/Pods-Bruin Bite.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -410,6 +412,7 @@
 			isa = PBXGroup;
 			children = (
 				BD392820215C3638007FD4AD /* BBStoryboard.swift */,
+				DCF15B1421AD13F000481E06 /* NetworkManager.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -496,7 +499,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0930;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "Dont Eat Alone";
 				TargetAttributes = {
 					2AFA409320BBD7A00007FB85 = {
@@ -595,6 +598,7 @@
 				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
 				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
 				"${BUILT_PRODUCTS_DIR}/Pulsator/Pulsator.framework",
+				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
 				"${BUILT_PRODUCTS_DIR}/Repeat/Repeat.framework",
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
@@ -612,6 +616,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookLogin.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Pulsator.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Repeat.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
@@ -666,6 +671,7 @@
 				BFE168A3209AB8DD00D021A2 /* CollectionViewController.swift in Sources */,
 				BFC934B320C3448A0040D08D /* ChatListAPI.swift in Sources */,
 				C0CD676A203C15CC006B265D /* TimeView.swift in Sources */,
+				DCF15B1521AD13F000481E06 /* NetworkManager.swift in Sources */,
 				00C2DF0F20B678E70023CF75 /* BackgroundUserFetch.swift in Sources */,
 				2B952C67202BDBB200F27727 /* WeekView.swift in Sources */,
 				2A03D94620B77A1A004EFC97 /* TimePickerCollectionViewCell.swift in Sources */,
@@ -790,6 +796,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -797,6 +804,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -848,6 +856,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -855,6 +864,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
