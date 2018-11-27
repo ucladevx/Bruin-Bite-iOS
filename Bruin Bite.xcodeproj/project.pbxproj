@@ -79,6 +79,7 @@
 		DCF0E2E220B260A90036A32F /* CreateProfilePt2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF0E2E120B260A90036A32F /* CreateProfilePt2ViewController.swift */; };
 		DCF0E2E420B260BA0036A32F /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF0E2E320B260BA0036A32F /* SignUpViewController.swift */; };
 		DCF0E2E620B260CC0036A32F /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF0E2E520B260CC0036A32F /* SignInViewController.swift */; };
+		DCF2953921ADE6660043DB3A /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF2953821ADE6660043DB3A /* NetworkManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -186,6 +187,7 @@
 		DCF0E2E120B260A90036A32F /* CreateProfilePt2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProfilePt2ViewController.swift; sourceTree = "<group>"; };
 		DCF0E2E320B260BA0036A32F /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		DCF0E2E520B260CC0036A32F /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		DCF2953821ADE6660043DB3A /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		FDC82735AAF52033CD40ACDF /* Pods-Bruin Bite.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bruin Bite.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bruin Bite/Pods-Bruin Bite.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -410,6 +412,7 @@
 			isa = PBXGroup;
 			children = (
 				BD392820215C3638007FD4AD /* BBStoryboard.swift */,
+				DCF2953821ADE6660043DB3A /* NetworkManager.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -478,7 +481,6 @@
 				770251AE201D4079002E4515 /* Resources */,
 				D601296F579F59F8E568D410 /* [CP] Embed Pods Frameworks */,
 				2AFA409F20BBD7A00007FB85 /* Embed App Extensions */,
-				F938AA584118C90F12FE1731 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -626,21 +628,6 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Bruin Bite/Pods-Bruin Bite-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F938AA584118C90F12FE1731 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Bruin Bite/Pods-Bruin Bite-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -668,6 +655,7 @@
 				2AFB41332047DD86004025F9 /* ItemDetailViewController.swift in Sources */,
 				2A68339220BC2113000DCAA4 /* UIButtonSignUp.swift in Sources */,
 				BF0523E3209AA7E00013EE11 /* ProfileViewController.swift in Sources */,
+				DCF2953921ADE6660043DB3A /* NetworkManager.swift in Sources */,
 				2AFB41372047F0F2004025F9 /* MenuCardCollectionViewCell.swift in Sources */,
 				2A16F9A720BEA204008BA4E3 /* ComingSoonPopup.swift in Sources */,
 				770CDEAE20266B0800658925 /* ColoredCircle.swift in Sources */,

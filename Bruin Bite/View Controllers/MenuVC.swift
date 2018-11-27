@@ -11,77 +11,7 @@ import Moya
 import SnapKit
 import Reachability
 
-    class NetworkManager: NSObject {
-        
-        var reachability: Reachability!
-        
-        // Create a singleton instance
-        static let sharedInstance: NetworkManager = { return NetworkManager() }()
-        
-        
-        override init() {
-            super.init()
-            
-            // Initialise reachability
-            reachability = Reachability()!
-            
-            // Register an observer for the network status
-            NotificationCenter.default.addObserver(
-                self,
-                selector: #selector(networkStatusChanged(_:)),
-                name: .reachabilityChanged,
-                object: reachability
-            )
-            
-            do {
-                // Start the network status notifier
-                try reachability.startNotifier()
-            } catch {
-                print("Unable to start notifier")
-            }
-        }
-        
-        @objc func networkStatusChanged(_ notification: Notification) {
-            // Do something globally here!
-        }
-        
-        static func stopNotifier() -> Void {
-            do {
-                // Stop the network status notifier
-                try (NetworkManager.sharedInstance.reachability).startNotifier()
-            } catch {
-                print("Error stopping notifier")
-            }
-        }
-        
-        // Network is reachable
-        static func isReachable(completed: @escaping (NetworkManager) -> Void) {
-            if (NetworkManager.sharedInstance.reachability).connection != .none {
-                completed(NetworkManager.sharedInstance)
-            }
-        }
-        
-        // Network is unreachable
-        static func isUnreachable(completed: @escaping (NetworkManager) -> Void) {
-            if (NetworkManager.sharedInstance.reachability).connection == .none {
-                completed(NetworkManager.sharedInstance)
-            }
-        }
-        
-        // Network is reachable via WWAN/Cellular
-        static func isReachableViaWWAN(completed: @escaping (NetworkManager) -> Void) {
-            if (NetworkManager.sharedInstance.reachability).connection == .cellular {
-                completed(NetworkManager.sharedInstance)
-            }
-        }
-        
-        // Network is reachable via WiFi
-        static func isReachableViaWiFi(completed: @escaping (NetworkManager) -> Void) {
-            if (NetworkManager.sharedInstance.reachability).connection == .wifi {
-                completed(NetworkManager.sharedInstance)
-            }
-        }
-    }
+  
     
     
 
@@ -90,11 +20,34 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
     let provider = MoyaProvider<API_methods>()
     let reachability = Reachability()!
     
+    
+    
+        var images: [UIImage]!
+        var animatedImage: UIImage!
+        var loadingImage_1: UIImage!
+        var loadingImage_2: UIImage!
+        var loadingImage_3: UIImage!
+        var loadingImage_4: UIImage!
+        var loadingImage_5: UIImage!
+        var loadingImage_6: UIImage!
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     @IBOutlet weak var allergensBar: AllergensBarScrollView!
     var topBar = TopBar()
     @IBOutlet weak var backgroundTopBar: UILabel!
     @IBOutlet weak var menuCardsCollection: UICollectionView!
     
+    @IBOutlet weak var loadingImage: UIImageView!
     var menuData = MenuController()
     var activityLevelData = [ActivityLevel]()
     var hoursData = [String:[Location:HallHours]]()
@@ -117,16 +70,35 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
 
     
     
-    @IBOutlet weak var loadingLabel: UILabel!
-    
+
 
     override func viewDidLoad() {
+        
+        loadingImage_1 = UIImage(named: "loadingImage1")
+        loadingImage_2 = UIImage(named: "loadingImage2")
+        loadingImage_3 = UIImage(named: "loadingImage3")
+        loadingImage_4 = UIImage(named: "loadingImage4")
+        loadingImage_5 = UIImage(named: "loadingImage5")
+        loadingImage_6 = UIImage(named: "loadingImage6")
+        
+        
+        images = [loadingImage_1, loadingImage_2, loadingImage_3,loadingImage_4,loadingImage_5,loadingImage_6]
+        
+        animatedImage = UIImage.animatedImage(with: images, duration: 1.0)
+        
+        loadingImage.image = animatedImage
+        
+        
+        
         NetworkManager.isReachable { networkManagerInstance in
             print("Network is available")
+            self.loadingImage.stopAnimating()
+            self.loadingImage.isHidden = true
+            
         }
         
         NetworkManager.isUnreachable { networkManagerInstance in
-            self.loadingLabel.text = "No internet!"
+        
         }
    
         self.view.backgroundColor = UIColor.white

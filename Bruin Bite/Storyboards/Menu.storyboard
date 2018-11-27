@@ -27,12 +27,10 @@
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
-                                <label key="backgroundView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Myk-zG-zTM">
+                                <imageView key="backgroundView" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="LpV-Iu-T1k">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="468"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
+                                </imageView>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="menuCardCell" id="3Wq-Cu-Ohf" customClass="MenuCardCollectionViewCell" customModule="Bruin_Bite" customModuleProvider="target">
                                         <rect key="frame" x="5" y="0.0" width="365" height="214"/>
@@ -142,7 +140,7 @@
                     <connections>
                         <outlet property="allergensBar" destination="fRI-GQ-wjj" id="VHL-kb-3Yb"/>
                         <outlet property="backgroundTopBar" destination="DoT-Hh-LNo" id="mh4-dU-Vvb"/>
-                        <outlet property="loadingLabel" destination="Myk-zG-zTM" id="cP1-hH-DIa"/>
+                        <outlet property="loadingImage" destination="LpV-Iu-T1k" id="r9q-fz-zK4"/>
                         <outlet property="menuCardsCollection" destination="H9C-p3-hMb" id="hir-Sr-zQM"/>
                         <segue destination="G2B-ru-Cr9" kind="show" identifier="segueToItemDetailVC" id="lgn-hs-Vbn"/>
                     </connections>
