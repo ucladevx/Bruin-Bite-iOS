@@ -93,8 +93,8 @@ extension API {
         }
     }
     
-    static func updateUser(email: String, password: String, first_name: String, last_name: String, major: String, minor: String, year: Int, self_bio: String, access_token: String, device_id: String, completion: @escaping (UserCreate) -> ()) {
-        provider.request(.updateUser(email: email, password: password, first_name: first_name, last_name: last_name, major: major, minor: minor, year: year, self_bio: self_bio, access_token: access_token, device_id: device_id)) { result in
+    static func updateUser(email: String, password: String, first_name: String, last_name: String, major: String, minor: String, year: Int, self_bio: String, completion: @escaping (UserCreate) -> ()) {
+        provider.request(.updateUser(email: email, password: password, first_name: first_name, last_name: last_name, major: major, minor: minor, year: year, self_bio: self_bio)) { result in
             switch result {
             case let .success(response):
                 do {

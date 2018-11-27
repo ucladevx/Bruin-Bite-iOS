@@ -13,7 +13,6 @@ class UserManager {
     private let provider = MoyaProvider<MainAPI>()
     static let shared: UserManager = UserManager()
     private var currentUser: UserModel
-    //local copy, database -> userdef
 
     //Delegates
     var signupDelegate: SignupDelegate? = nil // The first signup vc will be this delegate.
@@ -21,6 +20,7 @@ class UserManager {
     var readDelegate: ReadDelegate? = nil
     var logoutDelegate: LogoutDelegate? = nil
     var deleteUserDelegate: DeleteUserDelegate? = nil
+    var updateDelegate: UpdateDelegate? = nil
 
     //UserDefaults keys
     private var email_KEY = "Email"
@@ -88,12 +88,22 @@ class UserManager {
         //Store tokens
     }
 
-    func signupScreen1() {
-        // update userdefaults & backend with new info
-    }
-
-    func signUpScreen2() {
-        // update userdefaults & backend with new info
+    func signupUpdate(email: String, password: String, first_name: String, last_name: String, major: String, minor: String, year: Int, self_bio: String) {
+        provider.request(.updateUser(email: email, password: password, first_name: first_name, last_name: last_name, major: major, minor: minor, year: year, self_bio: self_bio)) { result in
+            switch result {
+            case let .success(response):
+                do {
+                    let results = try JSONDecoder().decode(UserCreate.self, from: response.data)
+                    self.updateCurrentUser(newUserInfo: results)
+                    self.updateDelegate?.didUpdateUser()
+                } catch let err {
+                    print(err)
+                    //handle error
+                }
+            case let .failure(error):
+                print(error)
+            }
+        }
     }
 
     func readUser(email: String) {
@@ -184,4 +194,8 @@ protocol LogoutDelegate {
 
 protocol DeleteUserDelegate {
     func didDeleteUser()
+}
+
+protocol UpdateDelegate {
+    func didUpdateUser()
 }

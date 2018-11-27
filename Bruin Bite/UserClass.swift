@@ -198,9 +198,9 @@ public class User {
     }
     public func updateUser(dev_id: String) {
         DispatchQueue.global(qos: .background).async {
-            API.updateUser(email: self.user_email, password: self.user_password, first_name: self.first_name, last_name: self.last_name, major: self.user_major, minor: self.user_minor, year: self.user_year, self_bio: self.user_bio, access_token: UserDefaults.standard.object(forKey: "accessToken") as? String ?? "", device_id: dev_id) { (updatedUser) in
-                self.create_read_update = updatedUser
-            }
+//            API.updateUser(email: self.user_email, password: self.user_password, first_name: self.first_name, last_name: self.last_name, major: self.user_major, minor: self.user_minor, year: self.user_year, self_bio: self.user_bio, access_token: UserDefaults.standard.object(forKey: "accessToken") as? String ?? "", device_id: dev_id) { (updatedUser) in
+//                self.create_read_update = updatedUser
+//            }
         }
     }
     public func deleteUser() {
