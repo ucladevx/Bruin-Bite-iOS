@@ -18,10 +18,10 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
     
     let provider = MoyaProvider<API_methods>()
     
+    @IBOutlet weak var imageAnim: UIImageView!
     @IBOutlet weak var allergensBar: AllergensBarScrollView!
     var topBar = TopBar()
     @IBOutlet weak var backgroundTopBar: UILabel!
-    @IBOutlet weak var loadingLabel: UILabel!
     @IBOutlet weak var menuCardsCollection: UICollectionView!
     
     var menuData = MenuController()
@@ -38,6 +38,17 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
     let diningHalls = ["De Neve", "BPlate", "Covel", "Feast"]
     var menuItem: Item?
     
+    var loading_1: UIImage!
+    var loading_2: UIImage!
+    var loading_3: UIImage!
+    var loading_4: UIImage!
+    var loading_5: UIImage!
+    var loading_6: UIImage!
+    var images: [UIImage]!
+    var animatedImage: UIImage!
+    
+
+    
     var attrs = [
         NSAttributedStringKey.font: UIFont.signInFont.withSize(12.0),
         NSAttributedStringKey.foregroundColor: UIColor.twilightBlue,
@@ -46,13 +57,27 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
 
         
     override func viewDidLoad() {
+        
+        loading_1 = UIImage(named: "anim1")
+        loading_2 = UIImage(named: "anim2")
+        loading_3 = UIImage(named: "anim3")
+        loading_4 = UIImage(named: "anim4")
+        loading_5 = UIImage(named: "anim5")
+        loading_6 = UIImage(named: "anim6")
+        
+        images = [loading_1, loading_2, loading_3,loading_4,loading_5,loading_6]
+        
+        animatedImage = UIImage.animatedImage(with: images, duration: 1.0)
+        
+        imageAnim.image = animatedImage
+        
         self.view.backgroundColor = UIColor.white
         
         super.viewDidLoad()
         
         NetworkManager.isUnreachable { networkManagerInstance in
             
-           self.loadingLabel.text = "No internet!"
+          
             
         }
         allergensBar.content.parentVC = self
@@ -131,6 +156,8 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
             self.initMP = self.currMP
             
             self.updateData(dateFormatter.string(from: date), mP: self.currMP)
+            self.imageAnim.stopAnimating()
+            self.imageAnim.isHidden = true
         }
 //        API.getDetailedMenu { parsedMenus in
 //            for m in parsedMenus{
