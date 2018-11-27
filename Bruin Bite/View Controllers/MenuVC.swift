@@ -63,7 +63,7 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         let hour = Calendar.current.component(.hour, from: Date())
         switch hour {
         case 0..<2:
-            self.topBar.timeSelected("Night")
+            self.topBar.timeSelected("Dinner") // TODO: Change to "Night" once late night is enabled
         case 2..<9:
             if(!self.topBar.brunch) {
                 self.topBar.timeSelected("Breakfast")
@@ -81,7 +81,7 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         case 15..<21:
             self.topBar.timeSelected("Dinner")
         case 21..<24:
-            self.topBar.timeSelected("Night")
+            self.topBar.timeSelected("Dinner") // TODO: Change to "Night" once late night is enabled
         default:
             print("Current Meal Period could not be determined")
         }
