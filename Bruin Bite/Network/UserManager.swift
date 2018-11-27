@@ -22,18 +22,6 @@ class UserManager {
     var deleteUserDelegate: DeleteUserDelegate? = nil
     var updateDelegate: UpdateDelegate? = nil
 
-    //UserDefaults keys
-    private var email_KEY = "Email"
-    private var id_KEY = "U_ID"
-    private var accessToken_KEY = "Access_Token"
-    private var refreshToken_KEY = "Refresh_Token"
-    private var firstName_KEY = "First_Name"
-    private var lastName_KEY = "Last_Name"
-    private var major_KEY = "Major"
-    private var minor_KEY = "Minor"
-    private var year_KEY = "Year"
-    private var selfBio_KEY = "Self_Bio"
-
     private init() {
         currentUser = UserModel()
     }
@@ -44,8 +32,8 @@ class UserManager {
             case let .success(response):
                 do {
                     let results = try JSONDecoder().decode(UserCreate.self, from: response.data)
-                    UserDefaults.standard.set(results.email, forKey: self.email_KEY)
-                    UserDefaults.standard.set(results.id, forKey: self.id_KEY)
+                    UserDefaultsManager.shared.setUserEmail(to: results.email)
+                    UserDefaultsManager.shared.setUserID(to: results.id)
                     self.currentUser.uEmail = results.email
                     self.currentUser.uID = results.id
                     self.signupDelegate?.didFinishSignup()
@@ -57,10 +45,6 @@ class UserManager {
                 print(error)
             }
         }
-        //Make call to create user, if successful
-            // add email to userdefaults & uid
-            // call didFinishSignUp
-        //Store email in currentUser
     }
 
     func loginUser(email: String, password: String) {
@@ -69,8 +53,8 @@ class UserManager {
             case let .success(response):
                 do {
                     let results = try JSONDecoder().decode(UserLog.self, from: response.data)
-                    UserDefaults.standard.set(results.access_token, forKey: self.accessToken_KEY)
-                    UserDefaults.standard.set(results.refresh_token, forKey: self.refreshToken_KEY)
+                    UserDefaultsManager.shared.setAccessToken(to: results.access_token)
+                    UserDefaultsManager.shared.setAccessToken(to: results.refresh_token)
                     self.currentUser.access_token = results.access_token
                     self.currentUser.refresh_token = results.refresh_token
                     self.loginDelegate?.didLogin()
@@ -82,10 +66,6 @@ class UserManager {
                 print(error)
             }
         }
-        //Make call to log in, if successful
-            // add access & refresh token to userdefaults
-            // call didLogin
-        //Store tokens
     }
 
     func signupUpdate(email: String, password: String, first_name: String, last_name: String, major: String, minor: String, year: Int, self_bio: String) {
@@ -122,9 +102,6 @@ class UserManager {
                 print(error)
             }
         }
-        //After reading user, store into currentUser
-        //Add parameters to didReadUser so that when you call it
-        //you can pass in the new information from currentUser
     }
 
     func updateCurrentUser(newUserInfo: UserCreate) {
@@ -134,19 +111,16 @@ class UserManager {
         self.currentUser.uMajor = newUserInfo.major
         self.currentUser.uMinor = newUserInfo.minor
         self.currentUser.uYear = newUserInfo.year
-        UserDefaults.standard.set(newUserInfo.self_bio, forKey: selfBio_KEY)
-        UserDefaults.standard.set(newUserInfo.first_name, forKey: firstName_KEY)
-        UserDefaults.standard.set(newUserInfo.last_name, forKey: lastName_KEY)
-        UserDefaults.standard.set(newUserInfo.major, forKey: major_KEY)
-        UserDefaults.standard.set(newUserInfo.minor, forKey: minor_KEY)
-        UserDefaults.standard.set(newUserInfo.year, forKey: year_KEY)
+        UserDefaultsManager.shared.setSelfBio(to: newUserInfo.self_bio)
+        UserDefaultsManager.shared.setFirstName(to: newUserInfo.first_name)
+        UserDefaultsManager.shared.setLastName(to: newUserInfo.last_name)
+        UserDefaultsManager.shared.setMajor(to: newUserInfo.major)
+        UserDefaultsManager.shared.setMinor(to: newUserInfo.minor)
+        UserDefaultsManager.shared.setYear(to: newUserInfo.year)
     }
 
     func logOutUser() {
-        UserDefaults.standard.removeObject(forKey: accessToken_KEY)
-        UserDefaults.standard.removeObject(forKey: refreshToken_KEY)
-        UserDefaults.standard.removeObject(forKey: email_KEY)
-        UserDefaults.standard.removeObject(forKey: id_KEY)
+        UserDefaultsManager.shared.removeAll()
         currentUser = UserModel()
         logoutDelegate?.didCompleteLogout()
     }

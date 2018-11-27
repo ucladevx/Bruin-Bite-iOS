@@ -54,6 +54,7 @@
 		77949972203BD12B00F3B0ED /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77949971203BD12B00F3B0ED /* Extensions.swift */; };
 		9C91B493798C96CEA3BC0AA4 /* Pods_Bruin_Bite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D31D0C9107AF44D73AA341C1 /* Pods_Bruin_Bite.framework */; };
 		BD392821215C3638007FD4AD /* BBStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD392820215C3638007FD4AD /* BBStoryboard.swift */; };
+		BD78709921AD352100E46A50 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD78709821AD352100E46A50 /* UserDefaultsManager.swift */; };
 		BDAED25D219FD598005A22F3 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDAED25C219FD598005A22F3 /* UserManager.swift */; };
 		BDAED25F219FD601005A22F3 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDAED25E219FD601005A22F3 /* UserModel.swift */; };
 		BDDE7C6E207AF6840008A677 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDE7C6D207AF6840008A677 /* LoginViewController.swift */; };
@@ -161,6 +162,7 @@
 		7794996F203BD10400F3B0ED /* AllergyFilterButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllergyFilterButton.swift; sourceTree = "<group>"; };
 		77949971203BD12B00F3B0ED /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		BD392820215C3638007FD4AD /* BBStoryboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BBStoryboard.swift; sourceTree = "<group>"; };
+		BD78709821AD352100E46A50 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		BDAED25C219FD598005A22F3 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		BDAED25E219FD601005A22F3 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		BDDE7C6D207AF6840008A677 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -296,6 +298,7 @@
 		2A94477C2055F5860033B6C6 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				BD78709821AD352100E46A50 /* UserDefaultsManager.swift */,
 				2A16F9A820C0B8CB008BA4E3 /* TimeFunctions.swift */,
 				77949971203BD12B00F3B0ED /* Extensions.swift */,
 				770251B3201D4079002E4515 /* AppDelegate.swift */,
@@ -648,6 +651,7 @@
 				2A03D93E20B76529004EFC97 /* TimePickerViewController.swift in Sources */,
 				DCF0E2E220B260A90036A32F /* CreateProfilePt2ViewController.swift in Sources */,
 				BF0943E220BBF3EE00214200 /* ChatMessage.swift in Sources */,
+				BD78709921AD352100E46A50 /* UserDefaultsManager.swift in Sources */,
 				BDDE7C6E207AF6840008A677 /* LoginViewController.swift in Sources */,
 				00C2DF0B20B678A00023CF75 /* UserAPI.swift in Sources */,
 				BDDE7C72207B04D00008A677 /* UserTableViewCell.swift in Sources */,
