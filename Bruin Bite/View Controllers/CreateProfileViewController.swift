@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CreateProfileViewController: UIViewController {
+class CreateProfileViewController: UIViewController, UpdateDelegate {
     
     
     @IBOutlet var CreateProfileText: UILabel!
@@ -19,6 +19,7 @@ class CreateProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        UserManager.shared.updateDelegate = self
         
         view.backgroundColor = UIColor.twilightBlue
         CreateProfileText.font = UIFont.signUpTextFont
@@ -36,8 +37,11 @@ class CreateProfileViewController: UIViewController {
     }
     
     @IBAction func nextButtonPressed (_ sender: Any?) {
-        MAIN_USER.changeUserInfo(type: "bio", info: BioTextBox.text ?? "")
-        self.performSegue(withIdentifier: "EndPt1", sender: sender)
+        UserManager.shared.signupUpdate(email: UserManager.shared.getEmail(), password: UserDefaultsManager.shared.getPassword(), first_name: UserManager.shared.getFirstName(), last_name: UserManager.shared.getLastName(), major: UserManager.shared.getMajor(), minor: UserManager.shared.getMinor(), year: UserManager.shared.getYear(), self_bio: BioTextBox.text ?? "")
+    }
+
+    func didUpdateUser() {
+        self.performSegue(withIdentifier: "EndPt1", sender: nil)
     }
 }
 

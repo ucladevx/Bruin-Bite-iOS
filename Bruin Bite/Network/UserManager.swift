@@ -56,7 +56,8 @@ class UserManager {
                 do {
                     let results = try JSONDecoder().decode(UserLog.self, from: response.data)
                     UserDefaultsManager.shared.setAccessToken(to: results.access_token)
-                    UserDefaultsManager.shared.setAccessToken(to: results.refresh_token)
+                    UserDefaultsManager.shared.setRefreshToken(to: results.refresh_token)
+                    UserDefaultsManager.shared.setUserEmail(to: email)
                     self.currentUser.access_token = results.access_token
                     self.currentUser.refresh_token = results.refresh_token
                     self.loginDelegate?.didLogin()

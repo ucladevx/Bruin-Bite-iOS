@@ -62,7 +62,7 @@ class SignInViewController: UIViewController, LoginDelegate {
     }
 
     func didLogin() {
-        UserManager.shared.readUser(email: UserManager.shared.getEmail())
+        UserManager.shared.readUser(email: EmailText.text ?? "")
         UserDefaultsManager.shared.setPassword(to: PasswordText.text ?? "")
         self.performSegue(withIdentifier: "ShowMenuVC_2", sender: nil)
     }
