@@ -37,4 +37,9 @@ class AutoLoginViewController: UIViewController, ReadDelegate, RefreshDelegate {
         UserManager.shared.logOutUser()
         self.performSegue(withIdentifier: "notLogged", sender: nil)
     }
+
+    func networkFailure() {
+        activityIndicator.stopAnimating()
+        self.performSegue(withIdentifier: "loggedIn", sender: nil)
+    }
 }

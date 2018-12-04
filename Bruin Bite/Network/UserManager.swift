@@ -167,7 +167,7 @@ class UserManager {
                 }
             case let .failure(error):
                 print(error)
-                self.refreshDelegate?.refreshFailed()
+                self.refreshDelegate?.networkFailure()
             }
         }
     }
@@ -249,4 +249,5 @@ protocol UpdateDelegate {
 protocol RefreshDelegate {
     func didRefreshToken()
     func refreshFailed()
+    func networkFailure()
 }
