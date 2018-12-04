@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8gz-gb-DS3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Hbc-kS-Pis">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -163,6 +163,45 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MMd-mE-QF2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2" y="455"/>
+        </scene>
+        <!--Auto Login View Controller-->
+        <scene sceneID="JS4-BW-jm6">
+            <objects>
+                <viewController id="Hbc-kS-Pis" customClass="AutoLoginViewController" customModule="Bruin_Bite" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="JoN-92-bxG">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LoginLogo" translatesAutoresizingMaskIntoConstraints="NO" id="v20-Ap-vhn">
+                                <rect key="frame" x="153" y="101" width="108" height="144"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="v20-Ap-vhn" secondAttribute="height" multiplier="3:4" id="3MG-kH-ins"/>
+                                    <constraint firstAttribute="height" constant="144" id="Aty-gf-zJq"/>
+                                </constraints>
+                            </imageView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="nKv-fG-GXK">
+                                <rect key="frame" x="197" y="666" width="20" height="20"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.1526067852973938" green="0.35994827747344971" blue="0.52551203966140747" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="v20-Ap-vhn" firstAttribute="centerX" secondItem="JoN-92-bxG" secondAttribute="centerX" id="8tg-au-44s"/>
+                            <constraint firstItem="v20-Ap-vhn" firstAttribute="width" secondItem="v20-Ap-vhn" secondAttribute="height" multiplier="3:4" id="9dq-Lb-jKd"/>
+                            <constraint firstItem="nKv-fG-GXK" firstAttribute="centerX" secondItem="JoN-92-bxG" secondAttribute="centerX" id="UHv-6y-Q6b"/>
+                            <constraint firstItem="oAk-lv-5uP" firstAttribute="bottom" secondItem="nKv-fG-GXK" secondAttribute="bottom" constant="50" id="boe-OU-9HZ"/>
+                            <constraint firstItem="v20-Ap-vhn" firstAttribute="top" secondItem="oAk-lv-5uP" secondAttribute="top" constant="81" id="vir-gR-7vt"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="oAk-lv-5uP"/>
+                    </view>
+                    <connections>
+                        <outlet property="activityIndicator" destination="nKv-fG-GXK" id="YSA-cQ-DWM"/>
+                        <segue destination="8gz-gb-DS3" kind="show" identifier="notLogged" id="LNA-ZB-KSd"/>
+                        <segue destination="49e-Tb-3d3" kind="show" identifier="loggedIn" id="L40-xt-xeQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dsq-tq-W2N" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-4254" y="-942"/>
         </scene>
         <!--LoginViewController-->
         <scene sceneID="gNu-Hl-IrQ">
@@ -1070,9 +1109,9 @@
         <image name="x" width="15" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="1eE-UU-7Ui"/>
-        <segue reference="OQb-Mg-l73"/>
-        <segue reference="lHS-Ev-ORD"/>
-        <segue reference="Z2J-D1-wO8"/>
+        <segue reference="RdZ-oP-1QG"/>
+        <segue reference="jEo-FG-EqQ"/>
+        <segue reference="LNA-ZB-KSd"/>
+        <segue reference="L40-xt-xeQ"/>
     </inferredMetricsTieBreakers>
 </document>

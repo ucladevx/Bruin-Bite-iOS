@@ -20,6 +20,7 @@ enum MainAPI {
     case updateUser(email: String, password: String, first_name: String, last_name: String, major: String, minor: String, year: Int, self_bio: String) //send it as it is if it hasn't changed
     case deleteUser(email: String)
     case matchUser(user: Int, meal_times: [String], meal_day: String, meal_period: String, dining_halls: [String])
+    case refreshToken(refresh_token: String)
 }
 
 extension MainAPI: TargetType {
@@ -27,7 +28,7 @@ extension MainAPI: TargetType {
         switch self {
         case .getCurrentActivityLevels, .getOverviewMenu, .getDetailedMenu, .getHours:
             return URL(string: "https://api.bruin-bite.com/api/v1")!
-        case .createUser, .readUser, .loginUser, .updateUser, .deleteUser, .matchUser:
+        case .createUser, .readUser, .loginUser, .updateUser, .deleteUser, .matchUser, .refreshToken:
             return URL(string: "https://api.bruin-bite.com/api/v1")!
         }
         
@@ -44,20 +45,19 @@ extension MainAPI: TargetType {
             return "/menu/Hours"
         case .createUser:
             return "/users/sign_up/"
-        case .loginUser:
+        case .loginUser, .refreshToken:
             return "/users/o/token/"
         case .readUser, .updateUser, .deleteUser:
             return "/users/data/"
         case .matchUser:
             return "/users/matching/new/"
         }
-        
     }
     var method: Moya.Method {
         switch self {
         case .getCurrentActivityLevels, .getOverviewMenu, .getDetailedMenu, .getHours, .readUser:
             return .get
-        case .createUser, .loginUser, .matchUser:
+        case .createUser, .loginUser, .matchUser, .refreshToken:
             return .post
         case .updateUser:
             return .put
@@ -81,6 +81,8 @@ extension MainAPI: TargetType {
             return .requestParameters(parameters: ["email": email], encoding: JSONEncoding.default)
         case .matchUser(let user, let meal_times, let meal_day, let meal_period, let dining_halls):
             return .requestParameters(parameters: ["user": user, "meal_times": meal_times, "meal_day": meal_day, "meal_period": meal_period, "dining_halls": dining_halls], encoding: JSONEncoding.default)
+        case .refreshToken(let refresh_token):
+            return .requestParameters(parameters: ["refresh_token": refresh_token], encoding: URLEncoding.default)
         }
     }
     //for testing
@@ -108,6 +110,8 @@ extension MainAPI: TargetType {
             return Data()
         case .matchUser:
             return Data()
+        case .refreshToken:
+            return Data()
         }
     }
     var headers: [String: String]? {
@@ -116,11 +120,11 @@ extension MainAPI: TargetType {
             return ["Content-type": "application/json"]
         case .createUser:
             return ["Content-Type": "application/json"]
-        case .loginUser:
+        case .loginUser, .refreshToken:
             return ["Content-Type": "application/x-www-form-urlencoded"]
         case .readUser, .updateUser, .deleteUser, .matchUser:
             var temp = "Bearer "
-            temp += UserManager.shared.getAccessToken()
+            temp += UserDefaultsManager.shared.getAccessToken()
             return ["Authorization": temp]
         }
     }

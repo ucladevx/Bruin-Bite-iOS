@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        
+
         window?.tintColor = UIColor.twilightBlue //sets the tint color
         
         let statusBar: UIView = UIApplication.shared.value(forKey: "statusBar") as! UIView
@@ -28,14 +28,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIApplication.shared.statusBarStyle = .lightContent
         
         registerForPushNotifications()
-        
-        //Try to log in automatically
-        if let _ = UserDefaults.standard.value(forKey: "accessToken") , let email = UserDefaults.standard.value(forKey: "email") as? String {
-            MAIN_USER.changeUserInfo(type: "email", info: email)
-            
-            MAIN_USER.readUser() //TODO: if read user is successful, then go to menus
-                presentMenus()
-        }
         
         return true
     }

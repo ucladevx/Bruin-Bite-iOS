@@ -56,6 +56,7 @@
 		BD392821215C3638007FD4AD /* BBStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD392820215C3638007FD4AD /* BBStoryboard.swift */; };
 		BD78709921AD352100E46A50 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD78709821AD352100E46A50 /* UserDefaultsManager.swift */; };
 		BD7870A621B6793A00E46A50 /* PresentAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7870A521B6793A00E46A50 /* PresentAlert.swift */; };
+		BD7870A821B6854900E46A50 /* AutoLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7870A721B6854900E46A50 /* AutoLoginViewController.swift */; };
 		BDAED25D219FD598005A22F3 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDAED25C219FD598005A22F3 /* UserManager.swift */; };
 		BDAED25F219FD601005A22F3 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDAED25E219FD601005A22F3 /* UserModel.swift */; };
 		BDDE7C6E207AF6840008A677 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDE7C6D207AF6840008A677 /* LoginViewController.swift */; };
@@ -165,6 +166,7 @@
 		BD392820215C3638007FD4AD /* BBStoryboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BBStoryboard.swift; sourceTree = "<group>"; };
 		BD78709821AD352100E46A50 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		BD7870A521B6793A00E46A50 /* PresentAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentAlert.swift; sourceTree = "<group>"; };
+		BD7870A721B6854900E46A50 /* AutoLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLoginViewController.swift; sourceTree = "<group>"; };
 		BDAED25C219FD598005A22F3 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		BDAED25E219FD601005A22F3 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		BDDE7C6D207AF6840008A677 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -293,6 +295,7 @@
 				2A03D94720B7AFA7004EFC97 /* HomeProfileStaticTableViewController.swift */,
 				BF5D97E320B974F60086D451 /* ChatListViewController.swift */,
 				BF0943DF20BBF1EB00214200 /* ChatScreenViewController.swift */,
+				BD7870A721B6854900E46A50 /* AutoLoginViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -659,6 +662,7 @@
 				00C2DF0B20B678A00023CF75 /* UserAPI.swift in Sources */,
 				BDDE7C72207B04D00008A677 /* UserTableViewCell.swift in Sources */,
 				C0CD676C203C1B19006B265D /* ColoredBezel.swift in Sources */,
+				BD7870A821B6854900E46A50 /* AutoLoginViewController.swift in Sources */,
 				770251B4201D4079002E4515 /* AppDelegate.swift in Sources */,
 				2AFB41332047DD86004025F9 /* ItemDetailViewController.swift in Sources */,
 				2A68339220BC2113000DCAA4 /* UIButtonSignUp.swift in Sources */,

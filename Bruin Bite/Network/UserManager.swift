@@ -21,6 +21,7 @@ class UserManager {
     var logoutDelegate: LogoutDelegate? = nil
     var deleteUserDelegate: DeleteUserDelegate? = nil
     var updateDelegate: UpdateDelegate? = nil
+    var refreshDelegate: RefreshDelegate? = nil
 
     private init() {
         currentUser = UserModel()
@@ -119,27 +120,54 @@ class UserManager {
     }
 
     func readUser(email: String) {
-        DispatchQueue.global(qos: .background).async {
-            self.provider.request(.readUser(email: email)) { result in
-                switch result {
-                case let .success(response):
+        self.provider.request(.readUser(email: email)) { result in
+            switch result {
+            case let .success(response):
+                do {
+                    let results = try JSONDecoder().decode(UserCreate.self, from: response.data)
+                    self.updateCurrentUser(newUserInfo: results)
+                    self.readDelegate?.didReadUser()
+                } catch let err {
                     do {
-                        let results = try JSONDecoder().decode(UserCreate.self, from: response.data)
-                        self.updateCurrentUser(newUserInfo: results)
-                        self.readDelegate?.didReadUser()
-                    } catch let err {
-                        do {
-                            print("Error: Code \(err)")
-                            let error = try JSONDecoder().decode(UserError.self, from: response.data)
-                            self.readDelegate?.readFailed(error: self.extractErrorType(from: error))
-                        }
-                        catch let unexpectedErr {
-                            print("Unexpected Error! --- \(unexpectedErr)")
-                        }
+                        print("Error: Code \(err)")
+                        let error = try JSONDecoder().decode(UserError.self, from: response.data)
+                        self.readDelegate?.readFailed(error: self.extractErrorType(from: error))
                     }
-                case let .failure(error):
-                    self.readDelegate?.readFailed(error: error.errorDescription ?? "")
+                    catch let unexpectedErr {
+                        print("Unexpected Error! --- \(unexpectedErr)")
+                    }
                 }
+            case let .failure(error):
+                self.readDelegate?.readFailed(error: error.errorDescription ?? "")
+            }
+        }
+    }
+
+    func getNewAccessToken(refreshToken: String) {
+        self.provider.request(.refreshToken(refresh_token: refreshToken)) { result in
+            switch result {
+            case let .success(response):
+                do {
+                    let results = try JSONDecoder().decode(UserLog.self, from: response.data)
+                    UserDefaultsManager.shared.setAccessToken(to: results.access_token)
+                    UserDefaultsManager.shared.setRefreshToken(to: results.refresh_token)
+                    self.currentUser.access_token = results.access_token
+                    self.currentUser.refresh_token = results.refresh_token
+                    self.refreshDelegate?.didRefreshToken()
+                } catch let err {
+                    do {
+                        print("Error: Code \(err)")
+                        let error = try JSONDecoder().decode(UserError.self, from: response.data)
+                        print(error)
+                        self.refreshDelegate?.refreshFailed()
+                    }
+                    catch let unexpectedErr {
+                        print("Unexpected Error! --- \(unexpectedErr)")
+                    }
+                }
+            case let .failure(error):
+                print(error)
+                self.refreshDelegate?.refreshFailed()
             }
         }
     }
@@ -216,4 +244,9 @@ protocol DeleteUserDelegate {
 protocol UpdateDelegate {
     func didUpdateUser()
     func updateFailed(error: String)
+}
+
+protocol RefreshDelegate {
+    func didRefreshToken()
+    func refreshFailed()
 }
