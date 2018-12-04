@@ -16,10 +16,11 @@ class SignInViewController: UIViewController, LoginDelegate {
     @IBOutlet var PasswordText: UITextField!
     @IBOutlet var ForgotPassButton: UIButton!
     @IBOutlet var SignInButton: UIButton!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        activityIndicator.hidesWhenStopped = true
         UserManager.shared.loginDelegate = self
         
         view.backgroundColor = UIColor.twilightBlue
@@ -58,10 +59,12 @@ class SignInViewController: UIViewController, LoginDelegate {
             //Invalid Password
             return
         }
+        activityIndicator.startAnimating()
         UserManager.shared.loginUser(email: EmailText.text ?? "", password: PasswordText.text ?? "")
     }
 
     func didLogin() {
+        activityIndicator.stopAnimating()
         UserManager.shared.readUser(email: EmailText.text ?? "")
         UserDefaultsManager.shared.setPassword(to: PasswordText.text ?? "")
         self.performSegue(withIdentifier: "ShowMenuVC_2", sender: nil)

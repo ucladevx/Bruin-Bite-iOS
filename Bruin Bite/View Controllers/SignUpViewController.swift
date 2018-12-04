@@ -16,9 +16,11 @@ class SignUpViewController: UIViewController, SignupDelegate, LoginDelegate {
     @IBOutlet var EmailText: UITextField!
     @IBOutlet var PasswordText: UITextField!
     @IBOutlet var ConfirmPassText: UITextField!
-    
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        activityIndicator.hidesWhenStopped = true
         UserManager.shared.signupDelegate = self
         UserManager.shared.loginDelegate = self
         
@@ -56,6 +58,7 @@ class SignUpViewController: UIViewController, SignupDelegate, LoginDelegate {
             //Passwords don't match
             return
         }
+        activityIndicator.startAnimating()
         UserManager.shared.createUser(email: EmailText.text ?? "", password: PasswordText.text ?? "", firstName: NameText.text ?? "")
     }
 
@@ -65,6 +68,7 @@ class SignUpViewController: UIViewController, SignupDelegate, LoginDelegate {
     }
 
     func didLogin() {
+        activityIndicator.stopAnimating()
         self.performSegue(withIdentifier: "DoneWithSignUp", sender: nil)
     }
 }

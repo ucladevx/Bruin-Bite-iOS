@@ -14,6 +14,7 @@ class CreateProfilePt2ViewController: UIViewController, UpdateDelegate {
     @IBOutlet var CreateProfileText: UILabel!
     @IBOutlet var YearText: UITextField!
     @IBOutlet var MajorText: UITextField!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     @IBAction func CreateTap(_ sender: Any) {
         if CreateButton.backgroundColor == .clear {
@@ -39,7 +40,7 @@ class CreateProfilePt2ViewController: UIViewController, UpdateDelegate {
             //Invalid Year
             return
         }
-
+        activityIndicator.startAnimating()
         UserManager.shared.signupUpdate(email: UserManager.shared.getEmail(),
                                         password: UserDefaultsManager.shared.getPassword(),
                                         first_name: UserManager.shared.getFirstName(), last_name: UserManager.shared.getLastName(),
@@ -53,6 +54,7 @@ class CreateProfilePt2ViewController: UIViewController, UpdateDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        activityIndicator.hidesWhenStopped = true
         UserManager.shared.updateDelegate = self
         
         view.backgroundColor = UIColor.twilightBlue
@@ -78,6 +80,7 @@ class CreateProfilePt2ViewController: UIViewController, UpdateDelegate {
     }
 
     func didUpdateUser() {
+        activityIndicator.stopAnimating()
         self.performSegue(withIdentifier: "ShowMenuVC_1", sender: nil)
     }
     
