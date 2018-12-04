@@ -433,6 +433,7 @@
                         <outlet property="PasswordText" destination="kst-ri-QVf" id="Cr4-BT-Yat"/>
                         <outlet property="SignInButton" destination="nbr-DJ-2hT" id="Dx8-aZ-IAN"/>
                         <outlet property="SignInText" destination="wZz-W9-hCV" id="bwI-PF-8ck"/>
+                        <outlet property="activityIndicator" destination="f4S-SA-yDu" id="J6L-f8-Gdl"/>
                         <segue destination="49e-Tb-3d3" kind="show" identifier="ShowMenuVC_2" id="Z2J-D1-wO8"/>
                     </connections>
                 </viewController>
@@ -1071,7 +1072,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="1eE-UU-7Ui"/>
         <segue reference="OQb-Mg-l73"/>
-        <segue reference="6mL-fa-w2t"/>
+        <segue reference="lHS-Ev-ORD"/>
         <segue reference="Z2J-D1-wO8"/>
     </inferredMetricsTieBreakers>
 </document>
