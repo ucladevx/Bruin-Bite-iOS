@@ -26,6 +26,15 @@ class UserManager {
         currentUser = UserModel()
     }
 
+    private func extractErrorType(from error: UserError) -> String {
+        if let errorDetail = error.email?[0] { return errorDetail }
+        else if let errorDetail = error.password?[0] { return errorDetail }
+        else if let errorDetail = error.detail { return errorDetail }
+        else if let errorDetail = error.error { return errorDetail }
+        else if let errorDetail = error.error_description { return errorDetail }
+        return ""
+    }
+
     func createUser(email: String, password: String, firstName: String) {
         provider.request(.createUser(email: email, password: password, firstName: firstName, is_active: true)) { result in
             switch result {
@@ -40,11 +49,17 @@ class UserManager {
                     self.currentUser.uID = results.id
                     self.signupDelegate?.didFinishSignup()
                 } catch let err {
-                    //TODO: Implement Error Handling
-                    print(err)
+                    do {
+                        print("Error: Code \(err)")
+                        let error = try JSONDecoder().decode(UserError.self, from: response.data)
+                        self.signupDelegate?.signUpFailed(error: self.extractErrorType(from: error))
+                    }
+                    catch let unexpectedErr {
+                        print("Unexpected Error! --- \(unexpectedErr)")
+                    }
                 }
             case let .failure(error):
-                print(error)
+                self.signupDelegate?.signUpFailed(error: error.errorDescription ?? "")
             }
         }
     }
@@ -62,11 +77,17 @@ class UserManager {
                     self.currentUser.refresh_token = results.refresh_token
                     self.loginDelegate?.didLogin()
                 } catch let err {
-                    print(err)
-                    //TODO: Implement Error Handling
+                    do {
+                        print("Error: Code \(err)")
+                        let error = try JSONDecoder().decode(UserError.self, from: response.data)
+                        self.loginDelegate?.loginFailed(error: self.extractErrorType(from: error))
+                    }
+                    catch let unexpectedErr {
+                        print("Unexpected Error! --- \(unexpectedErr)")
+                    }
                 }
             case let .failure(error):
-                print(error)
+                self.loginDelegate?.loginFailed(error: error.errorDescription ?? "")
             }
         }
     }
@@ -81,11 +102,17 @@ class UserManager {
                         self.updateCurrentUser(newUserInfo: results)
                         self.updateDelegate?.didUpdateUser()
                     } catch let err {
-                        print(err)
-                        //TODO: Implement Error Handling
+                        do {
+                            print("Error: Code \(err)")
+                            let error = try JSONDecoder().decode(UserError.self, from: response.data)
+                            self.updateDelegate?.updateFailed(error: self.extractErrorType(from: error))
+                        }
+                        catch let unexpectedErr {
+                            print("Unexpected Error! --- \(unexpectedErr)")
+                        }
                     }
                 case let .failure(error):
-                    print(error)
+                    self.updateDelegate?.updateFailed(error: error.errorDescription ?? "")
                 }
             }
         }
@@ -101,11 +128,17 @@ class UserManager {
                         self.updateCurrentUser(newUserInfo: results)
                         self.readDelegate?.didReadUser()
                     } catch let err {
-                        print(err)
-                        //TODO: Implement Error Handling
+                        do {
+                            print("Error: Code \(err)")
+                            let error = try JSONDecoder().decode(UserError.self, from: response.data)
+                            self.readDelegate?.readFailed(error: self.extractErrorType(from: error))
+                        }
+                        catch let unexpectedErr {
+                            print("Unexpected Error! --- \(unexpectedErr)")
+                        }
                     }
                 case let .failure(error):
-                    print(error)
+                    self.readDelegate?.readFailed(error: error.errorDescription ?? "")
                 }
             }
         }
@@ -159,14 +192,17 @@ class UserManager {
 
 protocol SignupDelegate {
     func didFinishSignup()
+    func signUpFailed(error: String)
 }
 
 protocol LoginDelegate {
     func didLogin()
+    func loginFailed(error: String)
 }
 
 protocol ReadDelegate {
     func didReadUser()
+    func readFailed(error: String)
 }
 
 protocol LogoutDelegate {
@@ -179,4 +215,5 @@ protocol DeleteUserDelegate {
 
 protocol UpdateDelegate {
     func didUpdateUser()
+    func updateFailed(error: String)
 }

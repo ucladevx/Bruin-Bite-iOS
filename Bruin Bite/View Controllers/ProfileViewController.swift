@@ -9,7 +9,7 @@
 import UIKit
 import Foundation
 
-class ProfileViewController: UIViewController, ReadDelegate {
+class ProfileViewController: UIViewController, ReadDelegate, AlertPresentable {
 
     @IBOutlet weak var profilePic: UIImageView!
     @IBOutlet weak var userName: UILabel!
@@ -65,5 +65,9 @@ class ProfileViewController: UIViewController, ReadDelegate {
     func combineFirstAndLastName(first: String, last: String) -> String {
         let combined: String = first + " " + last
         return combined
+    }
+
+    func readFailed(error: String) {
+        presentAlert(alert: error)
     }
 }

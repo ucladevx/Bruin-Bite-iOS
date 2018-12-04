@@ -9,7 +9,7 @@
 import UIKit
 
 
-class SignUpViewController: UIViewController, SignupDelegate, LoginDelegate {
+class SignUpViewController: UIViewController, SignupDelegate, LoginDelegate, AlertPresentable {
     
     @IBOutlet var SignUpText: UILabel!
     @IBOutlet var NameText: UITextField!
@@ -37,25 +37,13 @@ class SignUpViewController: UIViewController, SignupDelegate, LoginDelegate {
         NameText.becomeFirstResponder()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
     @IBAction func nextButtonPressed (_ sender: Any?) {
-        if(NameText.text ?? "" == "") {
-            //Invalid Name
-            return
-        }
         if(!(EmailText.text?.isEmail() ?? false)) {
-            //Invalid Email
+            presentAlert(alert: "Invalid Email")
             return
-        }
-        if((PasswordText.text?.count ?? 0) < 8) {
-            //Invalid Password
-             return
         }
         if((PasswordText.text ?? "") != ConfirmPassText.text ) { //I was worried about nil == nil
-            //Passwords don't match
+            presentAlert(alert: "Passwords do not match")
             return
         }
         activityIndicator.startAnimating()
@@ -70,6 +58,16 @@ class SignUpViewController: UIViewController, SignupDelegate, LoginDelegate {
     func didLogin() {
         activityIndicator.stopAnimating()
         self.performSegue(withIdentifier: "DoneWithSignUp", sender: nil)
+    }
+
+    func signUpFailed(error: String) {
+        activityIndicator.stopAnimating()
+        presentAlert(alert: error)
+    }
+
+    func loginFailed(error: String) {
+        activityIndicator.stopAnimating()
+        presentAlert(alert: error)
     }
 }
 

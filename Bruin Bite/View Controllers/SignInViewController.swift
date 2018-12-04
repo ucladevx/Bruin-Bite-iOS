@@ -9,7 +9,7 @@
 import UIKit
 import Moya
 
-class SignInViewController: UIViewController, LoginDelegate {
+class SignInViewController: UIViewController, LoginDelegate, AlertPresentable {
     
     @IBOutlet var SignInText: UILabel!
     @IBOutlet var EmailText: UITextField!
@@ -37,28 +37,9 @@ class SignInViewController: UIViewController, LoginDelegate {
         SignInButton.layer.cornerRadius = 26
         
         EmailText.becomeFirstResponder()
-        
-        // Do any additional setup after loading the view.
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        
     }
     
     @IBAction func didPressSignIn(_ sender: UIButton) {
-        if(!(EmailText.text?.isEmail() ?? false)) {
-            //Invalid Email
-            return
-        }
-        if((PasswordText.text?.count ?? 0) < 8) {
-            //Invalid Password
-            return
-        }
         activityIndicator.startAnimating()
         UserManager.shared.loginUser(email: EmailText.text ?? "", password: PasswordText.text ?? "")
     }
@@ -68,6 +49,11 @@ class SignInViewController: UIViewController, LoginDelegate {
         UserManager.shared.readUser(email: EmailText.text ?? "")
         UserDefaultsManager.shared.setPassword(to: PasswordText.text ?? "")
         self.performSegue(withIdentifier: "ShowMenuVC_2", sender: nil)
+    }
+
+    func loginFailed(error: String) {
+        activityIndicator.stopAnimating()
+        presentAlert(alert: error)
     }
 }
 

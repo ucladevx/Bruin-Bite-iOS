@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CreateProfilePt2ViewController: UIViewController, UpdateDelegate {
+class CreateProfilePt2ViewController: UIViewController, UpdateDelegate, AlertPresentable {
     
     @IBOutlet var CreateButton: UIButton!
     @IBOutlet var CreateProfileText: UILabel!
@@ -28,16 +28,12 @@ class CreateProfilePt2ViewController: UIViewController, UpdateDelegate {
     }
     
     @IBAction func didPressCreate(_ sender: UIButton) {
-        if((MajorText.text ?? "") == "") {
-            //Invalid Major
-            return
-        }
         guard let year = Int(YearText.text!) else {
-            //Invalid Year
+            presentAlert(alert: "Year must be of form 1,2,3,4, or 5")
             return
         }
-        if( year < 0 || year > 5 ) {
-            //Invalid Year
+        if year != 1, year != 2, year != 3, year != 4, year != 5 {
+            presentAlert(alert: "Year must be of form 1,2,3,4, or 5")
             return
         }
         activityIndicator.startAnimating()
@@ -49,8 +45,6 @@ class CreateProfilePt2ViewController: UIViewController, UpdateDelegate {
                                         year: Int(YearText.text ?? "") ?? 0,
                                         self_bio: UserManager.shared.getBio())
     }
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,17 +65,15 @@ class CreateProfilePt2ViewController: UIViewController, UpdateDelegate {
         CreateButton.layer.borderWidth = 1
         CreateButton.layer.borderColor = UIColor.white.cgColor
         CreateButton.layer.cornerRadius = 26
-        
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     func didUpdateUser() {
         activityIndicator.stopAnimating()
         self.performSegue(withIdentifier: "ShowMenuVC_1", sender: nil)
     }
-    
+
+    func updateFailed(error: String) {
+        activityIndicator.stopAnimating()
+        presentAlert(alert: error)
+    }
 }
