@@ -79,7 +79,7 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
             dateFormatter.dateFormat = "h:mm a"
             timeString = dateFormatter.string(from: date)
         } else {
-            print ("Error parsing meal_datettime into date object using DateFormatter")
+            Logger.log("Error parsing meal_datettime into date object using DateFormatter", withLevel: .error)
         }
         //cell.timeLabel.text = timeString
         cell.dateAndMealLabel.text = dateString + " | " + getMealPeriodString(fromMealPeriodCode: data[indexPath.row].meal_period) + " | " + timeString
@@ -125,7 +125,7 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
         case "DI":
             return "Dinner"
         default:
-            print("Invalid meal period passed in")
+            Logger.log("Invalid meal period passed in", withLevel: .error)
             return ""
         }
     }

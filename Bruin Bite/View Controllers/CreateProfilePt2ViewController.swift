@@ -43,7 +43,7 @@ class CreateProfilePt2ViewController: UIViewController {
         MAIN_USER.changeYear(year: year)
         // Attempts to create a user, returns false if
         if(!MAIN_USER.createUser(devid: UserDefaults.standard.object(forKey: "Dev_Token") as? String ?? "")) {
-            print(MAIN_USER.accessUserInfo(type: "error"))
+            Logger.log("User Login failed with error: \(MAIN_USER.accessUserInfo(type: "error"))", withLevel: .error)
         }
 
         if(MAIN_USER.accessUserId() == -1) {

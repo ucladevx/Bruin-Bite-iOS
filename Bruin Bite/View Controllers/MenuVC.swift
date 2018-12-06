@@ -83,7 +83,7 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         case 21..<24:
             self.topBar.timeSelected("Dinner") // TODO: Change to "Night" once late night is enabled
         default:
-            print("Current Meal Period could not be determined")
+            Logger.log("Current Meal Period could not be determined", withLevel: .warning)
         }
         
         if let dateLbl = self.topBar.dayBtns[1].dateLbl.text, let weekLbl = self.topBar.dayBtns[1].weekLbl.text {
@@ -160,7 +160,7 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
     
     //the name is slightly misleading for vegetarian and vegan because we actaully remove everything else for them
     func removeItems(with allergen: Allergen){
-        print(currAllergens)
+        Logger.log("currAllergens: \(currAllergens)", withLevel: .debug)
         for(loc, var items) in self.data{
             var i = 0
             while i < items.count{
@@ -195,7 +195,7 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         }
         else{
             currAllergens.remove(at: currAllergens.index(of: a)!)
-            print(currAllergens)
+            Logger.log("currAllergens: \(currAllergens)", withLevel: .debug)
             self.data = self.menuData.getOverviewMenu(date: currDate, mealPeriod: currMP) ?? [:]
             for allergen in currAllergens{
                 removeItems(with: allergen)

@@ -32,12 +32,12 @@ class ChatAPI {
                     if let resultStruct = try? JSONDecoder().decode(Last50MessagesResult.self, from: result) {
                         self.delegate?.didReceiveMessages(messages: resultStruct.messages)
                     } else {
-                        print ("Error getting last 50 messages!")
+                        Logger.log("Could not get last 50 messages!", withLevel: .error)
                     }
                 }
             }
         } else {
-            print ("No chat room label given")
+            Logger.log("No chat room label given", withLevel: .error)
         }
     }
 }

@@ -44,10 +44,10 @@ class ChatListAPI {
                 if let resultStruct = try? JSONDecoder().decode([ChatListItem].self, from: result) {
                     self.delegate?.didReceiveChatList(chatListData: resultStruct)
                 } else {
-                    print ("Error parsing response JSON into ChatListResult struct")
+                    Logger.log("Could not parse response JSON into ChatListResult struct", withLevel: .error)
                 }
             } else {
-                print ("Error acquiring chat list!")
+                Logger.log("Could not acquire chat list!", withLevel: .error)
             }
         }
     }
