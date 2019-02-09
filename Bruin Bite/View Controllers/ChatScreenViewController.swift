@@ -25,7 +25,7 @@ class ChatScreenViewController: UIViewController, UITableViewDelegate, UITableVi
     var socket: WebSocket? = nil
     var isSocketConnected: Bool = false
     
-    let currUserId = String(MAIN_USER.accessUserId())
+    let currUserId = String(UserDefaultsManager.shared.getUserID())
     
     var messagesList: [ChatMessage] = []
     var chatRoomLabel: String? = nil
