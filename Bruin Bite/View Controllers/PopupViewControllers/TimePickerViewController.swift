@@ -38,38 +38,14 @@ class TimePickerViewController: UIViewController {
     
   override func viewDidLoad() {
         super.viewDidLoad()
-    times = [timeData]()
-        //format the popup view
+        times = [timeData]()
         popupView.layer.cornerRadius = 10
         popupView.layer.masksToBounds = true
-    if(MAIN_USER.accessUserInfo(type: "period") == "BR") {
-        for i in 0...15
-        {
-            var time = timeData(text: breakfast_times[i], isSelected: false)
+        // THESE ARE DEFAULT TIMES -- MUST BE CHANGED
+        for i in 0...15 {
+            let time = timeData(text: breakfast_times[i], isSelected: false)
             times.append(time)
         }
-    } else if(MAIN_USER.accessUserInfo(type: "period") == "LU") {
-        for j in 0...15
-        {
-            var time = timeData(text: lunch_times[j], isSelected: false)
-            times.append(time)
-        }
-    } else if(MAIN_USER.accessUserInfo(type: "period") == "DI") {
-        for d in 0...15
-        {
-            var time = timeData(text: dinner_times[d], isSelected: false)
-            times.append(time)
-        }
-    } else if(MAIN_USER.accessUserInfo(type: "period") == "LN") {
-        for e in 0...15
-        {
-            var time = timeData(text: late_times[e], isSelected: false)
-            times.append(time)
-        }
-    } else {
-        print("No meal period selected")
-    }
-    
     }
   
   @IBAction func completeActionButton(_ sender: Any) {

@@ -35,7 +35,7 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
         chatListTableView.dataSource = self
         chatListAPI.delegate = self
         //chatListAPI.getChatList(forUserWithID: "31"); // TODO: Send current user's chat ID instead of sample ID
-        chatListAPI.getChatList(forUserWithID: UserDefaultsManager.shared.getUserID())
+        chatListAPI.getChatList(forUserWithID: MAIN_USER.accessUserId())
         //data = [chatPreview1];
     }
     
@@ -52,7 +52,7 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         chatListAPI.delegate = self
-        chatListAPI.getChatList(forUserWithID: UserDefaultsManager.shared.getUserID())
+        chatListAPI.getChatList(forUserWithID: MAIN_USER.accessUserId())
     }
     
     override func didReceiveMemoryWarning() {
