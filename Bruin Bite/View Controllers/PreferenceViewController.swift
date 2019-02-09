@@ -29,8 +29,8 @@ class PreferenceViewController: UIViewController, MatchDelegate {
     var generatedMatchID: Int? = nil // note:  if set, means that we can segue to searching screen. If not set, then we have a problem.
     
     @IBAction func MatchButton(_ sender: Any) {
-        
-        if(chosen.isEmpty || meal_day == "" || dining_halls.isEmpty || MAIN_USER.accessUserInfo(type: "period") == "") {
+        //TODO: Must check that the User has chosen a meal period!
+        if(chosen.isEmpty || meal_day == "" || dining_halls.isEmpty) {
             return
         }
         
@@ -42,7 +42,6 @@ class PreferenceViewController: UIViewController, MatchDelegate {
             print(meal_times[i])
         }
         if(!meal_times.isEmpty && meal_day != "" && !dining_halls.isEmpty) {
-            MAIN_USER.userMatch(mealTimes: meal_times, mealDay: meal_day, mealPeriod: MAIN_USER.accessUserInfo(type: "period"), dineHalls: dining_halls, completionDelegate: self)
         } else {
             return
         }
@@ -278,7 +277,8 @@ extension PreferenceViewController: CZPickerViewDelegate, CZPickerViewDataSource
         formatter.dateStyle = .none
         formatter.timeStyle = .short
         let currentTime = formatter.string(from: curdate!)
-        
+
+        //TODO: FInd a way to get the chosen meal period from User
         switch(picks[0]) {
         case "Covel":
             DiningHallButton.setTitle(chosen, for: .normal)
@@ -287,16 +287,17 @@ extension PreferenceViewController: CZPickerViewDelegate, CZPickerViewDataSource
             MealButton.setTitle(chosen, for: .normal)
             switch(chosen) {
             case "Breakfast":
-                MAIN_USER.changeUserInfo(type: "period", info: "BR")
+//                MAIN_USER.changeUserInfo(type: "period", info: "BR")
                 break
             case "Lunch":
-                MAIN_USER.changeUserInfo(type: "period", info: "LU")
+//                MAIN_USER.changeUserInfo(type: "period", info: "LU")
                 break
             case "Dinner":
-                MAIN_USER.changeUserInfo(type: "period", info: "DI")
+//                MAIN_USER.changeUserInfo(type: "period", info: "DI")
                 break
             case "Latenight":
-                MAIN_USER.changeUserInfo(type: "period", info: "LN")
+//                MAIN_USER.changeUserInfo(type: "period", info: "LN")
+                break
             default:
                 break
             }
