@@ -27,25 +27,6 @@ class CreateProfilePt2ViewController: UIViewController, UpdateDelegate, AlertPre
         }
     }
     
-    @IBAction func didPressCreate(_ sender: UIButton) {
-        guard let year = Int(YearText.text!) else {
-            presentAlert(alert: "Year must be of form 1,2,3,4, or 5")
-            return
-        }
-        if year != 1, year != 2, year != 3, year != 4, year != 5 {
-            presentAlert(alert: "Year must be of form 1,2,3,4, or 5")
-            return
-        }
-        activityIndicator.startAnimating()
-        UserManager.shared.signupUpdate(email: UserManager.shared.getEmail(),
-                                        password: UserDefaultsManager.shared.getPassword(),
-                                        first_name: UserManager.shared.getFirstName(), last_name: UserManager.shared.getLastName(),
-                                        major: MajorText.text ?? "",
-                                        minor: UserManager.shared.getMinor(),
-                                        year: Int(YearText.text ?? "") ?? 0,
-                                        self_bio: UserManager.shared.getBio())
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         activityIndicator.hidesWhenStopped = true
@@ -75,5 +56,28 @@ class CreateProfilePt2ViewController: UIViewController, UpdateDelegate, AlertPre
     func updateFailed(error: String) {
         activityIndicator.stopAnimating()
         presentAlert(alert: error)
+    }
+
+    @IBAction func didPressCreate(_ sender: UIButton) {
+        if((MajorText.text ?? "") == "") {
+            presentAlert(alert: "Must provide a major!")
+            return
+        }
+        guard let year = Int(YearText.text!) else {
+            presentAlert(alert: "Year must be of form 1,2,3,4, or 5")
+            return
+        }
+        if year != 1, year != 2, year != 3, year != 4, year != 5 {
+            presentAlert(alert: "Year must be of form 1,2,3,4, or 5")
+            return
+        }
+        activityIndicator.startAnimating()
+        UserManager.shared.signupUpdate(email: UserManager.shared.getEmail(),
+                                        password: UserDefaultsManager.shared.getPassword(),
+                                        first_name: UserManager.shared.getFirstName(), last_name: UserManager.shared.getLastName(),
+                                        major: MajorText.text ?? "",
+                                        minor: UserManager.shared.getMinor(),
+                                        year: Int(YearText.text ?? "") ?? 0,
+                                        self_bio: UserManager.shared.getBio())
     }
 }
