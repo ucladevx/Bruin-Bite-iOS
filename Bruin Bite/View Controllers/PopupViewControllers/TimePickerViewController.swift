@@ -54,13 +54,8 @@ class TimePickerViewController: UIViewController {
     if(times.isEmpty == false) {
         for i in 0...15 {
             if(times[i].isSelected) {
-                if(MAIN_USER.accessUserInfo(type: "period") != "BR") {
-                    let tempor = timeForm(time: times[i].text) + ":00"
-                    temp.append(tempor)
-                } else {
-                    let tempor2 = times[i].text + ":00"
-                temp.append(tempor2)
-                }
+                let tempor = timeForm(time: times[i].text) + ":00"
+                temp.append(tempor)
                 chosenString += times[i].text + ", "
             }
         }
