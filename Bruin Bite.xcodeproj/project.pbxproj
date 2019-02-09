@@ -12,8 +12,6 @@
 		00C2DF0720B677040023CF75 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C2DF0620B677040023CF75 /* User.swift */; };
 		00C2DF0920B678890023CF75 /* Moya.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C2DF0820B678890023CF75 /* Moya.swift */; };
 		00C2DF0B20B678A00023CF75 /* UserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C2DF0A20B678A00023CF75 /* UserAPI.swift */; };
-		00C2DF0D20B678BE0023CF75 /* UserClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C2DF0C20B678BE0023CF75 /* UserClass.swift */; };
-		00C2DF0F20B678E70023CF75 /* BackgroundUserFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C2DF0E20B678E70023CF75 /* BackgroundUserFetch.swift */; };
 		00C2DF1120B6790D0023CF75 /* keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C2DF1020B6790D0023CF75 /* keys.swift */; };
 		2A03D93E20B76529004EFC97 /* TimePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A03D93D20B76529004EFC97 /* TimePickerViewController.swift */; };
 		2A03D94320B76C92004EFC97 /* PopupViewControllers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A03D94220B76C91004EFC97 /* PopupViewControllers.storyboard */; };
@@ -116,8 +114,6 @@
 		00C2DF0620B677040023CF75 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		00C2DF0820B678890023CF75 /* Moya.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Moya.swift; sourceTree = "<group>"; };
 		00C2DF0A20B678A00023CF75 /* UserAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAPI.swift; sourceTree = "<group>"; };
-		00C2DF0C20B678BE0023CF75 /* UserClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserClass.swift; sourceTree = "<group>"; };
-		00C2DF0E20B678E70023CF75 /* BackgroundUserFetch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundUserFetch.swift; sourceTree = "<group>"; };
 		00C2DF1020B6790D0023CF75 /* keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = keys.swift; sourceTree = "<group>"; };
 		0934E0A890547BC163C95F6D /* Pods-Bruin BiteUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bruin BiteUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bruin BiteUITests/Pods-Bruin BiteUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		2297A93A4C0BCDCDA33D889F /* Pods-Bruin BiteTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bruin BiteTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bruin BiteTests/Pods-Bruin BiteTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -406,8 +402,6 @@
 				770251C1201D4079002E4515 /* Info.plist */,
 				DCF0E2DA20B260300036A32F /* Extensions */,
 				2A94477C2055F5860033B6C6 /* Supporting Files */,
-				00C2DF0C20B678BE0023CF75 /* UserClass.swift */,
-				00C2DF0E20B678E70023CF75 /* BackgroundUserFetch.swift */,
 				00C2DF1020B6790D0023CF75 /* keys.swift */,
 			);
 			path = "Bruin Bite";
@@ -684,7 +678,6 @@
 				BFE168A3209AB8DD00D021A2 /* CollectionViewController.swift in Sources */,
 				BFC934B320C3448A0040D08D /* ChatListAPI.swift in Sources */,
 				C0CD676A203C15CC006B265D /* TimeView.swift in Sources */,
-				00C2DF0F20B678E70023CF75 /* BackgroundUserFetch.swift in Sources */,
 				2B952C67202BDBB200F27727 /* WeekView.swift in Sources */,
 				2A03D94620B77A1A004EFC97 /* TimePickerCollectionViewCell.swift in Sources */,
 				2A9447802055FA3E0033B6C6 /* AllergensBarScrollView.swift in Sources */,
@@ -716,7 +709,6 @@
 				00C2DF0920B678890023CF75 /* Moya.swift in Sources */,
 				2A744895203BBDBC00793AD3 /* MenuCardView.swift in Sources */,
 				BDAED25F219FD601005A22F3 /* UserModel.swift in Sources */,
-				00C2DF0D20B678BE0023CF75 /* UserClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
