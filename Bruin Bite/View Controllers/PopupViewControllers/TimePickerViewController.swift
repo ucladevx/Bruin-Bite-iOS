@@ -52,6 +52,8 @@ class TimePickerViewController: UIViewController {
     var temp = [String]()
     var chosenString = ""
     if(times.isEmpty == false) {
+        //TODO: Here I was formatting the time into a string to be sent into the backend.
+            //However, the previous method of getting times was unhealthily implemented. Fix me so that I can format the time according to the meal period and get it prepped for the backend!
         for i in 0...15 {
             if(times[i].isSelected) {
                 let tempor = timeForm(time: times[i].text) + ":00"

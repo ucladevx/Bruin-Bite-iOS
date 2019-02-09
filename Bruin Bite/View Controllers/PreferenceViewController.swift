@@ -30,6 +30,8 @@ class PreferenceViewController: UIViewController, MatchDelegate {
     
     @IBAction func MatchButton(_ sender: Any) {
         //TODO: Must check that the User has chosen a meal period!
+        //Here you check each of the categories have been chosen but due to our previous methods of choosing a meal period, I have temporarily removed the check for a meal period
+        //Basically we need to redo the meal period formatting/check from scratch
         if(chosen.isEmpty || meal_day == "" || dining_halls.isEmpty) {
             return
         }
