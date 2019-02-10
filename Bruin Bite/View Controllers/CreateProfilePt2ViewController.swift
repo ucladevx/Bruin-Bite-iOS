@@ -9,13 +9,12 @@
 import UIKit
 
 class CreateProfilePt2ViewController: UIViewController, UpdateDelegate, AlertPresentable {
-    
+
     @IBOutlet var CreateButton: UIButton!
-    @IBOutlet var CreateProfileText: UILabel!
     @IBOutlet var YearText: UITextField!
     @IBOutlet var MajorText: UITextField!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    
+
     @IBAction func CreateTap(_ sender: Any) {
         if CreateButton.backgroundColor == .clear {
             CreateButton.backgroundColor = UIColor.white
@@ -26,23 +25,22 @@ class CreateProfilePt2ViewController: UIViewController, UpdateDelegate, AlertPre
             CreateButton.setTitleColor(UIColor.white, for: .normal)
         }
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         activityIndicator.hidesWhenStopped = true
         UserManager.shared.updateDelegate = self
-        
+
         view.backgroundColor = UIColor.twilightBlue
-        CreateProfileText.font = UIFont.signUpTextFont
         YearText.font = UIFont.signUpInfoFieldFont
         MajorText.font = UIFont.signUpInfoFieldFont
         YearText.textColor = .white
         MajorText.textColor = .white
         CreateButton.setTitleColor(UIColor.white, for: .normal)
         CreateButton.titleLabel?.font = UIFont.signUpInfoFieldFont
-        
+
         YearText.becomeFirstResponder()
-        
+
         CreateButton.layer.borderWidth = 1
         CreateButton.layer.borderColor = UIColor.white.cgColor
         CreateButton.layer.cornerRadius = 26

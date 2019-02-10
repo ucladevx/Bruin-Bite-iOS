@@ -7,11 +7,10 @@
 //
 
 import UIKit
-
+import ViewAnimator
 
 class SignUpViewController: UIViewController, SignupDelegate, LoginDelegate, AlertPresentable {
-    
-    @IBOutlet var SignUpText: UILabel!
+
     @IBOutlet var NameText: UITextField!
     @IBOutlet var EmailText: UITextField!
     @IBOutlet var PasswordText: UITextField!
@@ -23,20 +22,26 @@ class SignUpViewController: UIViewController, SignupDelegate, LoginDelegate, Ale
         activityIndicator.hidesWhenStopped = true
         UserManager.shared.signupDelegate = self
         UserManager.shared.loginDelegate = self
-        
+
         view.backgroundColor = UIColor.twilightBlue
-        SignUpText.font = UIFont.signUpTextFont.withSize(20)
-        
+
         NameText.font = UIFont.signUpInfoFieldFont
         EmailText.font = UIFont.signUpInfoFieldFont
         NameText.textColor = .white
         EmailText.textColor = .white
         PasswordText.font = UIFont.signUpInfoFieldFont
         ConfirmPassText.font = UIFont.signUpInfoFieldFont
-        
+
         NameText.becomeFirstResponder()
+
     }
-    
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        // Clear away "x" button if returning from createProfileView
+        self.navigationController?.navigationBar.topItem?.rightBarButtonItem = nil
+    }
+
     @IBAction func nextButtonPressed (_ sender: Any?) {
         if(!(EmailText.text?.isEmail() ?? false)) {
             presentAlert(alert: "Invalid Email")
@@ -70,4 +75,3 @@ class SignUpViewController: UIViewController, SignupDelegate, LoginDelegate, Ale
         presentAlert(alert: error)
     }
 }
-

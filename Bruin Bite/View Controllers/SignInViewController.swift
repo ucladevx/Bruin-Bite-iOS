@@ -10,32 +10,30 @@ import UIKit
 import Moya
 
 class SignInViewController: UIViewController, LoginDelegate, AlertPresentable {
-    
-    @IBOutlet var SignInText: UILabel!
+
     @IBOutlet var EmailText: UITextField!
     @IBOutlet var PasswordText: UITextField!
     @IBOutlet var ForgotPassButton: UIButton!
     @IBOutlet var SignInButton: UIButton!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         activityIndicator.hidesWhenStopped = true
         UserManager.shared.loginDelegate = self
-        
+
         view.backgroundColor = UIColor.twilightBlue
-        SignInText.font = UIFont.signUpTextFont.withSize(20)
         EmailText.font = UIFont.signUpInfoFieldFont
         PasswordText.font = UIFont.signUpInfoFieldFont
         EmailText.textColor = .white
         PasswordText.textColor = .white
         SignInButton.setTitleColor(UIColor.white, for: .normal)
         SignInButton.titleLabel?.font = UIFont.signUpInfoFieldFont
-        
+
         SignInButton.layer.borderWidth = 1
         SignInButton.layer.borderColor = UIColor.white.cgColor
         SignInButton.layer.cornerRadius = 26
-        
+
         EmailText.becomeFirstResponder()
     }
     
@@ -56,4 +54,3 @@ class SignInViewController: UIViewController, LoginDelegate, AlertPresentable {
         presentAlert(alert: error)
     }
 }
-

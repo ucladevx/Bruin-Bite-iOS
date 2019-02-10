@@ -19,16 +19,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
 
         window?.tintColor = UIColor.twilightBlue //sets the tint color
-        
+
         let statusBar: UIView = UIApplication.shared.value(forKey: "statusBar") as! UIView
         if statusBar.responds(to:#selector(setter: UIView.backgroundColor)) {
             statusBar.backgroundColor = UIColor.twilightBlue
         }
-        
+
         UIApplication.shared.statusBarStyle = .lightContent
-        
+
         registerForPushNotifications()
-        
+
         return true
     }
 
@@ -53,15 +53,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-    
+
     func registerForPushNotifications() {
-        
+
         let center = UNUserNotificationCenter.current()
         center.requestAuthorization(options: [.alert, .sound, .badge]) {
             (granted, error) in
             print("Permission granted: \(granted)")
             // 1. Check if permission granted
-            
+
             guard granted else { return }
             // 2. Attempt registration for remote notifications on the main thread
             DispatchQueue.main.async {
@@ -69,20 +69,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
-    
+
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         // 1. Convert device token to string
         let tokenParts = deviceToken.map { data -> String in
             return String(format: "%02.2hhx", data)
         }
-        
+
         let token = tokenParts.joined()
         // 2. Print device token to use for PNs payloads
         print("Device Token: \(token)")
         print(token)
         UserDefaults.standard.set(token, forKey: "Dev_Token")
     }
-    
+
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
         // 1. Print out error if PNs registration not successful
         print("Failed to register for remote notifications with error: \(error)")
@@ -94,4 +94,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 }
-
