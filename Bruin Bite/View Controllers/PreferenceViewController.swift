@@ -126,6 +126,8 @@ class PreferenceViewController: UIViewController, MatchDelegate {
     @IBAction func showWithMultipleSelections(sender: AnyObject) {
         let picker = CZPickerView(headerTitle: "Dining Halls", cancelButtonTitle: "Cancel", confirmButtonTitle: "Confirm")
         
+        dining_halls.removeAll()
+        
         picks = ["Covel", "De Neve", "Feast", "Bruin Plate"]
         picker?.delegate = self as CZPickerViewDelegate
         picker?.dataSource = self as CZPickerViewDataSource
@@ -176,6 +178,8 @@ class PreferenceViewController: UIViewController, MatchDelegate {
         if let timePicker = storyBoard.instantiateViewController(withIdentifier: "TimePickerViewController") as? TimePickerViewController {
             timePicker.delegate = self
             self.present(timePicker, animated: true)
+            
+            meal_times.removeAll()
         }
     }
     
