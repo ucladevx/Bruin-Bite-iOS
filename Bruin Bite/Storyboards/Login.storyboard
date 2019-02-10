@@ -617,7 +617,7 @@
         <!--Navigation Controller-->
         <scene sceneID="MXO-ek-1sj">
             <objects>
-                <navigationController storyboardIdentifier="navController" automaticallyAdjustsScrollViewInsets="NO" id="WtO-JF-5ff" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="loginSignupNavController" automaticallyAdjustsScrollViewInsets="NO" id="WtO-JF-5ff" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="HAw-v9-Qi0">
