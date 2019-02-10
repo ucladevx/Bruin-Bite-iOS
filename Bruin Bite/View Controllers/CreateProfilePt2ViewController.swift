@@ -67,7 +67,7 @@ class CreateProfilePt2ViewController: UIViewController {
         //            return
         //        }
       
-        self.performSegue(withIdentifier: "ShowMenuVC_1", sender: nil)
+        self.performSegue(withIdentifier: "ShowMainViewFromCreate", sender: nil)
     }
     
     

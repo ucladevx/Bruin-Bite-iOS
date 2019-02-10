@@ -67,9 +67,9 @@ class LoginViewController: UIViewController {
             CheckMenuButton.backgroundColor = UIColor.white
             CheckMenuButton.setTitleColor(UIColor.twilightBlue, for: .normal)
         }
-        let storyBoard = UIStoryboard(name: "Menu", bundle: nil)
-        let menuVC = storyBoard.instantiateViewController(withIdentifier: "menuNavController") as! UINavigationController
-        self.present(menuVC, animated: true, completion: { })
+//        let storyBoard = UIStoryboard(name: "Menu", bundle: nil)
+//        let menuVC = storyBoard.instantiateViewController(withIdentifier: "menuNavController") as! UINavigationController
+//        self.present(menuVC, animated: true, completion: { })
     }
     
     @IBAction func SignInTap(_ sender: Any) {

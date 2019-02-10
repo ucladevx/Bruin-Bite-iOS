@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WtO-JF-5ff">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WtO-JF-5ff">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -64,6 +64,7 @@
                                 </state>
                                 <connections>
                                     <action selector="CheckMenuTap:" destination="4Hj-cQ-8ki" eventType="touchDown" id="vCL-c4-6DH"/>
+                                    <segue destination="gWz-Uk-J3Z" kind="showDetail" id="iFd-VO-gN4"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iap-FB-8KA">
@@ -389,6 +390,7 @@
                         <outlet property="ForgotPassButton" destination="yVM-MC-9TZ" id="4Rj-YA-zCB"/>
                         <outlet property="PasswordText" destination="bzy-hE-7Df" id="gLf-sf-N4g"/>
                         <outlet property="SignInButton" destination="afn-vg-1bq" id="Tfq-lx-U2B"/>
+                        <segue destination="gWz-Uk-J3Z" kind="showDetail" identifier="ShowMainViewFromLogin" id="llT-Nr-fs9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c8I-2s-On4" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -605,6 +607,7 @@
                         <outlet property="CreateButton" destination="hi0-6j-WCs" id="mw9-go-Atc"/>
                         <outlet property="MajorText" destination="n6x-Zx-DQu" id="9IY-5T-JIg"/>
                         <outlet property="YearText" destination="ID7-xH-k8N" id="QN0-YP-787"/>
+                        <segue destination="gWz-Uk-J3Z" kind="showDetail" identifier="ShowMainViewFromCreate" id="MmQ-ad-1AU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zll-3n-jc9" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -630,6 +633,13 @@
             </objects>
             <point key="canvasLocation" x="-3705" y="-897"/>
         </scene>
+        <!--MainView-->
+        <scene sceneID="t5H-bD-Izt">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="MainView" id="gWz-Uk-J3Z" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VH5-IJ-HWp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
     </scenes>
     <resources>
         <image name="Line" width="242" height="2"/>
@@ -637,4 +647,7 @@
         <image name="NextArrow" width="46" height="46"/>
         <image name="ProfilePic" width="139" height="139"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="llT-Nr-fs9"/>
+    </inferredMetricsTieBreakers>
 </document>
