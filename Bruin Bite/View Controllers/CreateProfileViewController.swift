@@ -8,16 +8,22 @@
 
 import UIKit
 
-class CreateProfileViewController: UIViewController, UpdateDelegate, AlertPresentable {
+class CreateProfileViewController: UIViewController, UpdateDelegate, AlertPresentable, UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
+    var profilePic: UIImage!
+    var imagePickerController: UIImagePickerController?
+    
+    @IBOutlet weak var BioPic: UIImageView!
     @IBOutlet var BioText: UILabel!
 
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    //@IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet var BioTextBox: UITextView!
 
+    @IBOutlet weak var BioTextBoxChar: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        activityIndicator.hidesWhenStopped = true
+        //activityIndicator.hidesWhenStopped = true
         UserManager.shared.updateDelegate = self
 
         view.backgroundColor = UIColor.twilightBlue
@@ -46,7 +52,7 @@ class CreateProfileViewController: UIViewController, UpdateDelegate, AlertPresen
     }
 
     @IBAction func nextButtonPressed (_ sender: Any?) {
-        activityIndicator.startAnimating()
+        //activityIndicator.startAnimating()
         UserManager.shared.signupUpdate(email: UserManager.shared.getEmail(),
                                         password: UserDefaultsManager.shared.getPassword(),
                                         first_name: UserManager.shared.getFirstName(),
@@ -58,12 +64,17 @@ class CreateProfileViewController: UIViewController, UpdateDelegate, AlertPresen
     }
 
     func didUpdateUser() {
-        self.performSegue(withIdentifier: "EndPt1", sender: nil)
-        activityIndicator.stopAnimating()
+        self.performSegue(withIdentifier: "toCreateController", sender: nil)
+        //activityIndicator.stopAnimating()
     }
 
+    @objc
+    func popToRoot(_ sender: Any) {
+        self.navigationController?.popToRootViewController(animated: true)
+    }
+    
     func updateFailed(error: String) {
-        activityIndicator.stopAnimating()
+        //activityIndicator.stopAnimating()
         presentAlert(alert: error)
     }
 

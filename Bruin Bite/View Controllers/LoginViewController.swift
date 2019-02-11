@@ -123,6 +123,8 @@ class LoginViewController: UIViewController {
         CheckMenuButton.setTitleColor(UIColor.white, for: .normal)
         CheckMenuButton.titleLabel?.font = UIFont.signUpFont
         
+        Utilities.sharedInstance.formatNavigation(controller: self.navigationController!)
+        
         // Do any additional setup after loading the view.
     }
     

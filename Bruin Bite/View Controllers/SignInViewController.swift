@@ -15,11 +15,11 @@ class SignInViewController: UIViewController, LoginDelegate, AlertPresentable {
     @IBOutlet var PasswordText: UITextField!
     @IBOutlet var ForgotPassButton: UIButton!
     @IBOutlet var SignInButton: UIButton!
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    //@IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        activityIndicator.hidesWhenStopped = true
+        //activityIndicator.hidesWhenStopped = true
         UserManager.shared.loginDelegate = self
 
         view.backgroundColor = UIColor.twilightBlue
@@ -35,22 +35,23 @@ class SignInViewController: UIViewController, LoginDelegate, AlertPresentable {
         SignInButton.layer.cornerRadius = 26
 
         EmailText.becomeFirstResponder()
+        Utilities.sharedInstance.formatNavigation(controller: self.navigationController!)
     }
     
     @IBAction func didPressSignIn(_ sender: UIButton) {
-        activityIndicator.startAnimating()
+        //activityIndicator.startAnimating()
         UserManager.shared.loginUser(email: EmailText.text ?? "", password: PasswordText.text ?? "")
     }
 
     func didLogin() {
-        activityIndicator.stopAnimating()
+        //activityIndicator.stopAnimating()
         UserManager.shared.readUser(email: EmailText.text ?? "")
         UserDefaultsManager.shared.setPassword(to: PasswordText.text ?? "")
-        self.performSegue(withIdentifier: "ShowMenuVC_2", sender: nil)
+        self.performSegue(withIdentifier: "ShowMainViewFromLogin", sender: nil)
     }
 
     func loginFailed(error: String) {
-        activityIndicator.stopAnimating()
+        //activityIndicator.stopAnimating()
         presentAlert(alert: error)
     }
 }

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WtO-JF-5ff">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WtO-JF-5ff">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -478,10 +478,10 @@
                         <viewLayoutGuide key="safeArea" id="yIp-xP-33L"/>
                     </view>
                     <connections>
-                        <outlet property="BioPic" destination="WdP-dU-tHJ" id="8zg-eR-qIV"/>
+                        <outlet property="BioPic" destination="WdP-dU-tHJ" id="byy-JQ-gwo"/>
                         <outlet property="BioText" destination="UPG-fQ-gga" id="b75-IE-DSu"/>
                         <outlet property="BioTextBox" destination="hOe-iL-nsr" id="afH-TX-Iu9"/>
-                        <outlet property="BioTextBoxChar" destination="7eg-dc-dIU" id="zQn-u7-m2U"/>
+                        <outlet property="BioTextBoxChar" destination="7eg-dc-dIU" id="s1s-hv-CSf"/>
                         <segue destination="aNE-gY-fgK" kind="show" identifier="toCreateController" id="kCm-77-NrQ"/>
                     </connections>
                 </viewController>
@@ -648,6 +648,6 @@
         <image name="ProfilePic" width="139" height="139"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="llT-Nr-fs9"/>
+        <segue reference="MmQ-ad-1AU"/>
     </inferredMetricsTieBreakers>
 </document>

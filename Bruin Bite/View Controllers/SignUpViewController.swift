@@ -15,11 +15,11 @@ class SignUpViewController: UIViewController, SignupDelegate, LoginDelegate, Ale
     @IBOutlet var EmailText: UITextField!
     @IBOutlet var PasswordText: UITextField!
     @IBOutlet var ConfirmPassText: UITextField!
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    //@IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        activityIndicator.hidesWhenStopped = true
+        //activityIndicator.hidesWhenStopped = true
         UserManager.shared.signupDelegate = self
         UserManager.shared.loginDelegate = self
 
@@ -33,7 +33,6 @@ class SignUpViewController: UIViewController, SignupDelegate, LoginDelegate, Ale
         ConfirmPassText.font = UIFont.signUpInfoFieldFont
 
         NameText.becomeFirstResponder()
-
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -44,14 +43,14 @@ class SignUpViewController: UIViewController, SignupDelegate, LoginDelegate, Ale
 
     @IBAction func nextButtonPressed (_ sender: Any?) {
         if(!(EmailText.text?.isEmail() ?? false)) {
-            presentAlert(alert: "Invalid Email")
+            Utilities.sharedInstance.displayErrorLabel(text: "Enter a valid email", field: EmailText)
             return
         }
         if((PasswordText.text ?? "") != ConfirmPassText.text ) { //I was worried about nil == nil
-            presentAlert(alert: "Passwords do not match")
+            Utilities.sharedInstance.displayErrorLabel(text: "Passwords do not match", field: ConfirmPassText)
             return
         }
-        activityIndicator.startAnimating()
+        //activityIndicator.startAnimating()
         UserManager.shared.createUser(email: EmailText.text ?? "", password: PasswordText.text ?? "", firstName: NameText.text ?? "")
     }
 
@@ -61,17 +60,17 @@ class SignUpViewController: UIViewController, SignupDelegate, LoginDelegate, Ale
     }
 
     func didLogin() {
-        activityIndicator.stopAnimating()
-        self.performSegue(withIdentifier: "DoneWithSignUp", sender: nil)
+        //activityIndicator.stopAnimating()
+        self.performSegue(withIdentifier: "toProfileController", sender: nil)
     }
 
     func signUpFailed(error: String) {
-        activityIndicator.stopAnimating()
+        //activityIndicator.stopAnimating()
         presentAlert(alert: error)
     }
 
     func loginFailed(error: String) {
-        activityIndicator.stopAnimating()
+        //activityIndicator.stopAnimating()
         presentAlert(alert: error)
     }
 }
