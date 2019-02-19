@@ -34,9 +34,12 @@ class PreferenceViewController: UIViewController, MatchDelegate {
             return
         }
         
+        guard let meal_day_date = Date(fromUserFriendlyMonthDayYearString: meal_day) else {
+            return
+        }
+        
         meal_times = chosen
-        meal_day = convertDate(month: getMonth(dateMonth: meal_day), day: getDay(date: meal_day), year: getYear(date: meal_day))
-        print(meal_day)
+        meal_day = meal_day_date.yearMonthDayString()
         for i in 0...meal_times.count-1 {
             meal_times[i] = meal_day + " " + meal_times[i]
             print(meal_times[i])
