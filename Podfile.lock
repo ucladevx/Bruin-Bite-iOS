@@ -1,5 +1,5 @@
 PODS:
-  - Alamofire (4.7.2)
+  - Alamofire (4.8.1)
   - Bolts (1.9.0):
     - Bolts/AppLinks (= 1.9.0)
     - Bolts/Tasks (= 1.9.0)
@@ -7,53 +7,73 @@ PODS:
     - Bolts/Tasks
   - Bolts/Tasks (1.9.0)
   - CZPicker (0.4.3)
-  - FacebookCore (0.3.0):
-    - Bolts (~> 1.8)
-    - FBSDKCoreKit (~> 4.27)
-  - FacebookLogin (0.3.0):
-    - Bolts (~> 1.8)
-    - FacebookCore (~> 0.3)
-    - FBSDKCoreKit (~> 4.27)
-    - FBSDKLoginKit (~> 4.27)
-  - FBSDKCoreKit (4.33.0):
-    - Bolts (~> 1.7)
-  - FBSDKLoginKit (4.33.0):
+  - FacebookCore (0.5.0):
+    - Bolts (~> 1.9)
+    - FBSDKCoreKit (~> 4.37)
+  - FacebookLogin (0.5.0):
+    - Bolts (~> 1.9)
+    - FacebookCore (~> 0.5)
+    - FBSDKCoreKit (~> 4.37)
+    - FBSDKLoginKit (~> 4.37)
+  - FBSDKCoreKit (4.40.0):
+    - Bolts (~> 1.9)
+  - FBSDKLoginKit (4.40.0):
     - FBSDKCoreKit
   - Moya (10.0.2):
     - Moya/Core (= 10.0.2)
   - Moya/Core (10.0.2):
     - Alamofire (~> 4.1)
     - Result (~> 3.0)
-  - Pulsator (0.5.1)
+  - Pulsator (0.5.3)
+  - Repeat (0.5.7)
   - Result (3.2.4)
-  - SnapKit (4.0.0)
-  - Starscream (3.0.5)
-  - SwiftyJSON (4.1.0)
+  - SnapKit (4.2.0)
+  - Starscream (3.0.6)
+  - SwiftyJSON (4.2.0)
 
 DEPENDENCIES:
   - CZPicker
   - FacebookLogin
   - Moya (~> 10.0)
   - Pulsator
+  - Repeat
   - SnapKit
   - Starscream
   - SwiftyJSON
 
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - Bolts
+    - CZPicker
+    - FacebookCore
+    - FacebookLogin
+    - FBSDKCoreKit
+    - FBSDKLoginKit
+    - Moya
+    - Pulsator
+    - Repeat
+    - Result
+    - SnapKit
+    - Starscream
+    - SwiftyJSON
+
 SPEC CHECKSUMS:
-  Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
+  Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
   CZPicker: 55aa1751ea26e209814552da1a9a08cba8bbf72a
-  FacebookCore: 3ffa190a3f1f96cec0e44d3fc221bc322c595ffa
-  FacebookLogin: 0af839ea858faef99550d16596b87b4a8e8906e6
-  FBSDKCoreKit: 572b047a7e029bc44542bcf8a59414e7ff2b543e
-  FBSDKLoginKit: 88cb456349cfb3b554427ce4f8b43729d85dfb40
+  FacebookCore: 74288d0add931d361b1596beae787ab72c438249
+  FacebookLogin: ebcf34714a1cb9f0759d9f071cfb01ed500996cf
+  FBSDKCoreKit: ae214474b25033399c131dc81d258e412582a2ba
+  FBSDKLoginKit: 7a1e411d46acc8834588eca437daf34de42e1d52
   Moya: 2b0531a9fef318e0bc484030c3db1e6f279ccb66
-  Pulsator: f465ca37212d826523fe8c79b07c1a4c1a941f5e
+  Pulsator: d58707c6827ec862cd89fd727424866795dabd24
+  Repeat: 73c5ee602aed8f3c7bf1aa12d4cd0d3dc3edea0a
   Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
-  SnapKit: a42d492c16e80209130a3379f73596c3454b7694
-  Starscream: faf918b2f2eff7d5dd21180646bf015a669673bd
-  SwiftyJSON: c29297daf073d2aa016295d5809cdd68045c39b3
+  SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
+  Starscream: ef3ece99d765eeccb67de105bfa143f929026cf5
+  SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
 
-PODFILE CHECKSUM: d796cb8069d903701ca59324d85a281c506be28f
+PODFILE CHECKSUM: 3c5104a14614906514bad2e1f5f2e0d339c1a10f
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.6.0
