@@ -17,8 +17,8 @@ struct ChatListItem: Codable {
     var user2_first_name: String
     var user2_last_name: String
     var user2: Int
-    var meal_datetime: String
-    var meal_period: String
+    var meal_datetime: String // ISO 8601: yyyy-MM-dd'T'HH:mm:ssZZZZZ
+    var meal_period: String // BR, LU, DI
     var dining_hall: String
     var chat_url: String // actually, chat room label
 }
@@ -50,6 +50,21 @@ class ChatListAPI {
                 print ("Error acquiring chat list!")
             }
         }
+        /* Test chat list item:
+        self.delegate?.didReceiveChatList(chatListData: [
+            ChatListItem(id: 4,
+                    user1: -1,
+                    user1_first_name: "Joe",
+                    user1_last_name: "Bruin",
+                    user2_first_name: "Josie",
+                    user2_last_name: "Bruin",
+                    user2: 2,
+                    meal_datetime: "2019-02-10T04:47:03+0000",
+                    meal_period: "LU",
+                    dining_hall: "De Neve",
+                    chat_url: "hmmm"
+            )
+        ])*/
     }
     
 }
