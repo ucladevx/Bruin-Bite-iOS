@@ -19,9 +19,6 @@ class ChatListTableViewCell: UITableViewCell {
 }
 
 class ChatListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ChatListDelegate {
-    
-    let chatPreview1: ChatPreview = ChatPreview(name: "Josie Bruin", date: "04/22", meal: "Dinner", time: "10:30 PM", profileImage: "", unreadMessage: 2)
-    
 
     var data: [ChatListItem] = []
     var selectedChatRoom: String? = nil
