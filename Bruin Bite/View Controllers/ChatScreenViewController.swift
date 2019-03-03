@@ -79,8 +79,10 @@ class ChatScreenViewController: UIViewController, UITableViewDelegate, UITableVi
             cell.sentMessageLabel.isHidden = false
             cell.sentMessageLabel.text = currMessage.message
             cell.receivedMessageLabel.isHidden = true
+            cell.receivedMessageLabel.text = ""
         } else {
             cell.sentMessageLabel.isHidden = true
+            cell.sentMessageLabel.text = ""
             cell.receivedMessageLabel.isHidden = false
             cell.receivedMessageLabel.text = currMessage.message
         }
