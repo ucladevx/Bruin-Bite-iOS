@@ -13,7 +13,7 @@
         <!--Chats-->
         <scene sceneID="ICu-8A-NiY">
             <objects>
-                <viewController storyboardIdentifier="ChatListViewController" id="D6w-8k-bCY" customClass="ChatListViewController" customModule="Bruin_Bite" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ChatListViewController" title="Chats" id="D6w-8k-bCY" customClass="ChatListViewController" customModule="Bruin_Bite" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0yp-wb-5jd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -149,7 +149,7 @@
                         <viewLayoutGuide key="safeArea" id="G01-rd-gY1"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Chat" image="Chats" selectedImage="Chats" id="t2p-ed-WUa"/>
-                    <navigationItem key="navigationItem" title="Chats" id="ndT-kG-RJQ">
+                    <navigationItem key="navigationItem" id="ndT-kG-RJQ">
                         <barButtonItem key="backBarButtonItem" title=" " id="iZu-y0-VIq"/>
                     </navigationItem>
                     <nil key="simulatedTopBarMetrics"/>
@@ -168,14 +168,14 @@
             <objects>
                 <viewController id="VAO-Bi-W3n" customClass="ChatScreenViewController" customModule="Bruin_Bite" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="37f-LR-V0w">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="l2S-Di-BeL">
-                                <rect key="frame" x="0.0" y="20" width="375" height="598"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="249" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Sbd-dn-2VK">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="549"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="505"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MessageBubbleCell" rowHeight="40" id="EUE-Bz-1Er" customClass="MessageBubbleCell" customModule="Bruin_Bite" customModuleProvider="target">
@@ -259,7 +259,7 @@
                                         </prototypes>
                                     </tableView>
                                     <view contentMode="scaleToFill" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="5Ni-Bi-mls">
-                                        <rect key="frame" x="0.0" y="549" width="375" height="49"/>
+                                        <rect key="frame" x="0.0" y="505" width="375" height="49"/>
                                         <subviews>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ZEP-gd-zEL">
                                                 <rect key="frame" x="8" y="8" width="313" height="33"/>
@@ -311,9 +311,11 @@
                                         </constraints>
                                     </view>
                                 </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="l2S-Di-BeL" firstAttribute="trailing" secondItem="qKf-Z9-tps" secondAttribute="trailing" id="HZV-eJ-Rp6"/>
                             <constraint firstItem="qKf-Z9-tps" firstAttribute="bottom" secondItem="l2S-Di-BeL" secondAttribute="bottom" id="JKb-6r-urp"/>
@@ -322,6 +324,8 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="qKf-Z9-tps"/>
                     </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="bottomLayoutConstraint" destination="JKb-6r-urp" id="4PY-jI-ioH"/>
                         <outlet property="messagesTableView" destination="Sbd-dn-2VK" id="b4w-pF-SEi"/>
