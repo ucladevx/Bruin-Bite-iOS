@@ -19,7 +19,7 @@ class MessageBubbleCell: UITableViewCell {
 
 class ChatScreenViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ChatMessagesDelegate, WebSocketDelegate {
     @IBOutlet weak var messagesTableView: UITableView!
-    @IBOutlet weak var newMessageTxtField: UITextField!
+    @IBOutlet weak var newMessageTextField: UITextView!
     @IBOutlet weak var bottomLayoutConstraint: NSLayoutConstraint!
     
     var socket: WebSocket? = nil
@@ -96,8 +96,8 @@ class ChatScreenViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     @IBAction func didPressSendMessage(_ sender: UIButton) {
-        let newMessage = newMessageTxtField.text!
-        self.newMessageTxtField.text = ""
+        let newMessage = newMessageTextField.text!
+        self.newMessageTextField.text = ""
         if !newMessage.isEmpty && self.isSocketConnected {
             let message = ChatMessageSend(handle: self.currUserId, message: newMessage)
             if let messageData = try? JSONEncoder().encode(message) {
@@ -147,11 +147,8 @@ class ChatScreenViewController: UIViewController, UITableViewDelegate, UITableVi
         let convertedKeyboardEndFrame = view.convert(keyboardEndFrame, from: view.window)
         let rawAnimationCurve = (notification.userInfo![UIKeyboardAnimationCurveUserInfoKey] as! NSNumber).uint32Value << 16
         let animationCurve = UIViewAnimationOptions(rawValue: UInt(rawAnimationCurve))
-        var updatedConstant = (view.bounds.maxY - convertedKeyboardEndFrame.minY) + 16
+        let updatedConstant = max((view.bounds.maxY - convertedKeyboardEndFrame.minY), 0)
         // Slightly brute force-y, but desperate times call for desperate measures. - Hirday.
-        if (updatedConstant < 0) {
-            updatedConstant = 16
-        }
         bottomLayoutConstraint.constant = updatedConstant
         
         UIView.animate(withDuration: animationDuration, delay: 0.0, options: animationCurve, animations: {

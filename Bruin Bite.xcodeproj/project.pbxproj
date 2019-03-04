@@ -71,6 +71,7 @@
 		C0AD0D34204B4EA9008E1206 /* TopBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0AD0D33204B4EA9008E1206 /* TopBar.swift */; };
 		C0CD676A203C15CC006B265D /* TimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CD6769203C15CC006B265D /* TimeView.swift */; };
 		C0CD676C203C1B19006B265D /* ColoredBezel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CD676B203C1B19006B265D /* ColoredBezel.swift */; };
+		C7F24355C1F5930CCD314312 /* UIViewBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F96FCA50FBF094C1704FD1 /* UIViewBorder.swift */; };
 		DC5FC98420B788C400DFCCC7 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC5FC98220B788C400DFCCC7 /* Profile.storyboard */; };
 		DCF0E2DC20B260510036A32F /* UIColor+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF0E2DB20B260510036A32F /* UIColor+Additions.swift */; };
 		DCF0E2DE20B260680036A32F /* UIFont+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF0E2DD20B260680036A32F /* UIFont+Additions.swift */; };
@@ -175,6 +176,7 @@
 		C0AD0D33204B4EA9008E1206 /* TopBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBar.swift; sourceTree = "<group>"; };
 		C0CD6769203C15CC006B265D /* TimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeView.swift; sourceTree = "<group>"; };
 		C0CD676B203C1B19006B265D /* ColoredBezel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColoredBezel.swift; sourceTree = "<group>"; };
+		C7F96FCA50FBF094C1704FD1 /* UIViewBorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewBorder.swift; sourceTree = "<group>"; };
 		CC9C8F47B5A0B8DB48A43377 /* Pods-Bruin BiteUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bruin BiteUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bruin BiteUITests/Pods-Bruin BiteUITests.release.xcconfig"; sourceTree = "<group>"; };
 		D31D0C9107AF44D73AA341C1 /* Pods_Bruin_Bite.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bruin_Bite.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC5FC98320B788C400DFCCC7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Dont Eat Alone/Base.lproj/Profile.storyboard"; sourceTree = "<group>"; };
@@ -441,6 +443,7 @@
 				2A68339120BC2113000DCAA4 /* UIButtonSignUp.swift */,
 				BF0943E520BC20FE00214200 /* UIViewControllerExtensions.swift */,
 				BFC8567B20C4CE3D00E5230E /* UILabelExtensions.swift */,
+				C7F96FCA50FBF094C1704FD1 /* UIViewBorder.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -693,6 +696,7 @@
 				00C2DF0920B678890023CF75 /* Moya.swift in Sources */,
 				2A744895203BBDBC00793AD3 /* MenuCardView.swift in Sources */,
 				00C2DF0D20B678BE0023CF75 /* UserClass.swift in Sources */,
+				C7F24355C1F5930CCD314312 /* UIViewBorder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
