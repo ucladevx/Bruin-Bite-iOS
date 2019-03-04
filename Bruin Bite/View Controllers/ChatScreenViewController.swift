@@ -47,7 +47,7 @@ class ChatScreenViewController: UIViewController, UITableViewDelegate, UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.hideKeyboardWhenTappedAround()
+        self.hideKeyboardWhenTappedAround(self.messagesTableView)
 
         self.messagesTableView.delegate = self
         self.messagesTableView.dataSource = self
