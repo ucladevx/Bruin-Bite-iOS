@@ -37,6 +37,7 @@ class ChatScreenViewController: UIViewController, UITableViewDelegate, UITableVi
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         registerForKeyboardNotifications()
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
     override func viewWillDisappear(_ animated: Bool) {

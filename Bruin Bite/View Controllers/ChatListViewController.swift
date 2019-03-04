@@ -38,12 +38,12 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.setNavigationBarHidden(true, animated: false)
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        self.navigationItem.title = ""
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.navigationController?.setNavigationBarHidden(false, animated: false)
     }
     
     override func viewDidAppear(_ animated: Bool) {
