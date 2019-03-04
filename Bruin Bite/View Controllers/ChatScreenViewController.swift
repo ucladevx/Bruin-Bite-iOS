@@ -17,7 +17,7 @@ class MessageBubbleCell: UITableViewCell {
     var debugData: ChatMessage = ChatMessage(timestamp: "", handle: "", message: "")
 }
 
-class ChatScreenViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ChatMessagesDelegate, WebSocketDelegate {
+class ChatScreenViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ChatMessagesDelegate, WebSocketDelegate, UITextViewDelegate {
     @IBOutlet weak var messagesTableView: UITableView!
     @IBOutlet weak var newMessageTextField: UITextView!
     @IBOutlet weak var bottomLayoutConstraint: NSLayoutConstraint!
@@ -96,7 +96,7 @@ class ChatScreenViewController: UIViewController, UITableViewDelegate, UITableVi
         print (cell.debugData)
     }
     
-    @IBAction func didPressSendMessage(_ sender: UIButton) {
+    @IBAction func didPressSendMessage(_ sender: UIButton?) {
         let newMessage = newMessageTextField.text!
         self.newMessageTextField.text = ""
         if !newMessage.isEmpty && self.isSocketConnected {
@@ -167,6 +167,14 @@ class ChatScreenViewController: UIViewController, UITableViewDelegate, UITableVi
         //Removing notifies on keyboard appearing
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if (text == "\n") {
+            didPressSendMessage(nil)
+            return false
+        }
+        return true
     }
     
 }
