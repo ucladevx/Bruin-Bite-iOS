@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		002244DC20B8C53000CBD1C2 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002244DB20B8C53000CBD1C2 /* StringExtensions.swift */; };
 		0058244F20BA106E0044CB88 /* Hours.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0058244E20BA106E0044CB88 /* Hours.swift */; };
+		009B1C352225B9C9005AB454 /* MatchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009B1C342225B9C9005AB454 /* MatchTableViewCell.swift */; };
+		009B1C372225C2E4005AB454 /* PendingRequestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009B1C362225C2E4005AB454 /* PendingRequestsViewController.swift */; };
 		00C2DF0720B677040023CF75 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C2DF0620B677040023CF75 /* User.swift */; };
 		00C2DF0920B678890023CF75 /* Moya.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C2DF0820B678890023CF75 /* Moya.swift */; };
 		00C2DF0B20B678A00023CF75 /* UserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C2DF0A20B678A00023CF75 /* UserAPI.swift */; };
@@ -108,6 +110,8 @@
 /* Begin PBXFileReference section */
 		002244DB20B8C53000CBD1C2 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		0058244E20BA106E0044CB88 /* Hours.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hours.swift; sourceTree = "<group>"; };
+		009B1C342225B9C9005AB454 /* MatchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchTableViewCell.swift; sourceTree = "<group>"; };
+		009B1C362225C2E4005AB454 /* PendingRequestsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingRequestsViewController.swift; sourceTree = "<group>"; };
 		00C2DF0620B677040023CF75 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		00C2DF0820B678890023CF75 /* Moya.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Moya.swift; sourceTree = "<group>"; };
 		00C2DF0A20B678A00023CF75 /* UserAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAPI.swift; sourceTree = "<group>"; };
@@ -261,6 +265,7 @@
 				2A94477F2055FA3E0033B6C6 /* AllergensBarScrollView.swift */,
 				2A16F9A620BEA204008BA4E3 /* ComingSoonPopup.swift */,
 				2A16F9A420BEA107008BA4E3 /* ComingSoonPopup.xib */,
+				009B1C342225B9C9005AB454 /* MatchTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -352,6 +357,7 @@
 				2AFA40AD20BC07AD0007FB85 /* MatchFoundViewController.swift */,
 				2AFA40AB20BC07AD0007FB85 /* NoMatchViewController.swift */,
 				2AFA40AE20BC07AD0007FB85 /* SearchingScreenViewController.swift */,
+				009B1C362225C2E4005AB454 /* PendingRequestsViewController.swift */,
 			);
 			name = MatchingViewControllers;
 			path = "New Group";
@@ -505,6 +511,7 @@
 					};
 					770251AF201D4079002E4515 = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 1010;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Push = {
@@ -645,7 +652,9 @@
 				BDDE7C6E207AF6840008A677 /* LoginViewController.swift in Sources */,
 				00C2DF0B20B678A00023CF75 /* UserAPI.swift in Sources */,
 				BDDE7C72207B04D00008A677 /* UserTableViewCell.swift in Sources */,
+				009B1C352225B9C9005AB454 /* MatchTableViewCell.swift in Sources */,
 				C0CD676C203C1B19006B265D /* ColoredBezel.swift in Sources */,
+				009B1C372225C2E4005AB454 /* PendingRequestsViewController.swift in Sources */,
 				770251B4201D4079002E4515 /* AppDelegate.swift in Sources */,
 				2AFB41332047DD86004025F9 /* ItemDetailViewController.swift in Sources */,
 				2A68339220BC2113000DCAA4 /* UIButtonSignUp.swift in Sources */,
@@ -891,6 +900,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "Bruin Bite/Bruin Bite.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8DDCRUXY46;
@@ -899,6 +909,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.kloktech.bruinbite;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Bruin Bite/Views/Bruin Bite-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -910,6 +922,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "Bruin Bite/Bruin Bite.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8DDCRUXY46;
@@ -918,6 +931,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.kloktech.bruinbite;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Bruin Bite/Views/Bruin Bite-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
