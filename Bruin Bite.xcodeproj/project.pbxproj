@@ -65,7 +65,6 @@
 		BF0943E620BC20FE00214200 /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0943E520BC20FE00214200 /* UIViewControllerExtensions.swift */; };
 		BF5D97E220B973570086D451 /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF5D97E120B973570086D451 /* Chat.storyboard */; };
 		BF5D97E420B974F60086D451 /* ChatListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5D97E320B974F60086D451 /* ChatListViewController.swift */; };
-		BFC8567C20C4CE3D00E5230E /* UILabelExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC8567B20C4CE3D00E5230E /* UILabelExtensions.swift */; };
 		BFC934B320C3448A0040D08D /* ChatListAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC934B220C3448A0040D08D /* ChatListAPI.swift */; };
 		BFE168A3209AB8DD00D021A2 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE168A2209AB8DD00D021A2 /* CollectionViewController.swift */; };
 		C0AD0D34204B4EA9008E1206 /* TopBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0AD0D33204B4EA9008E1206 /* TopBar.swift */; };
@@ -170,7 +169,6 @@
 		BF0943E520BC20FE00214200 /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
 		BF5D97E120B973570086D451 /* Chat.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Chat.storyboard; sourceTree = "<group>"; };
 		BF5D97E320B974F60086D451 /* ChatListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListViewController.swift; sourceTree = "<group>"; };
-		BFC8567B20C4CE3D00E5230E /* UILabelExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelExtensions.swift; sourceTree = "<group>"; };
 		BFC934B220C3448A0040D08D /* ChatListAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListAPI.swift; sourceTree = "<group>"; };
 		BFE168A2209AB8DD00D021A2 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		C0AD0D33204B4EA9008E1206 /* TopBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBar.swift; sourceTree = "<group>"; };
@@ -442,7 +440,6 @@
 				002244DB20B8C53000CBD1C2 /* StringExtensions.swift */,
 				2A68339120BC2113000DCAA4 /* UIButtonSignUp.swift */,
 				BF0943E520BC20FE00214200 /* UIViewControllerExtensions.swift */,
-				BFC8567B20C4CE3D00E5230E /* UILabelExtensions.swift */,
 				C7F96FCA50FBF094C1704FD1 /* UIViewBorder.swift */,
 			);
 			path = Extensions;
@@ -675,7 +672,6 @@
 				BD392821215C3638007FD4AD /* BBStoryboard.swift in Sources */,
 				2AFA40B020BC07AD0007FB85 /* CancelMatchViewController.swift in Sources */,
 				BF5D97E420B974F60086D451 /* ChatListViewController.swift in Sources */,
-				BFC8567C20C4CE3D00E5230E /* UILabelExtensions.swift in Sources */,
 				DCF0E2DE20B260680036A32F /* UIFont+Additions.swift in Sources */,
 				77949970203BD10500F3B0ED /* AllergyFilterButton.swift in Sources */,
 				77949972203BD12B00F3B0ED /* Extensions.swift in Sources */,

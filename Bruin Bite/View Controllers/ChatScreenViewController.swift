@@ -11,8 +11,8 @@ import Starscream
 import UIKit
 
 class MessageBubbleCell: UITableViewCell {
-    @IBOutlet weak var receivedMessageLabel: UILabel!
-    @IBOutlet weak var sentMessageLabel: UILabel!
+    @IBOutlet weak var receivedMessageLabel: UITextView!
+    @IBOutlet weak var sentMessageLabel: UITextView!
     
     var debugData: ChatMessage = ChatMessage(timestamp: "", handle: "", message: "")
 }
@@ -88,6 +88,7 @@ class ChatScreenViewController: UIViewController, UITableViewDelegate, UITableVi
             cell.receivedMessageLabel.text = currMessage.message
         }
         cell.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi));
+        cell.sizeToFit()
         return cell
     }
     

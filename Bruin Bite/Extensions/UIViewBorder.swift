@@ -5,7 +5,23 @@
 
 import UIKit
 
-@IBDesignable extension UIView {
+@IBDesignable
+class DesignableView: UIView {
+}
+
+@IBDesignable
+class DesignableButton: UIButton {
+}
+
+@IBDesignable
+class DesignableLabel: UILabel {
+}
+
+@IBDesignable
+class DesignableTextView: UITextView {
+}
+
+extension UIView {
     @IBInspectable var borderColor:UIColor? {
         set {
             layer.borderColor = newValue!.cgColor
