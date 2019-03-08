@@ -38,7 +38,7 @@ class ChatListAPI {
     
     func getChatList(forUserWithID user: Int) {
         let param = ["id": user]
-        /*Alamofire.request(CHAT_LIST_BACKEND_URL, method: HTTPMethod.get, parameters: param, headers: nil).responseJSON { response in
+        Alamofire.request(CHAT_LIST_BACKEND_URL, method: HTTPMethod.get, parameters: param, headers: nil).responseJSON { response in
             
             if let result = response.data {
                 if let resultStruct = try? JSONDecoder().decode([ChatListItem].self, from: result) {
@@ -49,8 +49,8 @@ class ChatListAPI {
             } else {
                 print ("Error acquiring chat list!")
             }
-        }*/
-        // Test chat list item:
+        }
+        /* Test chat list item:
         self.delegate?.didReceiveChatList(chatListData: [
             ChatListItem(id: 4,
                     user1: -1,
@@ -64,7 +64,7 @@ class ChatListAPI {
                     dining_hall: "De Neve",
                     chat_url: "hmmm"
             )
-        ])
+        ])*/
     }
     
 }
