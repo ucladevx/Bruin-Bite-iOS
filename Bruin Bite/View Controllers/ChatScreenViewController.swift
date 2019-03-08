@@ -29,6 +29,7 @@ class ChatScreenViewController: UIViewController, UITableViewDelegate, UITableVi
     
     var messagesList: [ChatMessage] = []
     var chatRoomLabel: String? = nil
+    var chatTitle: String? = nil
     
     let BACKEND_CHAT_WEBSOCKET_URL = "https://api.bruin-bite.com/api/v1/messaging/chat/"
     
@@ -62,6 +63,8 @@ class ChatScreenViewController: UIViewController, UITableViewDelegate, UITableVi
         self.socket = WebSocket(url: URL(string: BACKEND_CHAT_WEBSOCKET_URL + (chatRoomLabel ?? ""))!)
         self.socket?.delegate = self
         self.socket?.connect()
+
+        self.title = chatTitle
     }
     
     override func didReceiveMemoryWarning() {
