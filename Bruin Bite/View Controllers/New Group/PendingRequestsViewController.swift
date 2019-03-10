@@ -8,6 +8,10 @@
 
 import UIKit
 
+class MatchTableViewCell: UITableViewCell {
+    //
+}
+
 class PendingRequestsViewController: UIViewController {
 
     override func viewDidLoad() {
