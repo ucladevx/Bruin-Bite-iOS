@@ -17,14 +17,16 @@ struct SuccessfulMatch{
     var diningHall: String;
     var mealPeriod: String;
     var chatURL: String;
-    var time: Date;
+    var day: String;
+    var time: String;
     
 }
 
 struct PendingMatch{
     var diningHall: String;
     var mealPeriod: String;
-    var chatURL: String;
-    var times: [Date];
+    var day: String;
+    var times: String;
     var status: String;
 }
+
