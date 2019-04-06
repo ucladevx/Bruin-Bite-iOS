@@ -20,6 +20,7 @@ enum MainAPI {
     case updateUser(email: String, password: String, first_name: String, last_name: String, major: String, minor: String, year: Int, self_bio: String, access_token: String, device_id: String) //send it as it is if it hasn't changed
     case deleteUser(email: String, access_token: String)
     case matchUser(user: Int, meal_times: [String], meal_day: String, meal_period: String, dining_halls: [String])
+    case getRequests(user: Int, status: [String])
 }
 
 extension MainAPI: TargetType {
@@ -27,7 +28,7 @@ extension MainAPI: TargetType {
         switch self {
         case .getCurrentActivityLevels, .getOverviewMenu, .getDetailedMenu, .getHours:
             return URL(string: "https://api.bruin-bite.com/api/v1")!
-        case .createUser, .readUsers, .loginUser, .updateUser, .deleteUser, .matchUser:
+        case .createUser, .readUsers, .loginUser, .updateUser, .deleteUser, .matchUser, .getRequests:
             return URL(string: "https://api.bruin-bite.com/api/v1")!
         }
         
@@ -50,12 +51,14 @@ extension MainAPI: TargetType {
             return "/users/data/"
         case .matchUser:
             return "/users/matching/new/"
+        case .getRequests:
+            return "/users/matching/requests"
         }
         
     }
     var method: Moya.Method {
         switch self {
-        case .getCurrentActivityLevels, .getOverviewMenu, .getDetailedMenu, .getHours, .readUsers:
+        case .getCurrentActivityLevels, .getOverviewMenu, .getDetailedMenu, .getHours, .readUsers, .getRequests:
             return .get
         case .createUser, .loginUser, .matchUser:
             return .post
@@ -81,6 +84,8 @@ extension MainAPI: TargetType {
             return .requestParameters(parameters: ["email": email, "access_token": access_token], encoding: JSONEncoding.default)
         case .matchUser(let user, let meal_times, let meal_day, let meal_period, let dining_halls):
             return .requestParameters(parameters: ["user": user, "meal_times": meal_times, "meal_day": meal_day, "meal_period": meal_period, "dining_halls": dining_halls], encoding: JSONEncoding.default)
+        case .getRequests(let user, let status):
+            return .requestParameters(parameters: ["user": user, "status": status], encoding: JSONEncoding.default)
         }
     }
     //for testing
@@ -108,6 +113,8 @@ extension MainAPI: TargetType {
             return Data()
         case .matchUser:
             return Data()
+        case .getRequests:
+            return Data();
         }
     }
     var headers: [String: String]? {
@@ -118,7 +125,7 @@ extension MainAPI: TargetType {
             return ["Content-Type": "application/json"]
         case .loginUser:
             return ["Content-Type": "application/x-www-form-urlencoded"]
-        case .readUsers, .updateUser, .deleteUser, .matchUser:
+        case .readUsers, .updateUser, .deleteUser, .matchUser, .getRequests:
             var temp = "Bearer "
             temp += UserDefaults.standard.object(forKey: "accessToken") as? String ?? ""
             return ["Authorization": temp]
