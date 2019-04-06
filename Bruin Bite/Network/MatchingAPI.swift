@@ -27,8 +27,6 @@ class MatchingAPI {
             case let .success(response):
                 do {
                     let results = try JSONDecoder().decode([Request].self, from: response.data)
-                    let jsonData = JSON(response.data)
-                    print(jsonData)
                     completionDelegate.didReceiveRequests(requests: results)
                 } catch let err{
                     print(err)
@@ -44,8 +42,6 @@ class MatchingAPI {
             case let .success(response):
                 do {
                     let results = try JSONDecoder().decode([Match].self, from: response.data)
-                    let jsonData = JSON(response.data)
-                    print(jsonData)
                     completionDelegate.didReceiveMatches(requests: results)
                 } catch let err{
                     print(err)
@@ -58,85 +54,80 @@ class MatchingAPI {
 
 
     //TODO: Currently just test data
-    func getSuccessfulMatches(completionHandler: ([SuccessfulMatch])->Void){
-        var successfulMatches = [SuccessfulMatch]()
+    func getTestMatches(completionHandler: GetMatchesDelegate){
+        var matches = [Match]()
         
-        var match = SuccessfulMatch(profilePicture: UIImage(), user: String(), firstName: String(), lastName: String(), diningHall: String(), mealPeriod: String(), chatURL: String(), day: String(), time: String())
-        match.user = "User1"
-        match.firstName = "Joe"
-        match.lastName = "Bruin"
-        match.diningHall = "BPlate"
-        match.mealPeriod = "Lunch"
-        match.day = "15th March, 2019"
-        match.time = "1 pm"
-        successfulMatches.append(match)
+        var match = Match(user1: 1, user2: 2, user1_first_name: String(), user2_first_name: String(), user1_last_name: String(), user2_last_name: String(), meal_datetime: String(), meal_period: String(), dining_hall: String(), chat_url: String())
+        match.user1_first_name = "Joe"
+        match.user1_last_name = "Bruin"
+        match.user2_first_name = "Jocie"
+        match.user2_last_name = "Bruin"
+        match.meal_datetime = ""
+        match.meal_period = "LU"
+        match.dining_hall = "FE"
+        match.chat_url = "/users/messaging"
+        matches.append(match)
         
-        match = SuccessfulMatch(profilePicture: UIImage(), user: String(), firstName: String(), lastName: String(), diningHall: String(), mealPeriod: String(), chatURL: String(), day: String(), time: String())
-        match.user = "User2"
-        match.firstName = "Hannah"
-        match.lastName = "Chen"
-        match.diningHall = "Covel"
-        match.mealPeriod = "Lunch"
-        match.day = "16th March, 2019"
-        match.time = "1 pm"
-        successfulMatches.append(match)
+        match = Match(user1: 1, user2: 2, user1_first_name: String(), user2_first_name: String(), user1_last_name: String(), user2_last_name: String(), meal_datetime: String(), meal_period: String(), dining_hall: String(), chat_url: String())
+        match.user1_first_name = "Joe"
+        match.user1_last_name = "Bruin"
+        match.user2_first_name = "Jay"
+        match.user2_last_name = "Bruin"
+        match.meal_datetime = ""
+        match.meal_period = "DI"
+        match.dining_hall = "BP"
+        match.chat_url = "/users/messaging"
+        matches.append(match)
         
-        match = SuccessfulMatch(profilePicture: UIImage(), user: String(), firstName: String(), lastName: String(), diningHall: String(), mealPeriod: String(), chatURL: String(), day: String(), time: String())
-        match.user = "User3"
-        match.firstName = "Suzzie"
-        match.lastName = "Davis"
-        match.diningHall = "BPlate"
-        match.mealPeriod = "Breakfast"
-        match.day = "17th March, 2019"
-        match.time = "7 am"
-        successfulMatches.append(match)
+        match = Match(user1: 1, user2: 2, user1_first_name: String(), user2_first_name: String(), user1_last_name: String(), user2_last_name: String(), meal_datetime: String(), meal_period: String(), dining_hall: String(), chat_url: String())
+        match.user1_first_name = "Joe"
+        match.user1_last_name = "Bruin"
+        match.user2_first_name = "Michelle"
+        match.user2_last_name = "Obama"
+        match.meal_datetime = ""
+        match.meal_period = "BU"
+        match.dining_hall = "CO"
+        match.chat_url = "/users/messaging"
+        matches.append(match)
         
-        completionHandler(successfulMatches)
+        completionHandler.didReceiveMatches(requests: matches)
     }
 
-    func getPendingMatches(completionHandler: ([PendingRequest])->Void){
-        var pendingMatches = [PendingRequest]()
+    func getTestRequests(completionHandler: GetRequestsDelegate){
+        var requests = [Request]()
         
-        var match = PendingRequest(diningHall: String(), mealPeriod: String(), day: String(), times: String(), status: String())
-        match.diningHall = "BPlate"
-        match.mealPeriod = "Dinner"
-        match.day = "15th March, 2019"
-        match.times = "5 pm - 6 pm"
-        match.status = "P"
-        pendingMatches.append(match)
+        var request = Request(user: 1, meal_times: [String()], meal_day: String(), meal_period: String(), dining_hall: String(), status: String())
+        request.meal_times = [""]
+        request.meal_day = ""
+        request.meal_period = "BR"
+        request.dining_hall = "DN"
+        request.status = "P"
+        requests.append(request)
         
-        match = PendingRequest(diningHall: String(), mealPeriod: String(), day: String(), times: String(), status: String())
-        match.diningHall = "BPlate"
-        match.mealPeriod = "Breakfast"
-        match.day = "16th March, 2019"
-        match.times = "7 am - 8:30 am"
-        match.status = "P"
-        pendingMatches.append(match)
+        request = Request(user: 1, meal_times: [String()], meal_day: String(), meal_period: String(), dining_hall: String(), status: String())
+        request.meal_times = [""]
+        request.meal_day = ""
+        request.meal_period = "LU"
+        request.dining_hall = "BP"
+        request.status = "P"
+        requests.append(request)
         
-        match = PendingRequest(diningHall: String(), mealPeriod: String(), day: String(), times: String(), status: String())
-        match.diningHall = "Covel"
-        match.mealPeriod = "Dinner"
-        match.day = "16th March, 2019"
-        match.times = "6:30 pm - 8 pm"
-        match.status = "P"
-        pendingMatches.append(match)
+        request = Request(user: 1, meal_times: [String()], meal_day: String(), meal_period: String(), dining_hall: String(), status: String())
+        request.meal_times = [""]
+        request.meal_day = ""
+        request.meal_period = "DI"
+        request.dining_hall = "FE"
+        request.status = "T"
+        requests.append(request)
         
-        match = PendingRequest(diningHall: String(), mealPeriod: String(), day: String(), times: String(), status: String())
-        match.diningHall = "BPlate"
-        match.mealPeriod = "Lunch"
-        match.day = "17th March, 2019"
-        match.times = "12:30 pm - 1:30 pm"
-        match.status = "P"
-        pendingMatches.append(match)
+        request = Request(user: 1, meal_times: [String()], meal_day: String(), meal_period: String(), dining_hall: String(), status: String())
+        request.meal_times = [""]
+        request.meal_day = ""
+        request.meal_period = "LU"
+        request.dining_hall = "BP"
+        request.status = "S"
+        requests.append(request)
         
-        match = PendingRequest(diningHall: String(), mealPeriod: String(), day: String(), times: String(), status: String())
-        match.diningHall = "FEAST"
-        match.mealPeriod = "Dinner"
-        match.day = "17th March, 2019"
-        match.times = "6 pm - 6:30 pm"
-        match.status = "P"
-        pendingMatches.append(match)
-        
-        completionHandler(pendingMatches)
+        completionHandler.didReceiveRequests(requests: requests)
     }
 }

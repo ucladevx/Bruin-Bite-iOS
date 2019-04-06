@@ -9,33 +9,12 @@
 import Foundation
 import UIKit
 
-struct SuccessfulMatch{
-    var profilePicture: UIImage;
-    var user: String;
-    var firstName: String;
-    var lastName: String;
-    var diningHall: String;
-    var mealPeriod: String;
-    var chatURL: String;
-    var day: String;
-    var time: String;
-    
-}
-
-struct PendingRequest{
-    var diningHall: String;
-    var mealPeriod: String;
-    var day: String;
-    var times: String;
-    var status: String;
-}
-
 struct Request: Codable{
     var user: Int
     var meal_times: [String]
     var meal_day: String
     var meal_period: String
-    var dining_hall: [String]
+    var dining_hall: String
     var status: String
     
     enum CodingKeys: String, CodingKey {
