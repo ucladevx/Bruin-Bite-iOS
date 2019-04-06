@@ -14,5 +14,6 @@ target 'Bruin Bite' do
   pod 'Starscream'
   pod 'Repeat'
   pod "Pulsator"
+  pod 'ViewAnimator'  
 
 end
