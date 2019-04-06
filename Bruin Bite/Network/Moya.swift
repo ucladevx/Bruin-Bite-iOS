@@ -22,6 +22,7 @@ enum MainAPI {
     case matchUser(user: Int, meal_times: [String], meal_day: String, meal_period: String, dining_halls: [String])
     case refreshToken(refresh_token: String)
     case getRequests(user: Int, status: [String])
+    case getMatches(user: Int)
 }
 
 extension MainAPI: TargetType {
@@ -29,7 +30,7 @@ extension MainAPI: TargetType {
         switch self {
         case .getCurrentActivityLevels, .getOverviewMenu, .getDetailedMenu, .getHours:
             return URL(string: "https://api.bruin-bite.com/api/v1")!
-        case .createUser, .readUser, .loginUser, .updateUser, .deleteUser, .matchUser, .refreshToken, .getRequests:
+        case .createUser, .readUser, .loginUser, .updateUser, .deleteUser, .matchUser, .refreshToken, .getRequests, .getMatches:
             return URL(string: "https://api.bruin-bite.com/api/v1")!
         }
 
@@ -54,11 +55,13 @@ extension MainAPI: TargetType {
             return "/users/matching/new/"
         case .getRequests:
             return "/users/matching/requests"
+        case .getMatches:
+            return "/users/matching/matches"
         }
     }
     var method: Moya.Method {
         switch self {
-        case .getCurrentActivityLevels, .getOverviewMenu, .getDetailedMenu, .getHours, .readUsers, .getRequests:
+        case .getCurrentActivityLevels, .getOverviewMenu, .getDetailedMenu, .getHours, .readUser, .getRequests, .getMatches:
             return .get
         case .createUser, .loginUser, .matchUser, .refreshToken:
             return .post
@@ -88,6 +91,8 @@ extension MainAPI: TargetType {
             return .requestParameters(parameters: ["refresh_token": refresh_token], encoding: URLEncoding.default)
         case .getRequests(let user, let status):
             return .requestParameters(parameters: ["user": user, "status": status], encoding: JSONEncoding.default)
+        case .getMatches(let user):
+            return .requestParameters(parameters: ["user": user], encoding: JSONEncoding.default)
         }
     }
     //for testing
@@ -119,6 +124,8 @@ extension MainAPI: TargetType {
             return Data()
         case .getRequests:
             return Data();
+        case .getMatches:
+            return Data();
         }
     }
     var headers: [String: String]? {
@@ -129,7 +136,7 @@ extension MainAPI: TargetType {
             return ["Content-Type": "application/json"]
         case .loginUser, .refreshToken:
             return ["Content-Type": "application/x-www-form-urlencoded"]
-        case .readUsers, .updateUser, .deleteUser, .matchUser, .getRequests:
+        case .readUser, .updateUser, .deleteUser, .matchUser, .getRequests, .getMatches:
             var temp = "Bearer "
             temp += UserDefaultsManager.shared.getAccessToken()
             return ["Authorization": temp]

@@ -14,6 +14,9 @@ import Moya
 protocol GetRequestsDelegate {
     func didReceiveRequests(requests: [Request])
 }
+protocol GetMatchesDelegate {
+    func didReceiveMatches(requests: [Match])
+}
 
 class MatchingAPI {
     private let provider = MoyaProvider<MainAPI>()
@@ -35,23 +38,23 @@ class MatchingAPI {
             }
         }
     }
-//    func getMatches(completionDelegate: GetRequestsDelegate, user: Int){
-//        provider.request(.getMatches(user: user, status: status)) { result in
-//            switch result{
-//            case let .success(response):
-//                do {
-//                    let results = try JSONDecoder().decode([Match].self, from: response.data)
-//                    let jsonData = JSON(response.data)
-//                    print(jsonData)
-//                    completionDelegate.didReceiveRequests(requests: results)
-//                } catch let err{
-//                    print(err)
-//                }
-//            case let .failure(error):
-//                print(error)
-//            }
-//        }
-//    }
+    func getMatches(completionDelegate: GetMatchesDelegate, user: Int){
+        provider.request(.getMatches(user: user)) { result in
+            switch result{
+            case let .success(response):
+                do {
+                    let results = try JSONDecoder().decode([Match].self, from: response.data)
+                    let jsonData = JSON(response.data)
+                    print(jsonData)
+                    completionDelegate.didReceiveMatches(requests: results)
+                } catch let err{
+                    print(err)
+                }
+            case let .failure(error):
+                print(error)
+            }
+        }
+    }
 
 
     //TODO: Currently just test data
