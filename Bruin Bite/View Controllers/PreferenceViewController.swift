@@ -53,7 +53,6 @@ class PreferenceViewController: UIViewController, MatchDelegate {
             meal_times[i] = meal_day + " " + meal_times[i]
             print(meal_times[i])
         }
-        print(processTimes(meal_times))
         if(!meal_times.isEmpty && meal_day != "" && !dining_halls.isEmpty) {
         } else {
             return
@@ -357,5 +356,5 @@ extension PreferenceViewController: CZPickerViewDelegate, CZPickerViewDataSource
      }
      */
     
-}
+
 
