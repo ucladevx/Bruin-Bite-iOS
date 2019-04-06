@@ -30,6 +30,7 @@ PODS:
   - SnapKit (4.2.0)
   - Starscream (3.0.6)
   - SwiftyJSON (4.2.0)
+  - ViewAnimator (2.2.0)
 
 DEPENDENCIES:
   - CZPicker
@@ -40,6 +41,25 @@ DEPENDENCIES:
   - SnapKit
   - Starscream
   - SwiftyJSON
+  - ViewAnimator
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - Bolts
+    - CZPicker
+    - FacebookCore
+    - FacebookLogin
+    - FBSDKCoreKit
+    - FBSDKLoginKit
+    - Moya
+    - Pulsator
+    - Repeat
+    - Result
+    - SnapKit
+    - Starscream
+    - SwiftyJSON
+    - ViewAnimator
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
@@ -73,7 +93,7 @@ SPEC CHECKSUMS:
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   Starscream: ef3ece99d765eeccb67de105bfa143f929026cf5
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
-
+  ViewAnimator: a849844cc3698620e1a562b510ed0c28aeafcdc5
 PODFILE CHECKSUM: 3c5104a14614906514bad2e1f5f2e0d339c1a10f
 
 COCOAPODS: 1.5.0

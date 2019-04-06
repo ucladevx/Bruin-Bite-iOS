@@ -9,8 +9,7 @@
 import UIKit
 import Foundation
 
-class ProfileViewController: UIViewController {
-
+class ProfileViewController: UIViewController, ReadDelegate, AlertPresentable {
 
     @IBOutlet weak var profilePic: UIImageView!
     @IBOutlet weak var userName: UILabel!
@@ -19,8 +18,9 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        UserManager.shared.readDelegate = self
+
         self.hideKeyboardWhenTappedAround()
-        MAIN_USER.readUser()
         //Set background color
         view.backgroundColor = UIColor.twilightBlue
 
@@ -36,22 +36,6 @@ class ProfileViewController: UIViewController {
         ShortBio.textColor = UIColor.white
         ShortBio.font = UIFont.profileNameFont.withSize(16)
 
-        //Align text to center
-//        userName.textAlignment = NSTextAlignment.center
-//        yearMajor.textAlignment = NSTextAlignment.center
-//        ShortBio.textAlignment = NSTextAlignment.center
-
-        //Set labels equal to name
-        userName.text = MAIN_USER.accessUserInfo(type: "first")
-        let combine = String(MAIN_USER.accessUserYear()) + " | " + MAIN_USER.accessUserInfo(type: "major")
-        yearMajor.text = combine
-
-        //set profile picture
-        //profilePic.image = John.pic
-
-        //Set Bio Text
-        ShortBio.text = MAIN_USER.accessUserInfo(type: "bio")
-
         //Circular Profile Picture
         profilePic.layer.cornerRadius = profilePic.frame.size.width/2
         profilePic.clipsToBounds = true
@@ -60,23 +44,30 @@ class ProfileViewController: UIViewController {
         profilePic.layer.shadowOpacity = 1
         profilePic.layer.shadowRadius = 1.0
 
-        // Do any additional setup after loading the view.
+        fillInformation()
+        //Set the labels/profile picture with default or old information
+        UserManager.shared.readUser(email: UserDefaultsManager.shared.getUserEmail())
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func didReadUser() {
+        fillInformation()
     }
 
+    func fillInformation() {
+        userName.text = combineFirstAndLastName(first: UserDefaultsManager.shared.getFirstName(),
+                                                last: UserDefaultsManager.shared.getLastName())
+        let year: Int = UserDefaultsManager.shared.getYear()
+        let major: String = UserDefaultsManager.shared.getMajor()
+        yearMajor.text = "Year: \(year)" + " " + "Major: \(major)"
+        ShortBio.text = UserDefaultsManager.shared.getSelfBio()
+    }
 
-    /*
-     // MARK: - Navigation
+    func combineFirstAndLastName(first: String, last: String) -> String {
+        let combined: String = first + " " + last
+        return combined
+    }
 
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
-
+    func readFailed(error: String) {
+        presentAlert(alert: error)
+    }
 }

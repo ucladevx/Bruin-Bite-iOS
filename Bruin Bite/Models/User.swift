@@ -74,6 +74,7 @@ struct UserError {
     let password: [String]?
     let error: String?
     let error_description: String?
+    let detail: String?
 }
 
 extension UserError: Decodable {
@@ -82,6 +83,7 @@ extension UserError: Decodable {
         case password
         case error
         case error_description
+        case detail
     }
     
     init(from decoder: Decoder) throws {
@@ -106,6 +108,11 @@ extension UserError: Decodable {
             self.error_description = try container.decode(String.self, forKey: .error_description)
         } else {
             self.error_description = nil
+        }
+        if(container.contains(.detail)) {
+            self.detail = try container.decode(String.self, forKey: .detail)
+        } else {
+            self.detail = nil
         }
     }
 }

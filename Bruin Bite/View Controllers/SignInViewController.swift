@@ -9,79 +9,49 @@
 import UIKit
 import Moya
 
-class SignInViewController: UIViewController {
-    
-    @IBOutlet var SignInText: UILabel!
+class SignInViewController: UIViewController, LoginDelegate, AlertPresentable {
+
     @IBOutlet var EmailText: UITextField!
     @IBOutlet var PasswordText: UITextField!
     @IBOutlet var ForgotPassButton: UIButton!
     @IBOutlet var SignInButton: UIButton!
-    
+    //@IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        //activityIndicator.hidesWhenStopped = true
+        UserManager.shared.loginDelegate = self
+
         view.backgroundColor = UIColor.twilightBlue
-        SignInText.font = UIFont.signUpTextFont.withSize(20)
         EmailText.font = UIFont.signUpInfoFieldFont
         PasswordText.font = UIFont.signUpInfoFieldFont
         EmailText.textColor = .white
         PasswordText.textColor = .white
         SignInButton.setTitleColor(UIColor.white, for: .normal)
         SignInButton.titleLabel?.font = UIFont.signUpInfoFieldFont
-        
+
         SignInButton.layer.borderWidth = 1
         SignInButton.layer.borderColor = UIColor.white.cgColor
         SignInButton.layer.cornerRadius = 26
-        
+
         EmailText.becomeFirstResponder()
-        
-        // Do any additional setup after loading the view.
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        
+        Utilities.sharedInstance.formatNavigation(controller: self.navigationController!)
     }
     
     @IBAction func didPressSignIn(_ sender: UIButton) {
-        if(!(EmailText.text?.isEmail() ?? false)) {
-            //Invalid Email
-            return
-        }
-        if((PasswordText.text?.count ?? 0) < 8) {
-            //Invalid Password
-            return
-        }
-        
-        MAIN_USER.changeUserInfo(type: "email", info: EmailText.text!)
-        MAIN_USER.changeUserInfo(type: "password", info: PasswordText.text!)
-        MAIN_USER.loginUser()
-        if(UserDefaults.standard.object(forKey: "accessToken") == nil) {
-            return
-        }
-        if(MAIN_USER.getToken() != nil) {
-            MAIN_USER.readUser()
-            MAIN_USER.updateUser(dev_id: UserDefaults.standard.object(forKey: "Dev_Token") as? String ?? "")
-            self.performSegue(withIdentifier: "ShowMenuVC_2", sender: nil)
-        } else {
-            return
-        }
+        //activityIndicator.startAnimating()
+        UserManager.shared.loginUser(email: EmailText.text ?? "", password: PasswordText.text ?? "")
     }
-    
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
-}
 
+    func didLogin() {
+        //activityIndicator.stopAnimating()
+        UserManager.shared.readUser(email: EmailText.text ?? "")
+        UserDefaultsManager.shared.setPassword(to: PasswordText.text ?? "")
+        self.performSegue(withIdentifier: "ShowMainViewFromLogin", sender: nil)
+    }
+
+    func loginFailed(error: String) {
+        //activityIndicator.stopAnimating()
+        presentAlert(alert: error)
+    }
+}
