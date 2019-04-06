@@ -28,6 +28,13 @@ class PreferenceViewController: UIViewController, MatchDelegate {
     
     var generatedMatchID: Int? = nil // note:  if set, means that we can segue to searching screen. If not set, then we have a problem.
     
+    let defaultText = [
+        "Day": "What day are you free?",
+        "DiningHall": "Which one's your favorite?",
+        "MealPeriod": "When would you like to eat?",
+        "Time": "Starting time?"
+    ]
+    
     @IBAction func MatchButton(_ sender: Any) {
         //TODO: Must check that the User has chosen a meal period!
         //Here you check each of the categories have been chosen but due to our previous methods of choosing a meal period, I have temporarily removed the check for a meal period
@@ -36,13 +43,17 @@ class PreferenceViewController: UIViewController, MatchDelegate {
             return
         }
         
+        guard let meal_day_date = Date(fromUserFriendlyMonthDayYearString: meal_day) else {
+            return
+        }
+        
         meal_times = chosen
-        meal_day = convertDate(month: getMonth(dateMonth: meal_day), day: getDay(date: meal_day), year: getYear(date: meal_day))
-        print(meal_day)
+        meal_day = meal_day_date.yearMonthDayString()
         for i in 0...meal_times.count-1 {
             meal_times[i] = meal_day + " " + meal_times[i]
             print(meal_times[i])
         }
+        print(processTimes(meal_times))
         if(!meal_times.isEmpty && meal_day != "" && !dining_halls.isEmpty) {
         } else {
             return
@@ -67,10 +78,10 @@ class PreferenceViewController: UIViewController, MatchDelegate {
         meal_times = [String]()
         meal_day = String()
         dining_halls = [String]()
-        DayButton.setTitle("What day are you free?", for: .normal)
-        DiningHallButton.setTitle("Which one's your favorite?", for: .normal)
-        MealButton.setTitle("When would you like to eat?", for: .normal)
-        TimeButton.setTitle("Starting time?", for: .normal)
+        DayButton.setTitle(defaultText["Day"], for: .normal)
+        DiningHallButton.setTitle(defaultText["DiningHall"], for: .normal)
+        MealButton.setTitle(defaultText["MealPeriod"], for: .normal)
+        TimeButton.setTitle(defaultText["Time"], for: .normal)
     }
     
     override func viewDidLoad() {
@@ -86,19 +97,19 @@ class PreferenceViewController: UIViewController, MatchDelegate {
         MatchMeButton.layer.cornerRadius = 26
         
         // setting color and font of text field place holders
-        DayButton.setTitle("What day are you free?", for: .normal)
+        DayButton.setTitle(defaultText["Day"], for: .normal)
         DayButton.setTitleColor(.pinkishGrey, for: .normal)
         DayButton.titleLabel?.font = UIFont.avenirNextItalicFont.withSize(18)
         
-        DiningHallButton.setTitle("Which one's your favorite?", for: .normal)
+        DiningHallButton.setTitle(defaultText["DiningHall"], for: .normal)
         DiningHallButton.setTitleColor(.pinkishGrey, for: .normal)
         DiningHallButton.titleLabel?.font = UIFont.avenirNextItalicFont.withSize(18)
         
-        MealButton.setTitle("When would you like to eat?", for: .normal)
+        MealButton.setTitle(defaultText["MealPeriod"], for: .normal)
         MealButton.setTitleColor(.pinkishGrey, for: .normal)
         MealButton.titleLabel?.font = UIFont.avenirNextItalicFont.withSize(18)
         
-        TimeButton.setTitle("Starting time?", for: .normal)
+        TimeButton.setTitle(defaultText["Time"], for: .normal)
         TimeButton.setTitleColor(.pinkishGrey, for: .normal)
         TimeButton.titleLabel?.font = UIFont.avenirNextItalicFont.withSize(18)
 
@@ -126,6 +137,8 @@ class PreferenceViewController: UIViewController, MatchDelegate {
     
     @IBAction func showWithMultipleSelections(sender: AnyObject) {
         let picker = CZPickerView(headerTitle: "Dining Halls", cancelButtonTitle: "Cancel", confirmButtonTitle: "Confirm")
+        
+        dining_halls.removeAll()
         
         picks = ["Covel", "De Neve", "Feast", "Bruin Plate"]
         picker?.delegate = self as CZPickerViewDelegate
@@ -177,6 +190,8 @@ class PreferenceViewController: UIViewController, MatchDelegate {
         if let timePicker = storyBoard.instantiateViewController(withIdentifier: "TimePickerViewController") as? TimePickerViewController {
             timePicker.delegate = self
             self.present(timePicker, animated: true)
+            
+            meal_times.removeAll()
         }
     }
     
@@ -189,6 +204,7 @@ class PreferenceViewController: UIViewController, MatchDelegate {
         picker?.dataSource = self as CZPickerViewDataSource
         picker?.needFooterView = false
         picker?.allowMultipleSelection = true
+        
         picker?.checkmarkColor = UIColor.twilightBlue
         picker?.headerBackgroundColor = UIColor.twilightBlue
         picker?.confirmButtonBackgroundColor = UIColor.twilightBlue
@@ -284,6 +300,9 @@ extension PreferenceViewController: CZPickerViewDelegate, CZPickerViewDataSource
         switch(picks[0]) {
         case "Covel":
             DiningHallButton.setTitle(chosen, for: .normal)
+            if(chosen.isEmpty){
+                DiningHallButton.setTitle(defaultText["DiningHall"], for: .normal)
+            }
             break;
         case "Breakfast":
             MealButton.setTitle(chosen, for: .normal)
@@ -301,6 +320,7 @@ extension PreferenceViewController: CZPickerViewDelegate, CZPickerViewDataSource
 //                MAIN_USER.changeUserInfo(type: "period", info: "LN")
                 break
             default:
+                MealButton.setTitle(defaultText["MealPeriod"], for: .normal)
                 break
             }
             break;
@@ -309,6 +329,9 @@ extension PreferenceViewController: CZPickerViewDelegate, CZPickerViewDataSource
             break;
         default:
             DayButton.setTitle(chosen, for: .normal)
+            if(chosen.isEmpty){
+                DayButton.setTitle(defaultText["Day"], for: .normal)
+            }
             meal_day = chosen
             break;
         }
@@ -317,6 +340,11 @@ extension PreferenceViewController: CZPickerViewDelegate, CZPickerViewDataSource
     
     func didConfirm(withChoices: String) {
         TimeButton.setTitle(withChoices, for: .normal)
+        if(withChoices.isEmpty){
+            TimeButton.setTitle(defaultText["Time"], for: .normal)
+        }
+    }
+    
     }
     
     /*
