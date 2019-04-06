@@ -12,6 +12,7 @@
 		009521352234CA07002A2D62 /* MatchRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009521342234CA07002A2D62 /* MatchRequest.swift */; };
 		009521372234D52E002A2D62 /* MatchingAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009521362234D52E002A2D62 /* MatchingAPI.swift */; };
 		009B1C372225C2E4005AB454 /* PendingRequestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009B1C362225C2E4005AB454 /* PendingRequestsViewController.swift */; };
+		00C207F7221BB422003965FE /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C207F6221BB422003965FE /* Date+Extension.swift */; };
 		00C2DF0720B677040023CF75 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C2DF0620B677040023CF75 /* User.swift */; };
 		00C2DF0920B678890023CF75 /* Moya.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C2DF0820B678890023CF75 /* Moya.swift */; };
 		00C2DF0B20B678A00023CF75 /* UserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C2DF0A20B678A00023CF75 /* UserAPI.swift */; };
@@ -119,6 +120,7 @@
 		009521342234CA07002A2D62 /* MatchRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchRequest.swift; sourceTree = "<group>"; };
 		009521362234D52E002A2D62 /* MatchingAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchingAPI.swift; sourceTree = "<group>"; };
 		009B1C362225C2E4005AB454 /* PendingRequestsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingRequestsViewController.swift; sourceTree = "<group>"; };
+		00C207F6221BB422003965FE /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		00C2DF0620B677040023CF75 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		00C2DF0820B678890023CF75 /* Moya.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Moya.swift; sourceTree = "<group>"; };
 		00C2DF0A20B678A00023CF75 /* UserAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAPI.swift; sourceTree = "<group>"; };
@@ -468,6 +470,7 @@
 				2A68339120BC2113000DCAA4 /* UIButtonSignUp.swift */,
 				BF0943E520BC20FE00214200 /* UIViewControllerExtensions.swift */,
 				BFC8567B20C4CE3D00E5230E /* UILabelExtensions.swift */,
+				00C207F6221BB422003965FE /* Date+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -672,6 +675,7 @@
 				BF0943E220BBF3EE00214200 /* ChatMessage.swift in Sources */,
 				BD78709921AD352100E46A50 /* UserDefaultsManager.swift in Sources */,
 				BDDE7C6E207AF6840008A677 /* LoginViewController.swift in Sources */,
+				00C207F7221BB422003965FE /* Date+Extension.swift in Sources */,
 				00C2DF0B20B678A00023CF75 /* UserAPI.swift in Sources */,
 				BDDE7C72207B04D00008A677 /* UserTableViewCell.swift in Sources */,
 				C0CD676C203C1B19006B265D /* ColoredBezel.swift in Sources */,
