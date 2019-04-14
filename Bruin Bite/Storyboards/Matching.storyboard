@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -318,7 +319,7 @@
         <!--Match-->
         <scene sceneID="Uuc-OX-9tL">
             <objects>
-                <viewController id="fta-QD-RfK" customClass="PreferenceViewControllerOld" customModule="Bruin_Bite" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="fta-QD-RfK" customClass="PreferenceViewController" customModule="Bruin_Bite" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Vt4-pT-49c">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -337,7 +338,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="46" id="yV4-M3-KNa"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="30"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -345,7 +346,7 @@
                                 <rect key="frame" x="50" y="139" width="255" height="62.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Day" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="spr-IX-AVH">
-                                        <rect key="frame" x="0.0" y="0.0" width="28" height="19.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="28" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="O1x-NA-jk2"/>
                                         </constraints>
@@ -354,17 +355,14 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iG8-uB-H5k" userLabel="Day Button">
-                                        <rect key="frame" x="0.0" y="29.5" width="187" height="33"/>
+                                        <rect key="frame" x="0.0" y="30" width="187" height="32.5"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="33" id="E3y-0i-8B3"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="italicSystem" pointSize="18"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Italic" family="Avenir Next" pointSize="18"/>
                                         <state key="normal" title="What day are you free?">
-                                            <color key="titleColor" red="0.7803921568627451" green="0.7803921568627451" blue="0.7803921568627451" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
-                                        <connections>
-                                            <action selector="selectDateWithSender:" destination="fta-QD-RfK" eventType="touchUpInside" id="DgP-cj-PZf"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -381,7 +379,7 @@
                                 <rect key="frame" x="50" y="224" width="255" height="62.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dining Hall" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bSk-Lu-xzZ">
-                                        <rect key="frame" x="0.0" y="0.0" width="78" height="19.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="78" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="eff-KJ-Spt"/>
                                         </constraints>
@@ -390,17 +388,14 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L3w-V0-cdR" userLabel="Dining Button">
-                                        <rect key="frame" x="0.0" y="29.5" width="214" height="33"/>
+                                        <rect key="frame" x="0.0" y="30" width="215" height="32.5"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="33" id="maC-hO-m3R"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="italicSystem" pointSize="18"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Italic" family="Avenir Next" pointSize="18"/>
                                         <state key="normal" title="Which one's your favorite?">
-                                            <color key="titleColor" red="0.78039215689999997" green="0.78039215689999997" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
-                                        <connections>
-                                            <action selector="showWithMultipleSelectionsWithSender:" destination="fta-QD-RfK" eventType="touchUpInside" id="woW-gU-D9C"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -417,7 +412,7 @@
                                 <rect key="frame" x="50" y="309" width="255" height="62.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Meal Period" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="21s-Y1-82F">
-                                        <rect key="frame" x="0.0" y="0.0" width="85.5" height="19.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="85.5" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="nal-2h-cEX"/>
                                         </constraints>
@@ -426,17 +421,14 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T7L-JA-QJ5" userLabel="Meal Button">
-                                        <rect key="frame" x="0.0" y="29.5" width="226" height="33"/>
+                                        <rect key="frame" x="0.0" y="30" width="229" height="32.5"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="33" id="Uav-OA-I0i"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="italicSystem" pointSize="18"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Italic" family="Avenir Next" pointSize="18"/>
                                         <state key="normal" title="When would you like to eat?">
-                                            <color key="titleColor" red="0.78039215689999997" green="0.78039215689999997" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
-                                        <connections>
-                                            <action selector="mealPeriod:" destination="fta-QD-RfK" eventType="touchUpInside" id="Aw7-Z8-Iyn"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -453,7 +445,7 @@
                                 <rect key="frame" x="50" y="394" width="255" height="62.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gQF-MT-kYV">
-                                        <rect key="frame" x="0.0" y="0.0" width="255" height="19.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="255" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="qR7-2h-IFX"/>
                                         </constraints>
@@ -462,17 +454,14 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vt2-cc-eVz" userLabel="Time Button">
-                                        <rect key="frame" x="0.0" y="29.5" width="255" height="33"/>
+                                        <rect key="frame" x="0.0" y="30" width="255" height="32.5"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="33" id="XOJ-X3-Uuv"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="italicSystem" pointSize="18"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Italic" family="Avenir Next" pointSize="18"/>
                                         <state key="normal" title="Starting time?">
-                                            <color key="titleColor" red="0.78039215689999997" green="0.78039215689999997" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
-                                        <connections>
-                                            <action selector="selectTimeWithSender:" destination="fta-QD-RfK" eventType="touchUpInside" id="AWB-0g-vSn"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -493,9 +482,18 @@
                                 <state key="normal" title="Match Me!">
                                     <color key="titleColor" red="0.027450980390000001" green="0.2901960784" blue="0.46666666670000001" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
-                                <connections>
-                                    <action selector="MatchButton:" destination="fta-QD-RfK" eventType="touchUpInside" id="j66-Pd-Snk"/>
-                                </connections>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="keyPath" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="26"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.027450980390000001" green="0.2901960784" blue="0.46666666670000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -542,13 +540,12 @@
                     <tabBarItem key="tabBarItem" title="Match" image="Match" id="kze-iZ-F0z"/>
                     <navigationItem key="navigationItem" id="ZPJ-iI-1ch"/>
                     <connections>
-                        <outlet property="DayButton" destination="iG8-uB-H5k" id="4IT-67-Rhw"/>
-                        <outlet property="DiningHallButton" destination="L3w-V0-cdR" id="Xpl-cr-vvb"/>
-                        <outlet property="MatchMeButton" destination="QDj-8C-7r4" id="MM5-mS-wPK"/>
-                        <outlet property="MealButton" destination="T7L-JA-QJ5" id="4T6-Ou-ILF"/>
-                        <outlet property="TimeButton" destination="vt2-cc-eVz" id="uiN-6H-IpZ"/>
-                        <outlet property="TitleText" destination="ndn-cE-reU" id="p3N-Xc-a6b"/>
-                        <outlet property="TopView" destination="Dhc-QX-g7l" id="nEf-aU-Ka2"/>
+                        <outlet property="DayBtn" destination="iG8-uB-H5k" id="Gaz-jY-LCK"/>
+                        <outlet property="DiningHallBtn" destination="L3w-V0-cdR" id="Q3N-vc-eFn"/>
+                        <outlet property="MatchMeBtn" destination="QDj-8C-7r4" id="p6w-bS-Asd"/>
+                        <outlet property="MealPeriodBtn" destination="T7L-JA-QJ5" id="xRW-xC-cc5"/>
+                        <outlet property="TimeBtn" destination="vt2-cc-eVz" id="Oc2-Mw-ham"/>
+                        <outlet property="TopView" destination="Dhc-QX-g7l" id="PE4-Sh-ZAd"/>
                         <segue destination="JBV-Dc-6bW" kind="show" identifier="showSearchingVC" id="kWI-sD-1eq"/>
                     </connections>
                 </viewController>

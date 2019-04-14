@@ -70,6 +70,7 @@
 		BF5D97E220B973570086D451 /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF5D97E120B973570086D451 /* Chat.storyboard */; };
 		BF5D97E420B974F60086D451 /* ChatListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5D97E320B974F60086D451 /* ChatListViewController.swift */; };
 		BF5D97E620B97F490086D451 /* ChatPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5D97E520B97F490086D451 /* ChatPreview.swift */; };
+		BF9BC1672262FE0C00C9EC58 /* PreferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9BC1662262FE0C00C9EC58 /* PreferenceViewController.swift */; };
 		BFC8567C20C4CE3D00E5230E /* UILabelExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC8567B20C4CE3D00E5230E /* UILabelExtensions.swift */; };
 		BFC934B320C3448A0040D08D /* ChatListAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC934B220C3448A0040D08D /* ChatListAPI.swift */; };
 		BFE168A3209AB8DD00D021A2 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE168A2209AB8DD00D021A2 /* CollectionViewController.swift */; };
@@ -181,6 +182,7 @@
 		BF5D97E120B973570086D451 /* Chat.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Chat.storyboard; sourceTree = "<group>"; };
 		BF5D97E320B974F60086D451 /* ChatListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListViewController.swift; sourceTree = "<group>"; };
 		BF5D97E520B97F490086D451 /* ChatPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatPreview.swift; sourceTree = "<group>"; };
+		BF9BC1662262FE0C00C9EC58 /* PreferenceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceViewController.swift; sourceTree = "<group>"; };
 		BFC8567B20C4CE3D00E5230E /* UILabelExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelExtensions.swift; sourceTree = "<group>"; };
 		BFC934B220C3448A0040D08D /* ChatListAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListAPI.swift; sourceTree = "<group>"; };
 		BFE168A2209AB8DD00D021A2 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
@@ -298,6 +300,7 @@
 				BF5D97E320B974F60086D451 /* ChatListViewController.swift */,
 				BF0943DF20BBF1EB00214200 /* ChatScreenViewController.swift */,
 				BD7870A721B6854900E46A50 /* AutoLoginViewController.swift */,
+				BF9BC1662262FE0C00C9EC58 /* PreferenceViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -710,6 +713,7 @@
 				C0CD676A203C15CC006B265D /* TimeView.swift in Sources */,
 				2B952C67202BDBB200F27727 /* WeekView.swift in Sources */,
 				2A03D94620B77A1A004EFC97 /* TimePickerCollectionViewCell.swift in Sources */,
+				BF9BC1672262FE0C00C9EC58 /* PreferenceViewController.swift in Sources */,
 				2A9447802055FA3E0033B6C6 /* AllergensBarScrollView.swift in Sources */,
 				DCF0E2E420B260BA0036A32F /* SignUpViewController.swift in Sources */,
 				00C2DF1120B6790D0023CF75 /* keys.swift in Sources */,
