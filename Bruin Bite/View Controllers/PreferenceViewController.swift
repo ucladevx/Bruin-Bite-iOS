@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import CZPicker
 
 class PreferenceViewController: UIViewController {
     @IBOutlet weak var TopView: UIView!
@@ -16,6 +17,12 @@ class PreferenceViewController: UIViewController {
     @IBOutlet weak var MealPeriodBtn: UIButton!
     @IBOutlet weak var TimeBtn: UIButton!
     @IBOutlet weak var MatchMeBtn: UIButton!
+    
+    private let datePicker: CZPickerView = CZPickerView(headerTitle: "Dates", cancelButtonTitle: "Cancel", confirmButtonTitle: "Confirm")
+    private let diningHallPicker: CZPickerView = CZPickerView(headerTitle: "Dining Halls", cancelButtonTitle: "Cancel", confirmButtonTitle: "Confirm")
+    private let mealPeriodPicker: CZPickerView = CZPickerView(headerTitle: "Meal Periods", cancelButtonTitle: "Cancel", confirmButtonTitle: "Confirm")
+    private let timePicker: CZPickerView = CZPickerView(headerTitle: "Start Times", cancelButtonTitle: "Cancel", confirmButtonTitle: "Confirm")
+    
     
     let DEFAULT_TEXT: [String:String] = [
         "Day": "What day are you free?",
@@ -35,9 +42,4 @@ class PreferenceViewController: UIViewController {
         MealPeriodBtn.setTitle(DEFAULT_TEXT["MealPeriod"], for: .normal)
         TimeBtn.setTitle(DEFAULT_TEXT["Time"], for: .normal)
     }
-    
-    
-    
-    
-    
 }
