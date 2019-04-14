@@ -1,5 +1,5 @@
 //
-//  PreferenceViewController.swift
+//  PreferenceViewControllerOld.swift
 //  Dont Eat Alone
 //
 //  Created by Ryan Lee on 5/1/18.
@@ -10,7 +10,7 @@ import UIKit
 import CZPicker
 
 
-class PreferenceViewController: UIViewController, MatchDelegate {
+class PreferenceViewControllerOld: UIViewController, MatchDelegate {
 
     @IBOutlet var TopView: UIView!
     @IBOutlet var TitleText: UILabel!
@@ -231,7 +231,7 @@ class PreferenceViewController: UIViewController, MatchDelegate {
 }
 
 
-extension PreferenceViewController: CZPickerViewDelegate, CZPickerViewDataSource, TimePickerViewControllerDelegate {
+extension PreferenceViewControllerOld: CZPickerViewDelegate, CZPickerViewDataSource, TimePickerViewControllerDelegate {
         func numberOfRows(in pickerView: CZPickerView!) -> Int {
             return picks.count
         }

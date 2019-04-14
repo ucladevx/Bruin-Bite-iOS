@@ -318,7 +318,7 @@
         <!--Match-->
         <scene sceneID="Uuc-OX-9tL">
             <objects>
-                <viewController id="fta-QD-RfK" customClass="PreferenceViewController" customModule="Bruin_Bite" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="fta-QD-RfK" customClass="PreferenceViewControllerOld" customModule="Bruin_Bite" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Vt4-pT-49c">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

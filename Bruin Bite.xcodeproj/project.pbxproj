@@ -61,7 +61,7 @@
 		BDDE7C6E207AF6840008A677 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDE7C6D207AF6840008A677 /* LoginViewController.swift */; };
 		BDDE7C70207B04590008A677 /* MatchingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDE7C6F207B04590008A677 /* MatchingListViewController.swift */; };
 		BDDE7C72207B04D00008A677 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDE7C71207B04D00008A677 /* UserTableViewCell.swift */; };
-		BF0523E1209AA7DC0013EE11 /* PreferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0523E0209AA7DB0013EE11 /* PreferenceViewController.swift */; };
+		BF0523E1209AA7DC0013EE11 /* PreferenceViewControllerOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0523E0209AA7DB0013EE11 /* PreferenceViewControllerOld.swift */; };
 		BF0523E3209AA7E00013EE11 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0523E2209AA7E00013EE11 /* ProfileViewController.swift */; };
 		BF0943E020BBF1EB00214200 /* ChatScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0943DF20BBF1EB00214200 /* ChatScreenViewController.swift */; };
 		BF0943E220BBF3EE00214200 /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0943E120BBF3EE00214200 /* ChatMessage.swift */; };
@@ -172,7 +172,7 @@
 		BDDE7C6D207AF6840008A677 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		BDDE7C6F207B04590008A677 /* MatchingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchingListViewController.swift; sourceTree = "<group>"; };
 		BDDE7C71207B04D00008A677 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
-		BF0523E0209AA7DB0013EE11 /* PreferenceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferenceViewController.swift; sourceTree = "<group>"; };
+		BF0523E0209AA7DB0013EE11 /* PreferenceViewControllerOld.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferenceViewControllerOld.swift; sourceTree = "<group>"; };
 		BF0523E2209AA7E00013EE11 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		BF0943DF20BBF1EB00214200 /* ChatScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatScreenViewController.swift; sourceTree = "<group>"; };
 		BF0943E120BBF3EE00214200 /* ChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
@@ -284,7 +284,7 @@
 				2AFA40B320BC07BC0007FB85 /* MatchingViewControllers */,
 				2A03D94020B76B88004EFC97 /* PopupViewControllers */,
 				BF0523E2209AA7E00013EE11 /* ProfileViewController.swift */,
-				BF0523E0209AA7DB0013EE11 /* PreferenceViewController.swift */,
+				BF0523E0209AA7DB0013EE11 /* PreferenceViewControllerOld.swift */,
 				770251B5201D4079002E4515 /* MenuVC.swift */,
 				2AFB41322047DD86004025F9 /* ItemDetailViewController.swift */,
 				BDDE7C6F207B04590008A677 /* MatchingListViewController.swift */,
@@ -496,6 +496,7 @@
 				770251AE201D4079002E4515 /* Resources */,
 				D601296F579F59F8E568D410 /* [CP] Embed Pods Frameworks */,
 				2AFA409F20BBD7A00007FB85 /* Embed App Extensions */,
+				E846EFAB5A1F7F120370109E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -644,6 +645,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Bruin Bite/Pods-Bruin Bite-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		E846EFAB5A1F7F120370109E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Bruin Bite/Pods-Bruin Bite-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -682,7 +698,7 @@
 				2AFA40AF20BC07AD0007FB85 /* NoMatchViewController.swift in Sources */,
 				BDAED25D219FD598005A22F3 /* UserManager.swift in Sources */,
 				FCA7A0F62190E0040096E821 /* Utilities.swift in Sources */,
-				BF0523E1209AA7DC0013EE11 /* PreferenceViewController.swift in Sources */,
+				BF0523E1209AA7DC0013EE11 /* PreferenceViewControllerOld.swift in Sources */,
 				BF0943E620BC20FE00214200 /* UIViewControllerExtensions.swift in Sources */,
 				DCF0E2DC20B260510036A32F /* UIColor+Additions.swift in Sources */,
 				2AB62E6C20488A050013CB59 /* MenuAPI.swift in Sources */,
