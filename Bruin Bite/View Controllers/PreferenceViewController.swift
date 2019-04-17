@@ -192,9 +192,9 @@ extension PreferenceViewController: CZPickerViewDelegate {
 }
 
 extension PreferenceViewController: TimePickerViewControllerDelegate {
-    func didConfirm(withChoices: String) {
-        TimeBtn.setTitle(withChoices, for: .normal)
-        if(withChoices.isEmpty){
+    func didConfirm(withChoices choices: String) {
+        TimeBtn.setTitle(choices, for: .normal)
+        if(choices.isEmpty) {
             TimeBtn.setTitle(DEFAULT_TEXT["Time"], for: .normal)
         }
     }
