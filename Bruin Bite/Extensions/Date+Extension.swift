@@ -33,6 +33,21 @@ extension Date {
             formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
             return formatter
         }()
+        
+        static let hourMinuteFormatter: DateFormatter = { () -> DateFormatter in
+            let formatter = DateFormatter()
+            formatter.dateFormat = "hh:mm"
+            return formatter
+        }()
+    }
+    
+    init? (fromStartOfDate: Bool) {
+        if fromStartOfDate {
+            let startOfDate = Calendar.current.startOfDay(for: Date())
+            self.init(timeIntervalSince1970: startOfDate.timeIntervalSince1970)
+        } else {
+            self.init()
+        }
     }
     
     init? (fromUserFriendlyMonthDayYearString userFriendlyMonthDayYearString: String ) {
@@ -69,6 +84,25 @@ extension Date {
     
     func userFriendlyMonthDayYearString() -> String {
         return Formatters.userFriendlyMonthDayYearFormatter.string(from: self)
+    }
+    
+    func hourMinuteDayString() -> String {
+        return Formatters.hourMinuteFormatter.string(from: self)
+    }
+
+    static func breakfastStartTime(onDate date: Date) -> Date {
+        let d = Calendar.current.date(bySetting: .hour, value: 7, of: date) ?? date
+        return Calendar.current.date(bySetting: .minute, value: 0, of: d) ?? date
+    }
+    
+    static func lunchStartTime(onDate date: Date) -> Date {
+        let d = Calendar.current.date(bySetting: .hour, value: 11, of: date) ?? date
+        return Calendar.current.date(bySetting: .minute, value: 0, of: d) ?? date
+    }
+    
+    static func dinnerStartTime(onDate date: Date) -> Date {
+        let d = Calendar.current.date(bySetting: .hour, value: 16, of: date) ?? date
+        return Calendar.current.date(bySetting: .minute, value: 0, of: d) ?? date
     }
 }
 
