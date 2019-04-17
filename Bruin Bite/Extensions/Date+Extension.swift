@@ -66,5 +66,9 @@ extension Date {
     func yearMonthDayString() -> String {
         return Formatters.yearMonthDayFormatter.string(from: self)
     }
+    
+    func userFriendlyMonthDayYearString() -> String {
+        return Formatters.userFriendlyMonthDayYearFormatter.string(from: self)
+    }
 }
 
