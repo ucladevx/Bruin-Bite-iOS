@@ -25,6 +25,13 @@ class PreferenceViewController: UIViewController {
         "Time": "Starting time?"
     ]
     
+    let ERROR_TEXT: [String: String] = [
+        "Day": "Please select a date!",
+        "DiningHall": "Select a dining hall!",
+        "MealPeriod": "Choose a meal period!",
+        "Time": "Pick a start time!"
+    ]
+    
     private let datePicker: CZPickerView = CZPickerView(headerTitle: "Dates", cancelButtonTitle: "Cancel", confirmButtonTitle: "Confirm")
     private let diningHallPicker: CZPickerView = CZPickerView(headerTitle: "Dining Halls", cancelButtonTitle: "Cancel", confirmButtonTitle: "Confirm")
     private let mealPeriodPicker: CZPickerView = CZPickerView(headerTitle: "Meal Periods", cancelButtonTitle: "Cancel", confirmButtonTitle: "Confirm")
@@ -78,11 +85,11 @@ class PreferenceViewController: UIViewController {
     
     @IBAction func didPressTimeBtn(_ sender: Any) {
         guard let selectedDate = selectedDate else{
-            Utilities.sharedInstance.displayErrorLabel(text: "Please select a date!", field: DayBtn)
+            Utilities.sharedInstance.displayErrorLabel(text: ERROR_TEXT["Day"] ?? "", field: DayBtn)
             return
         }
         guard let selectedMealPeriod = selectedMealPeriod else {
-            Utilities.sharedInstance.displayErrorLabel(text: "Please enter a meal period!", field: MealPeriodBtn)
+            Utilities.sharedInstance.displayErrorLabel(text: ERROR_TEXT["MealPeriod"] ?? "", field: MealPeriodBtn)
             return
         }
         let storyBoard = UIStoryboard(name: "PopupViewControllers", bundle: nil)
@@ -94,6 +101,30 @@ class PreferenceViewController: UIViewController {
         }
     }
     
+    @IBAction func didPressMatchMe(_ sender: Any) {
+        guard let selectedDate = selectedDate else {
+            Utilities.sharedInstance.displayErrorLabel(text: ERROR_TEXT["Day"] ?? "", field: DayBtn)
+            return
+        }
+        guard let selectedDiningHalls = selectedDiningHalls else {
+            Utilities.sharedInstance.displayErrorLabel(text: ERROR_TEXT["DiningHall"] ?? "", field: DiningHallBtn)
+            return
+        }
+        guard let selectedMealPeriod = selectedMealPeriod else {
+            Utilities.sharedInstance.displayErrorLabel(text: ERROR_TEXT["MealPeriod"] ?? "", field: MealPeriodBtn)
+            return
+        }
+        guard let selectedDatetimes = selectedDateTimes else {
+            Utilities.sharedInstance.displayErrorLabel(text: ERROR_TEXT["Time"] ?? "", field: TimeBtn)
+            return
+        }
+        
+        // TODO: Figure out date formats
+        let selectedDateTimeStrings = selectedDatetimes.map { $0.rcf3339String() }
+        let selectedDateString = selectedDate.rcf3339String()
+        // request:
+    }
+
     private func setUpPickers() {
         datePicker.dataSource = self
         datePicker.delegate = self
@@ -143,17 +174,25 @@ extension PreferenceViewController: CZPickerViewDelegate {
     func czpickerView(_ pickerView: CZPickerView!, didConfirmWithItemAtRow row: Int) {
         switch pickerView {
         case datePicker:
+            let oldDate = selectedDate
             selectedDate = datePicks[row]
             DayBtn.setTitle(datePicks[row].userFriendlyMonthDayYearString(), for: .normal)
-            // Must reset selected times
-            selectedDateTimes = nil
-            TimeBtn.setTitle(DEFAULT_TEXT["Time"], for: .normal)
+
+            // Must reset selected times if date selection changed
+            if oldDate != selectedDate {
+                selectedDateTimes = nil
+                TimeBtn.setTitle(DEFAULT_TEXT["Time"], for: .normal)
+            }
         case mealPeriodPicker:
+            let oldMealPeriod = selectedMealPeriod
             selectedMealPeriod = mealPeriodCode(forMealPeriod: mealPeriodPicks[row])
             MealPeriodBtn.setTitle(mealPeriodPicks[row], for: .normal)
-            // Must reset selected times
-            selectedDateTimes = nil
-            TimeBtn.setTitle(DEFAULT_TEXT["Time"], for: .normal)
+
+            // Must reset selected times if meal period selection changes
+            if oldMealPeriod != selectedMealPeriod {
+                selectedDateTimes = nil
+                TimeBtn.setTitle(DEFAULT_TEXT["Time"], for: .normal)
+            }
         default:
             print ("Sumfin's wrong")
         }
@@ -187,13 +226,13 @@ extension PreferenceViewController: CZPickerViewDelegate {
                 DayBtn.setTitle(DEFAULT_TEXT["Day"], for: .normal)
             }
         case diningHallPicker:
-            selectedDiningHalls = nil
             if pickerView.selectedRows()?.count ?? 0 < 1 {
+                selectedDiningHalls = nil
                 DiningHallBtn.setTitle(DEFAULT_TEXT["Day"], for: .normal)
             }
         case mealPeriodPicker:
-            selectedMealPeriod = nil
             if pickerView.selectedRows()?.count ?? 0 < 1 {
+                selectedMealPeriod = nil
                 MealPeriodBtn.setTitle(DEFAULT_TEXT["Day"], for: .normal)
             }
         default:

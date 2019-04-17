@@ -89,6 +89,10 @@ extension Date {
     func hourMinuteString() -> String {
         return Formatters.hourMinuteFormatter.string(from: self)
     }
+    
+    func rcf3339String() -> String {
+        return Formatters.RCF3339Formatter.string(from: self)
+    }
 
     static func breakfastStartTime(onDate date: Date) -> Date {
         let d = Calendar.current.date(bySetting: .hour, value: 7, of: date) ?? date
