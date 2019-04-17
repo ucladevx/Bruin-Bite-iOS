@@ -35,7 +35,7 @@ class PreferenceViewController: UIViewController {
     private var datePicks: [Date] {
         get {
             var dates: [Date] = []
-            let currentDate = Date()
+            let currentDate = Date(fromStartOfDate: true) ?? Date()
             for i in 0..<5 {
                 dates.append( Calendar.current.date(byAdding: .day, value: i, to: currentDate) ?? currentDate)
             }
@@ -48,7 +48,7 @@ class PreferenceViewController: UIViewController {
     private var selectedDate: Date? = nil
     private var selectedDiningHalls: [String]? = nil
     private var selectedMealPeriod: String? = nil
-    private var selectedTimes: [String]? = nil
+    private var selectedDateTimes: [Date]? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,6 +77,10 @@ class PreferenceViewController: UIViewController {
     }
     
     @IBAction func didPressTimeBtn(_ sender: Any) {
+        guard let selectedDate = selectedDate else{
+            Utilities.sharedInstance.displayErrorLabel(text: "Please select a date!", field: DayBtn)
+            return
+        }
         guard let selectedMealPeriod = selectedMealPeriod else {
             Utilities.sharedInstance.displayErrorLabel(text: "Please enter a meal period!", field: MealPeriodBtn)
             return
@@ -85,6 +89,7 @@ class PreferenceViewController: UIViewController {
         if let timePicker = storyBoard.instantiateViewController(withIdentifier: "TimePickerViewController") as? TimePickerViewController {
             timePicker.delegate = self
             timePicker.chosen_meal_period = selectedMealPeriod
+            timePicker.chosen_date = selectedDate
             self.present(timePicker, animated: true)
         }
     }
@@ -140,9 +145,15 @@ extension PreferenceViewController: CZPickerViewDelegate {
         case datePicker:
             selectedDate = datePicks[row]
             DayBtn.setTitle(datePicks[row].userFriendlyMonthDayYearString(), for: .normal)
+            // Must reset selected times
+            selectedDateTimes = nil
+            TimeBtn.setTitle(DEFAULT_TEXT["Time"], for: .normal)
         case mealPeriodPicker:
             selectedMealPeriod = mealPeriodCode(forMealPeriod: mealPeriodPicks[row])
             MealPeriodBtn.setTitle(mealPeriodPicks[row], for: .normal)
+            // Must reset selected times
+            selectedDateTimes = nil
+            TimeBtn.setTitle(DEFAULT_TEXT["Time"], for: .normal)
         default:
             print ("Sumfin's wrong")
         }
@@ -186,16 +197,19 @@ extension PreferenceViewController: CZPickerViewDelegate {
                 MealPeriodBtn.setTitle(DEFAULT_TEXT["Day"], for: .normal)
             }
         default:
-            print ("hey")
+            print ("Gon' Fishin'")
         }
     }
 }
 
 extension PreferenceViewController: TimePickerViewControllerDelegate {
-    func didConfirm(withChoices choices: String) {
-        TimeBtn.setTitle(choices, for: .normal)
-        if(choices.isEmpty) {
+    func didConfirm(withChoices choices: [Date]) {
+        if choices.isEmpty {
             TimeBtn.setTitle(DEFAULT_TEXT["Time"], for: .normal)
+            return
         }
+        selectedDateTimes = choices
+        let dateTimeStrings = choices.map { $0.hourMinuteString() }
+        TimeBtn.setTitle(dateTimeStrings.joined(separator: ", "), for: .normal)
     }
 }
