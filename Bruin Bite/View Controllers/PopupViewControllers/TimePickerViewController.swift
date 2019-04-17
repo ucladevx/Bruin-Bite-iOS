@@ -21,13 +21,16 @@ protocol TimePickerViewControllerDelegate {
 
 class TimePickerViewController: UIViewController {
     
+    // INPUT:
+    var chosen_meal_period: String? = nil
+    
     var delegate: TimePickerViewControllerDelegate? = nil
     
     var times: [timeData] = []
 //    var times: [String] = ["10:00", "10:15", "10:30", "10:45", "11:00", "11:15", "11:30", "10:45", "12:00", "12:15"]
     let breakfast_times = ["07:15", "07:30", "07:45", "08:00", "08:15", "08:30", "08:45", "09:00", "09:15", "09:30", "09:45", "10:00", "10:15", "10:30", "10:45", "11:00"]
     let lunch_times = ["11:15", "11:30", "11:45", "12:00", "12:15", "12:30", "12:45", "1:00", "1:15", "1:30", "1:45", "2:00", "2:15", "2:30","2:45", "3:00"]
-    let dinner_times = ["4:15", "4:30", "4:45", "5:00", "5:15", "5:30", "5:45", "6:00", "6:15", "6:30", "6:45", "7:00", "7:15", "7:30","7:45", "8:00"]
+    let dinner_times = ["5:00", "5:15", "5:30", "5:45", "6:00", "6:15", "6:30", "6:45", "7:00", "7:15", "7:30","7:45", "8:00"]
     let late_times = ["9:00", "9:15", "9:30", "9:45", "10:00", "10:15", "10:30", "10:45", "11:00", "11:15", "11:30", "11:45", "12:00", "12:15","12:30", "12:45"]
 
   @IBOutlet weak var popupView: UIView!
@@ -37,15 +40,26 @@ class TimePickerViewController: UIViewController {
     }
     
   override func viewDidLoad() {
-        super.viewDidLoad()
-        times = [timeData]()
-        popupView.layer.cornerRadius = 10
-        popupView.layer.masksToBounds = true
-        // THESE ARE DEFAULT TIMES -- MUST BE CHANGED
-        for i in 0...15 {
-            let time = timeData(text: breakfast_times[i], isSelected: false)
-            times.append(time)
-        }
+    super.viewDidLoad()
+    times = [timeData]()
+    popupView.layer.cornerRadius = 10
+    popupView.layer.masksToBounds = true
+
+    var selected_period_times = breakfast_times
+    switch chosen_meal_period {
+    case "BR":
+        selected_period_times = breakfast_times
+    case "LU":
+        selected_period_times = lunch_times
+    case "DI":
+        selected_period_times = dinner_times
+    default:
+        selected_period_times = breakfast_times
+    }
+    for i in 0...15 {
+        let time = timeData(text: selected_period_times[i], isSelected: false)
+        times.append(time)
+    }
     }
   
   @IBAction func completeActionButton(_ sender: Any) {
