@@ -121,15 +121,15 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
             
             self.updateData(dateFormatter.string(from: date), mP: self.currMP)
         }
-//        API.getDetailedMenu { parsedMenus in
-//            for m in parsedMenus{
-//                for i in 0..<(self.menuData.menus.count){
-//                    if(self.menuData.menus[i].date == m.date){
-//                        self.menuData.menus[i].detailedData = m.detailedData
-//                    }
-//                }
-//            }
-//        }
+        API.getDetailedMenu { parsedMenus in
+            for m in parsedMenus{
+                for i in 0..<(self.menuData.menus.count){
+                    if(self.menuData.menus[i].date == m.date){
+                        self.menuData.menus[i].detailedData = m.detailedData
+                    }
+                }
+            }
+        }
         backgroundTopBar.backgroundColor = UIColor.twilightBlue
         computedHeight = Array(repeating: defaultHeight, count: self.diningHalls.count)
         // Do any additional setup after loading the view, typically from a nib.
@@ -137,7 +137,7 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.setNavigationBarHidden(true, animated: false)
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
     let defaultHeight: CGFloat = 250;
@@ -240,11 +240,12 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         
         cell.viewMoreButton.setTitleColor(UIColor.twilightBlue, for: .normal)
         cell.viewMoreButton.backgroundColor = UIColor.white
+
+        let rowData: Location = Array(data.keys)[indexPath.row]
+        cell.menuCard.diningHallName.text? = rowData.rawValue
         
-        cell.menuCard.diningHallName.text? = Array(data.keys)[indexPath.row].rawValue
         
-        
-        if let hall = Location(rawValue: Array(data.keys)[indexPath.row].rawValue) {
+        if let hall = Location(rawValue: rowData.rawValue) {
             var hoursText = ""
             switch currMP {
             case .breakfast:
@@ -263,7 +264,7 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         }
         
         
-        cell.initializeData(data: data[Array(data.keys)[indexPath.row]]!)
+        cell.initializeData(diningHallName: rowData.rawValue, data: data[rowData]!)
         
         cell.parentVC = self
         cell.parentView = self.menuCardsCollection
@@ -286,10 +287,10 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         cell.menuCard.activityLevelBar.resizeToZero()
         cell.menuCard.activityLevelBar.percentage = CGFloat(0)
         for a in activityLevelData{
-            if (a.isAvailable && Array(data.keys)[indexPath.row] == a.location && currDate == initDate && currMP == initMP) {
+            if (a.isAvailable && rowData == a.location && currDate == initDate && currMP == initMP) {
                 cell.menuCard.activityLevelBar.percentage = CGFloat(a.percent)/100
             }
-            else if (Array(data.keys)[indexPath.row] == a.location){
+            else if (rowData == a.location){
                 cell.menuCard.activityLevelBar.percentage = CGFloat(0)
             }
         }
@@ -317,10 +318,28 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         self.performSegue(withIdentifier: "segueToItemDetailVC", sender: nil)
     }
 
+    struct MenuDetailSender {
+        var location: String
+        var items: [Item]
+    }
+
+    func showDetailViewController(location: String, items: [Item]) {
+        self.performSegue(withIdentifier: "segueToDetailVC", sender: MenuDetailSender(location: location, items: items))
+    }
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "segueToItemDetailVC") {
+        switch segue.identifier {
+        case "segueToDetailVC"?:
+            guard let data = sender as? MenuDetailSender else { return }
+            let vc = segue.destination as! MenuDetailViewController
+            vc.items = data.items
+            vc.location = data.location
+            break
+        case "segueToItemDetailVC"?:
             let vc = segue.destination as! ItemDetailViewController
             vc.menuItem = self.menuItem
+        default:
+            preconditionFailure("Unexpected segue identifier.")
         }
     }
 }

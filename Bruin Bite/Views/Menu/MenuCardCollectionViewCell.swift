@@ -14,7 +14,7 @@ class MenuCardCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var menuCard: MenuCardView!
     @IBOutlet weak var viewMoreButton: UIButton!
     
-    var diningHallName: String = ""
+    var location: String = ""
     var items: [Item] = []
     
     var parentView: UICollectionView!
@@ -22,26 +22,13 @@ class MenuCardCollectionViewCell: UICollectionViewCell {
     var computedHeight: CGFloat = 250
     
     @IBAction func viewMorePressed(_ sender: UIButton) {
-        var diff = menuCard.data.count - 3
-        if (diff < 3){
-            diff = menuCard.data.count
-        }
-        
-        let indexRow = index.row
-        
-        if let parentVC = parentVC{
-            if (parentVC.computedHeight[indexRow] > parentVC.defaultHeight){
-                computedHeight = self.frame.height-CGFloat(42*diff)
-            }
-            else{
-                computedHeight = self.frame.height+CGFloat(42*diff)
-            }
-        }
-        parentVC?.computedHeight[indexRow] = computedHeight
-        parentView.reloadItems(at: [index])
+        parentVC?.showDetailViewController(location: location, items: items)
     }
     
-    func initializeData(data: [Item]) {
+    func initializeData(diningHallName: String, data: [Item]) {
+        self.items = data
+        self.location = diningHallName
+
         menuCard.populateData(items: data)
     }
     
