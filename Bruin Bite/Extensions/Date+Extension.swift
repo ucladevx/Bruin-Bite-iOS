@@ -86,7 +86,7 @@ extension Date {
         return Formatters.userFriendlyMonthDayYearFormatter.string(from: self)
     }
     
-    func hourMinuteDayString() -> String {
+    func hourMinuteString() -> String {
         return Formatters.hourMinuteFormatter.string(from: self)
     }
 

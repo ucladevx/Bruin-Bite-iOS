@@ -127,7 +127,7 @@ extension TimePickerViewController: UICollectionViewDataSource{
         cell.timeLabel.textColor = UIColor.warmGrey
         
         cell.timeLabel.font = UIFont.systemFont(ofSize: 16.0, weight: .light)
-        cell.timeLabel.text = times[indexPath.row].date.hourMinuteDayString()
+        cell.timeLabel.text = times[indexPath.row].date.hourMinuteString()
         return cell
     }
 }
