@@ -129,15 +129,27 @@ class PreferenceViewController: UIViewController {
         datePicker.dataSource = self
         datePicker.delegate = self
         datePicker.needFooterView = true
+        datePicker.checkmarkColor = .twilightBlue
+        datePicker.headerBackgroundColor = .twilightBlue
+        datePicker.confirmButtonBackgroundColor = .twilightBlue
+        datePicker.cancelButtonBackgroundColor = .white
         
         diningHallPicker.dataSource = self
         diningHallPicker.delegate = self
         diningHallPicker.needFooterView = true
         diningHallPicker.allowMultipleSelection = true
+        diningHallPicker.checkmarkColor = .twilightBlue
+        diningHallPicker.headerBackgroundColor = .twilightBlue
+        diningHallPicker.confirmButtonBackgroundColor = .twilightBlue
+        diningHallPicker.cancelButtonBackgroundColor = .white
         
         mealPeriodPicker.dataSource = self
         mealPeriodPicker.delegate = self
         mealPeriodPicker.needFooterView = true
+        mealPeriodPicker.checkmarkColor = .twilightBlue
+        mealPeriodPicker.headerBackgroundColor = .twilightBlue
+        mealPeriodPicker.confirmButtonBackgroundColor = .twilightBlue
+        mealPeriodPicker.cancelButtonBackgroundColor = .white
     }
     
 }
