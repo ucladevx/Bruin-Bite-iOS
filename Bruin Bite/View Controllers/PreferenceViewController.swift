@@ -132,7 +132,8 @@ class PreferenceViewController: UIViewController {
         datePicker.checkmarkColor = .twilightBlue
         datePicker.headerBackgroundColor = .twilightBlue
         datePicker.confirmButtonBackgroundColor = .twilightBlue
-        datePicker.cancelButtonBackgroundColor = .white
+        datePicker.cancelButtonBackgroundColor = .twilightBlue
+        datePicker.cancelButtonNormalColor = .white
         
         diningHallPicker.dataSource = self
         diningHallPicker.delegate = self
@@ -141,7 +142,8 @@ class PreferenceViewController: UIViewController {
         diningHallPicker.checkmarkColor = .twilightBlue
         diningHallPicker.headerBackgroundColor = .twilightBlue
         diningHallPicker.confirmButtonBackgroundColor = .twilightBlue
-        diningHallPicker.cancelButtonBackgroundColor = .white
+        diningHallPicker.cancelButtonBackgroundColor = .twilightBlue
+        diningHallPicker.cancelButtonNormalColor = .white
         
         mealPeriodPicker.dataSource = self
         mealPeriodPicker.delegate = self
@@ -149,7 +151,8 @@ class PreferenceViewController: UIViewController {
         mealPeriodPicker.checkmarkColor = .twilightBlue
         mealPeriodPicker.headerBackgroundColor = .twilightBlue
         mealPeriodPicker.confirmButtonBackgroundColor = .twilightBlue
-        mealPeriodPicker.cancelButtonBackgroundColor = .white
+        mealPeriodPicker.cancelButtonBackgroundColor = .twilightBlue
+        mealPeriodPicker.cancelButtonNormalColor = .white
     }
     
 }
