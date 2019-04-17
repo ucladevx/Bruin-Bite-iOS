@@ -241,11 +241,11 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         cell.viewMoreButton.setTitleColor(UIColor.twilightBlue, for: .normal)
         cell.viewMoreButton.backgroundColor = UIColor.white
 
-        let rowData: Location = Array(data.keys)[indexPath.row]
-        cell.menuCard.diningHallName.text? = rowData.rawValue
-        
-        
-        if let hall = Location(rawValue: rowData.rawValue) {
+        let rowLocation: Location = Array(data.keys)[indexPath.row]
+        cell.menuCard.diningHallName.text? = rowLocation.rawValue
+
+
+        if let hall = Location(rawValue: rowLocation.rawValue) {
             var hoursText = ""
             switch currMP {
             case .breakfast:
@@ -262,9 +262,9 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         else {
             cell.menuCard.diningHallHours.text? = ""
         }
-        
-        
-        cell.initializeData(diningHallName: rowData.rawValue, data: data[rowData]!)
+
+
+        cell.initializeData(location: rowLocation, data: data[rowLocation]!)
         
         cell.parentVC = self
         cell.parentView = self.menuCardsCollection
@@ -287,10 +287,9 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         cell.menuCard.activityLevelBar.resizeToZero()
         cell.menuCard.activityLevelBar.percentage = CGFloat(0)
         for a in activityLevelData{
-            if (a.isAvailable && rowData == a.location && currDate == initDate && currMP == initMP) {
+            if (a.isAvailable && rowLocation == a.location && currDate == initDate && currMP == initMP) {
                 cell.menuCard.activityLevelBar.percentage = CGFloat(a.percent)/100
-            }
-            else if (rowData == a.location){
+            } else if (rowLocation == a.location) {
                 cell.menuCard.activityLevelBar.percentage = CGFloat(0)
             }
         }
@@ -319,21 +318,25 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
     }
 
     struct MenuDetailSender {
-        var location: String
-        var items: [Item]
+        var location: Location?
     }
 
-    func showDetailViewController(location: String, items: [Item]) {
-        self.performSegue(withIdentifier: "segueToDetailVC", sender: MenuDetailSender(location: location, items: items))
+    func showDetailViewController(location: Location?) {
+        self.performSegue(withIdentifier: "segueToDetailVC", sender: MenuDetailSender(location: location))
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
         case "segueToDetailVC"?:
-            guard let data = sender as? MenuDetailSender else { return }
+            guard let object = sender as? MenuDetailSender else {
+                return
+            }
             let vc = segue.destination as! MenuDetailViewController
-            vc.items = data.items
-            vc.location = data.location
+            data = self.menuData.getDetailedMenu(date: currDate, mealPeriod: currMP) ?? [:]
+            vc.location = object.location?.rawValue
+            if let location = object.location {
+                vc.items = data[location]
+            }
             break
         case "segueToItemDetailVC"?:
             let vc = segue.destination as! ItemDetailViewController

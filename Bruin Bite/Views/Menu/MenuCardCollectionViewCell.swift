@@ -13,8 +13,8 @@ class MenuCardCollectionViewCell: UICollectionViewCell {
     weak var parentVC: MenuVC?
     @IBOutlet weak var menuCard: MenuCardView!
     @IBOutlet weak var viewMoreButton: UIButton!
-    
-    var location: String = ""
+
+    var location: Location?
     var items: [Item] = []
     
     var parentView: UICollectionView!
@@ -22,12 +22,12 @@ class MenuCardCollectionViewCell: UICollectionViewCell {
     var computedHeight: CGFloat = 250
     
     @IBAction func viewMorePressed(_ sender: UIButton) {
-        parentVC?.showDetailViewController(location: location, items: items)
+        parentVC?.showDetailViewController(location: location)
     }
-    
-    func initializeData(diningHallName: String, data: [Item]) {
+
+    func initializeData(location: Location, data: [Item]) {
         self.items = data
-        self.location = diningHallName
+        self.location = location
 
         menuCard.populateData(items: data)
     }
