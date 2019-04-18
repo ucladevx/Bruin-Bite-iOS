@@ -61,23 +61,6 @@ SPEC REPOS:
     - SwiftyJSON
     - ViewAnimator
 
-SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
-    - Alamofire
-    - Bolts
-    - CZPicker
-    - FacebookCore
-    - FacebookLogin
-    - FBSDKCoreKit
-    - FBSDKLoginKit
-    - Moya
-    - Pulsator
-    - Repeat
-    - Result
-    - SnapKit
-    - Starscream
-    - SwiftyJSON
-
 SPEC CHECKSUMS:
   Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
@@ -94,6 +77,7 @@ SPEC CHECKSUMS:
   Starscream: ef3ece99d765eeccb67de105bfa143f929026cf5
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
   ViewAnimator: a849844cc3698620e1a562b510ed0c28aeafcdc5
-PODFILE CHECKSUM: 3c5104a14614906514bad2e1f5f2e0d339c1a10f
 
-COCOAPODS: 1.5.0
+PODFILE CHECKSUM: 93d482c250250d49a50492e4f15b4a6c4dc3ce24
+
+COCOAPODS: 1.5.3

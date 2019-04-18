@@ -49,6 +49,7 @@ class PreferenceViewController: UIViewController, MatchDelegate {
         
         meal_times = chosen
         meal_day = meal_day_date.yearMonthDayString()
+        print (meal_day)
         for i in 0...meal_times.count-1 {
             meal_times[i] = meal_day + " " + meal_times[i]
             print(meal_times[i])

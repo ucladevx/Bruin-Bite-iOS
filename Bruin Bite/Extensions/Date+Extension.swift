@@ -33,6 +33,12 @@ extension Date {
             formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
             return formatter
         }()
+        
+        static let PendingRequestsFormatter: DateFormatter = { () -> DateFormatter in
+            let formatter = DateFormatter()
+            formatter.dateFormat = "MMMM dd, yyyy"
+            return formatter
+        }()
     }
     
     init? (fromUserFriendlyMonthDayYearString userFriendlyMonthDayYearString: String ) {
@@ -63,8 +69,20 @@ extension Date {
         }
     }
     
+    init? (fromYearMonthDayString yearMonthDayString: String) {
+        guard let date = Formatters.yearMonthDayFormatter.date(from: yearMonthDayString) else {
+            return nil
+        }
+        let startOfDate = Calendar.current.startOfDay(for: date)
+        self.init(timeIntervalSince1970: startOfDate.timeIntervalSince1970)
+    }
+    
     func yearMonthDayString() -> String {
         return Formatters.yearMonthDayFormatter.string(from: self)
+    }
+    
+    func getPendingRequestsString() -> String {
+        return Formatters.PendingRequestsFormatter.string(from: self)
     }
 }
 
