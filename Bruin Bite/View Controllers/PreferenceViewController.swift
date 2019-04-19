@@ -17,27 +17,27 @@ class PreferenceViewController: UIViewController {
     @IBOutlet weak var MealPeriodBtn: UIButton!
     @IBOutlet weak var TimeBtn: UIButton!
     @IBOutlet weak var MatchMeBtn: UIButton!
-    
+
     let DEFAULT_TEXT: [String:String] = [
         "Day": "What day are you free?",
         "DiningHall": "Where do you want to eat?",
         "MealPeriod": "When would you like to eat?",
         "Time": "Starting time?"
     ]
-    
+
     let ERROR_TEXT: [String: String] = [
         "Day": "Please select a date!",
         "DiningHall": "Select a dining hall!",
         "MealPeriod": "Choose a meal period!",
         "Time": "Pick a start time!"
     ]
-    
+
     private let datePicker: CZPickerView = CZPickerView(headerTitle: "Dates", cancelButtonTitle: "Cancel", confirmButtonTitle: "Confirm")
     private let diningHallPicker: CZPickerView = CZPickerView(headerTitle: "Dining Halls", cancelButtonTitle: "Cancel", confirmButtonTitle: "Confirm")
     private let mealPeriodPicker: CZPickerView = CZPickerView(headerTitle: "Meal Periods", cancelButtonTitle: "Cancel", confirmButtonTitle: "Confirm")
     // private let timePicker: CZPickerView = CZPickerView(headerTitle: "Start Times", cancelButtonTitle: "Cancel", confirmButtonTitle: "Confirm")
 
-    
+
     // get-only variable that calculates the next 5 dates.
     private var datePicks: [Date] {
         get {
@@ -51,38 +51,38 @@ class PreferenceViewController: UIViewController {
     }
     private let diningHallPicks = ["De Neve", "Covel", "Bruin Plate", "Feast"]
     private let mealPeriodPicks = ["Breakfast", "Lunch", "Dinner"]
-    
+
     private var selectedDate: Date? = nil
     private var selectedDiningHalls: [String]? = nil
     private var selectedMealPeriod: String? = nil
     private var selectedDateTimes: [Date]? = nil
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // formatting top bar
         TopView.backgroundColor = UIColor.twilightBlue
-        
+
         // setting title texts for buttons
         DayBtn.setTitle(DEFAULT_TEXT["Day"], for: .normal)
         DiningHallBtn.setTitle(DEFAULT_TEXT["DiningHall"], for: .normal)
         MealPeriodBtn.setTitle(DEFAULT_TEXT["MealPeriod"], for: .normal)
         TimeBtn.setTitle(DEFAULT_TEXT["Time"], for: .normal)
-        
+
         setUpPickers()
     }
-    
+
     @IBAction func didPressDayBtn(_ sender: Any) {
         datePicker.show()
     }
-    
+
     @IBAction func didPressDiningHallBtn(_ sender: Any) {
         diningHallPicker.show()
     }
-    
+
     @IBAction func didPressMealPeriodBtn(_ sender: Any) {
         mealPeriodPicker.show()
     }
-    
+
     @IBAction func didPressTimeBtn(_ sender: Any) {
         guard let selectedDate = selectedDate else{
             Utilities.sharedInstance.displayErrorLabel(text: ERROR_TEXT["Day"] ?? "", field: DayBtn)
@@ -100,7 +100,7 @@ class PreferenceViewController: UIViewController {
             self.present(timePicker, animated: true)
         }
     }
-    
+
     @IBAction func didPressMatchMe(_ sender: Any) {
         guard let selectedDate = selectedDate else {
             Utilities.sharedInstance.displayErrorLabel(text: ERROR_TEXT["Day"] ?? "", field: DayBtn)
@@ -118,7 +118,7 @@ class PreferenceViewController: UIViewController {
             Utilities.sharedInstance.displayErrorLabel(text: ERROR_TEXT["Time"] ?? "", field: TimeBtn)
             return
         }
-        
+
         // TODO: Figure out date formats
         let selectedDateTimeStrings = selectedDatetimes.map { $0.matchRequestMealTimeString() }
         let selectedDateString = selectedDate.yearMonthDayString()
@@ -134,7 +134,7 @@ class PreferenceViewController: UIViewController {
         datePicker.confirmButtonBackgroundColor = .twilightBlue
         datePicker.cancelButtonBackgroundColor = .twilightBlue
         datePicker.cancelButtonNormalColor = .white
-        
+
         diningHallPicker.dataSource = self
         diningHallPicker.delegate = self
         diningHallPicker.needFooterView = true
@@ -144,7 +144,7 @@ class PreferenceViewController: UIViewController {
         diningHallPicker.confirmButtonBackgroundColor = .twilightBlue
         diningHallPicker.cancelButtonBackgroundColor = .twilightBlue
         diningHallPicker.cancelButtonNormalColor = .white
-        
+
         mealPeriodPicker.dataSource = self
         mealPeriodPicker.delegate = self
         mealPeriodPicker.needFooterView = true
@@ -154,7 +154,7 @@ class PreferenceViewController: UIViewController {
         mealPeriodPicker.cancelButtonBackgroundColor = .twilightBlue
         mealPeriodPicker.cancelButtonNormalColor = .white
     }
-    
+
 }
 
 extension PreferenceViewController: CZPickerViewDataSource {
@@ -170,7 +170,7 @@ extension PreferenceViewController: CZPickerViewDataSource {
             return 0
         }
     }
-    
+
     func czpickerView(_ pickerView: CZPickerView!, titleForRow row: Int) -> String! {
         switch pickerView {
         case datePicker:
@@ -212,10 +212,10 @@ extension PreferenceViewController: CZPickerViewDelegate {
             print ("Sumfin's wrong")
         }
     }
-    
+
     func czpickerView(_ pickerView: CZPickerView!, didConfirmWithItemsAtRows rows: [Any]!) {
         // multiple selected
-        
+
         // zero selections handled in czpickerViewDidDismiss
         // only dining hall CZPicker supports multiple as of now..
         guard rows.count != 0 && pickerView == diningHallPicker else  {
@@ -232,7 +232,7 @@ extension PreferenceViewController: CZPickerViewDelegate {
         let str = selectedDiningHalls?.joined(separator: ", ") ?? DEFAULT_TEXT["DiningHall"]
         DiningHallBtn.setTitle(str, for: .normal)
     }
-    
+
     func czpickerViewDidDismiss(_ pickerView: CZPickerView!) {
         switch pickerView {
         case datePicker:
