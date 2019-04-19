@@ -45,6 +45,11 @@ extension Date {
             formatter.dateFormat = "hh:mm"
             return formatter
         }()
+        static let PendingRequestsFormatter: DateFormatter = { () -> DateFormatter in
+            let formatter = DateFormatter()
+            formatter.dateFormat = "MMMM dd, yyyy"
+            return formatter
+        }()
     }
 
     init? (fromStartOfDate: Bool) {
@@ -54,11 +59,6 @@ extension Date {
         } else {
             self.init()
         }
-        static let PendingRequestsFormatter: DateFormatter = { () -> DateFormatter in
-            let formatter = DateFormatter()
-            formatter.dateFormat = "MMMM dd, yyyy"
-            return formatter
-        }()
     }
 
     init? (fromUserFriendlyMonthDayYearString userFriendlyMonthDayYearString: String ) {
