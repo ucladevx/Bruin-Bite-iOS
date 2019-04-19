@@ -120,8 +120,8 @@ class PreferenceViewController: UIViewController {
         }
         
         // TODO: Figure out date formats
-        let selectedDateTimeStrings = selectedDatetimes.map { $0.rcf3339String() }
-        let selectedDateString = selectedDate.rcf3339String()
+        let selectedDateTimeStrings = selectedDatetimes.map { $0.matchRequestMealTimeString() }
+        let selectedDateString = selectedDate.yearMonthDayString()
         // request:
     }
 

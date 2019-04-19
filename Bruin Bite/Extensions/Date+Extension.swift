@@ -21,6 +21,12 @@ extension Date {
             return formatter
         }()
         
+        static let matchRequestMealTimeFormatter: DateFormatter = { () -> DateFormatter in
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
+            return formatter
+        }()
+        
         static let monthDayYearFormatter: DateFormatter = { () -> DateFormatter in
             let formatter = DateFormatter()
             formatter.dateFormat = "MM/dd/yy"
@@ -88,6 +94,10 @@ extension Date {
     
     func hourMinuteString() -> String {
         return Formatters.hourMinuteFormatter.string(from: self)
+    }
+    
+    func matchRequestMealTimeString() -> String {
+        return Formatters.matchRequestMealTimeFormatter.string(from: self)
     }
     
     func rcf3339String() -> String {
