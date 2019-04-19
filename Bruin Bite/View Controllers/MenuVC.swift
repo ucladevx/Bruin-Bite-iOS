@@ -332,7 +332,8 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
                 return
             }
             let vc = segue.destination as! MenuDetailViewController
-            data = self.menuData.getDetailedMenu(date: currDate, mealPeriod: currMP) ?? [:]
+            // TODO: Switch to detailed menu when updated scraper is live
+            data = self.menuData.getOverviewMenu(date: currDate, mealPeriod: currMP) ?? [:]
             vc.location = object.location?.rawValue
             if let location = object.location {
                 vc.items = data[location]
