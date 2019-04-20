@@ -19,12 +19,9 @@ class ChatListTableViewCell: UITableViewCell {
 }
 
 class ChatListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ChatListDelegate {
-    
-    let chatPreview1: ChatPreview = ChatPreview(name: "Josie Bruin", date: "04/22", meal: "Dinner", time: "10:30 PM", profileImage: "", unreadMessage: 2)
-    
 
     var data: [ChatListItem] = []
-    var selectedChatRoom: String? = nil
+    var selectedChat: ChatListItem? = nil
     
     let chatListAPI: ChatListAPI = ChatListAPI()
     
@@ -41,12 +38,12 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.setNavigationBarHidden(true, animated: false)
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        self.navigationItem.title = ""
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.navigationController?.setNavigationBarHidden(false, animated: false)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -88,7 +85,7 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        self.selectedChatRoom = data[indexPath.row].chat_url
+        self.selectedChat = data[indexPath.row]
         self.performSegue(withIdentifier: "ShowChatScreenVC", sender: nil)
     }
     
@@ -100,7 +97,8 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowChatScreenVC" {
             if let destVC = segue.destination as? ChatScreenViewController {
-                destVC.chatRoomLabel = selectedChatRoom
+                destVC.chatRoomLabel = selectedChat?.chat_url
+                destVC.chatTitle = selectedChat?.user2_first_name
             }
         }
     }

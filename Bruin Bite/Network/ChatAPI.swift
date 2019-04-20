@@ -36,6 +36,11 @@ class ChatAPI {
                     }
                 }
             }
+            /* Test long messages:
+            self.delegate?.didReceiveMessages(messages: [
+                ChatMessage(timestamp: "", handle: "1", message: "this is a very long message that i'm typing right now yo what's up go bruins"),
+                ChatMessage(timestamp: "", handle: "-1", message: "this is a very long message that i'm typing right now yo what's up go bruins")
+            ])*/
         } else {
             print ("No chat room label given")
         }
