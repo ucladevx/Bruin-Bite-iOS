@@ -7,69 +7,70 @@
 //
 
 import UIKit
+import ViewAnimator
 
+class SignUpViewController: UIViewController, SignupDelegate, LoginDelegate, AlertPresentable {
 
-class SignUpViewController: UIViewController {
-    
-    @IBOutlet var SignUpText: UILabel!
     @IBOutlet var NameText: UITextField!
     @IBOutlet var EmailText: UITextField!
     @IBOutlet var PasswordText: UITextField!
     @IBOutlet var ConfirmPassText: UITextField!
-    
+    //@IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        //activityIndicator.hidesWhenStopped = true
+        UserManager.shared.signupDelegate = self
+        UserManager.shared.loginDelegate = self
+
         view.backgroundColor = UIColor.twilightBlue
-        SignUpText.font = UIFont.signUpTextFont.withSize(20)
-        
+
         NameText.font = UIFont.signUpInfoFieldFont
         EmailText.font = UIFont.signUpInfoFieldFont
         NameText.textColor = .white
         EmailText.textColor = .white
         PasswordText.font = UIFont.signUpInfoFieldFont
         ConfirmPassText.font = UIFont.signUpInfoFieldFont
-        
+
         NameText.becomeFirstResponder()
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        // Clear away "x" button if returning from createProfileView
+        self.navigationController?.navigationBar.topItem?.rightBarButtonItem = nil
     }
-    
+
     @IBAction func nextButtonPressed (_ sender: Any?) {
-        if(NameText.text ?? "" == "") {
-            //Invalid Name
-            return
-        }
         if(!(EmailText.text?.isEmail() ?? false)) {
-            //Invalid Email
+            Utilities.sharedInstance.displayErrorLabel(text: "Enter a valid email", field: EmailText)
             return
-        }
-        if((PasswordText.text?.count ?? 0) < 8) {
-            //Invalid Password
-             return
         }
         if((PasswordText.text ?? "") != ConfirmPassText.text ) { //I was worried about nil == nil
-            //Passwords don't match
+            Utilities.sharedInstance.displayErrorLabel(text: "Passwords do not match", field: ConfirmPassText)
             return
         }
-        
-        MAIN_USER.changeUserInfo(type: "first", info: NameText.text!)
-        MAIN_USER.changeUserInfo(type: "email", info: EmailText.text!)
-        MAIN_USER.changeUserInfo(type: "password", info: PasswordText.text!)
-        
-        /* Waiting for Sam
-        let result = MAIN_USER.createUser()
-        if(result == "username") {
-            return
-        }
-        else if(result == "password") {
-            return
-        }
-        */
-        
-        self.performSegue(withIdentifier: "DoneWithSignUp", sender: sender)
+        //activityIndicator.startAnimating()
+        UserManager.shared.createUser(email: EmailText.text ?? "", password: PasswordText.text ?? "", firstName: NameText.text ?? "")
+    }
+
+    func didFinishSignup() {
+        UserManager.shared.loginUser(email: UserManager.shared.getEmail(), password: PasswordText.text ?? "")
+        UserDefaultsManager.shared.setPassword(to: PasswordText.text ?? "")
+    }
+
+    func didLogin() {
+        //activityIndicator.stopAnimating()
+        self.performSegue(withIdentifier: "toProfileController", sender: nil)
+    }
+
+    func signUpFailed(error: String) {
+        //activityIndicator.stopAnimating()
+        presentAlert(alert: error)
+    }
+
+    func loginFailed(error: String) {
+        //activityIndicator.stopAnimating()
+        presentAlert(alert: error)
     }
 }
-

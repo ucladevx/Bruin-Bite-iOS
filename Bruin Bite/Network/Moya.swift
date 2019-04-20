@@ -14,12 +14,13 @@ enum MainAPI {
     case getOverviewMenu
     case getDetailedMenu
     case getHours
-    case createUser(email: String, password: String, first_name: String, last_name: String, major: String, minor: String, year: Int, self_bio: String, device_id: String)
-    case readUsers(email: String, access_token: String)
+    case createUser(email: String, password: String, firstName: String, is_active: Bool)
+    case readUser(email: String)
     case loginUser(username:String, password: String, grant_type: String, client_id: String, client_secret: String)
-    case updateUser(email: String, password: String, first_name: String, last_name: String, major: String, minor: String, year: Int, self_bio: String, access_token: String, device_id: String) //send it as it is if it hasn't changed
-    case deleteUser(email: String, access_token: String)
+    case updateUser(email: String, password: String, first_name: String, last_name: String, major: String, minor: String, year: Int, self_bio: String) //send it as it is if it hasn't changed
+    case deleteUser(email: String)
     case matchUser(user: Int, meal_times: [String], meal_day: String, meal_period: String, dining_halls: [String])
+    case refreshToken(refresh_token: String)
 }
 
 extension MainAPI: TargetType {
@@ -27,7 +28,7 @@ extension MainAPI: TargetType {
         switch self {
         case .getCurrentActivityLevels, .getOverviewMenu, .getDetailedMenu, .getHours:
             return URL(string: "https://api.bruin-bite.com/api/v1")!
-        case .createUser, .readUsers, .loginUser, .updateUser, .deleteUser, .matchUser:
+        case .createUser, .readUser, .loginUser, .updateUser, .deleteUser, .matchUser, .refreshToken:
             return URL(string: "https://api.bruin-bite.com/api/v1")!
         }
         
@@ -44,20 +45,19 @@ extension MainAPI: TargetType {
             return "/menu/Hours"
         case .createUser:
             return "/users/sign_up/"
-        case .loginUser:
+        case .loginUser, .refreshToken:
             return "/users/o/token/"
-        case .readUsers, .updateUser, .deleteUser:
+        case .readUser, .updateUser, .deleteUser:
             return "/users/data/"
         case .matchUser:
             return "/users/matching/new/"
         }
-        
     }
     var method: Moya.Method {
         switch self {
-        case .getCurrentActivityLevels, .getOverviewMenu, .getDetailedMenu, .getHours, .readUsers:
+        case .getCurrentActivityLevels, .getOverviewMenu, .getDetailedMenu, .getHours, .readUser:
             return .get
-        case .createUser, .loginUser, .matchUser:
+        case .createUser, .loginUser, .matchUser, .refreshToken:
             return .post
         case .updateUser:
             return .put
@@ -69,18 +69,20 @@ extension MainAPI: TargetType {
         switch self {
         case .getCurrentActivityLevels, .getOverviewMenu, .getDetailedMenu, .getHours:
             return .requestPlain
-        case .createUser(let email, let password, let first_name, let last_name, let major, let minor, let year, let self_bio, let device_id):
-            return .requestParameters(parameters: ["email": email, "password": password, "first_name": first_name, "last_name": last_name, "major": major, "minor": minor, "year": year, "self_bio": self_bio, "device_id": device_id], encoding: JSONEncoding.default)
+        case .createUser(let email, let password, let first_name, let is_active):
+            return .requestParameters(parameters: ["email": email, "password": password, "first_name": first_name, "is_active": is_active], encoding: JSONEncoding.default)
         case .loginUser(let username, let password, let grant_type, let client_id, let client_secret):
             return .requestParameters(parameters: ["username": username, "password": password, "grant_type": grant_type, "client_id": client_id, "client_secret": client_secret], encoding: URLEncoding.default)
-        case .readUsers(let email, let access_token):
-            return .requestParameters(parameters: ["email": email, "access_token": access_token], encoding: URLEncoding.queryString)
-        case .updateUser(let email, let password, let first_name, let last_name, let major, let minor, let year, let self_bio, let access_token, let device_id):
-            return .requestParameters(parameters: ["email": email, "password": password, "first_name": first_name, "last_name": last_name, "major": major, "minor": minor, "year": year, "self_bio":self_bio, "access_token": access_token, "device_id": device_id], encoding: JSONEncoding.default)
-        case .deleteUser(let email, let access_token):
-            return .requestParameters(parameters: ["email": email, "access_token": access_token], encoding: JSONEncoding.default)
+        case .readUser(let email):
+            return .requestParameters(parameters: ["email": email], encoding: URLEncoding.queryString)
+        case .updateUser(let email, let password, let first_name, let last_name, let major, let minor, let year, let self_bio):
+            return .requestParameters(parameters: ["email": email, "password": password, "first_name": first_name, "last_name": last_name, "major": major, "minor": minor, "year": year, "self_bio": self_bio], encoding: JSONEncoding.default)
+        case .deleteUser(let email):
+            return .requestParameters(parameters: ["email": email], encoding: JSONEncoding.default)
         case .matchUser(let user, let meal_times, let meal_day, let meal_period, let dining_halls):
             return .requestParameters(parameters: ["user": user, "meal_times": meal_times, "meal_day": meal_day, "meal_period": meal_period, "dining_halls": dining_halls], encoding: JSONEncoding.default)
+        case .refreshToken(let refresh_token):
+            return .requestParameters(parameters: ["refresh_token": refresh_token], encoding: URLEncoding.default)
         }
     }
     //for testing
@@ -100,13 +102,15 @@ extension MainAPI: TargetType {
             return Data()
         case .loginUser:
             return Data()
-        case .readUsers:
+        case .readUser:
             return Data()
         case .updateUser:
             return Data()
         case .deleteUser:
             return Data()
         case .matchUser:
+            return Data()
+        case .refreshToken:
             return Data()
         }
     }
@@ -116,11 +120,11 @@ extension MainAPI: TargetType {
             return ["Content-type": "application/json"]
         case .createUser:
             return ["Content-Type": "application/json"]
-        case .loginUser:
+        case .loginUser, .refreshToken:
             return ["Content-Type": "application/x-www-form-urlencoded"]
-        case .readUsers, .updateUser, .deleteUser, .matchUser:
+        case .readUser, .updateUser, .deleteUser, .matchUser:
             var temp = "Bearer "
-            temp += UserDefaults.standard.object(forKey: "accessToken") as? String ?? ""
+            temp += UserDefaultsManager.shared.getAccessToken()
             return ["Authorization": temp]
         }
     }
