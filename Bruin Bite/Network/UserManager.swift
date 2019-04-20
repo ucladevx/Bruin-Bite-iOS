@@ -179,12 +179,14 @@ class UserManager {
         self.currentUser.uMajor = newUserInfo.major
         self.currentUser.uMinor = newUserInfo.minor
         self.currentUser.uYear = newUserInfo.year
+        self.currentUser.uID = newUserInfo.id
         UserDefaultsManager.shared.setSelfBio(to: newUserInfo.self_bio)
         UserDefaultsManager.shared.setFirstName(to: newUserInfo.first_name)
         UserDefaultsManager.shared.setLastName(to: newUserInfo.last_name)
         UserDefaultsManager.shared.setMajor(to: newUserInfo.major)
         UserDefaultsManager.shared.setMinor(to: newUserInfo.minor)
         UserDefaultsManager.shared.setYear(to: newUserInfo.year)
+        UserDefaultsManager.shared.setUserID(to: newUserInfo.id)
     }
 
     func logOutUser() {
