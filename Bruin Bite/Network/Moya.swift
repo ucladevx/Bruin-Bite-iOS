@@ -23,15 +23,16 @@ enum MainAPI {
     case refreshToken(refresh_token: String)
     case getRequests(user: Int, status: [String])
     case getMatches(user: Int)
+//    case requestMatch(user: Int, meal_times: [String], meal_day: String, meal_period: [String], dining_halls: [String])
 }
 
 extension MainAPI: TargetType {
     var baseURL: URL {
         switch self {
         case .getCurrentActivityLevels, .getOverviewMenu, .getDetailedMenu, .getHours:
-            return URL(string: "https://api.bruin-bite.com/api/v1")!
+            return URL(string: "http://localhost:5000/api/v1")!
         case .createUser, .readUser, .loginUser, .updateUser, .deleteUser, .matchUser, .refreshToken, .getRequests, .getMatches:
-            return URL(string: "https://api.bruin-bite.com/api/v1")!
+            return URL(string: "http://localhost:8000/api/v1")!
         }
 
     }

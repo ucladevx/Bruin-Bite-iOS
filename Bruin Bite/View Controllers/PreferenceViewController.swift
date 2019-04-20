@@ -123,6 +123,11 @@ class PreferenceViewController: UIViewController {
         let selectedDateTimeStrings = selectedDatetimes.map { $0.matchRequestMealTimeString() }
         let selectedDateString = selectedDate.yearMonthDayString()
         // request:
+        
+        let matchingAPI = MatchingAPI()
+        let uid = UserManager.shared.getUID()
+        matchingAPI.matchUser(completionDelegate: nil, user: uid, meal_times: selectedDateTimeStrings, meal_day: selectedDateString, meal_period: selectedMealPeriod, dining_halls: selectedDiningHalls)
+        
     }
 
     private func setUpPickers() {

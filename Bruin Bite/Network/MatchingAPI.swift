@@ -51,6 +51,27 @@ class MatchingAPI {
             }
         }
     }
+    
+    func matchUser(completionDelegate: MatchDelegate?, user: Int, meal_times: [String], meal_day: String, meal_period: String, dining_halls: [String]) {
+        provider.request(.matchUser(user: user, meal_times: meal_times, meal_day: meal_day, meal_period: meal_period, dining_halls: dining_halls)) { result in
+            switch result {
+            case let .success(response):
+                do {
+                    let results = try JSONDecoder().decode(MatchRequestData.self, from: response.data)
+                    let jsonData = JSON(response.data)
+                    print(jsonData)
+                    let matchID = results.id
+                    completionDelegate?.didReceiveMatch(withID: matchID)
+                    print (results)
+                } catch let err {
+                    print(err)
+                }
+                print("Successfully Sent match")
+            case let .failure(error):
+                print(error)
+            }
+        }
+    }
 
 
     //TODO: Currently just test data
