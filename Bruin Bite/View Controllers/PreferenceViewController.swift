@@ -236,6 +236,8 @@ extension PreferenceViewController: CZPickerViewDelegate {
 
         let str = selectedDiningHalls?.joined(separator: ", ") ?? DEFAULT_TEXT["DiningHall"]
         DiningHallBtn.setTitle(str, for: .normal)
+        selectedDiningHalls = selectedDiningHalls?.map { diningHallCode(forDiningHall: $0) }
+        print (selectedDiningHalls)
     }
 
     func czpickerViewDidDismiss(_ pickerView: CZPickerView!) {

@@ -53,7 +53,7 @@ extension MainAPI: TargetType {
         case .readUser, .updateUser, .deleteUser:
             return "/users/data/"
         case .matchUser:
-            return "/users/matching/new/"
+            return "/users/matching/requests"
         case .getRequests:
             return "/users/matching/requests"
         case .getMatches:
