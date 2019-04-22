@@ -56,6 +56,7 @@
 		BD78709921AD352100E46A50 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD78709821AD352100E46A50 /* UserDefaultsManager.swift */; };
 		BD7870A621B6793A00E46A50 /* PresentAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7870A521B6793A00E46A50 /* PresentAlert.swift */; };
 		BD7870A821B6854900E46A50 /* AutoLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7870A721B6854900E46A50 /* AutoLoginViewController.swift */; };
+		BD95987D226E6A60000934BF /* LoginAlertPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD95987C226E6A60000934BF /* LoginAlertPresentable.swift */; };
 		BDAED25D219FD598005A22F3 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDAED25C219FD598005A22F3 /* UserManager.swift */; };
 		BDAED25F219FD601005A22F3 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDAED25E219FD601005A22F3 /* UserModel.swift */; };
 		BDDE7C6E207AF6840008A677 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDE7C6D207AF6840008A677 /* LoginViewController.swift */; };
@@ -166,6 +167,7 @@
 		BD78709821AD352100E46A50 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		BD7870A521B6793A00E46A50 /* PresentAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentAlert.swift; sourceTree = "<group>"; };
 		BD7870A721B6854900E46A50 /* AutoLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLoginViewController.swift; sourceTree = "<group>"; };
+		BD95987C226E6A60000934BF /* LoginAlertPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAlertPresentable.swift; sourceTree = "<group>"; };
 		BDAED25C219FD598005A22F3 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		BDAED25E219FD601005A22F3 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		BDDE7C6D207AF6840008A677 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -309,6 +311,7 @@
 				770251BC201D4079002E4515 /* Assets.xcassets */,
 				770251BE201D4079002E4515 /* LaunchScreen.storyboard */,
 				BD7870A521B6793A00E46A50 /* PresentAlert.swift */,
+				BD95987C226E6A60000934BF /* LoginAlertPresentable.swift */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -458,7 +461,6 @@
 				2A68339120BC2113000DCAA4 /* UIButtonSignUp.swift */,
 				BF0943E520BC20FE00214200 /* UIViewControllerExtensions.swift */,
 				C7F96FCA50FBF094C1704FD1 /* UIViewBorder.swift */,
-				BFC8567B20C4CE3D00E5230E /* UILabelExtensions.swift */,
 				00C207F6221BB422003965FE /* Date+Extension.swift */,
 			);
 			path = Extensions;
@@ -602,7 +604,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Bruin Bite/Pods-Bruin Bite-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-Bruin Bite/Pods-Bruin Bite-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
 				"${BUILT_PRODUCTS_DIR}/CZPicker/CZPicker.framework",
@@ -639,7 +641,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Bruin Bite/Pods-Bruin Bite-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Bruin Bite/Pods-Bruin Bite-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -685,6 +687,7 @@
 				DCF0E2DC20B260510036A32F /* UIColor+Additions.swift in Sources */,
 				2AB62E6C20488A050013CB59 /* MenuAPI.swift in Sources */,
 				2AB62E69204887820013CB59 /* Menu.swift in Sources */,
+				BD95987D226E6A60000934BF /* LoginAlertPresentable.swift in Sources */,
 				BDDE7C70207B04590008A677 /* MatchingListViewController.swift in Sources */,
 				2AFA40B220BC07AD0007FB85 /* SearchingScreenViewController.swift in Sources */,
 				BFE168A3209AB8DD00D021A2 /* CollectionViewController.swift in Sources */,
@@ -704,7 +707,6 @@
 				2A03D94820B7AFA7004EFC97 /* HomeProfileStaticTableViewController.swift in Sources */,
 				770CDEB020266B6000658925 /* ActivityLevelBar.swift in Sources */,
 				BD7870A621B6793A00E46A50 /* PresentAlert.swift in Sources */,
-				BF5D97E620B97F490086D451 /* ChatPreview.swift in Sources */,
 				DCF0E2E620B260CC0036A32F /* SignInViewController.swift in Sources */,
 				C0AD0D34204B4EA9008E1206 /* TopBar.swift in Sources */,
 				770251B6201D4079002E4515 /* MenuVC.swift in Sources */,
@@ -719,7 +721,6 @@
 				BF0943E420BBFEEF00214200 /* ChatAPI.swift in Sources */,
 				00C2DF0920B678890023CF75 /* Moya.swift in Sources */,
 				2A744895203BBDBC00793AD3 /* MenuCardView.swift in Sources */,
-				00C2DF0D20B678BE0023CF75 /* UserClass.swift in Sources */,
 				C7F24355C1F5930CCD314312 /* UIViewBorder.swift in Sources */,
 				BDAED25F219FD601005A22F3 /* UserModel.swift in Sources */,
 			);
