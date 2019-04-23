@@ -461,7 +461,6 @@
 				2A68339120BC2113000DCAA4 /* UIButtonSignUp.swift */,
 				BF0943E520BC20FE00214200 /* UIViewControllerExtensions.swift */,
 				C7F96FCA50FBF094C1704FD1 /* UIViewBorder.swift */,
-				BFC8567B20C4CE3D00E5230E /* UILabelExtensions.swift */,
 				00C207F6221BB422003965FE /* Date+Extension.swift */,
 			);
 			path = Extensions;
@@ -708,7 +707,6 @@
 				2A03D94820B7AFA7004EFC97 /* HomeProfileStaticTableViewController.swift in Sources */,
 				770CDEB020266B6000658925 /* ActivityLevelBar.swift in Sources */,
 				BD7870A621B6793A00E46A50 /* PresentAlert.swift in Sources */,
-				BF5D97E620B97F490086D451 /* ChatPreview.swift in Sources */,
 				DCF0E2E620B260CC0036A32F /* SignInViewController.swift in Sources */,
 				C0AD0D34204B4EA9008E1206 /* TopBar.swift in Sources */,
 				770251B6201D4079002E4515 /* MenuVC.swift in Sources */,
@@ -723,7 +721,6 @@
 				BF0943E420BBFEEF00214200 /* ChatAPI.swift in Sources */,
 				00C2DF0920B678890023CF75 /* Moya.swift in Sources */,
 				2A744895203BBDBC00793AD3 /* MenuCardView.swift in Sources */,
-				00C2DF0D20B678BE0023CF75 /* UserClass.swift in Sources */,
 				C7F24355C1F5930CCD314312 /* UIViewBorder.swift in Sources */,
 				BDAED25F219FD601005A22F3 /* UserModel.swift in Sources */,
 			);

@@ -14,7 +14,8 @@ import UIKit
 protocol LoginAlertPresentable: class {}
 
 extension LoginAlertPresentable where Self: UIViewController {
-    func presentNotLoggedInAlert() {
+
+    func presentAlert() {
         let alertController = UIAlertController(title: "Oh no!", message: "Sorry, you must be logged in for this feature!", preferredStyle: .alert)
 
         let loginAction = UIAlertAction(title: "Log In", style: .default) { (action:UIAlertAction!) in
