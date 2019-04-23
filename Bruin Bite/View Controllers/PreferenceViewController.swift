@@ -74,7 +74,7 @@ class PreferenceViewController: UIViewController, MatchDelegate, LoginAlertPrese
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if UserManager.shared.getUID() == -1 { presentAlert() }
+        if UserManager.shared.getUID() == -1 { presentNotLoggedInAlert() }
         meal_times = [String]()
         meal_day = String()
         dining_halls = [String]()

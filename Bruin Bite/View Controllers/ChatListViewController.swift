@@ -48,7 +48,7 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if UserManager.shared.getUID() == -1 { presentAlert() }
+        if UserManager.shared.getUID() == -1 { presentNotLoggedInAlert() }
         chatListAPI.delegate = self
         chatListAPI.getChatList(forUserWithID: UserDefaultsManager.shared.getUserID())
     }
