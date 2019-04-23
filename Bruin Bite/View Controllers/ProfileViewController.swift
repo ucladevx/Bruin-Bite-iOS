@@ -9,12 +9,17 @@
 import UIKit
 import Foundation
 
-class ProfileViewController: UIViewController, ReadDelegate, AlertPresentable {
+class ProfileViewController: UIViewController, ReadDelegate, AlertPresentable, LoginAlertPresentable {
 
     @IBOutlet weak var profilePic: UIImageView!
     @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var yearMajor: UILabel!
     @IBOutlet var ShortBio: UITextView!
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if UserManager.shared.getUID() == -1 { presentAlert() }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
