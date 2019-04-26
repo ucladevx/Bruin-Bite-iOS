@@ -17,6 +17,10 @@ protocol GetRequestsDelegate {
 protocol GetMatchesDelegate {
     func didReceiveMatches(requests: [Match])
 }
+protocol MatchRequestDelegate {
+    func matchRequestSent(successfully: Bool)
+    func matchRequestDuplicate()
+}
 
 class MatchingAPI {
     private let provider = MoyaProvider<MainAPI>()
@@ -52,22 +56,33 @@ class MatchingAPI {
         }
     }
     
-    func matchUser(completionDelegate: MatchDelegate?, user: Int, meal_times: [String], meal_day: String, meal_period: String, dining_halls: [String]) {
+    func matchUser(completionDelegate: MatchRequestDelegate?, user: Int, meal_times: [String], meal_day: String, meal_period: String, dining_halls: [String]) {
         provider.request(.matchUser(user: user, meal_times: meal_times, meal_day: meal_day, meal_period: meal_period, dining_halls: dining_halls)) { result in
             switch result {
             case let .success(response):
+                guard response.statusCode != 400 else {
+                    completionDelegate?.matchRequestSent(successfully: false)
+                    return
+                }
+                guard response.statusCode != 418 else {
+                    completionDelegate?.matchRequestDuplicate()
+                    return
+                }
+
                 do {
                     let results = try JSONDecoder().decode(MatchRequestData.self, from: response.data)
-                    let jsonData = JSON(response.data)
-                    print(jsonData)
-                    let matchID = results.id
-                    completionDelegate?.didReceiveMatch(withID: matchID)
+                    completionDelegate?.matchRequestSent(successfully: true)
                     print (results)
                 } catch let err {
+                    completionDelegate?.matchRequestSent(successfully: false)
                     print(err)
                 }
-                print("Successfully Sent match")
             case let .failure(error):
+                if error.response?.statusCode == 418 {
+                    completionDelegate?.matchRequestDuplicate()
+                } else {
+                    completionDelegate?.matchRequestSent(successfully: false)
+                }
                 print(error)
             }
         }

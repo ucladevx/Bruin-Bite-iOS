@@ -119,14 +119,12 @@ class PreferenceViewController: UIViewController {
             return
         }
 
-        // TODO: Figure out date formats
         let selectedDateTimeStrings = selectedDatetimes.map { $0.matchRequestMealTimeString() }
         let selectedDateString = selectedDate.yearMonthDayString()
-        // request:
         
         let matchingAPI = MatchingAPI()
         let uid = UserManager.shared.getUID()
-        matchingAPI.matchUser(completionDelegate: nil, user: uid, meal_times: selectedDateTimeStrings, meal_day: selectedDateString, meal_period: selectedMealPeriod, dining_halls: selectedDiningHalls)
+        matchingAPI.matchUser(completionDelegate: self, user: uid, meal_times: selectedDateTimeStrings, meal_day: selectedDateString, meal_period: selectedMealPeriod, dining_halls: selectedDiningHalls)
         
     }
 
@@ -160,6 +158,29 @@ class PreferenceViewController: UIViewController {
         mealPeriodPicker.cancelButtonNormalColor = .white
     }
 
+}
+
+extension PreferenceViewController: MatchRequestDelegate {
+    func matchRequestSent(successfully: Bool) {
+        if successfully {
+            Utilities.sharedInstance.displayErrorLabel(text: "Request Sent!", field: MatchMeBtn)
+            DayBtn.setTitle(DEFAULT_TEXT["Day"], for: .normal)
+            DiningHallBtn.setTitle(DEFAULT_TEXT["DiningHall"], for: .normal)
+            MealPeriodBtn.setTitle(DEFAULT_TEXT["MealPeriod"], for: .normal)
+            TimeBtn.setTitle(DEFAULT_TEXT["Time"], for: .normal)
+        }
+        else {
+            let errorAlert = UIAlertController(title: "Uh oh..", message: "Something's wrong on our end, please try again soon! If this persists, contact support at hello.bruinbite@gmail.com", preferredStyle: .alert)
+            errorAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            self.present(errorAlert, animated: true, completion: nil)
+        }
+    }
+
+    func matchRequestDuplicate() {
+        let errorAlert = UIAlertController(title: "Already requested!", message: "You've already asked for a match for this particular day's meal period! Try again with a different date or meal period.", preferredStyle: .alert)
+        errorAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        self.present(errorAlert, animated: true, completion: nil)
+    }
 }
 
 extension PreferenceViewController: CZPickerViewDataSource {
