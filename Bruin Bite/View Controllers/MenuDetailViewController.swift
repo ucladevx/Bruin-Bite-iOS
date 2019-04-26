@@ -6,13 +6,44 @@
 import UIKit
 
 class MenuDetailViewController: UITableViewController{
-    var location: String?
+    var location: Location?
     var items: [Item]?
     var sectionedItems: [String: [Item]] = [:]
 
+    var initDate = "1"
+    var initMP = MealPeriod.breakfast
+    var currDate = "1"
+    var currMP = MealPeriod.breakfast
+
+    var activityLevelData = [ActivityLevel]()
+    var hoursData = [String: [Location: HallHours]]()
+
+    @IBOutlet weak var diningHallName: UILabel!
+    @IBOutlet weak var activityLevelBar: ActivityLevelBar!
+    @IBOutlet weak var diningHallHours: UILabel!
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = location
+        self.title = location?.rawValue
+        diningHallName.text = location?.rawValue
+
+        if let locationRaw = location?.rawValue,
+           let hall = Location(rawValue: locationRaw) {
+            var hoursText = ""
+            switch currMP {
+            case .breakfast:
+                hoursText = hoursData[currDate]?[hall]?.breakfast ?? ""
+            case .lunch, .brunch:
+                hoursText = hoursData[currDate]?[hall]?.lunch ?? ""
+            case .dinner:
+                hoursText = hoursData[currDate]?[hall]?.dinner ?? ""
+            case .lateNight:
+                hoursText = hoursData[currDate]?[hall]?.late_night ?? ""
+            }
+            diningHallHours.text? = hoursText
+        } else {
+            diningHallHours.text? = ""
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -26,6 +57,21 @@ class MenuDetailViewController: UITableViewController{
             for item in filteredItems {
                 sectionedItems[item.subLocation!, default: []].append(item)
             }
+        }
+
+        //Activity Level Loading
+        activityLevelBar.resizeToZero()
+        activityLevelBar.percentage = CGFloat(0)
+        for a in activityLevelData {
+            if (a.isAvailable && location == a.location && currDate == initDate && currMP == initMP) {
+                activityLevelBar.percentage = CGFloat(a.percent) / 100
+            } else if (location == a.location) {
+                activityLevelBar.percentage = CGFloat(0)
+            }
+        }
+        UIView.animate(withDuration: 1.5, delay: 0, options: .curveEaseInOut, animations: {
+            self.activityLevelBar.animateBar()
+        }) { (_) in
         }
     }
 
@@ -50,9 +96,22 @@ class MenuDetailViewController: UITableViewController{
         let cell = tableView.dequeueReusableCell(withIdentifier: "UITableViewCell", for: indexPath)
 
         let itemsInSection = getItems(in: indexPath.section)
-
         let item = itemsInSection?[indexPath.row]
         cell.textLabel?.text = item?.name
         return cell
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case "segueToItemDetailVC"?:
+            if let indexPath = tableView.indexPathForSelectedRow {
+                let itemsInSection = getItems(in: indexPath.section)
+                let item = itemsInSection?[indexPath.row]
+                let vc = segue.destination as! ItemDetailViewController
+                vc.menuItem = item
+            }
+        default:
+            preconditionFailure("Unexpected segue identifier.")
+        }
     }
 }

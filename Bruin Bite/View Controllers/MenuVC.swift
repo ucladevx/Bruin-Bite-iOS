@@ -319,25 +319,45 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
 
     struct MenuDetailSender {
         var location: Location?
+        var activityLevelData = [ActivityLevel]()
+        var initDate = "1"
+        var initMP = MealPeriod.breakfast
+        var currDate = "1"
+        var currMP = MealPeriod.breakfast
+        var hoursData = [String: [Location: HallHours]]()
     }
 
     func showDetailViewController(location: Location?) {
-        self.performSegue(withIdentifier: "segueToDetailVC", sender: MenuDetailSender(location: location))
+        self.performSegue(withIdentifier: "segueToDetailVC",
+                sender: MenuDetailSender(
+                        location: location,
+                        activityLevelData: activityLevelData,
+                        initDate: initDate,
+                        initMP: initMP,
+                        currDate: initDate,
+                        currMP: currMP,
+                        hoursData: hoursData
+                ))
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
         case "segueToDetailVC"?:
-            guard let object = sender as? MenuDetailSender else {
+            guard let transfer = sender as? MenuDetailSender else {
                 return
             }
             let vc = segue.destination as! MenuDetailViewController
-            // TODO: Switch to detailed menu when updated scraper is live
-            data = self.menuData.getOverviewMenu(date: currDate, mealPeriod: currMP) ?? [:]
-            vc.location = object.location?.rawValue
-            if let location = object.location {
+            data = self.menuData.getDetailedMenu(date: currDate, mealPeriod: currMP) ?? [:]
+            vc.location = transfer.location
+            if let location = transfer.location {
                 vc.items = data[location]
             }
+            vc.activityLevelData = transfer.activityLevelData
+            vc.initDate = transfer.initDate
+            vc.initMP = transfer.initMP
+            vc.currDate = transfer.currDate
+            vc.currMP = transfer.currMP
+            vc.hoursData = transfer.hoursData
             break
         case "segueToItemDetailVC"?:
             let vc = segue.destination as! ItemDetailViewController
