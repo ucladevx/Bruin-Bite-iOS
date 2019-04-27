@@ -65,6 +65,10 @@ class ChatScreenViewController: UIViewController, UITableViewDelegate, UITableVi
         self.socket?.connect()
 
         self.title = chatTitle
+        let infoButton = UIButton(type: .infoLight)
+        infoButton.addTarget(self, action: #selector(didPressInfo), for: .touchUpInside)
+        let barButton = UIBarButtonItem(customView: infoButton)
+        self.navigationItem.rightBarButtonItem = barButton
     }
     
     override func didReceiveMemoryWarning() {
@@ -113,6 +117,11 @@ class ChatScreenViewController: UIViewController, UITableViewDelegate, UITableVi
             }
         }
     }
+    
+    @IBAction func didPressInfo(_sender: Any?){
+        self.performSegue(withIdentifier: "showChatDetails", sender: nil)
+    }
+    
     func didReceiveMessages(messages: [ChatMessage]) {
         print (messages)
         self.messagesList = messages
@@ -181,4 +190,15 @@ class ChatScreenViewController: UIViewController, UITableViewDelegate, UITableVi
         return true
     }
     
+    @IBAction func unwindToChatViewController(segue: UIStoryboardSegue) {
+        
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let dest = segue.destination as? ChatDetailsViewController {
+            dest.day = "11th November 2019"
+            dest.diningHall = "Covel"
+            dest.mealPeriod = "Dinner"
+            dest.time = "6:00 pm"
+        }
+    }
 }
