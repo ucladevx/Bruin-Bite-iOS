@@ -56,6 +56,7 @@
 		BD78709921AD352100E46A50 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD78709821AD352100E46A50 /* UserDefaultsManager.swift */; };
 		BD7870A621B6793A00E46A50 /* PresentAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7870A521B6793A00E46A50 /* PresentAlert.swift */; };
 		BD7870A821B6854900E46A50 /* AutoLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7870A721B6854900E46A50 /* AutoLoginViewController.swift */; };
+		BD95987D226E6A60000934BF /* LoginAlertPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD95987C226E6A60000934BF /* LoginAlertPresentable.swift */; };
 		BDAED25D219FD598005A22F3 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDAED25C219FD598005A22F3 /* UserManager.swift */; };
 		BDAED25F219FD601005A22F3 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDAED25E219FD601005A22F3 /* UserModel.swift */; };
 		BDDE7C6E207AF6840008A677 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDE7C6D207AF6840008A677 /* LoginViewController.swift */; };
@@ -166,6 +167,7 @@
 		BD78709821AD352100E46A50 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		BD7870A521B6793A00E46A50 /* PresentAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentAlert.swift; sourceTree = "<group>"; };
 		BD7870A721B6854900E46A50 /* AutoLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLoginViewController.swift; sourceTree = "<group>"; };
+		BD95987C226E6A60000934BF /* LoginAlertPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAlertPresentable.swift; sourceTree = "<group>"; };
 		BDAED25C219FD598005A22F3 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		BDAED25E219FD601005A22F3 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		BDDE7C6D207AF6840008A677 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -309,6 +311,7 @@
 				770251BC201D4079002E4515 /* Assets.xcassets */,
 				770251BE201D4079002E4515 /* LaunchScreen.storyboard */,
 				BD7870A521B6793A00E46A50 /* PresentAlert.swift */,
+				BD95987C226E6A60000934BF /* LoginAlertPresentable.swift */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -700,6 +703,7 @@
 				DCF0E2DC20B260510036A32F /* UIColor+Additions.swift in Sources */,
 				2AB62E6C20488A050013CB59 /* MenuAPI.swift in Sources */,
 				2AB62E69204887820013CB59 /* Menu.swift in Sources */,
+				BD95987D226E6A60000934BF /* LoginAlertPresentable.swift in Sources */,
 				BDDE7C70207B04590008A677 /* MatchingListViewController.swift in Sources */,
 				2AFA40B220BC07AD0007FB85 /* SearchingScreenViewController.swift in Sources */,
 				BFE168A3209AB8DD00D021A2 /* CollectionViewController.swift in Sources */,

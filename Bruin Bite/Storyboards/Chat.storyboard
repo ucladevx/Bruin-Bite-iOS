@@ -1,15 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Login-->
+        <scene sceneID="BBI-au-vCN">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Login" id="GPl-EQ-FsE" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nOo-1V-zJd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-230" y="-337"/>
+        </scene>
         <!--Chats-->
         <scene sceneID="ICu-8A-NiY">
             <objects>
@@ -43,7 +51,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Josie Bruin" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pg5-o7-qo2">
-                                                    <rect key="frame" x="85" y="11" width="257" height="21"/>
+                                                    <rect key="frame" x="85" y="11" width="218" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="Ppw-jK-FWJ"/>
                                                     </constraints>
@@ -52,7 +60,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10:30 PM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Qq-uE-yxm">
-                                                    <rect key="frame" x="343" y="8" width="56" height="19"/>
+                                                    <rect key="frame" x="304" y="8" width="56" height="19"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="56" id="mLd-wM-LEj"/>
                                                         <constraint firstAttribute="height" constant="19" id="xj0-uK-13V"/>
@@ -71,7 +79,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r8v-2Z-7LS">
-                                                    <rect key="frame" x="378" y="34" width="21" height="21"/>
+                                                    <rect key="frame" x="339" y="34" width="21" height="21"/>
                                                     <color key="backgroundColor" red="0.027450980390000001" green="0.2901960784" blue="0.46666666670000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="FW3-F8-oCM"/>
@@ -157,6 +165,7 @@
                     <connections>
                         <outlet property="chatListTableView" destination="uad-lQ-3ce" id="5oJ-oj-wcI"/>
                         <segue destination="VAO-Bi-W3n" kind="show" identifier="ShowChatScreenVC" id="jvg-k7-oTe"/>
+                        <segue destination="GPl-EQ-FsE" kind="show" identifier="login" id="CEQ-eQ-0ed"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pdt-ao-T7u" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -186,7 +195,7 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Label" translatesAutoresizingMaskIntoConstraints="NO" id="KV0-SQ-Wy1" customClass="DesignableTextView" customModule="Bruin_Bite" customModuleProvider="target">
-                                                            <rect key="frame" x="15" y="8" width="73" height="43.5"/>
+                                                            <rect key="frame" x="15" y="8" width="53" height="43.5"/>
                                                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>

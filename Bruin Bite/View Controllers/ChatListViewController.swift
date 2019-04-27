@@ -18,7 +18,7 @@ class ChatListTableViewCell: UITableViewCell {
     @IBOutlet weak var unreadMessagesLabel: UILabel!
 }
 
-class ChatListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ChatListDelegate {
+class ChatListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ChatListDelegate, LoginAlertPresentable {
 
     var data: [ChatListItem] = []
     var selectedChat: ChatListItem? = nil
@@ -48,6 +48,7 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        if UserManager.shared.getUID() == -1 { presentNotLoggedInAlert() }
         chatListAPI.delegate = self
         chatListAPI.getChatList(forUserWithID: UserDefaultsManager.shared.getUserID())
     }
