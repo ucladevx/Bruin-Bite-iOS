@@ -21,6 +21,8 @@ enum MainAPI {
     case deleteUser(email: String)
     case matchUser(user: Int, meal_times: [String], meal_day: String, meal_period: String, dining_halls: [String])
     case refreshToken(refresh_token: String)
+    case chatList(forUserWithID: Int)
+    case last50Messages(forChatRoomLabel: String)
 }
 
 extension MainAPI: TargetType {
@@ -28,7 +30,7 @@ extension MainAPI: TargetType {
         switch self {
         case .getCurrentActivityLevels, .getOverviewMenu, .getDetailedMenu, .getHours:
             return URL(string: "https://api.bruin-bite.com/api/v1")!
-        case .createUser, .readUser, .loginUser, .updateUser, .deleteUser, .matchUser, .refreshToken:
+        case .createUser, .readUser, .loginUser, .updateUser, .deleteUser, .matchUser, .refreshToken, .chatList, .last50Messages:
             return URL(string: "https://api.bruin-bite.com/api/v1")!
         }
         
@@ -51,6 +53,10 @@ extension MainAPI: TargetType {
             return "/users/data/"
         case .matchUser:
             return "/users/matching/new/"
+        case .chatList:
+            return "users/matching/matches"
+        case .last50Messages:
+            return "/messaging/messages/"
         }
     }
     var method: Moya.Method {
