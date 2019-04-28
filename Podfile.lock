@@ -43,41 +43,6 @@ DEPENDENCIES:
   - SwiftyJSON
   - ViewAnimator
 
-SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
-    - Alamofire
-    - Bolts
-    - CZPicker
-    - FacebookCore
-    - FacebookLogin
-    - FBSDKCoreKit
-    - FBSDKLoginKit
-    - Moya
-    - Pulsator
-    - Repeat
-    - Result
-    - SnapKit
-    - Starscream
-    - SwiftyJSON
-    - ViewAnimator
-
-SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
-    - Alamofire
-    - Bolts
-    - CZPicker
-    - FacebookCore
-    - FacebookLogin
-    - FBSDKCoreKit
-    - FBSDKLoginKit
-    - Moya
-    - Pulsator
-    - Repeat
-    - Result
-    - SnapKit
-    - Starscream
-    - SwiftyJSON
-
 SPEC CHECKSUMS:
   Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
@@ -97,4 +62,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 93d482c250250d49a50492e4f15b4a6c4dc3ce24
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.4.0

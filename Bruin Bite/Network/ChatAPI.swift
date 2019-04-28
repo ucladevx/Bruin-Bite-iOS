@@ -8,6 +8,7 @@
 
 import Foundation
 import Alamofire
+import Moya
 
 protocol ChatMessagesDelegate {
     func didReceiveMessages(messages: [ChatMessage])
@@ -21,28 +22,28 @@ struct Last50MessagesResult: Decodable {
 class ChatAPI {
     
     var delegate: ChatMessagesDelegate?
-    
-    private let BACKEND_GET_LAST_50_MSGS_URL = "https://api.bruin-bite.com/api/v1/messaging/messages/"
+    private let provider = MoyaProvider<MainAPI>()
     
     public func getLast50Messages(forChatRoomWithLabel chatRoomLabel: String?) {
         //  Load the last 50 messages from the server when the view controller loads
-        if let chatRoomLabel = chatRoomLabel {
-            Alamofire.request(BACKEND_GET_LAST_50_MSGS_URL + chatRoomLabel + "/").responseJSON { response in
-                if let result = response.data {
-                    if let resultStruct = try? JSONDecoder().decode(Last50MessagesResult.self, from: result) {
-                        self.delegate?.didReceiveMessages(messages: resultStruct.messages)
-                    } else {
-                        print ("Error getting last 50 messages!")
-                    }
-                }
-            }
-            /* Test long messages:
-            self.delegate?.didReceiveMessages(messages: [
-                ChatMessage(timestamp: "", handle: "1", message: "this is a very long message that i'm typing right now yo what's up go bruins"),
-                ChatMessage(timestamp: "", handle: "-1", message: "this is a very long message that i'm typing right now yo what's up go bruins")
-            ])*/
-        } else {
+        guard let chatRoomLabel = chatRoomLabel else {
             print ("No chat room label given")
+            return
+        }
+
+        provider.request(.last50Messages(forChatRoomLabel: chatRoomLabel)) { result in
+            switch result {
+            case let .success(response):
+                do {
+                    let resultStruct = try JSONDecoder().decode(Last50MessagesResult.self, from: response.data)
+                    self.delegate?.didReceiveMessages(messages: resultStruct.messages)
+                } catch let err {
+                    print ("Error getting last 50 messages!")
+                    print (err)
+                }
+            case let .failure(error):
+                print (error.errorDescription ?? "Moya request failure: last 50 msgs")
+            }
         }
     }
 }

@@ -8,6 +8,7 @@
 
 import Foundation
 import Alamofire
+import Moya
 
 struct ChatListItem: Codable {
     var id: Int
@@ -34,12 +35,32 @@ protocol ChatListDelegate {
 class ChatListAPI {
     
     var delegate: ChatListDelegate? = nil
-    let CHAT_LIST_BACKEND_URL = "https://api.bruin-bite.com/api/v1/users/matching/new/"
+    let CHAT_LIST_BACKEND_URL = "http://localhost:8000/api/v1/users/matching/matches"
+    private let provider = MoyaProvider<MainAPI>()
     
     func getChatList(forUserWithID user: Int) {
+//        provider.request(.chatList(forUserWithID: user)) { result in
+//            switch result {
+//                case let .success(response):
+//                    do {
+//                        let resultStruct = try JSONDecoder().decode([ChatListItem].self, from: response.data)
+//                        self.delegate?.didReceiveChatList(chatListData: resultStruct)
+//                    } catch let err {
+//                        print ("Error parsing response JSON into ChatListResult struct")
+//                        print (err)
+//                    }
+//                case let .failure(error):
+//                    print ("Error acquiring chat list!")
+//                    print (error)
+//            }
+//        }
+//    }
+//    }
+//
+
         let param = ["id": user]
         Alamofire.request(CHAT_LIST_BACKEND_URL, method: HTTPMethod.get, parameters: param, headers: nil).responseJSON { response in
-            
+
             if let result = response.data {
                 if let resultStruct = try? JSONDecoder().decode([ChatListItem].self, from: result) {
                     self.delegate?.didReceiveChatList(chatListData: resultStruct)
