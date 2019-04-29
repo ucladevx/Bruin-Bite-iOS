@@ -1,0 +1,8 @@
+{
+    "projectName": "Bruin-Bite-iOS",
+    "version": "2.0",
+    "frontend": "ios",
+    "providers": [
+        "awscloudformation"
+    ]
+}
