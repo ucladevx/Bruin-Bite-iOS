@@ -33,7 +33,7 @@ extension MainAPI: TargetType {
         switch self {
         case .getCurrentActivityLevels, .getOverviewMenu, .getDetailedMenu, .getHours:
             return URL(string: "https://api.bruin-bite.com/api/v1")!
-        case .createUser, .readUser, .loginUser, .updateUser, .deleteUser, .matchUser, .refreshToken, .chatList, .last50Messages:
+        case .createUser, .readUser, .loginUser, .updateUser, .deleteUser, .matchUser, .refreshToken, .getRequests, .getMatches, .chatList, .last50Messages:
             return URL(string: "https://api.bruin-bite.com/api/v1")!
         }
 

@@ -60,7 +60,7 @@ class PreferenceViewController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if UserManager.shared.getUID() == -1 { presentNotLoggedInAlert() }
+        // TODO: make the "home" of the matching tab a subclass of "LoginAlertPresentable" and check for logged in user.
     }
 
     override func viewDidLoad() {
