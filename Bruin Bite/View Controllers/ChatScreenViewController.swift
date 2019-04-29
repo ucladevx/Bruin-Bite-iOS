@@ -28,10 +28,15 @@ class ChatScreenViewController: UIViewController, UITableViewDelegate, UITableVi
     let currUserId = String(UserDefaultsManager.shared.getUserID())
     
     var messagesList: [ChatMessage] = []
-    var chatRoomLabel: String? = nil
-    var chatTitle: String? = nil
     
-    let BACKEND_CHAT_WEBSOCKET_URL = "https://api.bruin-bite.com/api/v1/messaging/chat/"
+    var chatItem: ChatListItem? = nil
+    
+    // get-only "var"
+    var BACKEND_CHAT_WEBSOCKET_URL: String {
+        get {
+            return "https://api.bruin-bite.com/api/v1/messaging/chat/"
+        }
+    }
     
     let chatAPI = ChatAPI()
     
@@ -59,12 +64,12 @@ class ChatScreenViewController: UIViewController, UITableViewDelegate, UITableVi
         self.messagesTableView.scrollIndicatorInsets = UIEdgeInsetsMake(0.0, 0.0, 0.0, self.messagesTableView.bounds.size.width - 8.0)
 
         self.chatAPI.delegate = self
-        self.chatAPI.getLast50Messages(forChatRoomWithLabel: chatRoomLabel)
-        self.socket = WebSocket(url: URL(string: BACKEND_CHAT_WEBSOCKET_URL + (chatRoomLabel ?? ""))!)
+        self.chatAPI.getLast50Messages(forChatRoomWithLabel: chatItem?.chat_url)
+        self.socket = WebSocket(url: URL(string: BACKEND_CHAT_WEBSOCKET_URL + (chatItem?.chat_url ?? ""))!)
         self.socket?.delegate = self
         self.socket?.connect()
 
-        self.title = chatTitle
+        self.title = chatItem?.user2_first_name
     }
     
     override func didReceiveMemoryWarning() {
