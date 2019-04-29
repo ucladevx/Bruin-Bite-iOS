@@ -29,9 +29,9 @@ extension MainAPI: TargetType {
     var baseURL: URL {
         switch self {
         case .getCurrentActivityLevels, .getOverviewMenu, .getDetailedMenu, .getHours:
-            return URL(string: "http://localhost:5000/api/v1")!
+            return URL(string: "https://api.bruin-bite.com/api/v1")!
         case .createUser, .readUser, .loginUser, .updateUser, .deleteUser, .matchUser, .refreshToken, .chatList, .last50Messages:
-            return URL(string: "http://localhost:8000/api/v1")!
+            return URL(string: "https://api.bruin-bite.com/api/v1")!
         }
         
     }
