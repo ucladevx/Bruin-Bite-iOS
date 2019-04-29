@@ -57,6 +57,12 @@ class PreferenceViewController: UIViewController {
     private var selectedMealPeriod: String? = nil
     private var selectedDateTimes: [Date]? = nil
 
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if UserManager.shared.getUID() == -1 { presentNotLoggedInAlert() }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // formatting top bar
@@ -121,11 +127,11 @@ class PreferenceViewController: UIViewController {
 
         let selectedDateTimeStrings = selectedDatetimes.map { $0.matchRequestMealTimeString() }
         let selectedDateString = selectedDate.yearMonthDayString()
-        
+
         let matchingAPI = MatchingAPI()
         let uid = UserManager.shared.getUID()
         matchingAPI.matchUser(completionDelegate: self, user: uid, meal_times: selectedDateTimeStrings, meal_day: selectedDateString, meal_period: selectedMealPeriod, dining_halls: selectedDiningHalls)
-        
+
     }
 
     private func setUpPickers() {

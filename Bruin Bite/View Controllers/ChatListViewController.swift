@@ -18,13 +18,10 @@ class ChatListTableViewCell: UITableViewCell {
     @IBOutlet weak var unreadMessagesLabel: UILabel!
 }
 
-class ChatListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ChatListDelegate {
-    
-    let chatPreview1: ChatPreview = ChatPreview(name: "Josie Bruin", date: "04/22", meal: "Dinner", time: "10:30 PM", profileImage: "", unreadMessage: 2)
-    
+class ChatListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ChatListDelegate, LoginAlertPresentable {
 
     var data: [ChatListItem] = []
-    var selectedChatRoom: String? = nil
+    var selectedChat: ChatListItem? = nil
     
     let chatListAPI: ChatListAPI = ChatListAPI()
     
@@ -41,16 +38,17 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.setNavigationBarHidden(true, animated: false)
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        self.navigationItem.title = ""
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.navigationController?.setNavigationBarHidden(false, animated: false)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        if UserManager.shared.getUID() == -1 { presentNotLoggedInAlert() }
         chatListAPI.delegate = self
         chatListAPI.getChatList(forUserWithID: UserDefaultsManager.shared.getUserID())
     }
@@ -88,7 +86,7 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        self.selectedChatRoom = data[indexPath.row].chat_url
+        self.selectedChat = data[indexPath.row]
         self.performSegue(withIdentifier: "ShowChatScreenVC", sender: nil)
     }
     
@@ -97,10 +95,17 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
         self.chatListTableView.reloadData()
     }
     
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        if identifier == "ShowChatScreenVC" {
+            return selectedChat != nil
+        }
+        return true
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowChatScreenVC" {
             if let destVC = segue.destination as? ChatScreenViewController {
-                destVC.chatRoomLabel = selectedChatRoom
+                destVC.chatItem = selectedChat
             }
         }
     }
@@ -111,7 +116,7 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
     func getDateObject(fromDateTimeString dateTime: String) -> Date? {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         return dateFormatter.date(from: dateTime)
     }
     

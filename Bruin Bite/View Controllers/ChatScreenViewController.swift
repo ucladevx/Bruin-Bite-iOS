@@ -11,15 +11,15 @@ import Starscream
 import UIKit
 
 class MessageBubbleCell: UITableViewCell {
-    @IBOutlet weak var receivedMessageLabel: UILabel!
-    @IBOutlet weak var sentMessageLabel: UILabel!
+    @IBOutlet weak var receivedMessageLabel: UITextView!
+    @IBOutlet weak var sentMessageLabel: UITextView!
     
     var debugData: ChatMessage = ChatMessage(timestamp: "", handle: "", message: "")
 }
 
-class ChatScreenViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ChatMessagesDelegate, WebSocketDelegate {
+class ChatScreenViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ChatMessagesDelegate, WebSocketDelegate, UITextViewDelegate {
     @IBOutlet weak var messagesTableView: UITableView!
-    @IBOutlet weak var newMessageTxtField: UITextField!
+    @IBOutlet weak var newMessageTextField: UITextView!
     @IBOutlet weak var bottomLayoutConstraint: NSLayoutConstraint!
     
     var socket: WebSocket? = nil
@@ -28,15 +28,22 @@ class ChatScreenViewController: UIViewController, UITableViewDelegate, UITableVi
     let currUserId = String(UserDefaultsManager.shared.getUserID())
     
     var messagesList: [ChatMessage] = []
-    var chatRoomLabel: String? = nil
     
-    let BACKEND_CHAT_WEBSOCKET_URL = "https://api.bruin-bite.com/api/v1/messaging/chat/"
+    var chatItem: ChatListItem? = nil
+    
+    // get-only "var"
+    var BACKEND_CHAT_WEBSOCKET_URL: String {
+        get {
+            return "https://api.bruin-bite.com/api/v1/messaging/chat/"
+        }
+    }
     
     let chatAPI = ChatAPI()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         registerForKeyboardNotifications()
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -46,7 +53,7 @@ class ChatScreenViewController: UIViewController, UITableViewDelegate, UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.hideKeyboardWhenTappedAround()
+        self.hideKeyboardWhenTappedAround(self.messagesTableView)
 
         self.messagesTableView.delegate = self
         self.messagesTableView.dataSource = self
@@ -57,10 +64,12 @@ class ChatScreenViewController: UIViewController, UITableViewDelegate, UITableVi
         self.messagesTableView.scrollIndicatorInsets = UIEdgeInsetsMake(0.0, 0.0, 0.0, self.messagesTableView.bounds.size.width - 8.0)
 
         self.chatAPI.delegate = self
-        self.chatAPI.getLast50Messages(forChatRoomWithLabel: chatRoomLabel)
-        self.socket = WebSocket(url: URL(string: BACKEND_CHAT_WEBSOCKET_URL + (chatRoomLabel ?? ""))!)
+        self.chatAPI.getLast50Messages(forChatRoomWithLabel: chatItem?.chat_url)
+        self.socket = WebSocket(url: URL(string: BACKEND_CHAT_WEBSOCKET_URL + (chatItem?.chat_url ?? ""))!)
         self.socket?.delegate = self
         self.socket?.connect()
+
+        self.title = chatItem?.user2_first_name
     }
     
     override func didReceiveMemoryWarning() {
@@ -79,12 +88,15 @@ class ChatScreenViewController: UIViewController, UITableViewDelegate, UITableVi
             cell.sentMessageLabel.isHidden = false
             cell.sentMessageLabel.text = currMessage.message
             cell.receivedMessageLabel.isHidden = true
+            cell.receivedMessageLabel.text = ""
         } else {
             cell.sentMessageLabel.isHidden = true
+            cell.sentMessageLabel.text = ""
             cell.receivedMessageLabel.isHidden = false
             cell.receivedMessageLabel.text = currMessage.message
         }
         cell.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi));
+        cell.sizeToFit()
         return cell
     }
     
@@ -93,9 +105,9 @@ class ChatScreenViewController: UIViewController, UITableViewDelegate, UITableVi
         print (cell.debugData)
     }
     
-    @IBAction func didPressSendMessage(_ sender: UIButton) {
-        let newMessage = newMessageTxtField.text!
-        self.newMessageTxtField.text = ""
+    @IBAction func didPressSendMessage(_ sender: UIButton?) {
+        let newMessage = newMessageTextField.text!
+        self.newMessageTextField.text = ""
         if !newMessage.isEmpty && self.isSocketConnected {
             let message = ChatMessageSend(handle: self.currUserId, message: newMessage)
             if let messageData = try? JSONEncoder().encode(message) {
@@ -145,11 +157,8 @@ class ChatScreenViewController: UIViewController, UITableViewDelegate, UITableVi
         let convertedKeyboardEndFrame = view.convert(keyboardEndFrame, from: view.window)
         let rawAnimationCurve = (notification.userInfo![UIKeyboardAnimationCurveUserInfoKey] as! NSNumber).uint32Value << 16
         let animationCurve = UIViewAnimationOptions(rawValue: UInt(rawAnimationCurve))
-        var updatedConstant = (view.bounds.maxY - convertedKeyboardEndFrame.minY) + 16
+        let updatedConstant = max((view.bounds.maxY - convertedKeyboardEndFrame.minY), 0)
         // Slightly brute force-y, but desperate times call for desperate measures. - Hirday.
-        if (updatedConstant < 0) {
-            updatedConstant = 16
-        }
         bottomLayoutConstraint.constant = updatedConstant
         
         UIView.animate(withDuration: animationDuration, delay: 0.0, options: animationCurve, animations: {
@@ -167,6 +176,14 @@ class ChatScreenViewController: UIViewController, UITableViewDelegate, UITableVi
         //Removing notifies on keyboard appearing
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if (text == "\n") {
+            didPressSendMessage(nil)
+            return false
+        }
+        return true
     }
     
 }
