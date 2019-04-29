@@ -64,7 +64,7 @@ class MatchingAPI {
                     completionDelegate?.matchRequestSent(successfully: false)
                     return
                 }
-                guard response.statusCode != 418 else {
+                guard response.statusCode != 409 else {
                     completionDelegate?.matchRequestDuplicate()
                     return
                 }
