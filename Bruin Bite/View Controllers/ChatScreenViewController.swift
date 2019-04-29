@@ -200,10 +200,11 @@ class ChatScreenViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let dest = segue.destination as? ChatDetailsViewController {
-            dest.day = "11th November 2019"
-            dest.diningHall = "Covel"
-            dest.mealPeriod = "Dinner"
-            dest.time = "6:00 pm"
+            let mealDateTime = Date(fromMatchRequestMealTimeString: chatItem?.meal_datetime ?? "")
+            dest.day = mealDateTime?.userFriendlyMonthDayYearString()
+            dest.diningHall = diningHallName(forDiningHallCode: chatItem?.dining_hall ?? "")
+            dest.mealPeriod = mealPeriodName(forMealPeriodCode: chatItem?.meal_period ?? "")
+            dest.time = mealDateTime?.hourMinuteString()
         }
     }
 }

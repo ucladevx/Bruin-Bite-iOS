@@ -58,6 +58,21 @@ func diningHallCode(forDiningHall diningHallFullName: String) -> String {
     }
 }
 
+func diningHallName(forDiningHallCode diningHallCode: String) -> String {
+    switch diningHallCode {
+    case "DN":
+        return "De Neve"
+    case "CO":
+        return "Covel"
+    case "BP":
+        return "Bruin Plate"
+    case "FE":
+        return "Feast"
+    default:
+        return ""
+    }
+}
+
 func mealPeriodCode(forMealPeriod mealPeriodFullName: String) -> String {
     switch mealPeriodFullName {
     case "Breakfast":
@@ -68,6 +83,21 @@ func mealPeriodCode(forMealPeriod mealPeriodFullName: String) -> String {
         return "DI"
     case "Latenight":
         return "LN"
+    default:
+        return ""
+    }
+}
+
+func mealPeriodName(forMealPeriodCode mealPeriodCode: String) -> String  {
+    switch mealPeriodCode {
+    case "BR":
+        return "Breakfast"
+    case "LU":
+        return "Lunch"
+    case "DI":
+        return "Dinner"
+    case "LN":
+        return "Latenight"
     default:
         return ""
     }
