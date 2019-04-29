@@ -205,6 +205,13 @@ class ChatScreenViewController: UIViewController, UITableViewDelegate, UITableVi
             dest.diningHall = diningHallName(forDiningHallCode: chatItem?.dining_hall ?? "")
             dest.mealPeriod = mealPeriodName(forMealPeriodCode: chatItem?.meal_period ?? "")
             dest.time = mealDateTime?.hourMinuteString()
+            
+            /* TEST DATA for dev purposes, delete after work is complete
+             dest.day = "11th November 2019"
+             dest.diningHall = "Covel"
+             dest.mealPeriod = "Dinner"
+             dest.time = "6:00 pm"
+            */
         }
     }
 }
