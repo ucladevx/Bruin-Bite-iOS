@@ -51,7 +51,7 @@ class ChatListAPI {
                     }
                 case let .failure(error):
                     print ("Error acquiring chat list!")
-                    print (error.errorDescription)
+                    print (error.errorDescription ?? "")
             }
         }
     }
