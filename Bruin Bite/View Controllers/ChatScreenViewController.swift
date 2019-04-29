@@ -202,8 +202,8 @@ class ChatScreenViewController: UIViewController, UITableViewDelegate, UITableVi
         if let dest = segue.destination as? ChatDetailsViewController {
             let mealDateTime = Date(fromMatchRequestMealTimeString: chatItem?.meal_datetime ?? "")
             dest.day = mealDateTime?.userFriendlyMonthDayYearString()
-            dest.diningHall = diningHallName(forDiningHallCode: chatItem?.dining_hall ?? "")
-            dest.mealPeriod = mealPeriodName(forMealPeriodCode: chatItem?.meal_period ?? "")
+            dest.diningHall = Utilities.diningHallName(forDiningHallCode: chatItem?.dining_hall ?? "")
+            dest.mealPeriod = Utilities.mealPeriodName(forMealPeriodCode: chatItem?.meal_period ?? "")
             dest.time = mealDateTime?.hourMinuteString()
             
             /* TEST DATA for dev purposes, delete after work is complete
