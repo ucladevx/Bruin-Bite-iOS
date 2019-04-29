@@ -18,7 +18,7 @@ struct ChatListItem: Codable {
     var user2_first_name: String
     var user2_last_name: String
     var user2: Int
-    var meal_datetime: String // ISO 8601: yyyy-MM-dd'T'HH:mm:ssZZZZZ
+    var meal_datetime: String // yyyy-MM-dd HH:mm:ss
     var meal_period: String // BR, LU, DI
     var dining_hall: String
     var chat_url: String // actually, chat room label
@@ -35,7 +35,6 @@ protocol ChatListDelegate {
 class ChatListAPI {
     
     var delegate: ChatListDelegate? = nil
-    let CHAT_LIST_BACKEND_URL = "http://localhost:8000/api/v1/users/matching/matches"
     private let provider = MoyaProvider<MainAPI>()
     
     func getChatList(forUserWithID user: Int) {
