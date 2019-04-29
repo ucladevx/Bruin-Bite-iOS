@@ -10,6 +10,14 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Login-->
+        <scene sceneID="BBI-au-vCN">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Login" id="GPl-EQ-FsE" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nOo-1V-zJd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-230" y="-337"/>
+        </scene>
         <!--Chats-->
         <scene sceneID="ICu-8A-NiY">
             <objects>
@@ -157,6 +165,7 @@
                     <connections>
                         <outlet property="chatListTableView" destination="uad-lQ-3ce" id="5oJ-oj-wcI"/>
                         <segue destination="VAO-Bi-W3n" kind="show" identifier="ShowChatScreenVC" id="jvg-k7-oTe"/>
+                        <segue destination="GPl-EQ-FsE" kind="show" identifier="login" id="CEQ-eQ-0ed"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pdt-ao-T7u" userLabel="First Responder" sceneMemberID="firstResponder"/>
