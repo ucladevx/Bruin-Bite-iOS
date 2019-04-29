@@ -42,3 +42,33 @@ class Utilities: NSObject {
     }
     
 }
+
+func diningHallCode(forDiningHall diningHallFullName: String) -> String {
+    switch diningHallFullName {
+    case "De Neve":
+        return "DN"
+    case "Covel":
+        return "CO"
+    case "Bruin Plate":
+        return "BP"
+    case "Feast":
+        return "FE"
+    default:
+        return ""
+    }
+}
+
+func mealPeriodCode(forMealPeriod mealPeriodFullName: String) -> String {
+    switch mealPeriodFullName {
+    case "Breakfast":
+        return "BR"
+    case "Lunch":
+        return "LU"
+    case "Dinner":
+        return "DI"
+    case "Latenight":
+        return "LN"
+    default:
+        return ""
+    }
+}
