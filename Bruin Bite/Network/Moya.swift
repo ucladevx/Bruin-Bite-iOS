@@ -90,9 +90,9 @@ extension MainAPI: TargetType {
         case .refreshToken(let refresh_token):
             return .requestParameters(parameters: ["refresh_token": refresh_token], encoding: URLEncoding.default)
         case .chatList(let userId):
-            return .requestParameters(parameters: ["id": userId], encoding: JSONEncoding.default)
+            return .requestParameters(parameters: ["id": userId], encoding: URLEncoding.default)
         case .last50Messages:
-            return .requestParameters(parameters: [:], encoding: JSONEncoding.default) // empty because url handled param
+            return .requestParameters(parameters: [:], encoding: URLEncoding.default) // empty because url handled param
         }
     }
     //for testing
@@ -130,13 +130,13 @@ extension MainAPI: TargetType {
     }
     var headers: [String: String]? {
         switch self {
-        case .getCurrentActivityLevels, .getDetailedMenu, .getOverviewMenu, .getHours, .chatList, .last50Messages:
+        case .getCurrentActivityLevels, .getDetailedMenu, .getOverviewMenu, .getHours:
             return ["Content-type": "application/json"]
         case .createUser:
             return ["Content-Type": "application/json"]
         case .loginUser, .refreshToken:
             return ["Content-Type": "application/x-www-form-urlencoded"]
-        case .readUser, .updateUser, .deleteUser, .matchUser:
+        case .readUser, .updateUser, .deleteUser, .matchUser, .chatList, .last50Messages:
             var temp = "Bearer "
             temp += UserDefaultsManager.shared.getAccessToken()
             return ["Authorization": temp]
