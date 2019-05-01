@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		002244DC20B8C53000CBD1C2 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002244DB20B8C53000CBD1C2 /* StringExtensions.swift */; };
+		0032C5D52272BC1900841169 /* ChatDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0032C5D42272BC1900841169 /* ChatDetailsViewController.swift */; };
 		0058244F20BA106E0044CB88 /* Hours.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0058244E20BA106E0044CB88 /* Hours.swift */; };
 		00C207F7221BB422003965FE /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C207F6221BB422003965FE /* Date+Extension.swift */; };
 		00C2DF0720B677040023CF75 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C2DF0620B677040023CF75 /* User.swift */; };
@@ -113,6 +114,7 @@
 
 /* Begin PBXFileReference section */
 		002244DB20B8C53000CBD1C2 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
+		0032C5D42272BC1900841169 /* ChatDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDetailsViewController.swift; sourceTree = "<group>"; };
 		0058244E20BA106E0044CB88 /* Hours.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hours.swift; sourceTree = "<group>"; };
 		00C207F6221BB422003965FE /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		00C2DF0620B677040023CF75 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -297,6 +299,7 @@
 				BF5D97E320B974F60086D451 /* ChatListViewController.swift */,
 				BF0943DF20BBF1EB00214200 /* ChatScreenViewController.swift */,
 				BD7870A721B6854900E46A50 /* AutoLoginViewController.swift */,
+				0032C5D42272BC1900841169 /* ChatDetailsViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -739,6 +742,7 @@
 				2A744895203BBDBC00793AD3 /* MenuCardView.swift in Sources */,
 				C7F24355C1F5930CCD314312 /* UIViewBorder.swift in Sources */,
 				BDAED25F219FD601005A22F3 /* UserModel.swift in Sources */,
+				0032C5D52272BC1900841169 /* ChatDetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
