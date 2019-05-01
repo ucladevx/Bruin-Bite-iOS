@@ -95,11 +95,17 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
         self.chatListTableView.reloadData()
     }
     
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        if identifier == "ShowChatScreenVC" {
+            return selectedChat != nil
+        }
+        return true
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowChatScreenVC" {
             if let destVC = segue.destination as? ChatScreenViewController {
-                destVC.chatRoomLabel = selectedChat?.chat_url
-                destVC.chatTitle = selectedChat?.user2_first_name
+                destVC.chatItem = selectedChat
             }
         }
     }
@@ -110,7 +116,7 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
     func getDateObject(fromDateTimeString dateTime: String) -> Date? {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         return dateFormatter.date(from: dateTime)
     }
     
