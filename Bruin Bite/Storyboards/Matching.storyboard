@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -345,7 +346,7 @@
                                 <rect key="frame" x="50" y="139" width="255" height="62.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Day" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="spr-IX-AVH">
-                                        <rect key="frame" x="0.0" y="0.0" width="28" height="19.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="28" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="O1x-NA-jk2"/>
                                         </constraints>
@@ -354,7 +355,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iG8-uB-H5k" userLabel="Day Button">
-                                        <rect key="frame" x="0.0" y="29.5" width="187" height="33"/>
+                                        <rect key="frame" x="0.0" y="30" width="187" height="32.5"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="33" id="E3y-0i-8B3"/>
                                         </constraints>
@@ -381,7 +382,7 @@
                                 <rect key="frame" x="50" y="224" width="255" height="62.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dining Hall" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bSk-Lu-xzZ">
-                                        <rect key="frame" x="0.0" y="0.0" width="78" height="19.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="78" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="eff-KJ-Spt"/>
                                         </constraints>
@@ -390,7 +391,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L3w-V0-cdR" userLabel="Dining Button">
-                                        <rect key="frame" x="0.0" y="29.5" width="214" height="33"/>
+                                        <rect key="frame" x="0.0" y="30" width="214" height="32.5"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="33" id="maC-hO-m3R"/>
                                         </constraints>
@@ -417,7 +418,7 @@
                                 <rect key="frame" x="50" y="309" width="255" height="62.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Meal Period" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="21s-Y1-82F">
-                                        <rect key="frame" x="0.0" y="0.0" width="85.5" height="19.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="85.5" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="nal-2h-cEX"/>
                                         </constraints>
@@ -426,7 +427,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T7L-JA-QJ5" userLabel="Meal Button">
-                                        <rect key="frame" x="0.0" y="29.5" width="226" height="33"/>
+                                        <rect key="frame" x="0.0" y="30" width="226" height="32.5"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="33" id="Uav-OA-I0i"/>
                                         </constraints>
@@ -453,7 +454,7 @@
                                 <rect key="frame" x="50" y="394" width="255" height="62.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gQF-MT-kYV">
-                                        <rect key="frame" x="0.0" y="0.0" width="255" height="19.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="255" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="qR7-2h-IFX"/>
                                         </constraints>
@@ -462,7 +463,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vt2-cc-eVz" userLabel="Time Button">
-                                        <rect key="frame" x="0.0" y="29.5" width="255" height="33"/>
+                                        <rect key="frame" x="0.0" y="30" width="255" height="32.5"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="33" id="XOJ-X3-Uuv"/>
                                         </constraints>
@@ -550,11 +551,20 @@
                         <outlet property="TitleText" destination="ndn-cE-reU" id="p3N-Xc-a6b"/>
                         <outlet property="TopView" destination="Dhc-QX-g7l" id="nEf-aU-Ka2"/>
                         <segue destination="JBV-Dc-6bW" kind="show" identifier="showSearchingVC" id="kWI-sD-1eq"/>
+                        <segue destination="PWc-ON-g6f" kind="show" identifier="login" id="FjH-nq-ItM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yta-cO-J3B" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-4156" y="242.42878560719643"/>
+        </scene>
+        <!--Login-->
+        <scene sceneID="xj4-Jj-bkQ">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Login" id="PWc-ON-g6f" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="q0H-a5-31r" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-4515" y="670"/>
         </scene>
     </scenes>
     <resources>
