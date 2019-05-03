@@ -334,7 +334,7 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
                         activityLevelData: activityLevelData,
                         initDate: initDate,
                         initMP: initMP,
-                        currDate: initDate,
+                        currDate: currDate,
                         currMP: currMP,
                         hoursData: hoursData
                 ))
