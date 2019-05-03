@@ -123,7 +123,7 @@ class ChatScreenViewController: UIViewController, UITableViewDelegate, UITableVi
         }
     }
 
-    @IBAction func didPressInfo(_sender: Any?){
+    @IBAction func didPressInfo(_ sender: Any?){
         self.performSegue(withIdentifier: "showChatDetails", sender: nil)
     }
 
