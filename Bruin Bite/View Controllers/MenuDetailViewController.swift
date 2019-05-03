@@ -44,6 +44,30 @@ class MenuDetailViewController: UITableViewController{
         } else {
             diningHallHours.text? = ""
         }
+
+        let calendar = Calendar.current
+
+        var dateComponents: DateComponents? = calendar.dateComponents([.hour, .minute, .second], from: Date())
+
+        dateComponents?.day = Int(currDate)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM d"
+
+        let date: Date? = calendar.date(from: dateComponents!)
+        if let date = date {
+            self.navigationItem.rightBarButtonItem?.title = dateFormatter.string(from: date)
+        }
+
+        tableView.register(MenuDetailSectionHeader.self,
+                forHeaderFooterViewReuseIdentifier: "sectionHeader")
+    }
+
+    override func tableView(_ tableView: UITableView,
+                            viewForHeaderInSection section: Int) -> UIView? {
+        let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: "sectionHeader") as! MenuDetailSectionHeader
+        view.title.text = Array(sectionedItems.keys)[section]
+
+        return view
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -88,17 +112,23 @@ class MenuDetailViewController: UITableViewController{
         return itemsInSection?.count ?? 0
     }
 
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return Array(sectionedItems.keys)[section]
-    }
-
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UITableViewCell", for: indexPath)
 
         let itemsInSection = getItems(in: indexPath.section)
         let item = itemsInSection?[indexPath.row]
         cell.textLabel?.text = item?.name
+        cell.textLabel?.textColor = UIColor.MenuItemGray
+        cell.textLabel?.font = UIFont.textStyle
         return cell
+    }
+
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return CGFloat.leastNonzeroMagnitude
+    }
+
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 60
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
