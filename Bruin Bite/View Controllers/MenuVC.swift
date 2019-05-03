@@ -114,7 +114,7 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
             }
             let date = Date()
             let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "d"
+            dateFormatter.dateFormat = "dd"
             
             self.initDate = dateFormatter.string(from: date)
             self.initMP = self.currMP
