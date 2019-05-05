@@ -1,5 +1,5 @@
 PODS:
-  - Alamofire (4.8.1)
+  - Alamofire (4.8.2)
   - Bolts (1.9.0):
     - Bolts/AppLinks (= 1.9.0)
     - Bolts/Tasks (= 1.9.0)
@@ -7,17 +7,17 @@ PODS:
     - Bolts/Tasks
   - Bolts/Tasks (1.9.0)
   - CZPicker (0.4.3)
-  - FacebookCore (0.5.0):
+  - FacebookCore (0.6.0):
     - Bolts (~> 1.9)
-    - FBSDKCoreKit (~> 4.37)
-  - FacebookLogin (0.5.0):
+    - FBSDKCoreKit (~> 4.43)
+  - FacebookLogin (0.6.0):
     - Bolts (~> 1.9)
     - FacebookCore (~> 0.5)
-    - FBSDKCoreKit (~> 4.37)
-    - FBSDKLoginKit (~> 4.37)
-  - FBSDKCoreKit (4.40.0):
+    - FBSDKCoreKit (~> 4.43)
+    - FBSDKLoginKit (~> 4.43)
+  - FBSDKCoreKit (4.44.1):
     - Bolts (~> 1.9)
-  - FBSDKLoginKit (4.40.0):
+  - FBSDKLoginKit (4.44.1):
     - FBSDKCoreKit
   - Moya (10.0.2):
     - Moya/Core (= 10.0.2)
@@ -28,9 +28,9 @@ PODS:
   - Repeat (0.5.7)
   - Result (3.2.4)
   - SnapKit (4.2.0)
-  - Starscream (3.0.6)
-  - SwiftyJSON (4.2.0)
-  - ViewAnimator (2.2.0)
+  - Starscream (3.1.0)
+  - SwiftyJSON (4.3.0)
+  - ViewAnimator (2.5.1)
 
 DEPENDENCIES:
   - CZPicker
@@ -44,21 +44,21 @@ DEPENDENCIES:
   - ViewAnimator
 
 SPEC CHECKSUMS:
-  Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
+  Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
   CZPicker: 55aa1751ea26e209814552da1a9a08cba8bbf72a
-  FacebookCore: 74288d0add931d361b1596beae787ab72c438249
-  FacebookLogin: ebcf34714a1cb9f0759d9f071cfb01ed500996cf
-  FBSDKCoreKit: ae214474b25033399c131dc81d258e412582a2ba
-  FBSDKLoginKit: 7a1e411d46acc8834588eca437daf34de42e1d52
+  FacebookCore: 38cd3a4078738d6f648eb9b6b9d35b02d693e9a1
+  FacebookLogin: 658b0569961a081a0890f5f4dbf69ced00657d9e
+  FBSDKCoreKit: a823ae35bdb60ebb8d7a7e51abe7c5d87d2bfced
+  FBSDKLoginKit: 54ae59987f2a8703021557c90a9aebb9e5c2bef6
   Moya: 2b0531a9fef318e0bc484030c3db1e6f279ccb66
   Pulsator: d58707c6827ec862cd89fd727424866795dabd24
   Repeat: 73c5ee602aed8f3c7bf1aa12d4cd0d3dc3edea0a
   Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
-  Starscream: ef3ece99d765eeccb67de105bfa143f929026cf5
-  SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
-  ViewAnimator: a849844cc3698620e1a562b510ed0c28aeafcdc5
+  Starscream: 08172b481e145289c4930cb567230fb55897cfa4
+  SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
+  ViewAnimator: 173932c659a43c5a15c665878750d92801ae2cf1
 
 PODFILE CHECKSUM: 93d482c250250d49a50492e4f15b4a6c4dc3ce24
 
