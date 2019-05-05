@@ -27,7 +27,7 @@ class ItemDetailViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.setNavigationBarHidden(false, animated: false)
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
         self.navigationItem.title = self.menuItem?.name
     }
     
