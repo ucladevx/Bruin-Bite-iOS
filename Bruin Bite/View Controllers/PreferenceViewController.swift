@@ -232,7 +232,7 @@ extension PreferenceViewController: CZPickerViewDelegate {
             }
         case mealPeriodPicker:
             let oldMealPeriod = selectedMealPeriod
-            selectedMealPeriod = mealPeriodCode(forMealPeriod: mealPeriodPicks[row])
+            selectedMealPeriod = Utilities.mealPeriodCode(forMealPeriod: mealPeriodPicks[row])
             MealPeriodBtn.setTitle(mealPeriodPicks[row], for: .normal)
 
             // Must reset selected times if meal period selection changes
@@ -263,7 +263,7 @@ extension PreferenceViewController: CZPickerViewDelegate {
 
         let str = selectedDiningHalls?.joined(separator: ", ") ?? DEFAULT_TEXT["DiningHall"]
         DiningHallBtn.setTitle(str, for: .normal)
-        selectedDiningHalls = selectedDiningHalls?.map { diningHallCode(forDiningHall: $0) }
+        selectedDiningHalls = selectedDiningHalls?.map { Utilities.diningHallCode(forDiningHall: $0) }
         print (selectedDiningHalls)
     }
 
