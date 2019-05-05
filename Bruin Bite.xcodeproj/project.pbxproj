@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		002244DC20B8C53000CBD1C2 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002244DB20B8C53000CBD1C2 /* StringExtensions.swift */; };
+		0032C5D52272BC1900841169 /* ChatDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0032C5D42272BC1900841169 /* ChatDetailsViewController.swift */; };
 		0058244F20BA106E0044CB88 /* Hours.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0058244E20BA106E0044CB88 /* Hours.swift */; };
 		009521352234CA07002A2D62 /* MatchRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009521342234CA07002A2D62 /* MatchRequest.swift */; };
 		009521372234D52E002A2D62 /* MatchingAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009521362234D52E002A2D62 /* MatchingAPI.swift */; };
@@ -78,7 +79,9 @@
 		C0AD0D34204B4EA9008E1206 /* TopBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0AD0D33204B4EA9008E1206 /* TopBar.swift */; };
 		C0CD676A203C15CC006B265D /* TimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CD6769203C15CC006B265D /* TimeView.swift */; };
 		C0CD676C203C1B19006B265D /* ColoredBezel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CD676B203C1B19006B265D /* ColoredBezel.swift */; };
+		C7F19A69CA646BA279F032D9 /* MenuDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F7015B989DC65DDFA1B179 /* MenuDetailViewController.swift */; };
 		C7F24355C1F5930CCD314312 /* UIViewBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F96FCA50FBF094C1704FD1 /* UIViewBorder.swift */; };
+		C7F8852A39898A0DFED430CA /* MenuDetailSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F06F77280F3CA224174A69 /* MenuDetailSectionHeader.swift */; };
 		DC5FC98420B788C400DFCCC7 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC5FC98220B788C400DFCCC7 /* Profile.storyboard */; };
 		DCF0E2DC20B260510036A32F /* UIColor+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF0E2DB20B260510036A32F /* UIColor+Additions.swift */; };
 		DCF0E2DE20B260680036A32F /* UIFont+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF0E2DD20B260680036A32F /* UIFont+Additions.swift */; };
@@ -116,6 +119,7 @@
 
 /* Begin PBXFileReference section */
 		002244DB20B8C53000CBD1C2 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
+		0032C5D42272BC1900841169 /* ChatDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDetailsViewController.swift; sourceTree = "<group>"; };
 		0058244E20BA106E0044CB88 /* Hours.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hours.swift; sourceTree = "<group>"; };
 		009521342234CA07002A2D62 /* MatchRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchRequest.swift; sourceTree = "<group>"; };
 		009521362234D52E002A2D62 /* MatchingAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchingAPI.swift; sourceTree = "<group>"; };
@@ -192,6 +196,8 @@
 		C0AD0D33204B4EA9008E1206 /* TopBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBar.swift; sourceTree = "<group>"; };
 		C0CD6769203C15CC006B265D /* TimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeView.swift; sourceTree = "<group>"; };
 		C0CD676B203C1B19006B265D /* ColoredBezel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColoredBezel.swift; sourceTree = "<group>"; };
+		C7F06F77280F3CA224174A69 /* MenuDetailSectionHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuDetailSectionHeader.swift; sourceTree = "<group>"; };
+		C7F7015B989DC65DDFA1B179 /* MenuDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuDetailViewController.swift; sourceTree = "<group>"; };
 		C7F96FCA50FBF094C1704FD1 /* UIViewBorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewBorder.swift; sourceTree = "<group>"; };
 		CC9C8F47B5A0B8DB48A43377 /* Pods-Bruin BiteUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bruin BiteUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bruin BiteUITests/Pods-Bruin BiteUITests.release.xcconfig"; sourceTree = "<group>"; };
 		D31D0C9107AF44D73AA341C1 /* Pods_Bruin_Bite.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bruin_Bite.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -304,6 +310,8 @@
 				BF0943DF20BBF1EB00214200 /* ChatScreenViewController.swift */,
 				BD7870A721B6854900E46A50 /* AutoLoginViewController.swift */,
 				BF9BC1662262FE0C00C9EC58 /* PreferenceViewController.swift */,
+				C7F7015B989DC65DDFA1B179 /* MenuDetailViewController.swift */,
+				0032C5D42272BC1900841169 /* ChatDetailsViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -342,6 +350,7 @@
 				2A744896203BBEDA00793AD3 /* MenuCardView.xib */,
 				2A744894203BBDBC00793AD3 /* MenuCardView.swift */,
 				770CDEAF20266B6000658925 /* ActivityLevelBar.swift */,
+				C7F06F77280F3CA224174A69 /* MenuDetailSectionHeader.swift */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -766,6 +775,9 @@
 				2A744895203BBDBC00793AD3 /* MenuCardView.swift in Sources */,
 				C7F24355C1F5930CCD314312 /* UIViewBorder.swift in Sources */,
 				BDAED25F219FD601005A22F3 /* UserModel.swift in Sources */,
+				C7F19A69CA646BA279F032D9 /* MenuDetailViewController.swift in Sources */,
+				C7F8852A39898A0DFED430CA /* MenuDetailSectionHeader.swift in Sources */,
+				0032C5D52272BC1900841169 /* ChatDetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

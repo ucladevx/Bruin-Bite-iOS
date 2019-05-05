@@ -86,29 +86,26 @@ struct Menu{
 class MenuController{
     
     var menus: [Menu] = []
-    
-    func getOverviewMenu(date: String, mealPeriod: MealPeriod) -> [Location:[Item]]?{
+
+    func getDetailedMenu(date: String, mealPeriod: MealPeriod) -> [Location: [Item]]? {
+        return getMenu(overview: false, date: date, mealPeriod: mealPeriod)
+    }
+
+    func getOverviewMenu(date: String, mealPeriod: MealPeriod) -> [Location: [Item]]? {
+        return getMenu(overview: true, date: date, mealPeriod: mealPeriod)
+    }
+
+    func getMenu(overview: Bool, date: String, mealPeriod: MealPeriod) -> [Location: [Item]]? {
         for menu in menus{
             let index = menu.date.index(menu.date.endIndex, offsetBy: -2)
             let sub = menu.date[index...]
             if let subInt = Int(sub), let dateInt = Int(date) {
                 if(subInt == dateInt){
-                    return menu.overviewData[mealPeriod]
+                    return (overview ? menu.overviewData : menu.detailedData)[mealPeriod]
                 }
             } else {
                 // TODO: This should never happen, but handle this error gracefully if it does.
                 print ("Menu.swift L92: Could not cast day to int, an error has occured.")
-            }
-        }
-        return nil
-    }
-    
-    func getDetailedMenu(date: String, mealPeriod: MealPeriod) -> [Location:[Item]]?{
-        for menu in menus{
-            let index = menu.date.index(menu.date.endIndex, offsetBy: -2)
-            let sub = menu.date[index...]
-            if(sub == date){
-                return menu.overviewData[mealPeriod]
             }
         }
         return nil

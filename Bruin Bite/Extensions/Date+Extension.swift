@@ -97,6 +97,13 @@ extension Date {
         self.init(timeIntervalSince1970: startOfDate.timeIntervalSince1970)
     }
 
+    init? (fromMatchRequestMealTimeString matchRequestMealTimeString: String) {
+        guard let date = Formatters.matchRequestMealTimeFormatter.date(from: matchRequestMealTimeString) else {
+            return nil
+        }
+        self.init(timeIntervalSince1970: date.timeIntervalSince1970)
+    }
+
     func yearMonthDayString() -> String {
         return Formatters.yearMonthDayFormatter.string(from: self)
     }

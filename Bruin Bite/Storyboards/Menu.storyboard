@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="RAT-qB-Fj9">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="RAT-qB-Fj9">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -137,12 +137,104 @@
                         <outlet property="allergensBar" destination="fRI-GQ-wjj" id="VHL-kb-3Yb"/>
                         <outlet property="backgroundTopBar" destination="DoT-Hh-LNo" id="mh4-dU-Vvb"/>
                         <outlet property="menuCardsCollection" destination="H9C-p3-hMb" id="hir-Sr-zQM"/>
-                        <segue destination="G2B-ru-Cr9" kind="show" identifier="segueToItemDetailVC" id="lgn-hs-Vbn"/>
+                        <segue destination="G2B-ru-Cr9" kind="show" identifier="segueToItemDetailVC" id="e2R-G6-rTw"/>
+                        <segue destination="uvF-bL-74g" kind="show" identifier="segueToDetailVC" id="rWq-Q6-C9I"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1688.8" y="-320.68965517241384"/>
+        </scene>
+        <!--Dining Hall-->
+        <scene sceneID="lLA-IQ-3Aa">
+            <objects>
+                <tableViewController id="uvF-bL-74g" customClass="MenuDetailViewController" customModule="Bruin_Bite" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" contentInsetAdjustmentBehavior="always" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="oRe-QG-tmZ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <stackView key="tableHeaderView" opaque="NO" contentMode="scaleToFill" axis="vertical" id="aOS-s2-aVq">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bQt-zn-6ix" customClass="ActivityLevelBar" customModule="Bruin_Bite" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="7"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="7" id="9kF-Ou-IPQ"/>
+                                    </constraints>
+                                </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rkt-hA-tJf">
+                                    <rect key="frame" x="0.0" y="7" width="375" height="63"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dining Hall" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dX6-DI-7kC">
+                                            <rect key="frame" x="16" y="16" width="343" height="28"/>
+                                            <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="24"/>
+                                            <color key="textColor" red="0.027450980392156862" green="0.29019607843137252" blue="0.46666666666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5:00 pm - 8:00 pm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="74J-mu-sti">
+                                            <rect key="frame" x="221" y="22" width="145.5" height="20.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.52941176470588236" green="0.52941176470588236" blue="0.52941176470588236" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="dX6-DI-7kC" secondAttribute="trailing" constant="8" id="Oqg-kC-0kA"/>
+                                        <constraint firstItem="dX6-DI-7kC" firstAttribute="top" secondItem="Rkt-hA-tJf" secondAttribute="top" constant="16" id="YWZ-sG-tlp"/>
+                                        <constraint firstAttribute="trailing" secondItem="74J-mu-sti" secondAttribute="trailing" constant="8.5" id="ajA-E5-9fk"/>
+                                        <constraint firstItem="dX6-DI-7kC" firstAttribute="leading" secondItem="Rkt-hA-tJf" secondAttribute="leadingMargin" constant="8" id="d1E-OH-URJ"/>
+                                        <constraint firstItem="74J-mu-sti" firstAttribute="firstBaseline" secondItem="dX6-DI-7kC" secondAttribute="firstBaseline" id="l1I-aQ-zHu"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
+                        </stackView>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="UITableViewCell" textLabel="ke0-co-mGg" style="IBUITableViewCellStyleDefault" id="Ylt-0g-a2R">
+                                <rect key="frame" x="0.0" y="125.5" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ylt-0g-a2R" id="dht-qw-DVp">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ke0-co-mGg">
+                                            <rect key="frame" x="16" y="0.0" width="343" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="G2B-ru-Cr9" kind="show" identifier="segueToItemDetailVC" id="BTn-us-8uQ"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="rect" keyPath="contentInset">
+                                <rect key="value" x="24" y="0.0" width="0.0" height="0.0"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                        <connections>
+                            <outlet property="dataSource" destination="uvF-bL-74g" id="utH-lO-YdV"/>
+                            <outlet property="delegate" destination="uvF-bL-74g" id="ltg-sU-9AU"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Dining Hall" id="QBc-mT-33H">
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="Ghk-s2-pcf"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="activityLevelBar" destination="bQt-zn-6ix" id="lbL-0y-595"/>
+                        <outlet property="diningHallHours" destination="74J-mu-sti" id="BnR-Qy-1BL"/>
+                        <outlet property="diningHallName" destination="dX6-DI-7kC" id="hrp-qG-XqL"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MW0-oU-xkf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2524" y="-727.28635682158927"/>
         </scene>
         <!--Item Detail View Controller-->
         <scene sceneID="8no-JV-0B6">
@@ -187,7 +279,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZmK-mX-m7T" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2564" y="-321"/>
+            <point key="canvasLocation" x="2502" y="99"/>
         </scene>
         <!--Menu-->
         <scene sceneID="ieK-Zc-Zn1">
@@ -218,4 +310,7 @@
     <resources>
         <image name="Menu" width="22" height="18"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="BTn-us-8uQ"/>
+    </inferredMetricsTieBreakers>
 </document>
