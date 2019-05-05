@@ -77,8 +77,8 @@
 		C0CD676A203C15CC006B265D /* TimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CD6769203C15CC006B265D /* TimeView.swift */; };
 		C0CD676C203C1B19006B265D /* ColoredBezel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CD676B203C1B19006B265D /* ColoredBezel.swift */; };
 		C7F19A69CA646BA279F032D9 /* MenuDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F7015B989DC65DDFA1B179 /* MenuDetailViewController.swift */; };
-		C7F8852A39898A0DFED430CA /* MenuDetailSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F06F77280F3CA224174A69 /* MenuDetailSectionHeader.swift */; };
 		C7F24355C1F5930CCD314312 /* UIViewBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F96FCA50FBF094C1704FD1 /* UIViewBorder.swift */; };
+		C7F8852A39898A0DFED430CA /* MenuDetailSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F06F77280F3CA224174A69 /* MenuDetailSectionHeader.swift */; };
 		DC5FC98420B788C400DFCCC7 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC5FC98220B788C400DFCCC7 /* Profile.storyboard */; };
 		DCF0E2DC20B260510036A32F /* UIColor+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF0E2DB20B260510036A32F /* UIColor+Additions.swift */; };
 		DCF0E2DE20B260680036A32F /* UIFont+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF0E2DD20B260680036A32F /* UIFont+Additions.swift */; };
@@ -629,7 +629,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Bruin Bite/Pods-Bruin Bite-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-Bruin Bite/Pods-Bruin Bite-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
 				"${BUILT_PRODUCTS_DIR}/CZPicker/CZPicker.framework",
@@ -666,7 +666,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Bruin Bite/Pods-Bruin Bite-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Bruin Bite/Pods-Bruin Bite-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
