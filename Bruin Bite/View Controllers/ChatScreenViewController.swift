@@ -244,11 +244,11 @@ class ChatScreenViewController: UIViewController, UITableViewDelegate, UITableVi
             alert.addAction(UIAlertAction(title: "Send", style: .default, handler: { _ in
                 //Send report
                 guard let chatURL = self.chatItem?.chat_url else {
-                    print("No chat URL to unmatch")
+                    print("No chat URL to report")
                     return
                 }
                 guard let message = self.reportTextField?.text else {
-                    print("No report text when reporting")
+                    print("Couldn't unwrap report user text field")
                     return
                 }
                 ReportAPI.init().reportUser(chatURL: chatURL, message: message, completion: { (success) in
