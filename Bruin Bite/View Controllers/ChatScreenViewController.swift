@@ -10,6 +10,14 @@ import Foundation
 import Starscream
 import UIKit
 
+enum ChatPopupType{
+    case none
+    case unmatch
+    case report
+    case unmatchFail
+    case reportFail
+}
+
 class MessageBubbleCell: UITableViewCell {
     @IBOutlet weak var receivedMessageLabel: UITextView!
     @IBOutlet weak var sentMessageLabel: UITextView!
@@ -39,6 +47,8 @@ class ChatScreenViewController: UIViewController, UITableViewDelegate, UITableVi
     }
 
     let chatAPI = ChatAPI()
+    
+    var reportTextField: UITextField?
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -196,8 +206,79 @@ class ChatScreenViewController: UIViewController, UITableViewDelegate, UITableVi
     }
 
     @IBAction func unwindToChatViewController(segue: UIStoryboardSegue) {
-
+        if let source = segue.source as? ChatDetailsViewController{
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                self.presentPopup(source.exitStatus)
+            }
+        }
     }
+    
+    func presentPopup(_ type: ChatPopupType){
+        //Popup occurs after chatDetails popup unwinds back to ChatVC
+        //User could have pressed the dismiss x, unmatch, or report
+        switch(type){
+        case .none:
+            break
+        case .unmatch:
+            let alert = UIAlertController(title: "Unmatch with User", message: "Are you sure?", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Send", style: .default, handler: { _ in
+                //Unmatch
+                guard let chatURL = self.chatItem?.chat_url else {
+                    print("No chat URL to unmatch")
+                    return
+                }
+                ReportAPI.init().unmatchUser(chatURL: chatURL, completion: { (success) in
+                    if success{
+                        self.performSegue(withIdentifier: "unwindToChatList", sender: nil)
+                    }
+                    else{
+                        self.presentPopup(.unmatchFail)
+                    }
+                })
+            }))
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in
+            }))
+            self.present(alert, animated: true, completion: nil)
+        case .report:
+            let alert = UIAlertController(title: "Report User", message: "Let us know why:", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Send", style: .default, handler: { _ in
+                //Send report
+                guard let chatURL = self.chatItem?.chat_url else {
+                    print("No chat URL to unmatch")
+                    return
+                }
+                guard let message = self.reportTextField?.text else {
+                    print("No report text when reporting")
+                    return
+                }
+                ReportAPI.init().reportUser(chatURL: chatURL, message: message, completion: { (success) in
+                    if success{
+                        self.performSegue(withIdentifier: "unwindToChatList", sender: nil)
+                    }
+                    else{
+                        self.presentPopup(.reportFail)
+                    }
+                })
+            }))
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in
+            }))
+            alert.addTextField { (textField) in
+                self.reportTextField = textField
+            }
+            self.present(alert, animated: true, completion: nil)
+        case .reportFail:
+            let alert = UIAlertController(title: "Report User Failed", message: "Please check your internet connection and try again.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: { _ in
+            }))
+            self.present(alert, animated: true, completion: nil)
+        case .unmatchFail:
+            let alert = UIAlertController(title: "Unmatch with User Failed", message: "Please check your internet connection and try again.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: { _ in
+            }))
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let dest = segue.destination as? ChatDetailsViewController {
             let mealDateTime = Date(fromMatchRequestMealTimeString: chatItem?.meal_datetime ?? "")

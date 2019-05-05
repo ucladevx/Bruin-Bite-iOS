@@ -23,6 +23,8 @@ enum MainAPI {
     case refreshToken(refresh_token: String)
     case chatList(forUserWithID: Int)
     case last50Messages(forChatRoomLabel: String)
+    case unmatchUser(chatURL: String)
+    case reportUser(user: Int, chatURL: String, reportDetails: String)
 }
 
 extension MainAPI: TargetType {
@@ -30,7 +32,7 @@ extension MainAPI: TargetType {
         switch self {
         case .getCurrentActivityLevels, .getOverviewMenu, .getDetailedMenu, .getHours:
             return URL(string: "https://api.bruin-bite.com/api/v1")!
-        case .createUser, .readUser, .loginUser, .updateUser, .deleteUser, .matchUser, .refreshToken, .chatList, .last50Messages:
+        case .createUser, .readUser, .loginUser, .updateUser, .deleteUser, .matchUser, .refreshToken, .chatList, .last50Messages, .unmatchUser, .reportUser:
             return URL(string: "https://api.bruin-bite.com/api/v1")!
         }
         
@@ -57,17 +59,21 @@ extension MainAPI: TargetType {
             return "users/matching/matches"
         case .last50Messages(let chatRoomLbl):
             return "/messaging/messages/\(chatRoomLbl)"
+        case .reportUser:
+            return "/users/matching/report"
+        case .unmatchUser:
+            return "users/matching/matches"
         }
     }
     var method: Moya.Method {
         switch self {
         case .getCurrentActivityLevels, .getOverviewMenu, .getDetailedMenu, .getHours, .readUser, .chatList, .last50Messages:
             return .get
-        case .createUser, .loginUser, .matchUser, .refreshToken:
+        case .createUser, .loginUser, .matchUser, .refreshToken, .reportUser:
             return .post
         case .updateUser:
             return .put
-        case .deleteUser:
+        case .deleteUser, .unmatchUser:
             return .delete
         }
     }
@@ -93,6 +99,10 @@ extension MainAPI: TargetType {
             return .requestParameters(parameters: ["id": userId], encoding: URLEncoding.default)
         case .last50Messages:
             return .requestParameters(parameters: [:], encoding: URLEncoding.default) // empty because url handled param
+        case .reportUser(let user, let chatURL, let reportDetails):
+            return .requestParameters(parameters: ["reporting_user": user, "chat_room_url": chatURL, "report_details": reportDetails], encoding: JSONEncoding.default)
+        case .unmatchUser(let chatURL):
+            return .requestParameters(parameters: ["chat_url": chatURL], encoding: JSONEncoding.default)
         }
     }
     //for testing
@@ -126,6 +136,10 @@ extension MainAPI: TargetType {
             return Data()
         case .last50Messages:
             return Data()
+        case .reportUser:
+            return Data()
+        case .unmatchUser:
+            return Data()
         }
     }
     var headers: [String: String]? {
@@ -136,7 +150,7 @@ extension MainAPI: TargetType {
             return ["Content-Type": "application/json"]
         case .loginUser, .refreshToken:
             return ["Content-Type": "application/x-www-form-urlencoded"]
-        case .readUser, .updateUser, .deleteUser, .matchUser, .chatList, .last50Messages:
+        case .readUser, .updateUser, .deleteUser, .matchUser, .chatList, .last50Messages, .reportUser, .unmatchUser:
             var temp = "Bearer "
             temp += UserDefaultsManager.shared.getAccessToken()
             return ["Authorization": temp]
