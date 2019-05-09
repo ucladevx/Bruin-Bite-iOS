@@ -18,6 +18,8 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
     var topBar = TopBar()
     @IBOutlet weak var backgroundTopBar: UILabel!
     @IBOutlet weak var menuCardsCollection: UICollectionView!
+    @IBOutlet weak var comingSoonPopup: UIImageView!
+    
     
     var menuData = MenuController()
     var activityLevelData = [ActivityLevel]()
@@ -54,7 +56,7 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         self.view.addSubview(topBar)
         topBar.snp.makeConstraints { (make) -> Void in
             make.top.equalTo(self.view.safeAreaLayoutGuide)
-            make.left.equalTo(self.view).offset(12.5)
+            //make.left.equalTo(self.view).offset(12.5)
             make.width.equalTo(350)
             make.height.equalTo(82)
             make.centerX.equalTo(self.view)
@@ -155,6 +157,11 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
     }
         
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if data.count == 0 {
+            comingSoonPopup.isHidden = false
+        } else {
+            comingSoonPopup.isHidden = true
+        }
         return data.count
     }
     

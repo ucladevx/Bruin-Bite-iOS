@@ -9,7 +9,6 @@ target 'Bruin Bite' do
   pod 'Moya', '~> 10.0'
   pod 'SwiftyJSON'
   pod 'SnapKit'
-  pod 'FacebookLogin'
   pod 'CZPicker'
   pod 'Starscream'
   pod 'Repeat'

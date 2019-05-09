@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WtO-JF-5ff">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WtO-JF-5ff">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -26,7 +26,7 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yuZ-IE-vqN">
-                                <rect key="frame" x="66.5" y="243" width="242" height="57"/>
+                                <rect key="frame" x="66.5" y="363.5" width="242" height="57"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="yuZ-IE-vqN" secondAttribute="height" multiplier="242:57" id="nwz-Kl-uAT"/>
                                     <constraint firstAttribute="height" constant="57" id="orp-2J-pcm"/>
@@ -40,21 +40,8 @@
                                     <action selector="SignUpTap:" destination="4Hj-cQ-8ki" eventType="touchDown" id="XQh-o3-0aZ"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cuD-rX-HNg">
-                                <rect key="frame" x="66.5" y="326" width="242" height="57"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="57" id="bqz-uh-7gx"/>
-                                    <constraint firstAttribute="width" secondItem="cuD-rX-HNg" secondAttribute="height" multiplier="242:57" id="ust-uu-nAE"/>
-                                </constraints>
-                                <state key="normal" title="Continue with Facebook">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="ContinueFBTap:" destination="4Hj-cQ-8ki" eventType="touchDown" id="igG-9j-xpm"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j2B-mh-3uB">
-                                <rect key="frame" x="66.5" y="409" width="242" height="57"/>
+                                <rect key="frame" x="66.5" y="454" width="242" height="57"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="j2B-mh-3uB" secondAttribute="height" multiplier="242:57" id="HdQ-jm-DKM"/>
                                     <constraint firstAttribute="height" constant="57" id="hIr-sj-F8o"/>
@@ -68,16 +55,17 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iap-FB-8KA">
-                                <rect key="frame" x="80.5" y="528" width="214" height="29"/>
+                                <rect key="frame" x="66.5" y="273" width="242" height="57"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="280" id="7zL-ps-vV6"/>
+                                    <constraint firstAttribute="width" secondItem="iap-FB-8KA" secondAttribute="height" multiplier="242:57" id="FFX-cB-CXI"/>
+                                    <constraint firstAttribute="height" constant="57" id="Mlr-FT-d2j"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <state key="normal" title="Already have an account? Sign In">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <variation key="heightClass=compact-widthClass=compact">
-                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 </variation>
                                 <connections>
                                     <action selector="SignInTap:" destination="4Hj-cQ-8ki" eventType="touchUpInside" id="Ncd-qh-GDB"/>
@@ -88,25 +76,22 @@
                         <color key="tintColor" red="0.027450980390000001" green="0.2901960784" blue="0.46666666670000001" alpha="0.0" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="j2B-mh-3uB" firstAttribute="centerX" secondItem="MMr-Iz-Unp" secondAttribute="centerX" id="3BY-5d-bh1"/>
-                            <constraint firstItem="iap-FB-8KA" firstAttribute="centerY" secondItem="MMr-Iz-Unp" secondAttribute="centerY" multiplier="1.8" id="7VE-Gg-X79"/>
-                            <constraint firstItem="cuD-rX-HNg" firstAttribute="centerX" secondItem="MMr-Iz-Unp" secondAttribute="centerX" id="8Xh-yp-iAK"/>
-                            <constraint firstItem="yuZ-IE-vqN" firstAttribute="centerY" secondItem="MMr-Iz-Unp" secondAttribute="centerY" multiplier="0.9" id="GVi-DE-Fsd"/>
+                            <constraint firstItem="iap-FB-8KA" firstAttribute="centerY" secondItem="MMr-Iz-Unp" secondAttribute="centerY" id="7VE-Gg-X79"/>
+                            <constraint firstItem="yuZ-IE-vqN" firstAttribute="centerY" secondItem="MMr-Iz-Unp" secondAttribute="centerY" multiplier="1.3" id="GVi-DE-Fsd"/>
                             <constraint firstItem="iap-FB-8KA" firstAttribute="centerX" secondItem="MMr-Iz-Unp" secondAttribute="centerX" id="HLE-tW-S1f"/>
+                            <constraint firstItem="iap-FB-8KA" firstAttribute="width" secondItem="MMr-Iz-Unp" secondAttribute="height" multiplier="242:603" id="Qyg-c2-An4"/>
                             <constraint firstItem="yuZ-IE-vqN" firstAttribute="centerX" secondItem="MMr-Iz-Unp" secondAttribute="centerX" id="VDS-Pc-2W3"/>
-                            <constraint firstItem="j2B-mh-3uB" firstAttribute="top" secondItem="cuD-rX-HNg" secondAttribute="bottom" constant="26" id="gPJ-hn-eBI"/>
                             <constraint firstItem="yuZ-IE-vqN" firstAttribute="width" secondItem="MMr-Iz-Unp" secondAttribute="height" multiplier="242:603" id="k1B-Hi-LuX"/>
                             <constraint firstItem="EnN-Rj-AaS" firstAttribute="centerX" secondItem="MMr-Iz-Unp" secondAttribute="centerX" id="n0a-eF-V9I"/>
-                            <constraint firstItem="cuD-rX-HNg" firstAttribute="width" secondItem="MMr-Iz-Unp" secondAttribute="height" multiplier="242:603" id="oC1-zr-CXn"/>
                             <constraint firstItem="EnN-Rj-AaS" firstAttribute="centerY" secondItem="MMr-Iz-Unp" secondAttribute="centerY" multiplier="0.4" id="rwu-gf-1YK"/>
-                            <constraint firstItem="cuD-rX-HNg" firstAttribute="top" secondItem="yuZ-IE-vqN" secondAttribute="bottom" constant="26" id="sKA-ia-MBP"/>
                             <constraint firstItem="j2B-mh-3uB" firstAttribute="width" secondItem="MMr-Iz-Unp" secondAttribute="height" multiplier="242:603" id="x1O-dQ-ABI"/>
+                            <constraint firstItem="j2B-mh-3uB" firstAttribute="centerY" secondItem="MMr-Iz-Unp" secondAttribute="centerY" multiplier="1.6" id="zfb-Fa-hmI"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Jgf-Gh-0sY"/>
                     </view>
                     <navigationItem key="navigationItem" id="Ezr-DC-yna"/>
                     <connections>
                         <outlet property="CheckMenuButton" destination="j2B-mh-3uB" id="tzX-nX-209"/>
-                        <outlet property="ContinueFBButton" destination="cuD-rX-HNg" id="3id-ui-GIu"/>
                         <outlet property="SignInButton" destination="iap-FB-8KA" id="BDN-AV-gns"/>
                         <outlet property="SignUpButton" destination="yuZ-IE-vqN" id="Npy-ky-3bA"/>
                         <segue destination="U1n-zi-66f" kind="show" identifier="toSignUpController" id="zJr-Uv-WWz"/>
