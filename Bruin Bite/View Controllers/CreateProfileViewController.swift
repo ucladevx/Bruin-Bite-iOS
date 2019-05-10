@@ -123,6 +123,11 @@ class CreateProfileViewController: UIViewController, UpdateDelegate, AlertPresen
     func profilePicture(uploadCompleted: Bool, failedWithError error: String?) {
         if(!uploadCompleted){
             print("Failed to upload profile picture: " + (error ?? ""))
+            let alert = UIAlertController(title: "Upload Failed", message: "Your photo could not be uploaded at this time. Please try again later.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
+                self.BioPic.image = UIImage(named: "ProfilePic")
+            }))
+            self.present(alert, animated: true, completion: nil)
         }
     }
 
