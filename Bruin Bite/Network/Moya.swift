@@ -60,9 +60,9 @@ extension MainAPI: TargetType {
         case .last50Messages(let chatRoomLbl):
             return "/messaging/messages/\(chatRoomLbl)"
         case .uploadProfilePicture:
-            return "/users/profile_picture"
+            return "/users/profile_picture/"
         case .getProfilePicture:
-            return "/users/profile_picture"
+            return "/users/profile_picture/"
         }
     }
     var method: Moya.Method {
@@ -104,7 +104,7 @@ extension MainAPI: TargetType {
             let multipartData = [pictureData]
             return .uploadMultipart(multipartData)
         case .getProfilePicture(let userID):
-            return .requestParameters(parameters: ["user_id": userID], encoding: JSONEncoding.default)
+            return .requestParameters(parameters: ["user_id": userID], encoding: URLEncoding.default)
         }
     }
     //for testing

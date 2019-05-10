@@ -121,11 +121,8 @@ class CreateProfileViewController: UIViewController, UpdateDelegate, AlertPresen
     }
     
     func profilePicture(uploadCompleted: Bool, failedWithError error: String?) {
-        if(uploadCompleted){
-            print("YAYYYYYY")
-        }
-        else {
-            print("Hirday is going to fire you: " + (error ?? ""))
+        if(!uploadCompleted){
+            print("Failed to upload profile picture: " + (error ?? ""))
         }
     }
 

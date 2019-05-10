@@ -10,8 +10,8 @@ import Foundation
 import Moya
 
 struct ProfilePictureResponse: Codable {
-    let userID: Int
-    let profilePicture: String
+    let user_id: Int
+    let profile_picture: String
 }
 
 protocol ProfilePictureUploadDelegate {
@@ -57,7 +57,7 @@ class ProfilePictureAPI {
                     delegate.profilePicture(failedWithError: self.DOWNLOAD_ERR_MSG)
                     return
                 }
-                guard let dataDecoded : Data = Data(base64Encoded: resultStruct.profilePicture, options: .ignoreUnknownCharacters), let image = UIImage(data: dataDecoded) else {
+                guard let dataDecoded : Data = Data(base64Encoded: resultStruct.profile_picture, options: .ignoreUnknownCharacters), let image = UIImage(data: dataDecoded) else {
                     print("Error: Could not decode profile picture")
                     delegate.profilePicture(failedWithError: self.DOWNLOAD_ERR_MSG)
                     return

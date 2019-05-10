@@ -9,7 +9,7 @@
 import UIKit
 import Foundation
 
-class ProfileViewController: UIViewController, ReadDelegate, AlertPresentable, LoginAlertPresentable {
+class ProfileViewController: UIViewController, ReadDelegate, AlertPresentable, LoginAlertPresentable, ProfilePictureDownloadDelegate {
 
     @IBOutlet weak var profilePic: UIImageView!
     @IBOutlet weak var userName: UILabel!
@@ -52,6 +52,16 @@ class ProfileViewController: UIViewController, ReadDelegate, AlertPresentable, L
         fillInformation()
         //Set the labels/profile picture with default or old information
         UserManager.shared.readUser(email: UserDefaultsManager.shared.getUserEmail())
+        
+        ProfilePictureAPI().download(pictureForUserID: UserManager.shared.getUID(), delegate: self)
+    }
+    
+    func profilePicture(didDownloadimage image: UIImage) {
+        profilePic.image = image
+    }
+    
+    func profilePicture(failedWithError error: String?) {
+        print("Failed to download profile picture: \(error ?? "")")
     }
 
     func didReadUser() {
