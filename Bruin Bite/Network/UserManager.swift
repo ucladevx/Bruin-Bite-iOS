@@ -176,10 +176,11 @@ class UserManager {
         self.provider.request(.logoutUser(token: token, client_id: CLIENTID, client_secret: CLIENTSECRET)) { result in
             switch result {
             case .success:
+                self.logOutUser()
                 self.logoutDelegate?.didCompleteLogout()
             case let .failure(error):
                 print(error)
-                self.refreshDelegate?.networkFailure()
+                self.logoutDelegate?.logoutFailed()
             }
         }
     }
@@ -248,6 +249,7 @@ protocol ReadDelegate {
 
 protocol LogoutDelegate {
     func didCompleteLogout()
+    func logoutFailed()
 }
 
 protocol DeleteUserDelegate {
