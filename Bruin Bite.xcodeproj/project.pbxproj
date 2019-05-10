@@ -10,6 +10,7 @@
 		002244DC20B8C53000CBD1C2 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002244DB20B8C53000CBD1C2 /* StringExtensions.swift */; };
 		0032C5D52272BC1900841169 /* ChatDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0032C5D42272BC1900841169 /* ChatDetailsViewController.swift */; };
 		0058244F20BA106E0044CB88 /* Hours.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0058244E20BA106E0044CB88 /* Hours.swift */; };
+		00A89A9422851AE500DF78C8 /* ProfilePictureAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A89A9322851AE500DF78C8 /* ProfilePictureAPI.swift */; };
 		00C207F7221BB422003965FE /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C207F6221BB422003965FE /* Date+Extension.swift */; };
 		00C2DF0720B677040023CF75 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C2DF0620B677040023CF75 /* User.swift */; };
 		00C2DF0920B678890023CF75 /* Moya.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C2DF0820B678890023CF75 /* Moya.swift */; };
@@ -118,6 +119,7 @@
 		002244DB20B8C53000CBD1C2 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		0032C5D42272BC1900841169 /* ChatDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDetailsViewController.swift; sourceTree = "<group>"; };
 		0058244E20BA106E0044CB88 /* Hours.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hours.swift; sourceTree = "<group>"; };
+		00A89A9322851AE500DF78C8 /* ProfilePictureAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePictureAPI.swift; sourceTree = "<group>"; };
 		00C207F6221BB422003965FE /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		00C2DF0620B677040023CF75 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		00C2DF0820B678890023CF75 /* Moya.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Moya.swift; sourceTree = "<group>"; };
@@ -358,6 +360,7 @@
 				00C2DF0A20B678A00023CF75 /* UserAPI.swift */,
 				BF0943E320BBFEEF00214200 /* ChatAPI.swift */,
 				BFC934B220C3448A0040D08D /* ChatListAPI.swift */,
+				00A89A9322851AE500DF78C8 /* ProfilePictureAPI.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -505,7 +508,6 @@
 				770251AE201D4079002E4515 /* Resources */,
 				D601296F579F59F8E568D410 /* [CP] Embed Pods Frameworks */,
 				2AFA409F20BBD7A00007FB85 /* Embed App Extensions */,
-				0F0963238FAF47DCE06CAE9A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -590,21 +592,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0F0963238FAF47DCE06CAE9A /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Bruin Bite/Pods-Bruin Bite-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		9DB29EBED83346BDBACE0D17 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -701,6 +688,7 @@
 				BF0523E3209AA7E00013EE11 /* ProfileViewController.swift in Sources */,
 				2AFB41372047F0F2004025F9 /* MenuCardCollectionViewCell.swift in Sources */,
 				2A16F9A720BEA204008BA4E3 /* ComingSoonPopup.swift in Sources */,
+				00A89A9422851AE500DF78C8 /* ProfilePictureAPI.swift in Sources */,
 				770CDEAE20266B0800658925 /* ColoredCircle.swift in Sources */,
 				2AB62E702048D21D0013CB59 /* ActivityLevel.swift in Sources */,
 				2AFA40B120BC07AD0007FB85 /* MatchFoundViewController.swift in Sources */,

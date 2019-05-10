@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CreateProfileViewController: UIViewController, UpdateDelegate, AlertPresentable, UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class CreateProfileViewController: UIViewController, UpdateDelegate, AlertPresentable, UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, ProfilePictureUploadDelegate {
 
     var profilePic: UIImage!
     var imagePickerController: UIImagePickerController?
@@ -114,9 +114,19 @@ class CreateProfileViewController: UIViewController, UpdateDelegate, AlertPresen
                 self.BioPic.layer.cornerRadius = BioPic.frame.height/2
                 self.profilePic = pickedImage
                 self.BioPic.image = pickedImage
+            ProfilePictureAPI().upload(profilePicture: pickedImage, delegate: self)
         }
 
         dismiss(animated: true, completion: nil)
+    }
+    
+    func profilePicture(uploadCompleted: Bool, failedWithError error: String?) {
+        if(uploadCompleted){
+            print("YAYYYYYY")
+        }
+        else {
+            print("Hirday is going to fire you: " + (error ?? ""))
+        }
     }
 
     func textView(_ BioTextBox: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {

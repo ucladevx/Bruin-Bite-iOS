@@ -23,6 +23,8 @@ enum MainAPI {
     case refreshToken(refresh_token: String)
     case chatList(forUserWithID: Int)
     case last50Messages(forChatRoomLabel: String)
+    case uploadProfilePicture(image: Data)
+    case getProfilePicture(forUserWithID: Int)
 }
 
 extension MainAPI: TargetType {
@@ -57,13 +59,17 @@ extension MainAPI: TargetType {
             return "users/matching/matches"
         case .last50Messages(let chatRoomLbl):
             return "/messaging/messages/\(chatRoomLbl)"
+        case .uploadProfilePicture:
+            return "/users/profile_picture"
+        case .getProfilePicture:
+            return "/users/profile_picture"
         }
     }
     var method: Moya.Method {
         switch self {
-        case .getCurrentActivityLevels, .getOverviewMenu, .getDetailedMenu, .getHours, .readUser, .chatList, .last50Messages:
+        case .getCurrentActivityLevels, .getOverviewMenu, .getDetailedMenu, .getHours, .readUser, .chatList, .last50Messages, .getProfilePicture:
             return .get
-        case .createUser, .loginUser, .matchUser, .refreshToken:
+        case .createUser, .loginUser, .matchUser, .refreshToken, .uploadProfilePicture:
             return .post
         case .updateUser:
             return .put
@@ -93,6 +99,12 @@ extension MainAPI: TargetType {
             return .requestParameters(parameters: ["id": userId], encoding: URLEncoding.default)
         case .last50Messages:
             return .requestParameters(parameters: [:], encoding: URLEncoding.default) // empty because url handled param
+        case .uploadProfilePicture(let profilePicture):
+            let pictureData = MultipartFormData(provider: .data(profilePicture), name: "profile_picture", fileName: "profile.jpeg", mimeType: "multipart/form-data")
+            let multipartData = [pictureData]
+            return .uploadMultipart(multipartData)
+        case .getProfilePicture(let userID):
+            return .requestParameters(parameters: ["user_id": userID], encoding: JSONEncoding.default)
         }
     }
     //for testing
@@ -126,6 +138,10 @@ extension MainAPI: TargetType {
             return Data()
         case .last50Messages:
             return Data()
+        case .uploadProfilePicture:
+            return Data()
+        case .getProfilePicture:
+            return Data()
         }
     }
     var headers: [String: String]? {
@@ -136,7 +152,7 @@ extension MainAPI: TargetType {
             return ["Content-Type": "application/json"]
         case .loginUser, .refreshToken:
             return ["Content-Type": "application/x-www-form-urlencoded"]
-        case .readUser, .updateUser, .deleteUser, .matchUser, .chatList, .last50Messages:
+        case .readUser, .updateUser, .deleteUser, .matchUser, .chatList, .last50Messages, .uploadProfilePicture, .getProfilePicture:
             var temp = "Bearer "
             temp += UserDefaultsManager.shared.getAccessToken()
             return ["Authorization": temp]
