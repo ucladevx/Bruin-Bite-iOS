@@ -172,6 +172,18 @@ class UserManager {
         }
     }
 
+    func invalidateAccessToken(token: String) {
+        self.provider.request(.logoutUser(token: token, client_id: CLIENTID, client_secret: CLIENTSECRET)) { result in
+            switch result {
+            case .success:
+                self.logoutDelegate?.didCompleteLogout()
+            case let .failure(error):
+                print(error)
+                self.refreshDelegate?.networkFailure()
+            }
+        }
+    }
+
     private func updateCurrentUser(newUserInfo: UserCreate) {
         self.currentUser.uBio = newUserInfo.self_bio
         self.currentUser.uFirstName = newUserInfo.first_name
@@ -192,7 +204,6 @@ class UserManager {
     func logOutUser() {
         UserDefaultsManager.shared.removeAll()
         currentUser = UserModel()
-        logoutDelegate?.didCompleteLogout()
     }
 
     func deleteUser(email: String) {
