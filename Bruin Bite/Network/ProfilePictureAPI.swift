@@ -19,7 +19,7 @@ protocol ProfilePictureUploadDelegate {
 }
 
 protocol ProfilePictureDownloadDelegate {
-    func profilePicture(didDownloadimage image: UIImage)
+    func profilePicture(didDownloadimage image: UIImage, forUserWithID userID: Int)
     func profilePicture(failedWithError error: String?)
 }
 
@@ -31,7 +31,7 @@ class ProfilePictureAPI {
     private let DOWNLOAD_ERR_MSG = "Couldn't download profile picture. Try again later"
     
     func upload(profilePicture: UIImage, delegate: ProfilePictureUploadDelegate){
-        if let data = UIImageJPEGRepresentation(profilePicture, 0.7){
+        if let data = UIImageJPEGRepresentation(profilePicture, 0.4){
             provider.request(.uploadProfilePicture(image: data)) { (result) in
                 switch(result){
                 case let .success(response):
@@ -62,7 +62,7 @@ class ProfilePictureAPI {
                     delegate.profilePicture(failedWithError: self.DOWNLOAD_ERR_MSG)
                     return
                 }
-                delegate.profilePicture(didDownloadimage: image)
+                delegate.profilePicture(didDownloadimage: image, forUserWithID: userID)
             case let .failure(error):
                 print("Could not download photo: " + (error.errorDescription ?? ""))
                 delegate.profilePicture(failedWithError: self.DOWNLOAD_ERR_MSG)

@@ -56,7 +56,7 @@ class ProfileViewController: UIViewController, ReadDelegate, AlertPresentable, L
         ProfilePictureAPI().download(pictureForUserID: UserManager.shared.getUID(), delegate: self)
     }
     
-    func profilePicture(didDownloadimage image: UIImage) {
+    func profilePicture(didDownloadimage image: UIImage, forUserWithID _: Int) {
         profilePic.image = image
     }
     
