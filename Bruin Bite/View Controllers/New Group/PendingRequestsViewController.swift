@@ -170,7 +170,6 @@ class PendingRequestsViewController: UIViewController, UITableViewDelegate, UITa
         tempMatchSections = nil
         tempRequestSections = nil
         */
-        
     }
     
     @IBAction func switchTable(_ sender: Any) {
@@ -257,7 +256,7 @@ class PendingRequestsViewController: UIViewController, UITableViewDelegate, UITa
             cell.backdrop.layer.masksToBounds = false
             cell.backdrop.clipsToBounds = true
             cell.backdrop.layer.cornerRadius = 10
-            cell.name.text = match.user1_first_name + " " + match.user1_last_name
+            cell.name.text = match.user2_first_name + " " + match.user2_last_name
             let mealAndLocation = (DiningHall(rawValue: match.meal_period)?.getDisplayString() ?? "Food") + " at " + (MealPeriod(rawValue: match.dining_hall)?.getDisplayString() ?? "UCLA")
             cell.location.text = mealAndLocation
             return cell

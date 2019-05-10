@@ -39,26 +39,26 @@ class LoginViewController: UIViewController {
     
     // change button and text color when pressed
     @IBAction func ContinueFBTap(_ sender: Any) {
-        if ContinueFBButton.backgroundColor == .clear {
-            ContinueFBButton.backgroundColor = UIColor.white
-            ContinueFBButton.setTitleColor(UIColor.twilightBlue, for: .normal)
-        }
-        
-        // FB authentification
-        let loginManager = LoginManager()
-        loginManager.logIn(readPermissions: [.publicProfile, .email, .userFriends], viewController: self) { (loginResult) in
-            switch loginResult {
-            case .failed(let error):
-                print("Error:::::::\(error)")
-            case .cancelled:
-                print("User cancelled login.")
-            case .success(let grantedPermissions, let declinedPermissions, let accessToken):
-                //if user exists and login suceeds
-                //self.performSegue(withIdentifier: "CheckMenusSegue", sender: sender)
-                //else
-                self.performSegue(withIdentifier: "CreateProfileSegue", sender: sender)
-            }
-        }
+//        if ContinueFBButton.backgroundColor == .clear {
+//            ContinueFBButton.backgroundColor = UIColor.white
+//            ContinueFBButton.setTitleColor(UIColor.twilightBlue, for: .normal)
+//        }
+//
+//        // FB authentification
+//        let loginManager = LoginManager()
+//        loginManager.logIn(readPermissions: [.publicProfile, .email, .userFriends], viewController: self) { (loginResult) in
+//            switch loginResult {
+//            case .failed(let error):
+//                print("Error:::::::\(error)")
+//            case .cancelled:
+//                print("User cancelled login.")
+//            case .success(let grantedPermissions, let declinedPermissions, let accessToken):
+//                //if user exists and login suceeds
+//                //self.performSegue(withIdentifier: "CheckMenusSegue", sender: sender)
+//                //else
+//                self.performSegue(withIdentifier: "CreateProfileSegue", sender: sender)
+//            }
+//        }
     }
     
     // change button and text color when pressed
