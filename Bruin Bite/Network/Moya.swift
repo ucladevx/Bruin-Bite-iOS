@@ -102,7 +102,7 @@ extension MainAPI: TargetType {
         case .reportUser(let user, let chatURL, let reportDetails):
             return .requestParameters(parameters: ["reporting_user": user, "chat_room_url": chatURL, "report_details": reportDetails], encoding: JSONEncoding.default)
         case .unmatchUser(let chatURL):
-            return .requestParameters(parameters: ["chat_url": chatURL], encoding: JSONEncoding.default)
+            return .requestParameters(parameters: ["chat_url": chatURL], encoding: URLEncoding.default)
         }
     }
     //for testing

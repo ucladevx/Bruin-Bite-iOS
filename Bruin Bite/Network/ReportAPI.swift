@@ -16,7 +16,7 @@ class ReportAPI{
         provider.request(.reportUser(user: UserManager.shared.getUID(), chatURL: chatURL, reportDetails: message)) { (result) in
             switch(result){
             case let .success(response):
-                if response.statusCode == 200 {
+                if response.statusCode == 201 {
                     completion(true)
                 }
                 else {
