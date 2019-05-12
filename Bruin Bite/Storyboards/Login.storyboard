@@ -482,6 +482,7 @@
                         <outlet property="BioText" destination="UPG-fQ-gga" id="b75-IE-DSu"/>
                         <outlet property="BioTextBox" destination="hOe-iL-nsr" id="afH-TX-Iu9"/>
                         <outlet property="BioTextBoxChar" destination="7eg-dc-dIU" id="s1s-hv-CSf"/>
+                        <outlet property="nextButton" destination="o1y-ub-wYw" id="1ez-he-r1J"/>
                         <segue destination="aNE-gY-fgK" kind="show" identifier="toCreateController" id="kCm-77-NrQ"/>
                     </connections>
                 </viewController>

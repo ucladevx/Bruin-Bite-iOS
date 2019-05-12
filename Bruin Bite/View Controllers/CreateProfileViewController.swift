@@ -15,6 +15,8 @@ class CreateProfileViewController: UIViewController, UpdateDelegate, AlertPresen
     
     @IBOutlet weak var BioPic: UIImageView!
     @IBOutlet var BioText: UILabel!
+    @IBOutlet weak var NextButton: UIButton!
+    
 
     //@IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet var BioTextBox: UITextView!
@@ -34,7 +36,7 @@ class CreateProfileViewController: UIViewController, UpdateDelegate, AlertPresen
         BioText.font = UIFont.bioFont
         BioTextBox.becomeFirstResponder()
         BioTextBox.delegate = self
-
+        NextButton.isEnabled = false
         Utilities.sharedInstance.formatNavigation(controller: self.navigationController!)
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor : UIColor.white, NSAttributedStringKey.font: UIFont(name: "AvenirNext-Bold", size: 17.0)!]
 
@@ -121,13 +123,17 @@ class CreateProfileViewController: UIViewController, UpdateDelegate, AlertPresen
     }
     
     func profilePicture(uploadCompleted: Bool, failedWithError error: String?) {
-        if(!uploadCompleted){
+        if(uploadCompleted){
+            NextButton.isEnabled = true
+        }
+        else {
             print("Failed to upload profile picture: " + (error ?? ""))
             let alert = UIAlertController(title: "Upload Failed", message: "Your photo could not be uploaded at this time. Please try again later.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
                 self.BioPic.image = UIImage(named: "ProfilePic")
             }))
             self.present(alert, animated: true, completion: nil)
+            NextButton.isEnabled = false
         }
     }
 

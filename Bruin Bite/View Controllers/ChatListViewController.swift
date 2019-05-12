@@ -117,6 +117,7 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
     
     func profilePicture(didDownloadimage image: UIImage, forUserWithID userID: Int) {
         profilePictures[userID] = image
+        self.chatListTableView.reloadData()
     }
     
     func profilePicture(failedWithError error: String?) {
