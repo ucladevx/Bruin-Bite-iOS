@@ -61,7 +61,7 @@ extension MainAPI: TargetType {
         case .getMatches:
             return "/users/matching/matches"
         case .chatList:
-            return "users/matching/matches"
+            return "users/matching/chats"
         case .last50Messages(let chatRoomLbl):
             return "/messaging/messages/\(chatRoomLbl)"
         }
