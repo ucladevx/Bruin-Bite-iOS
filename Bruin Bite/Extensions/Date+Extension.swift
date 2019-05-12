@@ -23,7 +23,7 @@ extension Date {
 
         static let matchRequestMealTimeFormatter: DateFormatter = { () -> DateFormatter in
             let formatter = DateFormatter()
-            formatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
+            formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
             return formatter
         }()
 
