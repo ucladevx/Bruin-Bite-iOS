@@ -83,7 +83,7 @@ class PendingRequestsViewController: UIViewController, UITableViewDelegate, UITa
     var requestDates = [Date]()
     
     @IBOutlet weak var matchTable: UITableView!
-    @IBOutlet weak var switchTable: UISegmentedControl!
+    @IBOutlet weak var switchTable: SuccessfulPendingSegmentedControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -184,6 +184,7 @@ class PendingRequestsViewController: UIViewController, UITableViewDelegate, UITa
             default:
                 break
         }
+        switchTable.changeButtonBarPosition()
         matchTable.reloadData()
     }
     
@@ -248,17 +249,18 @@ class PendingRequestsViewController: UIViewController, UITableViewDelegate, UITa
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if cellType == "Successful" {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "successfulMatch", for: indexPath as IndexPath) as! SuccessfulMatchTableViewCell
-            let match = matches[indexPath.row]
-            cell.picImage.layer.masksToBounds = false
-            cell.picImage.clipsToBounds = true
-            cell.picImage.layer.cornerRadius = cell.picImage.frame.height/2
-            cell.backdrop.layer.masksToBounds = false
-            cell.backdrop.clipsToBounds = true
-            cell.backdrop.layer.cornerRadius = 10
-            cell.name.text = match.user2_first_name + " " + match.user2_last_name
-            let mealAndLocation = (DiningHall(rawValue: match.meal_period)?.getDisplayString() ?? "Food") + " at " + (MealPeriod(rawValue: match.dining_hall)?.getDisplayString() ?? "UCLA")
-            cell.location.text = mealAndLocation
+            let cell = tableView.dequeueReusableCell(withIdentifier: "successfulMatchNew", for: indexPath)
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "successfulMatch", for: indexPath as IndexPath) as! SuccessfulMatchTableViewCell
+//            let match = matches[indexPath.row]
+//            cell.picImage.layer.masksToBounds = false
+//            cell.picImage.clipsToBounds = true
+//            cell.picImage.layer.cornerRadius = cell.picImage.frame.height/2
+//            cell.backdrop.layer.masksToBounds = false
+//            cell.backdrop.clipsToBounds = true
+//            cell.backdrop.layer.cornerRadius = 10
+//            cell.name.text = match.user2_first_name + " " + match.user2_last_name
+//            let mealAndLocation = (DiningHall(rawValue: match.meal_period)?.getDisplayString() ?? "Food") + " at " + (MealPeriod(rawValue: match.dining_hall)?.getDisplayString() ?? "UCLA")
+//            cell.location.text = mealAndLocation
             return cell
         } else {
             // If it is on the Pending segment
