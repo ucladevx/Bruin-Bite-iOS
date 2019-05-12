@@ -16,6 +16,7 @@ class CreateProfileViewController: UIViewController, UpdateDelegate, AlertPresen
     @IBOutlet weak var BioPic: UIImageView!
     @IBOutlet var BioText: UILabel!
     @IBOutlet weak var NextButton: UIButton!
+    @IBOutlet weak var ActivityIndicator: UIActivityIndicatorView!
     
 
     //@IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -36,7 +37,8 @@ class CreateProfileViewController: UIViewController, UpdateDelegate, AlertPresen
         BioText.font = UIFont.bioFont
         BioTextBox.becomeFirstResponder()
         BioTextBox.delegate = self
-        NextButton.isEnabled = false
+        ActivityIndicator.hidesWhenStopped = true
+        
         Utilities.sharedInstance.formatNavigation(controller: self.navigationController!)
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor : UIColor.white, NSAttributedStringKey.font: UIFont(name: "AvenirNext-Bold", size: 17.0)!]
 
@@ -112,11 +114,13 @@ class CreateProfileViewController: UIViewController, UpdateDelegate, AlertPresen
 
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-
-                self.BioPic.layer.cornerRadius = BioPic.frame.height/2
-                self.profilePic = pickedImage
-                self.BioPic.image = pickedImage
+            self.BioPic.layer.cornerRadius = BioPic.frame.height/2
+            self.profilePic = pickedImage
+            self.BioPic.image = pickedImage
+            
             ProfilePictureAPI().upload(profilePicture: pickedImage, delegate: self)
+            NextButton.isEnabled = false
+            ActivityIndicator.startAnimating()
         }
 
         dismiss(animated: true, completion: nil)
@@ -125,6 +129,7 @@ class CreateProfileViewController: UIViewController, UpdateDelegate, AlertPresen
     func profilePicture(uploadCompleted: Bool, failedWithError error: String?) {
         if(uploadCompleted){
             NextButton.isEnabled = true
+            ActivityIndicator.stopAnimating()
         }
         else {
             print("Failed to upload profile picture: " + (error ?? ""))
@@ -133,7 +138,8 @@ class CreateProfileViewController: UIViewController, UpdateDelegate, AlertPresen
                 self.BioPic.image = UIImage(named: "ProfilePic")
             }))
             self.present(alert, animated: true, completion: nil)
-            NextButton.isEnabled = false
+            NextButton.isEnabled = true
+            ActivityIndicator.stopAnimating()
         }
     }
 
