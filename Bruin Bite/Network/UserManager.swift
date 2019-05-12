@@ -172,11 +172,12 @@ class UserManager {
         }
     }
 
-    func invalidateAccessToken(token: String) {
+    func logOutUser(token: String) {
         self.provider.request(.logoutUser(token: token, client_id: CLIENTID, client_secret: CLIENTSECRET)) { result in
             switch result {
             case .success:
-                self.logOutUser()
+                UserDefaultsManager.shared.removeAll()
+                self.currentUser = UserModel()
                 self.logoutDelegate?.didCompleteLogout()
             case let .failure(error):
                 print(error)
@@ -202,17 +203,13 @@ class UserManager {
         UserDefaultsManager.shared.setUserID(to: newUserInfo.id)
     }
 
-    func logOutUser() {
-        UserDefaultsManager.shared.removeAll()
-        currentUser = UserModel()
-    }
-
     func deleteUser(email: String) {
         provider.request(.deleteUser(email: email)) { result in
             switch result {
             case let .success(response):
                 print("Delete: \(response)")
-                self.logOutUser()
+                self.logOutUser(token: self.getAccessToken())
+                // Note: didDeleteUser() should call logoutDelegate's didCompleteLogOut()
                 self.deleteUserDelegate?.didDeleteUser()
             case let .failure(error):
                 print(error)
