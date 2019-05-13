@@ -11,7 +11,6 @@ import UIKit
 import CZPicker
 
 class PreferenceViewController: UIViewController {
-    @IBOutlet weak var TopView: UIView!
     @IBOutlet weak var DayBtn: UIButton!
     @IBOutlet weak var DiningHallBtn: UIButton!
     @IBOutlet weak var MealPeriodBtn: UIButton!
@@ -58,16 +57,14 @@ class PreferenceViewController: UIViewController {
     private var selectedDateTimes: [Date]? = nil
 
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         // TODO: make the "home" of the matching tab a subclass of "LoginAlertPresentable" and check for logged in user.
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // formatting top bar
-        TopView.backgroundColor = UIColor.twilightBlue
-
         // setting title texts for buttons
         DayBtn.setTitle(DEFAULT_TEXT["Day"], for: .normal)
         DiningHallBtn.setTitle(DEFAULT_TEXT["DiningHall"], for: .normal)
@@ -277,12 +274,12 @@ extension PreferenceViewController: CZPickerViewDelegate {
         case diningHallPicker:
             if pickerView.selectedRows()?.count ?? 0 < 1 {
                 selectedDiningHalls = nil
-                DiningHallBtn.setTitle(DEFAULT_TEXT["Day"], for: .normal)
+                DiningHallBtn.setTitle(DEFAULT_TEXT["DiningHall"], for: .normal)
             }
         case mealPeriodPicker:
             if pickerView.selectedRows()?.count ?? 0 < 1 {
                 selectedMealPeriod = nil
-                MealPeriodBtn.setTitle(DEFAULT_TEXT["Day"], for: .normal)
+                MealPeriodBtn.setTitle(DEFAULT_TEXT["MealPeriod"], for: .normal)
             }
         default:
             print ("Gon' Fishin'")

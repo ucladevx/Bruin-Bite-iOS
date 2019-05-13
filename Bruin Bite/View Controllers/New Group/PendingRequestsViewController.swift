@@ -108,6 +108,12 @@ class PendingRequestsViewController: UIViewController, UITableViewDelegate, UITa
         populateSections()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        self.navigationItem.title = ""
+    }
+    
     func populateSections() {
         // Populate dictionary with date-array elements
         
