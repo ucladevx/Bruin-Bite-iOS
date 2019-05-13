@@ -29,7 +29,7 @@ class PendingMatchTableViewCell: UITableViewCell {
     
 }
 
-class PendingRequestsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class PendingRequestsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, LoginAlertPresentable {
     
     enum MealPeriod: String{
         case BR
@@ -112,6 +112,11 @@ class PendingRequestsViewController: UIViewController, UITableViewDelegate, UITa
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         self.navigationItem.title = ""
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if UserManager.shared.getUID() == -1 { presentNotLoggedInAlert() }
     }
     
     func populateSections() {
