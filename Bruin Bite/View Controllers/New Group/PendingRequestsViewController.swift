@@ -252,9 +252,6 @@ class PendingRequestsViewController: UIViewController, UITableViewDelegate, UITa
             // If it is on the Pending segment
             let cell = tableView.dequeueReusableCell(withIdentifier: "pendingRequest", for: indexPath as IndexPath) as! PendingMatchTableViewCell
             let request = requests[indexPath.row]
-            cell.backdrop.layer.masksToBounds = false
-            cell.backdrop.clipsToBounds = true
-            cell.backdrop.layer.cornerRadius = 10
             let mealAndLocation = (DiningHall(rawValue: request.meal_period)?.getDisplayString() ?? "Food") + " at " + (MealPeriod(rawValue: request.dining_hall)?.getDisplayString() ?? "UCLA")
             cell.location.text = mealAndLocation
             return cell
