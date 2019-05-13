@@ -87,7 +87,6 @@ class PendingRequestsViewController: UIViewController, UITableViewDelegate, UITa
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         //* Populate matches with test data
         let match = Match(user1: 1, user2: 2, user1_first_name: "Joe", user2_first_name: "Tommy", user1_last_name: "Bruin", user2_last_name: "Lee", meal_datetime: "2019-01-17T23:39:33+0000", meal_period: "LU", dining_hall: "DN", chat_url: String())
         let match2 = Match(user1: 1, user2: 2, user1_first_name: "Joe", user2_first_name: "Jason", user1_last_name: "Bruin", user2_last_name: "Todd", meal_datetime: "2019-01-19T23:39:33+0000", meal_period: "BR", dining_hall: "BP", chat_url: String())
@@ -188,16 +187,12 @@ class PendingRequestsViewController: UIViewController, UITableViewDelegate, UITa
         matchTable.reloadData()
     }
     
-    @IBAction func findNewMatch(_ sender: Any) {
-        
-    }
-    
     
     // MARK: - TableView Delegate Functions
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if cellType == "Successful" {
-            return 140.0
+            return 110.0
         } else {
             return 105.0
         }
@@ -230,37 +225,17 @@ class PendingRequestsViewController: UIViewController, UITableViewDelegate, UITa
         }
     }
     
-    /*
-     match.user1_first_name = "Joe"
-     match.user1_last_name = "Bruin"
-     match.user2_first_name = "Jocie"
-     match.user2_last_name = "Bruin"
-     match.meal_datetime = "" // yyyy-MM-dd'T'HH:mm:ssZ
-     match.meal_period = "LU"
-     match.dining_hall = "FE"
-     match.chat_url = "/users/messaging"
-     
-     request.meal_times = [""] // "02:00"
-     request.meal_day = "" // "yyyy-MM-dd"
-     request.meal_period = "BR"
-     request.dining_hall = "DN"
-     request.status = "P"
-     */
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if cellType == "Successful" {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "successfulMatchNew", for: indexPath)
-//            let cell = tableView.dequeueReusableCell(withIdentifier: "successfulMatch", for: indexPath as IndexPath) as! SuccessfulMatchTableViewCell
-//            let match = matches[indexPath.row]
-//            cell.picImage.layer.masksToBounds = false
-//            cell.picImage.clipsToBounds = true
-//            cell.picImage.layer.cornerRadius = cell.picImage.frame.height/2
-//            cell.backdrop.layer.masksToBounds = false
-//            cell.backdrop.clipsToBounds = true
-//            cell.backdrop.layer.cornerRadius = 10
-//            cell.name.text = match.user2_first_name + " " + match.user2_last_name
-//            let mealAndLocation = (DiningHall(rawValue: match.meal_period)?.getDisplayString() ?? "Food") + " at " + (MealPeriod(rawValue: match.dining_hall)?.getDisplayString() ?? "UCLA")
-//            cell.location.text = mealAndLocation
+//            let cell = tableView.dequeueReusableCell(withIdentifier: "successfulMatchNew", for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "successfulMatch", for: indexPath as IndexPath) as! SuccessfulMatchTableViewCell
+            let match = matches[indexPath.row]
+            cell.picImage.layer.masksToBounds = false
+            cell.picImage.clipsToBounds = true
+            cell.picImage.layer.cornerRadius = cell.picImage.frame.height/2
+            cell.name.text = match.user2_first_name + " " + match.user2_last_name
+            let mealAndLocation = (DiningHall(rawValue: match.meal_period)?.getDisplayString() ?? "Food") + " at " + (MealPeriod(rawValue: match.dining_hall)?.getDisplayString() ?? "UCLA")
+            cell.location.text = mealAndLocation
             return cell
         } else {
             // If it is on the Pending segment
@@ -274,15 +249,5 @@ class PendingRequestsViewController: UIViewController, UITableViewDelegate, UITa
             return cell
         }
     }
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
     
 }
