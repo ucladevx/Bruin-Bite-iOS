@@ -15,7 +15,7 @@ protocol GetRequestsDelegate {
     func didReceiveRequests(requests: [Request])
 }
 protocol GetMatchesDelegate {
-    func didReceiveMatches(requests: [Match])
+    func didReceiveMatches(matches: [Match])
 }
 protocol MatchRequestDelegate {
     func matchRequestSent(successfully: Bool)
@@ -46,7 +46,7 @@ class MatchingAPI {
             case let .success(response):
                 do {
                     let results = try JSONDecoder().decode([Match].self, from: response.data)
-                    completionDelegate.didReceiveMatches(requests: results)
+                    completionDelegate.didReceiveMatches(matches: results)
                 } catch let err{
                     print(err)
                 }
@@ -126,7 +126,7 @@ class MatchingAPI {
         match.chat_url = "/users/messaging"
         matches.append(match)
         
-        completionHandler.didReceiveMatches(requests: matches)
+        completionHandler.didReceiveMatches(matches: matches)
     }
 
     func getTestRequests(completionHandler: GetRequestsDelegate){

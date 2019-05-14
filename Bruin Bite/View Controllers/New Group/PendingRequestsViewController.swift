@@ -29,52 +29,14 @@ class PendingMatchTableViewCell: UITableViewCell {
     
 }
 
-class PendingRequestsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, LoginAlertPresentable {
+class PendingRequestsViewController: UIViewController, LoginAlertPresentable {
+    private var cellType: String!
+    private let matchingAPI: MatchingAPI = MatchingAPI()
     
-    enum MealPeriod: String{
-        case BR
-        case LU
-        case DI
-        case LN
-        case BU
-        
-        func getDisplayString() -> String {
-            switch self {
-            case .BR:
-                return "Breakfast"
-            case .LU:
-                return "Lunch"
-            case .DI:
-                return "Dinner"
-            case .LN:
-                return "Late Night"
-            case .BU:
-                return "Brunch"
-            }
-        }
-    }
+    @IBOutlet weak var matchTable: UITableView!
+    @IBOutlet weak var switchTable: SuccessfulPendingSegmentedControl!
     
-    enum DiningHall: String{
-        case DN
-        case CO
-        case BP
-        case FE
-        
-        func getDisplayString() -> String {
-            switch self {
-            case .DN:
-                return "De Neve"
-            case .CO:
-                return "Covel"
-            case .BP:
-                return "Bruin Plate"
-            case .FE:
-                return "Feast"
-            }
-        }
-    }
-    
-    var cellType: String!
+    // Data storing:
     var matches = [Match]()
     var requests = [Request]()
     var matchDateSections = [String:[Match]]()
@@ -82,30 +44,19 @@ class PendingRequestsViewController: UIViewController, UITableViewDelegate, UITa
     var requestDateSections = [String:[Request]]()
     var requestDates = [Date]()
     
-    @IBOutlet weak var matchTable: UITableView!
-    @IBOutlet weak var switchTable: SuccessfulPendingSegmentedControl!
+    private enum PendingRequestsViewType {
+        case successful
+        case pending
+    }
+    
+    private var viewType: PendingRequestsViewType = .successful
+    private var matchesDict: [Date:[Match]]? = nil
+    private var requestsDict: [Date:[Request]]? = nil
+    private var sortedMatchDates: [Date]? = nil
+    private var sortedRequestDates: [Date]? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //* Populate matches with test data
-        let match = Match(user1: 1, user2: 2, user1_first_name: "Joe", user2_first_name: "Tommy", user1_last_name: "Bruin", user2_last_name: "Lee", meal_datetime: "2019-01-17T23:39:33+0000", meal_period: "LU", dining_hall: "DN", chat_url: String())
-        let match2 = Match(user1: 1, user2: 2, user1_first_name: "Joe", user2_first_name: "Jason", user1_last_name: "Bruin", user2_last_name: "Todd", meal_datetime: "2019-01-19T23:39:33+0000", meal_period: "BR", dining_hall: "BP", chat_url: String())
-        let match3 = Match(user1: 1, user2: 2, user1_first_name: "Joe", user2_first_name: "Jasper", user1_last_name: "Bruin", user2_last_name: "Jones", meal_datetime: "2019-01-19T11:39:33+0000", meal_period: "BR", dining_hall: "CO", chat_url: String())
-        
-        //* Populate requests with test data
-        let request = Request(user: 1, meal_times: [String()], meal_day: "2019-02-11", meal_period: "DI", dining_hall: "FE", status: String())
-        let request2 = Request(user: 1, meal_times: [String()], meal_day: "2019-02-19", meal_period: "LN", dining_hall: "BP", status: String())
-        
-        matches.append(match)
-        matches.append(match2)
-        matches.append(match3)
-        requests.append(request)
-        requests.append(request2)
-        
-        // Defauly configuration is on successful
-        cellType = "Successful"
-        
-        populateSections()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -117,6 +68,145 @@ class PendingRequestsViewController: UIViewController, UITableViewDelegate, UITa
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if UserManager.shared.getUID() == -1 { presentNotLoggedInAlert() }
+        matchingAPI.getMatches(completionDelegate: self, user: UserManager.shared.getUID())
+        matchingAPI.getRequests(completionDelegate: self, user: UserManager.shared.getUID(), status: ["C", "P", "T"])
+    }
+    
+    @IBAction func switchTable(_ sender: Any) {
+        switch switchTable.selectedSegmentIndex
+        {
+            case 0:
+            // Switch to successful matches section
+            viewType = .successful
+            case 1:
+            // Switch to pending matches section
+            viewType = .pending
+            default:
+                break
+        }
+        switchTable.changeButtonBarPosition()
+        matchTable.reloadData()
+    }
+}
+
+extension PendingRequestsViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 110.0
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        switch viewType {
+        case .successful:
+            return sortedMatchDates?.count ?? 0
+        case .pending:
+            return sortedRequestDates?.count ?? 0
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        switch viewType {
+        case .successful:
+            guard let selectedDate = sortedMatchDates?[section] else {
+                return 0
+            }
+            return matchesDict?[selectedDate]?.count ?? 0
+        case .pending:
+            guard let selectedDate = sortedRequestDates?[section] else {
+                return 0
+            }
+            return requestsDict?[selectedDate]?.count ?? 0
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch viewType {
+        case .successful:
+            return sortedMatchDates?[section].pendingRequestsString()
+        case .pending:
+            return sortedRequestDates?[section].pendingRequestsString()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        switch viewType {
+        case .successful:
+            guard let currRowDate = sortedMatchDates?[indexPath.section],
+                let currRowMatch = matchesDict?[currRowDate]?[indexPath.row],
+                let cell = tableView.dequeueReusableCell(withIdentifier: "successfulMatch", for: indexPath as IndexPath) as? SuccessfulMatchTableViewCell else {
+                    return UITableViewCell()
+            }
+            cell.picImage.layer.masksToBounds = false
+            cell.picImage.clipsToBounds = true
+            cell.picImage.layer.cornerRadius = cell.picImage.frame.height/2
+            
+            cell.name.text = currRowMatch.user2_first_name + " " + currRowMatch.user2_last_name
+            
+            let mealAndLocation = Utilities.mealPeriodName(forMealPeriodCode: currRowMatch.meal_period) + " at " + Utilities.diningHallName(forDiningHallCode: currRowMatch.dining_hall)
+            cell.location.text = mealAndLocation
+            return cell
+        case .pending:
+            guard let currRowDate = sortedRequestDates?[indexPath.section],
+                let currRowRequest = requestsDict?[currRowDate]?[indexPath.row],
+                let cell = tableView.dequeueReusableCell(withIdentifier: "pendingRequest", for: indexPath as IndexPath) as? PendingMatchTableViewCell else {
+                    return UITableViewCell()
+            }
+            let mealAndLocation = Utilities.mealPeriodName(forMealPeriodCode: currRowRequest.meal_period) + " at " + Utilities.diningHallName(forDiningHallCode: currRowRequest.dining_hall)
+            cell.location.text = mealAndLocation
+            return cell
+        }
+    }
+}
+
+extension PendingRequestsViewController: GetMatchesDelegate {
+    func didReceiveMatches(matches: [Match]) {
+        guard matches.count > 0 else {
+            self.sortedMatchDates = nil
+            self.matchesDict = nil
+            return
+        }
+        
+        self.matchesDict = [:]
+        self.sortedMatchDates = []
+        
+        for match in matches {
+            guard let requestDate = Date(fromMatchRequestMealTimeString: match.meal_datetime) else {
+                continue
+            }
+            self.sortedMatchDates?.append(requestDate)
+            if matchesDict?[requestDate] != nil {
+                self.matchesDict?[requestDate]?.append(match)
+            } else {
+                self.matchesDict?[requestDate] = [match]
+            }
+        }
+        self.matchTable.reloadData()
+    }
+}
+
+extension PendingRequestsViewController: GetRequestsDelegate {
+    func didReceiveRequests(requests: [Request]) {
+        guard requests.count > 0 else {
+            self.sortedRequestDates = nil
+            self.requestsDict = nil
+            return
+        }
+        
+        self.requestsDict = [:]
+        self.requestDates = []
+        
+        for request in requests {
+            guard let requestDate = Date(fromYearMonthDayString: request.meal_day) else {
+                continue
+            }
+            self.sortedRequestDates?.append(requestDate)
+            if requestsDict?[requestDate] != nil {
+                self.requestsDict?[requestDate]?.append(request)
+            } else {
+                self.requestsDict?[requestDate] = [request]
+            }
+        }
+        self.matchTable.reloadData()
     }
     
     func populateSections() {
@@ -134,7 +224,7 @@ class PendingRequestsViewController: UIViewController, UITableViewDelegate, UITa
         // Populate above dictionaries with matches/requests data
         for match in matches {
             let dateString = match.meal_datetime
-            if let date = Date(fromRCF3339String: dateString) {
+            if let date = Date(fromMatchRequestMealTimeString: dateString) {
                 tempMatchSections[date] = match
             }
         }
@@ -157,7 +247,7 @@ class PendingRequestsViewController: UIViewController, UITableViewDelegate, UITa
         // Retrieve each corresponding match/request object for each date
         // and convert the date into a month/day/year formatted string
         for matchDate in matchDates {
-            let dateString = matchDate.getPendingRequestsString()
+            let dateString = matchDate.pendingRequestsString()
             if let match = tempMatchSections[matchDate] {
                 if (matchDateSections[dateString] == nil) {
                     matchDateSections[dateString] = [Match]()
@@ -167,7 +257,7 @@ class PendingRequestsViewController: UIViewController, UITableViewDelegate, UITa
         }
         
         for requestDate in requestDates {
-            let dateString = requestDate.getPendingRequestsString()
+            let dateString = requestDate.pendingRequestsString()
             if let request = tempRequestSections[requestDate] {
                 if (requestDateSections[dateString] == nil) {
                     requestDateSections[dateString] = [Request]()
@@ -175,87 +265,9 @@ class PendingRequestsViewController: UIViewController, UITableViewDelegate, UITa
                 requestDateSections[dateString]?.append(request)
             }
         }
-        
         /*
-        tempMatchSections = nil
-        tempRequestSections = nil
-        */
+         tempMatchSections = nil
+         tempRequestSections = nil
+         */
     }
-    
-    @IBAction func switchTable(_ sender: Any) {
-        switch switchTable.selectedSegmentIndex
-        {
-            case 0:
-            // Switch to successful matches section
-            cellType = "Successful"
-            case 1:
-            // Switch to pending matches section
-            cellType = "Pending"
-            default:
-                break
-        }
-        switchTable.changeButtonBarPosition()
-        matchTable.reloadData()
-    }
-    
-    
-    // MARK: - TableView Delegate Functions
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if cellType == "Successful" {
-            return 110.0
-        } else {
-            return 105.0
-        }
-    }
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        if cellType == "Successful" {
-            return matchDateSections.keys.count
-        } else {
-            // If it is on the Pending segment
-            return requestDateSections.keys.count
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if cellType == "Successful" {
-            return Array(matchDateSections.values)[section].count
-        } else {
-            // If it is on the Pending segment
-            return Array(requestDateSections.values)[section].count
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if cellType == "Successful" {
-            return Array(matchDateSections.keys)[section]
-        } else {
-            // If it is on the Pending segment
-            return Array(requestDateSections.keys)[section]
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if cellType == "Successful" {
-//            let cell = tableView.dequeueReusableCell(withIdentifier: "successfulMatchNew", for: indexPath)
-            let cell = tableView.dequeueReusableCell(withIdentifier: "successfulMatch", for: indexPath as IndexPath) as! SuccessfulMatchTableViewCell
-            let match = matches[indexPath.row]
-            cell.picImage.layer.masksToBounds = false
-            cell.picImage.clipsToBounds = true
-            cell.picImage.layer.cornerRadius = cell.picImage.frame.height/2
-            cell.name.text = match.user2_first_name + " " + match.user2_last_name
-            let mealAndLocation = (DiningHall(rawValue: match.meal_period)?.getDisplayString() ?? "Food") + " at " + (MealPeriod(rawValue: match.dining_hall)?.getDisplayString() ?? "UCLA")
-            cell.location.text = mealAndLocation
-            return cell
-        } else {
-            // If it is on the Pending segment
-            let cell = tableView.dequeueReusableCell(withIdentifier: "pendingRequest", for: indexPath as IndexPath) as! PendingMatchTableViewCell
-            let request = requests[indexPath.row]
-            let mealAndLocation = (DiningHall(rawValue: request.meal_period)?.getDisplayString() ?? "Food") + " at " + (MealPeriod(rawValue: request.dining_hall)?.getDisplayString() ?? "UCLA")
-            cell.location.text = mealAndLocation
-            return cell
-        }
-    }
-    
 }

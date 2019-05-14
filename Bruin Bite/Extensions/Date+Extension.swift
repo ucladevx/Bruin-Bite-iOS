@@ -45,6 +45,7 @@ extension Date {
             formatter.dateFormat = "hh:mm"
             return formatter
         }()
+
         static let PendingRequestsFormatter: DateFormatter = { () -> DateFormatter in
             let formatter = DateFormatter()
             formatter.dateFormat = "MMMM dd, yyyy"
@@ -134,7 +135,7 @@ extension Date {
         return Calendar.current.date(bySetting: .minute, value: 0, of: d) ?? date
     }
 
-    func getPendingRequestsString() -> String {
+    func pendingRequestsString() -> String {
         return Formatters.PendingRequestsFormatter.string(from: self)
     }
 
