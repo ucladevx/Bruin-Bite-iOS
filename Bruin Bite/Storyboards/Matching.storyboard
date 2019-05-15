@@ -199,7 +199,7 @@
                                                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
-                                                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="tjh-Pv-lkM">
+                                                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="tjh-Pv-lkM">
                                                                                     <rect key="frame" x="13.5" y="20.5" width="37" height="37"/>
                                                                                 </activityIndicatorView>
                                                                             </subviews>
@@ -237,6 +237,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="activityIndicator" destination="tjh-Pv-lkM" id="hhx-gM-ulv"/>
                                             <outlet property="backdrop" destination="AND-5D-D2K" id="7Wb-Ax-96A"/>
                                             <outlet property="location" destination="tTk-Ry-qlK" id="NaN-Us-DBi"/>
                                             <outlet property="time" destination="Kwb-XC-och" id="r4R-KR-RT5"/>

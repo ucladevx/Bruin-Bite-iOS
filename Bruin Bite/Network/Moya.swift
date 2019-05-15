@@ -97,7 +97,7 @@ extension MainAPI: TargetType {
         case .refreshToken(let refresh_token):
             return .requestParameters(parameters: ["refresh_token": refresh_token], encoding: URLEncoding.default)
         case .getRequests(let user, let status):
-            return .requestParameters(parameters: ["id": user, "status": status], encoding: URLEncoding.default)
+            return .requestParameters(parameters: ["user_id": user, "status": status[0]], encoding: URLEncoding.default)
         case .getMatches(let user):
             return .requestParameters(parameters: ["id": user], encoding: URLEncoding.default)
         case .chatList(let userId):

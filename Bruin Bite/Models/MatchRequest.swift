@@ -14,11 +14,11 @@ struct Request: Codable{
     var meal_times: [String]
     var meal_day: String
     var meal_period: String
-    var dining_hall: String
+    var dining_halls: [String]
     var status: String
     
     enum CodingKeys: String, CodingKey {
-        case user, meal_times, meal_day, meal_period, dining_hall, status
+        case user, meal_times, meal_day, meal_period, dining_halls, status
     }
 }
 

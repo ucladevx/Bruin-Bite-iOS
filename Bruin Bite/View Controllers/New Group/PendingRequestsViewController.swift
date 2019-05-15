@@ -26,6 +26,7 @@ class PendingMatchTableViewCell: UITableViewCell {
     @IBOutlet weak var backdrop: UIView!
     @IBOutlet weak var location: UILabel!
     @IBOutlet weak var time: UILabel!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
 }
 
@@ -35,14 +36,6 @@ class PendingRequestsViewController: UIViewController, LoginAlertPresentable {
     
     @IBOutlet weak var matchTable: UITableView!
     @IBOutlet weak var switchTable: SuccessfulPendingSegmentedControl!
-    
-    // Data storing:
-    var matches = [Match]()
-    var requests = [Request]()
-    var matchDateSections = [String:[Match]]()
-    var matchDates = [Date]()
-    var requestDateSections = [String:[Request]]()
-    var requestDates = [Date]()
     
     private enum PendingRequestsViewType {
         case successful
@@ -69,7 +62,7 @@ class PendingRequestsViewController: UIViewController, LoginAlertPresentable {
         super.viewDidAppear(animated)
         if UserManager.shared.getUID() == -1 { presentNotLoggedInAlert() }
         matchingAPI.getMatches(completionDelegate: self, user: UserManager.shared.getUID())
-        matchingAPI.getRequests(completionDelegate: self, user: UserManager.shared.getUID(), status: ["C", "P", "T"])
+        matchingAPI.getRequests(completionDelegate: self, user: UserManager.shared.getUID(), status: ["P", "T", "C"])
     }
     
     @IBAction func switchTable(_ sender: Any) {
@@ -151,8 +144,19 @@ extension PendingRequestsViewController: UITableViewDelegate, UITableViewDataSou
                 let cell = tableView.dequeueReusableCell(withIdentifier: "pendingRequest", for: indexPath as IndexPath) as? PendingMatchTableViewCell else {
                     return UITableViewCell()
             }
-            let mealAndLocation = Utilities.mealPeriodName(forMealPeriodCode: currRowRequest.meal_period) + " at " + Utilities.diningHallName(forDiningHallCode: currRowRequest.dining_hall)
+
+            var diningHallNames = ""
+            for diningHallCode in currRowRequest.dining_halls {
+                if diningHallCode == currRowRequest.dining_halls.last {
+                    diningHallNames += Utilities.diningHallName(forDiningHallCode: diningHallCode)
+                    continue
+                }
+                diningHallNames += Utilities.diningHallName(forDiningHallCode: diningHallCode) + ", "
+            }
+
+            let mealAndLocation = Utilities.mealPeriodName(forMealPeriodCode: currRowRequest.meal_period) + " at " + diningHallNames
             cell.location.text = mealAndLocation
+            cell.activityIndicator.startAnimating()
             return cell
         }
     }
@@ -193,7 +197,7 @@ extension PendingRequestsViewController: GetRequestsDelegate {
         }
         
         self.requestsDict = [:]
-        self.requestDates = []
+        self.sortedRequestDates = []
         
         for request in requests {
             guard let requestDate = Date(fromYearMonthDayString: request.meal_day) else {
@@ -207,67 +211,5 @@ extension PendingRequestsViewController: GetRequestsDelegate {
             }
         }
         self.matchTable.reloadData()
-    }
-    
-    func populateSections() {
-        // Populate dictionary with date-array elements
-        
-        /*
-         var tempMatchSections: [Date:[Match]]? = [Date:[Match]]()
-         var tempRequestSections: [Date:[Request]]? = [Date:[Request]]()
-         */
-        
-        // Dictionaries with unique Dates to sort later
-        var tempMatchSections = [Date:Match]()
-        var tempRequestSections = [Date:Request]()
-        
-        // Populate above dictionaries with matches/requests data
-        for match in matches {
-            let dateString = match.meal_datetime
-            if let date = Date(fromMatchRequestMealTimeString: dateString) {
-                tempMatchSections[date] = match
-            }
-        }
-        
-        for request in requests {
-            let dateString = request.meal_day
-            if let date = Date(fromYearMonthDayString: dateString) {
-                tempRequestSections[date] = request
-            }
-        }
-        
-        // Sort the dates into Date arrays
-        matchDates = Array(tempMatchSections.keys).sorted { date1, date2 in
-            return date1 < date2
-        }
-        requestDates = Array(tempRequestSections.keys).sorted { date1, date2 in
-            return date1 < date2
-        }
-        
-        // Retrieve each corresponding match/request object for each date
-        // and convert the date into a month/day/year formatted string
-        for matchDate in matchDates {
-            let dateString = matchDate.pendingRequestsString()
-            if let match = tempMatchSections[matchDate] {
-                if (matchDateSections[dateString] == nil) {
-                    matchDateSections[dateString] = [Match]()
-                }
-                matchDateSections[dateString]?.append(match)
-            }
-        }
-        
-        for requestDate in requestDates {
-            let dateString = requestDate.pendingRequestsString()
-            if let request = tempRequestSections[requestDate] {
-                if (requestDateSections[dateString] == nil) {
-                    requestDateSections[dateString] = [Request]()
-                }
-                requestDateSections[dateString]?.append(request)
-            }
-        }
-        /*
-         tempMatchSections = nil
-         tempRequestSections = nil
-         */
     }
 }
