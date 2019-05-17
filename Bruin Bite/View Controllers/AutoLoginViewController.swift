@@ -34,7 +34,7 @@ class AutoLoginViewController: UIViewController, ReadDelegate, RefreshDelegate {
 
     func refreshFailed() {
         activityIndicator.stopAnimating()
-        UserManager.shared.logOutUser(token: UserManager.shared.getAccessToken())
+        UserManager.shared.refreshUser()
         self.performSegue(withIdentifier: "notLogged", sender: nil)
     }
 

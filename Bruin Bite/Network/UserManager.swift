@@ -176,14 +176,18 @@ class UserManager {
         self.provider.request(.logoutUser(token: token, client_id: CLIENTID, client_secret: CLIENTSECRET)) { result in
             switch result {
             case .success:
-                UserDefaultsManager.shared.removeAll()
-                self.currentUser = UserModel()
+                self.refreshUser()
                 self.logoutDelegate?.didCompleteLogout()
             case let .failure(error):
                 print(error)
                 self.logoutDelegate?.logoutFailed()
             }
         }
+    }
+
+    func refreshUser() {
+        UserDefaultsManager.shared.removeAll()
+        self.currentUser = UserModel()
     }
 
     private func updateCurrentUser(newUserInfo: UserCreate) {
