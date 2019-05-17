@@ -114,6 +114,8 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
             }
         }
     }
+    @IBAction func unwindToChatListViewController(segue: UIStoryboardSegue) {
+    }
     
     func profilePicture(didDownloadimage image: UIImage, forUserWithID userID: Int) {
         profilePictures[userID] = image
