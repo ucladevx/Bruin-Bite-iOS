@@ -20,6 +20,7 @@ class ChatDetailsViewController: UIViewController {
     var diningHall: String?
     var mealPeriod: String?
     var time: String?
+    var exitStatus = ChatPopupType.none
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +29,14 @@ class ChatDetailsViewController: UIViewController {
         mealPeriodLabel.text = mealPeriod
         timeLabel.text = time
     }
-    
+    @IBAction func pressReport(_ sender: Any) {
+        exitStatus = .report
+        self.performSegue(withIdentifier: "unwindToChat", sender: nil)
+    }
+    @IBAction func pressUnmatch(_ sender: Any) {
+        exitStatus = .unmatch
+        self.performSegue(withIdentifier: "unwindToChat", sender: nil)
+    }
 
     /*
     // MARK: - Navigation

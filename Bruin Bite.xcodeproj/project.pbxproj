@@ -13,10 +13,12 @@
 		009521352234CA07002A2D62 /* MatchRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009521342234CA07002A2D62 /* MatchRequest.swift */; };
 		009521372234D52E002A2D62 /* MatchingAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009521362234D52E002A2D62 /* MatchingAPI.swift */; };
 		009B1C372225C2E4005AB454 /* PendingRequestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009B1C362225C2E4005AB454 /* PendingRequestsViewController.swift */; };
+		00A89A9422851AE500DF78C8 /* ProfilePictureAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A89A9322851AE500DF78C8 /* ProfilePictureAPI.swift */; };
 		00C207F7221BB422003965FE /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C207F6221BB422003965FE /* Date+Extension.swift */; };
 		00C2DF0720B677040023CF75 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C2DF0620B677040023CF75 /* User.swift */; };
 		00C2DF0920B678890023CF75 /* Moya.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C2DF0820B678890023CF75 /* Moya.swift */; };
 		00C2DF1120B6790D0023CF75 /* keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C2DF1020B6790D0023CF75 /* keys.swift */; };
+		00D654E1227EAAA000500AF4 /* ReportAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D654E0227EAAA000500AF4 /* ReportAPI.swift */; };
 		2A03D93E20B76529004EFC97 /* TimePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A03D93D20B76529004EFC97 /* TimePickerViewController.swift */; };
 		2A03D94320B76C92004EFC97 /* PopupViewControllers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A03D94220B76C91004EFC97 /* PopupViewControllers.storyboard */; };
 		2A03D94620B77A1A004EFC97 /* TimePickerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A03D94520B77A1A004EFC97 /* TimePickerCollectionViewCell.swift */; };
@@ -124,10 +126,12 @@
 		009521342234CA07002A2D62 /* MatchRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchRequest.swift; sourceTree = "<group>"; };
 		009521362234D52E002A2D62 /* MatchingAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchingAPI.swift; sourceTree = "<group>"; };
 		009B1C362225C2E4005AB454 /* PendingRequestsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingRequestsViewController.swift; sourceTree = "<group>"; };
+		00A89A9322851AE500DF78C8 /* ProfilePictureAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePictureAPI.swift; sourceTree = "<group>"; };
 		00C207F6221BB422003965FE /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		00C2DF0620B677040023CF75 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		00C2DF0820B678890023CF75 /* Moya.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Moya.swift; sourceTree = "<group>"; };
 		00C2DF1020B6790D0023CF75 /* keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = keys.swift; sourceTree = "<group>"; };
+		00D654E0227EAAA000500AF4 /* ReportAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportAPI.swift; sourceTree = "<group>"; };
 		0934E0A890547BC163C95F6D /* Pods-Bruin BiteUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bruin BiteUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bruin BiteUITests/Pods-Bruin BiteUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		2297A93A4C0BCDCDA33D889F /* Pods-Bruin BiteTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bruin BiteTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bruin BiteTests/Pods-Bruin BiteTests.release.xcconfig"; sourceTree = "<group>"; };
 		2A03D93D20B76529004EFC97 /* TimePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerViewController.swift; sourceTree = "<group>"; };
@@ -365,6 +369,8 @@
 				BF0943E320BBFEEF00214200 /* ChatAPI.swift */,
 				BFC934B220C3448A0040D08D /* ChatListAPI.swift */,
 				009521362234D52E002A2D62 /* MatchingAPI.swift */,
+				00A89A9322851AE500DF78C8 /* ProfilePictureAPI.swift */,
+				00D654E0227EAAA000500AF4 /* ReportAPI.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -641,10 +647,6 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-Bruin Bite/Pods-Bruin Bite-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/CZPicker/CZPicker.framework",
-				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
-				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
-				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
-				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
 				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
 				"${BUILT_PRODUCTS_DIR}/Pulsator/Pulsator.framework",
 				"${BUILT_PRODUCTS_DIR}/Repeat/Repeat.framework",
@@ -658,10 +660,6 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CZPicker.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookLogin.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Pulsator.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Repeat.framework",
@@ -708,6 +706,7 @@
 				BF0523E3209AA7E00013EE11 /* ProfileViewController.swift in Sources */,
 				2AFB41372047F0F2004025F9 /* MenuCardCollectionViewCell.swift in Sources */,
 				2A16F9A720BEA204008BA4E3 /* ComingSoonPopup.swift in Sources */,
+				00A89A9422851AE500DF78C8 /* ProfilePictureAPI.swift in Sources */,
 				770CDEAE20266B0800658925 /* ColoredCircle.swift in Sources */,
 				2AB62E702048D21D0013CB59 /* ActivityLevel.swift in Sources */,
 				2AFA40B120BC07AD0007FB85 /* MatchFoundViewController.swift in Sources */,
@@ -718,6 +717,7 @@
 				DCF0E2DC20B260510036A32F /* UIColor+Additions.swift in Sources */,
 				2AB62E6C20488A050013CB59 /* MenuAPI.swift in Sources */,
 				2AB62E69204887820013CB59 /* Menu.swift in Sources */,
+				00D654E1227EAAA000500AF4 /* ReportAPI.swift in Sources */,
 				BD95987D226E6A60000934BF /* LoginAlertPresentable.swift in Sources */,
 				BDDE7C70207B04590008A677 /* MatchingListViewController.swift in Sources */,
 				2AFA40B220BC07AD0007FB85 /* SearchingScreenViewController.swift in Sources */,
