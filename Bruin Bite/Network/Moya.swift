@@ -34,7 +34,7 @@ extension MainAPI: TargetType {
         switch self {
         case .getCurrentActivityLevels, .getOverviewMenu, .getDetailedMenu, .getHours:
             return URL(string: "https://api.bruin-bite.com/api/v1")!
-        case .createUser, .readUser, .loginUser, .updateUser, .deleteUser, .matchUser, .refreshToken, .chatList, .last50Messages, .unmatchUser, .reportUser, .uploadProfilePicture, .getProfilePicture::
+        case .createUser, .readUser, .loginUser, .updateUser, .deleteUser, .matchUser, .refreshToken, .chatList, .last50Messages, .unmatchUser, .reportUser, .uploadProfilePicture, .getProfilePicture:
             return URL(string: "https://api.bruin-bite.com/api/v1")!
         }
 
@@ -151,6 +151,7 @@ extension MainAPI: TargetType {
         case .reportUser:
             return Data()
         case .unmatchUser:
+            return Data()
         case .uploadProfilePicture:
             return Data()
         case .getProfilePicture:
