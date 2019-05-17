@@ -43,9 +43,8 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
 
         
     override func viewDidLoad() {
-        self.view.backgroundColor = UIColor.white
-        
         super.viewDidLoad()
+        self.view.backgroundColor = UIColor.white
         allergensBar.content.parentVC = self
         topBar.parentVC = self
         menuCardsCollection.delegate = self
@@ -61,6 +60,7 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
             make.height.equalTo(82)
             make.centerX.equalTo(self.view)
         }
+        self.comingSoonPopup.isHidden = true
 
         let hour = Calendar.current.component(.hour, from: Date())
         switch hour {
@@ -157,7 +157,7 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
     }
         
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if data.count == 0 {
+        if data.count == 0 && topBar.currTime == .lateNight {
             comingSoonPopup.isHidden = false
         } else {
             comingSoonPopup.isHidden = true

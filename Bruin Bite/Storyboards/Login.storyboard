@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WtO-JF-5ff">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WtO-JF-5ff">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -25,67 +26,66 @@
                                     <constraint firstAttribute="width" secondItem="EnN-Rj-AaS" secondAttribute="height" multiplier="3:4" id="th1-Dd-bTV"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yuZ-IE-vqN">
-                                <rect key="frame" x="66.5" y="363.5" width="242" height="57"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="FQS-05-idC">
+                                <rect key="frame" x="20" y="279" width="335" height="223"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iap-FB-8KA">
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="57"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="57" id="5ph-oA-4Lu"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <state key="normal" title="Sign In">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <variation key="heightClass=compact-widthClass=compact">
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        </variation>
+                                        <connections>
+                                            <action selector="SignInTap:" destination="4Hj-cQ-8ki" eventType="touchUpInside" id="Ncd-qh-GDB"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yuZ-IE-vqN">
+                                        <rect key="frame" x="0.0" y="83" width="335" height="57"/>
+                                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Sign Up"/>
+                                        <variation key="heightClass=compact-widthClass=compact">
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        </variation>
+                                        <connections>
+                                            <action selector="SignUpTap:" destination="4Hj-cQ-8ki" eventType="touchDown" id="XQh-o3-0aZ"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j2B-mh-3uB">
+                                        <rect key="frame" x="0.0" y="166" width="335" height="57"/>
+                                        <state key="normal" title="Check Menus">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="CheckMenuTap:" destination="4Hj-cQ-8ki" eventType="touchDown" id="vCL-c4-6DH"/>
+                                            <segue destination="gWz-Uk-J3Z" kind="showDetail" id="iFd-VO-gN4"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="yuZ-IE-vqN" secondAttribute="height" multiplier="242:57" id="nwz-Kl-uAT"/>
-                                    <constraint firstAttribute="height" constant="57" id="orp-2J-pcm"/>
+                                    <constraint firstItem="j2B-mh-3uB" firstAttribute="top" secondItem="yuZ-IE-vqN" secondAttribute="bottom" constant="26" id="1qA-6X-ID7"/>
+                                    <constraint firstItem="j2B-mh-3uB" firstAttribute="width" secondItem="FQS-05-idC" secondAttribute="width" id="Bw1-VO-auq"/>
+                                    <constraint firstItem="j2B-mh-3uB" firstAttribute="height" secondItem="iap-FB-8KA" secondAttribute="height" id="G6s-5y-m02"/>
+                                    <constraint firstItem="yuZ-IE-vqN" firstAttribute="height" secondItem="iap-FB-8KA" secondAttribute="height" id="JvY-KO-Agi"/>
+                                    <constraint firstItem="yuZ-IE-vqN" firstAttribute="top" secondItem="iap-FB-8KA" secondAttribute="bottom" constant="26" id="MMn-uo-sKE"/>
+                                    <constraint firstItem="iap-FB-8KA" firstAttribute="width" secondItem="FQS-05-idC" secondAttribute="width" id="RuW-g9-urE"/>
+                                    <constraint firstItem="yuZ-IE-vqN" firstAttribute="width" secondItem="FQS-05-idC" secondAttribute="width" id="eZu-cM-7ER"/>
                                 </constraints>
-                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Sign Up"/>
-                                <variation key="heightClass=compact-widthClass=compact">
-                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                </variation>
-                                <connections>
-                                    <action selector="SignUpTap:" destination="4Hj-cQ-8ki" eventType="touchDown" id="XQh-o3-0aZ"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j2B-mh-3uB">
-                                <rect key="frame" x="66.5" y="454" width="242" height="57"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="j2B-mh-3uB" secondAttribute="height" multiplier="242:57" id="HdQ-jm-DKM"/>
-                                    <constraint firstAttribute="height" constant="57" id="hIr-sj-F8o"/>
-                                </constraints>
-                                <state key="normal" title="Check Menus">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="CheckMenuTap:" destination="4Hj-cQ-8ki" eventType="touchDown" id="vCL-c4-6DH"/>
-                                    <segue destination="gWz-Uk-J3Z" kind="showDetail" id="iFd-VO-gN4"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iap-FB-8KA">
-                                <rect key="frame" x="66.5" y="273" width="242" height="57"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="iap-FB-8KA" secondAttribute="height" multiplier="242:57" id="FFX-cB-CXI"/>
-                                    <constraint firstAttribute="height" constant="57" id="Mlr-FT-d2j"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <state key="normal" title="Already have an account? Sign In">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <variation key="heightClass=compact-widthClass=compact">
-                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                </variation>
-                                <connections>
-                                    <action selector="SignInTap:" destination="4Hj-cQ-8ki" eventType="touchUpInside" id="Ncd-qh-GDB"/>
-                                </connections>
-                            </button>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.027450980390000001" green="0.2901960784" blue="0.46666666670000001" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="tintColor" red="0.027450980390000001" green="0.2901960784" blue="0.46666666670000001" alpha="0.0" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="j2B-mh-3uB" firstAttribute="centerX" secondItem="MMr-Iz-Unp" secondAttribute="centerX" id="3BY-5d-bh1"/>
-                            <constraint firstItem="iap-FB-8KA" firstAttribute="centerY" secondItem="MMr-Iz-Unp" secondAttribute="centerY" id="7VE-Gg-X79"/>
-                            <constraint firstItem="yuZ-IE-vqN" firstAttribute="centerY" secondItem="MMr-Iz-Unp" secondAttribute="centerY" multiplier="1.3" id="GVi-DE-Fsd"/>
-                            <constraint firstItem="iap-FB-8KA" firstAttribute="centerX" secondItem="MMr-Iz-Unp" secondAttribute="centerX" id="HLE-tW-S1f"/>
-                            <constraint firstItem="iap-FB-8KA" firstAttribute="width" secondItem="MMr-Iz-Unp" secondAttribute="height" multiplier="242:603" id="Qyg-c2-An4"/>
-                            <constraint firstItem="yuZ-IE-vqN" firstAttribute="centerX" secondItem="MMr-Iz-Unp" secondAttribute="centerX" id="VDS-Pc-2W3"/>
-                            <constraint firstItem="yuZ-IE-vqN" firstAttribute="width" secondItem="MMr-Iz-Unp" secondAttribute="height" multiplier="242:603" id="k1B-Hi-LuX"/>
+                            <constraint firstItem="FQS-05-idC" firstAttribute="top" secondItem="EnN-Rj-AaS" secondAttribute="bottom" constant="86.5" id="OoI-Tt-eqR"/>
+                            <constraint firstItem="Jgf-Gh-0sY" firstAttribute="trailing" secondItem="FQS-05-idC" secondAttribute="trailing" constant="20" id="WRh-oa-hc0"/>
+                            <constraint firstItem="FQS-05-idC" firstAttribute="leading" secondItem="Jgf-Gh-0sY" secondAttribute="leading" constant="20" id="avz-Oh-IlJ"/>
                             <constraint firstItem="EnN-Rj-AaS" firstAttribute="centerX" secondItem="MMr-Iz-Unp" secondAttribute="centerX" id="n0a-eF-V9I"/>
                             <constraint firstItem="EnN-Rj-AaS" firstAttribute="centerY" secondItem="MMr-Iz-Unp" secondAttribute="centerY" multiplier="0.4" id="rwu-gf-1YK"/>
-                            <constraint firstItem="j2B-mh-3uB" firstAttribute="width" secondItem="MMr-Iz-Unp" secondAttribute="height" multiplier="242:603" id="x1O-dQ-ABI"/>
-                            <constraint firstItem="j2B-mh-3uB" firstAttribute="centerY" secondItem="MMr-Iz-Unp" secondAttribute="centerY" multiplier="1.6" id="zfb-Fa-hmI"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Jgf-Gh-0sY"/>
                     </view>
