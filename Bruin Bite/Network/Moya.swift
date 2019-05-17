@@ -67,7 +67,7 @@ extension MainAPI: TargetType {
         case .chatList:
             return "users/matching/chats"
         case .last50Messages(let chatRoomLbl):
-            return "/messaging/messages/\(chatRoomLbl)"
+            return "/messaging/messages/\(chatRoomLbl)/"
         case .reportUser:
             return "/users/matching/report"
         case .unmatchUser:
@@ -95,7 +95,7 @@ extension MainAPI: TargetType {
         case .getCurrentActivityLevels, .getOverviewMenu, .getDetailedMenu, .getHours:
             return .requestPlain
         case .createUser(let email, let password, let first_name, let is_active):
-            return .requestParameters(parameters: ["email": email, "password": password, "first_name": first_name, "is_active": is_active], encoding: JSONEncoding.default)
+            return .requestParameters(parameters: ["email": email, "password": password, "first_name": first_name, "is_active": is_active, "device_id": UserDefaults.standard.string(forKey: "Dev_Token") ?? ""], encoding: JSONEncoding.default)
         case .loginUser(let username, let password, let grant_type, let client_id, let client_secret):
             return .requestParameters(parameters: ["username": username, "password": password, "grant_type": grant_type, "client_id": client_id, "client_secret": client_secret], encoding: URLEncoding.default)
         case .readUser(let email):
