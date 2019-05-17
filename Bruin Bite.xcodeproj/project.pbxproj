@@ -79,6 +79,7 @@
 		C7F19A69CA646BA279F032D9 /* MenuDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F7015B989DC65DDFA1B179 /* MenuDetailViewController.swift */; };
 		C7F24355C1F5930CCD314312 /* UIViewBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F96FCA50FBF094C1704FD1 /* UIViewBorder.swift */; };
 		C7F8852A39898A0DFED430CA /* MenuDetailSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F06F77280F3CA224174A69 /* MenuDetailSectionHeader.swift */; };
+		C7FC4E81ED78F1C74563E4A4 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7FD1A36C50F96758DCFC86C /* EditProfileViewController.swift */; };
 		DC5FC98420B788C400DFCCC7 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DC5FC98220B788C400DFCCC7 /* Profile.storyboard */; };
 		DCF0E2DC20B260510036A32F /* UIColor+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF0E2DB20B260510036A32F /* UIColor+Additions.swift */; };
 		DCF0E2DE20B260680036A32F /* UIFont+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF0E2DD20B260680036A32F /* UIFont+Additions.swift */; };
@@ -193,6 +194,7 @@
 		C7F06F77280F3CA224174A69 /* MenuDetailSectionHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuDetailSectionHeader.swift; sourceTree = "<group>"; };
 		C7F7015B989DC65DDFA1B179 /* MenuDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuDetailViewController.swift; sourceTree = "<group>"; };
 		C7F96FCA50FBF094C1704FD1 /* UIViewBorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewBorder.swift; sourceTree = "<group>"; };
+		C7FD1A36C50F96758DCFC86C /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		CC9C8F47B5A0B8DB48A43377 /* Pods-Bruin BiteUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bruin BiteUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bruin BiteUITests/Pods-Bruin BiteUITests.release.xcconfig"; sourceTree = "<group>"; };
 		D31D0C9107AF44D73AA341C1 /* Pods_Bruin_Bite.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bruin_Bite.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC5FC98320B788C400DFCCC7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "Dont Eat Alone/Base.lproj/Profile.storyboard"; sourceTree = "<group>"; };
@@ -258,12 +260,12 @@
 		2A744891203B8E9F00793AD3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				2AB62E68204887820013CB59 /* Menu.swift */,
-				BDAED25E219FD601005A22F3 /* UserModel.swift */,
 				2AB62E6F2048D21D0013CB59 /* ActivityLevel.swift */,
-				0058244E20BA106E0044CB88 /* Hours.swift */,
-				00C2DF0620B677040023CF75 /* User.swift */,
 				BF0943E120BBF3EE00214200 /* ChatMessage.swift */,
+				0058244E20BA106E0044CB88 /* Hours.swift */,
+				2AB62E68204887820013CB59 /* Menu.swift */,
+				00C2DF0620B677040023CF75 /* User.swift */,
+				BDAED25E219FD601005A22F3 /* UserModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -286,25 +288,26 @@
 		2A94477B2055F5570033B6C6 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				2AFA40B320BC07BC0007FB85 /* MatchingViewControllers */,
-				2A03D94020B76B88004EFC97 /* PopupViewControllers */,
-				BF0523E2209AA7E00013EE11 /* ProfileViewController.swift */,
-				BF0523E0209AA7DB0013EE11 /* PreferenceViewController.swift */,
-				770251B5201D4079002E4515 /* MenuVC.swift */,
-				2AFB41322047DD86004025F9 /* ItemDetailViewController.swift */,
-				BDDE7C6F207B04590008A677 /* MatchingListViewController.swift */,
-				BFE168A2209AB8DD00D021A2 /* CollectionViewController.swift */,
-				BDDE7C6D207AF6840008A677 /* LoginViewController.swift */,
-				DCF0E2DF20B2608B0036A32F /* CreateProfileViewController.swift */,
-				DCF0E2E120B260A90036A32F /* CreateProfilePt2ViewController.swift */,
-				DCF0E2E320B260BA0036A32F /* SignUpViewController.swift */,
-				DCF0E2E520B260CC0036A32F /* SignInViewController.swift */,
-				2A03D94720B7AFA7004EFC97 /* HomeProfileStaticTableViewController.swift */,
+				BD7870A721B6854900E46A50 /* AutoLoginViewController.swift */,
+				0032C5D42272BC1900841169 /* ChatDetailsViewController.swift */,
 				BF5D97E320B974F60086D451 /* ChatListViewController.swift */,
 				BF0943DF20BBF1EB00214200 /* ChatScreenViewController.swift */,
-				BD7870A721B6854900E46A50 /* AutoLoginViewController.swift */,
+				BFE168A2209AB8DD00D021A2 /* CollectionViewController.swift */,
+				DCF0E2E120B260A90036A32F /* CreateProfilePt2ViewController.swift */,
+				DCF0E2DF20B2608B0036A32F /* CreateProfileViewController.swift */,
+				2A03D94720B7AFA7004EFC97 /* HomeProfileStaticTableViewController.swift */,
+				2AFB41322047DD86004025F9 /* ItemDetailViewController.swift */,
+				BDDE7C6D207AF6840008A677 /* LoginViewController.swift */,
+				BDDE7C6F207B04590008A677 /* MatchingListViewController.swift */,
+				2AFA40B320BC07BC0007FB85 /* MatchingViewControllers */,
 				C7F7015B989DC65DDFA1B179 /* MenuDetailViewController.swift */,
-				0032C5D42272BC1900841169 /* ChatDetailsViewController.swift */,
+				770251B5201D4079002E4515 /* MenuVC.swift */,
+				2A03D94020B76B88004EFC97 /* PopupViewControllers */,
+				BF0523E0209AA7DB0013EE11 /* PreferenceViewController.swift */,
+				BF0523E2209AA7E00013EE11 /* ProfileViewController.swift */,
+				DCF0E2E520B260CC0036A32F /* SignInViewController.swift */,
+				DCF0E2E320B260BA0036A32F /* SignUpViewController.swift */,
+				C7FD1A36C50F96758DCFC86C /* EditProfileViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -312,14 +315,14 @@
 		2A94477C2055F5860033B6C6 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				BD78709821AD352100E46A50 /* UserDefaultsManager.swift */,
-				2A16F9A820C0B8CB008BA4E3 /* TimeFunctions.swift */,
-				77949971203BD12B00F3B0ED /* Extensions.swift */,
 				770251B3201D4079002E4515 /* AppDelegate.swift */,
 				770251BC201D4079002E4515 /* Assets.xcassets */,
+				77949971203BD12B00F3B0ED /* Extensions.swift */,
 				770251BE201D4079002E4515 /* LaunchScreen.storyboard */,
-				BD7870A521B6793A00E46A50 /* PresentAlert.swift */,
 				BD95987C226E6A60000934BF /* LoginAlertPresentable.swift */,
+				BD7870A521B6793A00E46A50 /* PresentAlert.swift */,
+				2A16F9A820C0B8CB008BA4E3 /* TimeFunctions.swift */,
+				BD78709821AD352100E46A50 /* UserDefaultsManager.swift */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -351,13 +354,13 @@
 		2AB62E6A204888760013CB59 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				BDAED25C219FD598005A22F3 /* UserManager.swift */,
-				2AB62E6B20488A050013CB59 /* MenuAPI.swift */,
 				2AB62E6D2048D16B0013CB59 /* API.swift */,
-				00C2DF0820B678890023CF75 /* Moya.swift */,
-				00C2DF0A20B678A00023CF75 /* UserAPI.swift */,
 				BF0943E320BBFEEF00214200 /* ChatAPI.swift */,
 				BFC934B220C3448A0040D08D /* ChatListAPI.swift */,
+				2AB62E6B20488A050013CB59 /* MenuAPI.swift */,
+				00C2DF0820B678890023CF75 /* Moya.swift */,
+				00C2DF0A20B678A00023CF75 /* UserAPI.swift */,
+				BDAED25C219FD598005A22F3 /* UserManager.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -406,18 +409,18 @@
 		770251B2201D4079002E4515 /* Bruin Bite */ = {
 			isa = PBXGroup;
 			children = (
+				DCF0E2DA20B260300036A32F /* Extensions */,
 				BD39281F215C3626007FD4AD /* Helpers */,
+				770251C1201D4079002E4515 /* Info.plist */,
+				00C2DF1020B6790D0023CF75 /* keys.swift */,
+				2A744891203B8E9F00793AD3 /* Models */,
+				770251E3201D4182002E4515 /* Moya_Service.swift */,
+				2AB62E6A204888760013CB59 /* Network */,
 				BF41FB5F20BC2F390010306E /* Storyboards */,
+				2A94477C2055F5860033B6C6 /* Supporting Files */,
+				BDDE7C73207B04F80008A677 /* UserList */,
 				2A94477B2055F5570033B6C6 /* View Controllers */,
 				2A94477A2055F50B0033B6C6 /* Views */,
-				2A744891203B8E9F00793AD3 /* Models */,
-				2AB62E6A204888760013CB59 /* Network */,
-				BDDE7C73207B04F80008A677 /* UserList */,
-				770251E3201D4182002E4515 /* Moya_Service.swift */,
-				770251C1201D4079002E4515 /* Info.plist */,
-				DCF0E2DA20B260300036A32F /* Extensions */,
-				2A94477C2055F5860033B6C6 /* Supporting Files */,
-				00C2DF1020B6790D0023CF75 /* keys.swift */,
 			);
 			path = "Bruin Bite";
 			sourceTree = "<group>";
@@ -450,13 +453,13 @@
 		BF41FB5F20BC2F390010306E /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				2A62E49220BC99D2008075B0 /* Menu.storyboard */,
-				2AFA40B420BC08200007FB85 /* Matching.storyboard */,
-				770251B9201D4079002E4515 /* Main.storyboard */,
-				FCA7A0E0218795370096E821 /* Login.storyboard */,
-				DC5FC98220B788C400DFCCC7 /* Profile.storyboard */,
 				BF5D97E120B973570086D451 /* Chat.storyboard */,
+				FCA7A0E0218795370096E821 /* Login.storyboard */,
+				770251B9201D4079002E4515 /* Main.storyboard */,
+				2AFA40B420BC08200007FB85 /* Matching.storyboard */,
+				2A62E49220BC99D2008075B0 /* Menu.storyboard */,
 				2A03D94220B76C91004EFC97 /* PopupViewControllers.storyboard */,
+				DC5FC98220B788C400DFCCC7 /* Profile.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -464,13 +467,13 @@
 		DCF0E2DA20B260300036A32F /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				DCF0E2DB20B260510036A32F /* UIColor+Additions.swift */,
-				DCF0E2DD20B260680036A32F /* UIFont+Additions.swift */,
+				00C207F6221BB422003965FE /* Date+Extension.swift */,
 				002244DB20B8C53000CBD1C2 /* StringExtensions.swift */,
 				2A68339120BC2113000DCAA4 /* UIButtonSignUp.swift */,
-				BF0943E520BC20FE00214200 /* UIViewControllerExtensions.swift */,
+				DCF0E2DB20B260510036A32F /* UIColor+Additions.swift */,
+				DCF0E2DD20B260680036A32F /* UIFont+Additions.swift */,
 				C7F96FCA50FBF094C1704FD1 /* UIViewBorder.swift */,
-				00C207F6221BB422003965FE /* Date+Extension.swift */,
+				BF0943E520BC20FE00214200 /* UIViewControllerExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -505,7 +508,6 @@
 				770251AE201D4079002E4515 /* Resources */,
 				D601296F579F59F8E568D410 /* [CP] Embed Pods Frameworks */,
 				2AFA409F20BBD7A00007FB85 /* Embed App Extensions */,
-				0F0963238FAF47DCE06CAE9A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -590,21 +592,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0F0963238FAF47DCE06CAE9A /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Bruin Bite/Pods-Bruin Bite-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		9DB29EBED83346BDBACE0D17 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -629,7 +616,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Bruin Bite/Pods-Bruin Bite-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Bruin Bite/Pods-Bruin Bite-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
 				"${BUILT_PRODUCTS_DIR}/CZPicker/CZPicker.framework",
@@ -666,7 +653,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Bruin Bite/Pods-Bruin Bite-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Bruin Bite/Pods-Bruin Bite-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -751,6 +738,7 @@
 				C7F19A69CA646BA279F032D9 /* MenuDetailViewController.swift in Sources */,
 				C7F8852A39898A0DFED430CA /* MenuDetailSectionHeader.swift in Sources */,
 				0032C5D52272BC1900841169 /* ChatDetailsViewController.swift in Sources */,
+				C7FC4E81ED78F1C74563E4A4 /* EditProfileViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

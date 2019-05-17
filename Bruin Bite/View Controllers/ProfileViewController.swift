@@ -20,6 +20,11 @@ class ProfileViewController: UIViewController, ReadDelegate, AlertPresentable, L
         super.viewDidAppear(animated)
         if UserManager.shared.getUID() == -1 { presentNotLoggedInAlert() }
     }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
