@@ -1,24 +1,6 @@
 PODS:
   - Alamofire (4.8.2)
-  - Bolts (1.9.0):
-    - Bolts/AppLinks (= 1.9.0)
-    - Bolts/Tasks (= 1.9.0)
-  - Bolts/AppLinks (1.9.0):
-    - Bolts/Tasks
-  - Bolts/Tasks (1.9.0)
   - CZPicker (0.4.3)
-  - FacebookCore (0.6.0):
-    - Bolts (~> 1.9)
-    - FBSDKCoreKit (~> 4.43)
-  - FacebookLogin (0.6.0):
-    - Bolts (~> 1.9)
-    - FacebookCore (~> 0.5)
-    - FBSDKCoreKit (~> 4.43)
-    - FBSDKLoginKit (~> 4.43)
-  - FBSDKCoreKit (4.44.1):
-    - Bolts (~> 1.9)
-  - FBSDKLoginKit (4.44.1):
-    - FBSDKCoreKit
   - Moya (10.0.2):
     - Moya/Core (= 10.0.2)
   - Moya/Core (10.0.2):
@@ -34,7 +16,6 @@ PODS:
 
 DEPENDENCIES:
   - CZPicker
-  - FacebookLogin
   - Moya (~> 10.0)
   - Pulsator
   - Repeat
@@ -43,14 +24,22 @@ DEPENDENCIES:
   - SwiftyJSON
   - ViewAnimator
 
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - CZPicker
+    - Moya
+    - Pulsator
+    - Repeat
+    - Result
+    - SnapKit
+    - Starscream
+    - SwiftyJSON
+    - ViewAnimator
+
 SPEC CHECKSUMS:
   Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
-  Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
   CZPicker: 55aa1751ea26e209814552da1a9a08cba8bbf72a
-  FacebookCore: 38cd3a4078738d6f648eb9b6b9d35b02d693e9a1
-  FacebookLogin: 658b0569961a081a0890f5f4dbf69ced00657d9e
-  FBSDKCoreKit: a823ae35bdb60ebb8d7a7e51abe7c5d87d2bfced
-  FBSDKLoginKit: 54ae59987f2a8703021557c90a9aebb9e5c2bef6
   Moya: 2b0531a9fef318e0bc484030c3db1e6f279ccb66
   Pulsator: d58707c6827ec862cd89fd727424866795dabd24
   Repeat: 73c5ee602aed8f3c7bf1aa12d4cd0d3dc3edea0a
@@ -60,6 +49,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
   ViewAnimator: 173932c659a43c5a15c665878750d92801ae2cf1
 
-PODFILE CHECKSUM: 93d482c250250d49a50492e4f15b4a6c4dc3ce24
+PODFILE CHECKSUM: 8dfb0c6c9b5315f994ff7787b97d5abb9684745e
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.5.3
