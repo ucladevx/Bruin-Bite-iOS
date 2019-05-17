@@ -47,6 +47,7 @@ class PendingRequestsViewController: UIViewController, LoginAlertPresentable {
     private var requestsDict: [Date:[Request]]? = nil
     private var sortedMatchDates: [Date]? = nil
     private var sortedRequestDates: [Date]? = nil
+    private var profilePictures: [Int:UIImage] = [:]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -132,6 +133,7 @@ extension PendingRequestsViewController: UITableViewDelegate, UITableViewDataSou
             cell.picImage.layer.masksToBounds = false
             cell.picImage.clipsToBounds = true
             cell.picImage.layer.cornerRadius = cell.picImage.frame.height/2
+            cell.picImage.image = self.profilePictures[currRowMatch.user2] ?? UIImage(named: "DefaultProfile")
             
             cell.name.text = currRowMatch.user2_first_name + " " + currRowMatch.user2_last_name
             
@@ -168,6 +170,17 @@ extension PendingRequestsViewController: UITableViewDelegate, UITableViewDataSou
     }
 }
 
+extension PendingRequestsViewController: ProfilePictureDownloadDelegate {
+    func profilePicture(didDownloadimage image: UIImage, forUserWithID userID: Int) {
+        self.profilePictures[userID] = image
+        self.matchTable.reloadData()
+    }
+    func profilePicture(failedWithError error: String?) {
+        print("Profile picture download failed with error: \(error ?? "")")
+    }
+}
+
+
 extension PendingRequestsViewController: GetMatchesDelegate {
     func didReceiveMatches(matches: [Match]) {
         guard matches.count > 0 else {
@@ -192,6 +205,10 @@ extension PendingRequestsViewController: GetMatchesDelegate {
         }
         self.sortedMatchDates?.sort()
         self.matchTable.reloadData()
+        
+        for match in matches {
+            ProfilePictureAPI().download(pictureForUserID: match.user2, delegate: self)
+        }
     }
 }
 
