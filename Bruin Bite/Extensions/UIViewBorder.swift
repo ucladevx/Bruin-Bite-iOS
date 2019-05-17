@@ -24,7 +24,7 @@ class DesignableTextView: UITextView {
 extension UIView {
     @IBInspectable var borderColor:UIColor? {
         set {
-            layer.borderColor = newValue!.cgColor
+            layer.borderColor = newValue?.cgColor
         }
         get {
             if let color = layer.borderColor {

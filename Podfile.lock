@@ -9,9 +9,9 @@ PODS:
   - Pulsator (0.5.3)
   - Repeat (0.5.7)
   - Result (3.2.4)
-  - SnapKit (4.2.0)
+  - SnapKit (5.0.0)
   - Starscream (3.1.0)
-  - SwiftyJSON (4.3.0)
+  - SwiftyJSON (5.0.0)
   - ViewAnimator (2.5.1)
 
 DEPENDENCIES:
@@ -44,9 +44,9 @@ SPEC CHECKSUMS:
   Pulsator: d58707c6827ec862cd89fd727424866795dabd24
   Repeat: 73c5ee602aed8f3c7bf1aa12d4cd0d3dc3edea0a
   Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
-  SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
+  SnapKit: fd22d10eb9aff484d79a8724eab922c1ddf89bcf
   Starscream: 08172b481e145289c4930cb567230fb55897cfa4
-  SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
+  SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
   ViewAnimator: 173932c659a43c5a15c665878750d92801ae2cf1
 
 PODFILE CHECKSUM: 8dfb0c6c9b5315f994ff7787b97d5abb9684745e

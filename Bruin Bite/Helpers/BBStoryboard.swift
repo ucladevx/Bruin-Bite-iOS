@@ -23,7 +23,7 @@ enum BBStoryboardId: String {
     case searching = "SearchingScreenViewController"
     case timePicker = "TimePickerViewController"
     case profile = "ProfileViewController"
-    case preference = "PreferenceViewController"
+    case preference = "PreferenceViewControllerOld"
     case menu = "MenuVC"
     case itemDetail = "ItemDetailViewController"
 //    case matchList = "MatchingListViewController"

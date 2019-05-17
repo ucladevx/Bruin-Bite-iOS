@@ -21,6 +21,9 @@ enum MainAPI {
     case deleteUser(email: String)
     case matchUser(user: Int, meal_times: [String], meal_day: String, meal_period: String, dining_halls: [String])
     case refreshToken(refresh_token: String)
+    case getRequests(user: Int, status: [String])
+    case getMatches(user: Int)
+//    case requestMatch(user: Int, meal_times: [String], meal_day: String, meal_period: [String], dining_halls: [String])
     case chatList(forUserWithID: Int)
     case last50Messages(forChatRoomLabel: String)
     case unmatchUser(chatURL: String)
@@ -34,7 +37,7 @@ extension MainAPI: TargetType {
         switch self {
         case .getCurrentActivityLevels, .getOverviewMenu, .getDetailedMenu, .getHours:
             return URL(string: "https://api.bruin-bite.com/api/v1")!
-        case .createUser, .readUser, .loginUser, .updateUser, .deleteUser, .matchUser, .refreshToken, .chatList, .last50Messages, .unmatchUser, .reportUser, .uploadProfilePicture, .getProfilePicture:
+        case .createUser, .readUser, .loginUser, .updateUser, .deleteUser, .matchUser, .refreshToken, .getRequests, .getMatches, .chatList, .last50Messages, .unmatchUser, .reportUser, .uploadProfilePicture, .getProfilePicture:
             return URL(string: "https://api.bruin-bite.com/api/v1")!
         }
 
@@ -56,9 +59,13 @@ extension MainAPI: TargetType {
         case .readUser, .updateUser, .deleteUser:
             return "/users/data/"
         case .matchUser:
-            return "/users/matching/new/"
+            return "/users/matching/requests"
+        case .getRequests:
+            return "/users/matching/requests"
+        case .getMatches:
+            return "/users/matching/matches"
         case .chatList:
-            return "users/matching/matches"
+            return "users/matching/chats"
         case .last50Messages(let chatRoomLbl):
             return "/messaging/messages/\(chatRoomLbl)"
         case .reportUser:
@@ -73,7 +80,7 @@ extension MainAPI: TargetType {
     }
     var method: Moya.Method {
         switch self {
-        case .getCurrentActivityLevels, .getOverviewMenu, .getDetailedMenu, .getHours, .readUser, .chatList, .last50Messages, .getProfilePicture:
+        case .getCurrentActivityLevels, .getOverviewMenu, .getDetailedMenu, .getHours, .readUser, .getRequests, .getMatches, .chatList, .last50Messages, .getProfilePicture:
             return .get
         case .createUser, .loginUser, .matchUser, .refreshToken, .reportUser, .uploadProfilePicture:
             return .post
@@ -101,6 +108,10 @@ extension MainAPI: TargetType {
             return .requestParameters(parameters: ["user": user, "meal_times": meal_times, "meal_day": meal_day, "meal_period": meal_period, "dining_halls": dining_halls], encoding: JSONEncoding.default)
         case .refreshToken(let refresh_token):
             return .requestParameters(parameters: ["refresh_token": refresh_token], encoding: URLEncoding.default)
+        case .getRequests(let user, let status):
+            return .requestParameters(parameters: ["user_id": user, "status": status[0]], encoding: URLEncoding.default)
+        case .getMatches(let user):
+            return .requestParameters(parameters: ["id": user], encoding: URLEncoding.default)
         case .chatList(let userId):
             return .requestParameters(parameters: ["id": userId], encoding: URLEncoding.default)
         case .last50Messages:
@@ -144,6 +155,10 @@ extension MainAPI: TargetType {
             return Data()
         case .refreshToken:
             return Data()
+        case .getRequests:
+            return Data();
+        case .getMatches:
+            return Data();
         case .chatList:
             return Data()
         case .last50Messages:
@@ -166,7 +181,7 @@ extension MainAPI: TargetType {
             return ["Content-Type": "application/json"]
         case .loginUser, .refreshToken:
             return ["Content-Type": "application/x-www-form-urlencoded"]
-        case .readUser, .updateUser, .deleteUser, .matchUser, .chatList, .last50Messages, .reportUser, .unmatchUser, .uploadProfilePicture, .getProfilePicture:
+        case .readUser, .updateUser, .deleteUser, .matchUser, .getRequests, .getMatches, .chatList, .last50Messages, .reportUser, .unmatchUser, .uploadProfilePicture, .getProfilePicture:
             var temp = "Bearer "
             temp += UserDefaultsManager.shared.getAccessToken()
             return ["Authorization": temp]
