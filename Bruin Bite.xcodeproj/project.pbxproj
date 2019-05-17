@@ -73,6 +73,7 @@
 		BF0943E420BBFEEF00214200 /* ChatAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0943E320BBFEEF00214200 /* ChatAPI.swift */; };
 		BF0943E620BC20FE00214200 /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0943E520BC20FE00214200 /* UIViewControllerExtensions.swift */; };
 		BF23B7BD22730E40000AB6A6 /* BackgroungHighlightableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF23B7BC22730E40000AB6A6 /* BackgroungHighlightableButton.swift */; };
+		BF4196AB228E976A00C636F2 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF4196AA228E976A00C636F2 /* WebKit.framework */; };
 		BF5D97E220B973570086D451 /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF5D97E120B973570086D451 /* Chat.storyboard */; };
 		BF5D97E420B974F60086D451 /* ChatListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5D97E320B974F60086D451 /* ChatListViewController.swift */; };
 		BF9BC1672262FE0C00C9EC58 /* PreferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9BC1662262FE0C00C9EC58 /* PreferenceViewController.swift */; };
@@ -192,6 +193,7 @@
 		BF0943E320BBFEEF00214200 /* ChatAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatAPI.swift; sourceTree = "<group>"; };
 		BF0943E520BC20FE00214200 /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
 		BF23B7BC22730E40000AB6A6 /* BackgroungHighlightableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroungHighlightableButton.swift; sourceTree = "<group>"; };
+		BF4196AA228E976A00C636F2 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		BF5D97E120B973570086D451 /* Chat.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Chat.storyboard; sourceTree = "<group>"; };
 		BF5D97E320B974F60086D451 /* ChatListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListViewController.swift; sourceTree = "<group>"; };
 		BF9BC1662262FE0C00C9EC58 /* PreferenceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceViewController.swift; sourceTree = "<group>"; };
@@ -229,6 +231,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF4196AB228E976A00C636F2 /* WebKit.framework in Frameworks */,
 				9C91B493798C96CEA3BC0AA4 /* Pods_Bruin_Bite.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -439,6 +442,7 @@
 		898B4B92943EFC7BAF49F286 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BF4196AA228E976A00C636F2 /* WebKit.framework */,
 				D31D0C9107AF44D73AA341C1 /* Pods_Bruin_Bite.framework */,
 			);
 			name = Frameworks;
