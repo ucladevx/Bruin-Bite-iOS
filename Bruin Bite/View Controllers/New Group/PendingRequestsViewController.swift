@@ -137,6 +137,9 @@ extension PendingRequestsViewController: UITableViewDelegate, UITableViewDataSou
             
             let mealAndLocation = Utilities.mealPeriodName(forMealPeriodCode: currRowMatch.meal_period) + " at " + Utilities.diningHallName(forDiningHallCode: currRowMatch.dining_hall)
             cell.location.text = mealAndLocation
+            if let matchDate = Date(fromMatchRequestMealTimeString: currRowMatch.meal_datetime) {
+                cell.time.text = matchDate.hourMinuteString(withAmPm: true)
+            }
             return cell
         case .pending:
             guard let currRowDate = sortedRequestDates?[indexPath.section],
@@ -157,6 +160,9 @@ extension PendingRequestsViewController: UITableViewDelegate, UITableViewDataSou
             let mealAndLocation = Utilities.mealPeriodName(forMealPeriodCode: currRowRequest.meal_period) + " at " + diningHallNames
             cell.location.text = mealAndLocation
             cell.activityIndicator.startAnimating()
+            if let timeString = Date.getPendingRequestTimeRanges(fromMatchDatetimeStrings: currRowRequest.meal_times) {
+                cell.time.text = timeString
+            }
             return cell
         }
     }
@@ -184,6 +190,7 @@ extension PendingRequestsViewController: GetMatchesDelegate {
                 self.matchesDict?[requestDate] = [match]
             }
         }
+        self.sortedMatchDates?.sort()
         self.matchTable.reloadData()
     }
 }
@@ -210,6 +217,7 @@ extension PendingRequestsViewController: GetRequestsDelegate {
                 self.requestsDict?[requestDate] = [request]
             }
         }
+        self.sortedRequestDates?.sort()
         self.matchTable.reloadData()
     }
 }
