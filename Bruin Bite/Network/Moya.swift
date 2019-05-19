@@ -106,17 +106,12 @@ extension MainAPI: TargetType {
             return .requestParameters(parameters: ["email": email], encoding: JSONEncoding.default)
         case .matchUser(let user, let meal_times, let meal_day, let meal_period, let dining_halls):
             return .requestParameters(parameters: ["user": user, "meal_times": meal_times, "meal_day": meal_day, "meal_period": meal_period, "dining_halls": dining_halls], encoding: JSONEncoding.default)
-<<<<<<< HEAD
         case .refreshToken(let grant_type, let client_id, let client_secret, let refresh_token):
             return .requestParameters(parameters: ["grant_type": grant_type, "client_id": client_id, "client_secret": client_secret, "refresh_token": refresh_token], encoding: URLEncoding.default)
-=======
-        case .refreshToken(let refresh_token):
-            return .requestParameters(parameters: ["refresh_token": refresh_token], encoding: URLEncoding.default)
         case .getRequests(let user, let status):
             return .requestParameters(parameters: ["user_id": user, "status": status[0]], encoding: URLEncoding.default)
         case .getMatches(let user):
             return .requestParameters(parameters: ["id": user], encoding: URLEncoding.default)
->>>>>>> 1eceb65545924120201837a6503643aa58d7b9b9
         case .chatList(let userId):
             return .requestParameters(parameters: ["id": userId], encoding: URLEncoding.default)
         case .last50Messages:
