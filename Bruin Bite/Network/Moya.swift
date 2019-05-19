@@ -20,7 +20,7 @@ enum MainAPI {
     case updateUser(email: String, password: String, first_name: String, last_name: String, major: String, minor: String, year: Int, self_bio: String) //send it as it is if it hasn't changed
     case deleteUser(email: String)
     case matchUser(user: Int, meal_times: [String], meal_day: String, meal_period: String, dining_halls: [String])
-    case refreshToken(refresh_token: String)
+    case refreshToken(grant_type: String, client_id: String, client_secret: String, refresh_token: String)
     case chatList(forUserWithID: Int)
     case last50Messages(forChatRoomLabel: String)
 }
@@ -87,8 +87,8 @@ extension MainAPI: TargetType {
             return .requestParameters(parameters: ["email": email], encoding: JSONEncoding.default)
         case .matchUser(let user, let meal_times, let meal_day, let meal_period, let dining_halls):
             return .requestParameters(parameters: ["user": user, "meal_times": meal_times, "meal_day": meal_day, "meal_period": meal_period, "dining_halls": dining_halls], encoding: JSONEncoding.default)
-        case .refreshToken(let refresh_token):
-            return .requestParameters(parameters: ["refresh_token": refresh_token], encoding: URLEncoding.default)
+        case .refreshToken(let grant_type, let client_id, let client_secret, let refresh_token):
+            return .requestParameters(parameters: ["grant_type": grant_type, "client_id": client_id, "client_secret": client_secret, "refresh_token": refresh_token], encoding: URLEncoding.default)
         case .chatList(let userId):
             return .requestParameters(parameters: ["id": userId], encoding: URLEncoding.default)
         case .last50Messages:
