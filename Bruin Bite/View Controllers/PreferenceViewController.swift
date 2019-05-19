@@ -1,359 +1,300 @@
 //
 //  PreferenceViewController.swift
-//  Dont Eat Alone
+//  Bruin Bite
 //
-//  Created by Ryan Lee on 5/1/18.
-//  Copyright © 2018 Dont Eat Alone. All rights reserved.
+//  Created by Hirday Gupta on 4/13/19.
+//  Copyright © 2019 Dont Eat Alone. All rights reserved.
 //
 
+import Foundation
 import UIKit
 import CZPicker
 
+class PreferenceViewController: UIViewController {
+    @IBOutlet weak var DayBtn: UIButton!
+    @IBOutlet weak var DiningHallBtn: UIButton!
+    @IBOutlet weak var MealPeriodBtn: UIButton!
+    @IBOutlet weak var TimeBtn: UIButton!
+    @IBOutlet weak var MatchMeBtn: UIButton!
 
-class PreferenceViewController: UIViewController, MatchDelegate, LoginAlertPresentable {
-
-    @IBOutlet var TopView: UIView!
-    @IBOutlet var TitleText: UILabel!
-    @IBOutlet var MatchMeButton: UIButton!
-    @IBOutlet var MealButton: UIButton!
-    @IBOutlet var DiningHallButton: UIButton!
-    @IBOutlet var DayButton: UIButton!
-    @IBOutlet var TimeButton: UIButton!
-    
-    var picks = [String]()
-    var meal_times = [String]()
-    var meal_day = String()
-    var dining_halls = [String]()
-    var buttonSelected = false
-    
-    var generatedMatchID: Int? = nil // note:  if set, means that we can segue to searching screen. If not set, then we have a problem.
-    
-    let defaultText = [
+    let DEFAULT_TEXT: [String:String] = [
         "Day": "What day are you free?",
-        "DiningHall": "Which one's your favorite?",
+        "DiningHall": "Where do you want to eat?",
         "MealPeriod": "When would you like to eat?",
         "Time": "Starting time?"
     ]
-    
-    @IBAction func MatchButton(_ sender: Any) {
-        //TODO: Must check that the User has chosen a meal period!
-        //Here you check each of the categories have been chosen but due to our previous methods of choosing a meal period, I have temporarily removed the check for a meal period
-        //Basically we need to redo the meal period formatting/check from scratch
-        if(chosen.isEmpty || meal_day == "" || dining_halls.isEmpty) {
-            return
+
+    let ERROR_TEXT: [String: String] = [
+        "Day": "Please select a date!",
+        "DiningHall": "Select a dining hall!",
+        "MealPeriod": "Choose a meal period!",
+        "Time": "Pick a start time!"
+    ]
+
+    private let datePicker: CZPickerView = CZPickerView(headerTitle: "Dates", cancelButtonTitle: "Cancel", confirmButtonTitle: "Confirm")
+    private let diningHallPicker: CZPickerView = CZPickerView(headerTitle: "Dining Halls", cancelButtonTitle: "Cancel", confirmButtonTitle: "Confirm")
+    private let mealPeriodPicker: CZPickerView = CZPickerView(headerTitle: "Meal Periods", cancelButtonTitle: "Cancel", confirmButtonTitle: "Confirm")
+    // private let timePicker: CZPickerView = CZPickerView(headerTitle: "Start Times", cancelButtonTitle: "Cancel", confirmButtonTitle: "Confirm")
+
+
+    // get-only variable that calculates the next 5 dates.
+    private var datePicks: [Date] {
+        get {
+            var dates: [Date] = []
+            let currentDate = Date(fromStartOfDate: true) ?? Date()
+            for i in 0..<5 {
+                dates.append( Calendar.current.date(byAdding: .day, value: i, to: currentDate) ?? currentDate)
+            }
+            return dates
         }
-        
-        guard let meal_day_date = Date(fromUserFriendlyMonthDayYearString: meal_day) else {
-            return
-        }
-        
-        meal_times = chosen
-        meal_day = meal_day_date.yearMonthDayString()
-        for i in 0...meal_times.count-1 {
-            meal_times[i] = meal_day + " " + meal_times[i]
-            print(meal_times[i])
-        }
-        if(!meal_times.isEmpty && meal_day != "" && !dining_halls.isEmpty) {
-        } else {
-            return
-        }
-//        let storyBoard = UIStoryboard(name: "Matching", bundle: nil)
-//        let searching = storyBoard.instantiateViewController(withIdentifier: "searchingForMatch")
-//        
-//        addChildViewController(searching)
-//        view.addSubview(searching.view)
-//        searching.didMove(toParentViewController: self)
     }
-    
+    private let diningHallPicks = ["De Neve", "Covel", "Bruin Plate", "Feast"]
+    private let mealPeriodPicks = ["Breakfast", "Lunch", "Dinner"]
+
+    private var selectedDate: Date? = nil
+    private var selectedDiningHalls: [String]? = nil
+    private var selectedMealPeriod: String? = nil
+    private var selectedDateTimes: [Date]? = nil
+
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if self.generatedMatchID != nil {
-            self.performSegue(withIdentifier: "showSearchingVC", sender: nil)
-        }
+        // TODO: make the "home" of the matching tab a subclass of "LoginAlertPresentable" and check for logged in user.
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        if UserManager.shared.getUID() == -1 { presentNotLoggedInAlert() }
-        meal_times = [String]()
-        meal_day = String()
-        dining_halls = [String]()
-        DayButton.setTitle(defaultText["Day"], for: .normal)
-        DiningHallButton.setTitle(defaultText["DiningHall"], for: .normal)
-        MealButton.setTitle(defaultText["MealPeriod"], for: .normal)
-        TimeButton.setTitle(defaultText["Time"], for: .normal)
-    }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        meal_day = ""
-        // formatting top bar
-        TopView.backgroundColor = UIColor.twilightBlue
-        TitleText.font = UIFont.signUpTextFont.withSize(30)
-        
-        // formatting match button
-        MatchMeButton.layer.borderWidth = 1
-        MatchMeButton.layer.borderColor = UIColor.twilightBlue.cgColor
-        MatchMeButton.layer.cornerRadius = 26
-        
-        // setting color and font of text field place holders
-        DayButton.setTitle(defaultText["Day"], for: .normal)
-        DayButton.setTitleColor(.pinkishGrey, for: .normal)
-        DayButton.titleLabel?.font = UIFont.avenirNextItalicFont.withSize(18)
-        
-        DiningHallButton.setTitle(defaultText["DiningHall"], for: .normal)
-        DiningHallButton.setTitleColor(.pinkishGrey, for: .normal)
-        DiningHallButton.titleLabel?.font = UIFont.avenirNextItalicFont.withSize(18)
-        
-        MealButton.setTitle(defaultText["MealPeriod"], for: .normal)
-        MealButton.setTitleColor(.pinkishGrey, for: .normal)
-        MealButton.titleLabel?.font = UIFont.avenirNextItalicFont.withSize(18)
-        
-        TimeButton.setTitle(defaultText["Time"], for: .normal)
-        TimeButton.setTitleColor(.pinkishGrey, for: .normal)
-        TimeButton.titleLabel?.font = UIFont.avenirNextItalicFont.withSize(18)
+        // setting title texts for buttons
+        DayBtn.setTitle(DEFAULT_TEXT["Day"], for: .normal)
+        DiningHallBtn.setTitle(DEFAULT_TEXT["DiningHall"], for: .normal)
+        MealPeriodBtn.setTitle(DEFAULT_TEXT["MealPeriod"], for: .normal)
+        TimeBtn.setTitle(DEFAULT_TEXT["Time"], for: .normal)
 
-        
-        //PREFILL DINING DATE AND TIME FIELDS
-        //diningField.text = PUT IN USER PREFERRED DINING HALL WHEN YOU HAVE THE DATA
-        var components = DateComponents()
-        let curdate = Calendar.current.date(byAdding: components, to: Date())
-        let formatter = DateFormatter()
-        formatter.dateStyle = .medium
-        formatter.timeStyle = .none
-        let dateString = formatter.string(from: curdate!)
-        //DayText.text = "\(dateString)"
-        formatter.dateStyle = .none
-        formatter.timeStyle = .short
-        let timeString = formatter.string(from: curdate!)
-        //TimeText.text = "\(timeString)"
-        
+        setUpPickers()
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+
+    @IBAction func didPressDayBtn(_ sender: Any) {
+        datePicker.show()
     }
-    
-    @IBAction func showWithMultipleSelections(sender: AnyObject) {
-        let picker = CZPickerView(headerTitle: "Dining Halls", cancelButtonTitle: "Cancel", confirmButtonTitle: "Confirm")
-        
-        dining_halls.removeAll()
-        
-        picks = ["Covel", "De Neve", "Feast", "Bruin Plate"]
-        picker?.delegate = self as CZPickerViewDelegate
-        picker?.dataSource = self as CZPickerViewDataSource
-        picker?.needFooterView = false
-        picker?.allowMultipleSelection = true
-        picker?.checkmarkColor = UIColor.twilightBlue
-        picker?.headerBackgroundColor = UIColor.twilightBlue
-        picker?.confirmButtonBackgroundColor = UIColor.twilightBlue
-        picker?.cancelButtonBackgroundColor = UIColor.twilightBlue
-        picker?.cancelButtonNormalColor = UIColor.white
-        picker?.show()
+
+    @IBAction func didPressDiningHallBtn(_ sender: Any) {
+        diningHallPicker.show()
     }
-    
-    @IBAction func selectDate(sender: AnyObject) {
-        let picker = CZPickerView(headerTitle: "Dates", cancelButtonTitle: "Cancel", confirmButtonTitle: "Confirm")
-        let components = DateComponents()
-        var curdate = Calendar.current.date(byAdding: components, to: Date())
-        let formatter = DateFormatter()
-        formatter.dateStyle = .medium
-        formatter.timeStyle = .none
-        var i = 0
-        var j = 1
-        var temppicks = [String]()
-        if(temppicks.count == 0) {
-            while(i < 4) {
-                let dateString = formatter.string(from: curdate!)
-                curdate?.addTimeInterval(TimeInterval(60*60*24))
-                temppicks.append(dateString)
-                i += 1
-                j += 1
-            } }
-        picks = temppicks
-        picker?.delegate = self as CZPickerViewDelegate
-        picker?.dataSource = self as CZPickerViewDataSource
-        picker?.needFooterView = false
-        picker?.allowMultipleSelection = true
-        picker?.checkmarkColor = UIColor.twilightBlue
-        picker?.headerBackgroundColor = UIColor.twilightBlue
-        picker?.confirmButtonBackgroundColor = UIColor.twilightBlue
-        picker?.cancelButtonBackgroundColor = UIColor.twilightBlue
-        picker?.cancelButtonNormalColor = UIColor.white
-        picker?.show()
+
+    @IBAction func didPressMealPeriodBtn(_ sender: Any) {
+        mealPeriodPicker.show()
     }
-    
-    @IBAction func selectTime(sender: AnyObject) {
-        //Refactored storyboard
+
+    @IBAction func didPressTimeBtn(_ sender: Any) {
+        guard let selectedDate = selectedDate else{
+            Utilities.sharedInstance.displayErrorLabel(text: ERROR_TEXT["Day"] ?? "", field: DayBtn)
+            return
+        }
+        guard let selectedMealPeriod = selectedMealPeriod else {
+            Utilities.sharedInstance.displayErrorLabel(text: ERROR_TEXT["MealPeriod"] ?? "", field: MealPeriodBtn)
+            return
+        }
         let storyBoard = UIStoryboard(name: "PopupViewControllers", bundle: nil)
         if let timePicker = storyBoard.instantiateViewController(withIdentifier: "TimePickerViewController") as? TimePickerViewController {
             timePicker.delegate = self
+            timePicker.chosen_meal_period = selectedMealPeriod
+            timePicker.chosen_date = selectedDate
             self.present(timePicker, animated: true)
-            
-            meal_times.removeAll()
         }
     }
-    
-    
-    @IBAction func mealPeriod(_ sender: Any) {
-        let picker = CZPickerView(headerTitle: "Meal Period", cancelButtonTitle: "Cancel", confirmButtonTitle: "Confirm")
-        let meal_periods = ["Breakfast", "Lunch", "Dinner", "Latenight"]
-        picks = meal_periods
-        picker?.delegate = self as CZPickerViewDelegate
-        picker?.dataSource = self as CZPickerViewDataSource
-        picker?.needFooterView = false
-        picker?.allowMultipleSelection = true
-        
-        picker?.checkmarkColor = UIColor.twilightBlue
-        picker?.headerBackgroundColor = UIColor.twilightBlue
-        picker?.confirmButtonBackgroundColor = UIColor.twilightBlue
-        picker?.cancelButtonBackgroundColor = UIColor.twilightBlue
-        picker?.cancelButtonNormalColor = UIColor.white
-        picker?.show()
+
+    @IBAction func didPressMatchMe(_ sender: Any) {
+        guard let selectedDate = selectedDate else {
+            Utilities.sharedInstance.displayErrorLabel(text: ERROR_TEXT["Day"] ?? "", field: DayBtn)
+            return
+        }
+        guard let selectedDiningHalls = selectedDiningHalls else {
+            Utilities.sharedInstance.displayErrorLabel(text: ERROR_TEXT["DiningHall"] ?? "", field: DiningHallBtn)
+            return
+        }
+        guard let selectedMealPeriod = selectedMealPeriod else {
+            Utilities.sharedInstance.displayErrorLabel(text: ERROR_TEXT["MealPeriod"] ?? "", field: MealPeriodBtn)
+            return
+        }
+        guard let selectedDatetimes = selectedDateTimes else {
+            Utilities.sharedInstance.displayErrorLabel(text: ERROR_TEXT["Time"] ?? "", field: TimeBtn)
+            return
+        }
+
+        let selectedDateTimeStrings = selectedDatetimes.map { $0.matchRequestMealTimeString() }
+        let selectedDateString = selectedDate.yearMonthDayString()
+
+        let matchingAPI = MatchingAPI()
+        let uid = UserManager.shared.getUID()
+        matchingAPI.matchUser(completionDelegate: self, user: uid, meal_times: selectedDateTimeStrings, meal_day: selectedDateString, meal_period: selectedMealPeriod, dining_halls: selectedDiningHalls)
+
     }
-    
-    func didReceiveMatch(withID id: Int) {
-        generatedMatchID = id
-        self.performSegue(withIdentifier: "showSearchingVC", sender: nil)
+
+    private func setUpPickers() {
+        datePicker.dataSource = self
+        datePicker.delegate = self
+        datePicker.needFooterView = true
+        datePicker.checkmarkColor = .twilightBlue
+        datePicker.headerBackgroundColor = .twilightBlue
+        datePicker.confirmButtonBackgroundColor = .twilightBlue
+        datePicker.cancelButtonBackgroundColor = .twilightBlue
+        datePicker.cancelButtonNormalColor = .white
+
+        diningHallPicker.dataSource = self
+        diningHallPicker.delegate = self
+        diningHallPicker.needFooterView = true
+        diningHallPicker.allowMultipleSelection = true
+        diningHallPicker.checkmarkColor = .twilightBlue
+        diningHallPicker.headerBackgroundColor = .twilightBlue
+        diningHallPicker.confirmButtonBackgroundColor = .twilightBlue
+        diningHallPicker.cancelButtonBackgroundColor = .twilightBlue
+        diningHallPicker.cancelButtonNormalColor = .white
+
+        mealPeriodPicker.dataSource = self
+        mealPeriodPicker.delegate = self
+        mealPeriodPicker.needFooterView = true
+        mealPeriodPicker.checkmarkColor = .twilightBlue
+        mealPeriodPicker.headerBackgroundColor = .twilightBlue
+        mealPeriodPicker.confirmButtonBackgroundColor = .twilightBlue
+        mealPeriodPicker.cancelButtonBackgroundColor = .twilightBlue
+        mealPeriodPicker.cancelButtonNormalColor = .white
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showSearchingVC" {
-            if let destVC = segue.destination as? SearchingScreenViewController {
-                destVC.matchID = self.generatedMatchID
-            }
+
+}
+
+extension PreferenceViewController: MatchRequestDelegate {
+    func matchRequestSent(successfully: Bool) {
+        if successfully {
+            Utilities.sharedInstance.displayErrorLabel(text: "Request Sent!", field: MatchMeBtn)
+            DayBtn.setTitle(DEFAULT_TEXT["Day"], for: .normal)
+            DiningHallBtn.setTitle(DEFAULT_TEXT["DiningHall"], for: .normal)
+            MealPeriodBtn.setTitle(DEFAULT_TEXT["MealPeriod"], for: .normal)
+            TimeBtn.setTitle(DEFAULT_TEXT["Time"], for: .normal)
+        }
+        else {
+            let errorAlert = UIAlertController(title: "Uh oh..", message: "Something's wrong on our end, please try again soon! If this persists, contact support at hello.bruinbite@gmail.com", preferredStyle: .alert)
+            errorAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            self.present(errorAlert, animated: true, completion: nil)
         }
     }
-    
-    @IBAction func unwindToPreferenceViewController(segue: UIStoryboardSegue) {
-        self.generatedMatchID = nil
+
+    func matchRequestDuplicate() {
+        let errorAlert = UIAlertController(title: "Already requested!", message: "You've already asked for a match for this particular day's meal period! Try again with a different date or meal period.", preferredStyle: .alert)
+        errorAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        self.present(errorAlert, animated: true, completion: nil)
     }
 }
 
-
-extension PreferenceViewController: CZPickerViewDelegate, CZPickerViewDataSource, TimePickerViewControllerDelegate {
-        func numberOfRows(in pickerView: CZPickerView!) -> Int {
-            return picks.count
-        }
-    
-    
-    func czpickerView(_ pickerView: CZPickerView!, titleForRow row: Int) -> String! {
-            return picks[row]
-        }
-        
-    func czpickerView(_ pickerView: CZPickerView!, didConfirmWithItemAtRow row: Int){
-        print(picks[row])
-            self.navigationController?.setNavigationBarHidden(true, animated: true)
-            
-        }
-        
-    func czpickerViewDidClickCancelButton(_ pickerView: CZPickerView!) {
-            self.navigationController?.setNavigationBarHidden(true, animated: true)
-        }
-    
-    func czpickerView(pickerView: CZPickerView!, didConfirmWithItemAtRow row: Int){
-        print(row)
-        DayButton.setTitle(picks[row], for: .normal)
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
-    }
-    
-    func czpickerView(_ pickerView: CZPickerView!, didConfirmWithItemsAtRows rows: [Any]!) {
-        var chosen = String()
-        var i = 1
-        for row in rows {
-            chosen += picks[row as! Int]
-            switch(picks[row as! Int]) {
-            case "Covel":
-                dining_halls.append("CO")
-                break
-            case "De Neve":
-                dining_halls.append("DN")
-                break
-            case "Bruin Plate":
-                dining_halls.append("BP")
-                break
-            case "Feast":
-                dining_halls.append("FE")
-                break
-            default:
-                break
-            }
-            if(picks[0] != "Breakfast" && (picks[0] == "Covel" || picks[0] == "De Neve" || picks[0] == "Bruin Plate" || picks[0] == "Feast")) {
-            if i != rows.count {
-                chosen += ", "
-            }
-            } else {
-                break
-            }
-            i += 1
-        }
-        
-        let components = DateComponents()
-        var curdate = Calendar.current.date(byAdding: components, to: Date())
-        let formatter = DateFormatter()
-        formatter.dateStyle = .none
-        formatter.timeStyle = .short
-        let currentTime = formatter.string(from: curdate!)
-
-        //TODO: FInd a way to get the chosen meal period from User
-        switch(picks[0]) {
-        case "Covel":
-            DiningHallButton.setTitle(chosen, for: .normal)
-            if(chosen.isEmpty){
-                DiningHallButton.setTitle(defaultText["DiningHall"], for: .normal)
-            }
-            break;
-        case "Breakfast":
-            MealButton.setTitle(chosen, for: .normal)
-            switch(chosen) {
-            case "Breakfast":
-//                MAIN_USER.changeUserInfo(type: "period", info: "BR")
-                break
-            case "Lunch":
-//                MAIN_USER.changeUserInfo(type: "period", info: "LU")
-                break
-            case "Dinner":
-//                MAIN_USER.changeUserInfo(type: "period", info: "DI")
-                break
-            case "Latenight":
-//                MAIN_USER.changeUserInfo(type: "period", info: "LN")
-                break
-            default:
-                MealButton.setTitle(defaultText["MealPeriod"], for: .normal)
-                break
-            }
-            break;
-        case currentTime:
-            //TimeButton.setTitle(chosen, for: .normal)
-            break;
+extension PreferenceViewController: CZPickerViewDataSource {
+    func numberOfRows(in pickerView: CZPickerView!) -> Int {
+        switch pickerView {
+        case datePicker:
+            return datePicks.count
+        case diningHallPicker:
+            return diningHallPicks.count
+        case mealPeriodPicker:
+            return mealPeriodPicks.count
         default:
-            DayButton.setTitle(chosen, for: .normal)
-            if(chosen.isEmpty){
-                DayButton.setTitle(defaultText["Day"], for: .normal)
-            }
-            meal_day = chosen
-            break;
-        }
-        
-    }
-    
-    func didConfirm(withChoices: String) {
-        TimeButton.setTitle(withChoices, for: .normal)
-        if(withChoices.isEmpty){
-            TimeButton.setTitle(defaultText["Time"], for: .normal)
+            return 0
         }
     }
-    
-    }
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
 
+    func czpickerView(_ pickerView: CZPickerView!, titleForRow row: Int) -> String! {
+        switch pickerView {
+        case datePicker:
+            return datePicks[row].userFriendlyMonthDayYearString()
+        case diningHallPicker:
+            return diningHallPicks[row]
+        case mealPeriodPicker:
+            return mealPeriodPicks[row]
+        default:
+            return ""
+        }
+    }
+}
+
+extension PreferenceViewController: CZPickerViewDelegate {
+    func czpickerView(_ pickerView: CZPickerView!, didConfirmWithItemAtRow row: Int) {
+        switch pickerView {
+        case datePicker:
+            let oldDate = selectedDate
+            selectedDate = datePicks[row]
+            DayBtn.setTitle(datePicks[row].userFriendlyMonthDayYearString(), for: .normal)
+
+            // Must reset selected times if date selection changed
+            if oldDate != selectedDate {
+                selectedDateTimes = nil
+                TimeBtn.setTitle(DEFAULT_TEXT["Time"], for: .normal)
+            }
+        case mealPeriodPicker:
+            let oldMealPeriod = selectedMealPeriod
+            selectedMealPeriod = Utilities.mealPeriodCode(forMealPeriod: mealPeriodPicks[row])
+            MealPeriodBtn.setTitle(mealPeriodPicks[row], for: .normal)
+
+            // Must reset selected times if meal period selection changes
+            if oldMealPeriod != selectedMealPeriod {
+                selectedDateTimes = nil
+                TimeBtn.setTitle(DEFAULT_TEXT["Time"], for: .normal)
+            }
+        default:
+            print ("Sumfin's wrong")
+        }
+    }
+
+    func czpickerView(_ pickerView: CZPickerView!, didConfirmWithItemsAtRows rows: [Any]!) {
+        // multiple selected
+
+        // zero selections handled in czpickerViewDidDismiss
+        // only dining hall CZPicker supports multiple as of now..
+        guard rows.count != 0 && pickerView == diningHallPicker else  {
+            return
+        }
+        guard let rows = rows as? [NSNumber] else {
+            return
+        }
+        selectedDiningHalls = []
+        for i in rows {
+            selectedDiningHalls?.append(diningHallPicks[i.intValue])
+        }
+
+        let str = selectedDiningHalls?.joined(separator: ", ") ?? DEFAULT_TEXT["DiningHall"]
+        DiningHallBtn.setTitle(str, for: .normal)
+        selectedDiningHalls = selectedDiningHalls?.map { Utilities.diningHallCode(forDiningHall: $0) }
+        print (selectedDiningHalls)
+    }
+
+    func czpickerViewDidDismiss(_ pickerView: CZPickerView!) {
+        switch pickerView {
+        case datePicker:
+            if pickerView.selectedRows()?.count ?? 0 < 1 {
+                selectedDate = nil
+                DayBtn.setTitle(DEFAULT_TEXT["Day"], for: .normal)
+            }
+        case diningHallPicker:
+            if pickerView.selectedRows()?.count ?? 0 < 1 {
+                selectedDiningHalls = nil
+                DiningHallBtn.setTitle(DEFAULT_TEXT["DiningHall"], for: .normal)
+            }
+        case mealPeriodPicker:
+            if pickerView.selectedRows()?.count ?? 0 < 1 {
+                selectedMealPeriod = nil
+                MealPeriodBtn.setTitle(DEFAULT_TEXT["MealPeriod"], for: .normal)
+            }
+        default:
+            print ("Gon' Fishin'")
+        }
+    }
+}
+
+extension PreferenceViewController: TimePickerViewControllerDelegate {
+    func didConfirm(withChoices choices: [Date]) {
+        if choices.isEmpty {
+            TimeBtn.setTitle(DEFAULT_TEXT["Time"], for: .normal)
+            return
+        }
+        selectedDateTimes = choices
+        let dateTimeStrings = choices.map { $0.hourMinuteString() }
+        TimeBtn.setTitle(dateTimeStrings.joined(separator: ", "), for: .normal)
+    }
+}
