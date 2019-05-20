@@ -144,7 +144,7 @@ class UserManager {
     }
 
     func getNewAccessToken(refreshToken: String) {
-        self.provider.request(.refreshToken(refresh_token: refreshToken)) { result in
+        self.provider.request(.refreshToken(grant_type: "refresh_token", client_id: CLIENTID, client_secret: CLIENTSECRET, refresh_token: refreshToken)) { result in
             switch result {
             case let .success(response):
                 do {
