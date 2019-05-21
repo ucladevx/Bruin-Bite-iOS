@@ -36,7 +36,7 @@ class SettingsTableViewController: UITableViewController {
     
     private var COMING_SOON_POPUP: UIAlertController {
         get {
-            let alert =  UIAlertController(title: "Notification Settings Coming Soon", message: "We're working hard on this feature and you will be able to control your notification settings ssoon!", preferredStyle: .alert)
+            let alert =  UIAlertController(title: "Notification Settings Coming Soon", message: "We're working hard on this feature and you will be able to control your notification settings soon!", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
             return alert
         }
