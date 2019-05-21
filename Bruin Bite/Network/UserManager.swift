@@ -144,7 +144,7 @@ class UserManager {
     }
 
     func getNewAccessToken(refreshToken: String) {
-        self.provider.request(.refreshToken(refresh_token: refreshToken)) { result in
+        self.provider.request(.refreshToken(grant_type: "refresh_token", client_id: CLIENTID, client_secret: CLIENTSECRET, refresh_token: refreshToken)) { result in
             switch result {
             case let .success(response):
                 do {
@@ -172,6 +172,24 @@ class UserManager {
         }
     }
 
+    func logOutUser(token: String) {
+        self.provider.request(.logoutUser(token: token, client_id: CLIENTID, client_secret: CLIENTSECRET)) { result in
+            switch result {
+            case .success:
+                self.refreshUser()
+                self.logoutDelegate?.didCompleteLogout()
+            case let .failure(error):
+                print(error)
+                self.logoutDelegate?.logoutFailed()
+            }
+        }
+    }
+
+    func refreshUser() {
+        UserDefaultsManager.shared.removeAll()
+        self.currentUser = UserModel()
+    }
+
     private func updateCurrentUser(newUserInfo: UserCreate) {
         self.currentUser.uBio = newUserInfo.self_bio
         self.currentUser.uFirstName = newUserInfo.first_name
@@ -189,18 +207,13 @@ class UserManager {
         UserDefaultsManager.shared.setUserID(to: newUserInfo.id)
     }
 
-    func logOutUser() {
-        UserDefaultsManager.shared.removeAll()
-        currentUser = UserModel()
-        logoutDelegate?.didCompleteLogout()
-    }
-
     func deleteUser(email: String) {
         provider.request(.deleteUser(email: email)) { result in
             switch result {
             case let .success(response):
                 print("Delete: \(response)")
-                self.logOutUser()
+                self.logOutUser(token: self.getAccessToken())
+                // Note: didDeleteUser() should call logoutDelegate's didCompleteLogOut()
                 self.deleteUserDelegate?.didDeleteUser()
             case let .failure(error):
                 print(error)
@@ -237,6 +250,7 @@ protocol ReadDelegate {
 
 protocol LogoutDelegate {
     func didCompleteLogout()
+    func logoutFailed()
 }
 
 protocol DeleteUserDelegate {

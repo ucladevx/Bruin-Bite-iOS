@@ -8,13 +8,16 @@
 
 import UIKit
 
-class CreateProfileViewController: UIViewController, UpdateDelegate, AlertPresentable, UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class CreateProfileViewController: UIViewController, UpdateDelegate, AlertPresentable, UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, ProfilePictureUploadDelegate {
 
     var profilePic: UIImage!
     var imagePickerController: UIImagePickerController?
     
     @IBOutlet weak var BioPic: UIImageView!
     @IBOutlet var BioText: UILabel!
+    @IBOutlet weak var NextButton: UIButton!
+    @IBOutlet weak var ActivityIndicator: UIActivityIndicatorView!
+    
 
     //@IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet var BioTextBox: UITextView!
@@ -34,7 +37,8 @@ class CreateProfileViewController: UIViewController, UpdateDelegate, AlertPresen
         BioText.font = UIFont.bioFont
         BioTextBox.becomeFirstResponder()
         BioTextBox.delegate = self
-
+        ActivityIndicator.hidesWhenStopped = true
+        
         Utilities.sharedInstance.formatNavigation(controller: self.navigationController!)
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor : UIColor.white, NSAttributedStringKey.font: UIFont(name: "AvenirNext-Bold", size: 17.0)!]
 
@@ -110,13 +114,33 @@ class CreateProfileViewController: UIViewController, UpdateDelegate, AlertPresen
 
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-
-                self.BioPic.layer.cornerRadius = BioPic.frame.height/2
-                self.profilePic = pickedImage
-                self.BioPic.image = pickedImage
+            self.BioPic.layer.cornerRadius = BioPic.frame.height/2
+            self.profilePic = pickedImage
+            self.BioPic.image = pickedImage
+            
+            ProfilePictureAPI().upload(profilePicture: pickedImage, delegate: self)
+            NextButton.isEnabled = false
+            ActivityIndicator.startAnimating()
         }
 
         dismiss(animated: true, completion: nil)
+    }
+    
+    func profilePicture(uploadCompleted: Bool, failedWithError error: String?) {
+        if(uploadCompleted){
+            NextButton.isEnabled = true
+            ActivityIndicator.stopAnimating()
+        }
+        else {
+            print("Failed to upload profile picture: " + (error ?? ""))
+            let alert = UIAlertController(title: "Upload Failed", message: "Your photo could not be uploaded at this time. Please try again later.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
+                self.BioPic.image = UIImage(named: "ProfilePic")
+            }))
+            self.present(alert, animated: true, completion: nil)
+            NextButton.isEnabled = true
+            ActivityIndicator.stopAnimating()
+        }
     }
 
     func textView(_ BioTextBox: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
