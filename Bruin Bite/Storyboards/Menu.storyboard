@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="RAT-qB-Fj9">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="RAT-qB-Fj9">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -113,15 +113,24 @@
                                     <constraint firstAttribute="height" constant="55" id="mHn-h5-kFh"/>
                                 </constraints>
                             </scrollView>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Coming Soon Popup" translatesAutoresizingMaskIntoConstraints="NO" id="jZJ-S8-tD3">
+                                <rect key="frame" x="67.5" y="181.5" width="240" height="240"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="jZJ-S8-tD3" secondAttribute="height" multiplier="1:1" id="TjZ-MD-kHD"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" red="0.95688390729999995" green="0.95684528349999998" blue="0.9568617344" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
+                            <constraint firstItem="jZJ-S8-tD3" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="8Ak-Bd-brh"/>
                             <constraint firstItem="fRI-GQ-wjj" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" id="8cS-SA-jny"/>
                             <constraint firstItem="H9C-p3-hMb" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" constant="80" id="CGj-th-SsE"/>
                             <constraint firstItem="DoT-Hh-LNo" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" id="K4U-dj-W9x"/>
                             <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="fRI-GQ-wjj" secondAttribute="trailing" id="LDr-dc-cQb"/>
                             <constraint firstItem="H9C-p3-hMb" firstAttribute="trailing" secondItem="PQr-Ze-W5v" secondAttribute="trailing" id="Vfp-VQ-pba"/>
+                            <constraint firstItem="jZJ-S8-tD3" firstAttribute="centerY" secondItem="tsR-hK-woN" secondAttribute="centerY" id="ZEN-m8-cBp"/>
+                            <constraint firstItem="jZJ-S8-tD3" firstAttribute="width" secondItem="H9C-p3-hMb" secondAttribute="height" multiplier="120:234" id="aee-Oc-eQk"/>
                             <constraint firstItem="H9C-p3-hMb" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" id="ezl-rr-OlX"/>
                             <constraint firstItem="fRI-GQ-wjj" firstAttribute="bottom" secondItem="PQr-Ze-W5v" secondAttribute="bottom" id="gjf-bK-ZF7"/>
                             <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="DoT-Hh-LNo" secondAttribute="trailing" id="i5u-Sz-fXK"/>
@@ -136,6 +145,7 @@
                     <connections>
                         <outlet property="allergensBar" destination="fRI-GQ-wjj" id="VHL-kb-3Yb"/>
                         <outlet property="backgroundTopBar" destination="DoT-Hh-LNo" id="mh4-dU-Vvb"/>
+                        <outlet property="comingSoonPopup" destination="jZJ-S8-tD3" id="Mql-Sr-REh"/>
                         <outlet property="menuCardsCollection" destination="H9C-p3-hMb" id="hir-Sr-zQM"/>
                         <segue destination="G2B-ru-Cr9" kind="show" identifier="segueToItemDetailVC" id="e2R-G6-rTw"/>
                         <segue destination="uvF-bL-74g" kind="show" identifier="segueToDetailVC" id="rWq-Q6-C9I"/>
@@ -153,19 +163,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <stackView key="tableHeaderView" opaque="NO" contentMode="scaleToFill" axis="vertical" id="aOS-s2-aVq">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
+                        <stackView key="tableHeaderView" opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" id="aOS-s2-aVq">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="6"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                             <subviews>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bQt-zn-6ix" customClass="ActivityLevelBar" customModule="Bruin_Bite" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="7"/>
+                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bQt-zn-6ix" customClass="ActivityLevelBar" customModule="Bruin_Bite" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="7" id="9kF-Ou-IPQ"/>
                                     </constraints>
                                 </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rkt-hA-tJf">
-                                    <rect key="frame" x="0.0" y="7" width="375" height="63"/>
+                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rkt-hA-tJf">
+                                    <rect key="frame" x="0.0" y="50" width="375" height="63"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dining Hall" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dX6-DI-7kC">
                                             <rect key="frame" x="16" y="16" width="343" height="28"/>
@@ -193,7 +203,7 @@
                         </stackView>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="UITableViewCell" textLabel="ke0-co-mGg" style="IBUITableViewCellStyleDefault" id="Ylt-0g-a2R">
-                                <rect key="frame" x="0.0" y="125.5" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="61.5" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ylt-0g-a2R" id="dht-qw-DVp">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -308,9 +318,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Coming Soon Popup" width="310" height="310"/>
         <image name="Menu" width="22" height="18"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="BTn-us-8uQ"/>
+        <segue reference="e2R-G6-rTw"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -9,26 +9,67 @@
 import UIKit
 
 struct timeData{
-    var text: String
+    var date: Date
     var isSelected: Bool
 }
 
 var chosen = [String]()
 
 protocol TimePickerViewControllerDelegate {
-    func didConfirm(withChoices: String)
+    func didConfirm(withChoices: [Date])
 }
 
 class TimePickerViewController: UIViewController {
     
+    // INPUT:
+    var chosen_meal_period: String? = nil
+    var chosen_date: Date? = nil
+    
     var delegate: TimePickerViewControllerDelegate? = nil
     
     var times: [timeData] = []
-//    var times: [String] = ["10:00", "10:15", "10:30", "10:45", "11:00", "11:15", "11:30", "10:45", "12:00", "12:15"]
-    let breakfast_times = ["07:15", "07:30", "07:45", "08:00", "08:15", "08:30", "08:45", "09:00", "09:15", "09:30", "09:45", "10:00", "10:15", "10:30", "10:45", "11:00"]
-    let lunch_times = ["11:15", "11:30", "11:45", "12:00", "12:15", "12:30", "12:45", "1:00", "1:15", "1:30", "1:45", "2:00", "2:15", "2:30","2:45", "3:00"]
-    let dinner_times = ["4:15", "4:30", "4:45", "5:00", "5:15", "5:30", "5:45", "6:00", "6:15", "6:30", "6:45", "7:00", "7:15", "7:30","7:45", "8:00"]
-    let late_times = ["9:00", "9:15", "9:30", "9:45", "10:00", "10:15", "10:30", "10:45", "11:00", "11:15", "11:30", "11:45", "12:00", "12:15","12:30", "12:45"]
+    
+    private var breakfast_dates: [Date] {
+        get {
+            guard let chosen_date = chosen_date else {
+                return []
+            }
+            let start_datetime = Date.breakfastStartTime(onDate: chosen_date)
+            var dates = [start_datetime]
+            for i in 1...15 {
+                dates.append(Calendar.current.date(byAdding: .minute, value: i*15, to: start_datetime) ?? start_datetime)
+            }
+            return dates
+        }
+    }
+    
+    private var lunch_dates: [Date] {
+        get {
+            guard let chosen_date = chosen_date else {
+                return []
+            }
+            let start_datetime = Date.lunchStartTime(onDate: chosen_date)
+            var dates = [start_datetime]
+            for i in 1...15 {
+                dates.append(Calendar.current.date(byAdding: .minute, value: i*15, to: start_datetime) ?? start_datetime)
+            }
+            return dates
+        }
+    }
+    
+    private var dinner_dates: [Date] {
+        get {
+            guard let chosen_date = chosen_date else {
+                return []
+            }
+            let start_datetime = Date.dinnerStartTime(onDate: chosen_date)
+            var dates = [start_datetime]
+            for i in 1...15 {
+                dates.append(Calendar.current.date(byAdding: .minute, value: i*15, to: start_datetime) ?? start_datetime)
+            }
+            return dates
+        }
+    }
 
   @IBOutlet weak var popupView: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
@@ -37,35 +78,38 @@ class TimePickerViewController: UIViewController {
     }
     
   override func viewDidLoad() {
-        super.viewDidLoad()
-        times = [timeData]()
-        popupView.layer.cornerRadius = 10
-        popupView.layer.masksToBounds = true
-        // THESE ARE DEFAULT TIMES -- MUST BE CHANGED
-        for i in 0...15 {
-            let time = timeData(text: breakfast_times[i], isSelected: false)
-            times.append(time)
-        }
+    super.viewDidLoad()
+    times = [timeData]()
+    popupView.layer.cornerRadius = 10
+    popupView.layer.masksToBounds = true
+
+    var selected_period_times = breakfast_dates
+    switch chosen_meal_period {
+    case "BR":
+        selected_period_times = breakfast_dates
+    case "LU":
+        selected_period_times = lunch_dates
+    case "DI":
+        selected_period_times = dinner_dates
+    default:
+        selected_period_times = breakfast_dates
+    }
+    for i in 0...15 {
+        let time = timeData(date: selected_period_times[i], isSelected: false)
+        times.append(time)
+    }
     }
   
   @IBAction func completeActionButton(_ sender: Any) {
-    var temp = [String]()
-    var chosenString = ""
-    if(times.isEmpty == false) {
-        //TODO: Here I was formatting the time into a string to be sent into the backend.
-            //However, the previous method of getting times was unhealthily implemented. Fix me so that I can format the time according to the meal period and get it prepped for the backend!
-        for i in 0...15 {
-            if(times[i].isSelected) {
-                let tempor = timeForm(time: times[i].text) + ":00"
-                temp.append(tempor)
-                chosenString += times[i].text + ", "
-            }
+    var selected_dates: [Date] = []
+    for time in times {
+        if !time.isSelected {
+            continue
         }
-        chosen = temp
-        chosenString = chosenString.isEmpty ? "" : String(chosenString[chosenString.startIndex..<chosenString.index(chosenString.endIndex, offsetBy: -2)])
-        self.delegate?.didConfirm(withChoices: chosenString)
+        selected_dates.append(time.date)
     }
-        dismiss(animated: true, completion: nil)
+    delegate?.didConfirm(withChoices: selected_dates)
+    dismiss(animated: true, completion: nil)
   }
 }
 
@@ -83,7 +127,7 @@ extension TimePickerViewController: UICollectionViewDataSource{
         cell.timeLabel.textColor = UIColor.warmGrey
         
         cell.timeLabel.font = UIFont.systemFont(ofSize: 16.0, weight: .light)
-        cell.timeLabel.text = times[indexPath.row].text
+        cell.timeLabel.text = times[indexPath.row].date.hourMinuteString()
         return cell
     }
 }
