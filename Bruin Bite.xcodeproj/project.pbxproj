@@ -80,6 +80,7 @@
 		BFC934B320C3448A0040D08D /* ChatListAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC934B220C3448A0040D08D /* ChatListAPI.swift */; };
 		BFE168A3209AB8DD00D021A2 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE168A2209AB8DD00D021A2 /* CollectionViewController.swift */; };
 		BFE6806E2293EAC900FA77AA /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE6806D2293EAC800FA77AA /* EditProfileViewController.swift */; };
+		BFE680702293F8E200FA77AA /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE6806F2293F8E200FA77AA /* SettingsViewController.swift */; };
 		C0AD0D34204B4EA9008E1206 /* TopBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0AD0D33204B4EA9008E1206 /* TopBar.swift */; };
 		C0CD676A203C15CC006B265D /* TimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CD6769203C15CC006B265D /* TimeView.swift */; };
 		C0CD676C203C1B19006B265D /* ColoredBezel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CD676B203C1B19006B265D /* ColoredBezel.swift */; };
@@ -201,6 +202,7 @@
 		BFC934B220C3448A0040D08D /* ChatListAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListAPI.swift; sourceTree = "<group>"; };
 		BFE168A2209AB8DD00D021A2 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		BFE6806D2293EAC800FA77AA /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
+		BFE6806F2293F8E200FA77AA /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		C0AD0D33204B4EA9008E1206 /* TopBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBar.swift; sourceTree = "<group>"; };
 		C0CD6769203C15CC006B265D /* TimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeView.swift; sourceTree = "<group>"; };
 		C0CD676B203C1B19006B265D /* ColoredBezel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColoredBezel.swift; sourceTree = "<group>"; };
@@ -322,6 +324,7 @@
 				BF9BC1662262FE0C00C9EC58 /* PreferenceViewController.swift */,
 				C7F7015B989DC65DDFA1B179 /* MenuDetailViewController.swift */,
 				0032C5D42272BC1900841169 /* ChatDetailsViewController.swift */,
+				BFE6806F2293F8E200FA77AA /* SettingsViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -721,6 +724,7 @@
 				BDAED25D219FD598005A22F3 /* UserManager.swift in Sources */,
 				FCA7A0F62190E0040096E821 /* Utilities.swift in Sources */,
 				BF0943E620BC20FE00214200 /* UIViewControllerExtensions.swift in Sources */,
+				BFE680702293F8E200FA77AA /* SettingsViewController.swift in Sources */,
 				DCF0E2DC20B260510036A32F /* UIColor+Additions.swift in Sources */,
 				2AB62E6C20488A050013CB59 /* MenuAPI.swift in Sources */,
 				2AB62E69204887820013CB59 /* Menu.swift in Sources */,
