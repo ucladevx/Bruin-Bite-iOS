@@ -8,6 +8,7 @@
 
 import UIKit
 import Foundation
+import SafariServices
 
 class ProfileViewController: UIViewController, ReadDelegate, AlertPresentable, LoginAlertPresentable, ProfilePictureDownloadDelegate {
 
@@ -15,10 +16,23 @@ class ProfileViewController: UIViewController, ReadDelegate, AlertPresentable, L
     @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var yearMajor: UILabel!
     @IBOutlet var ShortBio: UITextView!
+    
+    private var COMING_SOON_POPUP: UIAlertController {
+        get {
+            let alert =  UIAlertController(title: "Edit Profile Coming Soon", message: "We're working hard on this feature and you will be able to edit your profile soon!", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            return alert
+        }
+    }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if UserManager.shared.getUID() == -1 { presentNotLoggedInAlert() }
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
     override func viewDidLoad() {
@@ -77,6 +91,18 @@ class ProfileViewController: UIViewController, ReadDelegate, AlertPresentable, L
         ShortBio.text = UserDefaultsManager.shared.getSelfBio()
     }
 
+    @IBAction func didPressEditProfile(_ sender: Any) {
+        
+    }
+    
+    @IBAction func didPressFeedback(_ sender: Any) {
+        guard let url = URL(string: "https://docs.google.com/forms/d/1sFffuMFWwTsIi7R9rIyRVTRysj_m9LH14XxGzbFsxPg/edit") else {
+            return
+        }
+        let vc = SFSafariViewController(url: url)
+        self.present(vc, animated: true)
+    }
+    
     func combineFirstAndLastName(first: String, last: String) -> String {
         let combined: String = first + " " + last
         return combined
