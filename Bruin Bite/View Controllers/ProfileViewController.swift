@@ -92,7 +92,7 @@ class ProfileViewController: UIViewController, ReadDelegate, AlertPresentable, L
     }
 
     @IBAction func didPressEditProfile(_ sender: Any) {
-        
+        self.present(COMING_SOON_POPUP, animated: true)
     }
     
     @IBAction func didPressFeedback(_ sender: Any) {
