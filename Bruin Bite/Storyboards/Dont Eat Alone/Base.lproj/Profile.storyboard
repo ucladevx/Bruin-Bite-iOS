@@ -109,6 +109,9 @@
                                         <state key="normal" title="Give us feedback" image="Feedback">
                                             <color key="titleColor" red="0.50196078430000002" green="0.50196078430000002" blue="0.50196078430000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="didPressFeedback:" destination="nzh-LT-kup" eventType="touchUpInside" id="zRx-mb-ioj"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m9Z-jK-SRn" userLabel="FeedbackButton">
                                         <rect key="frame" x="0.0" y="482" width="375" height="72"/>
@@ -485,6 +488,6 @@
         <image name="josie" width="148" height="148"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="xnf-SX-vLg"/>
+        <segue reference="bbF-fl-alA"/>
     </inferredMetricsTieBreakers>
 </document>

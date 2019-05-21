@@ -8,6 +8,7 @@
 
 import UIKit
 import Foundation
+import SafariServices
 
 class ProfileViewController: UIViewController, ReadDelegate, AlertPresentable, LoginAlertPresentable, ProfilePictureDownloadDelegate {
 
@@ -81,7 +82,15 @@ class ProfileViewController: UIViewController, ReadDelegate, AlertPresentable, L
         yearMajor.text = "Year: \(year)" + " " + "Major: \(major)"
         ShortBio.text = UserDefaultsManager.shared.getSelfBio()
     }
-
+    
+    @IBAction func didPressFeedback(_ sender: Any) {
+        guard let url = URL(string: "https://docs.google.com/forms/d/1sFffuMFWwTsIi7R9rIyRVTRysj_m9LH14XxGzbFsxPg/edit") else {
+            return
+        }
+        let vc = SFSafariViewController(url: url)
+        self.present(vc, animated: true)
+    }
+    
     func combineFirstAndLastName(first: String, last: String) -> String {
         let combined: String = first + " " + last
         return combined
