@@ -17,6 +17,7 @@ enum MainAPI {
     case createUser(email: String, password: String, firstName: String, is_active: Bool)
     case readUser(email: String)
     case loginUser(username:String, password: String, grant_type: String, client_id: String, client_secret: String)
+    case logoutUser(token: String, client_id: String, client_secret: String)
     case updateUser(email: String, password: String, first_name: String, last_name: String, major: String, minor: String, year: Int, self_bio: String) //send it as it is if it hasn't changed
     case deleteUser(email: String)
     case matchUser(user: Int, meal_times: [String], meal_day: String, meal_period: String, dining_halls: [String])
@@ -37,7 +38,7 @@ extension MainAPI: TargetType {
         switch self {
         case .getCurrentActivityLevels, .getOverviewMenu, .getDetailedMenu, .getHours:
             return URL(string: "https://api.bruin-bite.com/api/v1")!
-        case .createUser, .readUser, .loginUser, .updateUser, .deleteUser, .matchUser, .refreshToken, .getRequests, .getMatches, .chatList, .last50Messages, .unmatchUser, .reportUser, .uploadProfilePicture, .getProfilePicture:
+        case .createUser, .readUser, .loginUser, .logoutUser, .updateUser, .deleteUser, .matchUser, .refreshToken, .getRequests, .getMatches, .chatList, .last50Messages, .unmatchUser, .reportUser, .uploadProfilePicture, .getProfilePicture:
             return URL(string: "https://api.bruin-bite.com/api/v1")!
         }
 
@@ -56,6 +57,8 @@ extension MainAPI: TargetType {
             return "/users/sign_up/"
         case .loginUser, .refreshToken:
             return "/users/o/token/"
+        case .logoutUser:
+            return "/users/o/revoke_token"
         case .readUser, .updateUser, .deleteUser:
             return "/users/data/"
         case .matchUser:
@@ -82,7 +85,7 @@ extension MainAPI: TargetType {
         switch self {
         case .getCurrentActivityLevels, .getOverviewMenu, .getDetailedMenu, .getHours, .readUser, .getRequests, .getMatches, .chatList, .last50Messages, .getProfilePicture:
             return .get
-        case .createUser, .loginUser, .matchUser, .refreshToken, .reportUser, .uploadProfilePicture:
+        case .createUser, .loginUser, .logoutUser, .matchUser, .refreshToken, .reportUser, .uploadProfilePicture:
             return .post
         case .updateUser:
             return .put
@@ -98,6 +101,8 @@ extension MainAPI: TargetType {
             return .requestParameters(parameters: ["email": email, "password": password, "first_name": first_name, "is_active": is_active, "device_id": UserDefaults.standard.string(forKey: "Dev_Token") ?? ""], encoding: JSONEncoding.default)
         case .loginUser(let username, let password, let grant_type, let client_id, let client_secret):
             return .requestParameters(parameters: ["username": username, "password": password, "grant_type": grant_type, "client_id": client_id, "client_secret": client_secret], encoding: URLEncoding.default)
+        case .logoutUser(let token, let client_id, let client_secret):
+            return .requestParameters(parameters: ["token": token, "client_id": client_id, "client_secret": client_secret], encoding: URLEncoding.default)
         case .readUser(let email):
             return .requestParameters(parameters: ["email": email], encoding: URLEncoding.queryString)
         case .updateUser(let email, let password, let first_name, let last_name, let major, let minor, let year, let self_bio):
@@ -171,6 +176,8 @@ extension MainAPI: TargetType {
             return Data()
         case .getProfilePicture:
             return Data()
+        case .logoutUser:
+            return Data()
         }
     }
     var headers: [String: String]? {
@@ -179,7 +186,7 @@ extension MainAPI: TargetType {
             return ["Content-type": "application/json"]
         case .createUser:
             return ["Content-Type": "application/json"]
-        case .loginUser, .refreshToken:
+        case .loginUser, .refreshToken, .logoutUser:
             return ["Content-Type": "application/x-www-form-urlencoded"]
         case .readUser, .updateUser, .deleteUser, .matchUser, .getRequests, .getMatches, .chatList, .last50Messages, .reportUser, .unmatchUser, .uploadProfilePicture, .getProfilePicture:
             var temp = "Bearer "
