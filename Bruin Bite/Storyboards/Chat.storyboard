@@ -26,6 +26,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No conversations yet.. head to the Match section to find someone to eat with!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5v1-VF-RkW">
+                                <rect key="frame" x="16" y="269" width="343" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="BGg-bQ-txD"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="18"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uad-lQ-3ce">
                                 <rect key="frame" x="0.0" y="122" width="375" height="496"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -148,11 +157,14 @@
                         <constraints>
                             <constraint firstItem="uad-lQ-3ce" firstAttribute="trailing" secondItem="G01-rd-gY1" secondAttribute="trailing" id="1Hp-uq-HGG"/>
                             <constraint firstItem="uad-lQ-3ce" firstAttribute="leading" secondItem="G01-rd-gY1" secondAttribute="leading" id="1PP-yg-bJd"/>
+                            <constraint firstItem="G01-rd-gY1" firstAttribute="trailing" secondItem="5v1-VF-RkW" secondAttribute="trailing" constant="16" id="3CT-yd-ZJT"/>
                             <constraint firstItem="OZg-HC-eeW" firstAttribute="trailing" secondItem="G01-rd-gY1" secondAttribute="trailing" id="91c-cZ-Qta"/>
                             <constraint firstItem="G01-rd-gY1" firstAttribute="bottom" secondItem="uad-lQ-3ce" secondAttribute="bottom" id="LVx-uR-b9n"/>
+                            <constraint firstItem="5v1-VF-RkW" firstAttribute="centerY" secondItem="G01-rd-gY1" secondAttribute="centerY" id="fEk-d8-RmY"/>
                             <constraint firstItem="OZg-HC-eeW" firstAttribute="top" secondItem="0yp-wb-5jd" secondAttribute="top" id="gIH-q5-Vm5"/>
                             <constraint firstItem="uad-lQ-3ce" firstAttribute="top" secondItem="OZg-HC-eeW" secondAttribute="bottom" constant="8" id="jjT-zu-PBF"/>
                             <constraint firstItem="OZg-HC-eeW" firstAttribute="leading" secondItem="G01-rd-gY1" secondAttribute="leading" id="tAY-q8-Gi4"/>
+                            <constraint firstItem="5v1-VF-RkW" firstAttribute="leading" secondItem="G01-rd-gY1" secondAttribute="leading" constant="16" id="zlv-EN-j7h"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="G01-rd-gY1"/>
                     </view>
@@ -164,6 +176,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="chatListTableView" destination="uad-lQ-3ce" id="5oJ-oj-wcI"/>
+                        <outlet property="defaultTextLabel" destination="5v1-VF-RkW" id="3Xo-g9-uar"/>
                         <segue destination="VAO-Bi-W3n" kind="show" identifier="ShowChatScreenVC" id="jvg-k7-oTe"/>
                         <segue destination="GPl-EQ-FsE" kind="show" identifier="login" id="CEQ-eQ-0ed"/>
                     </connections>

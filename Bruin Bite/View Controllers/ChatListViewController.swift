@@ -27,6 +27,15 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
     let chatListAPI: ChatListAPI = ChatListAPI()
     
     @IBOutlet weak var chatListTableView: UITableView!
+    @IBOutlet weak var defaultTextLabel: UILabel!
+    
+    private var isChatListEmpty: Bool? = nil {
+        didSet {
+            self.chatListTableView.isHidden = isChatListEmpty ?? false
+            self.defaultTextLabel.isHidden = !(isChatListEmpty ?? false)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         chatListTableView.delegate = self
@@ -93,6 +102,7 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func didReceiveChatList(chatListData: [Match]) {
+        self.isChatListEmpty = chatListData.isEmpty
         self.data = chatListData
         for chatListItem in data{
             ProfilePictureAPI().download(pictureForUserID: chatListItem.user2, delegate: self)
