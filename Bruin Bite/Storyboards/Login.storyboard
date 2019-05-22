@@ -27,10 +27,10 @@
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="FQS-05-idC">
-                                <rect key="frame" x="20" y="279" width="335" height="223"/>
+                                <rect key="frame" x="50" y="279" width="275" height="223"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iap-FB-8KA">
-                                        <rect key="frame" x="0.0" y="0.0" width="335" height="57"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="275" height="57"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="57" id="5ph-oA-4Lu"/>
                                         </constraints>
@@ -46,7 +46,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yuZ-IE-vqN">
-                                        <rect key="frame" x="0.0" y="83" width="335" height="57"/>
+                                        <rect key="frame" x="0.0" y="83" width="275" height="57"/>
                                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="Sign Up"/>
                                         <variation key="heightClass=compact-widthClass=compact">
@@ -57,7 +57,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j2B-mh-3uB">
-                                        <rect key="frame" x="0.0" y="166" width="335" height="57"/>
+                                        <rect key="frame" x="0.0" y="166" width="275" height="57"/>
                                         <state key="normal" title="Check Menus">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
@@ -82,8 +82,8 @@
                         <color key="tintColor" red="0.027450980390000001" green="0.2901960784" blue="0.46666666670000001" alpha="0.0" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="FQS-05-idC" firstAttribute="top" secondItem="EnN-Rj-AaS" secondAttribute="bottom" constant="86.5" id="OoI-Tt-eqR"/>
-                            <constraint firstItem="Jgf-Gh-0sY" firstAttribute="trailing" secondItem="FQS-05-idC" secondAttribute="trailing" constant="20" id="WRh-oa-hc0"/>
-                            <constraint firstItem="FQS-05-idC" firstAttribute="leading" secondItem="Jgf-Gh-0sY" secondAttribute="leading" constant="20" id="avz-Oh-IlJ"/>
+                            <constraint firstItem="Jgf-Gh-0sY" firstAttribute="trailing" secondItem="FQS-05-idC" secondAttribute="trailing" constant="50" id="WRh-oa-hc0"/>
+                            <constraint firstItem="FQS-05-idC" firstAttribute="leading" secondItem="Jgf-Gh-0sY" secondAttribute="leading" constant="50" id="avz-Oh-IlJ"/>
                             <constraint firstItem="EnN-Rj-AaS" firstAttribute="centerX" secondItem="MMr-Iz-Unp" secondAttribute="centerX" id="n0a-eF-V9I"/>
                             <constraint firstItem="EnN-Rj-AaS" firstAttribute="centerY" secondItem="MMr-Iz-Unp" secondAttribute="centerY" multiplier="0.4" id="rwu-gf-1YK"/>
                         </constraints>
