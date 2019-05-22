@@ -51,9 +51,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="2NM-E2-ZY7">
-                                <rect key="frame" x="177.5" y="309" width="20" height="20"/>
-                            </activityIndicatorView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zTB-mt-Dyp">
                                 <rect key="frame" x="0.0" y="167" width="375" height="378"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -395,9 +392,22 @@
                                     <action selector="switchTable:" destination="h1O-mL-YSh" eventType="valueChanged" id="TY0-xh-AOA"/>
                                 </connections>
                             </segmentedControl>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="It's really quiet here... Click the button below and don't eat alone!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsLetterSpacingToFitWidth="YES" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ECX-K8-9Ed">
+                                <rect key="frame" x="16" y="269" width="343" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="PLL-4j-S0K"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="18"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="2NM-E2-ZY7">
+                                <rect key="frame" x="177.5" y="309" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="ECX-K8-9Ed" firstAttribute="leading" secondItem="CkN-DN-eVB" secondAttribute="leading" constant="16" id="47N-RY-W7a"/>
                             <constraint firstItem="cW2-O6-Prn" firstAttribute="top" secondItem="Tg3-ka-Q12" secondAttribute="top" id="5P8-jX-emv"/>
                             <constraint firstItem="2NM-E2-ZY7" firstAttribute="centerY" secondItem="CkN-DN-eVB" secondAttribute="centerY" id="9FF-QB-fum"/>
                             <constraint firstItem="zTB-mt-Dyp" firstAttribute="leading" secondItem="CkN-DN-eVB" secondAttribute="leading" id="9mN-Bx-PUb"/>
@@ -407,11 +417,13 @@
                             <constraint firstItem="QY5-ht-6o9" firstAttribute="top" secondItem="cW2-O6-Prn" secondAttribute="bottom" id="KVU-h4-TK8"/>
                             <constraint firstItem="3kD-Pp-Flf" firstAttribute="trailing" secondItem="CkN-DN-eVB" secondAttribute="trailing" id="L5p-61-gKU"/>
                             <constraint firstItem="QY5-ht-6o9" firstAttribute="trailing" secondItem="CkN-DN-eVB" secondAttribute="trailing" id="VEf-ek-ZIJ"/>
+                            <constraint firstItem="ECX-K8-9Ed" firstAttribute="centerY" secondItem="CkN-DN-eVB" secondAttribute="centerY" id="XBu-nm-E4w"/>
                             <constraint firstItem="cW2-O6-Prn" firstAttribute="leading" secondItem="CkN-DN-eVB" secondAttribute="leading" id="e7d-lN-fnn"/>
                             <constraint firstItem="2NM-E2-ZY7" firstAttribute="centerX" secondItem="CkN-DN-eVB" secondAttribute="centerX" id="fYK-Il-mbh"/>
                             <constraint firstItem="3kD-Pp-Flf" firstAttribute="leading" secondItem="CkN-DN-eVB" secondAttribute="leading" id="gOt-BE-fyr"/>
                             <constraint firstItem="3kD-Pp-Flf" firstAttribute="top" secondItem="zTB-mt-Dyp" secondAttribute="bottom" constant="8" id="mlQ-pO-ZZM"/>
                             <constraint firstItem="QY5-ht-6o9" firstAttribute="leading" secondItem="CkN-DN-eVB" secondAttribute="leading" id="oiG-Nb-OMI"/>
+                            <constraint firstItem="CkN-DN-eVB" firstAttribute="trailing" secondItem="ECX-K8-9Ed" secondAttribute="trailing" constant="16" id="q4b-3R-zmh"/>
                             <constraint firstItem="3kD-Pp-Flf" firstAttribute="bottom" secondItem="CkN-DN-eVB" secondAttribute="bottom" id="qOf-ae-5Ul"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="CkN-DN-eVB"/>
@@ -421,6 +433,8 @@
                     </navigationItem>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="2NM-E2-ZY7" id="D84-Cl-rMp"/>
+                        <outlet property="defaultTextLabel" destination="ECX-K8-9Ed" id="0nE-fT-eQe"/>
                         <outlet property="matchTable" destination="zTB-mt-Dyp" id="OI5-Qh-Y0L"/>
                         <outlet property="switchTable" destination="QY5-ht-6o9" id="uf0-ov-Tbr"/>
                         <segue destination="PWc-ON-g6f" kind="show" identifier="login" id="908-ny-iFs"/>
@@ -429,7 +443,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NgL-ni-Kwg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4340" y="242"/>
+            <point key="canvasLocation" x="-4340" y="241.52923538230885"/>
         </scene>
         <!--Find a match-->
         <scene sceneID="Uuc-OX-9tL">

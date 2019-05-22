@@ -42,6 +42,8 @@ class PendingRequestsViewController: UIViewController, LoginAlertPresentable {
     
     @IBOutlet weak var matchTable: UITableView!
     @IBOutlet weak var switchTable: SuccessfulPendingSegmentedControl!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var defaultTextLabel: UILabel!
     
     private enum PendingRequestsViewType {
         case successful
@@ -54,6 +56,20 @@ class PendingRequestsViewController: UIViewController, LoginAlertPresentable {
     private var sortedMatchDates: [Date]? = nil
     private var sortedRequestDates: [Date]? = nil
     private var profilePictures: [Int:UIImage] = [:]
+    private var isRequestsEmpty: Bool? = nil {
+        didSet {
+            guard viewType == .pending else { return }
+            self.matchTable.isHidden = isRequestsEmpty ?? false
+            self.defaultTextLabel.isHidden = !(isRequestsEmpty ?? false)
+        }
+    }
+    private var isMatchesEmpty: Bool? = nil {
+        didSet {
+            guard viewType == .successful else { return }
+            self.matchTable.isHidden = isMatchesEmpty ?? false
+            self.defaultTextLabel.isHidden = !(isMatchesEmpty ?? false)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,6 +86,7 @@ class PendingRequestsViewController: UIViewController, LoginAlertPresentable {
         if UserManager.shared.getUID() == -1 { presentNotLoggedInAlert() }
         matchingAPI.getMatches(completionDelegate: self, user: UserManager.shared.getUID())
         matchingAPI.getRequests(completionDelegate: self, user: UserManager.shared.getUID(), status: ["P", "T", "C"])
+        self.activityIndicator.startAnimating()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -86,9 +103,11 @@ class PendingRequestsViewController: UIViewController, LoginAlertPresentable {
             case 0:
             // Switch to successful matches section
             viewType = .successful
+            isMatchesEmpty = isMatchesEmpty ?? nil
             case 1:
             // Switch to pending matches section
             viewType = .pending
+            isRequestsEmpty = isRequestsEmpty ?? nil // a hack to force label to reload its state
             default:
                 break
         }
@@ -200,11 +219,15 @@ extension PendingRequestsViewController: ProfilePictureDownloadDelegate {
 
 extension PendingRequestsViewController: GetMatchesDelegate {
     func didReceiveMatches(matches: [Match]) {
+        self.activityIndicator.stopAnimating()
         guard matches.count > 0 else {
             self.sortedMatchDates = nil
             self.matchesDict = nil
+            self.isMatchesEmpty = true
             return
         }
+
+        self.isMatchesEmpty = false
         
         self.matchesDict = [:]
         self.sortedMatchDates = []
@@ -231,12 +254,15 @@ extension PendingRequestsViewController: GetMatchesDelegate {
 
 extension PendingRequestsViewController: GetRequestsDelegate {
     func didReceiveRequests(requests: [Request]) {
+        self.activityIndicator.stopAnimating()
         guard requests.count > 0 else {
             self.sortedRequestDates = nil
             self.requestsDict = nil
+            self.isRequestsEmpty = true
             return
         }
         
+        self.isRequestsEmpty = false
         self.requestsDict = [:]
         self.sortedRequestDates = []
         
