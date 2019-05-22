@@ -10,26 +10,12 @@ import Foundation
 import Alamofire
 import Moya
 
-struct ChatListItem: Codable {
-    var id: Int
-    var user1: Int
-    var user1_first_name: String
-    var user1_last_name: String
-    var user2_first_name: String
-    var user2_last_name: String
-    var user2: Int
-    var meal_datetime: String // yyyy-MM-dd HH:mm:ss
-    var meal_period: String // BR, LU, DI
-    var dining_hall: String
-    var chat_url: String // actually, chat room label
-}
-
 struct ChatListResult: Codable {
-    var chatListItems: [ChatListItem]
+    var chatListItems: [Match]
 }
 
 protocol ChatListDelegate {
-    func didReceiveChatList(chatListData: [ChatListItem])
+    func didReceiveChatList(chatListData: [Match])
 }
 
 class ChatListAPI {
@@ -42,7 +28,7 @@ class ChatListAPI {
             switch result {
                 case let .success(response):
                     do {
-                        let resultStruct = try JSONDecoder().decode([ChatListItem].self, from: response.data)
+                        let resultStruct = try JSONDecoder().decode([Match].self, from: response.data)
                         self.delegate?.didReceiveChatList(chatListData: resultStruct)
                     } catch let err {
                         print ("Error parsing response JSON into ChatListResult struct")

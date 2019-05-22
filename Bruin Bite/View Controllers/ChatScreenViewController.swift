@@ -37,7 +37,7 @@ class ChatScreenViewController: UIViewController, UITableViewDelegate, UITableVi
 
     var messagesList: [ChatMessage] = []
 
-    var chatItem: ChatListItem? = nil
+    var chatItem: Match? = nil
 
     // get-only "var"
     var BACKEND_CHAT_WEBSOCKET_URL: String {

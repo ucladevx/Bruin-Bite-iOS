@@ -17,6 +17,12 @@ class SuccessfulMatchTableViewCell: UITableViewCell {
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var location: UILabel!
     @IBOutlet weak var time: UILabel!
+
+    var actionBlock: (() -> Void)? = nil
+
+    @IBAction func didPressMessage(_ sender: Any) {
+        self.actionBlock?()
+    }
     
 }
 
@@ -64,6 +70,14 @@ class PendingRequestsViewController: UIViewController, LoginAlertPresentable {
         if UserManager.shared.getUID() == -1 { presentNotLoggedInAlert() }
         matchingAPI.getMatches(completionDelegate: self, user: UserManager.shared.getUID())
         matchingAPI.getRequests(completionDelegate: self, user: UserManager.shared.getUID(), status: ["P", "T", "C"])
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showChatScreenVC" {
+            guard let matchObj = sender as? Match,
+                let destVC = segue.destination as? ChatScreenViewController else { return }
+            destVC.chatItem = matchObj
+        }
     }
     
     @IBAction func switchTable(_ sender: Any) {
@@ -136,6 +150,9 @@ extension PendingRequestsViewController: UITableViewDelegate, UITableViewDataSou
             cell.picImage.image = self.profilePictures[currRowMatch.user2] ?? UIImage(named: "DefaultProfile")
             
             cell.name.text = currRowMatch.user2_first_name + " " + currRowMatch.user2_last_name
+            cell.actionBlock = {
+                self.performSegue(withIdentifier: "showChatScreenVC", sender: currRowMatch)
+            }
             
             let mealAndLocation = Utilities.mealPeriodName(forMealPeriodCode: currRowMatch.meal_period) + " at " + Utilities.diningHallName(forDiningHallCode: currRowMatch.dining_hall)
             cell.location.text = mealAndLocation

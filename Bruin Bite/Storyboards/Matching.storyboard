@@ -35,6 +35,14 @@
             </objects>
             <point key="canvasLocation" x="-5038" y="242"/>
         </scene>
+        <!--ChatScreenVC-->
+        <scene sceneID="TXm-4P-pTw">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="ChatScreenVC" storyboardName="Chat" referencedIdentifier="ChatScreenVC" id="QXB-Eb-1H6" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="q05-sR-FA6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3806" y="-210"/>
+        </scene>
         <!--Pending Requests View Controller-->
         <scene sceneID="ssy-1e-b35">
             <objects>
@@ -46,11 +54,11 @@
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="2NM-E2-ZY7">
                                 <rect key="frame" x="177.5" y="309" width="20" height="20"/>
                             </activityIndicatorView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zTB-mt-Dyp">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zTB-mt-Dyp">
                                 <rect key="frame" x="0.0" y="167" width="375" height="378"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="successfulMatch" rowHeight="110" id="XKB-Fj-jtv" customClass="SuccessfulMatchTableViewCell" customModule="Bruin_Bite" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="successfulMatch" rowHeight="110" id="XKB-Fj-jtv" customClass="SuccessfulMatchTableViewCell" customModule="Bruin_Bite" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="110"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="XKB-Fj-jtv" id="qY2-Uk-jjj">
@@ -117,6 +125,9 @@
                                                                     <state key="normal" title="Message">
                                                                         <color key="titleColor" red="0.95095704790000002" green="0.95095704790000002" blue="0.95095704790000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                     </state>
+                                                                    <connections>
+                                                                        <action selector="didPressMessage:" destination="XKB-Fj-jtv" eventType="touchUpInside" id="etD-6M-Is5"/>
+                                                                    </connections>
                                                                 </button>
                                                             </subviews>
                                                             <constraints>
@@ -156,7 +167,7 @@
                                             <outlet property="time" destination="CyN-mI-6C1" id="v9g-ny-28d"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="pendingRequest" rowHeight="110" id="egl-TT-Cxx" customClass="PendingMatchTableViewCell" customModule="Bruin_Bite" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="pendingRequest" rowHeight="110" id="egl-TT-Cxx" customClass="PendingMatchTableViewCell" customModule="Bruin_Bite" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="138" width="375" height="110"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="egl-TT-Cxx" id="TdK-Y9-BuL">
@@ -243,7 +254,7 @@
                                             <outlet property="time" destination="Kwb-XC-och" id="r4R-KR-RT5"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="timedOutRequest" rowHeight="110" id="1El-yH-8Mr" userLabel="timedOutRequest" customClass="PendingMatchTableViewCell" customModule="Bruin_Bite" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="timedOutRequest" rowHeight="110" id="1El-yH-8Mr" userLabel="timedOutRequest" customClass="PendingMatchTableViewCell" customModule="Bruin_Bite" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="248" width="375" height="110"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1El-yH-8Mr" id="zze-Lz-bmU">
@@ -413,11 +424,12 @@
                         <outlet property="matchTable" destination="zTB-mt-Dyp" id="OI5-Qh-Y0L"/>
                         <outlet property="switchTable" destination="QY5-ht-6o9" id="uf0-ov-Tbr"/>
                         <segue destination="PWc-ON-g6f" kind="show" identifier="login" id="908-ny-iFs"/>
+                        <segue destination="QXB-Eb-1H6" kind="show" identifier="showChatScreenVC" id="Yvi-uN-Omb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NgL-ni-Kwg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4313" y="242"/>
+            <point key="canvasLocation" x="-4340" y="242"/>
         </scene>
         <!--Find a match-->
         <scene sceneID="Uuc-OX-9tL">

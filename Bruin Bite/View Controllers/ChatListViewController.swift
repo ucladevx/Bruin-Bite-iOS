@@ -20,9 +20,9 @@ class ChatListTableViewCell: UITableViewCell {
 
 class ChatListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ChatListDelegate, LoginAlertPresentable, ProfilePictureDownloadDelegate {
 
-    var data: [ChatListItem] = []
+    var data: [Match] = []
     var profilePictures: [Int : UIImage] = [:]
-    var selectedChat: ChatListItem? = nil
+    var selectedChat: Match? = nil
     
     let chatListAPI: ChatListAPI = ChatListAPI()
     
@@ -92,7 +92,7 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
         self.performSegue(withIdentifier: "ShowChatScreenVC", sender: nil)
     }
     
-    func didReceiveChatList(chatListData: [ChatListItem]) {
+    func didReceiveChatList(chatListData: [Match]) {
         self.data = chatListData
         for chatListItem in data{
             ProfilePictureAPI().download(pictureForUserID: chatListItem.user2, delegate: self)
