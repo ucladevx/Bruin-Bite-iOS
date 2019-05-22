@@ -88,5 +88,7 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>NSCameraUsageDescription</key>
+	<string>BruinBite would like to access your phone&apos;s camera so you can upload a profile picture!</string>
 </dict>
 </plist>
