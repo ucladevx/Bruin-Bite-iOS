@@ -93,9 +93,9 @@ class UserManager {
         }
     }
 
-    func signupUpdate(email: String, password: String, first_name: String, last_name: String, major: String, minor: String, year: Int, self_bio: String) {
+    func signupUpdate(email: String, first_name: String, last_name: String, major: String, minor: String, year: Int, self_bio: String) {
         DispatchQueue.global(qos: .background).async {
-            self.provider.request(.updateUser(email: email, password: password, first_name: first_name, last_name: last_name, major: major, minor: minor, year: year, self_bio: self_bio)) { result in
+            self.provider.request(.updateUser(email: email, first_name: first_name, last_name: last_name, major: major, minor: minor, year: year, self_bio: self_bio)) { result in
                 switch result {
                 case let .success(response):
                     do {
