@@ -11,6 +11,7 @@ target 'Bruin Bite' do
   pod 'SnapKit'
   pod 'CZPicker'
   pod 'Starscream'
+  pod 'Firebase/Analytics'
   pod 'Repeat'
   pod "Pulsator"
   pod 'ViewAnimator'  

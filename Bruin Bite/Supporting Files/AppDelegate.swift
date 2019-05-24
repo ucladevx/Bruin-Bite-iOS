@@ -8,6 +8,7 @@
 
 import UIKit
 import UserNotifications
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -28,6 +29,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIApplication.shared.statusBarStyle = .lightContent
 
         registerForPushNotifications()
+        
+        FirebaseApp.configure()
 
 //        let storyBoard = UIStoryboard(name: "Login", bundle: nil)
 //        let secondVC = storyBoard.instantiateViewController(withIdentifier: "navController") as! UINavigationController
