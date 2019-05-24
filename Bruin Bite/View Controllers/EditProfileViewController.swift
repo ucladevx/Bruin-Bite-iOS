@@ -55,7 +55,6 @@ class EditProfileViewController: UIViewController {
             if let userNameText = userName.text, let majorText = major.text, let yearText = year.text, let bioText = bio.text {
                 UserManager.shared.signupUpdate(
                         email: UserDefaultsManager.shared.getUserEmail(),
-                        password: "asdf",
                         first_name: userNameText,
                         last_name: "",
                         major: majorText,

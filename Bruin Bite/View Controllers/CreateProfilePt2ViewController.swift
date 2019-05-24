@@ -85,7 +85,6 @@ class CreateProfilePt2ViewController: UIViewController, UpdateDelegate, AlertPre
         }
         //activityIndicator.startAnimating()
         UserManager.shared.signupUpdate(email: UserManager.shared.getEmail(),
-                                        password: UserDefaultsManager.shared.getPassword(),
                                         first_name: UserManager.shared.getFirstName(), last_name: UserManager.shared.getLastName(),
                                         major: MajorText.text ?? "",
                                         minor: UserManager.shared.getMinor(),
