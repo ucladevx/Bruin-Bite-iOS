@@ -25,7 +25,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="387"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="oJc-qf-HbW">
-                                                <rect key="frame" x="64" y="74.5" width="247" height="238"/>
+                                                <rect key="frame" x="64" y="40" width="247" height="337"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="josie" translatesAutoresizingMaskIntoConstraints="NO" id="iwq-dm-eBp">
                                                         <rect key="frame" x="49.5" y="0.0" width="148" height="148"/>
@@ -67,8 +67,8 @@
                                                         </attributedString>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="asdfadsf" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sNl-Xv-S4T">
-                                                        <rect key="frame" x="0.0" y="200" width="247" height="38"/>
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="asdfadsf" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sNl-Xv-S4T">
+                                                        <rect key="frame" x="0.0" y="200" width="247" height="137"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="16"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -80,10 +80,11 @@
                                             </stackView>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="oJc-qf-HbW" firstAttribute="centerY" secondItem="c4Z-Kk-ejy" secondAttribute="centerY" id="Agv-2U-KiO"/>
                                             <constraint firstItem="oJc-qf-HbW" firstAttribute="leading" secondItem="c4Z-Kk-ejy" secondAttribute="leading" constant="64" id="Bna-sN-3c7"/>
+                                            <constraint firstItem="oJc-qf-HbW" firstAttribute="top" secondItem="c4Z-Kk-ejy" secondAttribute="top" constant="40" id="VkX-6Q-e99"/>
                                             <constraint firstItem="oJc-qf-HbW" firstAttribute="centerX" secondItem="c4Z-Kk-ejy" secondAttribute="centerX" id="b0L-mj-v7L"/>
                                             <constraint firstAttribute="trailing" secondItem="oJc-qf-HbW" secondAttribute="trailing" constant="64" id="i85-Js-UIr"/>
+                                            <constraint firstAttribute="bottom" secondItem="oJc-qf-HbW" secondAttribute="bottom" constant="10" id="q4i-gp-7zi"/>
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AdA-UJ-t7u" userLabel="FeedbackButton">
