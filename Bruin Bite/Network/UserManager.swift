@@ -127,6 +127,7 @@ class UserManager {
                     let results = try JSONDecoder().decode(UserCreate.self, from: response.data)
                     self.updateCurrentUser(newUserInfo: results)
                     self.readDelegate?.didReadUser()
+                    self.provider.request(.updateDeviceID) { _ in }
                 } catch let err {
                     do {
                         print("Error: Code \(err)")
@@ -198,6 +199,7 @@ class UserManager {
         self.currentUser.uMinor = newUserInfo.minor
         self.currentUser.uYear = newUserInfo.year
         self.currentUser.uID = newUserInfo.id
+        self.currentUser.uEmail = newUserInfo.email
         UserDefaultsManager.shared.setSelfBio(to: newUserInfo.self_bio)
         UserDefaultsManager.shared.setFirstName(to: newUserInfo.first_name)
         UserDefaultsManager.shared.setLastName(to: newUserInfo.last_name)
@@ -205,6 +207,7 @@ class UserManager {
         UserDefaultsManager.shared.setMinor(to: newUserInfo.minor)
         UserDefaultsManager.shared.setYear(to: newUserInfo.year)
         UserDefaultsManager.shared.setUserID(to: newUserInfo.id)
+        UserDefaultsManager.shared.setUserEmail(to: newUserInfo.email)
     }
 
     func deleteUser(email: String) {

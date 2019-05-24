@@ -19,6 +19,7 @@ enum MainAPI {
     case loginUser(username:String, password: String, grant_type: String, client_id: String, client_secret: String)
     case logoutUser(token: String, client_id: String, client_secret: String)
     case updateUser(email: String, password: String, first_name: String, last_name: String, major: String, minor: String, year: Int, self_bio: String) //send it as it is if it hasn't changed
+    case updateDeviceID
     case deleteUser(email: String)
     case matchUser(user: Int, meal_times: [String], meal_day: String, meal_period: String, dining_halls: [String])
     case refreshToken(grant_type: String, client_id: String, client_secret: String, refresh_token: String)
@@ -59,7 +60,7 @@ extension MainAPI: TargetType {
             return "/users/o/token/"
         case .logoutUser:
             return "/users/o/revoke_token"
-        case .readUser, .updateUser, .deleteUser:
+        case .readUser, .updateUser, .deleteUser, .updateDeviceID:
             return "/users/data/"
         case .matchUser:
             return "/users/matching/requests"
@@ -87,7 +88,7 @@ extension MainAPI: TargetType {
             return .get
         case .createUser, .loginUser, .logoutUser, .matchUser, .refreshToken, .reportUser, .uploadProfilePicture:
             return .post
-        case .updateUser:
+        case .updateUser, .updateDeviceID:
             return .put
         case .deleteUser, .unmatchUser:
             return .delete
@@ -107,6 +108,9 @@ extension MainAPI: TargetType {
             return .requestParameters(parameters: ["email": email], encoding: URLEncoding.queryString)
         case .updateUser(let email, let password, let first_name, let last_name, let major, let minor, let year, let self_bio):
             return .requestParameters(parameters: ["email": email, "password": password, "first_name": first_name, "last_name": last_name, "major": major, "minor": minor, "year": year, "self_bio": self_bio], encoding: JSONEncoding.default)
+        case .updateDeviceID:
+            let params = ["email": UserManager.shared.getEmail(), "device_id": UserDefaults.standard.string(forKey: "Dev_Token") ?? ""]
+            return .requestParameters(parameters: params, encoding: JSONEncoding.default)
         case .deleteUser(let email):
             return .requestParameters(parameters: ["email": email], encoding: JSONEncoding.default)
         case .matchUser(let user, let meal_times, let meal_day, let meal_period, let dining_halls):
@@ -178,6 +182,8 @@ extension MainAPI: TargetType {
             return Data()
         case .logoutUser:
             return Data()
+        case .updateDeviceID:
+            return Data()
         }
     }
     var headers: [String: String]? {
@@ -188,7 +194,7 @@ extension MainAPI: TargetType {
             return ["Content-Type": "application/json"]
         case .loginUser, .refreshToken, .logoutUser:
             return ["Content-Type": "application/x-www-form-urlencoded"]
-        case .readUser, .updateUser, .deleteUser, .matchUser, .getRequests, .getMatches, .chatList, .last50Messages, .reportUser, .unmatchUser, .uploadProfilePicture, .getProfilePicture:
+        case .readUser, .updateUser, .updateDeviceID, .deleteUser, .matchUser, .getRequests, .getMatches, .chatList, .last50Messages, .reportUser, .unmatchUser, .uploadProfilePicture, .getProfilePicture:
             var temp = "Bearer "
             temp += UserDefaultsManager.shared.getAccessToken()
             return ["Authorization": temp]
