@@ -127,6 +127,7 @@ class UserManager {
                     let results = try JSONDecoder().decode(UserCreate.self, from: response.data)
                     self.updateCurrentUser(newUserInfo: results)
                     self.readDelegate?.didReadUser()
+                    self.provider.request(.updateDeviceID) { _ in }
                 } catch let err {
                     do {
                         print("Error: Code \(err)")
@@ -144,7 +145,7 @@ class UserManager {
     }
 
     func getNewAccessToken(refreshToken: String) {
-        self.provider.request(.refreshToken(refresh_token: refreshToken)) { result in
+        self.provider.request(.refreshToken(grant_type: "refresh_token", client_id: CLIENTID, client_secret: CLIENTSECRET, refresh_token: refreshToken)) { result in
             switch result {
             case let .success(response):
                 do {
@@ -172,6 +173,24 @@ class UserManager {
         }
     }
 
+    func logOutUser(token: String) {
+        self.provider.request(.logoutUser(token: token, client_id: CLIENTID, client_secret: CLIENTSECRET)) { result in
+            switch result {
+            case .success:
+                self.refreshUser()
+                self.logoutDelegate?.didCompleteLogout()
+            case let .failure(error):
+                print(error)
+                self.logoutDelegate?.logoutFailed()
+            }
+        }
+    }
+
+    func refreshUser() {
+        UserDefaultsManager.shared.removeAll()
+        self.currentUser = UserModel()
+    }
+
     private func updateCurrentUser(newUserInfo: UserCreate) {
         self.currentUser.uBio = newUserInfo.self_bio
         self.currentUser.uFirstName = newUserInfo.first_name
@@ -180,6 +199,7 @@ class UserManager {
         self.currentUser.uMinor = newUserInfo.minor
         self.currentUser.uYear = newUserInfo.year
         self.currentUser.uID = newUserInfo.id
+        self.currentUser.uEmail = newUserInfo.email
         UserDefaultsManager.shared.setSelfBio(to: newUserInfo.self_bio)
         UserDefaultsManager.shared.setFirstName(to: newUserInfo.first_name)
         UserDefaultsManager.shared.setLastName(to: newUserInfo.last_name)
@@ -187,12 +207,7 @@ class UserManager {
         UserDefaultsManager.shared.setMinor(to: newUserInfo.minor)
         UserDefaultsManager.shared.setYear(to: newUserInfo.year)
         UserDefaultsManager.shared.setUserID(to: newUserInfo.id)
-    }
-
-    func logOutUser() {
-        UserDefaultsManager.shared.removeAll()
-        currentUser = UserModel()
-        logoutDelegate?.didCompleteLogout()
+        UserDefaultsManager.shared.setUserEmail(to: newUserInfo.email)
     }
 
     func deleteUser(email: String) {
@@ -200,7 +215,8 @@ class UserManager {
             switch result {
             case let .success(response):
                 print("Delete: \(response)")
-                self.logOutUser()
+                self.logOutUser(token: self.getAccessToken())
+                // Note: didDeleteUser() should call logoutDelegate's didCompleteLogOut()
                 self.deleteUserDelegate?.didDeleteUser()
             case let .failure(error):
                 print(error)
@@ -237,6 +253,7 @@ protocol ReadDelegate {
 
 protocol LogoutDelegate {
     func didCompleteLogout()
+    func logoutFailed()
 }
 
 protocol DeleteUserDelegate {

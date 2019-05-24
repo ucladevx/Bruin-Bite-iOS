@@ -16,7 +16,19 @@ class SignUpViewController: UIViewController, SignupDelegate, LoginDelegate, Ale
     @IBOutlet var PasswordText: UITextField!
     @IBOutlet var ConfirmPassText: UITextField!
     //@IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-
+    @IBOutlet weak var TermsAndCondsTextView: UITextView!
+    
+    private var TERMS_AND_CONDITIONS_ATTR_STR: NSMutableAttributedString {
+        get {
+            let attributedString = NSMutableAttributedString(string: "By signing up, you agree to our privacy policy and terms of service.")
+            let attributes = [NSAttributedString.Key.font: UIFont(descriptor: UIFontDescriptor(name: "Avenir Next-Regular", size: 13.0), size: 13.0), NSAttributedString.Key.foregroundColor: UIColor.white] as [NSAttributedStringKey : Any]
+            attributedString.addAttributes(attributes, range: NSRange(location: 0, length: attributedString.length))
+            attributedString.addAttribute(.link, value: "https://tinyurl.com/bruin-bite-pp", range: NSRange(location: 32, length: 14))
+            attributedString.addAttribute(.link, value: "https://tinyurl.com/bruin-bite-tos", range: NSRange(location: 51, length: 16))
+            return attributedString
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //activityIndicator.hidesWhenStopped = true
@@ -33,6 +45,11 @@ class SignUpViewController: UIViewController, SignupDelegate, LoginDelegate, Ale
         ConfirmPassText.font = UIFont.signUpInfoFieldFont
 
         NameText.becomeFirstResponder()
+
+        TermsAndCondsTextView.attributedText = TERMS_AND_CONDITIONS_ATTR_STR
+        TermsAndCondsTextView.linkTextAttributes = [
+            NSMutableAttributedString.Key.foregroundColor.rawValue: UIColor.white,
+            NSMutableAttributedString.Key.underlineStyle.rawValue: NSUnderlineStyle.styleSingle.rawValue]
     }
 
     override func viewDidAppear(_ animated: Bool) {

@@ -8,13 +8,22 @@
 
 import UIKit
 import Foundation
+import SafariServices
 
-class ProfileViewController: UIViewController, ReadDelegate, AlertPresentable, LoginAlertPresentable {
+class ProfileViewController: UIViewController, ReadDelegate, AlertPresentable, LoginAlertPresentable, ProfilePictureDownloadDelegate {
 
     @IBOutlet weak var profilePic: UIImageView!
     @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var yearMajor: UILabel!
     @IBOutlet var ShortBio: UITextView!
+    
+    private var COMING_SOON_POPUP: UIAlertController {
+        get {
+            let alert =  UIAlertController(title: "Edit Profile Coming Soon", message: "We're working hard on this feature and you will be able to edit your profile soon!", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            return alert
+        }
+    }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -57,6 +66,16 @@ class ProfileViewController: UIViewController, ReadDelegate, AlertPresentable, L
         fillInformation()
         //Set the labels/profile picture with default or old information
         UserManager.shared.readUser(email: UserDefaultsManager.shared.getUserEmail())
+        
+        ProfilePictureAPI().download(pictureForUserID: UserManager.shared.getUID(), delegate: self)
+    }
+    
+    func profilePicture(didDownloadimage image: UIImage, forUserWithID _: Int) {
+        profilePic.image = image
+    }
+    
+    func profilePicture(failedWithError error: String?) {
+        print("Failed to download profile picture: \(error ?? "")")
     }
 
     func didReadUser() {
@@ -72,6 +91,18 @@ class ProfileViewController: UIViewController, ReadDelegate, AlertPresentable, L
         ShortBio.text = UserDefaultsManager.shared.getSelfBio()
     }
 
+    @IBAction func didPressEditProfile(_ sender: Any) {
+        self.present(COMING_SOON_POPUP, animated: true)
+    }
+    
+    @IBAction func didPressFeedback(_ sender: Any) {
+        guard let url = URL(string: "https://docs.google.com/forms/d/1sFffuMFWwTsIi7R9rIyRVTRysj_m9LH14XxGzbFsxPg/edit") else {
+            return
+        }
+        let vc = SFSafariViewController(url: url)
+        self.present(vc, animated: true)
+    }
+    
     func combineFirstAndLastName(first: String, last: String) -> String {
         let combined: String = first + " " + last
         return combined

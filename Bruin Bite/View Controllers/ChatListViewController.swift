@@ -18,14 +18,24 @@ class ChatListTableViewCell: UITableViewCell {
     @IBOutlet weak var unreadMessagesLabel: UILabel!
 }
 
-class ChatListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ChatListDelegate, LoginAlertPresentable {
+class ChatListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ChatListDelegate, LoginAlertPresentable, ProfilePictureDownloadDelegate {
 
-    var data: [ChatListItem] = []
-    var selectedChat: ChatListItem? = nil
+    var data: [Match] = []
+    var profilePictures: [Int : UIImage] = [:]
+    var selectedChat: Match? = nil
     
     let chatListAPI: ChatListAPI = ChatListAPI()
     
     @IBOutlet weak var chatListTableView: UITableView!
+    @IBOutlet weak var defaultTextLabel: UILabel!
+    
+    private var isChatListEmpty: Bool? = nil {
+        didSet {
+            self.chatListTableView.isHidden = isChatListEmpty ?? false
+            self.defaultTextLabel.isHidden = !(isChatListEmpty ?? false)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         chatListTableView.delegate = self
@@ -65,6 +75,7 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ChatListCell", for: indexPath) as! ChatListTableViewCell
         cell.nameLabel.text = data[indexPath.row].user2_first_name + " " + data[indexPath.row].user2_last_name
+        cell.profileImage.image = profilePictures[data[indexPath.row].user2] ?? UIImage(named: "DefaultProfile")
         var dateString = ""
         var timeString = ""
         if let date = getDateObject(fromDateTimeString: data[indexPath.row].meal_datetime) {
@@ -90,8 +101,12 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
         self.performSegue(withIdentifier: "ShowChatScreenVC", sender: nil)
     }
     
-    func didReceiveChatList(chatListData: [ChatListItem]) {
+    func didReceiveChatList(chatListData: [Match]) {
+        self.isChatListEmpty = chatListData.isEmpty
         self.data = chatListData
+        for chatListItem in data{
+            ProfilePictureAPI().download(pictureForUserID: chatListItem.user2, delegate: self)
+        }
         self.chatListTableView.reloadData()
     }
     
@@ -109,7 +124,17 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
             }
         }
     }
+    @IBAction func unwindToChatListViewController(segue: UIStoryboardSegue) {
+    }
     
+    func profilePicture(didDownloadimage image: UIImage, forUserWithID userID: Int) {
+        profilePictures[userID] = image
+        self.chatListTableView.reloadData()
+    }
+    
+    func profilePicture(failedWithError error: String?) {
+        print("Could not download profile photo\(error ?? "")")
+    }
     
     // UTILITY FUNCTIONS:
     
