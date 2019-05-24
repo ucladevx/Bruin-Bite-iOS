@@ -76,6 +76,8 @@
 		BF4196AB228E976A00C636F2 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF4196AA228E976A00C636F2 /* WebKit.framework */; };
 		BF5D97E220B973570086D451 /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF5D97E120B973570086D451 /* Chat.storyboard */; };
 		BF5D97E420B974F60086D451 /* ChatListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF5D97E320B974F60086D451 /* ChatListViewController.swift */; };
+		BF80DC312297B4E700581F41 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF80DC302297B4E600581F41 /* GoogleService-Info.plist */; };
+		BF80DC322297B4E700581F41 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF80DC302297B4E600581F41 /* GoogleService-Info.plist */; };
 		BF9BC1672262FE0C00C9EC58 /* PreferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9BC1662262FE0C00C9EC58 /* PreferenceViewController.swift */; };
 		BFC934B320C3448A0040D08D /* ChatListAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC934B220C3448A0040D08D /* ChatListAPI.swift */; };
 		BFE168A3209AB8DD00D021A2 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE168A2209AB8DD00D021A2 /* CollectionViewController.swift */; };
@@ -198,6 +200,7 @@
 		BF4196AA228E976A00C636F2 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		BF5D97E120B973570086D451 /* Chat.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Chat.storyboard; sourceTree = "<group>"; };
 		BF5D97E320B974F60086D451 /* ChatListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListViewController.swift; sourceTree = "<group>"; };
+		BF80DC302297B4E600581F41 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BF9BC1662262FE0C00C9EC58 /* PreferenceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferenceViewController.swift; sourceTree = "<group>"; };
 		BFC934B220C3448A0040D08D /* ChatListAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListAPI.swift; sourceTree = "<group>"; };
 		BFE168A2209AB8DD00D021A2 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
@@ -429,6 +432,7 @@
 		770251B2201D4079002E4515 /* Bruin Bite */ = {
 			isa = PBXGroup;
 			children = (
+				BF80DC302297B4E600581F41 /* GoogleService-Info.plist */,
 				BD39281F215C3626007FD4AD /* Helpers */,
 				BF41FB5F20BC2F390010306E /* Storyboards */,
 				2A94477B2055F5570033B6C6 /* View Controllers */,
@@ -591,6 +595,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF80DC322297B4E700581F41 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -603,6 +608,7 @@
 				2A03D94320B76C92004EFC97 /* PopupViewControllers.storyboard in Resources */,
 				2A62E49320BC99D2008075B0 /* Menu.storyboard in Resources */,
 				FCA7A0E1218795370096E821 /* Login.storyboard in Resources */,
+				BF80DC312297B4E700581F41 /* GoogleService-Info.plist in Resources */,
 				2A16F9A520BEA107008BA4E3 /* ComingSoonPopup.xib in Resources */,
 				770251C0201D4079002E4515 /* LaunchScreen.storyboard in Resources */,
 				DC5FC98420B788C400DFCCC7 /* Profile.storyboard in Resources */,
@@ -657,6 +663,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-Bruin Bite/Pods-Bruin Bite-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/CZPicker/CZPicker.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
 				"${BUILT_PRODUCTS_DIR}/Pulsator/Pulsator.framework",
 				"${BUILT_PRODUCTS_DIR}/Repeat/Repeat.framework",
@@ -665,11 +672,13 @@
 				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/ViewAnimator/ViewAnimator.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CZPicker.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Pulsator.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Repeat.framework",
@@ -678,6 +687,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ViewAnimator.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
