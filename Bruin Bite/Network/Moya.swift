@@ -39,7 +39,7 @@ extension MainAPI: TargetType {
         switch self {
         case .getCurrentActivityLevels, .getOverviewMenu, .getDetailedMenu, .getHours:
             return URL(string: "https://api.bruin-bite.com/api/v1")!
-        case .createUser, .readUser, .loginUser, .logoutUser, .updateUser, .deleteUser, .matchUser, .refreshToken, .getRequests, .getMatches, .chatList, .last50Messages, .unmatchUser, .reportUser, .uploadProfilePicture, .getProfilePicture:
+        case .createUser, .readUser, .loginUser, .logoutUser, .updateUser, .updateDeviceID, .deleteUser, .matchUser, .refreshToken, .getRequests, .getMatches, .chatList, .last50Messages, .unmatchUser, .reportUser, .uploadProfilePicture, .getProfilePicture:
             return URL(string: "https://api.bruin-bite.com/api/v1")!
         }
 
