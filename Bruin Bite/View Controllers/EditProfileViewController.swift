@@ -20,13 +20,13 @@ class EditProfileViewController: UIViewController {
 
     func getUIYear(year: Int) -> String {
         switch (year) {
-        case 0:
-            return "1st Year"
         case 1:
-            return "2nd Year"
+            return "1st Year"
         case 2:
-            return "3rd Year"
+            return "2nd Year"
         case 3:
+            return "3rd Year"
+        case 4:
             return "4th Year"
         default:
             return "Error Year"
