@@ -19,7 +19,7 @@ class ProfileViewController: UIViewController, ReadDelegate, AlertPresentable, L
     
     private var COMING_SOON_POPUP: UIAlertController {
         get {
-            let alert =  UIAlertController(title: "Edit Profile Coming Soon", message: "We're working hard on this feature and you will be able to edit your profile soon!", preferredStyle: .alert)
+            let alert =  UIAlertController(title: "Edit Profile Coming Soon", message: "We're working hard on this feature and you will be able to edit your profile soon. Meanwhile you can email us at hello.bruin-bite@gmail.com with the profile changes you want and we'll update it for you!", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
             return alert
         }
