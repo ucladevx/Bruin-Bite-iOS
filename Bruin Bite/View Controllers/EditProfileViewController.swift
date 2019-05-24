@@ -5,32 +5,18 @@
 
 import UIKit
 
-class EditProfileViewController: UIViewController {
+class EditProfileViewController: UIViewController, UITextViewDelegate {
 
     @IBOutlet weak var profilePic: UIImageView!
     @IBOutlet weak var userName: UITextField!
-    @IBOutlet weak var year: UITextField!
+    @IBOutlet weak var year: UISegmentedControl!
     @IBOutlet weak var major: UITextField!
-    @IBOutlet weak var bio: UITextField!
+    @IBOutlet weak var bio: UITextView!
+    @IBOutlet weak var bioChar: UILabel!
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
-    }
-
-    func getUIYear(year: Int) -> String {
-        switch (year) {
-        case 0:
-            return "1st Year"
-        case 1:
-            return "2nd Year"
-        case 2:
-            return "3rd Year"
-        case 3:
-            return "4th Year"
-        default:
-            return "Error Year"
-        }
     }
 
     override func viewDidLoad() {
@@ -44,27 +30,38 @@ class EditProfileViewController: UIViewController {
         profilePic.layer.shadowRadius = 1.0
 
         userName.text = UserDefaultsManager.shared.getFirstName()
-        year.text = getUIYear(year: UserDefaultsManager.shared.getYear())
+        year.selectedSegmentIndex = UserDefaultsManager.shared.getYear() - 1
         major.text = UserDefaultsManager.shared.getMajor()
         bio.text = UserDefaultsManager.shared.getSelfBio()
+        bio.delegate = self
+        bioChar.text = "\(bio.text.count)"
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         if self.navigationController?.viewControllers.index(of: self) == nil {
-            //TODO: this does not work
-            if let userNameText = userName.text, let majorText = major.text, let yearText = year.text, let bioText = bio.text {
+            if let userNameText = userName.text,
+               let majorText = major.text,
+               let bioText = bio.text {
+                print(year.selectedSegmentIndex)
                 UserManager.shared.signupUpdate(
                         email: UserDefaultsManager.shared.getUserEmail(),
                         first_name: userNameText,
                         last_name: "",
                         major: majorText,
                         minor: "",
-                        year: 0,
+                        year: year.selectedSegmentIndex + 1,
                         self_bio: bioText
                 )
             }
         }
         super.viewWillDisappear(animated)
+    }
+
+    func textView(_ BioTextBox: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        let newText = (BioTextBox.text as NSString).replacingCharacters(in: range, with: text)
+        let numberOfChars = newText.count
+        self.bioChar.text = "\(numberOfChars)"
+        return numberOfChars < 250    // 250 character limit for Bio
     }
 }
 
