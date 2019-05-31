@@ -177,7 +177,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="OcW-Jd-dX3">
                                         <rect key="frame" x="0.0" y="48" width="375" height="550.5"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="josie" translatesAutoresizingMaskIntoConstraints="NO" id="9wq-Fp-gYg">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="josie" translatesAutoresizingMaskIntoConstraints="NO" id="9wq-Fp-gYg">
                                                 <rect key="frame" x="113.5" y="0.0" width="148" height="148"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="148" id="56K-R3-Iba"/>
