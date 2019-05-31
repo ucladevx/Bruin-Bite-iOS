@@ -71,3 +71,6 @@ fastlane/test_output
 .DS_Store
 
 .idea/
+
+# Firebase
+Bruin Bite/GoogleService-Info.plist
