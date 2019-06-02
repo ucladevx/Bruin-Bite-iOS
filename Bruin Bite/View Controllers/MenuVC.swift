@@ -35,6 +35,7 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         
     let diningHalls = ["De Neve", "BPlate", "Covel", "Feast"]
     var menuItem: Item?
+    private var didDetailedMenuLoad: Bool = false
     
     var attrs = [
         NSAttributedStringKey.font: UIFont.signInFont.withSize(12.0),
@@ -125,6 +126,7 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
             self.updateData(dateFormatter.string(from: date), mP: self.currMP)
             self.activityIndicator.isHidden = true;
         }
+        
         API.getDetailedMenu { parsedMenus in
             for m in parsedMenus{
                 for i in 0..<(self.menuData.menus.count){
@@ -132,6 +134,10 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
                         self.menuData.menus[i].detailedData = m.detailedData
                     }
                 }
+            }
+            self.didDetailedMenuLoad = true
+            DispatchQueue.main.async {
+                self.menuCardsCollection.reloadData()
             }
         }
         backgroundTopBar.backgroundColor = UIColor.twilightBlue
@@ -244,12 +250,6 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         cell.menuCard.tableView.allowsMultipleSelection = false
         cell.menuCard.tableView.dataSource = cell.menuCard
         cell.menuCard.parentVC = self
-        
-        cell.viewMoreButton.titleLabel?.font = UIFont.textStyle
-        cell.viewMoreButton.titleLabel?.textColor = UIColor.twilightBlue
-        
-        cell.viewMoreButton.setTitleColor(UIColor.twilightBlue, for: .normal)
-        cell.viewMoreButton.backgroundColor = UIColor.white
 
         let rowLocation: Location = Array(data.keys)[indexPath.row]
         cell.menuCard.diningHallName.text? = rowLocation.rawValue
@@ -281,6 +281,13 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         cell.index = indexPath
         
         cell.viewMoreButton.backgroundColor = UIColor(red: 254.9 / 255.0, green: 254.9 / 255.0, blue: 254.9 / 255.0, alpha: 1.0)
+        if(didDetailedMenuLoad){
+            attrs.updateValue(UIColor.twilightBlue, forKey: .foregroundColor)
+            cell.activityIndicator.stopAnimating()
+        }
+        else{
+            attrs.updateValue(UIColor(red: 254.9 / 255.0, green: 254.9 / 255.0, blue: 254.9 / 255.0, alpha: 1.0), forKey: .foregroundColor)
+        }
         
         //make sure the button has multiple purposes
         //we need the count because in the beginning/refresh phase computedHeight = []
@@ -338,16 +345,18 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
     }
 
     func showDetailViewController(location: Location?) {
-        self.performSegue(withIdentifier: "segueToDetailVC",
-                sender: MenuDetailSender(
-                        location: location,
-                        activityLevelData: activityLevelData,
-                        initDate: initDate,
-                        initMP: initMP,
-                        currDate: currDate,
-                        currMP: currMP,
-                        hoursData: hoursData
-                ))
+        if(didDetailedMenuLoad){
+            self.performSegue(withIdentifier: "segueToDetailVC",
+                    sender: MenuDetailSender(
+                            location: location,
+                            activityLevelData: activityLevelData,
+                            initDate: initDate,
+                            initMP: initMP,
+                            currDate: currDate,
+                            currMP: currMP,
+                            hoursData: hoursData
+                    ))
+        }
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

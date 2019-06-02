@@ -155,6 +155,7 @@ extension API{
         provider.request(.getDetailedMenu) { result in
             switch result{
             case let .success(response):
+                DispatchQueue.global(qos: .background).async {
                 do{
                     let json = try JSON(data: response.data)
                     let data = json["menus"]
@@ -280,6 +281,7 @@ extension API{
                 catch{
                     print("error parsing")
                 }
+            }
             case let .failure(error):
                 print(error)
             }
