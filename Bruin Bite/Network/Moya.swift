@@ -32,7 +32,7 @@ enum MainAPI {
     case reportUser(user: Int, chatURL: String, reportDetails: String)
     case uploadProfilePicture(image: Data)
     case getProfilePicture(forUserWithID: Int)
-    case updateNotifications(email: String, announce_notify: String, match_notify: String, chat_notify: String)
+    case updateNotifications(email: String, announce_notify: Bool, match_notify: Bool, chat_notify: Bool)
 }
 
 extension MainAPI: TargetType {
