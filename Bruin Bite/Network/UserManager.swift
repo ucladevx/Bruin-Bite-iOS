@@ -232,7 +232,7 @@ class UserManager {
                 self.updateNotificationsDelegate?.didUpdate()
             case let .failure(error):
                 print(error)
-                self.updateNotificationsDelegate?.updateFailed()
+                self.updateNotificationsDelegate?.updateFailed(error: error.errorDescription ?? "")
             }
         }
     }
@@ -286,5 +286,5 @@ protocol RefreshDelegate {
 
 protocol UpdateNotificationsDelegate {
     func didUpdate()
-    func updateFailed()
+    func updateFailed(error: String)
 }
