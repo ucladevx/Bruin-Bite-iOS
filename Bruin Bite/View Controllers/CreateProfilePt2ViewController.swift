@@ -11,7 +11,7 @@ import UIKit
 class CreateProfilePt2ViewController: UIViewController, UpdateDelegate, AlertPresentable {
 
     @IBOutlet var CreateButton: UIButton!
-    @IBOutlet var YearText: UITextField!
+    @IBOutlet weak var year: UISegmentedControl!
     @IBOutlet var MajorText: UITextField!
     //@IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 
@@ -32,27 +32,21 @@ class CreateProfilePt2ViewController: UIViewController, UpdateDelegate, AlertPre
         UserManager.shared.updateDelegate = self
 
         view.backgroundColor = UIColor.twilightBlue
-        YearText.font = UIFont.signUpInfoFieldFont
         MajorText.font = UIFont.signUpInfoFieldFont
-        YearText.textColor = .white
         MajorText.textColor = .white
         CreateButton.setTitleColor(UIColor.white, for: .normal)
         CreateButton.titleLabel?.font = UIFont.signUpInfoFieldFont
-
-        YearText.becomeFirstResponder()
-
         CreateButton.layer.borderWidth = 1
         CreateButton.layer.borderColor = UIColor.white.cgColor
         CreateButton.layer.cornerRadius = 26
         
         Utilities.sharedInstance.formatNavigation(controller: self.navigationController!)
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor : UIColor.white, NSAttributedStringKey.font: UIFont(name: "AvenirNext-Bold", size: 17.0)!]
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        let xButton = UIBarButtonItem(image: UIImage(named: "x"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(popToRoot(_:)))
-        self.navigationController?.navigationBar.topItem?.rightBarButtonItem = xButton
     }
     
     @objc
@@ -75,12 +69,10 @@ class CreateProfilePt2ViewController: UIViewController, UpdateDelegate, AlertPre
             Utilities.sharedInstance.displayErrorLabel(text: "Enter a major", field: MajorText)
             return
         }
-        guard let year = Int(YearText.text!) else {
-            Utilities.sharedInstance.displayErrorLabel(text: "Enter a valid year", field: YearText)
-            return
-        }
-        if year != 1, year != 2, year != 3, year != 4, year != 5 {
-            Utilities.sharedInstance.displayErrorLabel(text: "Enter a valid year", field: YearText)
+        // Removed optional binding here because index is never nil
+        let chosenYear = Int(year.selectedSegmentIndex + 1)
+        if chosenYear != 1, chosenYear != 2, chosenYear != 3, chosenYear != 4, chosenYear != 5 {
+            Utilities.sharedInstance.displayErrorLabel(text: "Enter a valid year", field: year)
             return
         }
         //activityIndicator.startAnimating()
@@ -88,7 +80,7 @@ class CreateProfilePt2ViewController: UIViewController, UpdateDelegate, AlertPre
                                         first_name: UserManager.shared.getFirstName(), last_name: UserManager.shared.getLastName(),
                                         major: MajorText.text ?? "",
                                         minor: UserManager.shared.getMinor(),
-                                        year: Int(YearText.text ?? "") ?? 0,
+                                        year: chosenYear,
                                         self_bio: UserManager.shared.getBio())
     }
 }
