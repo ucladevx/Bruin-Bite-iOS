@@ -19,6 +19,7 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
     @IBOutlet weak var backgroundTopBar: UILabel!
     @IBOutlet weak var menuCardsCollection: UICollectionView!
     @IBOutlet weak var comingSoonPopup: UIImageView!
+    @IBOutlet weak var activityIndicator: UIImageView!
     
     
     var menuData = MenuController()
@@ -122,6 +123,7 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
             self.initMP = self.currMP
             
             self.updateData(dateFormatter.string(from: date), mP: self.currMP)
+            self.activityIndicator.isHidden = true;
         }
         API.getDetailedMenu { parsedMenus in
             for m in parsedMenus{
@@ -140,6 +142,7 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
+        self.activityIndicator.image = UIImage.animatedImageNamed("activityIndicator-", duration: 1)
     }
     
     let defaultHeight: CGFloat = 250;
