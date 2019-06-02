@@ -22,6 +22,7 @@ class UserManager {
     var deleteUserDelegate: DeleteUserDelegate? = nil
     var updateDelegate: UpdateDelegate? = nil
     var refreshDelegate: RefreshDelegate? = nil
+    var updateNotificationsDelegate: UpdateNotificationsDelegate? = nil
 
     private init() {
         currentUser = UserModel()
@@ -224,6 +225,18 @@ class UserManager {
         }
     }
 
+    func updateNotifications(announce_notify: Bool, match_notify: Bool, chat_notify: Bool) {
+        provider.request(.updateNotifications(email: self.getEmail(), announce_notify: announce_notify, match_notify: match_notify, chat_notify: chat_notify)) { result in
+            switch result {
+            case .success:
+                self.updateNotificationsDelegate?.didUpdate()
+            case let .failure(error):
+                print(error)
+                self.updateNotificationsDelegate?.updateFailed()
+            }
+        }
+    }
+
     //Current User Accesors
     func getUID() -> Int { return currentUser.uID ?? -1 }
     func getEmail() -> String { return currentUser.uEmail }
@@ -269,4 +282,9 @@ protocol RefreshDelegate {
     func didRefreshToken()
     func refreshFailed()
     func networkFailure()
+}
+
+protocol UpdateNotificationsDelegate {
+    func didUpdate()
+    func updateFailed()
 }
