@@ -34,6 +34,7 @@ class SignUpViewController: UIViewController, SignupDelegate, LoginDelegate, Upd
         //activityIndicator.hidesWhenStopped = true
         UserManager.shared.signupDelegate = self
         UserManager.shared.loginDelegate = self
+        UserManager.shared.updateNotificationsDelegate = self
 
         view.backgroundColor = UIColor.twilightBlue
 
@@ -72,12 +73,13 @@ class SignUpViewController: UIViewController, SignupDelegate, LoginDelegate, Upd
     }
 
     func didFinishSignup() {
-        UserManager.shared.updateNotifications(announce_notify: true, match_notify: true, chat_notify: true)
+        UserManager.shared.loginUser(email: UserManager.shared.getEmail(), password: PasswordText.text ?? "")
+        UserDefaultsManager.shared.setPassword(to: PasswordText.text ?? "")
     }
 
     func didLogin() {
         //activityIndicator.stopAnimating()
-        self.performSegue(withIdentifier: "toProfileController", sender: nil)
+        UserManager.shared.updateNotifications(announce_notify: true, match_notify: true, chat_notify: true)
     }
 
     func signUpFailed(error: String) {
@@ -91,8 +93,7 @@ class SignUpViewController: UIViewController, SignupDelegate, LoginDelegate, Upd
     }
 
     func didUpdate() {
-        UserManager.shared.loginUser(email: UserManager.shared.getEmail(), password: PasswordText.text ?? "")
-        UserDefaultsManager.shared.setPassword(to: PasswordText.text ?? "")
+        self.performSegue(withIdentifier: "toProfileController", sender: nil)
     }
 
     func updateFailed(error: String) {
