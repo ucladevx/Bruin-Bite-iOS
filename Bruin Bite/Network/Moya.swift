@@ -32,6 +32,7 @@ enum MainAPI {
     case reportUser(user: Int, chatURL: String, reportDetails: String)
     case uploadProfilePicture(image: Data)
     case getProfilePicture(forUserWithID: Int)
+    case updateNotifications(email: String, announce_notify: String, match_notify: String, chat_notify: String)
 }
 
 extension MainAPI: TargetType {
@@ -39,7 +40,7 @@ extension MainAPI: TargetType {
         switch self {
         case .getCurrentActivityLevels, .getOverviewMenu, .getDetailedMenu, .getHours:
             return URL(string: "https://api.bruin-bite.com/api/v1")!
-        case .createUser, .readUser, .loginUser, .logoutUser, .updateUser, .updateDeviceID, .deleteUser, .matchUser, .refreshToken, .getRequests, .getMatches, .chatList, .last50Messages, .unmatchUser, .reportUser, .uploadProfilePicture, .getProfilePicture:
+        case .createUser, .readUser, .loginUser, .logoutUser, .updateUser, .updateDeviceID, .deleteUser, .matchUser, .refreshToken, .getRequests, .getMatches, .chatList, .last50Messages, .unmatchUser, .reportUser, .uploadProfilePicture, .getProfilePicture, .updateNotifications:
             return URL(string: "https://api.bruin-bite.com/api/v1")!
         }
 
@@ -60,7 +61,7 @@ extension MainAPI: TargetType {
             return "/users/o/token/"
         case .logoutUser:
             return "/users/o/revoke_token"
-        case .readUser, .updateUser, .deleteUser, .updateDeviceID:
+        case .readUser, .updateUser, .deleteUser, .updateDeviceID, .updateNotifications:
             return "/users/data/"
         case .matchUser:
             return "/users/matching/requests"
@@ -88,7 +89,7 @@ extension MainAPI: TargetType {
             return .get
         case .createUser, .loginUser, .logoutUser, .matchUser, .refreshToken, .reportUser, .uploadProfilePicture:
             return .post
-        case .updateUser, .updateDeviceID:
+        case .updateUser, .updateDeviceID, .updateNotifications:
             return .put
         case .deleteUser, .unmatchUser:
             return .delete
@@ -135,6 +136,8 @@ extension MainAPI: TargetType {
             return .uploadMultipart(multipartData)
         case .getProfilePicture(let userID):
             return .requestParameters(parameters: ["user_id": userID], encoding: URLEncoding.default)
+        case .updateNotifications(let email, let announce_notify, let match_notify, let chat_notify):
+            return .requestParameters(parameters: ["email": email, "announce_notify": announce_notify, "match_notify": match_notify, "chat_notify": chat_notify], encoding: JSONEncoding.default)
         }
     }
     //for testing
@@ -184,6 +187,8 @@ extension MainAPI: TargetType {
             return Data()
         case .updateDeviceID:
             return Data()
+        case .updateNotifications:
+            return Data()
         }
     }
     var headers: [String: String]? {
@@ -194,7 +199,7 @@ extension MainAPI: TargetType {
             return ["Content-Type": "application/json"]
         case .loginUser, .refreshToken, .logoutUser:
             return ["Content-Type": "application/x-www-form-urlencoded"]
-        case .readUser, .updateUser, .updateDeviceID, .deleteUser, .matchUser, .getRequests, .getMatches, .chatList, .last50Messages, .reportUser, .unmatchUser, .uploadProfilePicture, .getProfilePicture:
+        case .readUser, .updateUser, .updateDeviceID, .deleteUser, .matchUser, .getRequests, .getMatches, .chatList, .last50Messages, .reportUser, .unmatchUser, .uploadProfilePicture, .getProfilePicture, .updateNotifications:
             var temp = "Bearer "
             temp += UserDefaultsManager.shared.getAccessToken()
             return ["Authorization": temp]
