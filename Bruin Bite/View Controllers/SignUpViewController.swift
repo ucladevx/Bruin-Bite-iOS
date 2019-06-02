@@ -9,7 +9,7 @@
 import UIKit
 import ViewAnimator
 
-class SignUpViewController: UIViewController, SignupDelegate, LoginDelegate, AlertPresentable {
+class SignUpViewController: UIViewController, SignupDelegate, LoginDelegate, UpdateNotificationsDelegate, AlertPresentable {
 
     @IBOutlet var NameText: UITextField!
     @IBOutlet var EmailText: UITextField!
@@ -72,8 +72,7 @@ class SignUpViewController: UIViewController, SignupDelegate, LoginDelegate, Ale
     }
 
     func didFinishSignup() {
-        UserManager.shared.loginUser(email: UserManager.shared.getEmail(), password: PasswordText.text ?? "")
-        UserDefaultsManager.shared.setPassword(to: PasswordText.text ?? "")
+        UserManager.shared.updateNotifications(announce_notify: true, match_notify: true, chat_notify: true)
     }
 
     func didLogin() {
@@ -88,6 +87,15 @@ class SignUpViewController: UIViewController, SignupDelegate, LoginDelegate, Ale
 
     func loginFailed(error: String) {
         //activityIndicator.stopAnimating()
+        presentAlert(alert: error)
+    }
+
+    func didUpdate() {
+        UserManager.shared.loginUser(email: UserManager.shared.getEmail(), password: PasswordText.text ?? "")
+        UserDefaultsManager.shared.setPassword(to: PasswordText.text ?? "")
+    }
+
+    func updateFailed(error: String) {
         presentAlert(alert: error)
     }
 }
