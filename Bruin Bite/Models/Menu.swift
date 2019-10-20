@@ -50,6 +50,7 @@ enum Location: String{
     case feast = "FEAST at Rieber"
     case rieber = "Rieber"
     case sproul = "Sproul"
+    case rendezvous = "Rendezvous"
 }
 
 //---Structures---
