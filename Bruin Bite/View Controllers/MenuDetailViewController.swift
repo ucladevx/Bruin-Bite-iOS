@@ -50,6 +50,12 @@ class MenuDetailViewController: UITableViewController{
         var dateComponents: DateComponents? = calendar.dateComponents([.hour, .minute, .second], from: Date())
 
         dateComponents?.day = Int(currDate)
+        dateComponents?.month = Calendar.current.component(.month, from: Date())
+        let todaysDate = Int(Calendar.current.component(.day, from: Date()))
+        if (todaysDate - (dateComponents?.day ?? 0) > 15)
+        {
+            dateComponents?.month? += 1
+        }
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMM d"
 

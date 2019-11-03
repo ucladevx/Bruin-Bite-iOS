@@ -43,6 +43,7 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
 
         
     override func viewDidLoad() {
+        self.navigationItem.setHidesBackButton(true, animated:true);
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white
         allergensBar.content.parentVC = self
@@ -247,9 +248,10 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         
         cell.viewMoreButton.setTitleColor(UIColor.twilightBlue, for: .normal)
         cell.viewMoreButton.backgroundColor = UIColor.white
-
+        //TODO: DOUBLE DE NEVE BUG
         let rowLocation: Location = Array(data.keys)[indexPath.row]
-        cell.menuCard.diningHallName.text? = rowLocation.rawValue
+        let diningHallNameStr = rowLocation.rawValue
+        cell.menuCard.diningHallName.text? = diningHallNameStr
 
 
         if let hall = Location(rawValue: rowLocation.rawValue) {
