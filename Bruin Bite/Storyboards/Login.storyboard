@@ -61,7 +61,7 @@
                                         </state>
                                         <connections>
                                             <action selector="CheckMenuTap:" destination="4Hj-cQ-8ki" eventType="touchDown" id="vCL-c4-6DH"/>
-                                            <segue destination="gWz-Uk-J3Z" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="iFd-VO-gN4"/>
+                                            <segue destination="gWz-Uk-J3Z" kind="push" id="iFd-VO-gN4"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -92,8 +92,8 @@
                         <outlet property="CheckMenuButton" destination="j2B-mh-3uB" id="tzX-nX-209"/>
                         <outlet property="SignInButton" destination="iap-FB-8KA" id="BDN-AV-gns"/>
                         <outlet property="SignUpButton" destination="yuZ-IE-vqN" id="Npy-ky-3bA"/>
-                        <segue destination="U1n-zi-66f" kind="presentation" identifier="toSignUpController" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="zJr-Uv-WWz"/>
-                        <segue destination="sP5-yX-Ktb" kind="presentation" identifier="toSignInController" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="0a1-W8-zFT"/>
+                        <segue destination="U1n-zi-66f" kind="push" identifier="toSignUpController" id="zJr-Uv-WWz"/>
+                        <segue destination="sP5-yX-Ktb" kind="push" identifier="toSignInController" id="0a1-W8-zFT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hFl-7q-Jcx" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -105,14 +105,14 @@
             <objects>
                 <viewController title="SIGN UP" id="U1n-zi-66f" customClass="SignUpViewController" customModule="Bruin_Bite" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wbL-iA-JMb">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="du0-bv-8Qi">
-                                <rect key="frame" x="50" y="33" width="275" height="233.5"/>
+                                <rect key="frame" x="50" y="33" width="275" height="218"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TXM-Zj-iLa">
-                                        <rect key="frame" x="0.0" y="0.0" width="275" height="46.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="275" height="43.5"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -126,13 +126,13 @@
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Line" translatesAutoresizingMaskIntoConstraints="NO" id="sDw-2l-Esd">
-                                        <rect key="frame" x="0.0" y="52" width="275" height="2"/>
+                                        <rect key="frame" x="0.0" y="48.5" width="275" height="2"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="2" id="1hp-hf-KtA"/>
                                         </constraints>
                                     </imageView>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JcL-3j-xHM">
-                                        <rect key="frame" x="0.0" y="59.5" width="275" height="47"/>
+                                        <rect key="frame" x="0.0" y="56" width="275" height="43.5"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -146,7 +146,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Line" translatesAutoresizingMaskIntoConstraints="NO" id="VWw-V1-irK">
-                                        <rect key="frame" x="0.0" y="112" width="275" height="2"/>
+                                        <rect key="frame" x="0.0" y="104.5" width="275" height="2"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="2" id="wdA-jq-gg6"/>
                                         </constraints>
@@ -157,7 +157,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pQ2-ov-R1s">
-                                        <rect key="frame" x="0.0" y="119.5" width="275" height="46.5"/>
+                                        <rect key="frame" x="0.0" y="111.5" width="275" height="43.5"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
@@ -171,13 +171,13 @@
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Line" translatesAutoresizingMaskIntoConstraints="NO" id="PKW-mk-1zl">
-                                        <rect key="frame" x="0.0" y="171.5" width="275" height="2"/>
+                                        <rect key="frame" x="0.0" y="160.5" width="275" height="2"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="2" id="Mrp-FJ-faf"/>
                                         </constraints>
                                     </imageView>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Confirm Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5QG-1w-bwn">
-                                        <rect key="frame" x="0.0" y="179" width="275" height="47"/>
+                                        <rect key="frame" x="0.0" y="167.5" width="275" height="43.5"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
@@ -191,7 +191,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </textField>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Line" translatesAutoresizingMaskIntoConstraints="NO" id="xyA-wK-AbB">
-                                        <rect key="frame" x="0.0" y="231.5" width="275" height="2"/>
+                                        <rect key="frame" x="0.0" y="216" width="275" height="2"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="2" id="mh2-n2-Kqk"/>
                                         </constraints>
@@ -213,7 +213,7 @@
                                 </constraints>
                             </stackView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="By signing up, you agree to our privacy policy and terms of service." textAlignment="natural" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l8L-Du-Fhj">
-                                <rect key="frame" x="50" y="281.5" width="221" height="46"/>
+                                <rect key="frame" x="50" y="266" width="221" height="46"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="46" id="hkO-Nm-9ED"/>
                                 </constraints>
@@ -222,7 +222,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="caD-Rv-kzm" userLabel="NextButton">
-                                <rect key="frame" x="279" y="281.5" width="46" height="46"/>
+                                <rect key="frame" x="279" y="266" width="46" height="46"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="caD-Rv-kzm" secondAttribute="height" multiplier="1:1" id="FMS-5t-L7C"/>
                                     <constraint firstAttribute="height" constant="46" id="SbQ-Vt-qYu"/>
@@ -247,13 +247,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="7LN-YR-pxE"/>
                     </view>
+                    <navigationItem key="navigationItem" title="SIGN  UP" id="Kzs-IF-djL"/>
                     <connections>
                         <outlet property="ConfirmPassText" destination="5QG-1w-bwn" id="Teb-m1-FUW"/>
                         <outlet property="EmailText" destination="JcL-3j-xHM" id="uyD-Hm-Vag"/>
                         <outlet property="NameText" destination="TXM-Zj-iLa" id="4Li-OB-vAB"/>
                         <outlet property="PasswordText" destination="pQ2-ov-R1s" id="60i-ZE-90I"/>
                         <outlet property="TermsAndCondsTextView" destination="l8L-Du-Fhj" id="H6H-Wc-FNp"/>
-                        <segue destination="Mdq-9S-8BC" kind="presentation" identifier="toProfileController" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="hlq-A8-eRR"/>
+                        <segue destination="Mdq-9S-8BC" kind="push" identifier="toProfileController" id="hlq-A8-eRR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u6M-xC-Fdg" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -265,7 +266,7 @@
             <objects>
                 <viewController title="SIGN IN" id="sP5-yX-Ktb" customClass="SignInViewController" customModule="Bruin_Bite" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4dj-5J-oU5">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2Ya-gP-7zb">
@@ -364,12 +365,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ZL7-An-htU"/>
                     </view>
+                    <navigationItem key="navigationItem" title="SIGN IN" id="91o-JP-DGG"/>
                     <connections>
                         <outlet property="EmailText" destination="2Ya-gP-7zb" id="sRk-D0-zh1"/>
                         <outlet property="ForgotPassButton" destination="yVM-MC-9TZ" id="4Rj-YA-zCB"/>
                         <outlet property="PasswordText" destination="bzy-hE-7Df" id="gLf-sf-N4g"/>
                         <outlet property="SignInButton" destination="afn-vg-1bq" id="Tfq-lx-U2B"/>
-                        <segue destination="gWz-Uk-J3Z" kind="presentation" identifier="ShowMainViewFromLogin" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="llT-Nr-fs9"/>
+                        <segue destination="gWz-Uk-J3Z" kind="push" identifier="ShowMainViewFromLogin" id="llT-Nr-fs9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c8I-2s-On4" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -381,18 +383,18 @@
             <objects>
                 <viewController title="CREATE YOUR PROFILE" id="Mdq-9S-8BC" customClass="CreateProfileViewController" customModule="Bruin_Bite" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aEk-LL-qZK">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ProfilePic" translatesAutoresizingMaskIntoConstraints="NO" id="WdP-dU-tHJ">
-                                <rect key="frame" x="110.5" y="30.5" width="154" height="139"/>
+                                <rect key="frame" x="118" y="21" width="139" height="139"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="139" id="Cew-Bv-ayn"/>
                                     <constraint firstAttribute="width" secondItem="WdP-dU-tHJ" secondAttribute="height" multiplier="1:1" id="E3A-zm-nOl"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o1y-ub-wYw" userLabel="NextButton">
-                                <rect key="frame" x="275.5" y="313.5" width="46" height="46"/>
+                                <rect key="frame" x="262.5" y="302" width="46" height="46"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="46" id="otb-JZ-ma7"/>
                                     <constraint firstAttribute="width" secondItem="o1y-ub-wYw" secondAttribute="height" multiplier="1:1" id="wNK-Lg-mha"/>
@@ -403,7 +405,7 @@
                                 </connections>
                             </button>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="h8a-dl-SMT">
-                                <rect key="frame" x="283.5" y="321.5" width="30" height="30"/>
+                                <rect key="frame" x="270.5" y="310" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="gV6-U1-Ab5"/>
                                     <constraint firstAttribute="width" constant="30" id="hrm-wt-7d2"/>
@@ -411,7 +413,7 @@
                                 <color key="color" red="0.194423914" green="0.37402850389999998" blue="0.5412153006" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </activityIndicatorView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BIO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UPG-fQ-gga">
-                                <rect key="frame" x="56.5" y="177.5" width="191.5" height="22.5"/>
+                                <rect key="frame" x="69.5" y="168" width="173" height="20.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="UPG-fQ-gga" secondAttribute="height" multiplier="169:20" id="UGN-Mn-0Is"/>
                                 </constraints>
@@ -420,7 +422,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="hOe-iL-nsr">
-                                <rect key="frame" x="53.5" y="205.5" width="268" height="73"/>
+                                <rect key="frame" x="66.5" y="194" width="242" height="73"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="73" id="Lra-ds-VSI"/>
                                     <constraint firstAttribute="width" secondItem="hOe-iL-nsr" secondAttribute="height" multiplier="242:73" id="OtY-NR-Tb5"/>
@@ -435,7 +437,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7eg-dc-dIU">
-                                <rect key="frame" x="281" y="286.5" width="35" height="19"/>
+                                <rect key="frame" x="268" y="275" width="35" height="19"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="7eg-dc-dIU" secondAttribute="height" multiplier="35:19" id="Oxg-5p-LyR"/>
                                     <constraint firstAttribute="height" constant="19" id="p9F-ZI-iHX"/>
@@ -466,7 +468,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="yIp-xP-33L"/>
                     </view>
-                    <navigationItem key="navigationItem" id="rv5-ML-t3h"/>
+                    <navigationItem key="navigationItem" title="CREATE YOUR PROFILE" id="rv5-ML-t3h"/>
                     <connections>
                         <outlet property="ActivityIndicator" destination="h8a-dl-SMT" id="hpO-8U-sqF"/>
                         <outlet property="BioPic" destination="WdP-dU-tHJ" id="byy-JQ-gwo"/>
@@ -474,7 +476,7 @@
                         <outlet property="BioTextBox" destination="hOe-iL-nsr" id="afH-TX-Iu9"/>
                         <outlet property="BioTextBoxChar" destination="7eg-dc-dIU" id="s1s-hv-CSf"/>
                         <outlet property="nextButton" destination="o1y-ub-wYw" id="1ez-he-r1J"/>
-                        <segue destination="aNE-gY-fgK" kind="show" identifier="toCreateController" id="kCm-77-NrQ"/>
+                        <segue destination="aNE-gY-fgK" kind="push" identifier="toCreateController" id="kCm-77-NrQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n9k-f9-iOY" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -486,7 +488,7 @@
             <objects>
                 <viewController title="CREATE YOUR PROFILE" id="aNE-gY-fgK" customClass="CreateProfilePt2ViewController" customModule="Bruin_Bite" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="a0u-4H-K8W">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="1R6-3U-jsn">
@@ -595,12 +597,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="lf9-4J-Xpu"/>
                     </view>
-                    <navigationItem key="navigationItem" id="OBb-MX-u6f"/>
+                    <navigationItem key="navigationItem" title="CREATE YOUR PROFILE" id="OBb-MX-u6f"/>
                     <connections>
                         <outlet property="CreateButton" destination="hi0-6j-WCs" id="mw9-go-Atc"/>
                         <outlet property="MajorText" destination="n6x-Zx-DQu" id="9IY-5T-JIg"/>
                         <outlet property="YearText" destination="ID7-xH-k8N" id="QN0-YP-787"/>
-                        <segue destination="gWz-Uk-J3Z" kind="presentation" identifier="ShowMainViewFromCreate" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="MmQ-ad-1AU"/>
+                        <segue destination="gWz-Uk-J3Z" kind="push" identifier="ShowMainViewFromCreate" id="MmQ-ad-1AU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zll-3n-jc9" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -629,7 +631,9 @@
         <!--MainView-->
         <scene sceneID="t5H-bD-Izt">
             <objects>
-                <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="MainView" id="gWz-Uk-J3Z" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="MainView" id="gWz-Uk-J3Z" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="0W8-sy-SD0"/>
+                </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VH5-IJ-HWp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="139" y="124"/>
@@ -642,6 +646,6 @@
         <image name="ProfilePic" width="139" height="139"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="llT-Nr-fs9"/>
+        <segue reference="MmQ-ad-1AU"/>
     </inferredMetricsTieBreakers>
 </document>

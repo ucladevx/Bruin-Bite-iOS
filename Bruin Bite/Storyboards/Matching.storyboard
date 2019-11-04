@@ -36,7 +36,9 @@
         <!--ChatScreenVC-->
         <scene sceneID="TXm-4P-pTw">
             <objects>
-                <viewControllerPlaceholder storyboardIdentifier="ChatScreenVC" storyboardName="Chat" referencedIdentifier="ChatScreenVC" id="QXB-Eb-1H6" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardIdentifier="ChatScreenVC" storyboardName="Chat" referencedIdentifier="ChatScreenVC" id="QXB-Eb-1H6" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Rua-wq-knw"/>
+                </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q05-sR-FA6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-3806" y="-210"/>
@@ -361,7 +363,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="fta-QD-RfK" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="Ykh-2m-AXX"/>
+                                    <segue destination="fta-QD-RfK" kind="push" id="Ykh-2m-AXX"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cW2-O6-Prn" userLabel="TopView">
@@ -436,7 +438,7 @@
                         <outlet property="matchTable" destination="zTB-mt-Dyp" id="OI5-Qh-Y0L"/>
                         <outlet property="switchTable" destination="QY5-ht-6o9" id="uf0-ov-Tbr"/>
                         <segue destination="PWc-ON-g6f" kind="presentation" identifier="login" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="908-ny-iFs"/>
-                        <segue destination="QXB-Eb-1H6" kind="presentation" identifier="showChatScreenVC" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="Yvi-uN-Omb"/>
+                        <segue destination="QXB-Eb-1H6" kind="push" identifier="showChatScreenVC" id="Yvi-uN-Omb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NgL-ni-Kwg" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -448,7 +450,7 @@
             <objects>
                 <viewController id="fta-QD-RfK" customClass="PreferenceViewController" customModule="Bruin_Bite" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Vt4-pT-49c">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="VWK-gs-ral">

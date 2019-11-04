@@ -97,7 +97,7 @@
                                             <color key="titleColor" red="0.50196078430000002" green="0.50196078430000002" blue="0.50196078430000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <segue destination="5Da-cA-kZA" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="mvb-MW-8g6"/>
+                                            <segue destination="5Da-cA-kZA" kind="push" id="mvb-MW-8g6"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DfI-zD-eNG" userLabel="FeedbackButton">
@@ -166,11 +166,11 @@
             <objects>
                 <viewController title="Edit Profile" id="5Da-cA-kZA" customClass="EditProfileViewController" customModule="Bruin_Bite" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SU0-mL-AtZ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k6R-So-FAu">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="OcW-Jd-dX3">
                                         <rect key="frame" x="0.0" y="48" width="375" height="556.5"/>
@@ -327,6 +327,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="INk-xg-Sp6"/>
                     </view>
+                    <navigationItem key="navigationItem" id="90u-kJ-w2i"/>
                     <connections>
                         <outlet property="bio" destination="MiS-Tv-5Z9" id="aQJ-y1-f7Q"/>
                         <outlet property="bioChar" destination="V3J-ta-kh9" id="tDd-Hu-KQV"/>
@@ -361,7 +362,9 @@
         <!--Login-->
         <scene sceneID="URj-kE-Os6">
             <objects>
-                <viewControllerPlaceholder storyboardName="Login" id="FIK-Ft-uiY" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="Login" id="FIK-Ft-uiY" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="wMn-GT-MGG"/>
+                </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SiN-g0-b8h" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="564" y="551"/>
