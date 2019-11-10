@@ -29,6 +29,7 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
     var initDate = "1"
     var initMP = MealPeriod.breakfast
     var currAllergens: [Allergen] = []
+    var diningHallArray = [Location]()
     
     var data: [Location: [Item]] = [:]
         
@@ -192,6 +193,7 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
             }
             self.data.updateValue(items, forKey: loc)
         }
+        self.diningHallArray = Array(self.data.keys)
     }
     
     func allergenUpdateData(_ a: Allergen, status: Bool){
@@ -211,6 +213,7 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
             self.computedHeight = Array(repeating: self.defaultHeight, count: self.data.count)
             self.menuCardsCollection.reloadData()
         }
+        self.diningHallArray = Array(self.data.keys)
     }
     
     func updateData(_ d: String, mP: MealPeriod){
@@ -233,6 +236,7 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
                 i-=1
             }
         }
+        self.diningHallArray = Array(self.data.keys)
     }
         
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -249,7 +253,7 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         cell.viewMoreButton.setTitleColor(UIColor.twilightBlue, for: .normal)
         cell.viewMoreButton.backgroundColor = UIColor.white
         //TODO: DOUBLE DE NEVE BUG
-        let rowLocation: Location = Array(data.keys)[indexPath.row]
+        let rowLocation: Location = diningHallArray[indexPath.row]
         let diningHallNameStr = rowLocation.rawValue
         cell.menuCard.diningHallName.text? = diningHallNameStr
 
