@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Hbc-kS-Pis">
-    <device id="retina5_5" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Hbc-kS-Pis">
+    <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -23,7 +21,8 @@
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
-                <tabBarController storyboardIdentifier="MainView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="49e-Tb-3d3" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="MainView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="49e-Tb-3d3" customClass="TabBarController" customModule="Bruin_Bite" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="kbc-pq-EPC"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" translucent="NO" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
@@ -69,7 +68,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LoginLogo" translatesAutoresizingMaskIntoConstraints="NO" id="v20-Ap-vhn">
-                                <rect key="frame" x="153" y="101" width="108" height="144"/>
+                                <rect key="frame" x="153" y="81" width="108" height="144"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="v20-Ap-vhn" secondAttribute="height" multiplier="3:4" id="3MG-kH-ins"/>
                                     <constraint firstAttribute="height" constant="144" id="Aty-gf-zJq"/>
@@ -91,8 +90,8 @@
                     </view>
                     <connections>
                         <outlet property="activityIndicator" destination="nKv-fG-GXK" id="YSA-cQ-DWM"/>
-                        <segue destination="49e-Tb-3d3" kind="show" identifier="loggedIn" id="L40-xt-xeQ"/>
-                        <segue destination="kGz-ox-4hs" kind="showDetail" identifier="notLogged" id="T46-Hk-js6"/>
+                        <segue destination="49e-Tb-3d3" kind="presentation" identifier="loggedIn" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="L40-xt-xeQ"/>
+                        <segue destination="kGz-ox-4hs" kind="presentation" identifier="notLogged" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="T46-Hk-js6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dsq-tq-W2N" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -102,7 +101,9 @@
         <!--Login-->
         <scene sceneID="slE-v6-atg">
             <objects>
-                <viewControllerPlaceholder storyboardName="Login" id="kGz-ox-4hs" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="Login" id="kGz-ox-4hs" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="UiU-kX-L2T"/>
+                </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="92C-SD-mOk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-262" y="-152"/>
