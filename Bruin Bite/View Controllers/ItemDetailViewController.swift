@@ -9,7 +9,7 @@
 import UIKit
 import WebKit
 
-class ItemDetailViewController: UIViewController {
+class ItemDetailViewController: UIViewController, WKNavigationDelegate {
 
     @IBOutlet weak var webView: WKWebView!
     var menuItem: Item?
@@ -22,13 +22,19 @@ class ItemDetailViewController: UIViewController {
         webView.isUserInteractionEnabled = false
         self.view.backgroundColor = UIColor.twilightBlue
         ingredientsBar.backgroundColor = UIColor.white
+        webView.navigationDelegate = self
         // Do any additional setup after loading the view.
     }
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
         self.navigationItem.title = self.menuItem?.name
+    }
+    
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        activityIndicator.stopAnimating()
     }
     
     override func viewDidAppear(_ animated: Bool) {
