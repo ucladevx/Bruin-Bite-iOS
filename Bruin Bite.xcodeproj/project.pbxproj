@@ -57,6 +57,7 @@
 		77949970203BD10500F3B0ED /* AllergyFilterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7794996F203BD10400F3B0ED /* AllergyFilterButton.swift */; };
 		77949972203BD12B00F3B0ED /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77949971203BD12B00F3B0ED /* Extensions.swift */; };
 		9C91B493798C96CEA3BC0AA4 /* Pods_Bruin_Bite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D31D0C9107AF44D73AA341C1 /* Pods_Bruin_Bite.framework */; };
+		AB4DE42E235D27AE00E5FD5F /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4DE42D235D27AE00E5FD5F /* TabBarController.swift */; };
 		BD392821215C3638007FD4AD /* BBStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD392820215C3638007FD4AD /* BBStoryboard.swift */; };
 		BD78709921AD352100E46A50 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD78709821AD352100E46A50 /* UserDefaultsManager.swift */; };
 		BD7870A621B6793A00E46A50 /* PresentAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7870A521B6793A00E46A50 /* PresentAlert.swift */; };
@@ -181,6 +182,7 @@
 		770CDEAF20266B6000658925 /* ActivityLevelBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityLevelBar.swift; sourceTree = "<group>"; };
 		7794996F203BD10400F3B0ED /* AllergyFilterButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllergyFilterButton.swift; sourceTree = "<group>"; };
 		77949971203BD12B00F3B0ED /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		AB4DE42D235D27AE00E5FD5F /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TabBarController.swift; path = "Bruin Bite/View Controllers/TabBarController.swift"; sourceTree = SOURCE_ROOT; };
 		BD392820215C3638007FD4AD /* BBStoryboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BBStoryboard.swift; sourceTree = "<group>"; };
 		BD78709821AD352100E46A50 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		BD7870A521B6793A00E46A50 /* PresentAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentAlert.swift; sourceTree = "<group>"; };
@@ -307,6 +309,7 @@
 		2A94477B2055F5570033B6C6 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				AB4DE42D235D27AE00E5FD5F /* TabBarController.swift */,
 				2AFA40B320BC07BC0007FB85 /* MatchingViewControllers */,
 				2A03D94020B76B88004EFC97 /* PopupViewControllers */,
 				BF0523E2209AA7E00013EE11 /* ProfileViewController.swift */,
@@ -644,7 +647,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Bruin Bite/Pods-Bruin Bite-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-Bruin Bite/Pods-Bruin Bite-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/CZPicker/CZPicker.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
@@ -675,7 +678,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Bruin Bite/Pods-Bruin Bite-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Bruin Bite/Pods-Bruin Bite-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -711,6 +714,7 @@
 				2AFB41372047F0F2004025F9 /* MenuCardCollectionViewCell.swift in Sources */,
 				2A16F9A720BEA204008BA4E3 /* ComingSoonPopup.swift in Sources */,
 				00A89A9422851AE500DF78C8 /* ProfilePictureAPI.swift in Sources */,
+				AB4DE42E235D27AE00E5FD5F /* TabBarController.swift in Sources */,
 				770CDEAE20266B0800658925 /* ColoredCircle.swift in Sources */,
 				2AB62E702048D21D0013CB59 /* ActivityLevel.swift in Sources */,
 				2AFA40B120BC07AD0007FB85 /* MatchFoundViewController.swift in Sources */,

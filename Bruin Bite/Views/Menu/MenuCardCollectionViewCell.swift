@@ -13,6 +13,7 @@ class MenuCardCollectionViewCell: UICollectionViewCell {
     weak var parentVC: MenuVC?
     @IBOutlet weak var menuCard: MenuCardView!
     @IBOutlet weak var viewMoreButton: UIButton!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 
     var location: Location?
     var items: [Item] = []

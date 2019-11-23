@@ -11,16 +11,17 @@ import Moya
 import SnapKit
 
 class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
-    
+
     let provider = MoyaProvider<API_methods>()
-    
+
     @IBOutlet weak var allergensBar: AllergensBarScrollView!
     var topBar = TopBar()
     @IBOutlet weak var backgroundTopBar: UILabel!
     @IBOutlet weak var menuCardsCollection: UICollectionView!
     @IBOutlet weak var comingSoonPopup: UIImageView!
-    
-    
+    @IBOutlet weak var activityIndicator: UIImageView!
+
+
     var menuData = MenuController()
     var activityLevelData = [ActivityLevel]()
     var hoursData = [String:[Location:HallHours]]()
@@ -29,20 +30,23 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
     var initDate = "1"
     var initMP = MealPeriod.breakfast
     var currAllergens: [Allergen] = []
-    
+    var diningHallArray = [Location]()
+
     var data: [Location: [Item]] = [:]
-        
+
     let diningHalls = ["De Neve", "BPlate", "Covel", "Feast"]
     var menuItem: Item?
-    
+    private var didDetailedMenuLoad: Bool = false
+
     var attrs = [
         NSAttributedStringKey.font: UIFont.signInFont.withSize(12.0),
         NSAttributedStringKey.foregroundColor: UIColor.twilightBlue,
         NSAttributedStringKey.underlineStyle: 1
         ] as [NSAttributedStringKey: Any]
 
-        
+
     override func viewDidLoad() {
+        self.navigationItem.setHidesBackButton(true, animated:true);
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white
         allergensBar.content.parentVC = self
@@ -87,17 +91,17 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         default:
             print("Current Meal Period could not be determined")
         }
-        
+
         if let dateLbl = self.topBar.dayBtns[1].dateLbl.text, let weekLbl = self.topBar.dayBtns[1].weekLbl.text {
             self.topBar.daySelected(dateLbl, dayLabel: weekLbl)
         }
-        
+
         // Do any additional setup after loading the view, typically from a nib.
         API.getCurrentActivityLevels { (activityLevels) in
             for a in activityLevels{
                 self.activityLevelData.append(a)
             }
-            
+
             /* Test Data
             self.activityLevelData.append(ActivityLevel(isAvailable: true, location: Location.bPlate, percent: 100))
             self.activityLevelData.append(ActivityLevel(isAvailable: true, location: Location.feast, percent: 90))
@@ -117,12 +121,14 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
             let date = Date()
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "dd"
-            
+
             self.initDate = dateFormatter.string(from: date)
             self.initMP = self.currMP
-            
+
             self.updateData(dateFormatter.string(from: date), mP: self.currMP)
+            self.activityIndicator.isHidden = true;
         }
+
         API.getDetailedMenu { parsedMenus in
             for m in parsedMenus{
                 for i in 0..<(self.menuData.menus.count){
@@ -130,6 +136,10 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
                         self.menuData.menus[i].detailedData = m.detailedData
                     }
                 }
+            }
+            self.didDetailedMenuLoad = true
+            DispatchQueue.main.async {
+                self.menuCardsCollection.reloadData()
             }
         }
         backgroundTopBar.backgroundColor = UIColor.twilightBlue
@@ -140,13 +150,14 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
+        self.activityIndicator.image = UIImage.animatedImageNamed("activityIndicator-", duration: 1)
     }
-    
+
     let defaultHeight: CGFloat = 250;
     var computedHeight: [CGFloat] = [];
-        
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
+
         //computed height is only stored after a user presses the view more button, so we need to check for initial phase
         if computedHeight != []{
             return CGSize(width: collectionView.bounds.size.width, height: computedHeight[indexPath.row])
@@ -155,7 +166,7 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
             return CGSize(width: collectionView.bounds.size.width, height: defaultHeight)
         }
     }
-        
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if data.count == 0 && topBar.currTime == .lateNight {
             comingSoonPopup.isHidden = false
@@ -164,7 +175,7 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         }
         return data.count
     }
-    
+
     //the name is slightly misleading for vegetarian and vegan because we actaully remove everything else for them
     func removeItems(with allergen: Allergen){
         print(currAllergens)
@@ -191,8 +202,9 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
             }
             self.data.updateValue(items, forKey: loc)
         }
+        self.diningHallArray = Array(self.data.keys)
     }
-    
+
     func allergenUpdateData(_ a: Allergen, status: Bool){
         if (status == true) {
             currAllergens.append(a)
@@ -210,8 +222,9 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
             self.computedHeight = Array(repeating: self.defaultHeight, count: self.data.count)
             self.menuCardsCollection.reloadData()
         }
+        self.diningHallArray = Array(self.data.keys)
     }
-    
+
     func updateData(_ d: String, mP: MealPeriod){
         currDate = d
         currMP = mP
@@ -232,8 +245,9 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
                 i-=1
             }
         }
+        self.diningHallArray = Array(self.data.keys)
     }
-        
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = menuCardsCollection.dequeueReusableCell(withReuseIdentifier: "menuCardCell", for: indexPath) as! MenuCardCollectionViewCell
         cell.menuCard.tableView.delegate = cell.menuCard
@@ -241,15 +255,16 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         cell.menuCard.tableView.allowsMultipleSelection = false
         cell.menuCard.tableView.dataSource = cell.menuCard
         cell.menuCard.parentVC = self
-        
+
         cell.viewMoreButton.titleLabel?.font = UIFont.textStyle
         cell.viewMoreButton.titleLabel?.textColor = UIColor.twilightBlue
-        
+
         cell.viewMoreButton.setTitleColor(UIColor.twilightBlue, for: .normal)
         cell.viewMoreButton.backgroundColor = UIColor.white
-
-        let rowLocation: Location = Array(data.keys)[indexPath.row]
-        cell.menuCard.diningHallName.text? = rowLocation.rawValue
+        //TODO: DOUBLE DE NEVE BUG
+        let rowLocation: Location = diningHallArray[indexPath.row]
+        let diningHallNameStr = rowLocation.rawValue
+        cell.menuCard.diningHallName.text? = diningHallNameStr
 
 
         if let hall = Location(rawValue: rowLocation.rawValue) {
@@ -272,13 +287,20 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
 
 
         cell.initializeData(location: rowLocation, data: data[rowLocation]!)
-        
+
         cell.parentVC = self
         cell.parentView = self.menuCardsCollection
         cell.index = indexPath
-        
+
         cell.viewMoreButton.backgroundColor = UIColor(red: 254.9 / 255.0, green: 254.9 / 255.0, blue: 254.9 / 255.0, alpha: 1.0)
-        
+        if(didDetailedMenuLoad){
+            attrs.updateValue(UIColor.twilightBlue, forKey: .foregroundColor)
+            cell.activityIndicator.stopAnimating()
+        }
+        else{
+            attrs.updateValue(UIColor(red: 254.9 / 255.0, green: 254.9 / 255.0, blue: 254.9 / 255.0, alpha: 1.0), forKey: .foregroundColor)
+        }
+
         //make sure the button has multiple purposes
         //we need the count because in the beginning/refresh phase computedHeight = []
         if (computedHeight[indexPath.row] > defaultHeight){
@@ -289,7 +311,7 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
             let text = NSMutableAttributedString(string:"View More", attributes:attrs)
             cell.viewMoreButton.setAttributedTitle(text, for: .normal)
         }
-        
+
         //Activity Level Loading
         cell.menuCard.activityLevelBar.resizeToZero()
         cell.menuCard.activityLevelBar.percentage = CGFloat(0)
@@ -303,22 +325,22 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         UIView.animate(withDuration: 1.5, delay: 0, options: .curveEaseInOut, animations: {
             cell.menuCard.activityLevelBar.animateBar()
         }) { (_) in }
-        
+
         return cell
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
             return 0
     }
-        
+
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
+
     func showItemDetailViewControllerFor(menuItem: Item?) {
         self.menuItem = menuItem
         self.performSegue(withIdentifier: "segueToItemDetailVC", sender: nil)
@@ -335,16 +357,18 @@ class MenuVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
     }
 
     func showDetailViewController(location: Location?) {
-        self.performSegue(withIdentifier: "segueToDetailVC",
-                sender: MenuDetailSender(
-                        location: location,
-                        activityLevelData: activityLevelData,
-                        initDate: initDate,
-                        initMP: initMP,
-                        currDate: currDate,
-                        currMP: currMP,
-                        hoursData: hoursData
-                ))
+        if(didDetailedMenuLoad){
+            self.performSegue(withIdentifier: "segueToDetailVC",
+                    sender: MenuDetailSender(
+                            location: location,
+                            activityLevelData: activityLevelData,
+                            initDate: initDate,
+                            initMP: initMP,
+                            currDate: currDate,
+                            currMP: currMP,
+                            hoursData: hoursData
+                    ))
+        }
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

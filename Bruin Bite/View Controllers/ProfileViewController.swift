@@ -16,14 +16,6 @@ class ProfileViewController: UIViewController, ReadDelegate, AlertPresentable, L
     @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var yearMajor: UILabel!
     @IBOutlet weak var shortBio: UITextView!
-    
-    private var COMING_SOON_POPUP: UIAlertController {
-        get {
-            let alert =  UIAlertController(title: "Edit Profile Coming Soon", message: "We're working hard on this feature and you will be able to edit your profile soon. Meanwhile you can email us at hello.bruin-bite@gmail.com with the profile changes you want and we'll update it for you!", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-            return alert
-        }
-    }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -85,10 +77,6 @@ class ProfileViewController: UIViewController, ReadDelegate, AlertPresentable, L
         let major: String = UserDefaultsManager.shared.getMajor()
         yearMajor.text = "Year: \(year)" + " | " + "Major: \(major)"
         shortBio.text = UserDefaultsManager.shared.getSelfBio()
-    }
-
-    @IBAction func didPressEditProfile(_ sender: Any) {
-        self.present(COMING_SOON_POPUP, animated: true)
     }
     
     @IBAction func didPressFeedback(_ sender: Any) {

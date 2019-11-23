@@ -48,13 +48,21 @@ class CreateProfileViewController: UIViewController, UpdateDelegate, AlertPresen
         BioPic.addGestureRecognizer(tapGestureRecognizer)
 
     }
-
+    
+    override func willMove(toParentViewController parent: UIViewController?)
+    {
+        super.willMove(toParentViewController: parent)
+        if parent == nil
+        {
+            // Use Maya delete endpoint
+            UserManager.shared.deleteUser(email: UserManager.shared.getEmail())
+        }
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        let xButton = UIBarButtonItem(image: UIImage(named: "x"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(popToRoot(_:)))
-        self.navigationController?.navigationBar.topItem?.rightBarButtonItem = xButton
     }
-
+    
     @IBAction func nextButtonPressed (_ sender: Any?) {
         //activityIndicator.startAnimating()
         UserManager.shared.signupUpdate(email: UserManager.shared.getEmail(),
