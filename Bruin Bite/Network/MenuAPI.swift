@@ -164,23 +164,18 @@ extension API{
                         currMenu.date = menu["menuDate"].stringValue
                         let overview = menu["detailedMenu"]
                         var parsedMeal: [MealPeriod: [Location: [Item]]] = [:]
-                        var brunch = false
                         for (time, meal) in overview{
                             var parsedLocation: [Location: [Item]] = [:]
                             var mealPeriod: MealPeriod = MealPeriod.breakfast
                             switch(time){ // sets mealPeriod based on input, accounts for brunch
                             case "breakfast":
                                 mealPeriod = MealPeriod.breakfast
-                                if (meal.isEmpty){
-                                    brunch = true
-                                    continue
-                                }
                                 break
                             case "lunch":
                                 mealPeriod = MealPeriod.lunch
-                                if(brunch){
-                                    mealPeriod = MealPeriod.brunch
-                                }
+                                break
+                            case "brunch":
+                                mealPeriod = MealPeriod.brunch
                                 break
                             case "dinner":
                                 mealPeriod = MealPeriod.dinner
