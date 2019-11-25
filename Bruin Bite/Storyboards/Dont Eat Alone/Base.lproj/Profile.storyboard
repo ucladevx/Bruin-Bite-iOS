@@ -315,9 +315,6 @@
                                             <constraint firstItem="dXo-QI-h05" firstAttribute="leading" secondItem="OcW-Jd-dX3" secondAttribute="leading" constant="64" id="uvM-zn-EeQ"/>
                                             <constraint firstItem="O4X-Tp-ehv" firstAttribute="leading" secondItem="OcW-Jd-dX3" secondAttribute="leading" constant="64" id="z6J-Ox-RjB"/>
                                         </constraints>
-                                        <connections>
-                                            <outletCollection property="gestureRecognizers" destination="5Pf-en-M0P" appends="YES" id="Xfa-NN-SrZ"/>
-                                        </connections>
                                     </stackView>
                                 </subviews>
                                 <constraints>
@@ -351,7 +348,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OwB-us-t2f" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="5Pf-en-M0P"/>
             </objects>
             <point key="canvasLocation" x="1009" y="1091"/>
         </scene>

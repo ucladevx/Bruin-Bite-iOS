@@ -49,6 +49,9 @@ class EditProfileViewController: UIViewController, UITextViewDelegate, ProfilePi
 
         registerForKeyboardNotifications()
         
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing))
+        stackView.addGestureRecognizer(tap)
+        
         ProfilePictureAPI().download(pictureForUserID: UserManager.shared.getUID(), delegate: self)
     }
 
