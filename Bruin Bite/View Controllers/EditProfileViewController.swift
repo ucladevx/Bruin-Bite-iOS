@@ -5,7 +5,7 @@
 
 import UIKit
 
-class EditProfileViewController: UIViewController, UITextViewDelegate, ProfilePictureDownloadDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, ProfilePictureUploadDelegate {
+class EditProfileViewController: UIViewController, UITextViewDelegate, ProfilePictureDownloadDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, ProfilePictureUploadDelegate, UITextFieldDelegate {
 
     @IBOutlet weak var profilePic: UIImageView!
     @IBOutlet weak var userName: UITextField!
@@ -13,7 +13,10 @@ class EditProfileViewController: UIViewController, UITextViewDelegate, ProfilePi
     @IBOutlet weak var major: UITextField!
     @IBOutlet weak var bio: UITextView!
     @IBOutlet weak var bioChar: UILabel!
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var stackView: UIStackView!
     var imagePickerController: UIImagePickerController?
+    var activeField: UIView?
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -41,6 +44,11 @@ class EditProfileViewController: UIViewController, UITextViewDelegate, ProfilePi
         bio.delegate = self
         bioChar.text = "\(bio.text.count)"
 
+        self.userName.delegate = self
+        self.major.delegate = self
+
+        registerForKeyboardNotifications()
+        
         ProfilePictureAPI().download(pictureForUserID: UserManager.shared.getUID(), delegate: self)
     }
 
@@ -53,6 +61,7 @@ class EditProfileViewController: UIViewController, UITextViewDelegate, ProfilePi
     }
 
     override func viewWillDisappear(_ animated: Bool) {
+        deregisterFromKeyboardNotifications()
         if self.navigationController?.viewControllers.index(of: self) == nil {
             if let userNameText = userName.text,
                let majorText = major.text,
@@ -132,6 +141,68 @@ class EditProfileViewController: UIViewController, UITextViewDelegate, ProfilePi
             }))
             self.present(alert, animated: true, completion: nil)
         }
+    }
+    
+    
+    func registerForKeyboardNotifications()
+    {
+        //Adding notifies on keyboard appearing
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWasShown), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillBeHidden), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+
+
+    func deregisterFromKeyboardNotifications()
+    {
+        //Removing notifies on keyboard appearing
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+
+    @objc func keyboardWasShown(notification: NSNotification){
+        //Need to calculate keyboard exact size due to Apple suggestions
+        self.scrollView.isScrollEnabled = true
+        let info = notification.userInfo!
+        let keyboardSize = (info[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size
+        let contentInsets : UIEdgeInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: keyboardSize!.height, right: 0.0)
+
+        self.scrollView.contentInset = contentInsets
+        self.scrollView.scrollIndicatorInsets = contentInsets
+
+        var aRect : CGRect = self.view.frame
+        aRect.size.height -= keyboardSize!.height
+        if let activeField = self.activeField {
+            if (!aRect.contains(activeField.frame.origin)){
+                self.scrollView.scrollRectToVisible(activeField.frame, animated: true)
+            }
+        }
+    }
+
+    @objc func keyboardWillBeHidden(notification: NSNotification){
+        //Once keyboard disappears, restore original positions
+        let info = notification.userInfo!
+        let keyboardSize = (info[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size
+        let contentInsets : UIEdgeInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: -keyboardSize!.height, right: 0.0)
+        self.scrollView.contentInset = contentInsets
+        self.scrollView.scrollIndicatorInsets = contentInsets
+        self.view.endEditing(true)
+        self.scrollView.isScrollEnabled = false
+    }
+
+    func textFieldDidBeginEditing(_ textField: UITextField){
+        activeField = textField
+    }
+
+    func textFieldDidEndEditing(_ textField: UITextField){
+        activeField = nil
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView){
+        activeField = textView
+    }
+
+    func textViewDidEndEditing(_ textView: UITextView){
+        activeField = nil
     }
 }
 

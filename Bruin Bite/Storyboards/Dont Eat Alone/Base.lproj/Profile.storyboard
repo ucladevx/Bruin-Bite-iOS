@@ -3,7 +3,7 @@
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -287,6 +287,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
+                                        <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="dXo-QI-h05" secondAttribute="trailing" constant="64" id="0bM-W5-e20"/>
                                             <constraint firstAttribute="trailing" secondItem="tm5-Eg-SYo" secondAttribute="trailing" constant="64" id="1Z6-9j-spv"/>
@@ -314,6 +315,9 @@
                                             <constraint firstItem="dXo-QI-h05" firstAttribute="leading" secondItem="OcW-Jd-dX3" secondAttribute="leading" constant="64" id="uvM-zn-EeQ"/>
                                             <constraint firstItem="O4X-Tp-ehv" firstAttribute="leading" secondItem="OcW-Jd-dX3" secondAttribute="leading" constant="64" id="z6J-Ox-RjB"/>
                                         </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="5Pf-en-M0P" appends="YES" id="Xfa-NN-SrZ"/>
+                                        </connections>
                                     </stackView>
                                 </subviews>
                                 <constraints>
@@ -340,11 +344,14 @@
                         <outlet property="bioChar" destination="V3J-ta-kh9" id="tDd-Hu-KQV"/>
                         <outlet property="major" destination="ow8-vK-2BQ" id="eDZ-fl-S7N"/>
                         <outlet property="profilePic" destination="9wq-Fp-gYg" id="YO6-yk-mOU"/>
+                        <outlet property="scrollView" destination="k6R-So-FAu" id="ION-1R-hsV"/>
+                        <outlet property="stackView" destination="OcW-Jd-dX3" id="T9C-pQ-gsD"/>
                         <outlet property="userName" destination="5kY-8o-9Kt" id="d6c-20-g2n"/>
                         <outlet property="year" destination="O4X-Tp-ehv" id="Wza-M5-dPd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OwB-us-t2f" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="5Pf-en-M0P"/>
             </objects>
             <point key="canvasLocation" x="1009" y="1091"/>
         </scene>
