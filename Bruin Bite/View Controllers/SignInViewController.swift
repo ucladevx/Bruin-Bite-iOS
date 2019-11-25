@@ -19,6 +19,7 @@ class SignInViewController: UIViewController, LoginDelegate, AlertPresentable {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setPlaceholderText()
         //activityIndicator.hidesWhenStopped = true
         UserManager.shared.loginDelegate = self
 
@@ -53,5 +54,20 @@ class SignInViewController: UIViewController, LoginDelegate, AlertPresentable {
     func loginFailed(error: String) {
         //activityIndicator.stopAnimating()
         presentAlert(alert: error)
+    }
+    func setPlaceholderText()
+    {
+        let placeholderText = ["Email", "Password"]
+        var results = [NSMutableAttributedString]()
+        
+        for i in 0...1
+        {
+            let Name  = placeholderText[i] // PlaceHolderText
+            let myMutableStringTitle = NSMutableAttributedString(string:Name, attributes: [:]) // Font
+            myMutableStringTitle.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor(red: 179/255, green: 179/255, blue: 179/255, alpha: 1.0), range:NSRange(location:0,length:Name.characters.count))
+            results.append(myMutableStringTitle)
+        }
+        EmailText.attributedPlaceholder = results[0]
+        PasswordText.attributedPlaceholder = results[1]
     }
 }

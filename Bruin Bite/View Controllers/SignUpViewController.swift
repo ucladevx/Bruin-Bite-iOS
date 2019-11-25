@@ -29,8 +29,12 @@ class SignUpViewController: UIViewController, SignupDelegate, LoginDelegate, Ale
         }
     }
     
+    
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        
+        setPlaceholderText()
         //activityIndicator.hidesWhenStopped = true
         UserManager.shared.signupDelegate = self
         UserManager.shared.loginDelegate = self
@@ -89,5 +93,23 @@ class SignUpViewController: UIViewController, SignupDelegate, LoginDelegate, Ale
     func loginFailed(error: String) {
         //activityIndicator.stopAnimating()
         presentAlert(alert: error)
+    }
+    
+    func setPlaceholderText()
+    {
+        let placeholderText = ["Name", "Email", "Password", "Confirm Password"]
+        var results = [NSMutableAttributedString]()
+        
+        for i in 0...3
+        {
+            let Name  = placeholderText[i] // PlaceHolderText
+            let myMutableStringTitle = NSMutableAttributedString(string:Name, attributes: [:]) // Font
+            myMutableStringTitle.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor(red: 179/255, green: 179/255, blue: 179/255, alpha: 1.0), range:NSRange(location:0,length:Name.characters.count))
+                results.append(myMutableStringTitle)
+        }
+        NameText.attributedPlaceholder = results[0]
+        EmailText.attributedPlaceholder = results[1]
+        PasswordText.attributedPlaceholder = results[2]
+        ConfirmPassText.attributedPlaceholder = results[3]
     }
 }
