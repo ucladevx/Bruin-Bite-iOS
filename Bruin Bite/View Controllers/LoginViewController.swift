@@ -69,16 +69,12 @@ class LoginViewController: UIViewController {
         view.backgroundColor = UIColor.twilightBlue
 
         // set SignInButton font, color, text
-        let SignInText = NSMutableAttributedString(string:"Sign In", attributes:attrs)
-        attributedString.append(SignInText)
-        SignInButton.setAttributedTitle(attributedString, for: .normal)
         SignInButton.backgroundColor = .clear
         SignInButton.setTitleColor(UIColor.white, for: .normal)
         SignInButton.titleLabel?.font = UIFont.signInFont
         SignInButton.layer.borderWidth = 1
         SignInButton.layer.borderColor = UIColor.white.cgColor
         SignInButton.layer.cornerRadius = 26
-        SignInButton.setTitleColor(UIColor.white, for: .normal)
 
         // set SignUpButton font, color, text, border
         SignUpButton.layer.borderWidth = 1

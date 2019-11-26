@@ -23,7 +23,7 @@ extension UIFont {
     }
     
     class var signInFont: UIFont {
-        return UIFont.systemFont(ofSize: 14.0, weight: .regular)
+        return UIFont.systemFont(ofSize: 18.0, weight: .regular)
     }
     
     class var signUpTextFont: UIFont {
