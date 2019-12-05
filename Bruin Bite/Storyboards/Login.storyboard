@@ -340,6 +340,9 @@
                                 <state key="normal" title="Forgot password?">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="didPressForgotPassword:" destination="sP5-yX-Ktb" eventType="touchUpInside" id="eG5-gB-AxN"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.027450980390000001" green="0.2901960784" blue="0.46666666670000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -632,6 +635,6 @@
         <image name="ProfilePic" width="139" height="139"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="MmQ-ad-1AU"/>
+        <segue reference="llT-Nr-fs9"/>
     </inferredMetricsTieBreakers>
 </document>
