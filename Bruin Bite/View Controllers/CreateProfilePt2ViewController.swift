@@ -29,6 +29,7 @@ class CreateProfilePt2ViewController: UIViewController, UpdateDelegate, AlertPre
     override func viewDidLoad() {
         super.viewDidLoad()
         //activityIndicator.hidesWhenStopped = true
+        setPlaceholderText()
         UserManager.shared.updateDelegate = self
 
         view.backgroundColor = UIColor.twilightBlue
@@ -82,5 +83,14 @@ class CreateProfilePt2ViewController: UIViewController, UpdateDelegate, AlertPre
                                         minor: UserManager.shared.getMinor(),
                                         year: chosenYear,
                                         self_bio: UserManager.shared.getBio())
+    }
+    func setPlaceholderText()
+    {
+            let Name  = "Major" // PlaceHolderText
+            let myMutableStringTitle = NSMutableAttributedString(string:Name, attributes: [:]) // Font
+            myMutableStringTitle.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor(red: 179/255, green: 179/255, blue: 179/255, alpha: 1.0), range:NSRange(location:0,length:Name.characters.count))
+
+        MajorText.attributedPlaceholder = myMutableStringTitle
+
     }
 }
