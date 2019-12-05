@@ -46,7 +46,7 @@ class SignInViewController: UIViewController, LoginDelegate, AlertPresentable {
     }
     
     @IBAction func didPressForgotPassword(_ sender: UIButton) {
-        guard let url = URL(string: "https://api.bruin-bite.com/password_reset") else {
+        guard let url = URL(string: "https://dev.bruin-bite.com/password_reset") else {
             return
         }
         let vc = SFSafariViewController(url: url)

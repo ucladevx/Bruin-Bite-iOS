@@ -42,7 +42,7 @@ class ChatScreenViewController: UIViewController, UITableViewDelegate, UITableVi
     // get-only "var"
     var BACKEND_CHAT_WEBSOCKET_URL: String {
         get {
-            return "https://api.bruin-bite.com/api/v1/messaging/chat/"
+            return "https://dev.bruin-bite.com/api/v1/messaging/chat/"
         }
     }
 
