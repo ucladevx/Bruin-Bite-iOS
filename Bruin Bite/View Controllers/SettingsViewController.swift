@@ -21,7 +21,7 @@ class SettingsViewController: UIViewController {
     
     @IBAction func didPressLogout(_ sender: Any) {
         UserManager.shared.logOutUser(token: UserManager.shared.getAccessToken())
-        self.performSegue(withIdentifier: "segueToLogin", sender: nil)
+        self.performSegue(withIdentifier: "login", sender: nil)
     }
     
 }
