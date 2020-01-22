@@ -67,6 +67,11 @@ class SignUpViewController: UIViewController, SignupDelegate, LoginDelegate, Ale
             Utilities.sharedInstance.displayErrorLabel(text: "Enter a valid email", field: EmailText)
             return
         }
+        if(!(EmailText.text?.contains("@ucla.edu") ?? false))
+        {
+            Utilities.sharedInstance.displayErrorLabel(text: "Please use your @ucla.edu email", field: EmailText)
+            return
+        }
         if((PasswordText.text ?? "") != ConfirmPassText.text ) { //I was worried about nil == nil
             Utilities.sharedInstance.displayErrorLabel(text: "Passwords do not match", field: ConfirmPassText)
             return
