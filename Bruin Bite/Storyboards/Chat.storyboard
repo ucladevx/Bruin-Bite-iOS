@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -206,7 +206,7 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Label" translatesAutoresizingMaskIntoConstraints="NO" id="KV0-SQ-Wy1" customClass="DesignableTextView" customModule="Bruin_Bite" customModuleProvider="target">
-                                                            <rect key="frame" x="15" y="8" width="73" height="44"/>
+                                                            <rect key="frame" x="15" y="19" width="73" height="38"/>
                                                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -220,7 +220,7 @@
                                                             </userDefinedRuntimeAttributes>
                                                         </textView>
                                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Label" translatesAutoresizingMaskIntoConstraints="NO" id="Eye-S8-SSV" customClass="DesignableTextView" customModule="Bruin_Bite" customModuleProvider="target">
-                                                            <rect key="frame" x="287" y="8" width="73" height="44"/>
+                                                            <rect key="frame" x="287" y="19" width="73" height="38"/>
                                                             <color key="backgroundColor" red="0.027450980392156862" green="0.29019607843137252" blue="0.46666666666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <inset key="scrollIndicatorInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -235,21 +235,30 @@
                                                                 </userDefinedRuntimeAttribute>
                                                             </userDefinedRuntimeAttributes>
                                                         </textView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kNt-mT-jDq" userLabel="Timestamp">
+                                                            <rect key="frame" x="187.5" y="2" width="0.0" height="0.0"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
                                                     </subviews>
                                                     <constraints>
                                                         <constraint firstItem="KV0-SQ-Wy1" firstAttribute="leading" secondItem="E1X-qB-6A2" secondAttribute="leading" constant="15" id="MjH-KP-c4M"/>
-                                                        <constraint firstItem="Eye-S8-SSV" firstAttribute="top" secondItem="E1X-qB-6A2" secondAttribute="top" constant="8" id="S7G-Nb-NYS"/>
-                                                        <constraint firstItem="KV0-SQ-Wy1" firstAttribute="top" secondItem="E1X-qB-6A2" secondAttribute="top" constant="8" id="cqS-cC-WMk"/>
+                                                        <constraint firstItem="Eye-S8-SSV" firstAttribute="top" secondItem="E1X-qB-6A2" secondAttribute="top" constant="19" id="S7G-Nb-NYS"/>
+                                                        <constraint firstItem="kNt-mT-jDq" firstAttribute="top" secondItem="E1X-qB-6A2" secondAttribute="top" constant="2" id="VPz-mo-hNL"/>
+                                                        <constraint firstItem="KV0-SQ-Wy1" firstAttribute="top" secondItem="E1X-qB-6A2" secondAttribute="top" constant="19" id="cqS-cC-WMk"/>
                                                         <constraint firstItem="KV0-SQ-Wy1" firstAttribute="width" relation="lessThanOrEqual" secondItem="E1X-qB-6A2" secondAttribute="width" multiplier="0.75" id="deq-V1-l0n"/>
                                                         <constraint firstAttribute="trailing" secondItem="Eye-S8-SSV" secondAttribute="trailing" constant="15" id="eJL-2r-MGy"/>
+                                                        <constraint firstItem="kNt-mT-jDq" firstAttribute="centerX" secondItem="E1X-qB-6A2" secondAttribute="centerX" id="efI-HU-eua"/>
                                                         <constraint firstItem="Eye-S8-SSV" firstAttribute="width" relation="lessThanOrEqual" secondItem="E1X-qB-6A2" secondAttribute="width" multiplier="0.75" id="gN5-ZU-SgW"/>
-                                                        <constraint firstAttribute="bottom" secondItem="KV0-SQ-Wy1" secondAttribute="bottom" constant="8" id="hVE-Ig-1Fp"/>
-                                                        <constraint firstAttribute="bottom" secondItem="Eye-S8-SSV" secondAttribute="bottom" constant="8" id="iAd-8Y-EUh"/>
+                                                        <constraint firstAttribute="bottom" secondItem="KV0-SQ-Wy1" secondAttribute="bottom" constant="3" id="hVE-Ig-1Fp"/>
+                                                        <constraint firstAttribute="bottom" secondItem="Eye-S8-SSV" secondAttribute="bottom" constant="3" id="iAd-8Y-EUh"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <connections>
                                                     <outlet property="receivedMessageLabel" destination="KV0-SQ-Wy1" id="xtT-Ni-4Gw"/>
                                                     <outlet property="sentMessageLabel" destination="Eye-S8-SSV" id="qth-uo-IcV"/>
+                                                    <outlet property="timestampLabel" destination="kNt-mT-jDq" id="oEp-ly-UVS"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>

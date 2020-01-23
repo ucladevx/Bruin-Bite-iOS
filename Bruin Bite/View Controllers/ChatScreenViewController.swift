@@ -21,7 +21,7 @@ enum ChatPopupType{
 class MessageBubbleCell: UITableViewCell {
     @IBOutlet weak var receivedMessageLabel: UITextView!
     @IBOutlet weak var sentMessageLabel: UITextView!
-
+    @IBOutlet weak var timestampLabel: UILabel!
     var debugData: ChatMessage = ChatMessage(timestamp: "", handle: "", message: "")
 }
 
@@ -109,9 +109,71 @@ class ChatScreenViewController: UIViewController, UITableViewDelegate, UITableVi
             cell.receivedMessageLabel.isHidden = false
             cell.receivedMessageLabel.text = currMessage.message
         }
+        
+        //Timestamp code
+        let currentTimestamp = currMessage.timestamp
+        let formattedTimestamp = currMessage.timestamp.toDateString(inputDateFormat: "yyyy-MM-dd'T'HH:mm:ss.SSSZ", ouputDateFormat: "hh:mm a MMM dd")
+        
+        let prevIndexRow = indexPath.row - 1
+        var displayTimestamp = false
+        
+        if(prevIndexRow >= 0)
+        {
+            let previousTimestamp = messagesList[prevIndexRow].timestamp
+            print(previousTimestamp)
+            displayTimestamp = decideToDisplayTimestamp(prevTimestamp: previousTimestamp, currTimestamp: currentTimestamp)
+        }
+        else
+        {
+            displayTimestamp = true
+        }
+        
+        if(displayTimestamp)
+        {
+            cell.timestampLabel.text = formattedTimestamp
+        }
+        else
+        {
+            cell.timestampLabel.text = ""
+        }
         cell.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi));
         cell.sizeToFit()
         return cell
+    }
+    
+    func decideToDisplayTimestamp(prevTimestamp: String, currTimestamp: String) -> Bool
+    {
+        var interval = Double()
+        var postJustMade = false
+        //Convert both the previous date stored int the class and the date passed into the function from strings to date objects
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+
+        let objectPrevTimestamp = dateFormatter.date(from: prevTimestamp)
+        
+        let objectCurrTimestamp = dateFormatter.date(from: currTimestamp)
+        
+        if(!(objectPrevTimestamp != nil) || !(objectCurrTimestamp != nil))
+        {
+            postJustMade = true
+        }
+        
+        if (postJustMade == false)
+        {
+            interval = objectPrevTimestamp!.timeIntervalSince(objectCurrTimestamp!)
+        }
+        else
+        {
+            interval = 0
+        }
+        if (interval >= 300)
+        {
+            return true
+        }
+        else
+        {
+            return false
+        }
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -294,5 +356,16 @@ class ChatScreenViewController: UIViewController, UITableViewDelegate, UITableVi
              dest.time = "6:00 pm"
             */
         }
+    }
+}
+extension String
+{
+    func toDateString( inputDateFormat inputFormat  : String,  ouputDateFormat outputFormat  : String ) -> String
+    {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = inputFormat
+        let date = dateFormatter.date(from: self)
+        dateFormatter.dateFormat = outputFormat
+        return dateFormatter.string(from: date ?? Date())
     }
 }
