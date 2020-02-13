@@ -21,6 +21,9 @@ protocol MatchRequestDelegate {
     func matchRequestSent(successfully: Bool)
     func matchRequestDuplicate()
 }
+protocol GetUserDelegate {
+    func didReceiveUser(userData: UserCreate)
+}
 
 class MatchingAPI {
     private let provider = MoyaProvider<MainAPI>()
@@ -84,6 +87,24 @@ class MatchingAPI {
                     completionDelegate?.matchRequestSent(successfully: false)
                 }
                 print(error)
+            }
+        }
+    }
+    
+    func getUserById(completionDelegate: GetUserDelegate?, id: Int){
+        provider.request(.readUserById(id: String(id))) { result in
+            switch result {
+            case let .success(response):
+                do{
+                    let resultStruct = try JSONDecoder().decode(UserCreate.self, from: response.data)
+                    completionDelegate?.didReceiveUser(userData: resultStruct)
+                } catch let err {
+                    print ("Error parsing response JSON into UserModel struct")
+                    print (err)
+                }
+            case let .failure(error):
+                print("Error retrieving user")
+                print(error.errorDescription ?? "")
             }
         }
     }

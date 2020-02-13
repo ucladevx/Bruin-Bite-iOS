@@ -16,6 +16,7 @@ enum MainAPI {
     case getHours
     case createUser(email: String, password: String, firstName: String, is_active: Bool)
     case readUser(email: String)
+    case readUserById(id: String)
     case loginUser(username:String, password: String, grant_type: String, client_id: String, client_secret: String)
     case logoutUser(token: String, client_id: String, client_secret: String)
     case updateUser(email: String, first_name: String, last_name: String, major: String, minor: String, year: Int, self_bio: String) //send it as it is if it hasn't changed
@@ -38,9 +39,11 @@ extension MainAPI: TargetType {
     var baseURL: URL {
         switch self {
         case .getCurrentActivityLevels, .getOverviewMenu, .getDetailedMenu, .getHours:
-            return URL(string: "https://dev.bruin-bite.com/api/v1")!
-        case .createUser, .readUser, .loginUser, .logoutUser, .updateUser, .updateDeviceID, .deleteUser, .matchUser, .refreshToken, .getRequests, .getMatches, .chatList, .last50Messages, .unmatchUser, .reportUser, .uploadProfilePicture, .getProfilePicture:
-            return URL(string: "https://dev.bruin-bite.com/api/v1")!
+            //return URL(string: "https://api.bruin-bite.com/api/v1")!
+            return URL(string: "http://localhost:5000/api/v1")!
+        case .createUser, .readUser, .readUserById, .loginUser, .logoutUser, .updateUser, .updateDeviceID, .deleteUser, .matchUser, .refreshToken, .getRequests, .getMatches, .chatList, .last50Messages, .unmatchUser, .reportUser, .uploadProfilePicture, .getProfilePicture:
+            //return URL(string: "https://api.bruin-bite.com/api/v1")!
+            return URL(string: "http://localhost:8000/api/v1")!
         }
 
     }
@@ -60,7 +63,7 @@ extension MainAPI: TargetType {
             return "/users/o/token/"
         case .logoutUser:
             return "/users/o/revoke_token"
-        case .readUser, .updateUser, .deleteUser, .updateDeviceID:
+        case .readUser, .readUserById, .updateUser, .deleteUser, .updateDeviceID:
             return "/users/data/"
         case .matchUser:
             return "/users/matching/requests"
@@ -84,7 +87,7 @@ extension MainAPI: TargetType {
     }
     var method: Moya.Method {
         switch self {
-        case .getCurrentActivityLevels, .getOverviewMenu, .getDetailedMenu, .getHours, .readUser, .getRequests, .getMatches, .chatList, .last50Messages, .getProfilePicture:
+        case .getCurrentActivityLevels, .getOverviewMenu, .getDetailedMenu, .getHours, .readUser, .readUserById, .getRequests, .getMatches, .chatList, .last50Messages, .getProfilePicture:
             return .get
         case .createUser, .loginUser, .logoutUser, .matchUser, .refreshToken, .reportUser, .uploadProfilePicture:
             return .post
@@ -106,6 +109,8 @@ extension MainAPI: TargetType {
             return .requestParameters(parameters: ["token": token, "client_id": client_id, "client_secret": client_secret], encoding: URLEncoding.default)
         case .readUser(let email):
             return .requestParameters(parameters: ["email": email], encoding: URLEncoding.queryString)
+        case .readUserById(let id):
+            return .requestParameters(parameters: ["id": id], encoding: URLEncoding.queryString)
         case .updateUser(let email, let first_name, let last_name, let major, let minor, let year, let self_bio):
             return .requestParameters(parameters: ["email": email, "first_name": first_name, "last_name": last_name, "major": major, "minor": minor, "year": year, "self_bio": self_bio], encoding: JSONEncoding.default)
         case .updateDeviceID:
@@ -156,6 +161,8 @@ extension MainAPI: TargetType {
             return Data()
         case .readUser:
             return Data()
+        case .readUserById:
+            return Data()
         case .updateUser:
             return Data()
         case .deleteUser:
@@ -194,7 +201,7 @@ extension MainAPI: TargetType {
             return ["Content-Type": "application/json"]
         case .loginUser, .refreshToken, .logoutUser:
             return ["Content-Type": "application/x-www-form-urlencoded"]
-        case .readUser, .updateUser, .updateDeviceID, .deleteUser, .matchUser, .getRequests, .getMatches, .chatList, .last50Messages, .reportUser, .unmatchUser, .uploadProfilePicture, .getProfilePicture:
+        case .readUser, .readUserById, .updateUser, .updateDeviceID, .deleteUser, .matchUser, .getRequests, .getMatches, .chatList, .last50Messages, .reportUser, .unmatchUser, .uploadProfilePicture, .getProfilePicture:
             var temp = "Bearer "
             temp += UserDefaultsManager.shared.getAccessToken()
             return ["Authorization": temp]

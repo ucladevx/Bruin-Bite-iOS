@@ -19,6 +19,7 @@
 		00C2DF0920B678890023CF75 /* Moya.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C2DF0820B678890023CF75 /* Moya.swift */; };
 		00C2DF1120B6790D0023CF75 /* keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C2DF1020B6790D0023CF75 /* keys.swift */; };
 		00D654E1227EAAA000500AF4 /* ReportAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D654E0227EAAA000500AF4 /* ReportAPI.swift */; };
+		00F696D723F50A1F00A49DB8 /* MatchProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F696D623F50A1F00A49DB8 /* MatchProfileViewController.swift */; };
 		2A03D93E20B76529004EFC97 /* TimePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A03D93D20B76529004EFC97 /* TimePickerViewController.swift */; };
 		2A03D94320B76C92004EFC97 /* PopupViewControllers.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A03D94220B76C91004EFC97 /* PopupViewControllers.storyboard */; };
 		2A03D94620B77A1A004EFC97 /* TimePickerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A03D94520B77A1A004EFC97 /* TimePickerCollectionViewCell.swift */; };
@@ -138,6 +139,7 @@
 		00C2DF0820B678890023CF75 /* Moya.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Moya.swift; sourceTree = "<group>"; };
 		00C2DF1020B6790D0023CF75 /* keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = keys.swift; sourceTree = "<group>"; };
 		00D654E0227EAAA000500AF4 /* ReportAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportAPI.swift; sourceTree = "<group>"; };
+		00F696D623F50A1F00A49DB8 /* MatchProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchProfileViewController.swift; sourceTree = "<group>"; };
 		0934E0A890547BC163C95F6D /* Pods-Bruin BiteUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bruin BiteUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bruin BiteUITests/Pods-Bruin BiteUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		2297A93A4C0BCDCDA33D889F /* Pods-Bruin BiteTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bruin BiteTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bruin BiteTests/Pods-Bruin BiteTests.release.xcconfig"; sourceTree = "<group>"; };
 		2A03D93D20B76529004EFC97 /* TimePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerViewController.swift; sourceTree = "<group>"; };
@@ -313,6 +315,7 @@
 				2AFA40B320BC07BC0007FB85 /* MatchingViewControllers */,
 				2A03D94020B76B88004EFC97 /* PopupViewControllers */,
 				BF0523E2209AA7E00013EE11 /* ProfileViewController.swift */,
+				00F696D623F50A1F00A49DB8 /* MatchProfileViewController.swift */,
 				770251B5201D4079002E4515 /* MenuVC.swift */,
 				2AFB41322047DD86004025F9 /* ItemDetailViewController.swift */,
 				BDDE7C6F207B04590008A677 /* MatchingListViewController.swift */,
@@ -784,6 +787,7 @@
 				2A744895203BBDBC00793AD3 /* MenuCardView.swift in Sources */,
 				C7F24355C1F5930CCD314312 /* UIViewBorder.swift in Sources */,
 				BDAED25F219FD601005A22F3 /* UserModel.swift in Sources */,
+				00F696D723F50A1F00A49DB8 /* MatchProfileViewController.swift in Sources */,
 				C7F19A69CA646BA279F032D9 /* MenuDetailViewController.swift in Sources */,
 				C7F8852A39898A0DFED430CA /* MenuDetailSectionHeader.swift in Sources */,
 				0032C5D52272BC1900841169 /* ChatDetailsViewController.swift in Sources */,
