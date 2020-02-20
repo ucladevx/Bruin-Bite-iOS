@@ -76,6 +76,12 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
         let cell = tableView.dequeueReusableCell(withIdentifier: "ChatListCell", for: indexPath) as! ChatListTableViewCell
         cell.nameLabel.text = data[indexPath.row].user2_first_name + " " + data[indexPath.row].user2_last_name
         cell.profileImage.image = profilePictures[data[indexPath.row].user2] ?? UIImage(named: "DefaultProfile")
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.profileTapped(_:)))
+        cell.profileImage.isUserInteractionEnabled = true
+        cell.profileImage.tag = data[indexPath.row].user2
+        cell.profileImage.addGestureRecognizer(tapGestureRecognizer)
+        
         var dateString = ""
         var timeString = ""
         if let date = getDateObject(fromDateTimeString: data[indexPath.row].meal_datetime) {
@@ -123,6 +129,11 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
                 destVC.chatItem = selectedChat
             }
         }
+        else if segue.identifier == "showUserProfile" {
+            guard let UID = sender as? Int,
+                let destVC = segue.destination as? MatchProfileViewController else { return }
+            destVC.userID = UID
+        }
     }
     @IBAction func unwindToChatListViewController(segue: UIStoryboardSegue) {
     }
@@ -134,6 +145,10 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
     
     func profilePicture(failedWithError error: String?) {
         print("Could not download profile photo\(error ?? "")")
+    }
+    
+    @objc func profileTapped(_ sender:AnyObject){
+        self.performSegue(withIdentifier: "showUserProfile", sender: sender.view.tag)
     }
     
     // UTILITY FUNCTIONS:

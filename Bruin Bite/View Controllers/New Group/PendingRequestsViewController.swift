@@ -95,6 +95,11 @@ class PendingRequestsViewController: UIViewController, LoginAlertPresentable {
                 let destVC = segue.destination as? ChatScreenViewController else { return }
             destVC.chatItem = matchObj
         }
+        else if segue.identifier == "showUserProfile" {
+            guard let UID = sender as? Int,
+                let destVC = segue.destination as? MatchProfileViewController else { return }
+            destVC.userID = UID
+        }
     }
     
     @IBAction func switchTable(_ sender: Any) {
@@ -113,6 +118,13 @@ class PendingRequestsViewController: UIViewController, LoginAlertPresentable {
         }
         switchTable.changeButtonBarPosition()
         matchTable.reloadData()
+    }
+    
+    @objc func profileTapped(_ sender:AnyObject){
+        self.performSegue(withIdentifier: "showUserProfile", sender: sender.view.tag)
+    }
+    
+    @IBAction func unwindToPendingRequestsViewController(segue: UIStoryboardSegue) {
     }
 }
 
@@ -167,6 +179,12 @@ extension PendingRequestsViewController: UITableViewDelegate, UITableViewDataSou
             cell.picImage.clipsToBounds = true
             cell.picImage.layer.cornerRadius = cell.picImage.frame.height/2
             cell.picImage.image = self.profilePictures[currRowMatch.user2] ?? UIImage(named: "DefaultProfile")
+            
+            let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.profileTapped(_:)))
+
+            cell.picImage.isUserInteractionEnabled = true
+            cell.picImage.tag = currRowMatch.user2
+            cell.picImage.addGestureRecognizer(tapGestureRecognizer)
             
             cell.name.text = currRowMatch.user2_first_name + " " + currRowMatch.user2_last_name
             cell.actionBlock = {
