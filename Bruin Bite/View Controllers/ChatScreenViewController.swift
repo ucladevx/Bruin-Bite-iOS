@@ -117,17 +117,15 @@ class ChatScreenViewController: UIViewController, UITableViewDelegate, UITableVi
         let prevIndexRow = indexPath.row - 1
         var displayTimestamp = false
         
-        if(prevIndexRow >= 0)
+        if(prevIndexRow >= 0)   //Always show the most recent timestamp
         {
             let previousTimestamp = messagesList[prevIndexRow].timestamp
-            print(previousTimestamp)
             displayTimestamp = decideToDisplayTimestamp(prevTimestamp: previousTimestamp, currTimestamp: currentTimestamp)
         }
         else
         {
             displayTimestamp = true
         }
-        
         if(displayTimestamp)
         {
             cell.timestampLabel.text = formattedTimestamp
@@ -143,6 +141,7 @@ class ChatScreenViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func decideToDisplayTimestamp(prevTimestamp: String, currTimestamp: String) -> Bool
     {
+        //decide whether or not to display the timestamp based on the duration between the current timestamp and the previous timestamp. Returns true if the interval between messages is > 300.
         var interval = Double()
         var postJustMade = false
         //Convert both the previous date stored int the class and the date passed into the function from strings to date objects
