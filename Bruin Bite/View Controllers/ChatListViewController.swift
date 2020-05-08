@@ -14,7 +14,7 @@ class ChatListTableViewCell: UITableViewCell {
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
-    @IBOutlet weak var dateAndMealLabel: UILabel!
+    @IBOutlet weak var chatUsers: UIStackView!
     @IBOutlet weak var unreadMessagesLabel: UILabel!
 }
 
@@ -90,8 +90,19 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
         } else {
             print ("Error parsing meal_datettime into date object using DateFormatter")
         }
+        /*
+         
+         let memberCount = get #of people in gc
+         
+         for memberProfile in cell.chatUsers.arrangedSubviews{
+             memberProfile.isHidden = false
+             (memberProfile as! UIImageView).image  = get image and set circular
+             (memberProfile as! UILabel).text = "+\(memberCount-3)"
+         }
+         
+         */
+        
         //cell.timeLabel.text = timeString
-        cell.dateAndMealLabel.text = dateString + " | " + getMealPeriodString(fromMealPeriodCode: data[indexPath.row].meal_period) + " | " + timeString
         return cell
     }
     
@@ -159,5 +170,12 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
             return ""
         }
     }
+}
 
+//written by kt, generic helper function that makes profile pic circular
+extension UIImageView{
+    func setCircular(){
+        self.layer.cornerRadius = self.frame.size.width/2
+        self.clipsToBounds = true
+    }
 }

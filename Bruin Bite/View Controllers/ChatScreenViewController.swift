@@ -21,7 +21,8 @@ enum ChatPopupType{
 class MessageBubbleCell: UITableViewCell {
     @IBOutlet weak var receivedMessageLabel: UITextView!
     @IBOutlet weak var sentMessageLabel: UITextView!
-
+    @IBOutlet weak var senderProfile: UIStackView!
+    @IBOutlet weak var userProfile: UILabel!
     var debugData: ChatMessage = ChatMessage(timestamp: "", handle: "", message: "")
 }
 
@@ -103,11 +104,19 @@ class ChatScreenViewController: UIViewController, UITableViewDelegate, UITableVi
             cell.sentMessageLabel.text = currMessage.message
             cell.receivedMessageLabel.isHidden = true
             cell.receivedMessageLabel.text = ""
+            cell.senderProfile.isHidden = true
+            cell.userProfile.isHidden = false
+            //cell.userProfile.arrangedSubviews[0] as !UIImageView).image  = get image and set circular
+            //cell.userProfile.arrangedSubviews[1] as !UILabel).text  = get name
         } else {
             cell.sentMessageLabel.isHidden = true
             cell.sentMessageLabel.text = ""
             cell.receivedMessageLabel.isHidden = false
             cell.receivedMessageLabel.text = currMessage.message
+            cell.userProfile.isHidden = true
+            cell.senderProfile.isHidden =  false
+            //cell.senderProfile.arrangedSubviews[0] as !UIImageView).image  = get image and set circular
+            //cell.senderProfile.arrangedSubviews[1] as !UILabel).text  = get name
         }
         cell.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi));
         cell.sizeToFit()
