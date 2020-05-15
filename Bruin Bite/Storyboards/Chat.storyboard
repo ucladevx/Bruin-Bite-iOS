@@ -125,7 +125,7 @@
                                                                 <constraint firstAttribute="height" constant="25" id="fOd-1F-fy7"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9D7-nM-Kq4" userLabel="member count">
+                                                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9D7-nM-Kq4" userLabel="member count">
                                                             <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
                                                             <accessibility key="accessibilityConfiguration">
                                                                 <accessibilityTraits key="traits" staticText="YES" notEnabled="YES"/>
@@ -134,9 +134,17 @@
                                                                 <constraint firstAttribute="height" constant="25" id="5Oq-uB-d1U"/>
                                                                 <constraint firstAttribute="width" constant="25" id="F0V-Ca-LHb"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                            <color key="textColor" red="0.66659259800000004" green="0.66670936349999999" blue="0.66658520700000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                    <color key="value" red="0.66659259800000004" green="0.66670936349999999" blue="0.66658520700000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                    <real key="value" value="1"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
                                                         </label>
                                                     </subviews>
                                                 </stackView>
@@ -162,6 +170,7 @@
                                             <outlet property="profileImage" destination="dbq-mY-s5u" id="C8M-Kd-x4h"/>
                                             <outlet property="timeLabel" destination="4Qq-uE-yxm" id="oro-ZI-adV"/>
                                             <outlet property="unreadMessagesLabel" destination="r8v-2Z-7LS" id="wJg-bK-Q7C"/>
+                                            <outlet property="userCount" destination="9D7-nM-Kq4" id="noo-6e-eZp"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -258,7 +267,7 @@
                                                             </userDefinedRuntimeAttributes>
                                                         </textView>
                                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Label" translatesAutoresizingMaskIntoConstraints="NO" id="Eye-S8-SSV" customClass="DesignableTextView" customModule="Bruin_Bite" customModuleProvider="target">
-                                                            <rect key="frame" x="287" y="8" width="73" height="60"/>
+                                                            <rect key="frame" x="267" y="8" width="73" height="60"/>
                                                             <color key="backgroundColor" red="0.027450980392156862" green="0.29019607843137252" blue="0.46666666666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <inset key="scrollIndicatorInsets" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -274,9 +283,9 @@
                                                             </userDefinedRuntimeAttributes>
                                                         </textView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="g2P-mn-hMw" userLabel="Sender Profile">
-                                                            <rect key="frame" x="8" y="76" width="180" height="25"/>
+                                                            <rect key="frame" x="8" y="72" width="180" height="25"/>
                                                             <subviews>
-                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EXk-tj-WLn" userLabel="Sender Image">
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="JohnDoe" translatesAutoresizingMaskIntoConstraints="NO" id="EXk-tj-WLn" userLabel="Sender Image">
                                                                     <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
                                                                     <accessibility key="accessibilityConfiguration">
                                                                         <accessibilityTraits key="traits" image="YES" notEnabled="YES"/>
@@ -285,7 +294,7 @@
                                                                         <constraint firstAttribute="width" constant="25" id="e2a-Se-5dO"/>
                                                                     </constraints>
                                                                 </imageView>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gene Block" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JSj-Zw-1aX" userLabel="Sender Name Label">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gene Block" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JSj-Zw-1aX" userLabel="Sender Name Label">
                                                                     <rect key="frame" x="32" y="0.0" width="148" height="25"/>
                                                                     <accessibility key="accessibilityConfiguration">
                                                                         <accessibilityTraits key="traits" staticText="YES" notEnabled="YES"/>
@@ -301,9 +310,9 @@
                                                             </constraints>
                                                         </stackView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="T8G-xa-b9g" userLabel="My Profile">
-                                                            <rect key="frame" x="187" y="76" width="180" height="25"/>
+                                                            <rect key="frame" x="187" y="72" width="180" height="25"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gene Block" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eoe-20-zGv" userLabel="My Name Label">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gene Block" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eoe-20-zGv" userLabel="My Name Label">
                                                                     <rect key="frame" x="0.0" y="0.0" width="148" height="25"/>
                                                                     <accessibility key="accessibilityConfiguration">
                                                                         <accessibilityTraits key="traits" staticText="YES" notEnabled="YES"/>
@@ -312,7 +321,7 @@
                                                                     <color key="textColor" red="0.66659259800000004" green="0.66670936349999999" blue="0.66658520700000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OaM-tC-MfJ" userLabel="My Image">
+                                                                <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="josie" translatesAutoresizingMaskIntoConstraints="NO" id="OaM-tC-MfJ" userLabel="My Image">
                                                                     <rect key="frame" x="155" y="0.0" width="25" height="25"/>
                                                                     <accessibility key="accessibilityConfiguration">
                                                                         <accessibilityTraits key="traits" image="YES" notEnabled="YES"/>
@@ -334,20 +343,22 @@
                                                         <constraint firstItem="Eye-S8-SSV" firstAttribute="top" secondItem="E1X-qB-6A2" secondAttribute="top" constant="8" id="S7G-Nb-NYS"/>
                                                         <constraint firstItem="KV0-SQ-Wy1" firstAttribute="top" secondItem="E1X-qB-6A2" secondAttribute="top" constant="8" id="cqS-cC-WMk"/>
                                                         <constraint firstItem="KV0-SQ-Wy1" firstAttribute="width" relation="lessThanOrEqual" secondItem="E1X-qB-6A2" secondAttribute="width" multiplier="0.75" id="deq-V1-l0n"/>
-                                                        <constraint firstAttribute="trailing" secondItem="Eye-S8-SSV" secondAttribute="trailing" constant="15" id="eJL-2r-MGy"/>
-                                                        <constraint firstItem="g2P-mn-hMw" firstAttribute="top" secondItem="KV0-SQ-Wy1" secondAttribute="bottom" constant="8" id="ewt-5f-mr0"/>
+                                                        <constraint firstAttribute="trailing" secondItem="Eye-S8-SSV" secondAttribute="trailing" constant="35" id="eJL-2r-MGy"/>
+                                                        <constraint firstItem="g2P-mn-hMw" firstAttribute="top" secondItem="KV0-SQ-Wy1" secondAttribute="bottom" constant="4" id="ewt-5f-mr0"/>
                                                         <constraint firstItem="Eye-S8-SSV" firstAttribute="width" relation="lessThanOrEqual" secondItem="E1X-qB-6A2" secondAttribute="width" multiplier="0.75" id="gN5-ZU-SgW"/>
                                                         <constraint firstAttribute="bottom" secondItem="KV0-SQ-Wy1" secondAttribute="bottom" constant="38" id="hVE-Ig-1Fp"/>
                                                         <constraint firstAttribute="bottom" secondItem="Eye-S8-SSV" secondAttribute="bottom" constant="38" id="iAd-8Y-EUh"/>
-                                                        <constraint firstItem="T8G-xa-b9g" firstAttribute="top" secondItem="Eye-S8-SSV" secondAttribute="bottom" constant="8" id="lFV-JM-jM8"/>
+                                                        <constraint firstItem="T8G-xa-b9g" firstAttribute="top" secondItem="Eye-S8-SSV" secondAttribute="bottom" constant="4" id="lFV-JM-jM8"/>
                                                         <constraint firstItem="g2P-mn-hMw" firstAttribute="leading" secondItem="E1X-qB-6A2" secondAttribute="leading" constant="8" id="wL9-bG-V44"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <connections>
                                                     <outlet property="receivedMessageLabel" destination="KV0-SQ-Wy1" id="xtT-Ni-4Gw"/>
-                                                    <outlet property="senderProfile" destination="g2P-mn-hMw" id="O1C-q3-mTF"/>
+                                                    <outlet property="senderImage" destination="EXk-tj-WLn" id="Gph-eV-4nt"/>
+                                                    <outlet property="senderName" destination="JSj-Zw-1aX" id="oCh-u8-w0R"/>
                                                     <outlet property="sentMessageLabel" destination="Eye-S8-SSV" id="qth-uo-IcV"/>
-                                                    <outlet property="userProfile" destination="Eoe-20-zGv" id="Alh-wZ-K96"/>
+                                                    <outlet property="userImage" destination="OaM-tC-MfJ" id="Fpg-pa-Hta"/>
+                                                    <outlet property="userName" destination="Eoe-20-zGv" id="87w-mF-yAG"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
@@ -678,5 +689,7 @@
     </scenes>
     <resources>
         <image name="Chats" width="26" height="25"/>
+        <image name="JohnDoe" width="521" height="532"/>
+        <image name="josie" width="148" height="148"/>
     </resources>
 </document>

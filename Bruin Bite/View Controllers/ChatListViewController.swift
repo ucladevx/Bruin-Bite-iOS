@@ -15,6 +15,7 @@ class ChatListTableViewCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var chatUsers: UIStackView!
+    @IBOutlet weak var userCount: UILabel!
     @IBOutlet weak var unreadMessagesLabel: UILabel!
 }
 
@@ -74,8 +75,9 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ChatListCell", for: indexPath) as! ChatListTableViewCell
-        cell.nameLabel.text = data[indexPath.row].user2_first_name + " " + data[indexPath.row].user2_last_name
-        cell.profileImage.image = profilePictures[data[indexPath.row].user2] ?? UIImage(named: "DefaultProfile")
+        cell.nameLabel.text = Utilities.mealPeriodName(forMealPeriodCode: data[indexPath.row].meal_period) +  " at " + Utilities.diningHallName(forDiningHallCode: data[indexPath.row].dining_hall)
+        // data[indexPath.row].user2_first_name + " " + data[indexPath.row].user2_last_name
+        cell.profileImage.image = profilePictures[data[indexPath.row].user2] ?? UIImage(named: "DefaultProfile") //get dining hall img instead ??
         var dateString = ""
         var timeString = ""
         if let date = getDateObject(fromDateTimeString: data[indexPath.row].meal_datetime) {
@@ -90,18 +92,23 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
         } else {
             print ("Error parsing meal_datettime into date object using DateFormatter")
         }
-        /*
-         
-         let memberCount = get #of people in gc
-         
-         for memberProfile in cell.chatUsers.arrangedSubviews{
-             memberProfile.isHidden = false
-             (memberProfile as! UIImageView).image  = get image and set circular
-             (memberProfile as! UILabel).text = "+\(memberCount-3)"
-         }
-         
-         */
         
+        var memberCount = 5  //hard-coded for testing purpose; 'member to change back
+        let count = min(memberCount,3)
+        memberCount -= 3
+        
+        for memberIndex in 0..<count{
+            cell.chatUsers.arrangedSubviews[memberIndex].isHidden = false
+            (cell.chatUsers.arrangedSubviews[memberIndex] as! UIImageView).image = UIImage(named: "/Users/katiechang/Documents/Miscellaneous/1.jpg")  //hard-coded for testing purpose; 'member to change back
+            (cell.chatUsers.arrangedSubviews[memberIndex] as! UIImageView).setCircular()
+        }
+        if memberCount>0{
+            cell.userCount.isHidden = false
+            cell.userCount.layer.masksToBounds = true
+            cell.userCount.layer.cornerRadius = cell.userCount.frame.size.width/2
+            cell.userCount.text =  "+\(memberCount)"
+        }
+        //cell.unreadMessagesLabel =
         //cell.timeLabel.text = timeString
         return cell
     }
@@ -154,21 +161,6 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         return dateFormatter.date(from: dateTime)
-    }
-    
-    // TODO: Move this function to a more utility location
-    func getMealPeriodString(fromMealPeriodCode mealPeriodCode: String) -> String {
-        switch mealPeriodCode {
-        case "LU":
-            return "Lunch"
-        case "BR":
-            return "Breakfast"
-        case "DI":
-            return "Dinner"
-        default:
-            print("Invalid meal period passed in")
-            return ""
-        }
     }
 }
 
