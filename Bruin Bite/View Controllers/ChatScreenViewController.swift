@@ -112,8 +112,8 @@ class ChatScreenViewController: UIViewController, UITableViewDelegate, UITableVi
             cell.userImage.isHidden = false
             cell.userName.isHidden = false
             
-            //cell.userImage.image =
-            cell.userName.text = "display me name"
+            cell.userImage.image = UIImage(named: "/Users/katiechang/Documents/Miscellaneous/2.jpg") //hard-coded for testing purpose; 'member to change back
+            cell.userName.text = "Gene Block" //hard-coded for testing purpose; 'member to change back
             cell.userImage.setCircular()
 
         } else {
@@ -126,7 +126,8 @@ class ChatScreenViewController: UIViewController, UITableViewDelegate, UITableVi
             cell.userImage.isHidden = true
             cell.userName.isHidden = true
             
-            cell.senderName.text = "im chatting yoho"
+            cell.senderImage.image = UIImage(named: "/Users/katiechang/Documents/Miscellaneous/1.jpg") //hard-coded for testing purpose; 'member to change back
+            cell.senderName.text = "Gene Blocked" //hard-coded for testing purpose; 'member to change back
             cell.senderImage.setCircular()
         }
         cell.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi));
