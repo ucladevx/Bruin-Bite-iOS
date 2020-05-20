@@ -21,7 +21,10 @@ enum ChatPopupType{
 class MessageBubbleCell: UITableViewCell {
     @IBOutlet weak var receivedMessageLabel: UITextView!
     @IBOutlet weak var sentMessageLabel: UITextView!
-
+    @IBOutlet weak var senderImage: UIImageView!
+    @IBOutlet weak var senderName: UILabel!
+    @IBOutlet weak var userImage: UIImageView!
+    @IBOutlet weak var userName: UILabel!
     var debugData: ChatMessage = ChatMessage(timestamp: "", handle: "", message: "")
 }
 
@@ -83,7 +86,8 @@ class ChatScreenViewController: UIViewController, UITableViewDelegate, UITableVi
         infoButton.addTarget(self, action: #selector(didPressInfo), for: .touchUpInside)
         let barButton = UIBarButtonItem(customView: infoButton)
         self.navigationItem.rightBarButtonItem = barButton
-        self.title = chatItem?.user2_first_name
+        self.title = Utilities.mealPeriodName(forMealPeriodCode: chatItem!.meal_period) +  " at " + Utilities.diningHallName(forDiningHallCode: chatItem!.dining_hall)
+        //chatItem?.user2_first_name
     }
 
     override func didReceiveMemoryWarning() {
@@ -103,11 +107,28 @@ class ChatScreenViewController: UIViewController, UITableViewDelegate, UITableVi
             cell.sentMessageLabel.text = currMessage.message
             cell.receivedMessageLabel.isHidden = true
             cell.receivedMessageLabel.text = ""
+            cell.senderImage.isHidden = true
+            cell.senderName.isHidden = true
+            cell.userImage.isHidden = false
+            cell.userName.isHidden = false
+            
+            cell.userImage.image = UIImage(named: "/Users/katiechang/Documents/Miscellaneous/2.jpg") //hard-coded for testing purpose; 'member to change back
+            cell.userName.text = "Gene Block" //hard-coded for testing purpose; 'member to change back
+            cell.userImage.setCircular()
+
         } else {
             cell.sentMessageLabel.isHidden = true
             cell.sentMessageLabel.text = ""
             cell.receivedMessageLabel.isHidden = false
             cell.receivedMessageLabel.text = currMessage.message
+            cell.senderImage.isHidden = false
+            cell.senderName.isHidden = false
+            cell.userImage.isHidden = true
+            cell.userName.isHidden = true
+            
+            cell.senderImage.image = UIImage(named: "/Users/katiechang/Documents/Miscellaneous/1.jpg") //hard-coded for testing purpose; 'member to change back
+            cell.senderName.text = "Gene Blocked" //hard-coded for testing purpose; 'member to change back
+            cell.senderImage.setCircular()
         }
         cell.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi));
         cell.sizeToFit()
@@ -295,4 +316,5 @@ class ChatScreenViewController: UIViewController, UITableViewDelegate, UITableVi
             */
         }
     }
+    
 }
