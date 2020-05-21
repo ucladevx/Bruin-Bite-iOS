@@ -6,6 +6,13 @@
 //  Copyright © 2018 Dont Eat Alone. All rights reserved.
 //
 
+/*TODO: Note by Abhishek Marda, May 21 2020, to be deleted once issue resolved.
+ * There have been TODO comments left in this code
+ * Those comments are because the enumeration Location takes only "FEAST at Rieber". Some changes to the menus made the change of this
+ * string to "Feast at Rieber". Both strings are being used for different tags. These fixes are temporary, but the plan is to make
+ * this more stremlined by changing more fundamental areas.
+ */
+
 import Foundation
 import SwiftyJSON
 
@@ -133,7 +140,15 @@ extension API{
                                         
                                     }
                                 }
-                                parsedLocation[Location(rawValue: location)!] = parsedItems
+                                
+                                //TODO: make this better
+                                var location2 = location
+                                if location2 == "Feast at Rieber"
+                                {
+                                    location2 = "FEAST at Rieber"
+                                }
+                                parsedLocation[Location(rawValue: location2)!] = parsedItems
+//                                parsedLocation[Location(rawValue: location)!] = parsedItems //this was before the hot-fix
                             }
                             parsedMeal[mealPeriod] = parsedLocation
                         }
@@ -264,7 +279,14 @@ extension API{
                                         
                                     }
                                 }
-                                parsedLocation[Location(rawValue: location)!] = parsedItems
+                                //TODO: make this better
+                                var location2 = location
+                                if location2 == "Feast at Rieber"
+                                {
+                                    location2 = "FEAST at Rieber"
+                                }
+                                parsedLocation[Location(rawValue: location2)!] = parsedItems
+//                                parsedLocation[Location(rawValue: location)!] = parsedItems //this was before
                             }
                             parsedMeal[mealPeriod] = parsedLocation
                         }
