@@ -22,7 +22,7 @@ class SearchingScreenViewController: UIViewController {
     @IBOutlet weak var p: UIView!
     let puls = Pulsator()
     
-    let BACKEND_MATCH_STATUS_URL = "https://api.bruin-bite.com/api/v1/users/matching/data/"
+    let BACKEND_MATCH_STATUS_URL = "https://dev.bruin-bite.com/api/v1/users/matching/data/"
     
     var matchID: Int? = nil
     var timer: Repeater? = nil

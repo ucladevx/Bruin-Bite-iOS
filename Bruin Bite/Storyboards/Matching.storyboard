@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -33,10 +33,10 @@
             </objects>
             <point key="canvasLocation" x="-5038" y="242"/>
         </scene>
-        <!--View Controller-->
+        <!--Tables List View Controller-->
         <scene sceneID="SlF-oF-MJb">
             <objects>
-                <viewController id="0sm-hy-Xwe" sceneMemberID="viewController">
+                <viewController id="0sm-hy-Xwe" customClass="TablesListViewController" customModule="Bruin_Bite" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8p7-lc-cA4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="574"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -45,6 +45,16 @@
                                 <rect key="frame" x="0.0" y="83" width="375" height="491"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="tempCell" id="dsT-qq-Fih">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dsT-qq-Fih" id="TYQ-7m-nRF">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2t6-fh-oQa">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="88"/>
@@ -65,10 +75,85 @@
                         <viewLayoutGuide key="safeArea" id="Iby-21-RVr"/>
                     </view>
                     <navigationItem key="navigationItem" id="9yX-cA-Hm9"/>
+                    <connections>
+                        <outlet property="ListTable" destination="tAK-Yt-vjp" id="kzC-vz-XmR"/>
+                        <segue destination="9dm-lN-ssd" kind="push" identifier="ShowJoinTableVC" id="kxb-z0-41h"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K6d-Bw-lda" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-4285.6000000000004" y="244.22788605697153"/>
+        </scene>
+        <!--Join Table View Controller-->
+        <scene sceneID="e4K-OG-aDj">
+            <objects>
+                <viewController id="9dm-lN-ssd" customClass="JoinTableViewController" customModule="Bruin_Bite" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tO2-db-3rb" userLabel="Overview">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="574"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="o0v-HO-f2S" userLabel="Overall Stack View">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="574"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="McB-I7-zyk" userLabel="Title View">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Lunch at Bruin Plate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hlX-xh-c8P">
+                                                <rect key="frame" x="27" y="8" width="231" height="33"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="24"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Today at 12:00 pm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YAa-Nw-oPn">
+                                                <rect key="frame" x="27" y="49" width="142" height="21"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.015090915369999999" green="0.29010346529999997" blue="0.48237389330000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="tintColor" red="0.015090915369999999" green="0.29010346529999997" blue="0.48237389330000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="120" id="J4I-j1-5vU"/>
+                                        </constraints>
+                                    </view>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Kac-wf-qaq">
+                                        <rect key="frame" x="0.0" y="140" width="375" height="354"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                    </tableView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g4z-Fh-LNT">
+                                        <rect key="frame" x="0.0" y="514" width="375" height="60"/>
+                                        <color key="backgroundColor" red="0.015090915369999999" green="0.29010346529999997" blue="0.48237389330000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="Mtk-Xr-n88"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="Join Table">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Sp6-Ex-hQy" firstAttribute="bottom" secondItem="o0v-HO-f2S" secondAttribute="bottom" id="2fL-D6-w4x"/>
+                            <constraint firstItem="o0v-HO-f2S" firstAttribute="top" secondItem="Sp6-Ex-hQy" secondAttribute="top" id="Ptq-PH-cCT"/>
+                            <constraint firstItem="o0v-HO-f2S" firstAttribute="trailing" secondItem="tO2-db-3rb" secondAttribute="trailing" id="wW5-sc-oXG"/>
+                            <constraint firstItem="o0v-HO-f2S" firstAttribute="leading" secondItem="tO2-db-3rb" secondAttribute="leading" id="zo9-qS-XpF"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Sp6-Ex-hQy"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="OJP-ON-CYD"/>
+                    <connections>
+                        <outlet property="ParticipantsTable" destination="Kac-wf-qaq" id="KwW-0h-22u"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="40r-Hx-khw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3546.4000000000001" y="243.32833583208398"/>
         </scene>
     </scenes>
     <resources>

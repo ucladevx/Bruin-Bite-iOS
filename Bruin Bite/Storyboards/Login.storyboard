@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WtO-JF-5ff">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WtO-JF-5ff">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -270,7 +270,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2Ya-gP-7zb">
-                                <rect key="frame" x="70" y="46.5" width="235" height="38"/>
+                                <rect key="frame" x="70" y="42.5" width="235" height="38"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="38" id="PJL-ru-2fb"/>
                                     <constraint firstAttribute="width" secondItem="2Ya-gP-7zb" secondAttribute="height" multiplier="235:38" id="Qec-GH-BFx"/>
@@ -288,13 +288,13 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Line" translatesAutoresizingMaskIntoConstraints="NO" id="dcB-up-xrF">
-                                <rect key="frame" x="70" y="85.5" width="235" height="2"/>
+                                <rect key="frame" x="70" y="81.5" width="235" height="2"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="2" id="2OV-5S-Sbs"/>
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bzy-hE-7Df">
-                                <rect key="frame" x="70" y="105.5" width="235" height="38"/>
+                                <rect key="frame" x="70" y="101.5" width="235" height="38"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="bzy-hE-7Df" secondAttribute="height" multiplier="235:38" id="Trs-W4-iMH"/>
                                     <constraint firstAttribute="height" constant="38" id="gCJ-0S-zMA"/>
@@ -312,13 +312,13 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Line" translatesAutoresizingMaskIntoConstraints="NO" id="lhr-Dp-Wwy">
-                                <rect key="frame" x="70" y="144.5" width="235" height="2"/>
+                                <rect key="frame" x="70" y="140.5" width="235" height="2"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="2" id="jKv-9v-Tsn"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="afn-vg-1bq" userLabel="SignInButton">
-                                <rect key="frame" x="109.5" y="186.5" width="156" height="57"/>
+                                <rect key="frame" x="109.5" y="182.5" width="156" height="57"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="57" id="13M-bm-hCo"/>
                                     <constraint firstAttribute="width" secondItem="afn-vg-1bq" secondAttribute="height" multiplier="52:19" id="ise-lL-toh"/>
@@ -331,7 +331,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" alpha="0.69999998807907104" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yVM-MC-9TZ" userLabel="ForgotPassButton">
-                                <rect key="frame" x="204" y="148.5" width="101" height="20"/>
+                                <rect key="frame" x="204" y="144.5" width="101" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="25u-ku-YBO"/>
                                     <constraint firstAttribute="width" secondItem="yVM-MC-9TZ" secondAttribute="height" multiplier="101:20" id="9Ho-Hd-wtJ"/>
@@ -390,14 +390,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ProfilePic" translatesAutoresizingMaskIntoConstraints="NO" id="WdP-dU-tHJ">
-                                <rect key="frame" x="115.5" y="24" width="144" height="139"/>
+                                <rect key="frame" x="118" y="21" width="139" height="139"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="139" id="Cew-Bv-ayn"/>
                                     <constraint firstAttribute="width" secondItem="WdP-dU-tHJ" secondAttribute="height" multiplier="1:1" id="E3A-zm-nOl"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o1y-ub-wYw" userLabel="NextButton">
-                                <rect key="frame" x="266.5" y="305.5" width="46" height="46"/>
+                                <rect key="frame" x="262.5" y="302" width="46" height="46"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="46" id="otb-JZ-ma7"/>
                                     <constraint firstAttribute="width" secondItem="o1y-ub-wYw" secondAttribute="height" multiplier="1:1" id="wNK-Lg-mha"/>
@@ -408,7 +408,7 @@
                                 </connections>
                             </button>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="h8a-dl-SMT">
-                                <rect key="frame" x="274.5" y="313.5" width="30" height="30"/>
+                                <rect key="frame" x="270.5" y="310" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="gV6-U1-Ab5"/>
                                     <constraint firstAttribute="width" constant="30" id="hrm-wt-7d2"/>
@@ -416,7 +416,7 @@
                                 <color key="color" red="0.194423914" green="0.37402850389999998" blue="0.5412153006" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </activityIndicatorView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BIO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UPG-fQ-gga">
-                                <rect key="frame" x="65.5" y="171" width="178.5" height="21"/>
+                                <rect key="frame" x="69.5" y="168" width="173" height="20.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="UPG-fQ-gga" secondAttribute="height" multiplier="169:20" id="UGN-Mn-0Is"/>
                                 </constraints>
@@ -425,7 +425,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="hOe-iL-nsr">
-                                <rect key="frame" x="62.5" y="197.5" width="250" height="73"/>
+                                <rect key="frame" x="66.5" y="194" width="242" height="73"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="73" id="Lra-ds-VSI"/>
                                     <constraint firstAttribute="width" secondItem="hOe-iL-nsr" secondAttribute="height" multiplier="242:73" id="OtY-NR-Tb5"/>
@@ -440,7 +440,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7eg-dc-dIU">
-                                <rect key="frame" x="272" y="278.5" width="35" height="19"/>
+                                <rect key="frame" x="268" y="275" width="35" height="19"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="7eg-dc-dIU" secondAttribute="height" multiplier="35:19" id="Oxg-5p-LyR"/>
                                     <constraint firstAttribute="height" constant="19" id="p9F-ZI-iHX"/>
@@ -559,7 +559,7 @@
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hi0-6j-WCs">
-                                <rect key="frame" x="104.5" y="209" width="166" height="59"/>
+                                <rect key="frame" x="145" y="209" width="85" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="hi0-6j-WCs" secondAttribute="height" multiplier="161:57" id="B4a-tS-AaR"/>
                                 </constraints>
@@ -628,13 +628,13 @@
             <point key="canvasLocation" x="139" y="124"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="llT-Nr-fs9"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="Line" width="242" height="2"/>
         <image name="LoginLogo" width="108" height="144"/>
         <image name="NextArrow" width="46" height="46"/>
         <image name="ProfilePic" width="139" height="139"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="llT-Nr-fs9"/>
-    </inferredMetricsTieBreakers>
 </document>
